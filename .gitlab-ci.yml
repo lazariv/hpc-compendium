@@ -1,0 +1,9 @@
+# Datei: .gitlab-ci.yml
+stages:
+    - build
+
+build:
+    stage: build
+    script:
+        - pwd
+        - ls -l
