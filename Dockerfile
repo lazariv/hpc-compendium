@@ -1,4 +1,4 @@
-FROM: python:3.8-buster
+FROM python:3.8-buster
 
 # Documentation static site generator & deployment tool
 RUN pip install mkdocs>=1.1.2
