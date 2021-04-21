@@ -11,5 +11,5 @@ build:
     script:
         - pwd
         - ls -l
-        - echo "TEST_IMAGE: ${TEST_IMAGE}"
-        - echo "TEST_NETWORK: ${TEST_NETWORK}"
+        - echo TEST_IMAGE: ${TEST_IMAGE}
+        - echo TEST_NETWORK: ${TEST_NETWORK}
