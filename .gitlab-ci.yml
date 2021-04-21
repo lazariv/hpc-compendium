@@ -1,4 +1,8 @@
 # Datei: .gitlab-ci.yml
+variables:
+    TEST_IMAGE: webpage:$CI_COMMIT_REF_NAME
+    TEST_NETWORK: testnet
+
 stages:
     - build
 
