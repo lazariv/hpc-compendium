@@ -1,0 +1,38 @@
+nav:
+    - Home: index.md
+
+# Project Information
+site_name: ZIH HPC Compendium 2.0
+site_description: ZIH HPC Compendium 2.0
+site_author: ZIH Team
+site_dir: public
+site_url: https://gitlab.hrz.tu-chemnitz.de/hpcsupport/hpc-compendium
+
+# Configuration
+#strict: true
+
+theme:
+  # basetheme
+  name: material
+  font:
+    text: Open Sans
+  language: en
+  # dir containing all customizations
+  custom_dir: tud_theme
+  favicon: assets/images/Logo_klein.png
+  # logo in header and footer
+  logo: assets/images/TUD_Logo_weiss_57.png
+
+# extends base css
+extra_css: 
+  - stylesheets/extra.css
+  
+extra:
+  # links in footer
+  footer:
+    - link: https://tu-dresden.de/impressum
+      name: "Legal Notice"
+    - link: https://doc.zih.tu-dresden.de/hpc-wiki/bin/view/Compendium/Accessibility
+      name: "Accessibility"
+    - link: https://tu-dresden.de/zertifikate
+      name: "Certificates"
