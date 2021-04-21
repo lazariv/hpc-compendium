@@ -13,3 +13,4 @@ build:
         - ls -l
         - 'echo "TEST_IMAGE: ${TEST_IMAGE}"'
         - 'echo "TEST_NETWORK: ${TEST_NETWORK}"'
+        - docker build -t ${TEST_IMAGE} .
