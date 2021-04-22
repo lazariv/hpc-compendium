@@ -1,0 +1,41 @@
+:root {
+    --md-primary-fg-color:        rgb(0, 37, 87);
+    --md-primary-fg-color--light: rgb(39, 66, 117);
+    --md-footer-bg-color:         rgb(0, 37, 87);
+  }
+
+.md-header__topic {
+    padding: 0 1em;
+    background-color: var(--md-primary-fg-color--light); 
+}
+
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+    height: 5em;
+    width: auto;
+    object-fit: cover;
+}
+
+.md-nav__title .md-nav__button.md-logo img {
+    width: 100%;
+}
+
+.md-footer-meta__inner.md-grid {
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.footer-item {
+    margin: 0 1em;
+}
+
+.md-footer {
+    background-color: var(--md-primary-fg-color);
+}
+
+.md-footer-logo img{
+    height: 5vh;
+    width: auto;
+    margin: 0.5em 0;
+    object-fit: cover;
+}
