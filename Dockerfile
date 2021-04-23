@@ -9,5 +9,6 @@ RUN pip install mkdocs-material>=5.4.0
 
 COPY doc.zih.tu-dresden.de/ /src/
 
-WORKDIR /src/doc.zih.tu-dresden.de
+WORKDIR /src
+
 RUN mkdocs build
