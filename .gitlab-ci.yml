@@ -1,21 +1,24 @@
 # Datei: .gitlab-ci.yml
 variables:
     GIT_STRATEGY: clone
-    TEST_IMAGE: webpage:base
+    BASE_IMAGE: webpage:base
     LINTER_IMAGE: webpage:linter
     LINKCHECKER_IMAGE: webpage:linkchecker
 
 stages:
     - build
 
-build:
+build_base:
     stage: build
     script:
-        - pwd
-        - ls -l
-        - 'echo "TEST_IMAGE: ${TEST_IMAGE}"'
-        - 'echo "LINTER_IMAGE: ${LINTER_IMAGE}"'
-        - 'echo "LINKCHECKER_IMAGE: ${LINKCHECKER_IMAGE}"'
-        - docker build -t ${TEST_IMAGE} .
+        - docker build -t ${BASE_IMAGE} .
+
+build_linter:
+    stage: build
+    script:
         - docker build -t ${LINTER_IMAGE} linter/
+
+build_linkchecker:
+    stage: build
+    script:
         - docker build -t ${LINKCHECKER_IMAGE} linkchecker/
