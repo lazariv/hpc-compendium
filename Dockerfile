@@ -11,8 +11,9 @@ RUN pip install mkdocs>=1.1.2
 # (https://github.com/mkdocs/mkdocs/wiki/MkDocs-Themes)
 RUN pip install mkdocs-material>=5.4.0
 
-WORKDIR /src
-COPY doc.zih.tu-dresden.de/ /src/
+COPY ./ /src/
+
+WORKDIR /src/doc.zih.tu-dresden.de
 
 RUN mkdocs build --verbose
 
