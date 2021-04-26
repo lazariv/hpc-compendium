@@ -1,5 +1,9 @@
 FROM python:3.8-buster
 
+########
+# Base #
+########
+
 # Documentation static site generator & deployment tool
 RUN pip install mkdocs>=1.1.2
 
@@ -10,5 +14,5 @@ RUN pip install mkdocs-material>=5.4.0
 WORKDIR /src
 COPY doc.zih.tu-dresden.de/ /src/
 
-RUN mkdocs build
+RUN mkdocs build --verbose --site-dir test
 
