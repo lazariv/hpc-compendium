@@ -1,5 +1,6 @@
 # Datei: .gitlab-ci.yml
 variables:
+    GIT_STRATEGY: clone
     TEST_IMAGE: webpage:${CI_COMMIT_REF_NAME}
     TEST_NETWORK: testnet
 
