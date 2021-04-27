@@ -11,6 +11,7 @@ stages:
     - build
     - test
     - cleanup
+    - release
 
 build_base:
     stage: build
@@ -46,3 +47,10 @@ cleanup_test:
         - docker stop ${TEST_CONTAINER_NAME}
         - docker network rm ${TEST_NETWORK}
     when: always
+
+release:
+    stage: release
+    script:
+        - docker run --rm -v /var/www/html/hpc-wiki:/mnt ${BASE_IMAGE} mkdocs build --site-dir /mnt
+    only:
+        - master
