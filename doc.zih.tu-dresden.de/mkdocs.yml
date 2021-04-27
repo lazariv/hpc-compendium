@@ -14,8 +14,8 @@ site_url: https://gitlab.hrz.tu-chemnitz.de/hpcsupport/hpc-compendium
 theme:
   # basetheme
   name: material
-  font:
-    text: Open Sans
+  # disable fonts being loaded from google fonts
+  font: false
   language: en
   # dir containing all customizations
   custom_dir: tud_theme
