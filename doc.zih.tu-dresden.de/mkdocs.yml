@@ -30,7 +30,7 @@ extra_css:
 extra:
   # links in footer
   footer:
-    - link: https://tu-dresden.de/impressum
+    - link: https://doc.zih.tu-dresden.de/hpc-wiki/bin/view/Compendium/Impressum
       name: "Legal Notice"
     - link: https://doc.zih.tu-dresden.de/hpc-wiki/bin/view/Compendium/Accessibility
       name: "Accessibility"
