@@ -10,6 +10,7 @@ variables:
 stages:
     - build
     - test
+    - cleanup
 
 build_base:
     stage: build
@@ -36,6 +37,11 @@ test_linkchecker:
     script:
         - docker network create ${TEST_NETWORK}
         - docker run -d --rm --name ${TEST_CONTAINER_NAME} --network ${TEST_NETWORK} ${BASE_IMAGE} mkdocs serve --dev-addr 0.0.0.0:8000
-        - docker run --rm ${LINKCHECKER_IMAGE} --check-extern --ignore-url=http://0.0.0.0:8000 http://webpage:8000
+        - docker run --rm --network ${TEST_NETWORK} ${LINKCHECKER_IMAGE} --check-extern --ignore-url=http://0.0.0.0:8000 http://webpage:8000
+
+cleanup_test:
+    stage: cleanup
+    script:
         - docker stop ${TEST_CONTAINER_NAME}
         - docker network rm ${TEST_NETWORK}
+    when: always
