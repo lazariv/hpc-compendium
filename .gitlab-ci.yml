@@ -37,7 +37,7 @@ test_linkchecker:
     script:
         - docker network create ${TEST_NETWORK}
         - docker run -d --rm --name ${TEST_CONTAINER_NAME} --network ${TEST_NETWORK} ${BASE_IMAGE} mkdocs serve --dev-addr 0.0.0.0:8000
-        - sleep
+        - sleep 5
         - docker run --rm --network ${TEST_NETWORK} ${LINKCHECKER_IMAGE} --check-extern --ignore-url=http://0.0.0.0:8000 http://${TEST_CONTAINER_NAME}:8000
 
 cleanup_test:
