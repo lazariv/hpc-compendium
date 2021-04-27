@@ -27,5 +27,5 @@ build_linkchecker:
 test_linter:
     stage: test
     script:
-        - docker run --rm ${LINTER_IMAGE} /src/doc.zih.tu-dresden.de
+        - docker run --rm ${LINTER_IMAGE} --config /src/linter/config.json /src/doc.zih.tu-dresden.de/docs
 
