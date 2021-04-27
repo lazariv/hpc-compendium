@@ -42,4 +42,3 @@ and [GitLab Pages](https://docs.gitlab.com/ee/user/project/pages/).
 Using GitLab Pages static websites can be directly published from a repository in GitLab. GitLab
 Runner is an application that works with GitLab CI/CD to run jobs in a pipeline. The CI/CD pipeline
 for this very project is to generate the static html using `mkdocs` and deploy them at GitLab Pages.
-
