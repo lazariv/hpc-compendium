@@ -3,7 +3,9 @@ variables:
     GIT_STRATEGY: clone
     BASE_IMAGE: webpage:base
     LINTER_IMAGE: webpage:linter
-    LINKCHECKER_IMAGE: webpage:linkchecker
+    LINKCHECKER_IMAGE: linkchecker
+    TEST_NETWORK: testnet
+    TEST_CONTAINER_NAME: webpage
 
 stages:
     - build
@@ -29,3 +31,11 @@ test_linter:
     script:
         - docker run --rm ${LINTER_IMAGE} --config /src/linter/config.json /src/doc.zih.tu-dresden.de/docs
 
+test_linkchecker:
+    stage: test
+    script:
+        - docker network create ${TEST_NETWORK}
+        - docker run -d --rm --name ${TEST_CONTAINER_NAME} --network ${TEST_NETWORK} ${BASE_IMAGE} mkdocs serve --dev-addr 0.0.0.0:8000
+        - docker run --rm ${LINKCHECKER_IMAGE} --check-extern --ignore-url=http://0.0.0.0:8000 http://webpage:8000
+        - docker stop ${TEST_CONTAINER_NAME}
+        - docker network rm ${TEST_NETWORK}
