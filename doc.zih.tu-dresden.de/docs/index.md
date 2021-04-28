@@ -1,6 +1,6 @@
 # ZIH HPC Compendium
 
-Dear visitor,
+Dear visitor ,
 
 this is a proposal for the next generation of technical documentation for the HPC systems and
 services at ZIH / TU Dresden.
