@@ -19,7 +19,7 @@ todo
 
 ### Markdown Linter
 
-The (markdown linter client)[https://github.com/igorshubovych/markdownlint-cli] should be invoked to
+The [markdown linter client](https://github.com/igorshubovych/markdownlint-cli) should be invoked to
 help keep the markdown source code clean and consistent.
 
 ```shell
