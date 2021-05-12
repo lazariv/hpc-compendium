@@ -54,3 +54,10 @@ release:
         - docker run --rm -v /var/www/html/hpc-wiki:/mnt ${BASE_IMAGE} mkdocs build --site-dir /mnt
     only:
         - master
+
+release_devel:
+    stage: release
+    script:
+        - docker run --rm -v /var/www/html/preview:/mnt ${BASE_IMAGE} mkdocs build --site-dir /mnt
+    only:
+        - devel
