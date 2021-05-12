@@ -32,8 +32,7 @@ wenden (Koordinatorin: Mandy Weickert, E-Mail: <barrieren@tu-dresden.de>, Telefo
 Wenn wir Ihre Rückmeldungen aus Ihrer Sicht nicht befriedigend bearbeiten, können Sie sich an die
 Sächsische Durchsetzungsstelle wenden:
 
-**Beauftragter der Sächsischen Staatsregierung für die Belange von Menschen mit Behinderungen**
-
+Beauftragter der Sächsischen Staatsregierung für die Belange von Menschen mit Behinderungen  
 Albertstraße 10  
 01097 Dresden  
 Postanschrift: Archivstraße 1, 01097 Dresden  
@@ -41,4 +40,3 @@ E-Mail: <info.behindertenbeauftragter@sk.sachsen.de>
 Telefon: +49 351 564-12161  
 Fax: +49 351 564-12169  
 Webseite: [https://www.inklusion.sachsen.de](https://www.inklusion.sachsen.de)
-
