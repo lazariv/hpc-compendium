@@ -14,9 +14,10 @@ within the CI/CD pipeline help to ensure a high quality documentation.
 
 ## Reporting Issues
 
-Issues concerning this documentation can reported via the GitLab [issue tracking system]
-(https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/issues). Please check for an
-already existing issue before submitting your issue in order to avoid duplicate issues.
+Issues concerning this documentation can reported via the GitLab
+[issue tracking system](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/issues).
+Please check for an already existing issue before submitting your issue in order to avoid duplicate
+issues.
 
 **Reminder:** Non-documentation issues and requests need to be send as ticket to
 [hpcsupport@zih.tu-dresden.de](mailto:hpcsupport@zih.tu-dresden.de).
