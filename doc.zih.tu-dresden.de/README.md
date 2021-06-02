@@ -16,14 +16,6 @@ Using GitLab Pages static websites can be directly published from a repository i
 Runner is an application that works with GitLab CI/CD to run jobs in a pipeline. The CI/CD pipeline
 for this very project is to generate the static html using `mkdocs` and deploy them at GitLab Pages.
 
-### Why is this not at gitlab.hrz.tu-chemnitz.de?
-
-Both features, GitLab Pages and GitLab Runner, are currently not available at
-gitlab.hrz.tu-chemnitz.de
-
-If this project exceeds the mock-up phase, the Git hosting service should be discussed. But for now,
-it is quite comfortable to use the infrastructure at gitlab.com
-
 ## Contribute
 
 ### Workflow
