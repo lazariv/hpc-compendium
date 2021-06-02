@@ -1,16 +1,16 @@
 # ZIH HPC Documentation
 
-This repository contains the documentation of the HPC systems and services provided at TU Dresden /
-ZIH.
+This repository contains the documentation of the HPC systems and services provided at
+[TU Dresden/ZIH](https://tu-dresden.de/zih/).
 
 ## Setup
 
 We decided against a classical wiki software. Instead, we make use of the static site generator
 [mkdocs](https://www.mkdocs.org/). It creates static html files from markdown source files. All
 (configuration, layout and content) files will be managed within this git repository. The
-documentation pages can be found in top-level folder `docs.` The generated static html files, i.e,
-the documentation, is deployed to a web server. Several checks within the CI/CD pipeline help to
-ensure a high quality documentation.
+documentation pages and configuration files are found in the folder `doc.zih.tu-dresden.de`. The
+generated static html files, i.e, the documentation, is deployed to a web server. Several checks
+within the CI/CD pipeline help to ensure a high quality documentation.
 
 ## Reporting Issues
 
@@ -23,8 +23,11 @@ already existing issue before submitting your issue in order to avoid duplicate 
 
 ## Contributing
 
+Contributions from user-side are highly welcome. Please refer to [Contribution guide]() to get started.
 
 ## Licenses
 
+The repository has two licenses:
 
-
+* All documentation is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+* All software components are licesend under MIT license.
