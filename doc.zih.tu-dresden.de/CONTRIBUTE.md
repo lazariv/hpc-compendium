@@ -33,7 +33,7 @@ docs/index.md:8:131 MD013/line-length Line length [Expected: 130; Actual: 138]
 
 configuration file: `.markdownlint.json`
 
-Before commiting, invoke the script `util/lint-changes.sh` which calls the markdownlint tool for all
+Before committing, invoke the script `util/lint-changes.sh` which calls the markdownlint tool for all
 (git-)changed markdown files
 
 ```shell
@@ -44,6 +44,13 @@ README.md:7 MD012/no-multiple-blanks Multiple consecutive blank lines [Expected:
 README.md:21 MD012/no-multiple-blanks Multiple consecutive blank lines [Expected: 1; Actual: 2]
 README.md:22 MD022/blanks-around-headings/blanks-around-headers Headings should be surrounded by blank lines [Expected: 1; Actual: 0; Below] [Context: "### Why is this not at gitlab.hrz.tu-chemnitz.de?"]
 [8< 8<]
+```
+
+#### Fix Markdown
+
+The markdownlint-cli tool can also be used to fix markdown source file.
+```shell
+markdownlint --fix [--config .markdownlint.json] docs/index.md
 ```
 
 ## Check Links
@@ -99,4 +106,6 @@ drwxr-xr-x   3 zwulf p_zwulf      4096 Feb 12  2020 data
   * `[...]`
   * TODO: Choose one.
 
+### Code Blocks
 
+All code blocks should be runnable from a login node.
