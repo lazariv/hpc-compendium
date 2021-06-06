@@ -17,6 +17,8 @@ Steps:
   * Build documentation
 * If CD/CI succeeds, ZIH staff will review the changes and push them to main branch
 
+ZIH-related staff, please refer to [CONTRIBUTE_ZIH.md](Todo) for documentation.
+
 ## Contribute via Issue
 Users can contribute to the documentation via the
 [issue tracking system](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/issues).
@@ -83,7 +85,7 @@ refer to the corresponding documentation for further information.
 
 We highly recommend running the checks before committing and posing a merge request.
 
-### mkdocs rocks
+### mkdocs Rocks
 
 As mentioned, this documentation bases on markdown files which are translated into static html files
 using the tool [mkdocs](https://www.mkdocs.org/). All markdown source files are located in the
@@ -99,19 +101,14 @@ preview the updated documentation locally before committing the changes to the r
 
 To make use of `mkdocs`, it is necessary to have two commands in mind
 ```
-mkdocs new [dir-name] - Create a new project.
 mkdocs serve - Start the live-reloading docs server.
 mkdocs build - Build the documentation site.
-mkdocs help - Print this help message.
 ```
 
-Two? Yes, the `new` command can be ignored, because the project is already started. Furthermore,
-`--help` is a de-facto standard switch for a command line tool to provide help.
-
-#### Preview using mkdocs
+#### Preview Using mkdocs
 
 Invoke`mkdocs serve`to build and preview the documentation. The documentation is automatically
-rerenderd and reloaded if the system detects updates (great!). By default, the builtin web server
+rerendered and reloaded if the system detects updates (great!). By default, the builtin web server
 hosts the documentation at `http://127.0.0.1:8000`.
 
 ```Shell Session
@@ -143,56 +140,80 @@ INFO    -  Documentation built in 0.09 seconds
 ```
 
 ## Git Workflow
-It's important to keep your main branch in sync with upstream when you are working on documentation locally. To get started you will need to do the following:
 
-    Add a remote upstream to point to upstream repository
+It is crucial to keep your branch synchronized with the upstream when you are working locally on the
+documentation.
+First thing you should do, is adding a remote pointing to the official documentation.
 
-git remote add upstream git@gitlab.com:NERSC/nersc.gitlab.io.git
+```Shell Session
+git remote add upstream git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git
+```
 
-You should see two remote endpoints, origin points to your fork and upstream at main repo.
 
-$ git remote -v
-origin	git@gitlab.com:<username>/nersc.gitlab.io.git (fetch)
-origin	git@gitlab.com:<username>/nersc.gitlab.io.git (push)
-upstream	git@gitlab.com:NERSC/nersc.gitlab.io.git (fetch)
-upstream	git@gitlab.com:NERSC/nersc.gitlab.io.git (push)
 
-    Checkout main and sync main branch locally from upstream endpoint
 
+<!--You should see two remote endpoints, origin points to your fork and upstream at main repo.-->
+
+<!--$ git remote -v-->
+<!--origin	git@gitlab.com:<username>/nersc.gitlab.io.git (fetch)-->
+<!--origin	git@gitlab.com:<username>/nersc.gitlab.io.git (push)-->
+<!--upstream	git@gitlab.com:NERSC/nersc.gitlab.io.git (fetch)-->
+<!--upstream	git@gitlab.com:NERSC/nersc.gitlab.io.git (push)-->
+
+    <!--Checkout main and sync main branch locally from upstream endpoint-->
+
+<!--git checkout main-->
+<!--git pull upstream main-->
+
+<!--To push your sync changes to your fork you can do the following:-->
+
+<!--git push origin main-->
+
+
+#### Making Changes and Merge Requests
+
+The main branch is used to synchronize changes from upstream. It should not be used for changes.
+In order to commit to this documentation, create a new branch (a so-called feature branch) basing on the main branch and commit your changes to it:
+
+```Shell Session
 git checkout main
-git pull upstream main
-
-To push your sync changes to your fork you can do the following:
-
-git push origin main
-
-!!! note Please don't use your main branch to make any changes, this branch is used to sync changes from upstream because all merge requests get pushed to main branch. Instead, create a feature branch from main as follows:
-Typical workflow
-
-The user workflow can be described in the following steps assuming you are using upstream repo. Please make sure you sync your main branch prior to creating a branch from main.
-
-git checkout main
-git checkout -b <BRANCH>
+git checkout -b <FEATUREBRANCH>
+# Edit file1, file2 etc.
 git add <file1> <file2>
 git commit -m <COMMIT MESSAGE>
-git push origin <BRANCH>
+git push origin <FEATUREBRANCH>
+```
 
-Next create a merge request to the main branch with your newly created branch. Please make sure the markdownlint check and continuous integration checks have passed for your merge request.
+Having your changes pushed to your fork, create a merge request to the main branch.
 
-* It is possible the GitLab shared runners will fail for an opaque
-  reason (e.g. issues with the cloud provider where they are hosted).
-  Hitting the **Retry** button may resolve this problem.
+<!--Please make sure the markdownlint check and continuous integration checks have passed for your merge request.-->
+
+<!--* It is possible the GitLab shared runners will fail for an opaque-->
+  <!--reason (e.g. issues with the cloud provider where they are hosted).-->
+  <!--Hitting the **Retry** button may resolve this problem.-->
 
 
 
-##
+## 
+
+### Important Branches
+
+There are two important branches in this repository:
+
+- Preview:
+  - Branch containing recent changes which will be soon merged to main branch (protected
+    branch)
+  - Served at [todo url](todo url) from TUD VPN
+- Main: Branch which is deployed at [doc.zih.tu-dresden.de](doc.zih.tu-dresden.de) holding the
+    current documentation (protected branch)
+
 
 If you are totally sure about your commit (e.g., fix a typo), it is only the following steps:
 
   1. Synchronize branches
   1. Edit the markdown file of interest
   1. Commit change
-  1. Push commit to your fork and probaly new branch
+  1. Push commit to your fork and probably new branch
   1. Pose Merge Request
 
 
