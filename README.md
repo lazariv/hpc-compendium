@@ -16,7 +16,7 @@ within the CI/CD pipeline help to ensure a high quality documentation.
 
 Issues concerning this documentation can reported via the GitLab
 [issue tracking system](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/issues).
-Please check for an already existing issue before submitting your issue in order to avoid duplicate
+Please check for any already existing issue before submitting your issue in order to avoid duplicate
 issues.
 
 **Reminder:** Non-documentation issues and requests need to be send as ticket to
@@ -31,4 +31,4 @@ Contributions from user-side are highly welcome. Please refer to [Contribution g
 The repository has two licenses:
 
 * All documentation is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
-* All software components are licesend under MIT license.
+* All software components are licensed under MIT license.
