@@ -21,21 +21,21 @@ Steps:
 Users can contribute to the documentation via the
 [issue tracking system](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/issues).
 Open an issue to report typos and missing documentation or request for more precise wording etc.
-ZIH staff will get in touch we you to resolve the issue and improve the documentation.
+ZIH staff will get in touch with you to resolve the issue and improve the documentation.
 
 **Reminder:** Non-documentation issues and requests need to be send as ticket to
 [hpcsupport@zih.tu-dresden.de](mailto:hpcsupport@zih.tu-dresden.de).
 
 
 ## Preparation
-Contributions can be done via editing the repository through GitLab's web interface or following the
-"clone, edit, commit and push" workflow. Both ways are described in the following.
+Contributions can be done via editing the repository through GitLab's web interface or following
+the git-based workflow. Both ways are described in the following.
 
 ### Fork and Clone Repository
 
 All contributing starts with forking the repository to either
 [gitlab.hrz.tu-chemnitz.de](https://gitlab.hrz.tu-chemnitz.de) or any other
-git service, e.g., [gitlab.com]()https://www.gitlab.com), [github.com](https://www.github.com) or
+git service, e.g., [gitlab.com](https://www.gitlab.com), [github.com](https://www.github.com) or
 your personal preference.
 Now, create a local clone of your fork
 
