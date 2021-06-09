@@ -220,8 +220,8 @@ If you are totally sure about your commit (e.g., fix a typo), it is only the fol
 
 We have several checks on the markdown sources to ensure for a consistent and high quality of the
 documentation. These checks are run within the CI/CD pipeline and changes are only deployed to the
-HPC compendium, if the checks are passed.  Thus, we **highly recommend** running the checks before
-committing and posing a merge request.
+HPC compendium, if the checks are passed. Thus, we **highly recommend** running the checks locally
+before committing and posing a merge request.
 
 * Markdown linter
 * Check internal and external links
@@ -331,7 +331,11 @@ structure.
 
 ### Markdown
 
-**TODO:** What dialect we are using? Is it crucial?
+1. Please keep things simple, i.e., avoid using fancy markdown dialects.
+  * [Cheat Sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+  * [Style Guide](https://github.com/google/styleguide/blob/gh-pages/docguide/style.md)
+1. Do not add large binary files or high resolution images to the repository. See this valuable
+   document for [image optimization](https://web.dev/fast/#optimize-your-images).
 
 ### Writing Style
 
@@ -384,9 +388,9 @@ If showing only a snippet of a long output, omissions are marked with `[...]`.
 
 ### Mark Placeholders
 
-Stick to the Unix rules on optional and required arguments.
+Stick to the Unix rules on optional and required arguments, and seclection of item sets.
 
-```Shell Session
-<required argument or value>
-[optional argument or value]
-```
+* `<required argument or value>`
+* `[optional argument or value]`
+* `{choice1|choice2|choice3}`
+
