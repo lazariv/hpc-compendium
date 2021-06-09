@@ -1,9 +1,10 @@
 # Contribution Guide
 
-In the following, it is outlined how to contribute to the HPC documentation of
-[TU Dresden/ZIH](https://tu-dresden.de/zih/) and which rules should be followed when adding to this
-project. Although, this document might seem very long describing complex steps, contributing is
-quite easy - trust us.
+In the following, it is outlined how to contribute to the
+[HPC documentation](https://doc.zih.tu-dresden.de/) of
+[TU Dresden/ZIH](https://tu-dresden.de/zih/) and
+which rules should be followed when adding to this project. Although, this document might seem very
+long describing complex steps, contributing is quite easy - trust us.
 
 Steps:
 
@@ -367,24 +368,19 @@ rules have to be followed.
 
 ### Data Privacy and Generic User Name
 
-Where possible, replace user, project and other private data with clearly arbitrary placeholders.
-E.g., use generic user and project name.
+Where possible, replace login, project name and other private data with clearly arbitrary placeholders.
+E.g., use generic login `marie` and project name `p_marie`.
 
 ```Shell Session
 taurus$ ls -l
-drwxr-xr-x   3 zwulf p_zwulf      4096 Jan 24  2020 code
-drwxr-xr-x   3 zwulf p_zwulf      4096 Feb 12  2020 data
--rw-rw----   1 zwulf p_zwulf      4096 Jan 24  2020 readme.md
+drwxr-xr-x   3 marie p_marie      4096 Jan 24  2020 code
+drwxr-xr-x   3 marie p_marie      4096 Feb 12  2020 data
+-rw-rw----   1 marie p_marie      4096 Jan 24  2020 readme.md
 ```
 
 ### Mark Omissions
 
-If showing only a snippet of a long output, omissions are marked with
-  * `8< 8<`
-  * `[snip]`
-  * `[...]`
-
-**TODO:** Choose one!
+If showing only a snippet of a long output, omissions are marked with `[...]`.
 
 ### Mark Placeholders
 
