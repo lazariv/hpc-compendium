@@ -22,8 +22,9 @@ ZIH-related staff, please refer to [CONTRIBUTE_ZIH.md](Todo) for documentation.
 ## Contribute via Issue
 Users can contribute to the documentation via the
 [issue tracking system](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/issues).
-Open an issue to report typos and missing documentation or request for more precise wording etc.
-ZIH staff will get in touch with you to resolve the issue and improve the documentation.
+For that, open an issue to report typos and missing documentation or request for more precise
+wording etc.  ZIH staff will get in touch with you to resolve the issue and improve the
+documentation.
 
 **Reminder:** Non-documentation issues and requests need to be send as ticket to
 [hpcsupport@zih.tu-dresden.de](mailto:hpcsupport@zih.tu-dresden.de).
@@ -83,8 +84,6 @@ refer to the corresponding documentation for further information.
 
 ## Contribute via Local Clone
 
-We highly recommend running the checks before committing and posing a merge request.
-
 ### mkdocs Rocks
 
 As mentioned, this documentation bases on markdown files which are translated into static html files
@@ -97,7 +96,6 @@ documentation pages.
 In principle, `mkdocs` is not mandatory on the local system to contribute to the project. But it
 also provides a builtin development server that allows to serve the documentation, i.e. it can
 preview the updated documentation locally before committing the changes to the repository.
-
 
 To make use of `mkdocs`, it is necessary to have two commands in mind
 ```
@@ -139,41 +137,44 @@ INFO    -  Building documentation to directory: /PATH/to/hpc-compendium.git/doc.
 INFO    -  Documentation built in 0.09 seconds
 ```
 
-## Git Workflow
+### Git Workflow
 
-It is crucial to keep your branch synchronized with the upstream when you are working locally on the
-documentation.
-First thing you should do, is adding a remote pointing to the official documentation.
+It is crucial to keep your branch synchronized with the upstream repository when you are working
+locally on the documentation. At first, you should add a remote pointing to the official
+documentation. 
 
 ```Shell Session
-git remote add upstream git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git
+git remote add upstream-zih git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git
 ```
 
+Now, you have two remotes, namely *origin* and *upstream-zih*. The remote *origin* points to your fork,
+whereas *upstream-zih* points to the original documentation repository at GitLab Chemnitz.
 
+```Shell Session
+$ git remote -v
+origin  git@gitlab.hrz.tu-chemnitz.de:LOGIN/hpc-compendium.git (fetch)
+origin	git@gitlab.hrz.tu-chemnitz.de:LOGIN/hpc-compendium.git (push)
+upstream-zih  git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git (fetch)
+upstream-zih	git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git (push)
+```
 
+Next, you should synchronize your `main` branch with the upstream.
 
-<!--You should see two remote endpoints, origin points to your fork and upstream at main repo.-->
+```Shell Session
+git checkout main
+git pull upstream main
+```
 
-<!--$ git remote -v-->
-<!--origin	git@gitlab.com:<username>/nersc.gitlab.io.git (fetch)-->
-<!--origin	git@gitlab.com:<username>/nersc.gitlab.io.git (push)-->
-<!--upstream	git@gitlab.com:NERSC/nersc.gitlab.io.git (fetch)-->
-<!--upstream	git@gitlab.com:NERSC/nersc.gitlab.io.git (push)-->
-
-    <!--Checkout main and sync main branch locally from upstream endpoint-->
-
-<!--git checkout main-->
-<!--git pull upstream main-->
+At this point, your `main` branch is up-to-date with the original documentation of HPC compendium.
 
 <!--To push your sync changes to your fork you can do the following:-->
-
 <!--git push origin main-->
-
 
 #### Making Changes and Merge Requests
 
-The main branch is used to synchronize changes from upstream. It should not be used for changes.
-In order to commit to this documentation, create a new branch (a so-called feature branch) basing on the main branch and commit your changes to it:
+It is good git-practise to only use the `main` branch for synchronization with the upstream, not for
+changes, as outlined in the previous subsection. In order to commit to this documentation, create a
+new branch (a so-called feature branch) basing on the `main` branch and commit your changes to it.
 
 ```Shell Session
 git checkout main
@@ -184,13 +185,17 @@ git commit -m <COMMIT MESSAGE>
 git push origin <FEATUREBRANCH>
 ```
 
-Having your changes pushed to your fork, create a merge request to the main branch.
+The last command pushes the changes to your remote at branch `FEATUREBRANCH`. Now, it is time to
+incoporate the changes and improvements into the HPC Compendium. For this, create a
+[merge request](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/merge_requests/new)
+to the `main` branch.
 
-<!--Please make sure the markdownlint check and continuous integration checks have passed for your merge request.-->
+#### Run Checks
 
-<!--* It is possible the GitLab shared runners will fail for an opaque-->
-  <!--reason (e.g. issues with the cloud provider where they are hosted).-->
-  <!--Hitting the **Retry** button may resolve this problem.-->
+We have several checks on the markdown sources to ensure a high quality of the documentation. These
+checks are run within the CI/CD pipeline and changes are only deployed to the HPC compendium, if the
+checks are passed.
+Thus, we **highly recommend** running the checks before committing and posing a merge request.
 
 
 
