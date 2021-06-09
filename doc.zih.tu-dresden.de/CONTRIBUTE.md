@@ -294,6 +294,9 @@ ERROR: 2 dead links found!
 
 ### Check Code and Commands
 
+1. All code blocks and commands should be runnable from a login node.
+1. 
+
 **TODO:** Implement [Issue #9](#9)
 
 ### Check Pages Structure
@@ -347,7 +350,7 @@ there is a list of conventions w.r.t.  spelling and technical wording.
 
 **TODO:** Implement checks [Issue #13](#13)
 
-### Command Prompts
+### Code Blocks and Command Prompts
 
 Showing commands and sample output is an important part of all technical documentation. Thus, some
 rules have to be followed.
@@ -355,33 +358,39 @@ rules have to be followed.
 1. Prompts: It should be clear from the prompt, where the command is run (e.g. Taurus, specific
    partition or local machine).
 
-   * Taurus / HPC systems of TUD in general: `taurus$`
-   * Specific kind of node or partition: `tauruslogin$`, `taurus-ml$` `taurus-rome$`etc.
-     * TODO: Remove prefix `taurus`?
-   * Local machine: `localhost$`
+  * Taurus / HPC systems of TUD in general: `taurus$`
+  * Specific kind of node or partition: `tauruslogin$`, `taurus-ml$` `taurus-rome$`etc.
+    * TODO: Remove prefix `taurus`?
+  * Local machine: `localhost$`
+  * No output: Omit prompt (copy-paste)
+  * With Output: Add prompt (make clear what is the command and what is the output)
 
-1. Use generic user name, e.g. `zwulf`:
-```shell
+### Data Privacy and Generic User Name
+
+Where possible, replace user, project and other private data with clearly arbitrary placeholders.
+E.g., use generic user and project name.
+
+```Shell Session
 taurus$ ls -l
 drwxr-xr-x   3 zwulf p_zwulf      4096 Jan 24  2020 code
 drwxr-xr-x   3 zwulf p_zwulf      4096 Feb 12  2020 data
 -rw-rw----   1 zwulf p_zwulf      4096 Jan 24  2020 readme.md
 ```
 
-1. Schere: If showing only a snippet of a long output, omissions are marked with
+### Mark Omissions
+
+If showing only a snippet of a long output, omissions are marked with
   * `8< 8<`
   * `[snip]`
   * `[...]`
-  * TODO: Choose one.
 
-### Code Blocks
+**TODO:** Choose one!
 
-All code blocks should be runnable from a login node.
+### Mark Placeholders
 
+Stick to the Unix rules on optional and required arguments.
 
-
-
-
-
-
-
+```Shell Session
+<required argument or value>
+[optional argument or value]
+```
