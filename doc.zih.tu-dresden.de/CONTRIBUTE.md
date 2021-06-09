@@ -304,7 +304,7 @@ ERROR: 2 dead links found!
 
 ### New Page and Pages Structure
 
-The pages structure is defined in the configuration file [mkdocs.yaml](mkdocs.yaml).
+The pages structure is defined in the configuration file [mkdocs.yaml](doc.zih.tu-dresden.de/mkdocs.yml).
 
 ```Shell Session
 docs/
