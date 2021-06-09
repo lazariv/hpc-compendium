@@ -56,6 +56,6 @@ using sbatch [options] <job file>.
 Pre-processing and post-processing of the data is a crucial part for the majority of data-dependent
 projects. The quality of this work influence on the computations. However, pre- and post-processing
 in many cases can be done completely or partially on a local pc and then transferred to the Taurus.
-Please use Taurus for the computation-intensive tasks.
+Please use Taurus for the computation-intensive tasks. 
 
 Useful links: [Batch Systems](todo), [Hardware Taurus](todo), [HPC-DA](todo), [Slurm](todo)
