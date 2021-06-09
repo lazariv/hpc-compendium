@@ -331,7 +331,7 @@ structure.
 
 ### Writing Style
 
-**TODO** [Issue](x14)
+**TODO** [Issue](#14)
 
 ### Spelling and Technical Wording
 
