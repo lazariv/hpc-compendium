@@ -294,48 +294,63 @@ ERROR: 2 dead links found!
 
 ### Check Code and Commands
 
-**TODO**
+**TODO:** [Issue #9](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/issues/9)
+
+### Check Pages Structure
+
+**TODO:** [Issue #5](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/issues/5)
 
 ## Content Rules
 
 ### Add a New Page
 
-All `mkdocs` project follow this structure:
+The pages structure is defined in the configuration file `mkdocs.yaml`.
 
-```Bash
-mkdocs.yml    # The configuration file.
+```Shell Session
 docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
+  - Home: index.md
+  - Application for HPC Login: application.md
+  - Request for Resources: req_resources.md
+  - Access to the Cluster: access.md
+  - Available Software and Usage:
+    - Overview: software/overview.md
+  ...
 ```
 
 To add a new page to the documentation follow these two steps:
 
-1. Create new markdown file under `docs/SUBDIR/NEW.md` and put the documentation inside
-1. Add `SUBDIR/NEW.md` to the configuration file `mkdocs.yml` by updating the navigation section
+1. Create a new markdown file under `docs/SUBDIR/NEW.md` and put the documentation inside.
+1. Add `SUBDIR/NEW.md` to the configuration file `mkdocs.yml` by updating the navigation section.
 
-Make sure that the new page is not floating, i.e., it can be reached directly from the documentation
+Make sure that the new page **is not floating**, i.e., it can be reached directly from the documentation
 structure.
 
 ### Markdown
-TODO: What dialect we are using?
 
+**TODO:** What dialect we are using? Is it crucial?
 
 ### Writing Style
 
 ### Spelling and Technical Wording
+
+To provide a consistent and high quality documentation, and help users to find the right pages,
+there is a list of conventions w.r.t.  spelling and technical wording.
 
 * Language settings: en_us
 * I/O not IO
 * Slurm not SLURM
 * Filesystem not file system
 
+**TODO:** Put into file
+**TODO:** [Implement checks](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/issues/13)
+
 ### Command Prompts
 
-Showing commands and sample output is a important part of the documentation. Thus, some rules should
-be followed.
+Showing commands and sample output is an important part of all technical documentation. Thus, some
+rules have to be followed.
 
-1. Prompts: It should be clear from the prompt, where the command is run (e.g. Taurus, specific partition or local machine).
+1. Prompts: It should be clear from the prompt, where the command is run (e.g. Taurus, specific
+   partition or local machine).
 
    * Taurus / HPC systems of TUD in general: `taurus$`
    * Specific kind of node or partition: `tauruslogin$`, `taurus-ml$` `taurus-rome$`etc.
