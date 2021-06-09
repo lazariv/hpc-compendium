@@ -294,11 +294,11 @@ ERROR: 2 dead links found!
 
 ### Check Code and Commands
 
-**TODO:** [Issue #9](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/issues/9)
+**TODO:** Implement [Issue #9](#9)
 
 ### Check Pages Structure
 
-**TODO:** [Issue #5](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/issues/5)
+**TODO:** Create rules [Issue #5](#5)
 
 ## Content Rules
 
@@ -331,7 +331,7 @@ structure.
 
 ### Writing Style
 
-**TODO** [Issue](#14)
+**TODO** Guide [Issue #14](#14)
 
 ### Spelling and Technical Wording
 
@@ -345,7 +345,7 @@ there is a list of conventions w.r.t.  spelling and technical wording.
 
 **TODO:** Put into file
 
-**TODO:** [Implement checks](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/issues/13)
+**TODO:** Implement checks [Issue #13](#13)
 
 ### Command Prompts
 
