@@ -56,7 +56,7 @@ release:
     only:
         - master
 
-release:
+reviewtest:
     stage: reviewtest
     script:
         - docker run --rm -v /var/www/html/preview:/mnt ${BASE_IMAGE} mkdocs build --site-dir /mnt
