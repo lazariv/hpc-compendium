@@ -302,9 +302,9 @@ ERROR: 2 dead links found!
 
 ## Content Rules
 
-### Add a New Page
+### New Page and Pages Structure
 
-The pages structure is defined in the configuration file `mkdocs.yaml`.
+The pages structure is defined in the configuration file [mkdocs.yaml](mkdocs.yaml).
 
 ```Shell Session
 docs/
