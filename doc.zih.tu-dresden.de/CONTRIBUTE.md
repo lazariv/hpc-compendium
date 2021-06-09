@@ -44,26 +44,25 @@ Now, create a local clone of your fork
 
 ```Shell Session
 # SSH based method
-git@gitlab.hrz.tu-chemnitz.de:LOGIN/hpc-compendium.git
+~ git@gitlab.hrz.tu-chemnitz.de:LOGIN/hpc-compendium.git
 
 # HTTP based method
-https://gitlab.hrz.tu-chemnitz.de/LOGIN/hpc-compendium.git
+~ https://gitlab.hrz.tu-chemnitz.de/LOGIN/hpc-compendium.git
 ```
 
 #### Install Dependencies
 
-TODO: Describtion
+**TODO:** Describtion
 
 ```Shell Session
-cd hpc-compendium/doc.zih.tu-dresden.de
-pip install -r requirements.txt
+~ cd hpc-compendium/doc.zih.tu-dresden.de
+~ pip install -r requirements.txt
 ```
 
-TODO: virtual environment
-TODO: What we need for markdownlinter and co checks?
+**TODO:** virtual environment
+**TODO:** What we need for markdownlinter and co checks?
 
 <!--- All branches are protected, i.e., only ZIH staff can create branches and push to them --->
-
 
 ## Contribute via Web IDE
 
@@ -99,8 +98,8 @@ preview the updated documentation locally before committing the changes to the r
 
 To make use of `mkdocs`, it is necessary to have two commands in mind
 ```
-mkdocs serve - Start the live-reloading docs server.
-mkdocs build - Build the documentation site.
+~ mkdocs serve - Start the live-reloading docs server.
+~ mkdocs build - Build the documentation site.
 ```
 
 #### Preview Using mkdocs
@@ -144,7 +143,7 @@ locally on the documentation. At first, you should add a remote pointing to the 
 documentation. 
 
 ```Shell Session
-git remote add upstream-zih git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git
+~ git remote add upstream-zih git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git
 ```
 
 Now, you have two remotes, namely *origin* and *upstream-zih*. The remote *origin* points to your fork,
@@ -161,8 +160,8 @@ upstream-zih	git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git
 Next, you should synchronize your `main` branch with the upstream.
 
 ```Shell Session
-git checkout main
-git pull upstream main
+~ git checkout main
+~ git pull upstream main
 ```
 
 At this point, your `main` branch is up-to-date with the original documentation of HPC compendium.
@@ -177,12 +176,12 @@ changes, as outlined in the previous subsection. In order to commit to this docu
 new branch (a so-called feature branch) basing on the `main` branch and commit your changes to it.
 
 ```Shell Session
-git checkout main
-git checkout -b <FEATUREBRANCH>
+~ git checkout main
+~ git checkout -b <FEATUREBRANCH>
 # Edit file1, file2 etc.
-git add <file1> <file2>
-git commit -m <COMMIT MESSAGE>
-git push origin <FEATUREBRANCH>
+~ git add <file1> <file2>
+~ git commit -m <COMMIT MESSAGE>
+~ git push origin <FEATUREBRANCH>
 ```
 
 The last command pushes the changes to your remote at branch `FEATUREBRANCH`. Now, it is time to
@@ -190,12 +189,6 @@ incoporate the changes and improvements into the HPC Compendium. For this, creat
 [merge request](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/merge_requests/new)
 to the `main` branch.
 
-#### Run Checks
-
-We have several checks on the markdown sources to ensure a high quality of the documentation. These
-checks are run within the CI/CD pipeline and changes are only deployed to the HPC compendium, if the
-checks are passed.
-Thus, we **highly recommend** running the checks before committing and posing a merge request.
 
 
 
@@ -222,38 +215,44 @@ If you are totally sure about your commit (e.g., fix a typo), it is only the fol
   1. Pose Merge Request
 
 
-### Checks
+## Checks
 
-Several checks are invoked to ensure for a consistent and high quality documentation:
+We have several checks on the markdown sources to ensure a for a consistent and high quality of the
+documentation. These checks are run within the CI/CD pipeline and changes are only deployed to the
+HPC compendium, if the checks are passed.  Thus, we **highly recommend** running the checks before
+committing and posing a merge request.
 
 * Markdown linter
-* Links
-* Code and command examples
+* Check internal and external links
+* Check code and command examples
 
-TODO:  Describe
-
+**TODO:**  Describe
 
 ### Markdown Linter
 
-The [markdown linter client](https://github.com/igorshubovych/markdownlint-cli) should be invoked to
-help keep the markdown source code clean and consistent.
+The [markdown linter client](https://github.com/igorshubovych/markdownlint-cli) helps to keep the
+markdown source code clean and consistent.
 
-```shell
-npm install markdownlint-cli
+Installation
+```Shell Session
+~ npm install markdownlint-cli
 ```
 
-```shell
-markdownlint docs/index.md
+The configuration is stored in `.markdownlint.json`. The tool `markdownlint` can be run in dry or
+fix mode. The *dry* mode (default) only outputs findings, whereas in *fix* mode it resolves basic
+errors directly in the markdown files.
+
+```Shell Session
+~ cd doc.zih.tu-dresden.de/
+~ markdownlint [--config .markdownlint.json] [--fix] docs/index.md
 docs/index.md:8:131 MD013/line-length Line length [Expected: 130; Actual: 138]
 ```
 
-configuration file: `.markdownlint.json`
-
 Before committing, invoke the script `util/lint-changes.sh` which calls the markdownlint tool for all
-(git-)changed markdown files
+(git-)changed markdown files.
 
-```shell
-sh util/lint-changes.sh
+```Shell Session
+~ sh util/lint-changes.sh
 hpc-compendium-2.0-gitlab-tudzih git:(master) ✗ sh util/lint-changes.sh
 README.md:6 MD012/no-multiple-blanks Multiple consecutive blank lines [Expected: 1; Actual: 2]
 README.md:7 MD012/no-multiple-blanks Multiple consecutive blank lines [Expected: 1; Actual: 3]
@@ -262,33 +261,42 @@ README.md:22 MD022/blanks-around-headings/blanks-around-headers Headings should 
 [8< 8<]
 ```
 
-#### Fix Markdown
+### Check Links
 
-The markdownlint-cli tool can also be used to fix markdown source file.
-```shell
-markdownlint --fix [--config .markdownlint.json] docs/index.md
+No one likes dead links. Therefore, we check the internal and external links within the markdown
+source files. For that, the script `util/check-links.sh` and/or the tool
+[markdown-link-check](https://github.com/tcort/markdown-link-check) can be used.
+
+Installation
+```Shell Session
+~ npm install markdown-link-check
 ```
 
-## Check Links
-
-We can use `util/check-links.sh` or [markdown-link-check](https://github.com/tcort/markdown-link-check)
-
-```shell
-npm i -D markdown-link-check
-[8< 8<]
-./node_modules/markdown-link-check/markdown-link-check docs/index.md
+```Shell Session
+~ cd doc.zih.tu-dresden.de/
+~ markdown-link-check docs/index.md
 
 FILE: docs/index.md
-[✖] google.de
+[✖] http://141.76.17.11/hpc-wiki/bin/view/Compendium
+[✓] https://docs.olcf.ornl.gov/
+[✓] https://nersc.gitlab.io/
+[✓] https://www.mkdocs.org/
+[✓] https://docs.gitlab.com/runner/
+[✓] https://docs.gitlab.com/ee/user/project/pages/
+[✖] CONTRIBUTE.md
 
-1 links checked.
+7 links checked.
 
-ERROR: 1 dead links found!
-[✖] google.de → Status: 400
+ERROR: 2 dead links found!
+[✖] http://141.76.17.11/hpc-wiki/bin/view/Compendium → Status: 0
+[✖] CONTRIBUTE.md → Status: 400
 ```
 
+**TODO:** When and how to run `util/check-links.sh`?
 
+### Check Code and Commands
 
+**TODO**
 
 ## Content Rules
 
