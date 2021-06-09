@@ -217,7 +217,7 @@ If you are totally sure about your commit (e.g., fix a typo), it is only the fol
 
 ## Checks
 
-We have several checks on the markdown sources to ensure a for a consistent and high quality of the
+We have several checks on the markdown sources to ensure for a consistent and high quality of the
 documentation. These checks are run within the CI/CD pipeline and changes are only deployed to the
 HPC compendium, if the checks are passed.  Thus, we **highly recommend** running the checks before
 committing and posing a merge request.
@@ -225,8 +225,6 @@ committing and posing a merge request.
 * Markdown linter
 * Check internal and external links
 * Check code and command examples
-
-**TODO:**  Describe
 
 ### Markdown Linter
 
