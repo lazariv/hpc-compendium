@@ -331,6 +331,8 @@ structure.
 
 ### Writing Style
 
+**TODO** [Issue](x14)
+
 ### Spelling and Technical Wording
 
 To provide a consistent and high quality documentation, and help users to find the right pages,
@@ -342,6 +344,7 @@ there is a list of conventions w.r.t.  spelling and technical wording.
 * Filesystem not file system
 
 **TODO:** Put into file
+
 **TODO:** [Implement checks](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/issues/13)
 
 ### Command Prompts
