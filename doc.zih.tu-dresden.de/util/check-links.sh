@@ -38,7 +38,6 @@ any_fails=false
 for f in $(git diff master --name-only); do
   if [ ${f: -3} == ".md" ]; then
 	  $mlc -q -p $f
-    #find . -name \*.md -exec ./node_modules/markdown-link-check/markdown-link-check -q {} \;
 	if [ "$?" -ne 0 ]; then
 	    any_fails=true
 	fi
