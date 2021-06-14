@@ -55,9 +55,9 @@ release:
     only:
         - main
 
-release_devel:
+release_preview:
     stage: release
     script:
         - docker run --rm -v /var/www/html/preview:/mnt ${BASE_IMAGE} mkdocs build --site-dir /mnt
     only:
-        - devel
+        - preview
