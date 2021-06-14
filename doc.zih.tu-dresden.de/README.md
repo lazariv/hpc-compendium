@@ -347,6 +347,8 @@ structure.
 
 **TODO** Guide [Issue #14](#14)
 
+* Capitalize headings
+
 ### Spelling and Technical Wording
 
 To provide a consistent and high quality documentation, and help users to find the right pages,
