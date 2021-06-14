@@ -10,12 +10,13 @@ request.
 * Check code and command examples
 * Check no floating pages and depth of page tree
 
-### Markdown Linter
+## Markdown Linter
 
 The [markdown linter client](https://github.com/igorshubovych/markdownlint-cli) helps to keep the
 markdown source code clean and consistent.
 
 Installation
+
 ```Shell Session
 ~ npm install markdownlint-cli
 ```
@@ -43,13 +44,14 @@ README.md:22 MD022/blanks-around-headings/blanks-around-headers Headings should 
 [8< 8<]
 ```
 
-### Check Links
+## Check Links
 
 No one likes dead links. Therefore, we check the internal and external links within the markdown
 source files. For that, the script `util/check-links.sh` and/or the tool
 [markdown-link-check](https://github.com/tcort/markdown-link-check) can be used.
 
 Installation
+
 ```Shell Session
 ~ npm install markdown-link-check
 ```
@@ -74,28 +76,41 @@ ERROR: 2 dead links found!
 [✖] CONTRIBUTE.md → Status: 400
 ```
 
-**TODO:** When and how to run `util/check-links.sh`?
+### Usage
 
-### Check Code and Commands
+Check links within changed git-versioned markdown files, invoke
 
-1. All code blocks and commands should be runnable from a login node.
-1. 
+```Shell Session
+~ sh doc.zih.tu-dresden.de/util/check-links.sh
+```
+
+from top-level directory.
+
+To check all markdown files for broken links, invoke
+
+```Shell Session
+~ find . -name \*.md -exec markdown-link-check -q {} \;
+```
+
+## Check Code and Commands
+
+All code blocks and commands should be runnable from a login node.
 
 **TODO:** Implement [Issue #9](#9)
 
-### Check Pages Structure
+## Check Pages Structure
 
 The script `check-no-floating.sh` contains two checks. It first checks the hierarchy depth of the
 pages structure. By design, no page in the documentation should be lower than four levels w.r.t. top
 level, i.e., landing page. Secondly, the script tests if every markdown file is included in the
 navigation section within the `mkdocs.yaml` file of this project.
 
-#### Usage
+### Usage
 
 ```bash
 sh doc.zih.tu-dresden.de/utils/check-no-floating.sh doc.zih.tu-dresden.de
 ```
 
-#### Return codes
+### Return codes
 
 * -1/255 if any error occurs, 0 otherwise
