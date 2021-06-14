@@ -34,4 +34,4 @@ command. Except for the 'dt' prefix, their syntax is the same as the shell comma
 Keep in mind: The warm_archive is not writable for jobs. However, you can store the data in the warm
 archive with the datamover.
 
-Useful links: [Data Mover](todo), [Export Nodes](todo)
+Useful links: [Data Mover]**todo link**, [Export Nodes]**todo link**

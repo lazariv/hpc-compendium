@@ -11,7 +11,7 @@ the same **data storage** or set of them, the same **set of software** (packages
 ### Taxonomy of File Systems
 
 As soon as you have access to Taurus you have to manage your data. The main concept of
-working with data on Taurus bases on [Workspaces](../workspaces). Use it properly:
+working with data on Taurus bases on [Workspaces](workspaces.md). Use it properly:
 
   * use a **/home** directory for the limited amount of personal data, simple examples and the results
     of calculations. The home directory is not a working directory! However, /home file system is
@@ -29,14 +29,14 @@ afterwards.
 
 *Note:* Keep in mind that every working space has a storage duration (i.e. ssd - 30 days). Thus be
 careful with the expire date otherwise it could vanish. The core data of your project should be
-[backed up](todo) and [archived](todo)(for the most [important](todo) data).
+[backed up]**todo link** and [archived]**todo link**(for the most [important]**todo link** data).
 
 ### Backup
 
 The backup is a crucial part of any project. Organize it at the beginning of the project. If you
 will lose/delete your data in the "no back up" file systems it can not be restored! The backup on
 Taurus is **only** available in the **/home** and the **/projects** file systems! Backed up files
-could be restored by the user. Details could be found [here](todo).
+could be restored by the user. Details could be found [here]**todo link**.
 
 ### Folder Structure and Organizing Data
 
@@ -49,21 +49,21 @@ project. We recommend following the rules for your work regarding:
     steps.
   * Naming Data: Keep short, but meaningful names; Keep standard file endings; File names
     don’t replace documentation and metadata; Use standards of your discipline; Make rules for your
-    project, document and keep them (See the [README recommendations](todo) below)
+    project, document and keep them (See the [README recommendations]**todo link** below)
 
 This is the example of an organisation (hierarchical) for the folder structure. Use it as a visual
 illustration of the above:
 
 **todo** Insert grapic *Organizing_Data-using_file_systems.png*
 
-Keep in mind [input-process-output pattern](todo) for the work with folder structure.
+Keep in mind [input-process-output pattern]**todo link** for the work with folder structure.
 
 ### README Recommendation
 
-In general, [README](todo) is just simple general information of software/project that exists in the
-same directory/repository of the project. README is used to explain the details project and the
-**structure** of the project/folder in a short way. We recommend using readme as for entire project as
-for every important folder in the project.
+In general, [README]**todo link** is just simple general information of software/project that exists
+in the same directory/repository of the project. README is used to explain the details project and
+the **structure** of the project/folder in a short way. We recommend using readme as for entire
+project as for every important folder in the project.
 
 Example of the structure for the README:
 Think first: What is calculated why? (Description); What is
@@ -81,9 +81,9 @@ Version:
 
 ### Metadata
 
-Another important aspect is the [Metadata](todo). It is sufficient to use [Metadata](todo) for your
-project on Taurus. [Metadata standards](todo) will help to do it easier (i.e. [Dublin core](todo),
-[OME](todo))
+Another important aspect is the [Metadata]**todo link**. It is sufficient to use [Metadata]**todo
+link** for your project on Taurus. [Metadata standards]**todo link** will help to do it easier (i.e.
+[Dublin core]**todo link**, [OME]**todo link**)
 
 ### Data Hygiene
 
@@ -97,14 +97,14 @@ you don’t need throughout its lifecycle.
 As was written before the module concept is the basic concept for using software on Taurus.
 Uniformity of the project has to be achieved by using the same set of software on different levels.
 It could be done by using environments. There are two types of environments should be distinguished:
-runtime environment (the project level, use scripts to load [modules](todo)), Python virtual
+runtime environment (the project level, use scripts to load [modules]**todo link**), Python virtual
 environment.  The concept of the environment will give an opportunity to use the same version of the
 software on every level of the project for every project member.
 
 ### Private individual and project modules files
 
-[Private individual and project module files](todo) will be discussed in [chapter 7](todo). Project
-modules list is a powerful instrument for effective teamwork.
+[Private individual and project module files]**todo link** will be discussed in [chapter 7]**todo
+link**. Project modules list is a powerful instrument for effective teamwork.
 
 ### Python virtual environment
 
@@ -116,11 +116,11 @@ packages).
 
 **Vitualenv (venv)** is a standard Python tool to create isolated Python environments. We
 recommend using venv to work with Tensorflow and Pytorch on Taurus. It has been integrated into the
-standard library under the [venv module](todo). **Conda** is the second way to use a virtual
+standard library under the [venv module]**todo link**. **Conda** is the second way to use a virtual
 environment on the Taurus. Conda is an open-source package management system and environment
 management system from the Anaconda.
 
-[Detailed information](todo) about using the virtual environment.
+[Detailed information]**todo link** about using the virtual environment.
 
 ## Application Software Availability
 
@@ -131,10 +131,10 @@ documented and gives the opportunity to comfort efficient and safe work.
 ## Access rights
 
 The concept of **permissions** and **ownership** is crucial in Linux. See the
-[HPC-introduction](todo) slides for the understanding of the main concept. Standard Linux changing
-permission command (i.e `chmod`) valid for Taurus as well. The **group** access level contains
-members of your project group. Be careful with 'write' permission and never allow to change the
-original data.
+[HPC-introduction]**todo link** slides for the understanding of the main concept. Standard Linux
+changing permission command (i.e `chmod`) valid for Taurus as well. The **group** access level
+contains members of your project group. Be careful with 'write' permission and never allow to change
+the original data.
 
-Useful links: [Data Management](todo), [File Systems](todo), [Get Started with HPC-DA](todo),
-[Project Management](todo), [Preservation research data[(todo)
+Useful links: [Data Management]**todo link**, [File Systems]**todo link**, [Get Started with
+HPC-DA]**todo link**, [Project Management]**todo link**, [Preservation research data[**todo link**
