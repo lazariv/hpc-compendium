@@ -337,6 +337,12 @@ structure.
 1. Do not add large binary files or high resolution images to the repository. See this valuable
    document for [image optimization](https://web.dev/fast/#optimize-your-images).
 
+### Code Blocks and Commands
+
+* Use ticks to mark code blocks and commands, not italic font.
+* Specify language for code blocks, refer to [highlight.js](https://highlightjs.org/static/demo/)
+    for supported languages.
+
 ### Writing Style
 
 **TODO** Guide [Issue #14](#14)
