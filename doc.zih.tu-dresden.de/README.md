@@ -6,20 +6,6 @@ In the following, it is outlined how to contribute to the
 which rules should be followed when adding to this project. Although, this document might seem very
 long describing complex steps, contributing is quite easy - trust us.
 
-Steps:
-
-* Synchronize local clone of the repository
-* Edit files, make changes
-* Run checks locally
-* Commit changes to foreign remote and branch BXZ
-* Create merge request
-* CD/CI pipline starts:
-  * Run checks
-  * Build documentation
-* If CD/CI succeeds, ZIH staff will review the changes and push them to main branch
-
-ZIH-related staff, please refer to [CONTRIBUTE_ZIH.md](Todo) for documentation.
-
 ## Contribute via Issue
 Users can contribute to the documentation via the
 [issue tracking system](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/issues).
@@ -29,7 +15,6 @@ documentation.
 
 **Reminder:** Non-documentation issues and requests need to be send as ticket to
 [hpcsupport@zih.tu-dresden.de](mailto:hpcsupport@zih.tu-dresden.de).
-
 
 ## Preparation
 Contributions can be done via editing the repository through GitLab's web interface or following
@@ -61,7 +46,7 @@ Now, create a local clone of your fork
 ```
 
 **TODO:** virtual environment
-**TODO:** What we need for markdownlinter and co checks?
+**TODO:** What we need for markdownlinter and checks?
 
 <!--- All branches are protected, i.e., only ZIH staff can create branches and push to them --->
 
@@ -77,10 +62,8 @@ by selecting any source file.
 Other git services might have an aquivivalent web interface to interact with the repository. Please
 refer to the corresponding documentation for further information.
 
-
 <!--This option of contributing is only available for users of-->
 <!--[gitlab.hrz.tu-chemnitz.de](https://gitlab.hrz.tu-chemnitz.de). Furthermore, -->
-
 
 ## Contribute via Local Clone
 
@@ -98,6 +81,7 @@ also provides a builtin development server that allows to serve the documentatio
 preview the updated documentation locally before committing the changes to the repository.
 
 To make use of `mkdocs`, it is necessary to have two commands in mind
+
 ```
 ~ mkdocs serve - Start the live-reloading docs server.
 ~ mkdocs build - Build the documentation site.
