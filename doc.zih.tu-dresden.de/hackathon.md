@@ -11,8 +11,9 @@ The goals for the hackathon are:
 ## twiki2md
 
 The script `twiki2md` converts twiki source files into markdown source files using pandoc. It outputs the
-markdown source files according to the old pages tree. The output and **starting point for transferring**
-old content into the new system can be found at branch `preview` within directory `twiki2md/root/`.
+markdown source files according to the old pages tree into subdirectories. The output and **starting
+point for transferring** old content into the new system can be found at branch `preview` within
+directory `twiki2md/root/`.
 
 ## Steps
 
@@ -28,19 +29,40 @@ old content into the new system can be found at branch `preview` within director
 ~ git checkout preview
 ```
 
-* Open terminal and build documentation using mkdocs, refer [link](README.md#preview-using-mkdocs)
-
+* Open terminal and build documentation using `mkdocs`
+  * [using mkdocs](README.md#preview-using-mkdocs)
+  * [installing dependencies](README.md#install-dependencies)
 
 ### Transferring Content
-
-
-
 
 1. Grab a markdown source file from `twiki2md/root/` directory (a topic you are comfortable with)
 1. Find place in new structure according to
 [Typical Project Schedule](https://doc.zih.tu-dresden.de/hpc-wiki/bin/view/Compendium/TypicalProjectSchedule)
-  * Copy reviewed markdown source file to `doc.zih.tu-dresden.de/docs/SUBDIR/<FILENAME>.md`
+  * Create new feature branch holding your work `~ git checkout -b <BRANCHNAME>`, whereas branch name can
+      be `<FILENAME>` for simplicity
+  * Copy reviewed markdown source file to `docs/` directory via
+    `~ git mv twiki2md/root/<FILENAME>.md doc.zih.tu-dresden.de/docs/<SUBDIR>/<FILENAME>.md`
   * Update navigation section in `mkdocs.yaml`
+1. Commit and push to feature branch via
+```Shell Session
+~ git commit docs/<SUBDIR>/<FILENAME>.md mkdocs.yaml -m "MESSAGE"
+~ git push origin <BRANCHNAME>
+```
+1. Run checks locally and fix the issues. Otherwise the pipeline will fail.
+    * [Check links](README.md#check-links) (There might be broken links which can only be solved
+        with ongoing transfer of content.)
+    * [Check pages structure](README.md#check-pages-structure)
+    * [Markdown Linter](README.md#Markdown-linter)
+1. Create
+  [merge request](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/merge_requests)
+   against **preview** branch
+
+
+The following steps are optional, because the first goal is to transfer all old pages into new
+structure. If this is done, the content of the files can be reviewed, outdated information can be
+removed, content can be updated and rules w.r.t. [writing style](README.md#writing-style) can be
+applied.
+
 1. Review the markdown source file
   * Replace or remove (leftover) html constructs in markdown source file
   * Add ticks for code blocks and command if necessary
