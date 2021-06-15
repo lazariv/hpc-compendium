@@ -62,10 +62,10 @@ directory `twiki2md/root/`.
 The following steps are optional in a sense, that the first goal of the hackathon is to transfer all
 old pages into new structure. If this is done, the content of the files need to be reviewed:
 
-    * Remove outdated information
-    * Update content
-    * Apply [writing style](README.md#writing-style)
-    * Replace or remove (leftover) html constructs in markdown source file
-    * Add ticks for code blocks and command if necessary
-    * Fix internal links (mark as todo if necessary)
-    * Review and update, remove outdated content
+  * Remove outdated information
+  * Update content
+  * Apply [writing style](README.md#writing-style)
+  * Replace or remove (leftover) html constructs in markdown source file
+  * Add ticks for code blocks and command if necessary
+  * Fix internal links (mark as todo if necessary)
+  * Review and update, remove outdated content
