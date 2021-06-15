@@ -55,23 +55,17 @@ directory `twiki2md/root/`.
     * [Markdown Linter](README.md#markdown-linter)
 1. Create
   [merge request](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/merge_requests)
-   against **preview** branch
+   against `preview` branch
 
+### Review Content
 
-The following steps are optional, because the first goal is to transfer all old pages into new
-structure. If this is done, the content of the files can be reviewed, outdated information can be
-removed, content can be updated and rules w.r.t. [writing style](README.md#writing-style) can be
-applied.
+The following steps are optional in a sense, that the first goal of the hackathon is to transfer all
+old pages into new structure. If this is done, the content of the files need to be reviewed:
 
-1. Review the markdown source file
-  * Replace or remove (leftover) html constructs in markdown source file
-  * Add ticks for code blocks and command if necessary
-  * Fix internal links (mark as todo if necessary)
-  * Review and update, remove outdated content
-1. Apply git workflow
-  * Add `<FILENAME>.md` to git repository
-  * Commit all changed file, e.g., `<FILENAME.md>`, `mkdocs.yaml` and graphics from this documentation
-      page
-  * Push changes to new branch
-    * ``git push origin 
-  * Create [merge request](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/merge_requests)
+    * Remove outdated information
+    * Update content
+    * Apply [writing style](README.md#writing-style)
+    * Replace or remove (leftover) html constructs in markdown source file
+    * Add ticks for code blocks and command if necessary
+    * Fix internal links (mark as todo if necessary)
+    * Review and update, remove outdated content
