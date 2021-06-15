@@ -1,79 +1,100 @@
-# Proposal for Next Generation of ZIH HPC Compendium
+# Contribution Guide
 
-The project (repository and the documentation) is a mock-up of the proposed technical workflow as
-well as restructured content and topics.
+In the following, it is outlined how to contribute to the
+[HPC documentation](https://doc.zih.tu-dresden.de/) of
+[TU Dresden/ZIH](https://tu-dresden.de/zih/) and
+which rules should be followed when adding to this project. Although, this document might seem very
+long describing complex steps, contributing is quite easy - trust us.
 
-## Setup
+## Contribute via Issue
+Users can contribute to the documentation via the
+[issue tracking system](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/issues).
+For that, open an issue to report typos and missing documentation or request for more precise
+wording etc.  ZIH staff will get in touch with you to resolve the issue and improve the
+documentation.
 
-We decided against a classical wiki software. Instead, we want to make use of the static site
-generator [mkdocs](https://www.mkdocs.org/). It creates static html files from markdown files. All
-(configuration, layout and content) files will be managed within a git repository. The generated
-static html files, i.e, the documentation, is deployed to a web server.
+**Reminder:** Non-documentation issues and requests need to be send as ticket to
+[hpcsupport@zih.tu-dresden.de](mailto:hpcsupport@zih.tu-dresden.de).
 
-This mock-up makes use of the two GitLab features [GitLab Runner](https://docs.gitlab.com/runner/)
-and [GitLab Pages](https://docs.gitlab.com/ee/user/project/pages/).
-Using GitLab Pages static websites can be directly published from a repository in GitLab. GitLab
-Runner is an application that works with GitLab CI/CD to run jobs in a pipeline. The CI/CD pipeline
-for this very project is to generate the static html using `mkdocs` and deploy them at GitLab Pages.
+## Preparation
+Contributions can be done via editing the repository through GitLab's web interface or following
+the git-based workflow. Both ways are described in the following.
 
-## Contribute
+### Fork and Clone Repository
 
-### Workflow
+All contributing starts with forking the repository to either
+[gitlab.hrz.tu-chemnitz.de](https://gitlab.hrz.tu-chemnitz.de) or any other
+git service, e.g., [gitlab.com](https://www.gitlab.com), [github.com](https://www.github.com) or
+your personal preference.
+Now, create a local clone of your fork
 
-1. Install `mkdocs` on your local system, see https://www.mkdocs.org/
-1. Clone this repository into local working copy
-1. Work: add or update content, improve layout, etc.
-1. Preview documentation (on local system) using `mkdocs serve`
-1. Commit and push to repository
+```Shell Session
+# SSH based method
+~ git@gitlab.hrz.tu-chemnitz.de:LOGIN/hpc-compendium.git
 
-`mkdocs` is required to generate the documentation (static html files) from the markdown sources.
-But it also has a builtin development server that allows to serve the documentation. The builtin
-server can be used to preview the updated documentation locally before committing the changes to the
-repository.
-
-In principle, `mkdocs` is not mandatory on the local system to contribute to the project. If you are
-totally sure about your commit (e.g., fix a typo), it is only the following three steps: edit the
-markdown file, commit change, push commit to the repository.
-To be honest, even a local checkout is not mandatory since GitLab has a quite good builtin IDE
-allowing to edit the sources in the web browser.
-
-### Update, Build and Serve Documentation
-
-All `mkdocs` project follow this structure:
-
-```
-mkdocs.yml    # The configuration file.
-docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
-
+# HTTP based method
+~ https://gitlab.hrz.tu-chemnitz.de/LOGIN/hpc-compendium.git
 ```
 
-All markdown source files are contained in the `docs` folder. The file `mkdocs.yml` is the single
-configuration file for the project from layout up to document structure and extensions.
+#### Install Dependencies
 
+**TODO:** Describtion
+
+```Shell Session
+~ cd hpc-compendium/doc.zih.tu-dresden.de
+~ pip install -r requirements.txt
+```
+
+**TODO:** virtual environment
+**TODO:** What we need for markdownlinter and checks?
+
+<!--- All branches are protected, i.e., only ZIH staff can create branches and push to them --->
+
+## Contribute via Web IDE
+
+GitLab offers a rich and versatile web interface to work with repositories. To fix typos and edit
+source files, just select the file of interest and click the `Edit` button. A text and commit
+editor are invoked: Do your changes, add a meaningful commit message and commit the changes.
+
+The more sophisticated integrated Web IDE is reached from the top level menu of the repository or
+by selecting any source file.
+
+Other git services might have an aquivivalent web interface to interact with the repository. Please
+refer to the corresponding documentation for further information.
+
+<!--This option of contributing is only available for users of-->
+<!--[gitlab.hrz.tu-chemnitz.de](https://gitlab.hrz.tu-chemnitz.de). Furthermore, -->
+
+## Contribute via Local Clone
+
+### mkdocs Rocks
+
+As mentioned, this documentation bases on markdown files which are translated into static html files
+using the tool [mkdocs](https://www.mkdocs.org/). All markdown source files are located in the
+`docs` subfolder. The file `mkdocs.yml` is the single configuration file for the project from layout
+up to document structure and extensions.
 The navigation section `nav` in `mkdocs.yml` specifies the order, titles and nesting of the
-documentation pages.  To add a new page to the documentation follow these two steps:
+documentation pages.
 
-1. Create new markdown file under `docs/<NEW>.md` and write the documentation
-1. Add `<NEW.md>` to the configuration file `mkdocs.yml` by updating the navigation section
+In principle, `mkdocs` is not mandatory on the local system to contribute to the project. But it
+also provides a builtin development server that allows to serve the documentation, i.e. it can
+preview the updated documentation locally before committing the changes to the repository.
 
-There are three `mkdocs` commands you should be familiar with:
-
-```
-mkdocs new [dir-name] - Create a new project.
-mkdocs serve - Start the live-reloading docs server.
-mkdocs build - Build the documentation site.
-mkdocs help - Print this help message.
-```
-
-Three? Yes, the `new` command can be ignored, because the project is already started.
-
-Invoke`mkdocs serve` to build and preview the documentation. The documentation is automatically
-reloaded if the system detects updates (great!). By default, the builtin web server hosts the
-documentation at `http://127.0.0.1:8000`.
+To make use of `mkdocs`, it is necessary to have two commands in mind
 
 ```
+~ mkdocs serve - Start the live-reloading docs server.
+~ mkdocs build - Build the documentation site.
+```
+
+#### Preview Using mkdocs
+
+Invoke`mkdocs serve`to build and preview the documentation. The documentation is automatically
+rerendered and reloaded if the system detects updates (great!). By default, the builtin web server
+hosts the documentation at `http://127.0.0.1:8000`.
+
+```Shell Session
+~ cd /PATH/TO/hpc-compendium/doc.zih.tu-dresden.de
 ~ mkdocs serve
 INFO    -  Building documentation...
 INFO    -  Cleaning site directory
@@ -84,47 +105,284 @@ INFO    -  Serving on http://127.0.0.1:8000
 INFO    -  Start watching changes
 ```
 
-To build the documentation, invoke `mkdocs build`. This will create a new directory named `public`
-which holds the generated static html files.
-This command is used to build the documentation within the CI/CD pipeline. Thus, it should exit
-without error.
+Open `http://127.0.0.1:8000` with a web browser to preview the local copy of the documentation.
 
-```
+#### Build Static Documentation
+
+To build the documentation, invoke `mkdocs build`. This will create a new directory named `public`
+which holds the generated static html/jss/css files. This command is used to build the documentation
+within the CI/CD pipeline. Thus, it should exit without error.
+
+```Shell Session
+~ cd /PATH/TO/hpc-compendium/doc.zih.tu-dresden.de
 ~ mkdocs build
 INFO    -  Cleaning site directory
-INFO    -  Building documentation to directory: /PATH/hpc-compendium-2.0/public
+INFO    -  Building documentation to directory: /PATH/to/hpc-compendium.git/doc.zih.tu-dresden.de/public
 INFO    -  Documentation built in 0.09 seconds
 ```
 
-### GitLab Runner and CI/CD
+### Git Workflow
 
-The GitLab Runner periodically connects to the repository. If there is a new commit, the CI/CD is
-invoked: build the documentation and deploy to Gitlab Pages.
+It is crucial to keep your branch synchronized with the upstream repository when you are working
+locally on the documentation. At first, you should add a remote pointing to the official
+documentation. 
 
-Currently, all users can push directly to branch master.
+```Shell Session
+~ git remote add upstream-zih git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git
+```
 
-## Outlook and Todos
+Now, you have two remotes, namely *origin* and *upstream-zih*. The remote *origin* points to your fork,
+whereas *upstream-zih* points to the original documentation repository at GitLab Chemnitz.
 
-### Layout
+```Shell Session
+$ git remote -v
+origin  git@gitlab.hrz.tu-chemnitz.de:LOGIN/hpc-compendium.git (fetch)
+origin	git@gitlab.hrz.tu-chemnitz.de:LOGIN/hpc-compendium.git (push)
+upstream-zih  git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git (fetch)
+upstream-zih	git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git (push)
+```
 
-* Create a nice layout
-* Should the wiki be layouted in TUD CD?
-* Rules regarding contribution
-* Rules regarding layouting
+Next, you should synchronize your `main` branch with the upstream.
 
-### Setup of Infrastructure
+```Shell Session
+~ git checkout main
+~ git pull upstream main
+```
 
-If the proposed setup of the infrastructure is accepted, there are some follow-up questions.
+At this point, your `main` branch is up-to-date with the original documentation of HPC compendium.
 
-1. Repository
-    * Where should the repository be hosted?
-    * Possibilities: gitlab.chemnitz, github.com, gitlab.com, self hosted GitLab
-    * In context of NHR, is gitlab.chemnitz possible?
-1. Hosting provider
-    * Possibilities: gitlab/github pages, VM with a running web server
-1. Who can push to branch master? What are the git workflow for HPC admins, ZIH stuff, HPC users etc.?
+<!--To push your sync changes to your fork you can do the following:-->
+<!--git push origin main-->
 
-## ToDos
+#### Making Changes and Merge Requests
 
-* Do's and Dont's per topic/section (aka. no gos)
-* Führerschein
+It is good git-practise to only use the `main` branch for synchronization with the upstream, not for
+changes, as outlined in the previous subsection. In order to commit to this documentation, create a
+new branch (a so-called feature branch) basing on the `main` branch and commit your changes to it.
+
+```Shell Session
+~ git checkout main
+~ git checkout -b <FEATUREBRANCH>
+# Edit file1, file2 etc.
+~ git add <file1> <file2>
+~ git commit -m <COMMIT MESSAGE>
+~ git push origin <FEATUREBRANCH>
+```
+
+The last command pushes the changes to your remote at branch `FEATUREBRANCH`. Now, it is time to
+incoporate the changes and improvements into the HPC Compendium. For this, create a
+[merge request](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/merge_requests/new)
+to the `main` branch.
+
+
+
+
+## 
+
+### Important Branches
+
+There are two important branches in this repository:
+
+- Preview:
+  - Branch containing recent changes which will be soon merged to main branch (protected
+    branch)
+  - Served at [todo url](todo url) from TUD VPN
+- Main: Branch which is deployed at [doc.zih.tu-dresden.de](doc.zih.tu-dresden.de) holding the
+    current documentation (protected branch)
+
+
+If you are totally sure about your commit (e.g., fix a typo), it is only the following steps:
+
+  1. Synchronize branches
+  1. Edit the markdown file of interest
+  1. Commit change
+  1. Push commit to your fork and probably new branch
+  1. Pose Merge Request
+
+
+## Checks
+
+We have several checks on the markdown sources to ensure for a consistent and high quality of the
+documentation. These checks are run within the CI/CD pipeline and changes are only deployed to the
+HPC compendium, if the checks are passed. Thus, we **highly recommend** running the checks locally
+before committing and posing a merge request.
+
+* Markdown linter
+* Check internal and external links
+* Check code and command examples
+
+### Markdown Linter
+
+The [markdown linter client](https://github.com/igorshubovych/markdownlint-cli) helps to keep the
+markdown source code clean and consistent.
+
+Installation
+```Shell Session
+~ npm install markdownlint-cli
+```
+
+The configuration is stored in `.markdownlint.json`. The tool `markdownlint` can be run in dry or
+fix mode. The *dry* mode (default) only outputs findings, whereas in *fix* mode it resolves basic
+errors directly in the markdown files.
+
+```Shell Session
+~ cd doc.zih.tu-dresden.de/
+~ markdownlint [--config .markdownlint.json] [--fix] docs/index.md
+docs/index.md:8:131 MD013/line-length Line length [Expected: 130; Actual: 138]
+```
+
+Before committing, invoke the script `util/lint-changes.sh` which calls the markdownlint tool for all
+(git-)changed markdown files.
+
+```Shell Session
+~ sh util/lint-changes.sh
+hpc-compendium-2.0-gitlab-tudzih git:(master) ✗ sh util/lint-changes.sh
+README.md:6 MD012/no-multiple-blanks Multiple consecutive blank lines [Expected: 1; Actual: 2]
+README.md:7 MD012/no-multiple-blanks Multiple consecutive blank lines [Expected: 1; Actual: 3]
+README.md:21 MD012/no-multiple-blanks Multiple consecutive blank lines [Expected: 1; Actual: 2]
+README.md:22 MD022/blanks-around-headings/blanks-around-headers Headings should be surrounded by blank lines [Expected: 1; Actual: 0; Below] [Context: "### Why is this not at gitlab.hrz.tu-chemnitz.de?"]
+[8< 8<]
+```
+
+### Check Links
+
+No one likes dead links. Therefore, we check the internal and external links within the markdown
+source files. For that, the script `util/check-links.sh` and/or the tool
+[markdown-link-check](https://github.com/tcort/markdown-link-check) can be used.
+
+Installation
+```Shell Session
+~ npm install markdown-link-check
+```
+
+```Shell Session
+~ cd doc.zih.tu-dresden.de/
+~ markdown-link-check docs/index.md
+
+FILE: docs/index.md
+[✖] http://141.76.17.11/hpc-wiki/bin/view/Compendium
+[✓] https://docs.olcf.ornl.gov/
+[✓] https://nersc.gitlab.io/
+[✓] https://www.mkdocs.org/
+[✓] https://docs.gitlab.com/runner/
+[✓] https://docs.gitlab.com/ee/user/project/pages/
+[✖] CONTRIBUTE.md
+
+7 links checked.
+
+ERROR: 2 dead links found!
+[✖] http://141.76.17.11/hpc-wiki/bin/view/Compendium → Status: 0
+[✖] CONTRIBUTE.md → Status: 400
+```
+
+**TODO:** When and how to run `util/check-links.sh`?
+
+### Check Code and Commands
+
+1. All code blocks and commands should be runnable from a login node.
+1. 
+
+**TODO:** Implement [Issue #9](#9)
+
+### Check Pages Structure
+
+**TODO:** Create rules [Issue #5](#5)
+
+## Content Rules
+
+### New Page and Pages Structure
+
+The pages structure is defined in the configuration file [mkdocs.yaml](doc.zih.tu-dresden.de/mkdocs.yml).
+
+```Shell Session
+docs/
+  - Home: index.md
+  - Application for HPC Login: application.md
+  - Request for Resources: req_resources.md
+  - Access to the Cluster: access.md
+  - Available Software and Usage:
+    - Overview: software/overview.md
+  ...
+```
+
+To add a new page to the documentation follow these two steps:
+
+1. Create a new markdown file under `docs/SUBDIR/NEW.md` and put the documentation inside.
+1. Add `SUBDIR/NEW.md` to the configuration file `mkdocs.yml` by updating the navigation section.
+
+Make sure that the new page **is not floating**, i.e., it can be reached directly from the documentation
+structure.
+
+### Markdown
+
+1. Please keep things simple, i.e., avoid using fancy markdown dialects.
+  * [Cheat Sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+  * [Style Guide](https://github.com/google/styleguide/blob/gh-pages/docguide/style.md)
+1. Do not add large binary files or high resolution images to the repository. See this valuable
+   document for [image optimization](https://web.dev/fast/#optimize-your-images).
+
+### Code Blocks and Commands
+
+* Use ticks to mark code blocks and commands, not italic font.
+* Specify language for code blocks, refer to [highlight.js](https://highlightjs.org/static/demo/)
+    for supported languages.
+
+### Writing Style
+
+**TODO** Guide [Issue #14](#14)
+
+* Capitalize headings
+
+### Spelling and Technical Wording
+
+To provide a consistent and high quality documentation, and help users to find the right pages,
+there is a list of conventions w.r.t.  spelling and technical wording.
+
+* Language settings: en_us
+* I/O not IO
+* Slurm not SLURM
+* Filesystem not file system
+
+**TODO:** Put into file
+
+**TODO:** Implement checks [Issue #13](#13)
+
+### Code Blocks and Command Prompts
+
+Showing commands and sample output is an important part of all technical documentation. Thus, some
+rules have to be followed.
+
+1. Prompts: It should be clear from the prompt, where the command is run (e.g. Taurus, specific
+   partition or local machine).
+
+  * Taurus / HPC systems of TUD in general: `taurus$`
+  * Specific kind of node or partition: `tauruslogin$`, `taurus-ml$` `taurus-rome$`etc.
+    * TODO: Remove prefix `taurus`?
+  * Local machine: `localhost$`
+  * No output: Omit prompt (copy-paste)
+  * With Output: Add prompt (make clear what is the command and what is the output)
+
+### Data Privacy and Generic User Name
+
+Where possible, replace login, project name and other private data with clearly arbitrary placeholders.
+E.g., use generic login `marie` and project name `p_marie`.
+
+```Shell Session
+taurus$ ls -l
+drwxr-xr-x   3 marie p_marie      4096 Jan 24  2020 code
+drwxr-xr-x   3 marie p_marie      4096 Feb 12  2020 data
+-rw-rw----   1 marie p_marie      4096 Jan 24  2020 readme.md
+```
+
+### Mark Omissions
+
+If showing only a snippet of a long output, omissions are marked with `[...]`.
+
+### Mark Placeholders
+
+Stick to the Unix rules on optional and required arguments, and seclection of item sets.
+
+* `<required argument or value>`
+* `[optional argument or value]`
+* `{choice1|choice2|choice3}`
+

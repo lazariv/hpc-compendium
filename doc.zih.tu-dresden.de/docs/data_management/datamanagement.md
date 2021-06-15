@@ -60,10 +60,17 @@ Keep in mind [input-process-output pattern]**todo link** for the work with folde
 
 ### README Recommendation
 
+<<<<<<< HEAD
 In general, [README]**todo link** is just simple general information of software/project that exists
 in the same directory/repository of the project. README is used to explain the details project and
 the **structure** of the project/folder in a short way. We recommend using readme as for entire
 project as for every important folder in the project.
+=======
+In general, [README]**todo link** is just simple general information of software/project that exists in the
+same directory/repository of the project. README is used to explain the details project and the
+**structure** of the project/folder in a short way. We recommend using readme as for entire project as
+for every important folder in the project.
+>>>>>>> issue#6
 
 Example of the structure for the README:
 Think first: What is calculated why? (Description); What is
@@ -81,9 +88,15 @@ Version:
 
 ### Metadata
 
+<<<<<<< HEAD
 Another important aspect is the [Metadata]**todo link**. It is sufficient to use [Metadata]**todo
 link** for your project on Taurus. [Metadata standards]**todo link** will help to do it easier (i.e.
 [Dublin core]**todo link**, [OME]**todo link**)
+=======
+Another important aspect is the [Metadata]**todo link**. It is sufficient to use [Metadata]**todo link** for your
+project on Taurus. [Metadata standards]**todo link** will help to do it easier (i.e. [Dublin core]**todo link**,
+[OME]**todo link**)
+>>>>>>> issue#6
 
 ### Data Hygiene
 
@@ -103,8 +116,13 @@ software on every level of the project for every project member.
 
 ### Private individual and project modules files
 
+<<<<<<< HEAD
 [Private individual and project module files]**todo link** will be discussed in [chapter 7]**todo
 link**. Project modules list is a powerful instrument for effective teamwork.
+=======
+[Private individual and project module files]**todo link** will be discussed in [chapter 7]**todo link**. Project
+modules list is a powerful instrument for effective teamwork.
+>>>>>>> issue#6
 
 ### Python virtual environment
 
@@ -131,6 +149,7 @@ documented and gives the opportunity to comfort efficient and safe work.
 ## Access rights
 
 The concept of **permissions** and **ownership** is crucial in Linux. See the
+<<<<<<< HEAD
 [HPC-introduction]**todo link** slides for the understanding of the main concept. Standard Linux
 changing permission command (i.e `chmod`) valid for Taurus as well. The **group** access level
 contains members of your project group. Be careful with 'write' permission and never allow to change
@@ -138,3 +157,12 @@ the original data.
 
 Useful links: [Data Management]**todo link**, [File Systems]**todo link**, [Get Started with
 HPC-DA]**todo link**, [Project Management]**todo link**, [Preservation research data[**todo link**
+=======
+[HPC-introduction]**todo link** slides for the understanding of the main concept. Standard Linux changing
+permission command (i.e `chmod`) valid for Taurus as well. The **group** access level contains
+members of your project group. Be careful with 'write' permission and never allow to change the
+original data.
+
+Useful links: [Data Management]**todo link**, [File Systems]**todo link**, [Get Started with HPC-DA]**todo link**,
+[Project Management]**todo link**, [Preservation research data[**todo link**
+>>>>>>> issue#6
