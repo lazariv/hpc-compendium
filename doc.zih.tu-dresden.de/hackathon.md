@@ -52,7 +52,7 @@ directory `twiki2md/root/`.
     * [Check links](README.md#check-links) (There might be broken links which can only be solved
         with ongoing transfer of content.)
     * [Check pages structure](README.md#check-pages-structure)
-    * [Markdown Linter](README.md#Markdown-linter)
+    * [Markdown Linter](README.md#markdown-linter)
 1. Create
   [merge request](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/merge_requests)
    against **preview** branch
