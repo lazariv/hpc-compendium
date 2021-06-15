@@ -10,10 +10,10 @@ minimal executable example for the purpose to recreate the error or issue.
 ## Communication with HPC Support
 
 There is the HPC support team who is responsible for the support of HPC users and stable work of the
-cluster. You could find the [details](todo) in the right part of any page of the compendium.
+cluster. You could find the [details]**todo link** in the right part of any page of the compendium.
 However, please, before the contact with the HPC support team check the documentation carefully
-(starting points: [main page](todo), [HPC-DA](todo)), use a search and then create a ticket. The
+(starting points: [main page]**todo link**, [HPC-DA]**todo link**), use a search and then create a ticket. The
 ticket is a preferred way to solve the issue, but in some terminable cases, you can call to ask for
 help.
 
-Useful link: [Further Documentation](todo)
+Useful link: [Further Documentation]**todo link**

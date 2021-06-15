@@ -63,4 +63,4 @@ for this very project is to generate the static html using `mkdocs` and deploy t
 
 ### Contribute
 
-Contributions are highly welcome. Please refere to [CONTRIBUTE.md](CONTRIBUTE.md) file of this project.
+Contributions are highly welcome. Please refere to [README.md](../README.md) file of this project.
