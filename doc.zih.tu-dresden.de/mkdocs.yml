@@ -17,6 +17,7 @@ nav:
   - Support: support.md
   - Running Jobs:
     - Overview: jobs/index.md
+  - HPDCA: DataAnalyticsWithR.md
       #    - Queue Policy: jobs/policy.md
       #    - Examples: jobs/examples/index.md
       #    - Affinity: jobs/affinity/index.md
