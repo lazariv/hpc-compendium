@@ -42,6 +42,7 @@ nav:
   - Support: support.md
   - Running Jobs:
     - Overview: jobs/index.md
+    - Windows Batchjobs: jobs/WindowsBatch.md
     - Taurus: jobs/SystemTaurus.md
     - Slurm Examples: jobs/SlurmExamples.md
     - Slurm: jobs/Slurm.md
