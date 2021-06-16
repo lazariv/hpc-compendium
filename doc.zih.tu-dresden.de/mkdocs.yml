@@ -16,6 +16,7 @@ nav:
     - Overview: data_management/datamanagement.md
     - Announcement of Quotas: data_management/AnnouncementOfQuotas.md
     - Workspaces: data_management/workspaces.md
+    - Applications: data_management/Applications.md
     - BeeGFS: data_management/BeeGFS.md
     - Projectmanagment: data_management/ProjectManagement.md
   - Data Moving:
