@@ -28,6 +28,7 @@ nav:
     - Computational Fluid Dynamics (CFD): software/CFD.md
     - FAQs: software/modules-faq.md
     - Bio Informatics: software/Bioinformatics.md
+    - SCS5 Migration Hints: software/SCS5Software.md
   - Data Management:
     - Overview: data_management/datamanagement.md
     - Announcement of Quotas: data_management/AnnouncementOfQuotas.md
