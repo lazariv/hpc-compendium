@@ -26,6 +26,7 @@ nav:
     - Export Nodes: data_moving/ExportNodes.md
   - Use of Hardware:
     - Overview: use_of_hardware.md
+    - Batch Systems: use_of_hardware/BatchSystems.md
     - Hardware Taurus: use_of_hardware/SystemTaurus.md
   - Structuring Experiments: experiments.md
   - Support: support.md
