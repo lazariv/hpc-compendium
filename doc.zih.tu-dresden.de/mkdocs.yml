@@ -21,6 +21,7 @@ nav:
   - Data Moving:
     - Overview: data_moving.md
     - Data Mover: data_moving/DataMover.md
+    - Export Nodes: data_moving/ExportNodes.md
   - Use of Hardware:
     - Overview: use_of_hardware.md
     - Hardware Taurus: use_of_hardware/SystemTaurus.md
