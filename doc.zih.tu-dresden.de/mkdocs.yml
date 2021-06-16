@@ -17,6 +17,7 @@ nav:
     - Workspaces: data_management/workspaces.md
     - Projectmanagment: data_management/ProjectManagement.md
   - Data Moving: data_moving.md
+    - Data Mover: data_moving/DataMover.md
   - Use of Hardware: use_of_hardware.md
   - Structuring Experiments: experiments.md
   - Support: support.md
