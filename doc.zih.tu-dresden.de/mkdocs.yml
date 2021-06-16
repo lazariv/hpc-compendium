@@ -8,11 +8,14 @@ nav:
     - Project Request Form: req_resources/ProjectRequestForm.md
   - Access to the Cluster:
     - Overview: access.md
+    - Desktop Visualization: access/DesktopCloudVisualization.md
+    - Login: access/Login.md
     - Security Restrictions: access/SecurityRestrictions.md
+    - SSH with Putty: access/SSHMitPutty.md
   - Available Software and Usage:
     - Overview: software/overview.md
     - Modules: software/modules.md
-    - JupyterHub: software/Jupyterhub.md
+    - JupyterHub: software/JupyterHub.md
     - JupyterHub for Teaching: software/JupyterHubForTeaching.md
     - Containers: software/containers.md
     - Custom Easy Build Modules: software/CustomEasyBuildEnvironment.md
@@ -23,12 +26,19 @@ nav:
     - Visualization: software/Visualization.md
     - Data Analytics with R: software/DataAnalyticsWithR.md
     - Data Analytics with Python: software/Python.md
+    - Tensorflow: 
+      - Tensorflow Overview: software/TensorFlow.md
+      - Tensorflow in Container: software/TensorFlowContainerOnHPCDA.md
+      - Tensorflow in JupyterHub: software/TensorFlowOnJupyterNotebook.md 
     - Keras: software/Keras.md
     - Power AI: software/PowerAI.md
+    - PyTorch: software/PyTorch.md
     - Computational Fluid Dynamics (CFD): software/CFD.md
     - FAQs: software/modules-faq.md
     - Bio Informatics: software/Bioinformatics.md
     - SCS5 Migration Hints: software/SCS5Software.md
+    - NanoscaleSimulations: software/NanoscaleSimulations.md
+    - FEMSoftware: software/FEMSoftware.md
   - Data Management:
     - Overview: data_management/datamanagement.md
     - Announcement of Quotas: data_management/AnnouncementOfQuotas.md
@@ -42,6 +52,7 @@ nav:
     - Filesystems: data_managment/FileSystems.md
     - Warm Archive: data_managment/WarmArchive.md
     - HPC Storage Concept 2019: data_managment/HPCStorageConcept2019.md
+    - Preservation of Research Data: data_management/PreservationResearchData.md
   - Data Moving:
     - Overview: data_moving.md
     - Data Mover: data_moving/DataMover.md
@@ -63,6 +74,7 @@ nav:
     - Taurus: jobs/SystemTaurus.md
     - Slurm Examples: jobs/SlurmExamples.md
     - Slurm: jobs/Slurm.md
+    - HPC-DA: jobs/HPCDA.md
     - Binding And Distribution Of Tasks: jobs/BindingAndDistributionOfTasks.md
       #    - Queue Policy: jobs/policy.md
       #    - Examples: jobs/examples/index.md
