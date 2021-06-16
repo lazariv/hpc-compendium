@@ -16,12 +16,15 @@ nav:
     - Overview: data_management/datamanagement.md
     - Announcement of Quotas: data_management/AnnouncementOfQuotas.md
     - Workspaces: data_management/workspaces.md
+    - BeeGFS: data_management/BeeGFS.md
     - Projectmanagment: data_management/ProjectManagement.md
   - Data Moving:
     - Overview: data_moving.md
     - Data Mover: data_moving/DataMover.md
     - Export Nodes: data_moving/ExportNodes.md
-  - Use of Hardware: use_of_hardware.md
+  - Use of Hardware:
+    - Overview: use_of_hardware.md
+    - Hardware Taurus: use_of_hardware/SystemTaurus.md
   - Structuring Experiments: experiments.md
   - Support: support.md
   - Running Jobs:
