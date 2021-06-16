@@ -13,6 +13,7 @@ nav:
     - JupyterHub for Teaching: software/JupyterHubForTeaching.md
     - Containers: software/containers.md
     - Deep Learning: software/DeepLearning.md
+    - Keras: software/Keras.md
     - FAQs: software/modules-faq.md
     - Bio Informatics: software/Bioinformatics.md
   - Data Management:
