@@ -10,19 +10,24 @@ nav:
     - Overview: software/overview.md
     - Modules: software/modules.md
     - JupyterHub: software/Jupyterhub.md
+    - JupyterHub for Teaching: software/JupyterHubForTeaching.md
     - Containers: software/containers.md
     - FAQs: software/modules-faq.md
   - Data Management:
     - Overview: data_management/datamanagement.md
     - Announcement of Quotas: data_management/AnnouncementOfQuotas.md
     - Workspaces: data_management/workspaces.md
+    - Applications: data_management/Applications.md
     - BeeGFS: data_management/BeeGFS.md
     - Projectmanagment: data_management/ProjectManagement.md
   - Data Moving:
     - Overview: data_moving.md
     - Data Mover: data_moving/DataMover.md
-  - Use of Hardware: use_of_hardware.md
+    - Export Nodes: data_moving/ExportNodes.md
+  - Use of Hardware:
+    - Overview: use_of_hardware.md
     - Batch Systems: use_of_hardware/BatchSystems.md
+    - Hardware Taurus: use_of_hardware/SystemTaurus.md
   - Structuring Experiments: experiments.md
   - Support: support.md
   - Running Jobs:
