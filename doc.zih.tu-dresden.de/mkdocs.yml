@@ -14,6 +14,7 @@ nav:
     - Containers: software/containers.md
     - Deep Learning: software/DeepLearning.md
     - FAQs: software/modules-faq.md
+    - Bio Informatics: software/Bioinformatics.md
   - Data Management:
     - Overview: data_management/datamanagement.md
     - Announcement of Quotas: data_management/AnnouncementOfQuotas.md
