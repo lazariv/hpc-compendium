@@ -19,7 +19,8 @@ nav:
   - Data Moving:
     - Overview: data_moving.md
     - Data Mover: data_moving/DataMover.md
-  - Use of Hardware: use_of_hardware.md
+  - Use of Hardware:
+    - Overview: use_of_hardware.md
     - Hardware Taurus: use_of_hardware/SystemTaurus.md
   - Structuring Experiments: experiments.md
   - Support: support.md
