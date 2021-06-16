@@ -36,6 +36,7 @@ nav:
     - Hardware Taurus: use_of_hardware/SystemTaurus.md
     - Checkpoint/Restart: use_of_hardware/CheckpointRestart.md
     - AMD Rome Nodes: use_of_hardware/RomeNodes.md
+    - IBM Power9 Nodes: use_of_hardware/Power9.md
   - Structuring Experiments: experiments.md
   - Support: support.md
   - Running Jobs:
