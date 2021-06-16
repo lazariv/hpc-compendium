@@ -22,6 +22,7 @@ nav:
     - Overview: data_moving.md
     - Data Mover: data_moving/DataMover.md
   - Use of Hardware: use_of_hardware.md
+    - Batch Systems: use_of_hardware/BatchSystems.md
   - Structuring Experiments: experiments.md
   - Support: support.md
   - Running Jobs:
