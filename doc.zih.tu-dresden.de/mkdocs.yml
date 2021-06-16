@@ -17,6 +17,7 @@ nav:
     - Machine Learning: software/MachineLearning.md
     - Deep Learning: software/DeepLearning.md
     - Data Analytics with R: software/DataAnalyticsWithR.md
+    - Data Analytics with Python: software/Python.md
     - Keras: software/Keras.md
     - Power AI: software/PowerAI.md
     - Computational Fluid Dynamics (CFD): software/CFD.md
