@@ -11,6 +11,7 @@ nav:
     - Desktop Visualization: access/DesktopCloudVisualization.md
     - Login: access/Login.md
     - Security Restrictions: access/SecurityRestrictions.md
+    - SSH with Putty: access/SSHMitPutty.md
   - Available Software and Usage:
     - Overview: software/overview.md
     - Modules: software/modules.md
