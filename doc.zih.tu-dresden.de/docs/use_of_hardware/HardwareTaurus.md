@@ -1,4 +1,4 @@
----# Central Components
+# Central Components
 
 -   Login-Nodes (`tauruslogin[3-6].hrsk.tu-dresden.de`)
     -   each with 2x Intel(R) Xeon(R) CPU E5-2680 v3 each with 12 cores
@@ -22,7 +22,7 @@
     -   1 TB RAM
     -   3.5 TB /tmp local NVMe device
 -   Hostnames: taurusi\[8001-8034\]
--   SLURM partition `alpha` (old:gpu3)
+-   SLURM partition `alpha`
 -   dedicated mostly for ScaDS-AI
 
 # Island 7 - AMD Rome CPUs
