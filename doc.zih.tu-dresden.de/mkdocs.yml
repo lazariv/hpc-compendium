@@ -13,6 +13,7 @@ nav:
     - JupyterHub for Teaching: software/JupyterHubForTeaching.md
     - Containers: software/containers.md
     - Get started with HPC-DA: software/GetStartedWithHPCDA.md
+    - Machine Learning: software/MachineLearning.md
     - Deep Learning: software/DeepLearning.md
     - Data Analytics with R: software/DataAnalyticsWithR.md
     - Keras: software/Keras.md
