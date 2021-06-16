@@ -12,6 +12,7 @@ nav:
     - JupyterHub: software/Jupyterhub.md
     - JupyterHub for Teaching: software/JupyterHubForTeaching.md
     - Containers: software/containers.md
+    - Deep Learning: software/DeepLearning.md
     - FAQs: software/modules-faq.md
   - Data Management:
     - Overview: data_management/datamanagement.md
