@@ -12,6 +12,7 @@ nav:
     - JupyterHub: software/Jupyterhub.md
     - JupyterHub for Teaching: software/JupyterHubForTeaching.md
     - Containers: software/containers.md
+    - Custom Easy Build Modules: software/CustomEasyBuildEnvironment.md
     - Get started with HPC-DA: software/GetStartedWithHPCDA.md
     - Mathematics: software/Mathematics.md
     - Machine Learning: software/MachineLearning.md
