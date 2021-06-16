@@ -12,5 +12,3 @@
 -   64 GB RAM
 
 NVMe cards can saturate the HCAs
-
--- Main.UlfMarkwardt - 2019-05-07
