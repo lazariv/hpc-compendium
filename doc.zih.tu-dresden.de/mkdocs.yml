@@ -36,6 +36,7 @@ nav:
     - Computational Fluid Dynamics (CFD): software/CFD.md
     - FAQs: software/modules-faq.md
     - Bio Informatics: software/Bioinformatics.md
+    - SCS5 Migration Hints: software/SCS5Software.md
     - NanoscaleSimulations: software/NanoscaleSimulations.md
     - FEMSoftware: software/FEMSoftware.md
   - Data Management:
