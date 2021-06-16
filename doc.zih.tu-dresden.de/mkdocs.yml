@@ -13,9 +13,13 @@ nav:
     - JupyterHub for Teaching: software/JupyterHubForTeaching.md
     - Containers: software/containers.md
     - Get started with HPC-DA: software/GetStartedWithHPCDA.md
+    - Mathematics: software/Mathematics.md
+    - Machine Learning: software/MachineLearning.md
     - Deep Learning: software/DeepLearning.md
     - Data Analytics with R: software/DataAnalyticsWithR.md
     - Keras: software/Keras.md
+    - Power AI: software/PowerAI.md
+    - Computational Fluid Dynamics (CFD): software/CFD.md
     - FAQs: software/modules-faq.md
     - Bio Informatics: software/Bioinformatics.md
   - Data Management:
@@ -28,6 +32,7 @@ nav:
     - Runtime Environment: data_management/RuntimeEnvironment.md
     - Building Software: data_management/BuildingSoftware.md
     - Intermediate Archive: data_managment/IntermediateArchive.md
+    - Filesystems: data_managment/FileSystems.md
   - Data Moving:
     - Overview: data_moving.md
     - Data Mover: data_moving/DataMover.md
@@ -39,6 +44,8 @@ nav:
     - Checkpoint/Restart: use_of_hardware/CheckpointRestart.md
     - AMD Rome Nodes: use_of_hardware/RomeNodes.md
     - IBM Power9 Nodes: use_of_hardware/Power9.md
+    - NVMe Storage: use_of_hardware/NvmeStorage.md
+    - Alpha Centauri: use_of_hardware/AlphaCentauri.md
   - Structuring Experiments: experiments.md
   - Support: support.md
   - Running Jobs:
