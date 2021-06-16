@@ -32,6 +32,7 @@ nav:
     - Runtime Environment: data_management/RuntimeEnvironment.md
     - Building Software: data_management/BuildingSoftware.md
     - Filesystems: data_managment/FileSystems.md
+    - HPC Storage Concept 2019: data_managment/HPCStorageConcept2019.md
   - Data Moving:
     - Overview: data_moving.md
     - Data Mover: data_moving/DataMover.md
