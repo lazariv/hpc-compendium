@@ -42,6 +42,7 @@ nav:
     - AMD Rome Nodes: use_of_hardware/RomeNodes.md
     - IBM Power9 Nodes: use_of_hardware/Power9.md
     - NVMe Storage: use_of_hardware/NvmeStorage.md
+    - Alpha Centauri: use_of_hardware/AlphaCentauri.md
   - Structuring Experiments: experiments.md
   - Support: support.md
   - Running Jobs:
