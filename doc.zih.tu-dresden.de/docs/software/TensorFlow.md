@@ -2,7 +2,7 @@
 
 
 
-\<span style="color: #222222; font-size: 1.385em;">Introduction\</span>
+## Introduction
 
 This is an introduction of how to start working with TensorFlow and run
 machine learning applications on the [HPC-DA](HPCDA) system of Taurus.
