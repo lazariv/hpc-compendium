@@ -1,19 +1,25 @@
 nav:
   - Home: index.md
-  - Application for HPC Login: application.md
+  - Application for HPC Login: 
+    - Overview: application.md
+    - Access: application/Access.md
   - Request for Resources:
     - Overview: req_resources.md
     - Project Request Form: req_resources/ProjectRequestForm.md
-  - Access to the Cluster: access.md
   - Available Software and Usage:
     - Overview: software/overview.md
     - Modules: software/modules.md
+    - JupyterHub: software/Jupyterhub.md
     - Containers: software/containers.md
     - FAQs: software/modules-faq.md
   - Data Management:
     - Overview: data_management/datamanagement.md
+    - Announcement of Quotas: data_management/AnnouncementOfQuotas.md
     - Workspaces: data_management/workspaces.md
-  - Data Moving: data_moving.md
+    - Projectmanagment: data_management/ProjectManagement.md
+  - Data Moving:
+    - Overview: data_moving.md
+    - Data Mover: data_moving/DataMover.md
   - Use of Hardware: use_of_hardware.md
   - Structuring Experiments: experiments.md
   - Support: support.md
