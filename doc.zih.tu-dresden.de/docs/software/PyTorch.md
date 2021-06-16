@@ -96,7 +96,7 @@ Examples:
 1\. Simple MNIST model. The MNIST database is a large database of handwritten digits that is commonly used for training various image processing systems. PyTorch allows us to import and download the MNIST dataset directly from the Torchvision - package consists of datasets, model architectures and transformations.
 The model contains a neural network with sequential architecture and typical modules for this kind of models. Recommended parameters for running this model are 1 GPU and 7 cores (28 thread)
 
-[https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/PyTorch/example_MNIST_Pytorch.zip](%ATTACHURL%/example_MNIST_Pytorch.zip)
+[example_MNIST_Pytorch.zip]()
 
 #### Running the model
 
@@ -120,7 +120,7 @@ Examples:
 1. Image recognition example. This PyTorch script is using Resnet to single image classification.
 Recommended parameters for running this model are 1 GPU and 7 cores (28 thread).
 
-[https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/PyTorch/example_Pytorch_image_recognition.zip](%ATTACHURL%/example_Pytorch_image_recognition.zip)
+[example_Pytorch_image_recognition.zip]()
 
 Remember that for using [JupyterHub service]() for PyTorch you need to create and activate a virtual environment (kernel) with loaded essential modules (see "envtest" environment form the virtual
 environment example.
@@ -151,9 +151,9 @@ includes a comparison of different kinds of models and tips to improve
 the performance of your model. **Necessary** parameters for running this
 model are **2 GPU** and 14 cores (56 thread).
 
-[https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/PyTorch/example_PyTorch_parallel.zip](%ATTACHURL%/example_PyTorch_parallel.zip?t=1572619180)
+[example_PyTorch_parallel.zip]()
 
-Remember that for using [JupyterHub service](JupyterHub) for PyTorch you need to create and activate a virtual environment (kernel) with loaded essential modules.
+Remember that for using [JupyterHub service]() for PyTorch you need to create and activate a virtual environment (kernel) with loaded essential modules.
 
 Run the example in the same way as the previous examples.
 
@@ -179,6 +179,6 @@ Keep in mind that only one memory parameter (`--mem-per-cpu` = <MB> or `--mem`=<
 
 
 
--   [example_MNIST_Pytorch.zip](%ATTACHURL%/example_MNIST_Pytorch.zip)
--   [example_Pytorch_image_recognition.zip](%ATTACHURL%/example_Pytorch_image_recognition.zip)
--   [example_PyTorch_parallel.zip](%ATTACHURL%/example_PyTorch_parallel.zip)
+-   [example_MNIST_Pytorch.zip]()
+-   [example_Pytorch_image_recognition.zip]()
+-   [example_PyTorch_parallel.zip]()
