@@ -1,4 +1,4 @@
----# Central Components
+# Central Components
 
 -   Login-Nodes (`tauruslogin[3-6].hrsk.tu-dresden.de`)
     -   each with 2x Intel(R) Xeon(R) CPU E5-2680 v3 each with 12 cores
