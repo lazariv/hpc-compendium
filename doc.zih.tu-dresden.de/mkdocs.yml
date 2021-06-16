@@ -1,23 +1,45 @@
 nav:
   - Home: index.md
-  - Application for HPC Login: application.md
-  - Request for Resources: req_resources.md
-  - Access to the Cluster: access.md
+  - Application for HPC Login: 
+    - Overview: application.md
+    - Access: application/Access.md
+  - Request for Resources:
+    - Overview: req_resources.md
+    - Project Request Form: req_resources/ProjectRequestForm.md
   - Available Software and Usage:
     - Overview: software/overview.md
     - Modules: software/modules.md
+    - JupyterHub: software/Jupyterhub.md
+    - JupyterHub for Teaching: software/JupyterHubForTeaching.md
     - Containers: software/containers.md
+    - Deep Learning: software/DeepLearning.md
     - FAQs: software/modules-faq.md
   - Data Management:
     - Overview: data_management/datamanagement.md
+    - Announcement of Quotas: data_management/AnnouncementOfQuotas.md
     - Workspaces: data_management/workspaces.md
-  - Data Moving: data_moving.md
-  - Use of Hardware: use_of_hardware.md
+    - Applications: data_management/Applications.md
+    - BeeGFS: data_management/BeeGFS.md
+    - Projectmanagment: data_management/ProjectManagement.md
+    - Building Software: data_management/BuildingSoftware.md
+  - Data Moving:
+    - Overview: data_moving.md
+    - Data Mover: data_moving/DataMover.md
+    - Export Nodes: data_moving/ExportNodes.md
+  - Use of Hardware:
+    - Overview: use_of_hardware.md
+    - Batch Systems: use_of_hardware/BatchSystems.md
+    - Hardware Taurus: use_of_hardware/SystemTaurus.md
+    - Checkpoint/Restart: use_of_hardware/CheckpointRestart.md
+    - AMD Rome Nodes: use_of_hardware/RomeNodes.md
   - Structuring Experiments: experiments.md
   - Support: support.md
   - Running Jobs:
     - Overview: jobs/index.md
     - Taurus: jobs/SystemTaurus.md
+    - Slurm Examples: jobs/SlurmExamples.md
+    - Slurm: jobs/Slurm.md
+    - Binding And Distribution Of Tasks: jobs/BindingAndDistributionOfTasks.md
       #    - Queue Policy: jobs/policy.md
       #    - Examples: jobs/examples/index.md
       #    - Affinity: jobs/affinity/index.md
