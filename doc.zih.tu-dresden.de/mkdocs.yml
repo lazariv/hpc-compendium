@@ -26,6 +26,7 @@ nav:
     - Data Analytics with Python: software/Python.md
     - Keras: software/Keras.md
     - Power AI: software/PowerAI.md
+    - PyTorch: software/PyTorch.md
     - Computational Fluid Dynamics (CFD): software/CFD.md
     - FAQs: software/modules-faq.md
     - Bio Informatics: software/Bioinformatics.md
