@@ -72,7 +72,33 @@ nav:
       #    - Monitoring: jobs/monitoring.md
       #    - FAQs: jobs/jobs-faq.md
   #- Tests: tests.md
-
+  - Archive:
+    - CXFS End of Support: archive/CXFSEndOfSupport.md
+    - Debugging Tools: archive/DebuggingTools.md
+    - Hardware: archive/Hardware.md
+    - Hardware Altix: archive/HardwareAltix.md
+    - Hardware Atlas: archive/HardwareAtlas.md
+    - Hardware Deimos: archive/HardwareDeimos.md
+    - Hardware Phobos: archive/HardwarePhobos.md
+    - Hardware Titan: archive/HardwareTitan.md
+    - Hardware Triton: archive/HardwareTriton.md
+    - Hardware Venus: archive/HardwareVenus.md
+    - Introduction: archive/Introduction.md
+    - KNL Nodes: archive/KnlNodes.md
+    - Load Leveler: archive/LoadLeveler.md
+    - Migrate to Atlas: archive/MigrateToAtlas.md
+    - No IB Jobs: archive/NoIBJobs.md
+    - Phase2 Migration: archive/Phase2Migration.md
+    - Platform LSF: archive/PlatformLSF.md
+    - RamDisk Documentation: archive/RamDiskDocumentation.md
+    - Step by Step Taurus: archive/StepByStepTaurus.md
+    - System Altix: archive/SystemAltix.md
+    - System Atlas: archive/SystemAtlas.md
+    - System Venus: archive/SystemVenus.md
+    - Taurus II: archive/TaurusII.md
+    - UNICORE Rest API: archive/UNICORERestAPI.md
+    - Vampir Trace: archive/VampirTrace.md
+    - Venus Open: archive/VenusOpen.md
 
 
 # Project Information
