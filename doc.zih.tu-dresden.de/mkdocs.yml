@@ -31,6 +31,7 @@ nav:
     - Batch Systems: use_of_hardware/BatchSystems.md
     - Hardware Taurus: use_of_hardware/SystemTaurus.md
     - Checkpoint/Restart: use_of_hardware/CheckpointRestart.md
+    - AMD Rome Nodes: use_of_hardware/RomeNodes.md
   - Structuring Experiments: experiments.md
   - Support: support.md
   - Running Jobs:
