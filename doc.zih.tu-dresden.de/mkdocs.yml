@@ -20,6 +20,7 @@ nav:
   - Data Moving:
     - Overview: data_moving.md
     - Data Mover: data_moving/DataMover.md
+    - Export Nodes: data_moving/ExportNodes.md
   - Use of Hardware: use_of_hardware.md
   - Structuring Experiments: experiments.md
   - Support: support.md
