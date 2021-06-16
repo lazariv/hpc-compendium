@@ -10,6 +10,7 @@ nav:
     - Overview: software/overview.md
     - Modules: software/modules.md
     - JupyterHub: software/Jupyterhub.md
+    - JupyterHub for Teaching: software/JupyterHubForTeaching.md
     - Containers: software/containers.md
     - FAQs: software/modules-faq.md
   - Data Management:
