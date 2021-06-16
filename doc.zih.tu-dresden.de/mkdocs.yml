@@ -8,6 +8,7 @@ nav:
     - Project Request Form: req_resources/ProjectRequestForm.md
   - Access to the Cluster:
     - Overview: access.md
+    - Desktop Visualization: access/DesktopCloudVisualization.md
     - Login: access/Login.md
     - Security Restrictions: access/SecurityRestrictions.md
   - Available Software and Usage:
