@@ -16,6 +16,7 @@ nav:
     - Deep Learning: software/DeepLearning.md
     - Data Analytics with R: software/DataAnalyticsWithR.md
     - Keras: software/Keras.md
+    - Computational Fluid Dynamics (CFD): software/CFD.md
     - FAQs: software/modules-faq.md
     - Bio Informatics: software/Bioinformatics.md
   - Data Management:
