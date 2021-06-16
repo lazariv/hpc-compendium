@@ -6,6 +6,7 @@ nav:
   - Available Software and Usage:
     - Overview: software/overview.md
     - Modules: software/modules.md
+    - JupyterHub: software/Jupyterhub.md
     - Containers: software/containers.md
     - FAQs: software/modules-faq.md
   - Data Management:
