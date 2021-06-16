@@ -35,6 +35,7 @@ nav:
   - Support: support.md
   - Running Jobs:
     - Overview: jobs/index.md
+    - Slurm Examples: jobs/SlurmExamples.md
     - Slurm: jobs/Slurm.md
     - Binding And Distribution Of Tasks: jobs/BindingAndDistributionOfTasks.md
       #    - Queue Policy: jobs/policy.md
