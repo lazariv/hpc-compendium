@@ -48,10 +48,10 @@ nav:
     - Projectmanagment: data_management/ProjectManagement.md
     - Runtime Environment: data_management/RuntimeEnvironment.md
     - Building Software: data_management/BuildingSoftware.md
-    - Intermediate Archive: data_managment/IntermediateArchive.md
-    - Filesystems: data_managment/FileSystems.md
-    - Warm Archive: data_managment/WarmArchive.md
-    - HPC Storage Concept 2019: data_managment/HPCStorageConcept2019.md
+    - Intermediate Archive: data_management/IntermediateArchive.md
+    - Filesystems: data_management/FileSystems.md
+    - Warm Archive: data_management/WarmArchive.md
+    - HPC Storage Concept 2019: data_management/HPCStorageConcept2019.md
     - Preservation of Research Data: data_management/PreservationResearchData.md
   - Data Moving:
     - Overview: data_moving.md
