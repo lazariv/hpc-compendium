@@ -25,6 +25,10 @@ nav:
     - Visualization: software/Visualization.md
     - Data Analytics with R: software/DataAnalyticsWithR.md
     - Data Analytics with Python: software/Python.md
+    - Tensorflow: 
+      - Tensorflow Overview: software/TensorFlow.md
+      - Tensorflow in Container: software/TensorFlowContainerOnHPCDA.md
+      - Tensorflow in JupyterHub: software/TensorFlowOnJupyterNotebook.md 
     - Keras: software/Keras.md
     - Power AI: software/PowerAI.md
     - Computational Fluid Dynamics (CFD): software/CFD.md
