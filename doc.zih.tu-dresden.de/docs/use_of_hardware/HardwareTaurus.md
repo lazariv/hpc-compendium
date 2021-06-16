@@ -22,7 +22,7 @@
     -   1 TB RAM
     -   3.5 TB /tmp local NVMe device
 -   Hostnames: taurusi\[8001-8034\]
--   SLURM partition `alpha` (old:gpu3)
+-   SLURM partition `alpha`
 -   dedicated mostly for ScaDS-AI
 
 # Island 7 - AMD Rome CPUs
