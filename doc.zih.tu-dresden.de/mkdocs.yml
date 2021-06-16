@@ -27,6 +27,7 @@ nav:
     - Projectmanagment: data_management/ProjectManagement.md
     - Runtime Environment: data_management/RuntimeEnvironment.md
     - Building Software: data_management/BuildingSoftware.md
+    - Intermediate Archive: data_managment/IntermediateArchive.md
   - Data Moving:
     - Overview: data_moving.md
     - Data Mover: data_moving/DataMover.md
