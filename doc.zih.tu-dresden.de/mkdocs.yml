@@ -3,8 +3,9 @@ nav:
   - Application for HPC Login: 
     - Overview: application.md
     - Access: application/Access.md
-  - Request for Resources: req_resources.md
-  - Access to the Cluster: access.md
+  - Request for Resources:
+    - Overview: req_resources.md
+    - Project Request Form: req_resources/ProjectRequestForm.md
   - Available Software and Usage:
     - Overview: software/overview.md
     - Modules: software/modules.md
