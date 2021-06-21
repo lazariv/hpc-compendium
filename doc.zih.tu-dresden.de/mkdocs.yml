@@ -37,6 +37,7 @@ nav:
     - FAQs: software/modules-faq.md
     - Bio Informatics: software/Bioinformatics.md
     - SCS5 Migration Hints: software/SCS5Software.md
+    - GPU Programming: software/GPUProgramming.md
     - NanoscaleSimulations: software/NanoscaleSimulations.md
     - FEMSoftware: software/FEMSoftware.md
   - Data Management:
