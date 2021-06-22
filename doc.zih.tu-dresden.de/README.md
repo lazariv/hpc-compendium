@@ -247,35 +247,61 @@ README.md:22 MD022/blanks-around-headings/blanks-around-headers Headings should 
 ### Check Links
 
 No one likes dead links. Therefore, we check the internal and external links within the markdown
-source files. For that, the script `util/check-links.sh` and/or the tool
+source files. For that, the script `util/check-links.sh` and the tool
 [markdown-link-check](https://github.com/tcort/markdown-link-check) can be used.
 
-Installation
+The tool `markdown-link-check` checks links within a certain file (or using some shell magic for all
+markdown files, as depicted below). On the other hand, the script `util/check-links.sh` checks only
+links for files in the repository, which are gifferent (gifferent is a word composition from *git*
+and *different to main branch*).
+
+#### Markdown-link-check
+
+Installation (see [official docu](https://github.com/tcort/markdown-link-check#installation))
 ```Shell Session
 ~ npm install markdown-link-check
 ```
 
+Run check
 ```Shell Session
 ~ cd doc.zih.tu-dresden.de/
+~ markdown-link-check docs/jobs/Slurm.md
+
+FILE: docs/jobs/Slurm.md
+[✖] Slurmgenerator
+[✖] Compendium.RunningNxGpuAppsInOneJob
+[✓] https://slurm.schedmd.com/sbatch.html
+[✖] BindingAndDistributionOfTasks
+[✓] http://slurm.schedmd.com/hdf5_profile_user_guide.html
+[✓] http://slurm.schedmd.com/sh5util.html
+[✓] mailto:hpcsupport@zih.tu-dresden.de
+[✓] http://slurm.schedmd.com/
+[✓] http://www.schedmd.com/slurmdocs/rosetta.html
+
+9 links checked.
+
+ERROR: 3 dead links found!
+[✖] Slurmgenerator → Status: 400
+[✖] Compendium.RunningNxGpuAppsInOneJob → Status: 400
+[✖] BindingAndDistributionOfTasks → Status: 400
 ~ markdown-link-check docs/index.md
-
-FILE: docs/index.md
-[✖] http://141.76.17.11/hpc-wiki/bin/view/Compendium
-[✓] https://docs.olcf.ornl.gov/
-[✓] https://nersc.gitlab.io/
-[✓] https://www.mkdocs.org/
-[✓] https://docs.gitlab.com/runner/
-[✓] https://docs.gitlab.com/ee/user/project/pages/
-[✖] CONTRIBUTE.md
-
-7 links checked.
-
-ERROR: 2 dead links found!
-[✖] http://141.76.17.11/hpc-wiki/bin/view/Compendium → Status: 0
-[✖] CONTRIBUTE.md → Status: 400
 ```
 
-**TODO:** When and how to run `util/check-links.sh`?
+In this example, all external links are fine, but three links to internal documents need to be
+fixed.
+
+To check the links within all markdown files in one sweep, some shell magic is necessary
+
+```Shell Session
+~ cd doc.zih.tu-dresden.de/
+~ find . -name \*.md -exec markdown-link-check {} \;
+```
+
+#### Check-links.sh
+
+The script `util/check-links.sh` checks links for all gifferent files, i.e., markdown files which
+are part of the repository and different to the `main` branch. Use this script before committing your
+changes to make sure your commit passes the CI/CD pipeline.
 
 ### Check Code and Commands
 
@@ -286,7 +312,19 @@ ERROR: 2 dead links found!
 
 ### Check Pages Structure
 
-**TODO:** Create rules [Issue #5](#5)
+The script `util/check-no-floating.sh` first checks the hierarchy depth of the pages structure and
+the second check tests if every markdown file is included in the navigation section of the
+`mkdocs.yaml` file.
+
+The script is invoked as follows
+
+```Shell Session
+~ sh doc.zih.tu-dresden.de/util/check-no-floating.sh doc.zih.tu-dresden.de 
+HardwareTaurus.md is not included in nav
+BigDataFrameworksApacheSparkApacheFlinkApacheHadoop.md is not included in nav
+pika.md is not included in nav
+specific_software.md is not included in nav
+```
 
 ## Content Rules
 
