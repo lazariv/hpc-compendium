@@ -28,19 +28,20 @@ In order to help with setting up checkpointing for your jobs, we have
 written a few scripts that make it easier to utilize DMTCP together with
 SLURM on our cluster.
 
-### Using our [chain job](Slurm#Chain_Jobs) script
+## Using our Chain-Job Script
 
 For long-running jobs that you wish to split into multiple shorter jobs,
 thereby enabling the job scheduler to fill the cluster much more
 efficiently and also providing some level of fault-tolerance, we have
-written a script that automatically creates a number of jobs for your
+written a script **TODO Slurm Chain_Jobs**
+that automatically creates a number of jobs for your
 desired runtime and adds the checkpoint/restart bits transparently to
 your batch script. You just have to specify the targeted total runtime
 of your calculation and the interval in which you wish to do
 checkpoints. The latter (plus the time it takes to write the checkpoint)
 will then be the runtime of the individual jobs. This should be targeted
-at below 24 hours in order to be able to run on all of our [haswell64
-partitions](SystemTaurus#Run_45time_Limits), for increased
+at below 24 hours in order to be able to run on all of our
+ **TODO link haswell64 partitions - SystemTaurus Runtime_Limits** , for increased
 fault-tolerance it can be chosen even shorter.
 
 To use it, first add a `dmtcp_launch` before your application call in
@@ -114,7 +115,7 @@ chain. If you wish to adjust the timelimit, for instance because you
 realized that your original limit was too short, just use the
 `-t|--time` parameter again on resume.
 
-### Using DMTCP manually
+## Using DMTCP manually
 
 If for some reason our automatic chain job script is not suitable to
 your use-case, you could also just use DMTCP on its own. In the
@@ -132,14 +133,18 @@ to be created automatically. With `--exit-after-ckpt` the application
 will be terminated after the first checkpoint has been created, which
 can be useful if you wish to implement some sort of job chaining on your
 own. 1 In front of your program call, you have to add the wrapper
-script: `dmtcp_launch` \<verbatim>#/bin/bash #SBATCH --time=00:01:00
+script: `dmtcp_launch` **TODO check**
+
+```bash
+#/bin/bash #SBATCH --time=00:01:00
 #SBATCH --cpus-per-task=8 #SBATCH --mem-per-cpu=1500
 
 source $DMTCP_ROOT/bin/bash start_coordinator -i 40 --exit-after-ckpt
 
 dmtcp_launch ./my-application #for sequential/multithreaded applications
 #or: srun dmtcp_launch --ib --rm ./my-mpi-application #for MPI
-applications\</verbatim>
+applications
+```
 
 This will create a checkpoint automatically after 40 seconds and then
 terminate your application and with it the job. If the job runs into its
@@ -155,10 +160,13 @@ restarted run again, you can omit the -i and --exit-after-ckpt
 parameters this time. Afterwards, the application must be run using the
 restart script, specifying the host and port of the coordinator (they
 have been exported by the start_coordinator function). Example:
-\<verbatim>#/bin/bash #SBATCH --time=00:01:00 #SBATCH --cpus-per-task=8
+
+```bash
+#/bin/bash #SBATCH --time=00:01:00 #SBATCH --cpus-per-task=8
 #SBATCH --mem-per-cpu=1500
 
 source $DMTCP_ROOT/bin/bash start_coordinator -i 40 --exit-after-ckpt
 
 ./dmtcp_restart_script.sh -h $DMTCP_COORD_HOST -p
-$DMTCP_COORD_PORT\</verbatim>
+$DMTCP_COORD_PORT
+```
