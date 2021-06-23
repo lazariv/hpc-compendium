@@ -48,6 +48,11 @@ cleanup_test:
         - docker network rm ${TEST_NETWORK}
     when: always
 
+cleanup_docker:
+    stage: cleanup
+    script:
+        - docker system prune --force
+
 release:
     stage: release
     script:
