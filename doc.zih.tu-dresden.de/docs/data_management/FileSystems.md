@@ -1,6 +1,4 @@
-File systems
-
-
+# File systems
 
 ## Permanent file systems
 
@@ -17,19 +15,17 @@ directory:
     `.bashrc_mars` to `$HOME/.bash_history_<machine_name>`. Setting
     HISTSIZE and HISTFILESIZE to 10000 helps as well.
 -   Further, you may use private module files to simplify the process of
-    loading the right installation directories, see [private
-    modules](#AnchorPrivateModule).
+    loading the right installation directories, see
+    **todo link: private modules - AnchorPrivateModule**.
 
 ### Global /projects file system
 
 For project data, we have a global project directory, that allows better
 collaboration between the members of an HPC project. However, for
 compute nodes /projects is mounted as read-only, because it is not a
-filesystem for parallel I/O. See below and also check the [HPC
-introduction](%PUBURL%/Compendium/WebHome/HPC-Introduction.pdf) for more
+filesystem for parallel I/O. See below and also check the
+**todo link: HPC introduction - %PUBURL%/Compendium/WebHome/HPC-Introduction.pdf** for more
 details.
-
-#AnchorBackup
 
 ### Backup and snapshots of the file system
 
@@ -68,8 +64,6 @@ details.
     -   prevent the backup process by their sheer number and volume from
         working efficiently.
 
-#AnchorQuota
-
 ### Group quotas for the file system
 
 The quotas of the home file system are meant to help the users to keep
@@ -91,17 +85,17 @@ In case a project is above it's limits please...
 -   *systematically*handle your important data:
     -   For later use (weeks...months) at the HPC systems, build tar
         archives with meaningful names or IDs and store e.g. them in an
-        [archive](IntermediateArchive).
+        [archive](IntermediateArchive.md).
     -   refer to the hints for [long term preservation for research
-        data](PreservationResearchData).
+        data](PreservationResearchData.md).
 
 ## Work directories
 
 | File system | Usable directory  | Capacity | Availability | Backup | Remarks                                                                                                                                                         |
 |:------------|:------------------|:---------|:-------------|:-------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Lustre`    | `/scratch/`       | 4 PB     | global       | No     | Only accessible via [workspaces](WorkSpaces). Not made for billions of files!                                                                                   |
-| `Lustre`    | `/lustre/ssd`     | 40 TB    | global       | No     | Only accessible via [workspaces](WorkSpaces). For small I/O operations                                                                                          |
-| `BeeGFS`    | `/beegfs/global0` | 232 TB   | global       | No     | Only accessible via [workspaces](WorkSpaces). Fastest available file system, only for large parallel applications running with millions of small I/O operations |
+| `Lustre`    | `/scratch/`       | 4 PB     | global       | No     | Only accessible via **todo link: workspaces - WorkSpaces**. Not made for billions of files!                                                                                   |
+| `Lustre`    | `/lustre/ssd`     | 40 TB    | global       | No     | Only accessible via **todo link: workspaces - WorkSpaces**. For small I/O operations                                                                                          |
+| `BeeGFS`    | `/beegfs/global0` | 232 TB   | global       | No     | Only accessible via **todo link: workspaces - WorkSpaces**. Fastest available file system, only for large parallel applications running with millions of small I/O operations |
 | `ext4`      | `/tmp`            | 95.0 GB  | local        | No     | is cleaned up after the job automatically                                                                                                                       |
 
 ### Large files in /scratch
@@ -126,7 +120,7 @@ directory will be distributed over 20 OSTs.
 
 ## Warm archive
 
-## 
+TODO
 
 ## Recommendations for file system usage
 
