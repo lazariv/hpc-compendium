@@ -218,7 +218,7 @@ markdown source code clean and consistent.
 
 Installation
 ```Shell Session
-~ npm install markdownlint-cli
+~ [sudo] npm [-g]  install markdownlint-cli
 ```
 
 The configuration is stored in `.markdownlint.json`. The tool `markdownlint` can be run in dry or
@@ -259,7 +259,7 @@ and *different to main branch*).
 
 Installation (see [official documentation](https://github.com/tcort/markdown-link-check#installation))
 ```Shell Session
-~ npm install markdown-link-check
+~ [sudo] npm [-g] install markdown-link-check
 ```
 
 Run check
