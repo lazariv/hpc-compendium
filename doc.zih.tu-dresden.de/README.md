@@ -257,7 +257,7 @@ and *different to main branch*).
 
 #### Markdown-link-check
 
-Installation (see [official docu](https://github.com/tcort/markdown-link-check#installation))
+Installation (see [official documentation](https://github.com/tcort/markdown-link-check#installation))
 ```Shell Session
 ~ npm install markdown-link-check
 ```
@@ -284,7 +284,6 @@ ERROR: 3 dead links found!
 [✖] Slurmgenerator → Status: 400
 [✖] Compendium.RunningNxGpuAppsInOneJob → Status: 400
 [✖] BindingAndDistributionOfTasks → Status: 400
-~ markdown-link-check docs/index.md
 ```
 
 In this example, all external links are fine, but three links to internal documents need to be
@@ -316,7 +315,7 @@ The script `util/check-no-floating.sh` first checks the hierarchy depth of the p
 the second check tests if every markdown file is included in the navigation section of the
 `mkdocs.yaml` file.
 
-The script is invoked as follows
+The script is invoked and reports as follows
 
 ```Shell Session
 ~ sh doc.zih.tu-dresden.de/util/check-no-floating.sh doc.zih.tu-dresden.de 
