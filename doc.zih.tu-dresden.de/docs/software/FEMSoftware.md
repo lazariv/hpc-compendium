@@ -1,11 +1,11 @@
 # FEM Software
 
 For an up-to-date list of the installed software versions on our
-cluster, please refer to [SoftwareModulesList](SoftwareModulesList).
+cluster, please refer to SoftwareModulesList **TODO LINK** (SoftwareModulesList).
 
 ## Abaqus
 
-[ABAQUS](http://www.hks.com) is a general-purpose finite-element program
+[ABAQUS](http://www.hks.com) **TODO links to realestate site** is a general-purpose finite-element program
 designed for advanced linear and nonlinear engineering analysis
 applications with facilities for linking-in user developed material
 models, elements, friction laws, etc.
@@ -14,40 +14,66 @@ Eike Dohmen (from Inst.f. Leichtbau und Kunststofftechnik) sent us the
 attached description of his ABAQUS calculations. Please try to adapt
 your calculations in that way.\<br />Eike is normally a Windows-User and
 his description contains also some hints for basic Unix commands. (
-[ABAQUS-SLURM.pdf](%ATTACHURL%/ABAQUS-SLURM.pdf) - only in German)
+ABAQUS-SLURM.pdf **TODO LINK** (%ATTACHURL%/ABAQUS-SLURM.pdf) - only in German)
 
 Please note: Abaqus calculations should be started with a batch script.
-Please read the information about the [Batch System](BatchSystems)
+Please read the information about the Batch System **TODO LINK **  (BatchSystems)
 SLURM.
 
 The detailed Abaqus documentation can be found at
-<http://doc.zih.tu-dresden.de/abaqus> (only accessible from within the
+abaqus **TODO LINK MISSING** (only accessible from within the
 TU Dresden campus net).
 
-\*Example - Thanks to Benjamin Groeger, Inst. f. Leichtbau und
-Kunststofftechnik) \*
+**Example - Thanks to Benjamin Groeger, Inst. f. Leichtbau und
+Kunststofftechnik) **
 
-1\. Prepare an Abaqus input-file (here the input example from Benjamin)
+1. Prepare an Abaqus input-file (here the input example from Benjamin)
 
-[Rot-modell-BenjaminGroeger.inp](%ATTACHURL%/Rot-modell-BenjaminGroeger.inp)
+Rot-modell-BenjaminGroeger.inp **TODO LINK**  (%ATTACHURL%/Rot-modell-BenjaminGroeger.inp)
 
-2\. Prepare a batch script on taurus like this
+2. Prepare a batch script on taurus like this
 
 ```
-#!/bin/bash<br /><br />### Thanks to Benjamin Groeger, Institut fuer Leichtbau und Kunststofftechnik, 38748<br />### runs on taurus and needs ca 20sec with 4cpu<br />### generates files:<br />###  yyyy.com<br />###  yyyy.dat<br />###  yyyy.msg<br />###  yyyy.odb<br />###  yyyy.prt<br />###  yyyy.sim<br />###  yyyy.sta<br /><br />#SBATCH --nodes=1  ### with &gt;1 node abaqus needs a nodeliste<br />#SBATCH --ntasks-per-node=4<br />#SBATCH --mem=500  ### memory (sum)<br />#SBATCH --time=00:04:00<br />### give a name, what ever you want<br />#SBATCH --job-name=yyyy<br />### you get emails when the job will finished or failed<br />### set your right email<br />#SBATCH --mail-type=END,FAIL<br />#SBATCH --mail-user=xxxxx.yyyyyy@mailbox.tu-dresden.de<br />### set your project<br />#SBATCH -A p_xxxxxxx<br /><br />### Abaqus have its own MPI<br />unset SLURM_GTIDS<br /><br />### load and start<br />module load ABAQUS/2019<br />abaqus interactive input=Rot-modell-BenjaminGroeger.inp job=yyyy cpus=4 mp_mode=mpi<br /><br />
+#!/bin/bash<br>
+### Thanks to Benjamin Groeger, Institut fuer Leichtbau und Kunststofftechnik, 38748<br />### runs on taurus and needs ca 20sec with 4cpu<br />### generates files:
+###  yyyy.com
+###  yyyy.dat
+###  yyyy.msg
+###  yyyy.odb
+###  yyyy.prt
+###  yyyy.sim
+###  yyyy.sta
+#SBATCH --nodes=1  ### with &gt;1 node abaqus needs a nodeliste
+#SBATCH --ntasks-per-node=4
+#SBATCH --mem=500  ### memory (sum)
+#SBATCH --time=00:04:00
+### give a name, what ever you want
+#SBATCH --job-name=yyyy
+### you get emails when the job will finished or failed
+### set your right email
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=xxxxx.yyyyyy@mailbox.tu-dresden.de
+### set your project
+#SBATCH -A p_xxxxxxx
+### Abaqus have its own MPI
+unset SLURM_GTIDS
+### load and start
+module load ABAQUS/2019
+abaqus interactive input=Rot-modell-BenjaminGroeger.inp job=yyyy cpus=4 mp_mode=mpi
+
 ```
 
-3\. Start the batch script (name of our script is
+3. Start the batch script (name of our script is
 "batch-Rot-modell-BenjaminGroeger")
 
 ```
-sbatch batch-Rot-modell-BenjaminGroeger      ---&gt; you will get a jobnumber = JobID (for example 3130522)
+sbatch batch-Rot-modell-BenjaminGroeger      --->; you will get a jobnumber = JobID (for example 3130522)
 ```
 
-4\. Control the status of the job
+4. Control the status of the job
 
 ```
-squeue -u your_login     --&gt; in column "ST" (Status) you will find a R=Running or P=Pending (waiting for resources)
+squeue -u your_login     -->; in column "ST" (Status) you will find a R=Running or P=Pending (waiting for resources)
 ```
 
 ## ANSYS
@@ -60,11 +86,13 @@ CFX](http://www.ansys.com) used to be separate packages in the past and
 are now combined.
 
 ANSYS, like all other installed software, is organized in so-called
-[modules](RuntimeEnvironment). To list the available versions and load a
+modules **TODO LINK** (RuntimeEnvironment). To list the available versions and load a
 particular ANSYS version, type
 
 ```
-module avail ANSYS<br />...<br />module load ANSYS/VERSION
+module avail ANSYS
+...
+module load ANSYS/VERSION
 ```
 
 In general, HPC-systems are not designed for interactive "GUI-working".
@@ -80,12 +108,13 @@ the SSH connection. For OpenSSH this option is '-X' and it is valuable
 to use compression of all data via '-C'.
 
 ```
-# Connect to taurus, e.g. ssh -CX<br />module load ANSYS/VERSION
+# Connect to taurus, e.g. ssh -CX
+module load ANSYS/VERSION
 runwb2
 ```
 
 If more time is needed, a CPU has to be allocated like this (see topic
-[batch systems](BatchSystems) for further information):
+batch systems **TODO LINK** (BatchSystems) for further information):
 
 ```
 module load ANSYS/VERSION  
@@ -95,15 +124,25 @@ runwb2
 
 **Note:** The software NICE Desktop Cloud Visualization (DCV) enables to
 remotly access OpenGL-3D-applications running on taurus using its GPUs
-(cf. [virtual desktops](Compendium.VirtualDesktops)). Using ANSYS
+(cf. virtual desktops **TODO LINK** (Compendium.VirtualDesktops)). Using ANSYS
 together with dcv works as follows:
 
--   Follow the instructions within [virtual
-    desktops](Compendium.VirtualDesktops)
--   \<pre> module load ANSYS\</pre>
--   \<pre> unset SLURM_GTIDS\</pre>
+-   Follow the instructions within virtual
+    desktops **TODO LINK** (Compendium.VirtualDesktops)
+
+```
+module load ANSYS
+```
+
+```
+unset SLURM_GTIDS
+```
+
 -   Note the hints w.r.t. GPU support on dcv side
--   \<pre>runwb2\</pre>
+
+```
+runwb2
+```
 
 ### Using Workbench in Batch Mode
 
@@ -141,16 +180,16 @@ to enter it into an XML file in your home. This setting will then be
 used for all your runwb2 jobs. While it is also possible to edit this
 setting via the Mechanical GUI, experience shows that this can be
 problematic via X-Forwarding and we only managed to use the GUI properly
-via [DCV](DesktopCloudVisualization), so we recommend you simply edit
+via DCV **TODO LINK** (DesktopCloudVisualization), so we recommend you simply edit
 the XML file directly with a text editor of your choice. It is located
 under:
 
-*$HOME/.mw/Application Data/Ansys/v181/SolveHandlers.xml*
+'$HOME/.mw/Application Data/Ansys/v181/SolveHandlers.xml'
 
 (mind the space in there.) You might have to adjust the ANSYS Version
 (v181) in the path. In this file, you can find the parameter
 
-    &lt;MaxNumberProcessors&gt;2&lt;/MaxNumberProcessors&gt;
+    <MaxNumberProcessors>2</MaxNumberProcessors>
 
 that you can simply change to something like 16 oder 24. For now, you
 should stay within single-node boundaries, because multi-node
@@ -159,12 +198,12 @@ match your used --cpus-per-task parameter in your sbatch script.
 
 ## COMSOL Multiphysics
 
-" [COMSOL Multiphysics](http://www.comsol.com) (formerly FEMLAB) is a
+"[COMSOL Multiphysics](http://www.comsol.com) (formerly FEMLAB) is a
 finite element analysis, solver and Simulation software package for
 various physics and engineering applications, especially coupled
 phenomena, or multiphysics."
-[\[http://en.wikipedia.org/wiki/COMSOL_Multiphysics Wikipedia]([http://en.wikipedia.org/wiki/COMSOL_Multiphysics Wikipedia)
-\]
+[\[http://en.wikipedia.org/wiki/COMSOL_Multiphysics Wikipedia\]](
+    http://en.wikipedia.org/wiki/COMSOL_Multiphysics Wikipedia)
 
 Comsol may be used remotely on ZIH machines or locally on the desktop,
 using ZIH license server.
@@ -223,4 +262,10 @@ are installed on all machines.
 To run the MPI version on Taurus or Venus you need a batchfile (sumbmit
 with `sbatch <filename>`) like:
 
-    #!/bin/bash<br />#SBATCH --time=01:00:00   # walltime<br />#SBATCH --ntasks=16   # number of processor cores (i.e. tasks)<br />#SBATCH --mem-per-cpu=1900M   # memory per CPU core<br /><br />module load ls-dyna<br />srun mpp-dyna i=neon_refined01_30ms.k memory=120000000
+    #!/bin/bash
+    #SBATCH --time=01:00:00   # walltime
+    #SBATCH --ntasks=16   # number of processor cores (i.e. tasks)
+    #SBATCH --mem-per-cpu=1900M   # memory per CPU core
+    
+    module load ls-dyna
+    srun mpp-dyna i=neon_refined01_30ms.k memory=120000000
