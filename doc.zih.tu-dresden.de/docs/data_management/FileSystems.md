@@ -1,6 +1,4 @@
-File systems
-
-
+# File systems
 
 ## Permanent file systems
 
@@ -68,8 +66,6 @@ details.
     -   prevent the backup process by their sheer number and volume from
         working efficiently.
 
-#AnchorQuota
-
 ### Group quotas for the file system
 
 The quotas of the home file system are meant to help the users to keep
@@ -123,10 +119,6 @@ number in this directory with:
 %RED%Note:<span class="twiki-macro ENDCOLOR"></span> This does not
 affect existing files. But all files that **will be created** in this
 directory will be distributed over 20 OSTs.
-
-## Warm archive
-
-## 
 
 ## Recommendations for file system usage
 
