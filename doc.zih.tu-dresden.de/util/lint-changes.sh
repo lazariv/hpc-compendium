@@ -2,9 +2,9 @@
 
 set -euo pipefail
 
-branch="${CI_MERGE_REQUEST_TARGET_BRANCH_NAME:-}"
-if [ -z "$branch" ]; then
-    branch="preview"
+branch="preview"
+if [ -n "$CI_MERGE_REQUEST_TARGET_BRANCH_NAME" ]; then
+    branch="origin/$CI_MERGE_REQUEST_TARGET_BRANCH_NAME"
 fi
 
 any_fails=false
