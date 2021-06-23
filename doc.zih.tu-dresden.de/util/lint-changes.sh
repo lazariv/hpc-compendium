@@ -1,13 +1,21 @@
 #!/bin/bash
 
+set -euo pipefail
+
+branch="${CI_MERGE_REQUEST_TARGET_BRANCH_NAME:-}"
+if [ -z "$branch" ]; then
+    branch="preview"
+fi
+
 any_fails=false
 
-for f in $(git diff master --name-only); do
-    if [ ${f: -3} == ".md" ]; then
-	markdownlint $f
-	if [ "$?" -ne 0 ]; then
-	    any_fails=true
-	fi
+files=$(git diff $branch --name-only)
+for f in $files; do
+    if [ "${f: -3}" == ".md" ]; then
+        echo "Linting $f"
+        if ! markdownlint "$f"; then
+            any_fails=true
+        fi
     fi
 done
 

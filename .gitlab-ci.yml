@@ -1,11 +1,6 @@
-# Datei: .gitlab-ci.yml
 variables:
     GIT_STRATEGY: clone
     BASE_IMAGE: webpage:base
-    LINTER_IMAGE: webpage:linter
-    LINKCHECKER_IMAGE: linkchecker
-    TEST_NETWORK: testnet
-    TEST_CONTAINER_NAME: webpage
 
 stages:
     - build
@@ -13,56 +8,19 @@ stages:
     - cleanup
     - release
 
-build_base:
+build_linter:
     stage: build
     script:
         - docker build -t ${BASE_IMAGE} .
 
-build_linter:
-    stage: build
-    script:
-        - docker build -t ${LINTER_IMAGE} linter/
-
-build_linkchecker:
-    stage: build
-    script:
-        - docker build -t ${LINKCHECKER_IMAGE} linkchecker/
+test_mkdocs:
+    stage: test
+    script: docker run ${BASE_IMAGE}
 
 test_linter:
     stage: test
-    script:
-        - docker run --rm ${LINTER_IMAGE} --config /src/linter/config.json /src/doc.zih.tu-dresden.de/docs
+    script: docker run ${BASE_IMAGE} util/lint-changes.sh
 
 test_linkchecker:
     stage: test
-    script:
-        - docker network create ${TEST_NETWORK}
-        - docker run -d --rm --name ${TEST_CONTAINER_NAME} --network ${TEST_NETWORK} ${BASE_IMAGE} mkdocs serve --dev-addr 0.0.0.0:8000
-        - sleep 5
-        - docker run --rm --network ${TEST_NETWORK} ${LINKCHECKER_IMAGE} --check-extern --ignore-url=http://0.0.0.0:8000 http://${TEST_CONTAINER_NAME}:8000
-
-cleanup_test:
-    stage: cleanup
-    script:
-        - docker stop ${TEST_CONTAINER_NAME}
-        - docker network rm ${TEST_NETWORK}
-    when: always
-
-cleanup_docker:
-    stage: cleanup
-    script:
-        - docker system prune --force
-
-release:
-    stage: release
-    script:
-        - docker run --rm -v /var/www/html/hpc-wiki:/mnt ${BASE_IMAGE} mkdocs build --site-dir /mnt
-    only:
-        - main
-
-release_preview:
-    stage: release
-    script:
-        - docker run --rm -v /var/www/html/preview:/mnt ${BASE_IMAGE} mkdocs build --site-dir /mnt
-    only:
-        - preview
+    script: docker run ${BASE_IMAGE} util/check-links.sh

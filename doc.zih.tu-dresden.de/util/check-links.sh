@@ -8,11 +8,12 @@
 ##
 ## Author: Martin.Schroschk@tu-dresden.de
 
+set -euo pipefail
+
 usage() {
-  echo "Usage: sh $0"
+  echo "Usage: bash $0"
 }
 
-echo "$#"
 # Any arguments?
 if [ $# -gt 0 ]; then
   usage
@@ -33,15 +34,21 @@ fi
 
 echo "mlc: $mlc"
 
+branch="${CI_MERGE_REQUEST_TARGET_BRANCH_NAME:-}"
+if [ -z "$branch" ]; then
+    branch="preview"
+fi
+
 any_fails=false
 
-for f in $(git diff master --name-only); do
-  if [ ${f: -3} == ".md" ]; then
-	  $mlc -q -p $f
-	if [ "$?" -ne 0 ]; then
-	    any_fails=true
-	fi
+files=$(git diff $branch --name-only)
+for f in $files; do
+  if [ "${f: -3}" == ".md" ]; then
+    echo "Checking links for $f"
+    if ! $mlc -q -p "$f"; then
+        any_fails=true
     fi
+  fi
 done
 
 if [ "$any_fails" == true ]; then
