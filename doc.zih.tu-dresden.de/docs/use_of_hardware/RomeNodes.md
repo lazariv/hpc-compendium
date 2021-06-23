@@ -26,38 +26,42 @@ certain module is available on rome architecture.
 
 First, check what CP2K modules are available in general:
 
+```bash
     $ ml spider CP2K
     #or:
     $ ml avail CP2K/
+```
 
 You will see that there are several different CP2K versions avail, built
 with different toolchains. Now let's assume you have to decided you want
 to run CP2K version 6 at least, so to check if those modules are built
 for rome, use:
 
-    $ ml_arch_avail CP2K/6
-    CP2K/6.1-foss-2019a: haswell, rome
-    CP2K/6.1-foss-2019a-spglib: haswell, rome
-    CP2K/6.1-intel-2018a: sandy, haswell
-    CP2K/6.1-intel-2018a-spglib: haswell
+```bash
+$ ml_arch_avail CP2K/6
+CP2K/6.1-foss-2019a: haswell, rome
+CP2K/6.1-foss-2019a-spglib: haswell, rome
+CP2K/6.1-intel-2018a: sandy, haswell
+CP2K/6.1-intel-2018a-spglib: haswell
+```
 
 There you will see that only the modules built with **foss** toolchain
 are available on architecture "rome", not the ones built with **intel**.
-So you can load e.g.:
-
-    $ ml CP2K/6.1-foss-2019a
+So you can load e.g. `ml CP2K/6.1-foss-2019a`.
 
 Then, when writing your batch script, you have to specify the **romeo**
 partition. Also, if e.g. you wanted to use an entire ROME node (no SMT)
 and fill it with MPI ranks, it could look like this:
 
-    #!/bin/bash
-    #SBATCH --partition=romeo
-    #SBATCH --ntasks-per-node=128
-    #SBATCH --nodes=1
-    #SBATCH --mem-per-cpu=1972
+```bash
+#!/bin/bash
+#SBATCH --partition=romeo
+#SBATCH --ntasks-per-node=128
+#SBATCH --nodes=1
+#SBATCH --mem-per-cpu=1972
 
-    srun cp2k.popt input.inp
+srun cp2k.popt input.inp
+```
 
 ## Using the Intel toolchain on Rome
 
@@ -68,7 +72,9 @@ bad-performaning code. When using the MKL up to version 2019, though,
 you should set the following environment variable to make sure that AVX2
 is used:
 
+```bash
     export MKL_DEBUG_CPU_TYPE=5
+```
 
 Without it, the MKL does a CPUID check and disables AVX2/FMA on
 non-Intel CPUs, leading to much worse performance. **NOTE:** in version
@@ -78,14 +84,18 @@ cover every BLAS function. Also, the Intel AVX2 codepaths still seem to
 provide somewhat better performance, so a new workaround would be to
 overwrite the `mkl_serv_intel_cpu_true` symbol with a custom function:
 
+```c
     int mkl_serv_intel_cpu_true() {
       return 1;
     }
+```
 
 and preloading this in a library:
 
+```bash
     gcc -shared -fPIC -o libfakeintel.so fakeintel.c
     export LD_PRELOAD=libfakeintel.so
+```
 
 As for compiler optimization flags, `-xHOST` does not seem to produce
 best-performing code in every case on Rome. You might want to try
