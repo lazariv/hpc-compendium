@@ -18,12 +18,12 @@ test_mkdocs:
 
 test_linter_preview:
     stage: test
-    script: docker run ${BASE_IMAGE} util/lint-changes.sh
+    script: docker run -w /src ${BASE_IMAGE} doc.zih.tu-dresden.de/util/lint-changes.sh
     only: [ merge_requests ]
 
 test_linkchecker_preview:
     stage: test
-    script: docker run ${BASE_IMAGE} util/check-links.sh
+    script: docker run -w /src ${BASE_IMAGE} doc.zih.tu-dresden.de/util/check-links.sh
     only: [ merge_requests ]
 
 test_linter:
