@@ -1,42 +1,45 @@
 # Intermediate Archive
 
-With the "Intermediate Archive", ZIH is closing the gap between a normal
-disk-based file system and [Longterm Archive](PreservationResearchData).
-The Intermediate Archive is a hierarchical file system with disks for
-buffering and tapes for storing research data.
+With the "Intermediate Archive", ZIH is closing the gap between a normal disk-based file system and
+[Longterm Archive](PreservationResearchData.md). The Intermediate Archive is a hierarchical file
+system with disks for buffering and tapes for storing research data.
 
-Its intended use is the storage of research data for a maximal duration
-of 3 years. For storing the data after exceeding this time, the user has
-to supply essential metadata and migrate the files to the [Longterm
-Archive](PreservationResearchData). Until then, she/he has to keep track
-of her/his files.
+Its intended use is the storage of research data for a maximal duration of 3 years. For storing the
+data after exceeding this time, the user has to supply essential metadata and migrate the files to
+the [Longterm Archive](PreservationResearchData.md). Until then, she/he has to keep track of her/his
+files.
 
 Some more information:
 
--   Maximum file size in the archive is 500 GB (split up your files, see
-    [Datamover](DataMover) )
--   Data will be stored in two copies on tape.
--   The bandwidth to this data is very limited. Hence, this file system
-    must not be used directly as input or output for HPC jobs.
+- Maximum file size in the archive is 500 GB (split up your files, see
+  [Datamover](../data_moving/DataMover.md))
+- Data will be stored in two copies on tape.
+- The bandwidth to this data is very limited. Hence, this file system
+  must not be used directly as input or output for HPC jobs.
 
 ## How to access the "Intermediate Archive"
 
-For storing and restoring your data in/from the "Intermediate Archive"
-you can use the tool [Datamover](DataMover). To use the
-[Datamover](DataMover) you have to login to Taurus
+For storing and restoring your data in/from the "Intermediate Archive" you can use the tool
+[Datamover](../data_moving/DataMover.md). To use the DataMover you have to login to Taurus
 (taurus.hrsk.tu-dresden.de).
 
 ### Store data
 
-    dtcp -r /<directory> /archiv/<project or user>/<directory> # or
-    dtrsync -av /<directory> /archiv/<project or user>/<directory>
+```Shell Session
+dtcp -r /<directory> /archiv/<project or user>/<directory> # or
+dtrsync -av /<directory> /archiv/<project or user>/<directory>
+```
 
 ### Restore data
 
-    dtcp -r /archiv/<project or user>/<directory> /<directory> # or
-    dtrsync -av /archiv/<project or user>/<directory> /<directory>
+```Shell Session
+dtcp -r /archiv/<project or user>/<directory> /<directory> # or
+dtrsync -av /archiv/<project or user>/<directory> /<directory>
+```
 
 ### Examples
 
-    dtcp -r /scratch/rotscher/results /archiv/rotscher/ # or
-    dtrsync -av /scratch/rotscher/results /archiv/rotscher/results
+```Shell Session
+dtcp -r /scratch/rotscher/results /archiv/rotscher/ # or
+dtrsync -av /scratch/rotscher/results /archiv/rotscher/results
+```
