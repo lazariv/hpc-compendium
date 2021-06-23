@@ -1,16 +1,14 @@
 # Taurus
 
-
-
 ## Information about the Hardware
 
 [Detailed information on the current HPC hardware can be found
-here.](HardwareTaurus)
+here.](../use_of_hardware/HardwareTaurus.md)
 
 ## Applying for Access to the System
 
 Project and login application forms for taurus are available
-[here](Access).
+[here](../access.md).
 
 ## Login to the System
 
@@ -25,7 +23,7 @@ Please note that if you store data on the local disk (e.g. under /tmp),
 it will be on only one of the three nodes. If you relogin and the data
 is not there, you are probably on another node.
 
-You can find an list of fingerprints [here](Login#SSH_access).
+You can find an list of fingerprints [here](../access/Login.md#SSH_access).
 
 ## Transferring Data from/to Taurus
 
@@ -48,14 +46,14 @@ contact the Service Desk as well.
 **Phase 2:** The nodes taurusexport\[3,4\] provide access to the
 `/scratch` file system of the second phase.
 
-You can find an list of fingerprints [here](Login#SSH_access).
+You can find an list of fingerprints [here](../access/Login.md#SSH_access).
 
 ## Compiling Parallel Applications
 
 You have to explicitly load a compiler module and an MPI module on
 Taurus. Eg. with `module load GCC OpenMPI`. ( [read more about
-Modules](Compendium.RuntimeEnvironment), [read more about
-Compilers](Compendium.Compilers))
+Modules](../data_management/RuntimeEnvironment.md), **todo link** (read more about
+Compilers)(Compendium.Compilers))
 
 Use the wrapper commands like e.g. `mpicc` (`mpiicc` for intel),
 `mpicxx` (`mpiicpc`) or `mpif90` (`mpiifort`) to compile MPI source
@@ -85,9 +83,9 @@ The batch system on Taurus is Slurm. If you are migrating from LSF
 (deimos, mars, atlas), the biggest difference is that Slurm has no
 notion of batch queues any more.
 
--   [General information on the Slurm batch system](Slurm)
+-   [General information on the Slurm batch system](Slurm.md)
 -   Slurm also provides process-level and node-level [profiling of
-    jobs](Slurm#Job_Profiling)
+    jobs](Slurm.md#Job_Profiling)
 
 ### Partitions
 
@@ -134,7 +132,7 @@ after a given date:
 
 Instead of running one long job, you should split it up into a chain
 job. Even applications that are not capable of chreckpoint/restart can
-be adapted. The HOWTO can be found [here](CheckpointRestart),
+be adapted. The HOWTO can be found [here](../use_of_hardware/CheckpointRestart.md),
 
 ### Memory Limits
 
@@ -179,8 +177,6 @@ libraries (`intelmpi`, `openmpi`) are also available.
 Please pay attention to the messages you get loading the module. They
 are more up-to-date than this manual.
 
-## 
-
 ## GPUs
 
 Island 2 of taurus contains a total of 128 NVIDIA Tesla K80 (dual) GPUs
@@ -207,10 +203,10 @@ The partition hpdlf contains 14 servers. Each of them has:
 Taurus contains sophisticated energy measurement instrumentation.
 Especially HDEEM is available on the haswell nodes of Phase II. More
 detailed information can be found at
-[EnergyMeasurement](EnergyMeasurement).
+**todo link** (EnergyMeasurement)(EnergyMeasurement).
 
 ## Low level optimizations
 
 x86 processsors provide registers that can be used for optimizations and
 performance monitoring. Taurus provides you access to such features via
-the [X86Adapt](X86Adapt) software infrastructure.
+the **todo link** (X86Adapt)(X86Adapt) software infrastructure.
