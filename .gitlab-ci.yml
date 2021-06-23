@@ -5,22 +5,39 @@ variables:
 stages:
     - build
     - test
-    - cleanup
     - release
+
 
 build_linter:
     stage: build
-    script:
-        - docker build -t ${BASE_IMAGE} .
+    script: docker build -t ${BASE_IMAGE} .
 
 test_mkdocs:
     stage: test
     script: docker run ${BASE_IMAGE}
 
-test_linter:
+test_linter_preview:
     stage: test
     script: docker run ${BASE_IMAGE} util/lint-changes.sh
+    only: [ merge_requests ]
+
+test_linkchecker_preview:
+    stage: test
+    script: docker run ${BASE_IMAGE} util/check-links.sh
+    only: [ merge_requests ]
+
+test_linter:
+    stage: test
+    script: docker run ${BASE_IMAGE} markdownlint docs
+    only: [ main ]
 
 test_linkchecker:
     stage: test
-    script: docker run ${BASE_IMAGE} util/check-links.sh
+    script: docker run ${BASE_IMAGE} bash -c "find docs -type f -name '*.md' | xargs -L1 markdown-link-check --quiet"
+    only: [ main ]
+
+release:
+    stage: release
+    script:
+        - docker run --rm -v /var/www/html/hpc-wiki:/mnt ${BASE_IMAGE} mkdocs build --site-dir /mnt
+    only: [ main ]
