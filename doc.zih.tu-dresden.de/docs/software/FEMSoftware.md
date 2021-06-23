@@ -1,11 +1,11 @@
 # FEM Software
 
 For an up-to-date list of the installed software versions on our
-cluster, please refer to [SoftwareModulesList](SoftwareModulesList).
+cluster, please refer to SoftwareModulesList **TODO LINK** (SoftwareModulesList).
 
 ## Abaqus
 
-[ABAQUS](http://www.hks.com) is a general-purpose finite-element program
+[ABAQUS](http://www.hks.com) **TODO links to realestate site** is a general-purpose finite-element program
 designed for advanced linear and nonlinear engineering analysis
 applications with facilities for linking-in user developed material
 models, elements, friction laws, etc.
@@ -14,14 +14,14 @@ Eike Dohmen (from Inst.f. Leichtbau und Kunststofftechnik) sent us the
 attached description of his ABAQUS calculations. Please try to adapt
 your calculations in that way.\<br />Eike is normally a Windows-User and
 his description contains also some hints for basic Unix commands. (
-[ABAQUS-SLURM.pdf](%ATTACHURL%/ABAQUS-SLURM.pdf) - only in German)
+ABAQUS-SLURM.pdf **TODO LINK** (%ATTACHURL%/ABAQUS-SLURM.pdf) - only in German)
 
 Please note: Abaqus calculations should be started with a batch script.
-Please read the information about the [Batch System](BatchSystems)
+Please read the information about the Batch System **TODO LINK **  (BatchSystems)
 SLURM.
 
 The detailed Abaqus documentation can be found at
-<http://doc.zih.tu-dresden.de/abaqus> (only accessible from within the
+abaqus **TODO LINK MISSING** (only accessible from within the
 TU Dresden campus net).
 
 \*Example - Thanks to Benjamin Groeger, Inst. f. Leichtbau und
@@ -29,7 +29,7 @@ Kunststofftechnik) \*
 
 1\. Prepare an Abaqus input-file (here the input example from Benjamin)
 
-[Rot-modell-BenjaminGroeger.inp](%ATTACHURL%/Rot-modell-BenjaminGroeger.inp)
+Rot-modell-BenjaminGroeger.inp **TODO LINK**  (%ATTACHURL%/Rot-modell-BenjaminGroeger.inp)
 
 2\. Prepare a batch script on taurus like this
 
@@ -60,7 +60,7 @@ CFX](http://www.ansys.com) used to be separate packages in the past and
 are now combined.
 
 ANSYS, like all other installed software, is organized in so-called
-[modules](RuntimeEnvironment). To list the available versions and load a
+modules **TODO LINK** (RuntimeEnvironment). To list the available versions and load a
 particular ANSYS version, type
 
 ```
@@ -85,7 +85,7 @@ runwb2
 ```
 
 If more time is needed, a CPU has to be allocated like this (see topic
-[batch systems](BatchSystems) for further information):
+batch systems **TODO LINK** (BatchSystems) for further information):
 
 ```
 module load ANSYS/VERSION  
@@ -95,11 +95,11 @@ runwb2
 
 **Note:** The software NICE Desktop Cloud Visualization (DCV) enables to
 remotly access OpenGL-3D-applications running on taurus using its GPUs
-(cf. [virtual desktops](Compendium.VirtualDesktops)). Using ANSYS
+(cf. virtual desktops **TODO LINK** (Compendium.VirtualDesktops)). Using ANSYS
 together with dcv works as follows:
 
--   Follow the instructions within [virtual
-    desktops](Compendium.VirtualDesktops)
+-   Follow the instructions within virtual
+    desktops **TODO LINK** (Compendium.VirtualDesktops)
 -   \<pre> module load ANSYS\</pre>
 -   \<pre> unset SLURM_GTIDS\</pre>
 -   Note the hints w.r.t. GPU support on dcv side
@@ -141,11 +141,11 @@ to enter it into an XML file in your home. This setting will then be
 used for all your runwb2 jobs. While it is also possible to edit this
 setting via the Mechanical GUI, experience shows that this can be
 problematic via X-Forwarding and we only managed to use the GUI properly
-via [DCV](DesktopCloudVisualization), so we recommend you simply edit
+via DCV **TODO LINK** (DesktopCloudVisualization), so we recommend you simply edit
 the XML file directly with a text editor of your choice. It is located
 under:
 
-*$HOME/.mw/Application Data/Ansys/v181/SolveHandlers.xml*
+'*$HOME/.mw/Application Data/Ansys/v181/SolveHandlers.xml*'
 
 (mind the space in there.) You might have to adjust the ANSYS Version
 (v181) in the path. In this file, you can find the parameter
@@ -163,7 +163,8 @@ match your used --cpus-per-task parameter in your sbatch script.
 finite element analysis, solver and Simulation software package for
 various physics and engineering applications, especially coupled
 phenomena, or multiphysics."
-[\[http://en.wikipedia.org/wiki/COMSOL_Multiphysics Wikipedia]([http://en.wikipedia.org/wiki/COMSOL_Multiphysics Wikipedia)
+[\[http://en.wikipedia.org/wiki/COMSOL_Multiphysics Wikipedia]
+([http://en.wikipedia.org/wiki/COMSOL_Multiphysics Wikipedia)
 \]
 
 Comsol may be used remotely on ZIH machines or locally on the desktop,
