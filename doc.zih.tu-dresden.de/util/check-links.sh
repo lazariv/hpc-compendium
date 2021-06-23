@@ -41,7 +41,7 @@ fi
 
 any_fails=false
 
-files=$(git diff $branch --name-only)
+files=$(git diff --name-only "$(git merge-base HEAD "$branch")")
 for f in $files; do
   if [ "${f: -3}" == ".md" ]; then
     echo "Checking links for $f"
