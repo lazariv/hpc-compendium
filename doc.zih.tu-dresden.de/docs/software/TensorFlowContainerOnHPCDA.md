@@ -44,10 +44,10 @@ is a Virtual Machine (VM) on the ml partition which allows users to gain
 root permissions in an isolated environment. There are two main options
 on how to work with VM on Taurus:
 
-1\. [VM tools](VMTools). Automative algorithms for using virtual
+1\. [VM tools](VMTools.md). Automative algorithms for using virtual
 machines;
 
-2\. [Manual method](Cloud). It required more operations but gives you
+2\. [Manual method](Cloud.md). It required more operations but gives you
 more flexibility and reliability.
 
 Short algorithm to run the virtual machine manually:

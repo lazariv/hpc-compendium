@@ -3,8 +3,6 @@
 %RED%Note: This page is under construction<span
 class="twiki-macro ENDCOLOR"></span>
 
-
-
 Disclaimer: This page dedicates a specific question. For more general
 questions please check the JupyterHub webpage.
 
@@ -21,8 +19,7 @@ with HPC or Linux. \</span>
 basic knowledge about Python, SLURM system and the Jupyter notebook.
 
 \<span style="font-size: 1em;"> **This page aims** to introduce users on
-how to start working with TensorFlow on the \</span>\<a href="HPCDA"
-target="\_self">HPC-DA\</a>\<span style="font-size: 1em;"> system - part
+how to start working with TensorFlow on the [HPCDA](../jobs/HPCDA.md) system - part
 of the TU Dresden HPC system with a graphical interface.\</span>
 
 ## Get started with Jupyter notebook
@@ -38,13 +35,10 @@ work Jupyter notebooks using HPC. \</span>
 -   \<span style="font-size: 1em;">There is \</span>**\<a
     href="JupyterHub" target="\_self">jupyterhub\</a>** on Taurus, where
     you can simply run your Jupyter notebook on HPC nodes. JupyterHub is
-    available here: \<a
-    href="<https://taurus.hrsk.tu-dresden.de/jupyter>"
-    target="\_top"><https://taurus.hrsk.tu-dresden.de/jupyter>\</a>
+    available [here](https://taurus.hrsk.tu-dresden.de/jupyter)
 -   For more specific cases you can run a manually created **remote
     jupyter server.** \<span style="font-size: 1em;"> You can find the
-    manual server setup \</span>\<a href="DeepLearning"
-    target="\_blank">here.\</a>
+    manual server setup [here](DeepLearning.md).
 
 \<span style="font-size: 13px;">Keep in mind that with Jupyterhub you
 can't work with some special instruments. However general data analytics
@@ -69,28 +63,24 @@ environment](https://docs.python.org/3/glossary.html#term-virtual-environment)
 is a self-contained directory tree that contains a Python installation
 for a particular version of Python, plus several additional packages. At
 its core, the main purpose of Python virtual environments is to create
-an isolated environment for Python projects. \<span style="font-size:
-1em;">Python virtual environment is the main method to work with Deep
-Learning software as TensorFlow on the \</span>\<a href="HPCDA"
-target="\_self">HPC-DA\</a>\<span style="font-size: 1em;">
-system.\</span>
+an isolated environment for Python projects. Python virtual environment is
+the main method to work with Deep Learning software as TensorFlow on the 
+[HPCDA](../jobs/HPCDA.md) system.
 
 ### Conda and Virtualenv
 
 There are two methods of how to work with virtual environments on
-Taurus.\<br />**Vitualenv (venv)**\<span style="font-size: 1em;"> is a
+Taurus. **Vitualenv (venv)** is a
 standard Python tool to create isolated Python environments. We
 recommend using venv to work with Tensorflow and Pytorch on Taurus. It
-has been integrated into the standard library under the \</span>\<a
-href="<https://docs.python.org/3/library/venv.html>"
-target="\_blank">venv module\</a>\<span style="font-size: 1em;">.
+has been integrated into the standard library under 
+the [venv](https://docs.python.org/3/library/venv.html).
 However, if you have reasons (previously created environments etc) you
 could easily use conda. The conda is the second way to use a virtual
-environment on the Taurus. \</span>\<a
-href="<https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html>"
-target="\_blank">Conda\</a>\<span style="font-size: 1em;"> is an
-open-source package management system and environment management system
-from the Anaconda.\</span>
+environment on the Taurus. 
+[Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) 
+is an open-source package management system and environment management system
+from the Anaconda.
 
 **Note:** Keep in mind that you **can not** use conda for working with
 the virtual environments previously created with Vitualenv tool and vice
@@ -123,11 +113,11 @@ Now you can check the working capacity of the current environment.
 ### Install Ipykernel
 
 Ipykernel is an interactive Python shell and a Jupyter kernel to work
-with Python code in Jupyter notebooks. \<span style="font-size:
-1em;">The IPython kernel is the Python execution backend for Jupyter.
-\</span>\<span style="font-size: 1em;">The Jupyter Notebook
-automatically ensures that the IPython kernel is available.\</span>
+with Python code in Jupyter notebooks. The IPython kernel is the Python 
+execution backend for Jupyter. The Jupyter Notebook
+automatically ensures that the IPython kernel is available.
 
+```
     (env) bash-4.2$ pip install ipykernel                        #example output: Collecting ipykernel
     ...
                                                                  #example output: Successfully installed ... ipykernel-5.1.0 ipython-7.5.0 ...
@@ -136,6 +126,7 @@ automatically ensures that the IPython kernel is available.\</span>
 
                                               #example output: Installed kernelspec my-kernel in .../.local/share/jupyter/kernels/env
     [install now additional packages for your notebooks]
+```
 
 Deactivate the virtual environment
 
@@ -154,17 +145,13 @@ with jupyterhub and tensorflow models. It can be useful and instructive
 to start your acquaintance with Tensorflow and HPC-DA system from these
 simple examples.
 
-You can use a [remote Jupyter server](DeepLearning) or \<a
-href="JupyterHub" target="\_blank">Jupyterhub\</a>. For simplicity, we
+You can use a [remote Jupyter server](JupyterHub.md). For simplicity, we
 will recommend using Jupyterhub for our examples.
 
-JupyterHub is available here: \<a
-href="<https://taurus.hrsk.tu-dresden.de/jupyter>"
-target="\_top"><https://taurus.hrsk.tu-dresden.de/jupyter>\</a>
+JupyterHub is available [here](https://taurus.hrsk.tu-dresden.de/jupyter)
 
-Please check updates and details \<a href="JupyterHub"
-target="\_blank">JupyterHub page\</a>. However, the general pipeline can
-be briefly explained as follows.
+Please check updates and details [JupyterHub](JupyterHub.md). However, 
+the general pipeline can be briefly explained as follows.
 
 After logging, you can start a new session and configure it. There are
 simple and advanced forms to set up your session. On the simple form,
@@ -172,7 +159,7 @@ you have to choose the "IBM Power (ppc64le)" architecture. You can
 select the required number of CPUs and GPUs. For the acquaintance with
 the system through the examples below the recommended amount of CPUs and
 1 GPU will be enough. With the advanced form, you can use the
-configuration with 1 GPU and 7 CPUs. To access for all your workspaces
+configuration with 1 GPU and 7 CPUs. To access all your workspaces
 use " / " in the workspace scope.
 
 You need to download the file with a jupyter notebook that already
@@ -180,31 +167,26 @@ contains all you need for the start of the work. Please put the file
 into your previously created virtual environment in your working
 directory or use the kernel for your notebook.
 
-\<span style="font-size: 1em;">Note: You could work with simple examples
-in your home directory but according to \</span>\<a
-href="HPCStorageConcept2019" target="\_blank">New storage
-concept\</a>**\<span style="font-size: 1em;"> please use \</span>\<a
-href="WorkSpaces" target="\_blank">workspaces\</a>**\<span
-style="font-size: 1em;">** for your study and work projects**. For this
-reason, you have to use advanced options and put "/" in "Workspace
-scope" field.\</span>
+Note: You could work with simple examples in your home directory but according to 
+[new storage concept](../data_management/HPCStorageConcept2019.md) please use 
+[workspaces](../data_management/workspaces.md) for your study and work projects**. 
+For this reason, you have to use advanced options and put "/" in "Workspace scope" field.
 
 To download the first example (from the list below) into your previously
 created virtual environment you could use the following command:
 
+```
     ws_list
     cd <name_of_your_workspace>                  #go to workspace
 
     wget https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/TensorFlowOnJupyterNotebook/Mnistmodel.zip
     unzip Example_TensorFlow_Automobileset.zip
+```
 
-\<span style="font-size: 1em;">Also, you could use kernels for all
-notebooks, not only for them which placed in your virtual environment.
-See the \</span>\<a href="JupyterHub"
-target="\_blank">jupyterhub\</a>\<span style="font-size: 1em;">
-page.\</span>
+Also, you could use kernels for all notebooks, not only for them which placed 
+in your virtual environment. See the [jupyterhub](JupyterHub.md) page.
 
-Examples:
+### Examples:
 
 1\. Simple MNIST model. The MNIST database is a large database of
 handwritten digits that is commonly used for \<a
@@ -217,12 +199,9 @@ Keras allow us to import and download the MNIST dataset directly from
 their API. Recommended parameters for running this model is 1 GPU and 7
 cores (28 thread)
 
-[https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/TensorFlowOnJupyterNotebook/Mnistmodel.zip](%ATTACHURL%/Mnistmodel.zip)
+[doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/TensorFlowOnJupyterNotebook/Mnistmodel.zip]**todo**(Mnistmodel.zip)
 
-#### 
-
-\<span style="color: #222222; font-size: 1.154em;">Running the
-model\</span>
+### Running the model
 
 \<span style="font-size: 1em;">Documents are organized with tabs and a
 very versatile split-screen feature. On the left side of the screen, you
@@ -233,11 +212,9 @@ command for running one cell Shift+Enter'. Also, you could run all cells
 with the command 'run all cells' how presented on the picture
 below\</span>
 
-\<img alt="Screenshot_from_2019-09-03_15-20-16.png" height="250"
-src="%ATTACHURL%/Screenshot_from_2019-09-03_15-20-16.png"
+**todo** \<img alt="Screenshot_from_2019-09-03_15-20-16.png" height="250"
+src="Screenshot_from_2019-09-03_15-20-16.png"
 title="Screenshot_from_2019-09-03_15-20-16.png" width="436" />
-
-#### 
 
 #### Additional advanced models
 
@@ -249,7 +226,7 @@ model created to present how to work with a jupyter notebook for the
 TensorFlow models. Recommended parameters for running this model is 1
 GPU and 7 cores (28 thread)
 
-[https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/TensorFlowOnJupyterNotebook/Example_TensorFlow_Automobileset.zip](%ATTACHURL%/Example_TensorFlow_Automobileset.zip)
+[doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/TensorFlowOnJupyterNotebook/Example_TensorFlow_Automobileset.zip]**todo**(Example_TensorFlow_Automobileset.zip)
 
 2\. The regression model uses the
 [dataset](https://archive.ics.uci.edu/ml/datasets/Beijing+PM2.5+Data)
@@ -258,7 +235,7 @@ The data set contains almost 50 thousand on instances and therefore
 needs more computational effort. Recommended parameters for running this
 model is 1 GPU and 7 cores (28 threads)
 
-[https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/TensorFlowOnJupyterNotebook/Example_TensorFlow_Meteo_airport.zip](%ATTACHURL%/Example_TensorFlow_Meteo_airport.zip)
+[doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/TensorFlowOnJupyterNotebook/Example_TensorFlow_Meteo_airport.zip]**todo**(Example_TensorFlow_Meteo_airport.zip)
 
 **Note**: All examples created only for study purposes. The main aim is
 to introduce users of the HPC-DA system of TU-Dresden with TensorFlow
@@ -266,21 +243,10 @@ and Jupyter notebook. Examples do not pretend to completeness or
 science's significance. Feel free to improve the models and use them for
 your study.
 
--- Main.AndreiPolitov - 2019-08-27
-
--   [Mnistmodel.zip](%ATTACHURL%/Mnistmodel.zip): Mnistmodel.zip
--   [Example_TensorFlow_Automobileset.zip](%ATTACHURL%/Example_TensorFlow_Automobileset.zip):
+-   [Mnistmodel.zip]**todo**(Mnistmodel.zip): Mnistmodel.zip
+-   [Example_TensorFlow_Automobileset.zip]**todo**(Example_TensorFlow_Automobileset.zip):
     Example_TensorFlow_Automobileset.zip
--   [Example_TensorFlow_Meteo_airport.zip](%ATTACHURL%/Example_TensorFlow_Meteo_airport.zip):
+-   [Example_TensorFlow_Meteo_airport.zip]**todo**(Example_TensorFlow_Meteo_airport.zip):
     Example_TensorFlow_Meteo_airport.zip
--   [Example_TensorFlow_3D_road_network.zip](%ATTACHURL%/Example_TensorFlow_3D_road_network.zip):
-    Example_TensorFlow_3D_road_network.zip \<div style="visibility:
-    visible; left: -318px; top: 2579px; opacity: 1;"> \</div> \<div
-    style="visibility: visible; left: 73px; top: 3248px; opacity: 1;">
-    \</div>
-
-\<div style="visibility: visible; left: 46px; top: 3464px; opacity: 1;">
-\</div> \<div id="gtx-anchor" style="position: absolute; visibility:
-hidden; left: 236.9px; top: 1861.9px; width: 65.8px; height: 14.4px;">
-\</div> \<div style="visibility: visible; left: -289px; top: 1886px;
-opacity: 1;"> \</div>
+-   [Example_TensorFlow_3D_road_network.zip]**todo**(Example_TensorFlow_3D_road_network.zip):
+    Example_TensorFlow_3D_road_network.zip 
