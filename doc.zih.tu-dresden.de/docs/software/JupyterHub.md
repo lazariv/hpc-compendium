@@ -6,9 +6,7 @@ work with jupyter notebooks on Taurus.
 Subpages:
 
 -   [JupyterHub for Teaching (git-pull feature, quickstart links, direct
-    links to notebook files)](Compendium.JupyterHubForTeaching)
-
-
+    links to notebook files)](JupyterHubForTeaching.md)
 
 ## Disclaimer
 
@@ -21,7 +19,7 @@ support in every case.
 ## Access
 
 **%RED%NOTE:%ENDCOLOR%** This service is only available for users with
-an active HPC project. See [here](Access) how to apply for an HPC
+an active HPC project. See [here](../access.md) how to apply for an HPC
 project.
 
 JupyterHub is available here:\<br />
@@ -43,10 +41,10 @@ For advanced users we have an extended form where you can change many
 settings. You can:
 
 -   modify Slurm parameters to your needs ( [more about
-    Slurm](Compendium.Slurm))
+    Slurm](../jobs/Slurm.md))
 -   assign your session to a project or reservation
 -   load modules from the [LMOD module
-    system](Compendium.RuntimeEnvironment)
+    system](../data_management/RuntimeEnvironment.md)
 -   choose a different standard environment (in preparation for future
     software updates or testing additional features)
 
@@ -162,8 +160,8 @@ This message often appears instantly if your Slurm parameters are not
 valid. Please check those settings against the available hardware.
 Useful pages for valid Slurm parameters:
 
--   [Slurm batch system (Taurus)](SystemTaurus#Batch_System)
--   [General information how to use Slurm](Slurm)
+-   [Slurm batch system (Taurus)] **TODO LINK** (../jobs/SystemTaurus#Batch_System)
+-   [General information how to use Slurm](../jobs/Slurm.md)
 
 ### Error message in JupyterLab
 
@@ -194,7 +192,7 @@ exact standard environment through the spawner form:
 
 \<img alt="environment_package_list.png"
 src="%ATTACHURL%/environment_package_list.png" style="border: 1px solid
-#888;" title="JupyterHub environment package list" />
+\#888;" title="JupyterHub environment package list" />
 
 This list shows all packages of the currently selected conda
 environment. This depends on your settings for partition (cpu
@@ -226,7 +224,7 @@ Here's a short list of some included software:
 
 \* generic = all partitions except ml
 
-\*\* R is loaded from the [module system](Compendium.RuntimeEnvironment)
+\*\* R is loaded from the [module system](../data_management/RuntimeEnvironment.md)
 
 ### Creating and using your own environment
 
@@ -293,13 +291,13 @@ venv is the preferred way to create a Python virtual environment.
 #### Conda environment
 
 Load the needed module for Intel nodes
-
+'''
     $ module load Anaconda3
-
+'''
 ... or for IBM nodes (ml partition):
-
+'''
     $ module load PythonAnaconda
-
+'''
 Continue with environment creation, package installation and kernel
 registration:
 
