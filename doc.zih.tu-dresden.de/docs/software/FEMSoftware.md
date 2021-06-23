@@ -202,7 +202,8 @@ match your used --cpus-per-task parameter in your sbatch script.
 finite element analysis, solver and Simulation software package for
 various physics and engineering applications, especially coupled
 phenomena, or multiphysics."
-[\[http://en.wikipedia.org/wiki/COMSOL_Multiphysics Wikipedia\]](http://en.wikipedia.org/wiki/COMSOL_Multiphysics Wikipedia)
+[\[http://en.wikipedia.org/wiki/COMSOL_Multiphysics Wikipedia\]]
+(http://en.wikipedia.org/wiki/COMSOL_Multiphysics Wikipedia)
 
 Comsol may be used remotely on ZIH machines or locally on the desktop,
 using ZIH license server.
