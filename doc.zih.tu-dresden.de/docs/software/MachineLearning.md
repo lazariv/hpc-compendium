@@ -1,11 +1,11 @@
-## Machine Learning
+# Machine Learning
 
 On the machine learning nodes, you can use the tools from [IBM Power
-AI](PowerAI).
+AI](PowerAI.md). 
 
-### Interactive Session Examples
+## Interactive Session Examples
 
-#### Tensorflow-Test
+### Tensorflow-Test
 
     tauruslogin6 :~> srun -p ml --gres=gpu:1 -n 1 --pty --mem-per-cpu=10000 bash
     srun: job 4374195 queued and waiting for resources
@@ -22,7 +22,7 @@ AI](PowerAI).
 
 Or to use the whole node: `--gres=gpu:6 --exclusive --pty`
 
-##### In Singularity container:
+### In Singularity container:
 
     rotscher@tauruslogin6:~&gt; srun -p ml --gres=gpu:6 --pty bash
     [rotscher@taurusml22 ~]$ singularity shell --nv /scratch/singularity/powerai-1.5.3-all-ubuntu16.04-py3.img
@@ -30,7 +30,7 @@ Or to use the whole node: `--gres=gpu:6 --exclusive --pty`
     Singularity powerai-1.5.3-all-ubuntu16.04-py3.img:~&gt; . /opt/DL/tensorflow/bin/tensorflow-activate
     Singularity powerai-1.5.3-all-ubuntu16.04-py3.img:~&gt; tensorflow-test
 
-### Additional libraries
+## Additional libraries
 
 The following NVIDIA libraries are available on all nodes:
 
