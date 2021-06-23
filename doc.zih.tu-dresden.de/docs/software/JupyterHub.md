@@ -6,9 +6,7 @@ work with jupyter notebooks on Taurus.
 Subpages:
 
 -   [JupyterHub for Teaching (git-pull feature, quickstart links, direct
-    links to notebook files)](Compendium.JupyterHubForTeaching)
-
-
+    links to notebook files)](JupyterHubForTeaching.md)
 
 ## Disclaimer
 
@@ -20,22 +18,22 @@ support in every case.
 
 ## Access
 
-**%RED%NOTE:%ENDCOLOR%** This service is only available for users with
-an active HPC project. See [here](Access) how to apply for an HPC
+<span style="color:red">**NOTE**</span> This service is only available for users with
+an active HPC project. See [here](../access.md) how to apply for an HPC
 project.
 
-JupyterHub is available here:\<br />
+JupyterHub is available here:\
 <https://taurus.hrsk.tu-dresden.de/jupyter>
 
 ## Start a session
 
-Start a new session by clicking on the \<img alt="" height="24"
+Start a new session by clicking on the **TODO ADD IMAGE** \<img alt="" height="24"
 src="%ATTACHURL%/start_my_server.png" /> button.
 
 A form opens up where you can customize your session. Our simple form
 offers you the most important settings to start quickly.
 
-\<a href="%ATTACHURL%/simple_form.png">\<img alt="session form"
+**TODO ADD IMAGE** \<a href="%ATTACHURL%/simple_form.png">\<img alt="session form"
 src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/simple_form.png>"
 style="border: 1px solid #888;" title="simple form" width="400" />\</a>
 
@@ -43,14 +41,14 @@ For advanced users we have an extended form where you can change many
 settings. You can:
 
 -   modify Slurm parameters to your needs ( [more about
-    Slurm](Compendium.Slurm))
+    Slurm](../jobs/Slurm.md))
 -   assign your session to a project or reservation
 -   load modules from the [LMOD module
-    system](Compendium.RuntimeEnvironment)
+    system](../data_management/RuntimeEnvironment.md)
 -   choose a different standard environment (in preparation for future
     software updates or testing additional features)
 
-\<a href="%ATTACHURL%/advanced_form_nov2019.png">\<img alt="session
+**TODO ADD IMAGE** \<a href="%ATTACHURL%/advanced_form_nov2019.png">\<img alt="session
 form"
 src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/advanced_form_nov2019.png>"
 style="border: 1px solid #888;" title="advanced form" width="400"
@@ -61,9 +59,9 @@ saved in your browser and are lost if you delete your browsing data. Use
 the import/export feature (available through the button) to save your
 presets in text files.
 
-Note: the \<a
-href`"https://doc.zih.tu-dresden.de/hpc-wiki/bin/view/Compendium/AlphaCentauri" target="_blank"> ==alpha=`
-\</a> partition is available only in the extended form.
+Note: the [<span style="color:blue">**alpha**</span>]
+(https://doc.zih.tu-dresden.de/hpc-wiki/bin/view/Compendium/AlphaCentauri) 
+partition is available only in the extended form.
 
 ## Applications
 
@@ -71,7 +69,7 @@ You can choose between JupyterLab or the classic notebook app.
 
 ### JupyterLab
 
-\<a href="%ATTACHURL%/jupyterlab_app.png">\<img alt="jupyterlab app"
+**TODO ADD IMAGE** \<a href="%ATTACHURL%/jupyterlab_app.png">\<img alt="jupyterlab app"
 src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/jupyterlab_app.png>"
 style="border: 1px solid #888;" title="JupyterLab overview" width="400"
 />\</a>
@@ -89,13 +87,13 @@ several views:
 
 ### Classic notebook
 
-\<a href="%ATTACHURL%/jupyter_notebook_app_filebrowser.png">\<img
+**TODO ADD IMAGE** \<a href="%ATTACHURL%/jupyter_notebook_app_filebrowser.png">\<img
 alt="filebrowser in jupyter notebook server" width="400"
 src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/jupyter_notebook_app_filebrowser.png>"
 style="border: 1px solid #888;" title="Classic notebook (file browser)"
 />\</a>
 
-\<a href="%ATTACHURL%/jupyter_notebook_example_matplotlib.png">\<img
+**TODO ADD IMAGE** \<a href="%ATTACHURL%/jupyter_notebook_example_matplotlib.png">\<img
 alt="jupyter_notebook_example_matplotlib" width="400"
 src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/jupyter_notebook_example_matplotlib.png>"
 style="border: 1px solid #888;" title="Classic notebook (matplotlib
@@ -130,19 +128,19 @@ At first you have to open the JupyterHub control panel.
 also click on "Hub Control Panel" which opens the control panel in a new
 tab instead.
 
-\<a href="%ATTACHURL%/jupyterlab_logout.png">\<img alt="" height="400"
+**TODO ADD IMAGE** \<a href="%ATTACHURL%/jupyterlab_logout.png">\<img alt="" height="400"
 src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/jupyterlab_logout.png>"
 style="border: 1px solid #888;" title="JupyterLab logout button"/>\</a>
 
 **Classic notebook**: Click on the control panel button on the top right
 of your screen.
 
-\<img alt="" src="%ATTACHURL%/notebook_app_control_panel_btn.png"
+**TODO ADD IMAGE** \<img alt="" src="%ATTACHURL%/notebook_app_control_panel_btn.png"
 style="border: 1px solid #888;" title="Classic notebook (control panel
 button)" />
 
 Now you are back on the JupyterHub page and you can stop your server by
-clicking on \<img alt="" height="24"
+clicking on **TODO ADD IMAGE** \<img alt="" height="24"
 src="%ATTACHURL%/stop_my_server.png" title="Stop button" />.
 
 ## Error handling
@@ -152,7 +150,7 @@ you need help open a ticket at HPC support.
 
 ### Error while starting a session
 
-\<a href="%ATTACHURL%/error_batch_job_submission_failed.png">\<img
+**TODO ADD IMAGE** \<a href="%ATTACHURL%/error_batch_job_submission_failed.png">\<img
 alt="" width="400"
 src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/error_batch_job_submission_failed.png>"
 style="border: 1px solid #888;" title="Error message: Batch job
@@ -162,12 +160,12 @@ This message often appears instantly if your Slurm parameters are not
 valid. Please check those settings against the available hardware.
 Useful pages for valid Slurm parameters:
 
--   [Slurm batch system (Taurus)](SystemTaurus#Batch_System)
--   [General information how to use Slurm](Slurm)
+-   [Slurm batch system (Taurus)] **TODO LINK** (../jobs/SystemTaurus#Batch_System)
+-   [General information how to use Slurm](../jobs/Slurm.md)
 
 ### Error message in JupyterLab
 
-\<a href="%ATTACHURL%/jupyterlab_error_directory_not_found.png">\<img
+**TODO ADD IMAGE** \<a href="%ATTACHURL%/jupyterlab_error_directory_not_found.png">\<img
 alt="" width="400"
 src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/jupyterlab_error_directory_not_found.png>"
 style="border: 1px solid #888;" title="Error message: Directory not
@@ -192,9 +190,9 @@ PowerAI)](https://developer.ibm.com/linuxonpower/deep-learning-powerai/)
 package suite. You can open a list with all included packages of the
 exact standard environment through the spawner form:
 
-\<img alt="environment_package_list.png"
+**TODO ADD IMAGE** \<img alt="environment_package_list.png"
 src="%ATTACHURL%/environment_package_list.png" style="border: 1px solid
-#888;" title="JupyterHub environment package list" />
+\#888;" title="JupyterHub environment package list" />
 
 This list shows all packages of the currently selected conda
 environment. This depends on your settings for partition (cpu
@@ -226,7 +224,7 @@ Here's a short list of some included software:
 
 \* generic = all partitions except ml
 
-\*\* R is loaded from the [module system](Compendium.RuntimeEnvironment)
+\*\* R is loaded from the [module system](../data_management/RuntimeEnvironment.md)
 
 ### Creating and using your own environment
 
@@ -263,74 +261,82 @@ venv is the preferred way to create a Python virtual environment.
 
 #### Python virtualenv
 
-    $ module load Python/3.8.6-GCCcore-10.2.0
+```bash
+$ module load Python/3.8.6-GCCcore-10.2.0
 
-    $ mkdir user-kernel         #please use Workspaces!
+$ mkdir user-kernel         #please use Workspaces!
 
-    $ cd user-kernel
+$ cd user-kernel
 
-    $ virtualenv --system-site-packages my-kernel
-    Using base prefix '/sw/installed/Python/3.6.6-fosscuda-2018b'
-    New python executable in .../user-kernel/my-kernel/bin/python
-    Installing setuptools, pip, wheel...done.
+$ virtualenv --system-site-packages my-kernel
+Using base prefix '/sw/installed/Python/3.6.6-fosscuda-2018b'
+New python executable in .../user-kernel/my-kernel/bin/python
+Installing setuptools, pip, wheel...done.
 
-    $ source my-kernel/bin/activate
+$ source my-kernel/bin/activate
 
-    (my-kernel) $ pip install ipykernel
-    Collecting ipykernel
-    ...
-    Successfully installed ... ipykernel-5.1.0 ipython-7.5.0 ...
+(my-kernel) $ pip install ipykernel
+Collecting ipykernel
+...
+Successfully installed ... ipykernel-5.1.0 ipython-7.5.0 ...
 
-    (my-kernel) $ pip install --upgrade pip
+(my-kernel) $ pip install --upgrade pip
 
-    (my-kernel) $ python -m ipykernel install --user --name my-kernel --display-name="my kernel"
-    Installed kernelspec my-kernel in .../.local/share/jupyter/kernels/my-kernel
+(my-kernel) $ python -m ipykernel install --user --name my-kernel --display-name="my kernel"
+Installed kernelspec my-kernel in .../.local/share/jupyter/kernels/my-kernel
 
-    [now install additional packages for your notebooks]
+[now install additional packages for your notebooks]
 
-    (my-kernel) $ deactivate
+(my-kernel) $ deactivate
+```
 
 #### Conda environment
 
 Load the needed module for Intel nodes
 
-    $ module load Anaconda3
+```
+module load Anaconda3
+```
 
 ... or for IBM nodes (ml partition):
 
-    $ module load PythonAnaconda
+```
+module load PythonAnaconda
+```
 
 Continue with environment creation, package installation and kernel
 registration:
 
-    $ mkdir user-kernel         #please use Workspaces!
+```
+$ mkdir user-kernel         #please use Workspaces!
 
-    $ conda create --prefix /home/<USER>/user-kernel/my-kernel python=3.6
-    Collecting package metadata: done
-    Solving environment: done
-    [...]
+$ conda create --prefix /home/<USER>/user-kernel/my-kernel python=3.6
+Collecting package metadata: done
+Solving environment: done
+[...]
 
-    $ conda activate /home/<USER>/user-kernel/my-kernel
+$ conda activate /home/<USER>/user-kernel/my-kernel
 
-    $ conda install ipykernel
-    Collecting package metadata: done
-    Solving environment: done
-    [...]
+$ conda install ipykernel
+Collecting package metadata: done
+Solving environment: done
+[...]
 
-    $ python -m ipykernel install --user --name my-kernel --display-name="my kernel"
-    Installed kernelspec my-kernel in [...]
+$ python -m ipykernel install --user --name my-kernel --display-name="my kernel"
+Installed kernelspec my-kernel in [...]
 
-    [now install additional packages for your notebooks]
+[now install additional packages for your notebooks]
 
-    $ conda deactivate
+$ conda deactivate
+```
 
 Now you can start a new session and your kernel should be available.
 
-\*In JupyterLab\*:
+**In JupyterLab**:
 
 Your kernels are listed on the launcher page:
 
-\<a href="%ATTACHURL%/user-kernel_in_jupyterlab_launcher.png">\<img
+**TODO ADD IMAGE**\<a href="%ATTACHURL%/user-kernel_in_jupyterlab_launcher.png">\<img
 alt="jupyterlab_app.png" height="410"
 src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/user-kernel_in_jupyterlab_launcher.png>"
 style="border: 1px solid #888;" title="JupyterLab kernel launcher
@@ -338,7 +344,7 @@ list"/>\</a>
 
 You can switch kernels of existing notebooks in the menu:
 
-\<a href="%ATTACHURL%/jupyterlab_change_kernel.png">\<img
+**TODO ADD IMAGE** \<a href="%ATTACHURL%/jupyterlab_change_kernel.png">\<img
 alt="jupyterlab_app.png"
 src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/jupyterlab_change_kernel.png>"
 style="border: 1px solid #888;" title="JupyterLab kernel switch"/>\</a>
@@ -347,7 +353,7 @@ style="border: 1px solid #888;" title="JupyterLab kernel switch"/>\</a>
 
 Your kernel is listed in the New menu:
 
-\<a href="%ATTACHURL%/user-kernel_in_jupyter_notebook.png">\<img
+**TODO ADD IMAGE** \<a href="%ATTACHURL%/user-kernel_in_jupyter_notebook.png">\<img
 alt="jupyterlab_app.png"
 src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/user-kernel_in_jupyter_notebook.png>"
 style="border: 1px solid #888;" title="Classic notebook (create notebook
@@ -355,7 +361,7 @@ with new kernel)"/>\</a>
 
 You can switch kernels of existing notebooks in the kernel menu:
 
-\<a href="%ATTACHURL%/switch_kernel_in_jupyter_notebook.png">\<img
+**TODO ADD IMAGE** \<a href="%ATTACHURL%/switch_kernel_in_jupyter_notebook.png">\<img
 alt="jupyterlab_app.png"
 src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/switch_kernel_in_jupyter_notebook.png>"
 style="border: 1px solid #888;" title="Classic notebook (kernel
