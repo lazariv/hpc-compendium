@@ -1,70 +1,58 @@
 # TensorFlow
 
-
-
 ## Introduction
 
 This is an introduction of how to start working with TensorFlow and run
-machine learning applications on the [HPC-DA](HPCDA) system of Taurus.
+machine learning applications on the [HPC-DA](../jobs/HPCDA.md) system of Taurus.
 
 \<span style="font-size: 1em;">On the machine learning nodes (machine
-learning partition), you can use the tools from\</span> [IBM Power
-AI](PowerAI)\<span style="font-size: 1em;"> or the other
-modules.\</span> \<span style="font-size: 1em;">PowerAI is an enterprise
-software distribution that combines popular open-source deep learning
-frameworks, efficient AI development tools (Tensorflow, Caffe, etc). For
-this page and examples was used \</span>\<a
-href="<https://www.ibm.com/support/knowledgecenter/en/SS5SF7_1.5.4/navigation/pai_software_pkgs.html>"
-target="\_blank">PowerAI version 1.5.4\</a>\<span style="font-size:
-1em;">.\</span>
+learning partition), you can use the tools from [IBM PowerAI](PowerAI.md) or the other
+modules. PowerAI is an enterprise software distribution that combines popular open-source 
+deep learning frameworks, efficient AI development tools (Tensorflow, Caffe, etc). For
+this page and examples was used [PowerAI version 1.5.4](https://www.ibm.com/support/knowledgecenter/en/SS5SF7_1.5.4/navigation/pai_software_pkgs.html)
 
-\<a href="<https://www.tensorflow.org/guide/>"
-target="\_blank">TensorFlow\</a> is a free end-to-end open-source
+[TensorFlow](https://www.tensorflow.org/guide/) is a free end-to-end open-source
 software library for dataflow and differentiable programming across many
 tasks. It is a symbolic math library, used primarily for machine
-learning applications. \<span style="font-size: 1em;">It has a
-comprehensive, flexible ecosystem of tools, libraries and community
-resources. It is available on taurus along with other common machine
-learning packages like Pillow, SciPY, Numpy.\</span>
+learning applications. It has a comprehensive, flexible ecosystem of tools, libraries and 
+community resources. It is available on taurus along with other common machine
+learning packages like Pillow, SciPY, Numpy.
 
 **Prerequisites:** To work with Tensorflow on Taurus, you obviously need
-\<a href="Login" target="\_blank">access\</a> for the Taurus system and
-basic knowledge about Python, SLURM system.
+[access](../access/Login.md) for the Taurus system and basic knowledge about Python, SLURM system.
 
 **Aim** of this page is to introduce users on how to start working with
 TensorFlow on the \<a href="HPCDA" target="\_self">HPC-DA\</a> system -
 part of the TU Dresden HPC system.
 
 There are three main options on how to work with Tensorflow on the
-HPC-DA: **1.** **Modules,** **2.** **JupyterNotebook, 3. Containers**.
-The main way using the \<a href="RuntimeEnvironment#Module_Environments"
-target="\_blank">Modules system\</a> and Python virtual environment.
-Please see the next chapters and the [Python page](Python) for the
+HPC-DA: **1.** **Modules,** **2.** **JupyterNotebook, 3. Containers**. The best option is 
+to use [module system](../data_management/RuntimeEnvironment.md#Module_Environments) and 
+Python virtual environment. Please see the next chapters and the [Python page](Python.md) for the
 HPC-DA system.
 
 The information about the Jupyter notebook and the **JupyterHub** could
-be found \<a href="JupyterHub" target="\_blank">here\</a>. The use of
-Containers is described \<a href="TensorFlowContainerOnHPCDA"
-target="\_blank">here\</a>.
+be found [here](JupyterHub.md). The use of
+Containers is described [here](TensorFlowContainerOnHPCDA.md).
 
-\<span
-style`"font-size: 1em;">On Taurus, there exist different module environments, each containing a set of software modules. The default is *modenv/scs5* which is already loaded, however for the HPC-DA system using the "ml" partition you need to use *modenv/ml*. To find out which partition are you using use: =ml list.`
-You can change the module environment with the command: \</span>
+On Taurus, there exist different module environments, each containing a set 
+of software modules. The default is *modenv/scs5* which is already loaded, 
+however for the HPC-DA system using the "ml" partition you need to use *modenv/ml*. 
+To find out which partition are you using use: `ml list`.
+You can change the module environment with the command: 
 
     module load modenv/ml
 
-\<span style="font-size: 1em;">The machine learning partition is based
-on the PowerPC Architecture (ppc64le) (Power9 processors), which means
-that the software built for x86_64 will not work on this partition, so
-you most likely can't use your already locally installed packages on
-Taurus. Also, users need to use the modules which are specially made for
-the ml partition (from modenv/ml) and not for the rest of taurus (e.g.
-from modenv/scs5). \</span>
+The machine learning partition is based on the PowerPC Architecture (ppc64le) 
+(Power9 processors), which means that the software built for x86_64 will not 
+work on this partition, so you most likely can't use your already locally 
+installed packages on Taurus. Also, users need to use the modules which are 
+specially made for the ml partition (from modenv/ml) and not for the rest 
+of Taurus (e.g. from modenv/scs5). 
 
-\<span style="font-size: 1em;">Each node on the ml partition has 6x
-Tesla V-100 GPUs, with 176 parallel threads on 44 cores per node
-(Simultaneous multithreading (SMT) enabled) and 256GB RAM. The
-specification could be found [here](Power9).\</span>
+Each node on the ml partition has 6x Tesla V-100 GPUs, with 176 parallel threads 
+on 44 cores per node (Simultaneous multithreading (SMT) enabled) and 256GB RAM. 
+The specification could be found [here](../use_of_hardware/Power9.md).
 
 %RED%Note:<span class="twiki-macro ENDCOLOR"></span> Users should not
 reserve more than 28 threads per each GPU device so that other users on
@@ -273,5 +261,4 @@ else stay with the default of modenv/scs5.
 
 Q: How to change the module environment and know more about modules?
 
-A:
-[https://doc.zih.tu-dresden.de/hpc-wiki/bin/view/Compendium/RuntimeEnvironment#Modules](RuntimeEnvironment#Modules)
+A: [Modules](../data_management/RuntimeEnvironment.md#Modules)
