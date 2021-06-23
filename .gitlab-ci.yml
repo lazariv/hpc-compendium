@@ -1,5 +1,5 @@
 variables:
-    GIT_STRATEGY: clone
+    GIT_STRATEGY: none
     DOCKER_IMAGE: webpage:all
 
 stages:
@@ -10,6 +10,9 @@ stages:
 
 build_linter:
     stage: build
+    variables:
+        GIT_STRATEGY: clone
+        GIT_DEPTH: 0
     script: docker build -t ${DOCKER_IMAGE} .
 
 test_mkdocs:
