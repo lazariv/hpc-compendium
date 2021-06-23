@@ -1,7 +1,6 @@
 # NVMe Storage
 
-## Hardware\<img align="right" alt="nvme.png" src="%ATTACHURL%/nvme.png" title="nvme.png" width="150" />
-
+**TODO image nvme.png**
 90 NVMe storage nodes, each with
 
 -   8x Intel NVMe Datacenter SSD P4610, 3.2 TB
