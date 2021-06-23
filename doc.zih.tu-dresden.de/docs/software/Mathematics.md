@@ -51,8 +51,6 @@ You can find it in C:\\Programme\\Xming\\.
           C:\Programme\Xming\fonts\Mathematica\Type1
           C:\WINDOWS\Fonts
 
-  
-
 **Mathematica and SLURM:** \<br />Please use the Batchsystem SLURM for
 running calculations. This is a small example for a batch script, that
 you should prepair and start with command \<br />sbatch
@@ -72,8 +70,6 @@ do have, however, 312 SubMathKernel licenses, so please, don't start
 many sequential jobs but try to parallelize your calculation, utilizing
 multiple Sub MathKernel licenses per job, in order to achieve a more
 reasonable license usage.
-
-  
 
 ## Matlab
 
@@ -109,7 +105,7 @@ Or use:
        module load MATLAB
 
 (then you will get the most recent Matlab version. [Refer to the modules
-section for details.](RuntimeEnvironment#Modules))
+section for details.](../data_management/RuntimeEnvironment.md#Modules))
 
 ### matlab interactive
 
@@ -156,7 +152,7 @@ variable $EBROOTMATLAB as set by the module file for that.
 
 -   then run the binary via the wrapper script in a job (just a simple
     example, you should be using an [sbatch
-    script](Compendium.Slurm#Job_Submission) for that): \<pre>srun
+    script](../jobs/Slurm.md#Job_Submission) for that): \<pre>srun
     ./run_compiled_executable.sh $EBROOTMATLAB\</pre>
 
 ### matlab parallel (with 'local' configuration)
@@ -210,5 +206,5 @@ solving linear and nonlinear problems numerically, and for performing
 other numerical experiments using a language that is mostly compatible
 with Matlab. It may also be used as a batch-oriented language.
 
--   [Mathematica-Fonts.zip](%ATTACHURL%/Mathematica-Fonts.zip):
+-   [Mathematica-Fonts.zip]**todo**(%ATTACHURL%/Mathematica-Fonts.zip):
     Mathematica-Fonts
