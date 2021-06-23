@@ -26,7 +26,7 @@ The following commands can be used for monitoring:
 project as a whole. There is no feasible way to get the contribution of
 a single user to a project's disk usage.
 
-### Alternatives
+## Alternatives
 
 In case a project is above its limits, please
 
@@ -35,13 +35,13 @@ In case a project is above its limits, please
 -   check your workflow and use /fastfs for temporary files,
 -   *systematically* handle your important data:
     -   for later use (weeks...months) at the HPC systems, build tar
-        archives with meaningful names or IDs and store them in the [DMF
-        system](#AnchorDataMigration). Avoid using this system
+        archives with meaningful names or IDs and store them in the
+        [DMF system](#AnchorDataMigration). Avoid using this system
         (`/hpc_fastfs`) for files \< 1 MB!
-    -   refer to the hints for [long term preservation for research
-        data](PreservationResearchData).
+    -   refer to the hints for
+        [long term preservation for research data](PreservationResearchData.md).
 
-### No Alternatives
+## No Alternatives
 
 The current situation is this:
 

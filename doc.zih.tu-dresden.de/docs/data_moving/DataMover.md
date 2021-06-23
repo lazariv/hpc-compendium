@@ -1,4 +1,4 @@
-## Transferring files between HPC systems
+# Transferring files between HPC systems
 
 We provide a special data transfer machine providing the global file
 systems of each ZIH HPC system. This machine is not accessible through
@@ -43,7 +43,7 @@ web page) :
 | **Archive**        |                  | /archiv                            |
 | **Group Storages** |                  | /grp/\<group storage>              |
 
-### How to copy your data from an old scratch (Atlas, Triton, Venus) to our new scratch (Taurus)
+## How to copy your data from an old scratch (Atlas, Triton, Venus) to our new scratch (Taurus)
 
 You can use our tool called Datamover to copy your data from A to B.
 
@@ -67,7 +67,7 @@ Example:
     dtcp -r /scratch/rotscher/results /luste/ssd/rotscher/ # or
     new: dtrsync -a /scratch/rotscher/results /home/rotscher/results
 
-### Examples on how to use data transfer commands:
+## Examples on how to use data transfer commands:
 
 Copying data from Taurus' /scratch to Taurus' /projects
 
