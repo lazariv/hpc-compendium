@@ -18,22 +18,22 @@ test_mkdocs:
 
 test_linter_preview:
     stage: test
-    script: docker run -w /src ${BASE_IMAGE} doc.zih.tu-dresden.de/util/lint-changes.sh
+    script: docker run --rm -w /src ${BASE_IMAGE} doc.zih.tu-dresden.de/util/lint-changes.sh
     only: [ merge_requests ]
 
 test_linkchecker_preview:
     stage: test
-    script: docker run -w /src ${BASE_IMAGE} doc.zih.tu-dresden.de/util/check-links.sh
+    script: docker run --rm -w /src ${BASE_IMAGE} doc.zih.tu-dresden.de/util/check-links.sh
     only: [ merge_requests ]
 
 test_linter:
     stage: test
-    script: docker run ${BASE_IMAGE} markdownlint docs
+    script: docker run --rm ${BASE_IMAGE} markdownlint docs
     only: [ main ]
 
 test_linkchecker:
     stage: test
-    script: docker run ${BASE_IMAGE} bash -c "find docs -type f -name '*.md' | xargs -L1 markdown-link-check --quiet"
+    script: docker run --rm ${BASE_IMAGE} bash -c "find docs -type f -name '*.md' | xargs -L1 markdown-link-check --quiet"
     only: [ main ]
 
 release:
