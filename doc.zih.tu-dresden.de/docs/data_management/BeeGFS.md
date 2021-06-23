@@ -46,7 +46,7 @@ who needs large and/or fast file storage
 ## Create BeeGFS file system
 
 To reserve nodes for creating BeeGFS file system you need to create a
-[batch](Slurm) job
+[batch](../jobs/Slurm.md) job
 
     #!/bin/bash
     #SBATCH -p nvme
@@ -68,7 +68,7 @@ Check the status of the job with 'squeue -u \<username>'
 ## Mount BeeGFS file system
 
 You can mount BeeGFS file system on the ML partition (ppc64
-architecture) or on the Haswell [partition](SystemTaurus) (x86_64
+architecture) or on the Haswell [partition](../jobs/SystemTaurus.md) (x86_64
 architecture)
 
 ### Mount BeeGFS file system on the ML
@@ -142,5 +142,3 @@ the partition "haswell64", but for the partition "haswell64" you have to
 add the parameter "--exclude=taurusi\[4001-4104,5001- 5612\]" to your
 job. This is necessary because the BeeGFS client is only installed on
 the 6000 island.
-
-#### F.A.Q.
