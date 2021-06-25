@@ -9,7 +9,7 @@ the same **data storage** or set of them, the same **set of software** (packages
 ## Data Storage and Management
 
 As soon as you have access to Taurus you have to manage your data. The main concept of
-working with data on Taurus bases on [Workspaces](workspaces.md). Use it properly:
+working with data on Taurus bases on [Workspaces](Workspaces.md). Use it properly:
 
   * use a **/home** directory for the limited amount of personal data, simple examples and the results
     of calculations. The home directory is not a working directory! However, `/home` file system is
@@ -22,7 +22,7 @@ working with data on Taurus bases on [Workspaces](workspaces.md). Use it properl
 To efficiently handle different types of storage systems, please design your data workflow according
 to characteristics, like I/O footprint (bandwidth/IOPS) of the application, size of the data,
 (number of files,) and duration of the storage. In general, the mechanisms of so-called
-[Workspaces](workspaces.md) are compulsory for all HPC users to store data for a defined duration -
+[Workspaces](Workspaces.md) are compulsory for all HPC users to store data for a defined duration -
 depending on the requirements and the storage system this time span might range from days to a few
 years.
 
