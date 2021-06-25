@@ -43,7 +43,7 @@ nav:
     - Cloud: software/Cloud.md
     - VM tools: software/VMTools.md
   - Data Management:
-    - Overview: data_management/datamanagement.md
+    - Overview: data_management/DataManagement.md
     - Announcement of Quotas: data_management/AnnouncementOfQuotas.md
     - Workspaces: data_management/workspaces.md
     - Applications: data_management/Applications.md
