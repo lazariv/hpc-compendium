@@ -169,7 +169,7 @@ directory or use the kernel for your notebook.
 
 Note: You could work with simple examples in your home directory but according to 
 [new storage concept](../data_management/HPCStorageConcept2019.md) please use 
-[workspaces](../data_management/workspaces.md) for your study and work projects**. 
+[workspaces](../data_management/Workspaces.md) for your study and work projects**. 
 For this reason, you have to use advanced options and put "/" in "Workspace scope" field.
 
 To download the first example (from the list below) into your previously

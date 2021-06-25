@@ -63,7 +63,7 @@ submitted using `sbatch [options] <job file>`.
 The examples could be found [here](GetStartedWithHPCDA.md) or [here](../jobs/Slurm.md). Furthermore,
 you could work with simple examples in your home directory but according to
 [storage concept](../data_management/HPCStorageConcept2019.md) **please use**
-[workspaces](../data_management/workspaces.md) **for your study and work projects!**
+[workspaces](../data_management/Workspaces.md) **for your study and work projects!**
 
 It is also possible to run Rscript directly (after loading the module):
 
