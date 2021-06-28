@@ -9,6 +9,7 @@ nav:
   - Access to the Cluster:
     - Overview: access.md
     - Desktop Visualization: access/DesktopCloudVisualization.md
+    - Web VNC: access/WebVNC.md
     - Login: access/Login.md
     - Security Restrictions: access/SecurityRestrictions.md
     - SSH with Putty: access/SSHMitPutty.md
@@ -42,6 +43,7 @@ nav:
     - FEMSoftware: software/FEMSoftware.md
     - Cloud: software/Cloud.md
     - VM tools: software/VMTools.md
+    - Virtual Desktops: software/VirtualDesktops.md
   - Data Management:
     - Overview: data_management/DataManagement.md
     - Announcement of Quotas: data_management/AnnouncementOfQuotas.md
