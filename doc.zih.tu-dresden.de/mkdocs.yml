@@ -17,7 +17,10 @@ nav:
     - Modules: software/modules.md
     - JupyterHub: software/JupyterHub.md
     - JupyterHub for Teaching: software/JupyterHubForTeaching.md
-    - Containers: software/containers.md
+    - Containers:
+      - Singularity: software/containers.md
+      - Singularity Recicpe Hints: software/SingularityRecipeHints.md
+      - Singularity Example Definitions: software/SingularityExampleDefinitions.md
     - Custom Easy Build Modules: software/CustomEasyBuildEnvironment.md
     - Get started with HPC-DA: software/GetStartedWithHPCDA.md
     - Mathematics: software/Mathematics.md
