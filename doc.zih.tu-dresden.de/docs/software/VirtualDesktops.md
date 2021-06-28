@@ -15,7 +15,7 @@ Use WebVNC or NICE DCV to run GUI applications on HPC resources.
 <span class="twiki-macro TABLE" columnwidths="10%,45%,45%"></span> \|
 **step 1** \| Navigate to \<a href="<https://taurus.hrsk.tu-dresden.de>"
 target="\_blank"><https://taurus.hrsk.tu-dresden.de>\</a>. There is our
-[JupyterHub](Compendium.JupyterHub) instance. \|\| \| **step 2** \|
+[JupyterHub](../software/JupyterHub.md) instance. \|\| \| **step 2** \|
 Click on the "advanced" tab and choose a preset: \|\|
 
 |             |                                                                                                                                                                             |                                                             |
