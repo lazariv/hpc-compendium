@@ -29,7 +29,7 @@ options:
     Keras and GPUs.
 
 **Prerequisites**: To work with Keras you, first of all, need 
-[access](./../application/Access.md) for the Taurus system, loaded
+[access](./../access/Login.md) for the Taurus system, loaded
 Tensorflow module on ml partition, activated Python virtual environment.
 Basic knowledge about Python, SLURM system also required.
 
