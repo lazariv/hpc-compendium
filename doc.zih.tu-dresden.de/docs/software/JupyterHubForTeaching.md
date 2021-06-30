@@ -48,7 +48,8 @@ style="border: 1px solid #888;" title="URL with git-pull
 parameters"/>\</a>
 
 This example would clone the repository 
-[https://github.com/jdwittenauer/ipython-notebooks](https://github.com/jdwittenauer/ipython-notebooks) 
+[https://github.com/jdwittenauer/ipython-notebooks](
+    https://github.com/jdwittenauer/ipython-notebooks) 
 and afterwards open the **Intro.ipynb** notebook in the given path.
 
 The following parameters are available:
