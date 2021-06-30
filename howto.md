@@ -20,13 +20,13 @@ git checkout -b RomeNodes
 
 ## 3. Run the linter:
 ```Bash
-markdown-link-check ./docs/use_of_hardware/RomeNode.md
+markdownlint --config .markdownlint.json  ./docs/use_of_hardware/RomeNodes.md
 ```
 If there are still errors: go to step 2
 
 ## 4. Run the link checker:
 ```Bash
-markdown-link-check ./docs/use_of_hardware/CheckpointRestart.md
+markdown-link-check ./docs/use_of_hardware/RomeNodes.md
 ```
 
 If there are still errors: go to step 2
