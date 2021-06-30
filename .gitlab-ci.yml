@@ -13,6 +13,7 @@ stages:
     - build
     - test
     - release
+    - cleanup
 
 
 build_linter:
@@ -52,8 +53,19 @@ test_linkchecker:
           bash -c "find docs -type f -name '*.md' | xargs -L1 markdown-link-check --quiet"
     only: [ main ]
 
+release_preview:
+    stage: release
+    script:
+        - docker run --rm -v /var/www/html/preview:/mnt ${DOCKER_IMAGE} mkdocs build --site-dir /mnt
+    only: [ preview ]
+
 release:
     stage: release
     script:
         - docker run --rm -v /var/www/html/hpc-wiki:/mnt ${DOCKER_IMAGE} mkdocs build --site-dir /mnt
     only: [ main ]
+
+cleanup_docker:
+    stage: cleanup
+    script:
+        - docker system prune --force
