@@ -164,9 +164,9 @@ Generally, for machine learning purposes ml partition is used but for
 some special issues, SCS5 partition can be useful. The following sbatch
 script will automatically execute the above Python script on ml
 partition. If you have a question about the sbatch script see the
-article about [SLURM](./../jobs/BindingAndDistributionOfTasks.md). Keep in mind that you need to put the
-executable file (Keras_example) with python code to the same folder as
-bash script or specify the path.
+article about [SLURM](./../jobs/BindingAndDistributionOfTasks.md). 
+Keep in mind that you need to put the executable file (Keras_example) with 
+python code to the same folder as bash script or specify the path.
 
 ```bash
 #!/bin/bash
