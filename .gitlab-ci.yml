@@ -69,3 +69,4 @@ cleanup_docker:
     stage: cleanup
     script:
         - docker system prune --force
+    when: always
