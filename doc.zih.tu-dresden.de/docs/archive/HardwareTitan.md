@@ -1,5 +1,3 @@
-
-
 # Windows HPC Server 2008 - Cluster Titan
 
 The Dell Blade Server `Titan` is a homogenous cluster based on quad core

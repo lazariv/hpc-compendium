@@ -1,7 +1,5 @@
 # LoadLeveler - IBM Tivoli Workload Scheduler
 
-
-
 ## Job Submission
 
 First of all, to submit a job to LoadLeveler a job file needs to be
@@ -14,19 +12,21 @@ created. This job file can be passed to the command:
 
 An example job file may look like this:
 
-    #@ job_name = my_job
-    #@ output = $(job_name).$(jobid).out
-    #@ error  = $(job_name).$(jobid).err
-    #@ class = short
-    #@ group = triton-ww | triton-ipf | triton-ism | triton-et
-    #@ wall_clock_limit = 00:30:00
-    #@ resources = ConsumableMemory(1 gb)
-    #@ environment = COPY_ALL
-    #@ notification = complete
-    #@ notify_user = your_email@adress
-    #@ queue
+```Bash
+#@ job_name = my_job
+#@ output = $(job_name).$(jobid).out
+#@ error  = $(job_name).$(jobid).err
+#@ class = short
+#@ group = triton-ww | triton-ipf | triton-ism | triton-et
+#@ wall_clock_limit = 00:30:00
+#@ resources = ConsumableMemory(1 gb)
+#@ environment = COPY_ALL
+#@ notification = complete
+#@ notify_user = your_email@adress
+#@ queue
 
-    ./my_serial_program
+./my_serial_program
+```
 
 This example requests a serial job with a runtime of 30 minutes and a
 overall memory requirement of 1GByte. There are four groups available,
@@ -38,22 +38,24 @@ usage.
 
 An example job file may look like this:
 
-    #@ job_name = my_job
-    #@ output = $(job_name).$(jobid).out
-    #@ error  = $(job_name).$(jobid).err
-    #@ job_type = parallel
-    #@ node = 2
-    #@ tasks_per_node = 8
-    #@ class = short
-    #@ group = triton-ww | triton-ipf | triton-ism | triton-et
-    #@ wall_clock_limit = 00:30:00
-    #@ resources = ConsumableMemory(1 gb)
-    #@ environment = COPY_ALL
-    #@ notification = complete
-    #@ notify_user = your_email@adress
-    #@ queue
+```Bash
+#@ job_name = my_job
+#@ output = $(job_name).$(jobid).out
+#@ error  = $(job_name).$(jobid).err
+#@ job_type = parallel
+#@ node = 2
+#@ tasks_per_node = 8
+#@ class = short
+#@ group = triton-ww | triton-ipf | triton-ism | triton-et
+#@ wall_clock_limit = 00:30:00
+#@ resources = ConsumableMemory(1 gb)
+#@ environment = COPY_ALL
+#@ notification = complete
+#@ notify_user = your_email@adress
+#@ queue
 
-    mpirun -x OMP_NUM_THREADS=1 -x LD_LIBRARY_PATH -np 16 ./my_mpi_program
+mpirun -x OMP_NUM_THREADS=1 -x LD_LIBRARY_PATH -np 16 ./my_mpi_program
+```
 
 This example requests a parallel job with 16 processes (2 nodes, 8 tasks
 per node), a runtime of 30 minutes, 1GByte memory requirement per task
@@ -83,22 +85,24 @@ loaded, e.g issue:
 
 An example job file may look like this:
 
-    #@ job_name = my_job
-    #@ output = $(job_name).$(jobid).out
-    #@ error  = $(job_name).$(jobid).err
-    #@ job_type = parallel
-    #@ node = 4
-    #@ tasks_per_node = 8
-    #@ class = short
-    #@ group = triton-ww | triton-ipf | triton-ism | triton-et
-    #@ wall_clock_limit = 00:30:00
-    #@ resources = ConsumableMemory(1 gb)
-    #@ environment = COPY_ALL
-    #@ notification = complete
-    #@ notify_user = your_email@adress
-    #@ queue
+```Bash
+#@ job_name = my_job
+#@ output = $(job_name).$(jobid).out
+#@ error  = $(job_name).$(jobid).err
+#@ job_type = parallel
+#@ node = 4
+#@ tasks_per_node = 8
+#@ class = short
+#@ group = triton-ww | triton-ipf | triton-ism | triton-et
+#@ wall_clock_limit = 00:30:00
+#@ resources = ConsumableMemory(1 gb)
+#@ environment = COPY_ALL
+#@ notification = complete
+#@ notify_user = your_email@adress
+#@ queue
 
-    mpirun -x OMP_NUM_THREADS=8 -x LD_LIBRARY_PATH -np 4 --bynode ./my_hybrid_program
+mpirun -x OMP_NUM_THREADS=8 -x LD_LIBRARY_PATH -np 4 --bynode ./my_hybrid_program
+```
 
 This example requests a parallel job with 32 processes (4 nodes, 8 tasks
 per node), a runtime of 30 minutes, 1GByte memory requirement per task
@@ -174,24 +178,26 @@ Interactive Jobs can be submitted by the command:
 Loadleveler Runtime Variables give you some information within the job
 script, for example:
 
-    #@ job_name = my_job
-    #@ output = $(job_name).$(jobid).out
-    #@ error  = $(job_name).$(jobid).err
-    #@ job_type = parallel
-    #@ node = 2
-    #@ tasks_per_node = 8
-    #@ class = short
-    #@ wall_clock_limit = 00:30:00
-    #@ resources = ConsumableMemory(1 gb)
-    #@ environment = COPY_ALL
-    #@ notification = complete
-    #@ notify_user = your_email@adress
-    #@ queue
+```Bash
+#@ job_name = my_job
+#@ output = $(job_name).$(jobid).out
+#@ error  = $(job_name).$(jobid).err
+#@ job_type = parallel
+#@ node = 2
+#@ tasks_per_node = 8
+#@ class = short
+#@ wall_clock_limit = 00:30:00
+#@ resources = ConsumableMemory(1 gb)
+#@ environment = COPY_ALL
+#@ notification = complete
+#@ notify_user = your_email@adress
+#@ queue
 
-    echo $LOADL_PROCESSOR_LIST
-    echo $LOADL_STEP_ID
-    echo $LOADL_JOB_NAME
-    mpirun -np 16 ./my_mpi_program
+echo $LOADL_PROCESSOR_LIST
+echo $LOADL_STEP_ID
+echo $LOADL_JOB_NAME
+mpirun -np 16 ./my_mpi_program
+```
 
 Further Information:
 \[\[http://publib.boulder.ibm.com/infocenter/clresctr/vxrx/index.jsp?topic=/com.ibm.cluster.loadl35.admin.doc/am2ug_envvars.html\]\[Full
@@ -202,56 +208,70 @@ description of variables\]\].
 The `llclass` command provides information about each queue. Example
 output:
 
-    Name                 MaxJobCPU     MaxProcCPU  Free   Max Description          
-                        d+hh:mm:ss     d+hh:mm:ss Slots Slots                      
-    --------------- -------------- -------------- ----- ----- ---------------------
-    interactive          undefined      undefined    32    32 interactive, exclusive shared nodes, max. 12h runtime
-    triton_ism           undefined      undefined     8    80 exclusive, serial + parallel queue, nodes shared, unlimited runtime
-    openend              undefined      undefined   272   384 serial + parallel queue, nodes shared, unlimited runtime
-    long                 undefined      undefined   272   384 serial + parallel queue, nodes shared, max. 7 days runtime
-    medium               undefined      undefined   272   384 serial + parallel queue, nodes shared, max. 3 days runtime
-    short                undefined      undefined   272   384 serial + parallel queue, nodes shared, max. 4 hours runtime
+```Bash
+Name                 MaxJobCPU     MaxProcCPU  Free   Max Description          
+                    d+hh:mm:ss     d+hh:mm:ss Slots Slots                      
+--------------- -------------- -------------- ----- ----- ---------------------
+interactive          undefined      undefined    32    32 interactive, exclusive shared nodes, max. 12h runtime
+triton_ism           undefined      undefined     8    80 exclusive, serial + parallel queue, nodes shared, unlimited runtime
+openend              undefined      undefined   272   384 serial + parallel queue, nodes shared, unlimited runtime
+long                 undefined      undefined   272   384 serial + parallel queue, nodes shared, max. 7 days runtime
+medium               undefined      undefined   272   384 serial + parallel queue, nodes shared, max. 3 days runtime
+short                undefined      undefined   272   384 serial + parallel queue, nodes shared, max. 4 hours runtime
+```
 
 ## Job Monitoring
 
 ### All Jobs in the Queue
 
-    # llq
+```Bash
+# llq
+```Bash
 
 #### All of One's Own Jobs
 
-    # llq -u username
+```Bash
+# llq -u username
+```Bash
 
 ### Details About Why A Job Has Not Yet Started
 
-    # llq -s job-id
+```Bash
+# llq -s job-id
+```
 
 The key information is located at the end of the output, and will look
 similar to the following:
 
-    ==================== EVALUATIONS FOR JOB STEP l1f1n01.4604.0 ====================
-    The class of this job step is "workq".
-    Total number of available initiators of this class on all machines in the cluster: 0
-    Minimum number of initiators of this class required by job step: 4
-    The number of available initiators of this class is not sufficient for this job step.
-    Not enough resources to start now.
-    Not enough resources for this step as backfill.
+```Bash
+==================== EVALUATIONS FOR JOB STEP l1f1n01.4604.0 ====================
+The class of this job step is "workq".
+Total number of available initiators of this class on all machines in the cluster: 0
+Minimum number of initiators of this class required by job step: 4
+The number of available initiators of this class is not sufficient for this job step.
+Not enough resources to start now.
+Not enough resources for this step as backfill.
+```
 
 Or it will tell you the **estimated start** time:
 
-    ==================== EVALUATIONS FOR JOB STEP l1f1n01.8207.0 ====================
-    The class of this job step is "checkpt".
-    Total number of available initiators of this class on all machines in the cluster: 8
-    Minimum number of initiators of this class required by job step: 32
-    The number of available initiators of this class is not sufficient for this job step.
-    Not enough resources to start now.
-    This step is top-dog. 
-    Considered at: Fri Jul 13 12:12:04 2007
-    Will start by: Tue Jul 17 18:10:32 2007
+```Bash
+==================== EVALUATIONS FOR JOB STEP l1f1n01.8207.0 ====================
+The class of this job step is "checkpt".
+Total number of available initiators of this class on all machines in the cluster: 8
+Minimum number of initiators of this class required by job step: 32
+The number of available initiators of this class is not sufficient for this job step.
+Not enough resources to start now.
+This step is top-dog. 
+Considered at: Fri Jul 13 12:12:04 2007
+Will start by: Tue Jul 17 18:10:32 2007
+```
 
 ### Generate a long listing rather than the standard one
 
-    # llq -l job-id
+```Bash
+# llq -l job-id
+```
 
 This command will give you detailed job information.
 
@@ -285,11 +305,15 @@ This command will give you detailed job information.
 
 ### A Particular Job
 
-    # llcancel job-id
+```Bash
+# llcancel job-id
+```
 
 ### All of One's Jobs
 
-    # llcancel -u username
+```Bash
+# llcancel -u username
+```
 
 ## Job History and Usage Summaries
 
@@ -300,23 +324,27 @@ jobs run under LoadLeveler. This file is
 
 An example of usage would be as follows:
 
-    # llsummary -u estrabd /var/loadl/archive/history.archive
+```Bash
+# llsummary -u estrabd /var/loadl/archive/history.archive
+```
 
 And the output would look something like:
 
-           Name   Jobs   Steps        Job Cpu    Starter Cpu     Leverage
-        estrabd    118     128       07:55:57       00:00:45        634.6
-          TOTAL    118     128       07:55:57       00:00:45        634.6
-          Class   Jobs   Steps        Job Cpu    Starter Cpu     Leverage
-        checkpt     13      23       03:09:32       00:00:18        631.8
-    interactive    105     105       04:46:24       00:00:26        660.9
-          TOTAL    118     128       07:55:57       00:00:45        634.6
-          Group   Jobs   Steps        Job Cpu    Starter Cpu     Leverage
-       No_Group    118     128       07:55:57       00:00:45        634.6
-          TOTAL    118     128       07:55:57       00:00:45        634.6
-        Account   Jobs   Steps        Job Cpu    Starter Cpu     Leverage
-           NONE    118     128       07:55:57       00:00:45        634.6
-          TOTAL    118     128       07:55:57       00:00:45        634.6
+```Bash
+       Name   Jobs   Steps        Job Cpu    Starter Cpu     Leverage
+    estrabd    118     128       07:55:57       00:00:45        634.6
+      TOTAL    118     128       07:55:57       00:00:45        634.6
+      Class   Jobs   Steps        Job Cpu    Starter Cpu     Leverage
+    checkpt     13      23       03:09:32       00:00:18        631.8
+interactive    105     105       04:46:24       00:00:26        660.9
+      TOTAL    118     128       07:55:57       00:00:45        634.6
+      Group   Jobs   Steps        Job Cpu    Starter Cpu     Leverage
+   No_Group    118     128       07:55:57       00:00:45        634.6
+      TOTAL    118     128       07:55:57       00:00:45        634.6
+    Account   Jobs   Steps        Job Cpu    Starter Cpu     Leverage
+       NONE    118     128       07:55:57       00:00:45        634.6
+      TOTAL    118     128       07:55:57       00:00:45        634.6
+```
 
 The **llsummary** tool has a lot of options, which are discussed in its
 man pages.
@@ -327,89 +355,90 @@ man pages.
 
 And the output would look something like:
 
-    root@triton[0]:~# llstatus
-    Name                      Schedd InQ  Act Startd Run LdAvg Idle Arch      OpSys    
-    n01                       Avail     0   0 Idle     0 0.00  2403 AMD64     Linux2   
-    n02                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n03                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n04                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n05                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n06                       Avail     0   0 Idle     0 0.71  9999 AMD64     Linux2   
-    n07                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n08                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n09                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n10                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n11                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n12                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n13                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n14                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n15                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n16                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n17                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n18                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n19                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n20                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n21                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n22                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n23                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n24                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n25                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n26                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n27                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n28                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n29                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n30                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n31                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n32                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n33                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n34                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n35                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n36                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n37                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n38                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n39                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n40                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n41                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n42                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n43                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n44                       Avail     0   0 Idle     0 0.01  9999 AMD64     Linux2   
-    n45                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n46                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n47                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n48                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n49                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n50                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n51                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n52                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n53                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n54                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n55                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n56                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n57                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n58                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n59                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n60                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n61                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n62                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n63                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    n64                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
-    triton                    Avail     0   0 Idle     0 0.00   585 AMD64     Linux2   
+```Bash
+root@triton[0]:~# llstatus
+Name                      Schedd InQ  Act Startd Run LdAvg Idle Arch      OpSys    
+n01                       Avail     0   0 Idle     0 0.00  2403 AMD64     Linux2   
+n02                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n03                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n04                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n05                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n06                       Avail     0   0 Idle     0 0.71  9999 AMD64     Linux2   
+n07                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n08                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n09                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n10                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n11                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n12                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n13                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n14                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n15                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n16                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n17                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n18                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n19                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n20                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n21                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n22                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n23                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n24                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n25                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n26                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n27                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n28                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n29                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n30                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n31                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n32                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n33                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n34                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n35                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n36                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n37                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n38                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n39                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n40                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n41                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n42                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n43                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n44                       Avail     0   0 Idle     0 0.01  9999 AMD64     Linux2   
+n45                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n46                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n47                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n48                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n49                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n50                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n51                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n52                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n53                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n54                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n55                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n56                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n57                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n58                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n59                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n60                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n61                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n62                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n63                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n64                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+triton                    Avail     0   0 Idle     0 0.00   585 AMD64     Linux2   
 
-    AMD64/Linux2               65 machines      0  jobs      0  running tasks
-    Total Machines             65 machines      0  jobs      0  running tasks
+AMD64/Linux2               65 machines      0  jobs      0  running tasks
+Total Machines             65 machines      0  jobs      0  running tasks
 
-    The Central Manager is defined on triton
+The Central Manager is defined on triton
 
-    The BACKFILL scheduler is in use
+The BACKFILL scheduler is in use
 
-    All machines on the machine_list are present.
+All machines on the machine_list are present.
+```
 
 Detailed status information for a specific node:
 
-    # llstatus -l n54
+```Bash
+# llstatus -l n54
+```
 
 Further information:
-\[\[http://publib.boulder.ibm.com/infocenter/clresctr/vxrx/index.jsp?topic=/com.ibm.cluster.loadl.doc/llbooks.html\]\[IBM
-Documentation (see version 3.5)\]\]
-
--- Main.mark - 2010-06-01
+[IBM Documentation (see version 3.5)](http://publib.boulder.ibm.com/infocenter/clresctr/vxrx/index.jsp?topic=/com.ibm.cluster.loadl.doc/llbooks.html)
