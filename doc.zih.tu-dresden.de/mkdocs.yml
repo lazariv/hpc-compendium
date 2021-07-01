@@ -3,6 +3,7 @@ nav:
   - Application for HPC Login: 
     - Overview: application.md
     - Access: application/Access.md
+    - Terms: application/TermsOfUse.md
   - Request for Resources:
     - Overview: req_resources.md
     - Project Request Form: req_resources/ProjectRequestForm.md
