@@ -1,7 +1,6 @@
 # Migration to Atlas
 
- Atlas is a different machine than
-Deimos, please have a look at the table:
+Atlas is a different machine than Deimos, please have a look at the table:
 
 |                                                   |            |           |
 |---------------------------------------------------|------------|-----------|
@@ -19,11 +18,7 @@ codenamed "Bulldozer" is designed for multi-threaded use.
 
 We have grouped the module definitions for a better overview. This is
 only for displaying the available modules, not for loading a module. All
-available modules can be made visible with `module load ALL; module av`
-. For more details, please see [module
-groups.](RuntimeEnvironment#Module_Groups)
-
-#BatchSystem
+available modules can be made visible with `module load ALL; module av`.
 
 ## Batch System
 
@@ -58,8 +53,7 @@ nodes you have to be more precise in your resource requests.
 -   In ninety nine percent of the cases it is enough when you specify
     your processor requirements with `-n <n>` and your memory
     requirements with `-M <memory per process in MByte>`.
--   Please use \<span class="WYSIWYG_TT">-x\</span>("exclusive use of a
-    hosts") only with care and when you really need it.
+-   Please use `-x` ("exclusive use of a hosts") only with care and when you really need it.
     -   The option `-x` in combination with `-n 1` leads to an
         "efficiency" of only 1.5% - in contrast with 50% on the single
         socket nodes at Deimos.
@@ -69,15 +63,14 @@ nodes you have to be more precise in your resource requests.
 -   Please use `-M <memory per process in MByte>` to specify your memory
     requirements per process.
 -   Please don't use `-R "span[hosts=1]"` or `-R "span[ptile=<n>]"` or
-    any other \<span class="WYSIWYG_TT">-R "..."\</span>option, the
-    batch system is smart enough to select the best hosts in accordance
+    any other `-R "..."` option, the batch system is smart enough to select the best hosts in accordance
     with your processor and memory requirements.
     -   Jobs with a processor requirement ≤ 64 will always be scheduled
         on one node.
     -   Larger jobs will use just as many hosts as needed, e.g. 160
         processes will be scheduled on three hosts.
 
-For more details, please see the pages on [LSF](PlatformLSF).
+For more details, please see the pages on [LSF](PlatformLSF.md).
 
 ## Software
 
@@ -95,21 +88,18 @@ degradation. Please include "Atlas" in your subject.
 
 ### Development
 
-From the benchmarking point of view, the best compiler for the AMD
-Bulldozer processor, the best compiler comes from the Open64 suite. For
-convenience, other compilers are installed, Intel 12.1 shows good
-results as well. Please check the best compiler flags at [this
-overview](http://developer.amd.com/Assets/CompilerOptQuickRef-62004200.pdf).
-For best performance, please use [ACML](Libraries#ACML) as BLAS/LAPACK
-library.
+From the benchmarking point of view, the best compiler for the AMD Bulldozer processor, the best
+compiler comes from the Open64 suite. For convenience, other compilers are installed, Intel 12.1
+shows good results as well. Please check the best compiler flags at
+[this overview] developer.amd.com/Assets/CompilerOptQuickRef-62004200.pdf.
 
 ### MPI parallel applications
 
 Please note the more convenient syntax on Atlas. Therefore, please use a
 command like
 
+```Bash
     bsub -W 2:00 -M 200 -n 8 mpirun a.out
+```
 
 to submit your MPI parallel applications.
-
--   Set DENYTOPICVIEW = WikiGuest

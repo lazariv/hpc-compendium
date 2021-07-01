@@ -18,5 +18,3 @@ additional hardware hyperthreads.
 
 Venus uses the same HOME file system as all our other HPC installations.
 For computations, please use `/scratch`.
-
-... [More information on file systems](FileSystems)

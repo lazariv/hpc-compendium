@@ -6,23 +6,28 @@ is a cluster based on quadcore Intel Xeon CPUs. The nodes are operated
 by the Linux operating system SuSE SLES 11. Currently, the following
 hardware is installed:
 
-\|CPUs \|Intel quadcore E5530 \| \|RAM per core \|6 GB \| \|Number of
-cores \|512 \| \|total peak performance \|4.9 TFLOPS \| \|dual nodes
-\|64 \|
+|CPUs |Intel quadcore E5530 |
+|RAM per core |6 GB |
+|Number of cores |512 |
+|total peak performance |4.9 TFLOPS |
+|dual nodes |64 |
 
-The jobs for the compute nodes are scheduled by the
-[LoadLeveler](LoadLeveler) batch system from the login node
-triton.hrsk.tu-dresden.de .
+The jobs for the compute nodes are scheduled by the [LoadLeveler](LoadLeveler.md) batch system from
+the login node triton.hrsk.tu-dresden.de .
 
 ## CPU
 
 The cluster is based on dual-core Intel Xeon E5530 processor. One core
 has the following basic properties:
 
-\|clock rate \|2.4 GHz \| \|Cores \|4 \| \|Threads \|8 \| \|Intel Smart
-Cache \|8MB \| \|Intel QPI Speed \|5.86 GT/s \| \|Max TDP \|80 W \|
+|clock rate |2.4 GHz |
+|Cores |4 |
+|Threads |8 |
+|Intel Smart Cache |8MB |
+|Intel QPI Speed |5.86 GT/s |
+|Max TDP |80 W |
 
-# Software
+### Software
 
 | Compilers                       |        Version |
 |:--------------------------------|---------------:|
@@ -45,4 +50,4 @@ Cache \|8MB \| \|Intel QPI Speed \|5.86 GT/s \| \|Max TDP \|80 W \|
 | NAMD                            |          2.7b1 |
 | QuantumEspresso                 |          4.1.3 |
 | **Tools**                       |                |
-| [Totalview Debugger](Debuggers) |            8.8 |
+| [Totalview Debugger] **todo** debuggers |            8.8 |
