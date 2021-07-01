@@ -13,7 +13,7 @@ files=$(git diff --name-only "$(git merge-base HEAD "$branch")")
 for f in $files; do
     if [ "${f: -3}" == ".md" ]; then
         echo "Linting $f"
-        if ! markdownlint "$f"; then
+        if ! markdownlint  --config doc.zih.tu-dresden.de/.markdownlint.json "$f"; then
             any_fails=true
         fi
     fi
