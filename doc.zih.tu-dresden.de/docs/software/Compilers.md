@@ -9,44 +9,37 @@ The following compilers are available on our platforms:
 | **C++ Compiler**     | `icpc`    | `g++`      | `pgc++`     |
 | **Fortran Compiler** | `ifort`   | `gfortran` | `pgfortran` |
 
-For an overview of the installed compiler versions, please see our
-automatically updated [SoftwareModulesList](SoftwareModulesList)
+For an overview of the installed compiler versions, please see our automatically updated
+[SoftwareModulesList]**todo**SoftwareModulesList.
 
-All C compiler support ANSI C and C99 with a couple of different
-language options. The support for Fortran77, Fortran90, Fortran95, and
-Fortran2003 differs from one compiler to the other. Please check the man
-pages to verify that your code can be compiled.
+All C compiler support ANSI C and C99 with a couple of different language options. The support for
+Fortran77, Fortran90, Fortran95, and Fortran2003 differs from one compiler to the other. Please
+check the man pages to verify that your code can be compiled.
 
-Please note that the linking of C++ files normally requires the C++
-version of the compiler to link the correct libraries. For serious
-problems with Intel's compilers please refer to
-[FurtherDocumentation](FurtherDocumentation).
+Please note that the linking of C++ files normally requires the C++ version of the compiler to link
+the correct libraries.
 
 ## Compiler Flags
 
 Common options are:
 
--   `-g` to include information required for debugging
--   `-pg` to generate gprof -style sample-based profiling information
-    during the run
--   `-O0`, `-O1`, `-O2`, `-O3` to customize the optimization level from
-    no ( -O0 ) to aggressive ( -O3 ) optimization
--   `-I` to set search path for header files
--   `-L` to set search path for libraries
+- `-g` to include information required for debugging
+- `-pg` to generate gprof -style sample-based profiling information during the run
+- `-O0`, `-O1`, `-O2`, `-O3` to customize the optimization level from
+  no (`-O0`) to aggressive (`-O3`) optimization
+- `-I` to set search path for header files
+- `-L` to set search path for libraries
 
-Please note that aggressive optimization allows deviation from the
-strict IEEE arithmetic. Since the performance impact of options like -mp
-is very hard the user herself has to balance speed and desired accuracy
-of her application. There are several options for profiling,
-profile-guided optimization, data alignment and so on. You can list all
-available compiler options with the option -help . Reading the man-pages
-is a good idea, too.
+Please note that aggressive optimization allows deviation from the strict IEEE arithmetic. Since the
+performance impact of options like `-mp` is very hard the user herself has to balance speed and
+desired accuracy of her application. There are several options for profiling, profile-guided
+optimization, data alignment and so on. You can list all available compiler options with the option
+`-help`. Reading the man-pages is a good idea, too.
 
-The user benefits from the (nearly) same set of compiler flags for
-optimization for the C,C++, and Fortran-compilers. In the following
-table, only a couple of important compiler-dependant options are listed.
-For more detailed information, the user should refer to the man pages or
-use the option -help to list all options of the compiler.
+The user benefits from the (nearly) same set of compiler flags for optimization for the C,C++, and
+Fortran-compilers. In the following table, only a couple of important compiler-dependant options are
+listed.  For more detailed information, the user should refer to the man pages or use the option
+-help to list all options of the compiler.
 
 \| **GCC** \| **Open64** \| **Intel** \| **PGI** \| **Pathscale** \|
 Description\* \|
@@ -65,10 +58,9 @@ Description\* \|
 | `-fprofile-generate` |                    | `-prof-gen`                                                                                                                                                                                                                                                                  | `-Mpfi`     | `-fb-create`    | Create intrumented code to generate profile in file \<FN>                           |
 | `-fprofile-use`      |                    | `-prof-use`                                                                                                                                                                                                                                                                  | `-Mpfo`     | `-fb-opt`       | Use profile data for optimization. - Leave all other optimization options           |
 
-*We can not generally give advice as to which option should be used -
-even -O0 sometimes leads to a fast code. To gain maximum performance
-please test the compilers and a few combinations of optimization flags.
-In case of doubt, you can also contact ZIH and ask the staff for help.*
+*We can not generally give advice as to which option should be used - even -O0 sometimes leads to a
+fast code. To gain maximum performance please test the compilers and a few combinations of
+optimization flags.  In case of doubt, you can also contact ZIH and ask the staff for help.*
 
 ### Vector Extensions
 
@@ -116,6 +108,5 @@ style):
 | `CDEC$ prefetch a`       | prefetch array a                  |
 | `CDEC$ noprefetch a`     | do not prefetch array a           |
 
-The compiler directives are the same for `ifort` and `icc` . The syntax
-for C/C++ is like `#pragma ivdep`, `#pragma swp`, and so on.
-[Further Documentation](Further Documentation)
+The compiler directives are the same for `ifort` and `icc` . The syntax for C/C++ is like `#pragma
+ivdep`, `#pragma swp`, and so on.
