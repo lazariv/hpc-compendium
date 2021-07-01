@@ -1,27 +1,22 @@
 # Atlas
 
-**`%RED%This page is deprecated! Atlas is a former system!%ENDCOLOR%`**
-( [Current hardware](Compendium.Hardware))
+**This page is deprecated! Atlas is a former system!**
 
-Atlas is a general purpose HPC cluster for jobs using 1 to 128 cores in
-parallel ( [Information on the hardware](HardwareAtlas)).
+Atlas is a general purpose HPC cluster for jobs using 1 to 128 cores in parallel
+([Information on the hardware](HardwareAtlas.md)).
 
 ## Compiling Parallel Applications
 
-When loading a compiler module on Atlas, the module for the MPI
-implementation OpenMPI is also loaded in most cases. If not, you should
-explicitly load the OpenMPI module with `module load openmpi`. This also
-applies when you use the system's (old) GNU compiler. ( [read more about
-Modules](Compendium.RuntimeEnvironment), [read more about
-Compilers](Compendium.Compilers))
+When loading a compiler module on Atlas, the module for the MPI implementation OpenMPI is also
+loaded in most cases. If not, you should explicitly load the OpenMPI module with `module load
+openmpi`. This also applies when you use the system's (old) GNU compiler.
 
-Use the wrapper commands `mpicc` , `mpiCC` , `mpif77` , or `mpif90` to
-compile MPI source code. They use the currently loaded compiler. To
-reveal the command lines behind the wrappers, use the option `-show`.
+Use the wrapper commands `mpicc` , `mpiCC` , `mpif77` , or `mpif90` to compile MPI source code. They
+use the currently loaded compiler. To reveal the command lines behind the wrappers, use the option
+`-show`.
 
-For running your code, you have to load the same compiler and MPI module
-as for compiling the program. Please follow te following guiedlines to
-run your parallel program using the batch system.
+For running your code, you have to load the same compiler and MPI module as for compiling the
+program. Please follow te following guiedlines to run your parallel program using the batch system.
 
 ## Batch System
 
@@ -29,45 +24,43 @@ Applications on an HPC system can not be run on the login node. They
 have to be submitted to compute nodes with dedicated resources for the
 user's job. Normally a job can be submitted with these data:
 
--   number of CPU cores,
--   requested CPU cores have to belong on one node (OpenMP programs) or
-    can distributed (MPI),
--   memory per process,
--   maximum wall clock time (after reaching this limit the process is
-    killed automatically),
--   files for redirection of output and error messages,
--   executable and command line parameters.
+- number of CPU cores,
+- requested CPU cores have to belong on one node (OpenMP programs) or
+  can distributed (MPI),
+- memory per process,
+- maximum wall clock time (after reaching this limit the process is
+  killed automatically),
+- files for redirection of output and error messages,
+- executable and command line parameters.
 
 ### LSF
 
-The batch sytem on Atlas is LSF. For general information on LSF, please
-follow [this link](PlatformLSF).
+The batch sytem on Atlas is LSF. For general information on LSF, please follow
+[this link](PlatformLSF.md).
 
 ### Submission of Parallel Jobs
 
-To run MPI jobs ensure that the same MPI module is loaded as during
-compile-time. In doubt, check you loaded modules with `module list`. If
-you code has been compiled with the standard OpenMPI installation, you
-can load the OpenMPI module via `module load openmpi`.
+To run MPI jobs ensure that the same MPI module is loaded as during compile-time. In doubt, check
+you loaded modules with `module list`. If you code has been compiled with the standard OpenMPI
+installation, you can load the OpenMPI module via `module load openmpi`.
 
-Please pay attention to the messages you get loading the module. They
-are more up-to-date than this manual. To submit a job the user has to
-use a script or a command-line like this:
+Please pay attention to the messages you get loading the module. They are more up-to-date than this
+manual. To submit a job the user has to use a script or a command-line like this:
 
-    <span class='WYSIWYG_HIDDENWHITESPACE'>&nbsp;</span>bsub -n &lt;N&gt; mpirun &lt;program name&gt<span class='WYSIWYG_HIDDENWHITESPACE'>&nbsp;</span>
+```Bash
+bsub -n <N> mpirun <program name>
+```
 
 ### Memory Limits
 
-**Memory limits are enforced.** This means that jobs which exceed their
-per-node memory limit **may be killed** automatically by the batch
-system.
+**Memory limits are enforced.** This means that jobs which exceed their per-node memory limit **may
+be killed** automatically by the batch system.
 
-The **default limit** is **300 MB** *per job slot* (bsub -n).
+The **default limit** is **300 MB** *per job slot* (`bsub -n`).
 
-Atlas has sets of nodes with different amount of installed memory which
-affect where your job may be run. To achieve the shortest possible
-waiting time for your jobs, you should be aware of the limits shown in
-the following table and read through the explanation below.
+Atlas has sets of nodes with different amount of installed memory which affect where your job may be
+run. To achieve the shortest possible waiting time for your jobs, you should be aware of the limits
+shown in the following table and read through the explanation below.
 
 | Nodes        | No. of Cores | Avail. Memory per Job Slot | Max. Memory per Job Slot for Oversubscription |
 |:-------------|:-------------|:---------------------------|:----------------------------------------------|
@@ -77,14 +70,12 @@ the following table and read through the explanation below.
 
 #### Explanation
 
-The amount of memory that you request for your job (-M ) restricts to
-which nodes it will be scheduled. Usually, the column **"Avail. Memory
-per Job Slot"** shows the maximum that will be allowed on the respective
-nodes.
+The amount of memory that you request for your job (-M ) restricts to which nodes it will be
+scheduled. Usually, the column **Avail. Memory per Job Slot** shows the maximum that will be
+allowed on the respective nodes.
 
-However, we allow for **oversubscribing of job slot memory**. This means
-that jobs which use **-n32 or less** may be scheduled to smaller memory
-nodes.
+However, we allow for **oversubscribing of job slot memory**. This means that jobs which use **-n32
+or less** may be scheduled to smaller memory nodes.
 
 Have a look at the **examples below**.
 
@@ -98,17 +89,17 @@ available for longer running jobs (>10 min).
 
 | Job Spec.                                                                             | Nodes Allowed                                                                                     | Remark                                                                                                          |
 |:--------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------|
-| `bsub %GREEN%-n 1 -M 500%ENDCOLOR%`                                                   | `All nodes`                                                                                       | \<= 940 Fits everywhere                                                                                         |
-| `bsub %GREEN%-n 64 -M 700%ENDCOLOR%`                                                  | `All nodes`                                                                                       | \<= 940 Fits everywhere                                                                                         |
-| `bsub %GREEN%-n 4 -M 1800%ENDCOLOR%`                                                  | `All nodes`                                                                                       | Is allowed to oversubscribe on small nodes n\[001-047\]                                                         |
-| `bsub %GREEN%-n 64 -M 1800%ENDCOLOR%`                                                 | `n[049-092]`                                                                                      | 64\*1800 will not fit onto a single small node and is therefore restricted to running on medium and large nodes |
-| \<span>bsub \<span style`"color: #eecc22;">-n 4 -M 2000</span></span> | =n[049-092]`  | Over limit for oversubscribing on small nodes n\[001-047\], but may still go to medium nodes      |                                                                                                                 |
-| \<span>bsub \<span style`"color: #eecc22;">-n 32 -M 2000</span></span> | =n[049-092]` | Same as above                                                                                     |                                                                                                                 |
-| `bsub %GREEN%-n 32 -M 1880%ENDCOLOR%`                                                 | `All nodes`                                                                                       | Using max. 1880 MB, the job is eligible for running on any node                                                 |
-| \<span>bsub \<span style`"color: #eecc22;">-n 64 -M 2000</span></span> | =n[085-092]` | Maximum for medium nodes is 1950 per slot - does the job **really** need **2000 MB** per process? |                                                                                                                 |
-| `bsub %GREEN%-n 64 -M 1950%ENDCOLOR%`                                                 | `n[049-092]`                                                                                      | When using 1950 as maximum, it will fit to the medium nodes                                                     |
-| `bsub -n 32 -M 16000`                                                                 | `n[085-092]`                                                                                      | Wait time might be **very long**                                                                                |
-| `bsub %RED%-n 64 -M 16000%ENDCOLOR%`                                                  | `n[085-092]`                                                                                      | Memory request cannot be satisfied (64\*16 MB = 1024 GB), **%RED%cannot schedule job%ENDCOLOR%**                |
+| `bsub -n 1 -M 500`     | All nodes      | <= 940 Fits everywhere                                                                                          |
+| `bsub -n 64 -M 700`    | All nodes      | <= 940 Fits everywhere                                                                                          |
+| `bsub -n 4 -M 1800`    | All nodes      | Is allowed to oversubscribe on small nodes n\[001-047\]                                                         |
+| `bsub -n 64 -M 1800`   | `n[049-092]`   | 64\*1800 will not fit onto a single small node and is therefore restricted to running on medium and large nodes |
+| `bsub -n 4 -M 2000`    | `-n[049-092]`  | Over limit for oversubscribing on small nodes `n[001-047]`, but may still go to medium nodes                    |
+| `bsub -n 32 -M 2000`   | `-n[049-092]`  | Same as above                                                                                     |              
+| `bsub -n 32 -M 1880`   | All nodes      | Using max. 1880 MB, the job is eligible for running on any node                                   |
+| `bsub -n 64 -M 2000`   | `-n[085-092]`  | Maximum for medium nodes is 1950 per slot - does the job **really** need **2000 MB** per process? |
+| `bsub -n 64 -M 1950`   | `n[049-092]`   | When using 1950 as maximum, it will fit to the medium nodes                                       |
+| `bsub -n 32 -M 16000`  | `n[085-092]`   | Wait time might be **very long**                                                                  |
+| `bsub -n 64 -M 16000`  | `n[085-092]`   | Memory request cannot be satisfied (64\*16 MB = 1024 GB), **cannot schedule job**                 |
 
 ### Batch Queues
 
@@ -117,10 +108,10 @@ scheduling policy prefers short running jobs over long running ones.
 This means that **short jobs get higher priorities** and are usually
 started earlier than long running jobs.
 
-| Batch Queue   | Admitted Users | Max. Cores                                   | Default Runtime                                   | \<div style="text-align: right;">Max. Runtime\</div> |
-|:--------------|:---------------|:---------------------------------------------|:--------------------------------------------------|:-----------------------------------------------------|
-| `interactive` | `all`          | \<div style="text-align: right;">n/a\</div>  | \<div style="text-align: right;">12h 00min\</div> | \<div style="text-align: right;">12h 00min\</div>    |
-| `short`       | `all`          | \<div style="text-align: right;">1024\</div> | \<div style="text-align: right;">1h 00min\</div>  | \<div style="text-align: right;">24h 00min\</div>    |
-| `medium`      | `all`          | \<div style="text-align: right;">1024\</div> | \<div style="text-align: right;">24h 01min\</div> | \<div style="text-align: right;">72h 00min\</div>    |
-| `long`        | `all`          | \<div style="text-align: right;">1024\</div> | \<div style="text-align: right;">72h 01min\</div> | \<div style="text-align: right;">120h 00min\</div>   |
-| `rtc`         | `on request`   | \<div style="text-align: right;">4\</div>    | \<div style="text-align: right;">12h 00min\</div> | \<div style="text-align: right;">300h 00min\</div>   |
+| Batch Queue   | Admitted Users | Max. Cores                        | Default Runtime    | Max. Runtime |
+|:--------------|:---------------|:----------------------------------|:-------------------|:-------------|
+| `interactive` | `all`          | n/a   | 12h 00min | 12h 00min    |
+| `short`       | `all`          | 1024  | 1h 00min  | 24h 00min    |
+| `medium`      | `all`          | 1024  | 24h 01min | 72h 00min    |
+| `long`        | `all`          | 1024  | 72h 01min | 120h 00min   |
+| `rtc`         | `on request`   | 4     | 12h 00min | 300h 00min   |
