@@ -1,5 +1,3 @@
-
-
 # HPC Component SGI Altix
 
 The SGI Altix 4700 is a shared memory system with dual core Intel
@@ -7,34 +5,36 @@ Itanium 2 CPUs (Montecito) operated by the Linux operating system SuSE
 SLES 10 with a 2.6 kernel. Currently, the following Altix partitions are
 installed at ZIH:
 
-\|\*Name \*\|\*Total Cores \*\|**Compute Cores**\|**Memory per Core**\|
-\| Mars \|384 \|348 \|1 GB\| \|Jupiter \|512 \|506 \|4 GB\| \|Saturn
-\|512 \|506 \|4 GB\| \|Uranus \|512 \|506 \|4 GB\| \|Neptun \|128 \|128
-\|1 GB\|
+|Name|Total Cores|Compute Cores|Memory per Core|
+|:----|:----|:----|:----|
+| Mars |384 |348 |1 GB|
+|Jupiter |512 |506 |4 GB|
+|Saturn |512 |506 |4 GB|
+|Uranus |512 |506|4 GB|
+|Neptun |128 |128 |1 GB|
 
-\<P> The jobs for these partitions (except \<TT>Neptun\</TT>) are
-scheduled by the [Platform LSF](Platform LSF) batch system running on
-`mars.hrsk.tu-dresden.de`. The actual placement of a submitted job may
+The jobs for these partitions (except Neptun) are scheduled by the [Platform LSF](PlatformLSF.md)
+batch system running on `mars.hrsk.tu-dresden.de`. The actual placement of a submitted job may
 depend on factors like memory size, number of processors, time limit.
 
-## Filesystems All partitions share the same CXFS filesystems `/work` and `/fastfs`. ... [more information](FileSystems)
+## Filesystems
+
+All partitions share the same CXFS filesystems `/work` and `/fastfs`.
 
 ## ccNuma Architecture
 
-The SGI Altix has a ccNUMA architecture, which stands for Cache Coherent
-Non-Uniform Memory Access. It can be considered as a SM-MIMD (*shared
-memory - multiple instruction multiple data*) machine. The SGI ccNuma
-system has the following properties:
+The SGI Altix has a ccNUMA architecture, which stands for Cache Coherent Non-Uniform Memory Access.
+It can be considered as a SM-MIMD (*shared memory - multiple instruction multiple data*) machine.
+The SGI ccNuma system has the following properties:
 
--   Memory is physically distributed but logically shared
--   Memory is kept coherent automatically by hardware.
--   Coherent memory: memory is always valid (caches hold copies)
--   Granularity is L3 cacheline (128 B)
--   Bandwidth of NumaLink4 is 6.4 GB/s
+- Memory is physically distributed but logically shared
+- Memory is kept coherent automatically by hardware.
+- Coherent memory: memory is always valid (caches hold copies)
+- Granularity is L3 cacheline (128 B)
+- Bandwidth of NumaLink4 is 6.4 GB/s
 
-The ccNuma is a compromise between a distributed memory system and a
-flat symmetric multi processing machine (SMP). Altough the memory is
-shared, the access properties are not the same.
+The ccNuma is a compromise between a distributed memory system and a flat symmetric multi processing
+machine (SMP). Altough the memory is shared, the access properties are not the same.
 
 ## Compute Module
 
@@ -79,13 +79,9 @@ properties:
 | L3 cache                            | 9 MB, 12 clock latency     |
 | front side bus                      | 128 bit x 200 MHz          |
 
-The theoretical peak performance of all Altix partitions is hence about
-13.1 TFLOPS.
+The theoretical peak performance of all Altix partitions is hence about 13.1 TFLOPS.
 
-The processor has hardware support for efficient software pipelining.
-For many scientific applications it provides a high sustained
-performance exceeding the performance of RISC CPUs with similar peak
-performance. On the down side is the fact that the compiler has to
-explicitely discover and exploit the parallelism in the application.
-
-<span class="twiki-macro COMMENT"></span>
+The processor has hardware support for efficient software pipelining.  For many scientific
+applications it provides a high sustained performance exceeding the performance of RISC CPUs with
+similar peak performance. On the down side is the fact that the compiler has to explicitely discover
+and exploit the parallelism in the application.
