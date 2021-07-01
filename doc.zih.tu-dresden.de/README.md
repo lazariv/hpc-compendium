@@ -221,13 +221,14 @@ Installation
 ~ [sudo] npm [-g]  install markdownlint-cli
 ```
 
-The configuration is stored in `.markdownlint.json`. The tool `markdownlint` can be run in dry or
-fix mode. The *dry* mode (default) only outputs findings, whereas in *fix* mode it resolves basic
+The configuration is stored in `.markdownlintrc`.
+The tool `markdownlint` can be run in dry or fix mode.
+The *dry* mode (default) only outputs findings, whereas in *fix* mode it resolves basic
 errors directly in the markdown files.
 
 ```Shell Session
 ~ cd doc.zih.tu-dresden.de/
-~ markdownlint [--config .markdownlint.json] [--fix] docs/index.md
+~ markdownlint [--fix] docs/index.md
 docs/index.md:8:131 MD013/line-length Line length [Expected: 130; Actual: 138]
 ```
 

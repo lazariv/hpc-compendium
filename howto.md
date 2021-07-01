@@ -20,7 +20,7 @@ git checkout -b RomeNodes
 
 ## 3. Run the linter:
 ```Bash
-markdownlint --config .markdownlint.json  ./docs/use_of_hardware/RomeNodes.md
+markdownlint ./docs/use_of_hardware/RomeNodes.md
 ```
 If there are still errors: go to step 2
 
