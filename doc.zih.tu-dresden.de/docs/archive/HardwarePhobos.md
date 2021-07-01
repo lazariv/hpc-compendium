@@ -12,9 +12,9 @@ the following hardware is installed:
 |CPUs per node |2 |
 |RAM per node |4 GB |
 
-All nodes share a 4.4 TB SAN. Each node has additional local disk space mounted on `/scratch`. The jobs for the
-compute nodes are scheduled by a [Platform LSF](PlatformLSF.md) batch system running on the login
-node `phobos.hrsk.tu-dresden.de`.
+All nodes share a 4.4 TB SAN. Each node has additional local disk space mounted on `/scratch`. The
+jobs for the compute nodes are scheduled by a [Platform LSF](PlatformLSF.md) batch system running on
+the login node `phobos.hrsk.tu-dresden.de`.
 
 Two separate Infiniband networks (10 Gb/s) with low cascading switches provide the infrastructure
 for low latency / high throughput data traffic. An additional GB/Ethernetwork is used for control
