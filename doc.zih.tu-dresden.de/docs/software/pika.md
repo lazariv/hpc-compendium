@@ -8,13 +8,6 @@ interface](https://selfservice.zih.tu-dresden.de/l/index.php/hpcportal/jobmonito
 interface](https://selfservice.zih.tu-dresden.de/l/index.php/hpcportal/jobmonitoring/zih/jobs) in a
 separate window. Furthermore, at least one real HPC job should have been submitted on Taurus. 
 
-- [Overview](#overview)
-- [Table View and Job Search](#table-view-and-job-search)
-- [Timeline Visualization](#timeline-visualization)
-- [Footprint Visualization](#footprint-visualization)
-- [Hints](#hints)
-- [Known Issues](#known-issues)
-
 ## Overview
 
 Pika consists of several components and tools.  It uses the collection daemon collectd, InfluxDB to
@@ -114,8 +107,10 @@ If users wish to perform their own measurement of performance counters using per
 than Pika, it is recommended to disable Pika monitoring. This can be done using the following slurm
 flags in the job script:
 
-	#SBATCH --exclusive
-	#SBATCH --comment=no_monitoring
+```Bash
+#SBATCH --exclusive
+#SBATCH --comment=no_monitoring
+```
 	
 **Note:** Disabling Pika monitoring is possible only for exclusive jobs!
 
