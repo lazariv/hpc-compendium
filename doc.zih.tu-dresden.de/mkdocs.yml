@@ -42,13 +42,17 @@ nav:
     - FAQs: software/modules-faq.md
     - Bio Informatics: software/Bioinformatics.md
     - SCS5 Migration Hints: software/SCS5Software.md
-    - GPU Programming: software/GPUProgramming.md
     - NanoscaleSimulations: software/NanoscaleSimulations.md
     - FEMSoftware: software/FEMSoftware.md
-    - Score-P: software/ScoreP.md
     - Cloud: software/Cloud.md
     - VM tools: software/VMTools.md
     - Virtual Desktops: software/VirtualDesktops.md
+    - Software Development and Tools:
+      - GPU Programming: software/GPUProgramming.md
+      - Compilers: software/Compilers.md
+      - Debuggers: software/Debuggers.md
+      - MPI Error Detection: software/MPIUsageErrorDetection.md
+      - Score-P: software/ScoreP.md
   - Data Management:
     - Overview: data_management/DataManagement.md
     - Announcement of Quotas: data_management/AnnouncementOfQuotas.md
