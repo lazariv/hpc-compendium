@@ -44,14 +44,14 @@ Check links for changed md-files:
 Lint md-files:
     stage: test
     script: docker run --rm ${DOCKER_IMAGE} markdownlint docs
-    only: [ main ]
+    only: [ main, preview ]
 
 Check links for md-files:
     stage: test
     script:
         - docker run --rm ${DOCKER_IMAGE}
           bash -c "find docs -type f -name '*.md' | xargs -L1 markdown-link-check --quiet"
-    only: [ main ]
+    only: [ main, preview ]
 
 Release preview branch:
     stage: release
