@@ -40,6 +40,7 @@ nav:
     - GPU Programming: software/GPUProgramming.md
     - NanoscaleSimulations: software/NanoscaleSimulations.md
     - FEMSoftware: software/FEMSoftware.md
+    - Score-P: software/ScoreP.md
   - Data Management:
     - Overview: data_management/datamanagement.md
     - Announcement of Quotas: data_management/AnnouncementOfQuotas.md
