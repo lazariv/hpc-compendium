@@ -1,28 +1,21 @@
-# Move data to/from ZIH's file systems
-
-
+# Move data to/from ZIH's File Systems
 
 ## Export Nodes
 
-To copy large data to/from the HPC machines, the Taurus export nodes
-should be used. While it is possible to transfer small files directly
-via the login nodes, they are not intended to be used that way and there
-exists a CPU time limit on the login nodes, killing each process that
-takes up too much CPU time, which also affects file-copy processes if
-the copied files are very large. The export nodes have a better uplink
-(10GBit/s) and are generally the preferred way to transfer your data.
-Note that you cannot log in via ssh to the export nodes, but only use
-scp, rsync or sftp on them.
+To copy large data to/from the HPC machines, the Taurus export nodes should be used. While it is
+possible to transfer small files directly via the login nodes, they are not intended to be used that
+way and there exists a CPU time limit on the login nodes, killing each process that takes up too
+much CPU time, which also affects file-copy processes if the copied files are very large. The export
+nodes have a better uplink (10GBit/s) and are generally the preferred way to transfer your data.
+Note that you cannot log in via ssh to the export nodes, but only use scp, rsync or sftp on them.
 
-They are reachable under the hostname:
-**taurusexport.hrsk.tu-dresden.de** (or
+They are reachable under the hostname: **taurusexport.hrsk.tu-dresden.de** (or
 taurusexport3.hrsk.tu-dresden.de, taurusexport4.hrsk.tu-dresden.de).
 
-## Access from Linux machine
+## Access from Linux Machine
 
-There are three possibilities to exchange data between your local
-machine (lm) and the hpc machines (hm), which are explained in the
-following abstract in more detail.
+There are three possibilities to exchange data between your local machine (lm) and the hpc machines
+(hm), which are explained in the following abstract in more detail.
 
 ### SCP
 
@@ -31,21 +24,27 @@ the local machine.
 
 #### Copy data from lm to hm
 
-    # Copy file
-    scp <file> <zih-user>@<machine>:<target-location>
-    # Copy directory
-    scp -r <directory> <zih-user>@<machine>:<target-location>
+```Bash
+# Copy file
+scp <file> <zih-user>@<machine>:<target-location>
+# Copy directory
+scp -r <directory> <zih-user>@<machine>:<target-location>
+```
 
 #### Copy data from hm to lm
 
-    # Copy file
-    scp <zih-user>@<machine>:<file> <target-location>
-    # Copy directory
-    scp -r <zih-user>@<machine>:<directory> <target-location>
+```Bash
+# Copy file
+scp <zih-user>@<machine>:<file> <target-location>
+# Copy directory
+scp -r <zih-user>@<machine>:<directory> <target-location>
+```
 
 Example:
 
-    scp helloworld.txt mustermann@taurusexport.hrsk.tu-dresden.de:~/.
+```Bash
+scp helloworld.txt mustermann@taurusexport.hrsk.tu-dresden.de:~/.
+```
 
 Additional information: <http://www.computerhope.com/unix/scp.htm>
 
@@ -54,12 +53,14 @@ Additional information: <http://www.computerhope.com/unix/scp.htm>
 Is a virtual command line, which you could access with the following
 line:
 
-    # Enter virtual command line
-    sftp <zih-user>@<machine>
-    # Exit virtual command line
-    sftp> exit 
-    # or
-    sftp> <Ctrl+D>
+```Bash
+# Enter virtual command line
+sftp <zih-user>@<machine>
+# Exit virtual command line
+sftp> exit 
+# or
+sftp> <Ctrl+D>
+```
 
 After that you have access to the filesystem on the hpc machine and you
 can use the same commands as on your local machine, e.g. ls, cd, pwd and
@@ -69,23 +70,29 @@ the command, e.g. lls, lcd or lpwd.
 
 #### Copy data from lm to hm
 
-    # Copy file
-    sftp> put <file>
-    # Copy directory
-    sftp> put -r <directory>
+```Bash
+# Copy file
+sftp> put <file>
+# Copy directory
+sftp> put -r <directory>
+```
 
 #### Copy data from hm to lm
 
-    # Copy file
-    sftp> get <file>
-    # Copy directory
-    sftp> get -r <directory>
+```Bash
+# Copy file
+sftp> get <file>
+# Copy directory
+sftp> get -r <directory>
+```
 
 Example:
 
-    sftp> get helloworld.txt
+```Bash
+sftp> get helloworld.txt
+```
 
-Additional information: <http://www.computerhope.com/unix/sftp.htm>
+Additional information: http://www.computerhope.com/unix/sftp.htm
 
 ### RSYNC
 
@@ -94,28 +101,33 @@ the local machine.
 
 #### Copy data from lm to hm
 
-    # Copy file
-    rsync <file> <zih-user>@<machine>:<target-location>
-    # Copy directory
-    rsync -r <directory> <zih-user>@<machine>:<target-location>
+```Bash
+# Copy file
+rsync <file> <zih-user>@<machine>:<target-location>
+# Copy directory
+rsync -r <directory> <zih-user>@<machine>:<target-location>
+```
 
 #### Copy data from hm to lm
 
-    # Copy file
-    rsync <zih-user>@<machine>:<file> <target-location>
-    # Copy directory
-    rsync -r <zih-user>@<machine>:<directory> <target-location>
+```Bash
+# Copy file
+rsync <zih-user>@<machine>:<file> <target-location>
+# Copy directory
+rsync -r <zih-user>@<machine>:<directory> <target-location>
+```
 
 Example:
 
-    rsync helloworld.txt mustermann@taurusexport.hrsk.tu-dresden.de:~/.
+```Bash
+rsync helloworld.txt mustermann@taurusexport.hrsk.tu-dresden.de:~/.
+```
 
-Additional information: <http://www.computerhope.com/unix/rsync.htm>
+Additional information: http://www.computerhope.com/unix/rsync.htm
 
 ## Access from Windows machine
 
-First you have to install WinSCP. (
-<http://winscp.net/eng/download.php>)
+First you have to install [WinSCP](http://winscp.net/eng/download.php).
 
 Then you have to execute the WinSCP application and configure some
 option as described below.

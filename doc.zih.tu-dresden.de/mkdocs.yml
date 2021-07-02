@@ -3,12 +3,14 @@ nav:
   - Application for HPC Login: 
     - Overview: application.md
     - Access: application/Access.md
+    - Terms: application/TermsOfUse.md
   - Request for Resources:
     - Overview: req_resources.md
     - Project Request Form: req_resources/ProjectRequestForm.md
   - Access to the Cluster:
     - Overview: access.md
     - Desktop Visualization: access/DesktopCloudVisualization.md
+    - Web VNC: access/WebVNC.md
     - Login: access/Login.md
     - Security Restrictions: access/SecurityRestrictions.md
     - SSH with Putty: access/SSHMitPutty.md
@@ -17,7 +19,10 @@ nav:
     - Modules: software/modules.md
     - JupyterHub: software/JupyterHub.md
     - JupyterHub for Teaching: software/JupyterHubForTeaching.md
-    - Containers: software/containers.md
+    - Containers:
+      - Singularity: software/containers.md
+      - Singularity Recicpe Hints: software/SingularityRecipeHints.md
+      - Singularity Example Definitions: software/SingularityExampleDefinitions.md
     - Custom Easy Build Modules: software/CustomEasyBuildEnvironment.md
     - Get started with HPC-DA: software/GetStartedWithHPCDA.md
     - Mathematics: software/Mathematics.md
@@ -41,10 +46,13 @@ nav:
     - NanoscaleSimulations: software/NanoscaleSimulations.md
     - FEMSoftware: software/FEMSoftware.md
     - Score-P: software/ScoreP.md
+    - Cloud: software/Cloud.md
+    - VM tools: software/VMTools.md
+    - Virtual Desktops: software/VirtualDesktops.md
   - Data Management:
-    - Overview: data_management/datamanagement.md
+    - Overview: data_management/DataManagement.md
     - Announcement of Quotas: data_management/AnnouncementOfQuotas.md
-    - Workspaces: data_management/workspaces.md
+    - Workspaces: data_management/Workspaces.md
     - Applications: data_management/Applications.md
     - BeeGFS: data_management/BeeGFS.md
     - Projectmanagment: data_management/ProjectManagement.md

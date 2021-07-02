@@ -7,4 +7,3 @@ configuration:
 -   256 GB RAM DDR4 2666MHz
 -   6x NVIDIA VOLTA V100 with 32GB HBM2
 -   NVLINK bandwidth 150 GB/s between GPUs and host
-

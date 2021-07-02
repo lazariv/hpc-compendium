@@ -15,6 +15,4 @@ Some useful examples of job submission via REST are available at:
 
 The base address for the Taurus system at the ZIH is:
 
-<https://unicore.zih.tu-dresden.de:8080/TAURUS/rest/core>
-
--- Main.AlvaroAguilera - 2017-02-01
+unicore.zih.tu-dresden.de:8080/TAURUS/rest/core

@@ -1,6 +1,6 @@
 # HPC Storage Changes 2019
 
-## \<font face="Open Sans, sans-serif"> **Hardware changes require new approach** \</font>
+## Hardware changes require new approach**
 
 \<font face="Open Sans, sans-serif">At the moment we are preparing to
 remove our old hardware from 2013. This comes with a shrinking of our
@@ -29,8 +29,8 @@ validity of a workspace can be extended twice. \</font>
     face="Open Sans, sans-serif">mid-term storage (max 3 years), use our
     "warm archive" which is large but slow. It is available read-only on
     the compute hosts and read-write an login and export nodes. To move
-    in your data, you might want to use the [datamover
-    nodes](DataMover).\</font>\</p>
+    in your data, you might want to use the
+    [datamover nodes](../data_moving/DataMover.md).\</font>\</p>
 
 ## \<font face="Open Sans, sans-serif">Moving Data from /scratch and /lustre/ssd to your workspaces\</font>
 
@@ -41,27 +41,31 @@ old data from there in the usual way. So you will have to use the
 DataMover commands and ideally just move your data to your prepared
 workspace:
 
-    dtmv /scratch/p_myproject/some_data /scratch/ws/myuser-mynewworkspace
-    #or:
-    dtmv /scratch/p_myproject/some_data /warm_archive/ws/myuser-mynewworkspace
+```Shell Session
+dtmv /scratch/p_myproject/some_data /scratch/ws/myuser-mynewworkspace
+#or:
+dtmv /scratch/p_myproject/some_data /warm_archive/ws/myuser-mynewworkspace
+```
 
 Obsolete data can also be deleted like this:
 
-    dtrm -rf /scratch/p_myproject/some_old_data
+```Shell Session
+dtrm -rf /scratch/p_myproject/some_old_data
+```
 
 **%RED%At the end of the year we will delete all data on /scratch and
 /lsuter/ssd outside the workspaces.%ENDCOLOR%**
 
-## **\<font face="Open Sans, sans-serif">Data \</font>\<font face="Open Sans, sans-serif">life cycle management\</font>**
+## Data life cycle management
 
 \<font face="Open Sans, sans-serif">Please be aware: \</font>\<font
 face="Open Sans, sans-serif">Data in workspaces will be deleted
 automatically after the grace period.\</font>\<font face="Open Sans,
 sans-serif"> This is especially true for the warm archive. If you want
 to keep your data for a longer time please use our options for
-[long-term storage](PreservationResearchData).\</font>
+[long-term storage](PreservationResearchData.md).\</font>
 
 \<font face="Open Sans, sans-serif">To \</font>\<font face="Open Sans,
 sans-serif">help you with that, you can attach your email address for
 notification or simply create an ICAL entry for your calendar
-(...@tu-dresden.de only). \</font>
+(tu-dresden.de mailboxes only). \</font>

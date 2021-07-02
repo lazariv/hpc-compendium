@@ -5,16 +5,16 @@ from its tape library by the end of March, 2013.
 
 This file system is currently mounted at
 
--   SGI Altix: `/fastfs/`
--   Atlas: `/hpc_fastfs/`
+- SGI Altix: `/fastfs/`
+- Atlas: `/hpc_fastfs/`
 
 We kindly ask our users to remove their large data from the file system.
 Files worth keeping can be moved
 
--   to the new [Intermediate Archive](IntermediateArchive) (max storage
+- to the new [Intermediate Archive](../data_management/IntermediateArchive.md) (max storage
     duration: 3 years) - see
-    [MigrationHints](CXFSEndOfSupport#MigrationHints) below,
--   or to the [Log-term Archive](PreservationResearchData) (tagged with
+    [MigrationHints](#migration-from-cxfs-to-the-intermediate-archive) below,
+- or to the [Log-term Archive](../data_management/PreservationResearchData.md) (tagged with
     metadata).
 
 To run the file system without support comes with the risk of losing
@@ -26,8 +26,6 @@ this file system, from then on.
 With the new HRSK-II system comes a large scratch file system with appr.
 800 TB disk space. It will be made available for all running HPC systems
 in due time.
-
-#MigrationHints
 
 ## Migration from CXFS to the Intermediate Archive
 
@@ -43,4 +41,4 @@ the system.
 Please finish this by the end of January. Starting on Feb/18/2013, we
 will step by step transfer these directories to the new hardware.
 
--   Set DENYTOPICVIEW = WikiGuest
+- Set DENYTOPICVIEW = WikiGuest

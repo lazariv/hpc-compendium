@@ -1,3 +1,5 @@
+# Ramdisk
+
 ## Using parts of the main memory as a temporary file system
 
 On systems with a very large main memory, it is for some workloads very
@@ -21,11 +23,15 @@ single ramdisk can be created (but you can create and delete a ramdisk
 multiple times during a job). You need to load the corresponding
 software module via
 
-    module load ramdisk
+```Bash
+module load ramdisk
+```
 
 Afterwards, the ramdisk can be created with the command
 
-    make-ramdisk &laquo;size of the ramdisk in GB&raquo; 
+```Bash
+make-ramdisk &laquo;size of the ramdisk in GB&raquo; 
+```
 
 The path to the ramdisk is fixed to `/ramdisks/«JOBID»`.
 
@@ -36,7 +42,9 @@ provide a script that uses multiple threads to copy a directory tree. It
 can also be used to transfer single files but will only use one thread
 in this case. It is used as follows
 
-    parallel-copy.sh &laquo;source directory or file&raquo; &laquo;target directory&raquo;
+```Bash
+parallel-copy.sh &laquo;source directory or file&raquo; &laquo;target directory&raquo;
+```
 
 It is not specifically tailored to be used with the ramdisk. It can be
 used for any copy process between two locations.
@@ -46,14 +54,16 @@ used for any copy process between two locations.
 A ramdisk will automatically be deleted at the end of the job. As an
 alternative, you can delete your own ramdisk via the command
 
-    kill-ramdisk
+```Bash
+kill-ramdisk
+```
 
-. It is possible, that the deletion of the ramdisk fails. The reason for
+It is possible, that the deletion of the ramdisk fails. The reason for
 this is typically that some process still has a file open within the
 ramdisk or that there is still a program using the ramdisk or having the
 ramdisk as its current path. Locating these processes, that block the
 destruction of the ramdisk is possible via using the command
-
-    lsof +d /ramdisks/&laquo;JOBID&raquo;
-
--- Main.MichaelKluge - 2013-03-22
+ 
+```Bash
+lsof +d /ramdisks/&laquo;JOBID&raquo;
+```

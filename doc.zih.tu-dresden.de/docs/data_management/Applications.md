@@ -5,31 +5,29 @@ descriptions are taken from the vendor's web site or from
 Wikipedia.org.)
 
 Before running an application you normally have to load a
-[module](RuntimeEnvironment#Modules). Please read the instructions given
+[module](../data_management/RuntimeEnvironment.md#modules). Please read the instructions given
 while loading the module, they might be more up-to-date than this
 manual.
 
--   [Complete List of Modules](SoftwareModulesList)
--   [Using Software Modules](RuntimeEnvironment#Modules)
+-   **TODO Link** (Complete List of Modules)(SoftwareModulesList)
+-   [Using Software Modules](../data_management/RuntimeEnvironment.md#modules)
 
 <!-- -->
 
--   [Mathematics](Mathematics)
--   [Nanoscale Simulations](Nanoscale Simulations)
--   [FEM Software](FEMSoftware)
--   [Computational Fluid Dynamics](CFD)
--   [Deep Learning](DeepLearning)
+-   [Mathematics](../software/Mathematics.md)
+-   [Nanoscale Simulations](../software/NanoscaleSimulations.md)
+-   [FEM Software](../software/FEMSoftware.md)
+-   [Computational Fluid Dynamics](../software/CFD.md)
+-   [Deep Learning](../software/DeepLearning.md)
 
 <!-- -->
 
--   [Visualization Tools](Visualization) , \<a
-    href="DesktopCloudVisualization" title="Remote Rendering on GPU
-    nodes">Remote Rendering on GPU nodes\</a>
--   \<s>[Graphical access using UNICORE](unicore_access)\</s> The
-    UNICORE support has been abandoned and so this way of access is no
+-   [Visualization Tools](../software/Visualization.md),
+    [Remote Rendering on GPU nodes](../access/DesktopCloudVisualization.md)
+-   UNICORE support has been abandoned and so this way of access is no
     longer available.
 
-## \<a name="ExternalLicense">\</a>Use of external licenses
+## Use of external licenses
 
 It is possible (please contact the support team first) for our users to
 install their own software and use their own license servers, e.g.

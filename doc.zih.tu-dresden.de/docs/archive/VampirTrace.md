@@ -2,7 +2,7 @@
 
 VampirTrace is a performance monitoring tool, that produces tracefiles
 during a program run. These tracefiles can be analyzed and visualized by
-the tool [Vampir](Compendium.Vampir). Vampir Supports lots of features
+the tool [Vampir] **todo** Vampir. Vampir Supports lots of features
 e.g.
 
 -   MPI, OpenMP, pthreads, and hybrid programs
@@ -13,12 +13,14 @@ e.g.
 -   Function filtering and grouping
 
 Only the basic usage is shown in this Wiki. For a comprehensive
-VampirTrace user manual refer to the [VampirTrace
-Website](http://www.tu-dresden.de/zih/vampirtrace).
+VampirTrace user manual refer to the
+[VampirTrace Website](http://www.tu-dresden.de/zih/vampirtrace).
 
 Before using VampirTrace, set up the correct environment with
 
-    module load vampirtrace
+```Bash
+module load vampirtrace
+```
 
 To make measurements with VampirTrace, the user's application program
 needs to be instrumented, i.e., at specific important points
@@ -99,5 +101,3 @@ applications can be instrumented:
 By default, running a VampirTrace instrumented application should result
 in a tracefile in the current working directory where the application
 was executed.
-
--- Main.jurenz - 2009-12-17

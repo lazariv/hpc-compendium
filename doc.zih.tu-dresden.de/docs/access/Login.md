@@ -1,7 +1,5 @@
 # Login to the High Performance Computers
 
-
-
 The best way to login to the linux machines is via ssh. From a Linux
 console, the command syntax is `ssh user@host`. The additional option
 \<span>-X\</span>C enables X11 forwarding for graphical applications
@@ -23,8 +21,8 @@ pages <http://www.tu-dresden.de/zih>.
 
 ## Access from a Windows workstation
 
-We suggest Windows users use MobaXTerm. ( [see details
-here](MobaXterm)). Benefits of MobaXTerm include:
+We suggest Windows users use MobaXTerm. **TODO Link MobaXterm**. 
+Benefits of MobaXTerm include:
 
 -   easy to use
 -   graphical user interface
@@ -78,4 +76,4 @@ A JupyterHub installation offering IPython Notebook is available under:
 
 <https://taurus.hrsk.tu-dresden.de/jupyter>
 
-See the documentation under [JupyterHub](JupyterHub).
+See the documentation under [JupyterHub](../software/JupyterHub.md).

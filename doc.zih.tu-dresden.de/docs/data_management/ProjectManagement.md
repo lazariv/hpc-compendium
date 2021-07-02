@@ -1,6 +1,4 @@
-
-
-## Project management
+# Project management
 
 The HPC project leader has overall responsibility for the project and
 for all activities within his project on ZIH's HPC systems. In
@@ -28,28 +26,25 @@ the project administrator to
 <span class="twiki-macro IMAGE" type="frame" align="right"
 caption="password" width="100">%ATTACHURLPATH%/external_login.png</span>
 
-\<div style="text-align: justify;"> The entry point to the project
-management system is \<a
-href="<https://hpcprojekte.zih.tu-dresden.de/managers>"
-target="\_blank"><https://hpcprojekte.zih.tu-dresden.de/managers>\</a>.
+[Entry point to the project management system](https://hpcprojekte.zih.tu-dresden.de/managers)
+
 The project leaders of an ongoing project and their accredited admins
 are allowed to login to the system. In general each of these persons
 should possess a ZIH login at the Technical University of Dresden, with
 which it is possible to log on the homepage. In some cases, it may
 happen that a project leader of a foreign organization do not have a ZIH
-login. For this purpose, it is possible to set a local password: "
-[Passwort
-vergessen](https://hpcprojekte.zih.tu-dresden.de/managers/members/missingPassword)".
-\</div> \<br style="clear: both;" /> <span class="twiki-macro IMAGE"
-type="frame" align="right" caption="password reset"
-width="100">%ATTACHURLPATH%/password.png</span> \<div style="text-align:
-justify;"> On the 'Passwort vergessen' page, it is possible to reset the
+login. For this purpose, it is possible to set a local password:
+"[Passwort vergessen](https://hpcprojekte.zih.tu-dresden.de/managers/members/missingPassword)".
+
+<span class="twiki-macro IMAGE" type="frame" align="right" caption="password reset"
+width="100">%ATTACHURLPATH%/password.png</span>
+
+On the 'Passwort vergessen' page, it is possible to reset the
 passwords of a 'non-ZIH-login'. For this you write your login, which
 usually corresponds to your email address, in the field and click on
 'zurcksetzen'. Within 10 minutes the system sends a signed e-mail from
 <hpcprojekte@zih.tu-dresden.de> to the registered e-mail address. this
-e-mail contains a link to reset the password. \</div> \<br style="clear:
-both;" />
+e-mail contains a link to reset the password.
 
 ## Projects
 
