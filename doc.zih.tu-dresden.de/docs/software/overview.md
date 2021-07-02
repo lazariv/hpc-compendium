@@ -31,7 +31,3 @@ link** for more specific cases.
 
 Some tasks require using containers. It can be done on Taurus by [Singularity]**todo link**. Details
 could be found in the [following chapter]**todo link**.
-
-Useful links: [Libraries]**todo link**, [Deep Learning]**todo link**, [Jupyter Hub]**todo link**,
-[Big Data Frameworks](useful_links/BigDataFrameworksApacheSparkApacheFlinkApacheHadoop.md), [R]**todo link**, [Applications for various fields of
-science]**todo link**
