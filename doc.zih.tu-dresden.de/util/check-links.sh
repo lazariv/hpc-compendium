@@ -44,9 +44,12 @@ any_fails=false
 files=$(git diff --name-only "$(git merge-base HEAD "$branch")")
 for f in $files; do
   if [ "${f: -3}" == ".md" ]; then
-    echo "Checking links for $f"
-    if ! $mlc -q -p "$f"; then
+    # do not check links for deleted files
+    if [ -e x.txt ]; then
+      echo "Checking links for $f"
+      if ! $mlc -q -p "$f"; then
         any_fails=true
+      fi
     fi
   fi
 done
