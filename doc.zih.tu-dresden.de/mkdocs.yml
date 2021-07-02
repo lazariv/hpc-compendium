@@ -53,6 +53,8 @@ nav:
       - Debuggers: software/Debuggers.md
       - MPI Error Detection: software/MPIUsageErrorDetection.md
       - Score-P: software/ScoreP.md
+      - PAPI Library: software/PapiLibrary.md 
+      - Perf Tools: software/PerfTools.md 
   - Data Management:
     - Overview: data_management/DataManagement.md
     - Announcement of Quotas: data_management/AnnouncementOfQuotas.md
