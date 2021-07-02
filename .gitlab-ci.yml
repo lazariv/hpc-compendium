@@ -16,56 +16,56 @@ stages:
     - cleanup
 
 
-build_linter:
+Build Linter:
     stage: build
     variables:
         GIT_STRATEGY: clone
         GIT_DEPTH: 0
     script: docker build -t ${DOCKER_IMAGE} .
 
-test_mkdocs:
+Test mkdocs:
     stage: test
     script: docker run ${DOCKER_IMAGE}
 
-test_linter_preview:
+Lint changed md-files:
     stage: test
     script:
         - docker run --rm -w /src -e CI_MERGE_REQUEST_TARGET_BRANCH_NAME ${DOCKER_IMAGE}
           doc.zih.tu-dresden.de/util/lint-changes.sh
     only: [ merge_requests ]
 
-test_linkchecker_preview:
+Check links for changed md-files:
     stage: test
     script:
         - docker run --rm -w /src -e CI_MERGE_REQUEST_TARGET_BRANCH_NAME ${DOCKER_IMAGE}
           doc.zih.tu-dresden.de/util/check-links.sh
     only: [ merge_requests ]
 
-test_linter:
+Lint md-files:
     stage: test
     script: docker run --rm ${DOCKER_IMAGE} markdownlint docs
     only: [ main ]
 
-test_linkchecker:
+Check links for md-files:
     stage: test
     script:
         - docker run --rm ${DOCKER_IMAGE}
           bash -c "find docs -type f -name '*.md' | xargs -L1 markdown-link-check --quiet"
     only: [ main ]
 
-release_preview:
+Release preview branch:
     stage: release
     script:
         - docker run --rm -v /var/www/html/preview:/mnt ${DOCKER_IMAGE} mkdocs build --site-dir /mnt
     only: [ preview ]
 
-release:
+Release:
     stage: release
     script:
         - docker run --rm -v /var/www/html/hpc-wiki:/mnt ${DOCKER_IMAGE} mkdocs build --site-dir /mnt
     only: [ main ]
 
-cleanup_docker:
+Cleanup docker:
     stage: cleanup
     script:
         - docker system prune --force
