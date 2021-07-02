@@ -45,6 +45,7 @@ nav:
     - GPU Programming: software/GPUProgramming.md
     - NanoscaleSimulations: software/NanoscaleSimulations.md
     - FEMSoftware: software/FEMSoftware.md
+    - Score-P: software/ScoreP.md
     - Cloud: software/Cloud.md
     - VM tools: software/VMTools.md
     - Virtual Desktops: software/VirtualDesktops.md
