@@ -48,14 +48,17 @@ nav:
     - VM tools: software/VMTools.md
     - Virtual Desktops: software/VirtualDesktops.md
     - Software Development and Tools:
+      - Overview: software/SoftwareDevelopment.md
       - GPU Programming: software/GPUProgramming.md
       - Compilers: software/Compilers.md
       - Debuggers: software/Debuggers.md
+      - Libraries: software/Libraries.md
       - MPI Error Detection: software/MPIUsageErrorDetection.md
       - Score-P: software/ScoreP.md
       - PAPI Library: software/PapiLibrary.md 
       - Perf Tools: software/PerfTools.md 
       - PIKA: software/pika.md
+      - Vampir: software/Vampir.md
   - Data Management:
     - Overview: data_management/DataManagement.md
     - Announcement of Quotas: data_management/AnnouncementOfQuotas.md
