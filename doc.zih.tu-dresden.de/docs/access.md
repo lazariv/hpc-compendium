@@ -17,5 +17,5 @@ during the access procedure. Accept the host verifying and enter your password. 
 by login nodes in your Taurus home directory.  This method requires two conditions: Linux OS,
 workstation within the campus network. For other options and details check the Login page.
 
-Useful links: [Access]**todo link**, [Project Request Form](req_resources.md), [Terms Of Use]**todo
-link**
+Useful links: [Access]**todo link**, [Project Request Form](application/RequestForResources.md),
+[Terms Of Use]**todo link**
