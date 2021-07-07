@@ -1,12 +1,11 @@
 nav:
   - Home: index.md
-  - Application for HPC Login: 
-    - Overview: application.md
+  - Application for HPC Login and Ressources:
+    - Overview: application/Application.md
     - Access: application/Access.md
     - Terms: application/TermsOfUse.md
-  - Request for Resources:
-    - Overview: req_resources.md
-    - Project Request Form: req_resources/ProjectRequestForm.md
+    - Request for Resources: application/RequestForResources.md
+    - Project Request Form: application/ProjectRequestForm.md
   - Access to the Cluster:
     - Overview: access.md
     - Desktop Visualization: access/DesktopCloudVisualization.md
