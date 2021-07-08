@@ -14,6 +14,10 @@ nav:
     - Login: access/Login.md
     - Security Restrictions: access/SecurityRestrictions.md
     - SSH with Putty: access/SSHMitPutty.md
+  - Tranfer of Data:
+    - Overview: data_moving/data_moving.md
+    - Data Mover: data_moving/DataMover.md
+    - Export Nodes: data_moving/ExportNodes.md
   - Environment and Software:
     - Overview: software/Overview.md
     - Environment:
@@ -66,7 +70,7 @@ nav:
       - PIKA: software/PIKA.md
       - Vampir: software/Vampir.md
       - Mathematics: software/Mathematics.md
-  - Data Management:
+  - Data Lifecycle Management:
     - Overview: data_management/DataManagement.md
     - Announcement of Quotas: data_management/AnnouncementOfQuotas.md
     - Workspaces: data_management/Workspaces.md
@@ -76,10 +80,7 @@ nav:
     - Warm Archive: data_management/WarmArchive.md
     - HPC Storage Concept 2019: data_management/HPCStorageConcept2019.md
     - Preservation of Research Data: data_management/PreservationResearchData.md
-  - Data Moving:
-    - Overview: data_moving.md
-    - Data Mover: data_moving/DataMover.md
-    - Export Nodes: data_moving/ExportNodes.md
+    - Structuring Experiments: experiments.md
   - Use of Hardware:
     - Overview: use_of_hardware.md
     - Batch Systems: use_of_hardware/BatchSystems.md
@@ -90,7 +91,6 @@ nav:
     - NVMe Storage: use_of_hardware/NvmeStorage.md
     - Alpha Centauri: use_of_hardware/AlphaCentauri.md
     - HPE Superdome Flex: use_of_hardware/SDFlex.md
-  - Structuring Experiments: experiments.md
   - Support: support.md
   - Running Jobs:
     - Overview: jobs/index.md
