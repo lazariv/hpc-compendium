@@ -14,7 +14,7 @@ both the ml environment and the scs5 environment of the Taurus system.
 for dataflow and differentiable programming across a range of tasks.
 
 TensorFlow is available in both main partitions
-[ml environment and scs5 environment](modules.md#module-environments)
+[ml environment and scs5 environment](Modules.md#module-environments)
 under the module name "TensorFlow". However, for purposes of machine learning and deep learning, we
 recommend using Ml partition [HPC-DA](../jobs/HPCDA.md). For example:
 
@@ -24,7 +24,7 @@ module load TensorFlow
 
 There are numerous different possibilities on how to work with [TensorFlow](TensorFlow.md) on
 Taurus. On this page, for all examples default, scs5 partition is used. Generally, the easiest way
-is using the [modules system](modules.md)
+is using the [modules system](Modules.md)
 and Python virtual environment (test case). However, in some cases, you may need directly installed
 Tensorflow stable or night releases. For this purpose use the
 [EasyBuild](CustomEasyBuildEnvironment.md), [Containers](TensorFlowContainerOnHPCDA.md) and see
@@ -38,12 +38,12 @@ versions.
 
 [Keras](https://keras.io/) is a high-level neural network API, written in Python and capable of
 running on top of [TensorFlow](https://github.com/tensorflow/tensorflow) Keras is available in both
-environments [ml environment and scs5 environment](modules.md#module-environments) under the module
+environments [ml environment and scs5 environment](Modules.md#module-environments) under the module
 name "Keras".
 
 On this page for all examples default scs5 partition used. There are numerous different
 possibilities on how to work with [TensorFlow](TensorFlow.md) and Keras
-on Taurus. Generally, the easiest way is using the [module system](modules.md) and Python
+on Taurus. Generally, the easiest way is using the [module system](Modules.md) and Python
 virtual environment (test case) to see Tensorflow part above.
 For examples of using Keras for ml partition with the module system see the 
 [Keras page for HPC-DA](Keras.md).

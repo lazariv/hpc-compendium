@@ -198,7 +198,7 @@ There are three main options on how to work with Tensorflow and PyTorch:
 
 ### Modules
 
-The easiest way is using the [modules system](modules.md) and Python virtual environment. Modules
+The easiest way is using the [modules system](Modules.md) and Python virtual environment. Modules
 are a way to use frameworks, compilers, loader, libraries, and utilities. The module is a user
 interface that provides utilities for the dynamic modification of a user's environment without
 manual modifications. You could use them for srun , bath jobs (sbatch) and the Jupyterhub.
@@ -327,7 +327,7 @@ page of the container.
 
 To use not a pure Tensorflow, PyTorch but also with some Python packages
 you have to use the definition file to create the container
-(bootstrapping). For details please see the [Container](containers.md) page
+(bootstrapping). For details please see the [Container](Containers.md) page
 from our wiki. Bootstrapping **has required root privileges** and
 Virtual Machine (VM) should be used! There are two main options on how
 to work with VM on Taurus: [VM tools](VMTools.md) - automotive algorithms

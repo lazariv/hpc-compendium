@@ -29,11 +29,11 @@ cluster:
 1. **Modules**
 1  **Virtual Environments (manual software installation)**
 1. [JupyterHub](https://taurus.hrsk.tu-dresden.de/)
-1. [Containers](../software/containers.md)
+1. [Containers](../software/Containers.md)
 
 ### Modules
 
-The easiest way is using the [module system](../software/modules.md) and Python virtual environment.
+The easiest way is using the [module system](../software/Modules.md) and Python virtual environment.
 Modules are a way to use frameworks, compilers, loader, libraries, and utilities. The software
 environment for the **alpha** partition is available under the name **hiera**:
 
@@ -100,7 +100,7 @@ conda deactivate                            #Leave the virtual environment
 
 New software for data analytics is emerging faster than we can install it. If you urgently need a
 certain version we advise you to manually install it (the machine learning frameworks and required
-packages) in your virtual environment (or use a [container](../software/containers.md).
+packages) in your virtual environment (or use a [container](../software/Containers.md).
 
 The **Virtualenv** example:
 
@@ -183,7 +183,7 @@ parameter).
 On Taurus [Singularity](https://sylabs.io/) is used as a standard container
 solution. It can be run on the `alpha` partition as well. Singularity enables users to have full
 control of their environment. Detailed information about containers can be found
-[here](../software/containers.md).
+[here](../software/Containers.md).
 
 Nvidia
 [NGC](https://developer.nvidia.com/blog/how-to-run-ngc-deep-learning-containers-with-singularity/)

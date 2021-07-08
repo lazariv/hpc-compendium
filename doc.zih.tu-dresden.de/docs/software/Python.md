@@ -14,8 +14,8 @@ Taurus system and basic knowledge about Python, Numpy and SLURM system.
 
 There are three main options on how to
 work with Keras and Tensorflow on the HPC-DA: 1. Modules; 2. [JupyterNotebook](JupyterHub.md); 
-3.[Containers](containers.md). The main way is using the [Modules
-system](modules.md) and Python virtual environment.
+3.[Containers](Containers.md). The main way is using the
+[Modules system](Modules.md) and Python virtual environment.
 
 Note: You could work with simple examples in your home directory but according to 
 [HPCStorageConcept2019](../data_management/HPCStorageConcept2019.md) please use **workspaces** 
@@ -170,20 +170,22 @@ module.
 Moreover, it is possible to install mpi4py in your local conda
 environment:
 
-    srun -p ml --time=04:00:00 -n 1 --pty --mem-per-cpu=8000 bash                            #allocate recources
-    module load modenv/ml
-    module load PythonAnaconda/3.6                                                           #load module to use conda
-    conda create --prefix=<location_for_your_environment> python=3.6 anaconda                #create conda virtual environment
+```Bash
+srun -p ml --time=04:00:00 -n 1 --pty --mem-per-cpu=8000 bash                            #allocate recources
+module load modenv/ml
+module load PythonAnaconda/3.6                                                           #load module to use conda
+conda create --prefix=<location_for_your_environment> python=3.6 anaconda                #create conda virtual environment
 
-    conda activate <location_for_your_environment>                                          #activate your virtual environment
+conda activate <location_for_your_environment>                                          #activate your virtual environment
 
-    conda install -c conda-forge mpi4py                                                      #install mpi4py
+conda install -c conda-forge mpi4py                                                      #install mpi4py
 
-    python                                                                                   #start python
+python                                                                                   #start python
 
-    from mpi4py import MPI                                                                   #verify your mpi4py
-    comm = MPI.COMM_WORLD
-    print("%d of %d" % (comm.Get_rank(), comm.Get_size()))
+from mpi4py import MPI                                                                   #verify your mpi4py
+comm = MPI.COMM_WORLD
+print("%d of %d" % (comm.Get_rank(), comm.Get_size()))
+```
 
 ### Horovod
 
@@ -203,13 +205,14 @@ in some cases better results than pure TensorFlow and PyTorch.
 
 #### Horovod as a module
 
-Horovod is available as a module with **TensorFlow** or **PyTorch**for
-**all** module environments. Please check the [software module
-list](modules.md) for the current version of the software.
+Horovod is available as a module with **TensorFlow** or **PyTorch**for **all** module environments.
+Please check the [software module list](Modules.md) for the current version of the software.
 Horovod can be loaded like other software on the Taurus:
 
-    ml av Horovod            #Check available modules with Python
-    module load Horovod      #Loading of the module
+```Bash
+ml av Horovod            #Check available modules with Python
+module load Horovod      #Loading of the module
+```
 
 #### Horovod installation
 
@@ -224,36 +227,42 @@ for your study and work projects** (see the Storage concept).
 
 Setup:
 
-    srun -N 1 --ntasks-per-node=6 -p ml --time=08:00:00 --pty bash                    #allocate a Slurm job allocation, which is a set of resources (nodes)
-    module load modenv/ml                                                             #Load dependencies by using modules 
-    module load OpenMPI/3.1.4-gcccuda-2018b
-    module load Python/3.6.6-fosscuda-2018b
-    module load cuDNN/7.1.4.18-fosscuda-2018b
-    module load CMake/3.11.4-GCCcore-7.3.0
-    virtualenv --system-site-packages <location_for_your_environment>                 #create virtual environment
-    source <location_for_your_environment>/bin/activate                               #activate virtual environment
+```Bash
+srun -N 1 --ntasks-per-node=6 -p ml --time=08:00:00 --pty bash                    #allocate a Slurm job allocation, which is a set of resources (nodes)
+module load modenv/ml                                                             #Load dependencies by using modules 
+module load OpenMPI/3.1.4-gcccuda-2018b
+module load Python/3.6.6-fosscuda-2018b
+module load cuDNN/7.1.4.18-fosscuda-2018b
+module load CMake/3.11.4-GCCcore-7.3.0
+virtualenv --system-site-packages <location_for_your_environment>                 #create virtual environment
+source <location_for_your_environment>/bin/activate                               #activate virtual environment
+```
 
 Or when you need to use conda:
 
-    srun -N 1 --ntasks-per-node=6 -p ml --time=08:00:00 --pty bash                            #allocate a Slurm job allocation, which is a set of resources (nodes)
-    module load modenv/ml                                                                     #Load dependencies by using modules
-    module load OpenMPI/3.1.4-gcccuda-2018b
-    module load PythonAnaconda/3.6
-    module load cuDNN/7.1.4.18-fosscuda-2018b
-    module load CMake/3.11.4-GCCcore-7.3.0
-    
-    conda create --prefix=<location_for_your_environment> python=3.6 anaconda                 #create virtual environment
-    
-    conda activate  <location_for_your_environment>                                           #activate virtual environment
+```Bash
+srun -N 1 --ntasks-per-node=6 -p ml --time=08:00:00 --pty bash                            #allocate a Slurm job allocation, which is a set of resources (nodes)
+module load modenv/ml                                                                     #Load dependencies by using modules
+module load OpenMPI/3.1.4-gcccuda-2018b
+module load PythonAnaconda/3.6
+module load cuDNN/7.1.4.18-fosscuda-2018b
+module load CMake/3.11.4-GCCcore-7.3.0
+
+conda create --prefix=<location_for_your_environment> python=3.6 anaconda                 #create virtual environment
+
+conda activate  <location_for_your_environment>                                           #activate virtual environment
+```
 
 Install Pytorch (not recommended)
 
-    cd /tmp
-    git clone https://github.com/pytorch/pytorch                                  #clone Pytorch from the source
-    cd pytorch                                                                    #go to folder
-    git checkout v1.7.1                                                           #Checkout version (example: 1.7.1)
-    git submodule update --init                                                   #Update dependencies
-    python setup.py install                                                       #install it with python
+```Bash
+cd /tmp
+git clone https://github.com/pytorch/pytorch                                  #clone Pytorch from the source
+cd pytorch                                                                    #go to folder
+git checkout v1.7.1                                                           #Checkout version (example: 1.7.1)
+git submodule update --init                                                   #Update dependencies
+python setup.py install                                                       #install it with python
+```
 
 ##### Install Horovod for Pytorch with python and pip
 
@@ -261,22 +270,28 @@ In the example presented installation for the Pytorch without
 TensorFlow. Adapt as required and refer to the horovod documentation for
 details.
 
-    HOROVOD_GPU_ALLREDUCE=MPI HOROVOD_WITHOUT_TENSORFLOW=1 HOROVOD_WITH_PYTORCH=1 HOROVOD_WITHOUT_MXNET=1 pip install --no-cache-dir horovod                                                                           
+```Bash
+HOROVOD_GPU_ALLREDUCE=MPI HOROVOD_WITHOUT_TENSORFLOW=1 HOROVOD_WITH_PYTORCH=1 HOROVOD_WITHOUT_MXNET=1 pip install --no-cache-dir horovod 
+```
 
 ##### Verify that Horovod works
 
-    python                                           #start python
-    import torch                                     #import pytorch
-    import horovod.torch as hvd                      #import horovod
-    hvd.init()                                       #initialize horovod
-    hvd.size()
-    hvd.rank()
-    print('Hello from:', hvd.rank())
+```Bash
+python                                           #start python
+import torch                                     #import pytorch
+import horovod.torch as hvd                      #import horovod
+hvd.init()                                       #initialize horovod
+hvd.size()
+hvd.rank()
+print('Hello from:', hvd.rank())
+```
 
 ##### Horovod with NCCL
 
 If you want to use NCCL instead of MPI you can specify that in the
 install command after loading the NCCL module:
 
-    module load NCCL/2.3.7-fosscuda-2018b
-    HOROVOD_GPU_ALLREDUCE=NCCL HOROVOD_GPU_BROADCAST=NCCL HOROVOD_WITHOUT_TENSORFLOW=1 HOROVOD_WITH_PYTORCH=1 HOROVOD_WITHOUT_MXNET=1 pip install --no-cache-dir horovod
+```Bash
+module load NCCL/2.3.7-fosscuda-2018b
+HOROVOD_GPU_ALLREDUCE=NCCL HOROVOD_GPU_BROADCAST=NCCL HOROVOD_WITHOUT_TENSORFLOW=1 HOROVOD_WITH_PYTORCH=1 HOROVOD_WITHOUT_MXNET=1 pip install --no-cache-dir horovod
+```

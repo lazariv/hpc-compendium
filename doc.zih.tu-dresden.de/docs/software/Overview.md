@@ -14,7 +14,7 @@ There are a lot of different possibilities to work with software on Taurus:
 ## Modules
 
 Usage of software on HPC systems is managed by a **modules system**. Thus, it is crucial to
-be familiar with the [modules concept and commands](modules.md).  Modules are a way to use
+be familiar with the [modules concept and commands](Modules.md).  Modules are a way to use
 frameworks, compilers, loader, libraries, and utilities. A module is a user interface that provides
 utilities for the dynamic modification of a user's environment without manual modifications. You
 could use them for `srun`, batch jobs (`sbatch`) and the Jupyterhub.

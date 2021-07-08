@@ -1,7 +1,7 @@
 # Singularity on Power9 / ml partition
 
 Building Singularity containers from a recipe on Taurus is normally not possible due to the
-requirement of root (administrator) rights, see [Containers](containers.md). For obvious reasons
+requirement of root (administrator) rights, see [Containers](Containers.md). For obvious reasons
 users on Taurus cannot be granted root permissions.
 
 The solution is to build your container on your local Linux machine by executing something like
