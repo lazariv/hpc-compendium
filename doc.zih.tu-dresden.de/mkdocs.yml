@@ -1,6 +1,6 @@
 nav:
   - Home: index.md
-  - Application for HPC Login and Ressources:
+  - Application for Login and Ressources:
     - Overview: application/Application.md
     - Access: application/Access.md
     - Terms: application/TermsOfUse.md
@@ -14,7 +14,7 @@ nav:
     - Login: access/Login.md
     - Security Restrictions: access/SecurityRestrictions.md
     - SSH with Putty: access/SSHMitPutty.md
-  - Tranfer of Data:
+  - Transfer of Data:
     - Overview: data_moving/data_moving.md
     - Data Mover: data_moving/DataMover.md
     - Export Nodes: data_moving/ExportNodes.md
@@ -81,20 +81,18 @@ nav:
     - HPC Storage Concept 2019: data_management/HPCStorageConcept2019.md
     - Preservation of Research Data: data_management/PreservationResearchData.md
     - Structuring Experiments: experiments.md
-  - Use of Hardware:
+  - Jobs and Resources:
     - Overview: use_of_hardware.md
     - Batch Systems: use_of_hardware/BatchSystems.md
-    - Hardware Taurus: use_of_hardware/SystemTaurus.md
+    - Hardware Resources:
+      - Hardware Taurus: use_of_hardware/HardwareTaurus.md
+      - AMD Rome Nodes: use_of_hardware/RomeNodes.md
+      - IBM Power9 Nodes: use_of_hardware/Power9.md
+      - NVMe Storage: use_of_hardware/NvmeStorage.md
+      - Alpha Centauri: use_of_hardware/AlphaCentauri.md
+      - HPE Superdome Flex: use_of_hardware/SDFlex.md
     - Checkpoint/Restart: use_of_hardware/CheckpointRestart.md
-    - AMD Rome Nodes: use_of_hardware/RomeNodes.md
-    - IBM Power9 Nodes: use_of_hardware/Power9.md
-    - NVMe Storage: use_of_hardware/NvmeStorage.md
-    - Alpha Centauri: use_of_hardware/AlphaCentauri.md
-    - HPE Superdome Flex: use_of_hardware/SDFlex.md
-  - Support: support.md
-  - Running Jobs:
-    - Overview: jobs/index.md
-    - Windows Batchjobs: jobs/WindowsBatch.md
+    - Overview2: jobs/index.md
     - Taurus: jobs/SystemTaurus.md
     - Slurm Examples: jobs/SlurmExamples.md
     - Slurm: jobs/Slurm.md
@@ -109,6 +107,7 @@ nav:
       #    - Monitoring: jobs/monitoring.md
       #    - FAQs: jobs/jobs-faq.md
   #- Tests: tests.md
+  - Support: support.md
   - Archive:
     - CXFS End of Support: archive/CXFSEndOfSupport.md
     - Debugging Tools: archive/DebuggingTools.md
@@ -136,6 +135,7 @@ nav:
     - UNICORE Rest API: archive/UNICORERestAPI.md
     - Vampir Trace: archive/VampirTrace.md
     - Venus Open: archive/VenusOpen.md
+    - Windows Batchjobs: jobs/WindowsBatch.md
 
 
 # Project Information
