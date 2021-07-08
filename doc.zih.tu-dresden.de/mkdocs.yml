@@ -1,12 +1,12 @@
 nav:
   - Home: index.md
-  - Application for Login and Ressources:
+  - Application for Login and Resources:
     - Overview: application/Application.md
     - Access: application/Access.md
     - Terms: application/TermsOfUse.md
     - Request for Resources: application/RequestForResources.md
     - Project Request Form: application/ProjectRequestForm.md
-    - Projectmanagment: application/ProjectManagement.md
+    - Project Management: application/ProjectManagement.md
   - Access to the Cluster:
     - Overview: access.md
     - Desktop Visualization: access/DesktopCloudVisualization.md
@@ -36,8 +36,8 @@ nav:
       - Overview: software/Applications.md
       - Bio Informatics: software/Bioinformatics.md
       - Computational Fluid Dynamics (CFD): software/CFD.md
-      - NanoscaleSimulations: software/NanoscaleSimulations.md
-      - FEMSoftware: software/FEMSoftware.md
+      - Nanoscale Simulations: software/NanoscaleSimulations.md
+      - FEM Software: software/FEMSoftware.md
     - Visualization: software/Visualization.md
     - HPC-DA:
       - Get started with HPC-DA: software/GetStartedWithHPCDA.md
@@ -45,10 +45,10 @@ nav:
       - Deep Learning: software/DeepLearning.md
       - Data Analytics with R: software/DataAnalyticsWithR.md
       - Data Analytics with Python: software/Python.md
-      - Tensorflow: 
-        - Tensorflow Overview: software/TensorFlow.md
-        - Tensorflow in Container: software/TensorFlowContainerOnHPCDA.md
-        - Tensorflow in JupyterHub: software/TensorFlowOnJupyterNotebook.md 
+      - TensorFlow: 
+        - TensorFlow Overview: software/TensorFlow.md
+        - TensorFlow in Container: software/TensorFlowContainerOnHPCDA.md
+        - TensorFlow in JupyterHub: software/TensorFlowOnJupyterNotebook.md 
       - Keras: software/Keras.md
       - Dask: software/Dask.md
       - Power AI: software/PowerAI.md
