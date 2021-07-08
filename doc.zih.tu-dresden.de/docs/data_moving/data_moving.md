@@ -1,6 +1,6 @@
-# Data Moving
+# Transfer of Data
 
-## Moving data to/from the HPC machines
+## Moving data to/from the HPC Machines
 
 To copy data to/from the HPC machines, the Taurus export nodes should be used as a preferred way.
 There are three possibilities to exchanging data between your local machine (lm) and the HPC
