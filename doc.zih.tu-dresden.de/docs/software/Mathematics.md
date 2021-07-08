@@ -105,7 +105,7 @@ Or use:
        module load MATLAB
 
 (then you will get the most recent Matlab version. [Refer to the modules
-section for details.](../data_management/RuntimeEnvironment.md#Modules))
+section for details.](../software/RuntimeEnvironment.md#Modules))
 
 ### matlab interactive
 

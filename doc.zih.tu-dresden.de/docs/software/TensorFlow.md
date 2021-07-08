@@ -27,7 +27,7 @@ part of the TU Dresden HPC system.
 
 There are three main options on how to work with Tensorflow on the
 HPC-DA: **1.** **Modules,** **2.** **JupyterNotebook, 3. Containers**. The best option is 
-to use [module system](../data_management/RuntimeEnvironment.md#Module_Environments) and 
+to use [module system](../software/RuntimeEnvironment.md#Module_Environments) and 
 Python virtual environment. Please see the next chapters and the [Python page](Python.md) for the
 HPC-DA system.
 
@@ -261,4 +261,4 @@ else stay with the default of modenv/scs5.
 
 Q: How to change the module environment and know more about modules?
 
-A: [Modules](../data_management/RuntimeEnvironment.md#Modules)
+A: [Modules](../software/RuntimeEnvironment.md#Modules)

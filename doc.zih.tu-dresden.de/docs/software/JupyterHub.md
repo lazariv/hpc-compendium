@@ -44,7 +44,7 @@ settings. You can:
     Slurm](../jobs/Slurm.md))
 -   assign your session to a project or reservation
 -   load modules from the [LMOD module
-    system](../data_management/RuntimeEnvironment.md)
+    system](../software/RuntimeEnvironment.md)
 -   choose a different standard environment (in preparation for future
     software updates or testing additional features)
 
@@ -224,7 +224,7 @@ Here's a short list of some included software:
 
 \* generic = all partitions except ml
 
-\*\* R is loaded from the [module system](../data_management/RuntimeEnvironment.md)
+\*\* R is loaded from the [module system](../software/RuntimeEnvironment.md)
 
 ### Creating and using your own environment
 

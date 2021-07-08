@@ -2,8 +2,8 @@
 
 ## Information about the Hardware
 
-[Detailed information on the current HPC hardware can be found
-here.](../use_of_hardware/HardwareTaurus.md)
+Detailed information on the current HPC hardware can be found
+[here.](../use_of_hardware/HardwareTaurus.md)
 
 ## Applying for Access to the System
 
@@ -52,7 +52,7 @@ You can find an list of fingerprints [here](../access/Login.md#SSH_access).
 
 You have to explicitly load a compiler module and an MPI module on
 Taurus. Eg. with `module load GCC OpenMPI`. ( [read more about
-Modules](../data_management/RuntimeEnvironment.md), **todo link** (read more about
+Modules](../software/RuntimeEnvironment.md), **todo link** (read more about
 Compilers)(Compendium.Compilers))
 
 Use the wrapper commands like e.g. `mpicc` (`mpiicc` for intel),
