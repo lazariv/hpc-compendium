@@ -2,7 +2,7 @@
 
 To run the software, do some calculations or compile your code compute nodes have to be used. Login
 nodes which are using for login can not be used for your computations. Submit your tasks (by using
-[jobs]**todo link**) to compute nodes. The [Slurm](jobs/index.md) (scheduler to handle your jobs) is
+[jobs]**todo link**) to compute nodes. The [Slurm](slurm.md) (scheduler to handle your jobs) is
 using on Taurus for this purposes. [HPC Introduction]**todo link** is a good resource to get started
 with it.
 

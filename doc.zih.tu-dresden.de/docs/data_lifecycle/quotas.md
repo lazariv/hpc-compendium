@@ -35,7 +35,7 @@ In case a project is above its limits, please
         [DMF system](#AnchorDataMigration). Avoid using this system
         (`/hpc_fastfs`) for files < 1 MB!
     -   refer to the hints for
-        [long term preservation for research data](../data_management/PreservationResearchData.md).
+        [long term preservation for research data](../data_lifecycle/preservation_research_data.md).
 
 ## No Alternatives
 
