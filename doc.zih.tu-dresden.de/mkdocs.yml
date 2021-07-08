@@ -6,6 +6,7 @@ nav:
     - Terms: application/TermsOfUse.md
     - Request for Resources: application/RequestForResources.md
     - Project Request Form: application/ProjectRequestForm.md
+    - Projectmanagment: application/ProjectManagement.md
   - Access to the Cluster:
     - Overview: access.md
     - Desktop Visualization: access/DesktopCloudVisualization.md
@@ -17,6 +18,7 @@ nav:
     - Overview: software/Overview.md
     - Environment:
       - Modules: software/Modules.md
+      - Runtime Environment: software/RuntimeEnvironment.md
       - Custom EasyBuild Modules: software/CustomEasyBuildEnvironment.md
     - JupyterHub:
       - Overview: software/JupyterHub.md
@@ -27,6 +29,7 @@ nav:
       - Singularity Example Definitions: software/SingularityExampleDefinitions.md
       - VM tools: software/VMTools.md
     - Applications:
+      - Overview: software/Applications.md
       - Bio Informatics: software/Bioinformatics.md
       - Computational Fluid Dynamics (CFD): software/CFD.md
       - NanoscaleSimulations: software/NanoscaleSimulations.md
@@ -51,6 +54,7 @@ nav:
     - Virtual Desktops: software/VirtualDesktops.md
     - Software Development and Tools:
       - Overview: software/SoftwareDevelopment.md
+      - Building Software: software/BuildingSoftware.md
       - GPU Programming: software/GPUProgramming.md
       - Compilers: software/Compilers.md
       - Debuggers: software/Debuggers.md
@@ -66,11 +70,7 @@ nav:
     - Overview: data_management/DataManagement.md
     - Announcement of Quotas: data_management/AnnouncementOfQuotas.md
     - Workspaces: data_management/Workspaces.md
-    - Applications: data_management/Applications.md
     - BeeGFS: data_management/BeeGFS.md
-    - Projectmanagment: data_management/ProjectManagement.md
-    - Runtime Environment: data_management/RuntimeEnvironment.md
-    - Building Software: data_management/BuildingSoftware.md
     - Intermediate Archive: data_management/IntermediateArchive.md
     - Filesystems: data_management/FileSystems.md
     - Warm Archive: data_management/WarmArchive.md

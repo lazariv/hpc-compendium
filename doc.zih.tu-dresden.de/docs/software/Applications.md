@@ -5,12 +5,12 @@ descriptions are taken from the vendor's web site or from
 Wikipedia.org.)
 
 Before running an application you normally have to load a
-[module](../data_management/RuntimeEnvironment.md#modules). Please read the instructions given
+[module](../software/RuntimeEnvironment.md#modules). Please read the instructions given
 while loading the module, they might be more up-to-date than this
 manual.
 
 -   **TODO Link** (Complete List of Modules)(SoftwareModulesList)
--   [Using Software Modules](../data_management/RuntimeEnvironment.md#modules)
+-   [Using Software Modules](../software/RuntimeEnvironment.md#modules)
 
 <!-- -->
 
