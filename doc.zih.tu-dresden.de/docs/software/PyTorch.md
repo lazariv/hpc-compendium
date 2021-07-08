@@ -24,8 +24,8 @@ and users who are just starting their work with Taurus.
 2\. The second way is using the Modules system and Python or conda virtual environment. 
 See [the Python page](Python.md) for the HPC-DA system.
 
-Note: The information on working with the PyTorch using Containers could
-be found [here](containers.md).
+Note: The information on working with the PyTorch using Containers could be found
+[here](Containers.md).
 
 ## Get started with PyTorch
 

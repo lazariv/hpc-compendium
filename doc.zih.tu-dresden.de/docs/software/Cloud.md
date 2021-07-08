@@ -1,7 +1,7 @@
 # Virtual machine on Taurus
 
 The following instructions are primarily aimed at users who want to build their
-[Singularity](containers.md) containers on Taurus.
+[Singularity](Containers.md) containers on Taurus.
 
 The Singularity container setup requires a Linux machine with root privileges, the same architecture
 and a compatible kernel. If some of these requirements can not be fulfilled, then there is

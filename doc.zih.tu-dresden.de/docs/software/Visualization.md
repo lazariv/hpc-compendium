@@ -4,7 +4,7 @@
 
 [ParaView](https://paraview.org) is an open-source, multi-platform data
 analysis and visualization application. It is available on Taurus under
-the `ParaView` [modules](modules.md#modules-environment)
+the `ParaView` [modules](Modules.md#modules-environment)
 
 ```Bash
 taurus$ module avail ParaView

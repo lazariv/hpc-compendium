@@ -13,17 +13,24 @@ nav:
     - Login: access/Login.md
     - Security Restrictions: access/SecurityRestrictions.md
     - SSH with Putty: access/SSHMitPutty.md
-  - Available Software and Usage:
-    - Overview: software/overview.md
-    - Modules: software/modules.md
-    - JupyterHub: software/JupyterHub.md
-    - JupyterHub for Teaching: software/JupyterHubForTeaching.md
+  - Environment and Software:
+    - Overview: software/Overview.md
+    - Environment:
+      - Modules: software/Modules.md
+      - Custom EasyBuild Modules: software/CustomEasyBuildEnvironment.md
+    - JupyterHub:
+      - Overview: software/JupyterHub.md
+      - JupyterHub for Teaching: software/JupyterHubForTeaching.md
     - Containers:
-      - Singularity: software/containers.md
+      - Singularity: software/Containers.md
       - Singularity Recicpe Hints: software/SingularityRecipeHints.md
       - Singularity Example Definitions: software/SingularityExampleDefinitions.md
-    - Custom Easy Build Modules: software/CustomEasyBuildEnvironment.md
-    - Mathematics: software/Mathematics.md
+      - VM tools: software/VMTools.md
+    - Applications:
+      - Bio Informatics: software/Bioinformatics.md
+      - Computational Fluid Dynamics (CFD): software/CFD.md
+      - NanoscaleSimulations: software/NanoscaleSimulations.md
+      - FEMSoftware: software/FEMSoftware.md
     - Visualization: software/Visualization.md
     - HPC-DA:
       - Get started with HPC-DA: software/GetStartedWithHPCDA.md
@@ -39,14 +46,8 @@ nav:
       - Dask: software/Dask.md
       - Power AI: software/PowerAI.md
       - PyTorch: software/PyTorch.md
-    - Computational Fluid Dynamics (CFD): software/CFD.md
-    - FAQs: software/modules-faq.md
-    - Bio Informatics: software/Bioinformatics.md
     - SCS5 Migration Hints: software/SCS5Software.md
-    - NanoscaleSimulations: software/NanoscaleSimulations.md
-    - FEMSoftware: software/FEMSoftware.md
     - Cloud: software/Cloud.md
-    - VM tools: software/VMTools.md
     - Virtual Desktops: software/VirtualDesktops.md
     - Software Development and Tools:
       - Overview: software/SoftwareDevelopment.md
@@ -58,8 +59,9 @@ nav:
       - Score-P: software/ScoreP.md
       - PAPI Library: software/PapiLibrary.md 
       - Perf Tools: software/PerfTools.md 
-      - PIKA: software/pika.md
+      - PIKA: software/PIKA.md
       - Vampir: software/Vampir.md
+      - Mathematics: software/Mathematics.md
   - Data Management:
     - Overview: data_management/DataManagement.md
     - Announcement of Quotas: data_management/AnnouncementOfQuotas.md
