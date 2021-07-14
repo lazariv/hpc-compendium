@@ -26,6 +26,16 @@
   {% set class = class ~ " md-nav--integrated" %}
 {% endif %}
 
+ <a
+    href="{{ config.extra.zih_homepage | url }}"
+    title="{{ config.zih_name | e }}"
+    class="md-logo zih-logo"
+    aria-label="{{ config.zih_name }}"
+    data-md-component="logo"
+  >
+    <img src="{{ config.theme.second_logo | url }}" alt="logo" />
+  </a>
+
 <!-- Main navigation -->
 <nav
   class="{{ class }}"

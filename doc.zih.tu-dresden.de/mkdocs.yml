@@ -163,6 +163,7 @@ theme:
   favicon: assets/images/Logo_klein.png
   # logo in header and footer
   logo: assets/images/TUD_Logo_weiss_57.png
+  second_logo: assets/images/zih.png
 
 # extends base css
 extra_css:
@@ -174,6 +175,7 @@ markdown_extensions:
 
 extra:
   homepage: https://tu-dresden.de
+  zih_homepage: https://tu-dresden.de/zih
   # links in footer
   footer:
     - link: https://doc.zih.tu-dresden.de/hpc-wiki/bin/view/Compendium/Impressum
