@@ -62,7 +62,7 @@ Additional hardware:
 - [TensorFlow on x86](../software/deep_learning.md)
 - [PyTorch on HPC-DA (Power9)](../software/py_torch.md)
 - [Python on HPC-DA (Power9)](../software/python.md)
-- [JupyterHub](../software/jupyterhub.md)
+- [JupyterHub](../access/jupyterhub.md)
 - [R on HPC-DA (Power9)](../software/data_analytics_with_r.md)
 - [Big Data frameworks: Apache Spark, Apache Flink, Apache Hadoop]
    **todo** BigDataFrameworks:ApacheSparkApacheFlinkApacheHadoop 

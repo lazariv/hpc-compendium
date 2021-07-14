@@ -263,10 +263,10 @@ with TensorFlow on Taurus with GUI (graphic user interface) in a **web browser**
 to see intermediate results step by step of your work. This can be useful for users who dont have
 huge experience with HPC or Linux.
 
-There is [JupyterHub](jupyterhub.md) on Taurus, where you can simply run your Jupyter notebook on
-HPC nodes. Also, for more specific cases you can run a manually created remote jupyter server. You
-can find the manual server setup [here](deep_learning.md). However, the simplest option for
-beginners is using JupyterHub.
+There is [JupyterHub](../access/jupyterhub.md) on Taurus, where you can simply run your Jupyter
+notebook on HPC nodes. Also, for more specific cases you can run a manually created remote jupyter
+server. You can find the manual server setup [here](deep_learning.md). However, the simplest option
+for beginners is using JupyterHub.
 
 JupyterHub is available at
 [taurus.hrsk.tu-dresden.de/jupyter](https://taurus.hrsk.tu-dresden.de/jupyter)
@@ -277,14 +277,14 @@ You can select the required number of CPUs and GPUs. For the acquaintance with t
 the examples below the recommended amount of CPUs and 1 GPU will be enough.
 With the advanced form, you can use
 the configuration with 1 GPU and 7 CPUs. To access for all your workspaces use " / " in the
-workspace scope. Please check updates and details [here](jupyterhub.md).
+workspace scope. Please check updates and details [here](../access/jupyterhub.md).
 
 Several Tensorflow and PyTorch examples for the Jupyter notebook have been prepared based on some
 simple tasks and models which will give you an understanding of how to work with ML frameworks and
 JupyterHub. It could be found as the [attachment] **todo** %ATTACHURL%/machine_learning_example.py
 in the bottom of the page. A detailed explanation and examples for TensorFlow can be found
 [here](tensor_flow_on_jupyter_notebook.md). For the Pytorch - [here](py_torch.md).  Usage information
-about the environments for the JupyterHub could be found [here](jupyterhub.md) in the chapter
+about the environments for the JupyterHub could be found [here](../access/jupyterhub.md) in the chapter
 *Creating and using your own environment*.
 
 Versions: TensorFlow 1.14, 1.15, 2.0, 2.1; PyTorch 1.1, 1.3 are

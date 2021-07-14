@@ -17,9 +17,9 @@ Taurus system and basic knowledge about Python, Numpy and SLURM system.
 There are numerous different possibilities of how to work with PyTorch on Taurus. 
 Here we will consider two main methods.
 
-1\. The first option is using Jupyter notebook with HPC-DA nodes. The easiest way is by using [Jupyterhub](jupyterhub.md).
-It is a recommended way for beginners in PyTorch 
-and users who are just starting their work with Taurus.
+1\. The first option is using Jupyter notebook with HPC-DA nodes. The easiest way is by using
+[Jupyterhub](../access/jupyterhub.md).  It is a recommended way for beginners in PyTorch and users
+who are just starting their work with Taurus.
 
 2\. The second way is using the Modules system and Python or conda virtual environment. 
 See [the Python page](python.md) for the HPC-DA system.
@@ -33,7 +33,7 @@ Note: The information on working with the PyTorch using Containers could be foun
 
 For working with PyTorch and python packages using virtual environments (kernels) is necessary.
 
-Creating and using your kernel (environment) has the benefit that you can install your preferred 
+Creating and using your kernel (environment) has the benefit that you can install your preferred
 python packages and use them in your notebooks.
 
 A virtual environment is a cooperatively isolated runtime environment that allows Python users and 
@@ -97,7 +97,7 @@ which you can submit using *sbatch [options] <job_file_name>*.
 Below are examples of Jupyter notebooks with PyTorch models which you can run on ml nodes of HPC-DA.
 
 There are two ways how to work with the Jupyter notebook on HPC-DA system. You can use a  
-[remote Jupyter server](deep_learning.md) or [JupyterHub](jupyterhub.md). 
+[remote Jupyter server](deep_learning.md) or [JupyterHub](../access/jupyterhub.md). 
 Jupyterhub is a simple and recommended way to use PyTorch.
 We are using Jupyterhub for our examples. 
 
@@ -105,17 +105,17 @@ Prepared examples of PyTorch models give you an understanding of how to work wit
 Jupyterhub and PyTorch models. It can be useful and instructive to start 
 your acquaintance with PyTorch and HPC-DA system from these simple examples.
 
-JupyterHub is available here: [https://taurus.hrsk.tu-dresden.de/jupyter](https://taurus.hrsk.tu-dresden.de/jupyter)
+JupyterHub is available here: [taurus.hrsk.tu-dresden.de/jupyter](https://taurus.hrsk.tu-dresden.de/jupyter)
 
 After login, you can start a new session by clicking on the button.
 
 **Note:** Detailed guide (with pictures and instructions) how to run the Jupyterhub 
-you could find on [the page](jupyterhub.md).
+you could find on [the page](../access/jupyterhub.md).
 
 Please choose the "IBM Power (ppc64le)". You need to download an example 
 (prepared as jupyter notebook file) that already contains all you need for the start of the work. 
 Please put the file into your previously created virtual environment in your working directory or 
-use the kernel for your notebook [see Jupyterhub page](jupyterhub.md).
+use the kernel for your notebook [see Jupyterhub page](../access/jupyterhub.md).
 
 Note: You could work with simple examples in your home directory but according to 
 [HPCStorageConcept2019](../data_lifecycle/hpc_storage_concept2019.md) please use **workspaces** 
@@ -132,7 +132,7 @@ virtual environment you could use the following command:
     unzip example_MNIST_Pytorch.zip
 
 Also, you could use kernels for all notebooks, not only for them which
-placed in your virtual environment. See the [jupyterhub](jupyterhub.md) page.
+placed in your virtual environment. See the [jupyterhub](../access/jupyterhub.md) page.
 
 Examples:
 
@@ -147,7 +147,7 @@ for this kind of models. Recommended parameters for running this model are 1 GPU
 
 ### Running the model
 
-Open [JupyterHub](jupyterhub.md) and follow instructions above.
+Open [JupyterHub](../access/jupyterhub.md) and follow instructions above.
 
 In Jupyterhub documents are organized with tabs and a very versatile split-screen feature. 
 On the left side of the screen, you can open your file. Use 'File-Open from Path' 
@@ -185,7 +185,7 @@ Recommended parameters for running this model are 1 GPU and 7 cores (28 thread).
 
 (example_Pytorch_image_recognition.zip)
 
-Remember that for using [JupyterHub service](jupyterhub.md) 
+Remember that for using [JupyterHub service](../access/jupyterhub.md) 
 for PyTorch you need to create and activate 
 a virtual environment (kernel) with loaded essential modules (see "envtest" environment form the virtual
 environment example.
@@ -225,7 +225,7 @@ model are **2 GPU** and 14 cores (56 thread).
 
 (example_PyTorch_parallel.zip)
 
-Remember that for using [JupyterHub service](jupyterhub.md) 
+Remember that for using [JupyterHub service](../access/jupyterhub.md) 
 for PyTorch you need to create and activate 
 a virtual environment (kernel) with loaded essential modules.
 
