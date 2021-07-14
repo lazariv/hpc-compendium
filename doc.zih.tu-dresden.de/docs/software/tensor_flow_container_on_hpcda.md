@@ -47,7 +47,7 @@ on how to work with VM on Taurus:
 1\. [VM tools](vm_tools.md). Automative algorithms for using virtual
 machines;
 
-2\. [Manual method](cloud.md). It required more operations but gives you
+2\. [Manual method](virtual_machines.md). It required more operations but gives you
 more flexibility and reliability.
 
 Short algorithm to run the virtual machine manually:
