@@ -76,4 +76,4 @@ A JupyterHub installation offering IPython Notebook is available under:
 
 <https://taurus.hrsk.tu-dresden.de/jupyter>
 
-See the documentation under [JupyterHub](../software/jupyterhub.md).
+See the documentation under [JupyterHub](../access/jupyterhub.md).

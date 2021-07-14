@@ -77,11 +77,11 @@ Rscript /path/to/script/your_script.R param1 param2
 
 In addition to using interactive srun jobs and batch jobs, there is another way to work with the
 **R** on Taurus. JupyterHub is a quick and easy way to work with jupyter notebooks on Taurus.
-See the [JupyterHub page](jupyterhub.md) for detailed instructions.
+See the [JupyterHub page](../access/jupyterhub.md) for detailed instructions.
 
-The [production environment](jupyterhub.md#standard-environments) of JupyterHub contains R as a module
-for all partitions. R could be run in the Notebook or Console for
-[JupyterLab](jupyterhub.md#jupyterlab).
+The [production environment](../access/jupyterhub.md#standard-environments) of JupyterHub contains R
+as a module for all partitions. R could be run in the Notebook or Console for
+[JupyterLab](../access/jupyterhub.md#jupyterlab).
 
 ## RStudio
 
@@ -93,7 +93,7 @@ x86 (scs5) and Power9 (ml) nodes/architectures.
 The best option to run RStudio is to use JupyterHub. RStudio will work in a browser. It is currently
 available in the **test** environment on both x86 (**scs5**) and Power9 (**ml**)
 architectures/partitions. It can be started similarly as a new kernel from
-[JupyterLab](jupyterhub.md#jupyterlab) launcher. See the picture below.
+[JupyterLab](../access/jupyterhub.md#jupyterlab) launcher. See the picture below.
 
 **todo** image
 \<img alt="environments.png" height="70"
