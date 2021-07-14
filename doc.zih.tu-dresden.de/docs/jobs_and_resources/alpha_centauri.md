@@ -163,7 +163,7 @@ moment.
 
 ### JupyterHub
 
-There is [JupyterHub](../software/jupyterhub.md) on Taurus, where you can simply run
+There is [JupyterHub](../access/jupyterhub.md) on Taurus, where you can simply run
 your Jupyter notebook on Alpha-Centauri sub-cluster. Also, for more specific cases you can run a
 manually created remote jupyter server. You can find the manual server setup
 [here](../software/deep_learning.md). However, the simplest option for beginners is using

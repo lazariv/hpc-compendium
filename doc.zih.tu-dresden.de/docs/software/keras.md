@@ -29,12 +29,12 @@ options:
     Keras and GPUs.
 
 **Prerequisites**: To work with Keras you, first of all, need 
-[access](./../access/login.md) for the Taurus system, loaded
+[access](../access/login.md) for the Taurus system, loaded
 Tensorflow module on ml partition, activated Python virtual environment.
 Basic knowledge about Python, SLURM system also required.
 
 **Aim** of this page is to introduce users on how to start working with
-Keras and TensorFlow on the [HPC-DA](./../jobs_and_resources/hpcda.md)
+Keras and TensorFlow on the [HPC-DA](../jobs_and_resources/hpcda.md)
 system - part of the TU Dresden HPC system.
 
 There are three main options on how to work with Keras and Tensorflow on
@@ -46,8 +46,8 @@ environment. Please see the
 system.
 
 The information about the Jupyter notebook and the **JupyterHub** could
-be found [here](./jupyterhub.md). The use of
-Containers is described [here](./tensor_flow_container_on_hpcda.md).
+be found [here](../access/jupyterhub.md). The use of
+Containers is described [here](tensor_flow_container_on_hpcda.md).
 
 Keras contains numerous implementations of commonly used neural-network
 building blocks such as layers,

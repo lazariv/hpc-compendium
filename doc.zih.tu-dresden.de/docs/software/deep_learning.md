@@ -144,10 +144,10 @@ jupyterhub.
 These sections show how to run and set up a remote jupyter server within a sbatch GPU job and which
 modules and packages you need for that.
 
-**Note:** On Taurus, there is a [JupyterHub](jupyterhub.md), where you do not need the manual server
-setup described below and can simply run your Jupyter notebook on HPC nodes. Keep in mind that with
-Jupyterhub you can't work with some special instruments. However general data analytics tools are
-available.
+**Note:** On Taurus, there is a [JupyterHub](../access/jupyterhub.md), where you do not need the
+manual server setup described below and can simply run your Jupyter notebook on HPC nodes. Keep in
+mind that with Jupyterhub you can't work with some special instruments. However general data
+analytics tools are available.
 
 The remote Jupyter server is able to offer more freedom with settings and approaches.
 
@@ -313,7 +313,7 @@ important to use SSL cert
 To login into the jupyter notebook site, you have to enter the **token**.
 (`https://localhost:8887`). Now you can create and execute notebooks on Taurus with GPU support.
 
-If you would like to use [JupyterHub](jupyterhub.md) after using a remote manually configurated
+If you would like to use [JupyterHub](../access/jupyterhub.md) after using a remote manually configurated
 jupyter server (example above) you need to change the name of the configuration file
 (`/home//.jupyter/jupyter_notebook_config.py`) to any other.
 

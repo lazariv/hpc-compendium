@@ -32,7 +32,7 @@ Python virtual environment. Please see the next chapters and the [Python page](p
 HPC-DA system.
 
 The information about the Jupyter notebook and the **JupyterHub** could
-be found [here](jupyterhub.md). The use of
+be found [here](../access/jupyterhub.md). The use of
 Containers is described [here](tensor_flow_container_on_hpcda.md).
 
 On Taurus, there exist different module environments, each containing a set 

@@ -14,6 +14,9 @@ nav:
     - Login: access/login.md
     - Security Restrictions: access/security_restrictions.md
     - SSH with Putty: access/ssh_mit_putty.md
+    - JupyterHub:
+      - Overview: ../../access/jupyterhub.md
+      - JupyterHub for Teaching: ../../access/jupyterhub_for_teaching.md
   - Transfer of Data:
     - Overview: data_transfer/data_moving.md
     - Data Mover: data_transfer/data_mover.md
@@ -24,9 +27,6 @@ nav:
       - Modules: software/modules.md
       - Runtime Environment: software/runtime_environment.md
       - Custom EasyBuild Modules: software/custom_easy_build_environment.md
-    - JupyterHub:
-      - Overview: software/jupyterhub.md
-      - JupyterHub for Teaching: software/jupyterhub_for_teaching.md
     - Containers:
       - Singularity: software/containers.md
       - Singularity Recicpe Hints: software/singularity_recipe_hints.md

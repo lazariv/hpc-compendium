@@ -12,7 +12,7 @@ Also, we have prepared a script that makes launching the VNC server much easier.
 
 **Check out the [new documentation about virtual desktops](../software/virtual_desktops.md).**
 
-The [JupyterHub](../software/jupyterhub.md) service is now able to start a VNC session based on the
+The [JupyterHub](../access/jupyterhub.md) service is now able to start a VNC session based on the
 Singularity container mentioned here.
 
 Quickstart: 1 Click here to start a session immediately: \<a

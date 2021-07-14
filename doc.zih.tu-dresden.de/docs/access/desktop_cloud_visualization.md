@@ -18,7 +18,7 @@ Click here, to start a session on our JupyterHub:
 [https://taurus.hrsk.tu-dresden.de/jupyter/hub/spawn#/\~(partition\~'dcv\~cpuspertask\~'6\~gres\~'gpu\*3a1\~mempercpu\~'2583\~environment\~'production)](https://taurus.hrsk.tu-dresden.de/jupyter/hub/spawn#/~(partition~'dcv~cpuspertask~'6~gres~'gpu*3a1~mempercpu~'2583~environment~'test))\<br
 /> This link starts your session on the dcv partition (taurusi210\[7-8\]) with a GPU, 6 CPU cores
 and 2583 MB memory per core.  Optionally you can modify many different SLURM parameters. For this
-follow the general [JupyterHub](../software/jupyterhub.md) documentation.
+follow the general [JupyterHub](../access/jupyterhub.md) documentation.
 
 Your browser now should load into the JupyterLab application which looks like this:
 

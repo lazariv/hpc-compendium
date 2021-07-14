@@ -145,12 +145,12 @@ with jupyterhub and tensorflow models. It can be useful and instructive
 to start your acquaintance with Tensorflow and HPC-DA system from these
 simple examples.
 
-You can use a [remote Jupyter server](jupyterhub.md). For simplicity, we
+You can use a [remote Jupyter server](../access/jupyterhub.md). For simplicity, we
 will recommend using Jupyterhub for our examples.
 
 JupyterHub is available [here](https://taurus.hrsk.tu-dresden.de/jupyter)
 
-Please check updates and details [JupyterHub](jupyterhub.md). However, 
+Please check updates and details [JupyterHub](../access/jupyterhub.md). However, 
 the general pipeline can be briefly explained as follows.
 
 After logging, you can start a new session and configure it. There are
@@ -184,7 +184,7 @@ created virtual environment you could use the following command:
 ```
 
 Also, you could use kernels for all notebooks, not only for them which placed 
-in your virtual environment. See the [jupyterhub](jupyterhub.md) page.
+in your virtual environment. See the [jupyterhub](../access/jupyterhub.md) page.
 
 ### Examples:
 

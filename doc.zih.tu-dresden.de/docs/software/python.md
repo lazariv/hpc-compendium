@@ -12,10 +12,9 @@ Taurus system and basic knowledge about Python, Numpy and SLURM system.
 **Aim** of this page is to introduce users on how to start working with Python on the 
 [HPC-DA](../jobs_and_resources/power9.md) system -  part of the TU Dresden HPC system.
 
-There are three main options on how to
-work with Keras and Tensorflow on the HPC-DA: 1. Modules; 2. [JupyterNotebook](jupyterhub.md); 
-3.[Containers](containers.md). The main way is using the
-[Modules system](modules.md) and Python virtual environment.
+There are three main options on how to work with Keras and Tensorflow on the HPC-DA: 1. Modules; 2.
+[JupyterNotebook](../access/jupyterhub.md); 3.[Containers](containers.md). The main way is using
+the [Modules system](modules.md) and Python virtual environment.
 
 Note: You could work with simple examples in your home directory but according to 
 [HPCStorageConcept2019](../data_lifecycle/hpc_storage_concept2019.md) please use **workspaces** 
@@ -42,63 +41,66 @@ vice versa! Prefer virtualenv whenever possible.
 This example shows how to start working
 with **Virtualenv** and Python virtual environment (using the module system)
 
-    srun -p ml -N 1 -n 1 -c 7 --mem-per-cpu=5772 --gres=gpu:1 --time=04:00:00 --pty bash   #Job submission in ml nodes with 1 gpu on 1 node.
+```Bash
+srun -p ml -N 1 -n 1 -c 7 --mem-per-cpu=5772 --gres=gpu:1 --time=04:00:00 --pty bash   #Job submission in ml nodes with 1 gpu on 1 node.
 
-    mkdir python-environments        # Optional: Create folder. Please use Workspaces!
-    
-    module load modenv/ml            # Changing the environment. Example output: The following have been reloaded with a version change: 1 modenv/scs5 => modenv/ml
-    ml av Python                     #Check the available modules with Python
-    module load Python               #Load default Python. Example output: Module Python/3.7 4-GCCcore-8.3.0 with 7 dependencies loaded
-    which python                                                   #Check which python are you using
-    virtualenv --system-site-packages python-environments/envtest  #Create virtual environment
-    source python-environments/envtest/bin/activate                #Activate virtual environment. Example output: (envtest) bash-4.2$
-    python                                                         #Start python
-    
-    from time import gmtime, strftime
-    print(strftime("%Y-%m-%d %H:%M:%S", gmtime()))                 #Example output: 2019-11-18 13:54:16
-    deactivate                                                     #Leave the virtual environment
+mkdir python-environments        # Optional: Create folder. Please use Workspaces!
 
-The [virtualenv](https://virtualenv.pypa.io/en/latest/) Python module (Python 3) provides support 
-for creating virtual environments with their own sitedirectories, 
-optionally isolated from system site directories. Each
-virtual environment has its own Python binary (which matches the version
-of the binary that was used to create this environment) and can have its
-own independent set of installed Python packages in its site
-directories. This allows you to manage separate package installations
-for different projects. It essentially allows us to create a virtual
-isolated Python installation and install packages into that virtual
-installation. When you switch projects, you can simply create a new
-virtual environment and not have to worry about breaking the packages
-installed in other environments.
+module load modenv/ml            # Changing the environment. Example output: The following have been reloaded with a version change: 1 modenv/scs5 => modenv/ml
+ml av Python                     #Check the available modules with Python
+module load Python               #Load default Python. Example output: Module Python/3.7 4-GCCcore-8.3.0 with 7 dependencies loaded
+which python                                                   #Check which python are you using
+virtualenv --system-site-packages python-environments/envtest  #Create virtual environment
+source python-environments/envtest/bin/activate                #Activate virtual environment. Example output: (envtest) bash-4.2$
+python                                                         #Start python
 
-In your virtual environment, you can use packages from the (Complete
-List of Modules)(SoftwareModulesList) or if you didn't find what you
-need you can install required packages with the command: `pip install`. With the command 
-`pip freeze`, you can see a list of all installed packages and their versions.
+from time import gmtime, strftime
+print(strftime("%Y-%m-%d %H:%M:%S", gmtime()))                 #Example output: 2019-11-18 13:54:16
+deactivate                                                     #Leave the virtual environment
+```
+
+The [virtualenv](https://virtualenv.pypa.io/en/latest/) Python module (Python 3) provides support
+for creating virtual environments with their own sitedirectories, optionally isolated from system
+site directories. Each virtual environment has its own Python binary (which matches the version of
+the binary that was used to create this environment) and can have its own independent set of
+installed Python packages in its site directories. This allows you to manage separate package
+installations for different projects. It essentially allows us to create a virtual isolated Python
+installation and install packages into that virtual installation. When you switch projects, you can
+simply create a new virtual environment and not have to worry about breaking the packages installed
+in other environments.
+
+In your virtual environment, you can use packages from the (Complete List of
+Modules)(SoftwareModulesList) or if you didn't find what you need you can install required packages
+with the command: `pip install`. With the command `pip freeze`, you can see a list of all installed
+packages and their versions.
 
 This example shows how to start working with **Conda** and virtual
 environment (with using module system)
 
-    srun -p ml -N 1 -n 1 -c 7 --mem-per-cpu=5772 --gres=gpu:1 --time=04:00:00 --pty bash  # Job submission in ml nodes with 1 gpu on 1 node.
+```Bash
+srun -p ml -N 1 -n 1 -c 7 --mem-per-cpu=5772 --gres=gpu:1 --time=04:00:00 --pty bash  # Job submission in ml nodes with 1 gpu on 1 node.
 
-    module load modenv/ml 
-    mkdir conda-virtual-environments            #create a folder
-    cd conda-virtual-environments               #go to folder
-    which python                                #check which python are you using
-    module load PythonAnaconda/3.6              #load Anaconda module
-    which python                                #check which python are you using now
+module load modenv/ml 
+mkdir conda-virtual-environments            #create a folder
+cd conda-virtual-environments               #go to folder
+which python                                #check which python are you using
+module load PythonAnaconda/3.6              #load Anaconda module
+which python                                #check which python are you using now
 
-    conda create -n conda-testenv python=3.6        #create virtual environment with the name conda-testenv and Python version 3.6 
-    conda activate conda-testenv                    #activate conda-testenv virtual environment                                            
+conda create -n conda-testenv python=3.6        #create virtual environment with the name conda-testenv and Python version 3.6 
+conda activate conda-testenv                    #activate conda-testenv virtual environment                                            
 
-    conda deactivate                                #Leave the virtual environment
+conda deactivate                                #Leave the virtual environment
+```
 
 You can control where a conda environment
 lives by providing a path to a target directory when creating the
 environment. For example, the following command will create a new
 environment in a workspace located in `scratch`
 
-    conda create --prefix /scratch/ws/<name_of_your_workspace>/conda-virtual-environment/<name_of_your_environment>
+```Bash
+conda create --prefix /scratch/ws/<name_of_your_workspace>/conda-virtual-environment/<name_of_your_environment>
+```
 
 Please pay attention,
 using srun directly on the shell will lead to blocking and launch an
@@ -117,10 +119,9 @@ course with machine learning.
 There are two general options on how to work Jupyter notebooks using
 HPC.
 
-On Taurus, there is [JupyterHub](jupyterhub.md) where you can simply run your Jupyter notebook 
-on HPC nodes. Also, you can run a remote jupyter server within a sbatch
-GPU job and with the modules and packages you need. The manual server
-setup you can find [here](deep_learning.md).
+On Taurus, there is [JupyterHub](../access/jupyterhub.md) where you can simply run your Jupyter
+notebook on HPC nodes. Also, you can run a remote jupyter server within a sbatch GPU job and with
+the modules and packages you need. The manual server setup you can find [here](deep_learning.md).
 
 With Jupyterhub you can work with general
 data analytics tools. This is the recommended way to start working with
