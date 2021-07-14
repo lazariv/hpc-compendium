@@ -331,7 +331,7 @@ you have to use the definition file to create the container
 from our wiki. Bootstrapping **has required root privileges** and
 Virtual Machine (VM) should be used! There are two main options on how
 to work with VM on Taurus: [VM tools](vm_tools.md) - automotive algorithms
-for using virtual machines; [Manual method](cloud.md) - it requires more
+for using virtual machines; [Manual method](virtual_machines.md) - it requires more
 operations but gives you more flexibility and reliability.
 
 - [machine_learning_example.py] **todo** %ATTACHURL%/machine_learning_example.py:
