@@ -89,7 +89,7 @@ Creating a container is done by writing a definition file and passing it to
 singularity build myContainer.sif myDefinition.def
 ```
 
-NOTE: This must be done on a machine (or [VM](cloud.md) with root rights.
+NOTE: This must be done on a machine (or [VM](virtual_machines.md) with root rights.
 
 A definition file contains a bootstrap
 [header](https://sylabs.io/guides/3.2/user-guide/definition_files.html#header)
