@@ -63,11 +63,6 @@ strong {
     color: var(--tud-red-90);
 }
 
-.md-nav__link:hover,
-a:hover {
-    text-decoration: underline;
-    color: var(--tud-grey-100);
-}
 .md-grid {
     max-width: 1600px;
 }
@@ -136,6 +131,7 @@ a:hover {
         display: none;
     }
 }
+
 @media screen and (min-width: 60rem) {
     .md-header__button.md-icon {
         display: none;
