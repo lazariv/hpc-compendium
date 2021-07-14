@@ -146,7 +146,7 @@ site_dir: public
 site_url: https://gitlab.hrz.tu-chemnitz.de/hpcsupport/hpc-compendium
 # uncomment next 3 lines if link to repo should not be displayed in the navbar
 repo_name: GitLab hpcsupport/hpc-compendium
-repo_url: https://gitlab.hrz.tu-chemnitz.de/hpcsupport/hpc-compend    ium
+repo_url: https://gitlab.hrz.tu-chemnitz.de/hpcsupport/hpc-compendium
 edit_uri: blob/master/docs/
 
 # Configuration
@@ -163,6 +163,7 @@ theme:
   favicon: assets/images/Logo_klein.png
   # logo in header and footer
   logo: assets/images/TUD_Logo_weiss_57.png
+  second_logo: assets/images/zih.png
 
 # extends base css
 extra_css:
@@ -173,6 +174,8 @@ markdown_extensions:
         permalink: True
 
 extra:
+  homepage: https://tu-dresden.de
+  zih_homepage: https://tu-dresden.de/zih
   # links in footer
   footer:
     - link: https://doc.zih.tu-dresden.de/hpc-wiki/bin/view/Compendium/Impressum
