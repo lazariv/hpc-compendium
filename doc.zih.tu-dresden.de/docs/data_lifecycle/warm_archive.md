@@ -14,7 +14,7 @@ Within Taurus (including the HPC-DA nodes), the management software "Quobyte" en
 For external access, you can use:
 
 - S3 to `<bucket>.s3.taurusexport.hrsk.tu-dresden.de`
-- or normal file transfer via our taurusexport nodes (see [DataManagement](data_management.md)).
+- or normal file transfer via our taurusexport nodes (see [DataManagement](overview.md)).
 
 An HPC-DA project can apply for storage space in the warm archive. This is limited in capacity and
 duration.
