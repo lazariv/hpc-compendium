@@ -2,9 +2,9 @@ nav:
   - Home: index.md
   - Application for Login and Resources:
     - Overview: application/overview.md
-    - Access: application/access.md
+    - Access: https://tu-dresden.de/zih/hochleistungsrechnen/zugang?set_language=en
     - Terms: application/terms_of_use.md
-    - Request for Resources: application/request_for_resources.md
+    - Request for Resources: https://tu-dresden.de/zih/hochleistungsrechnen/zugang/projektantrag?set_language=en
     - Project Request Form: application/project_request_form.md
     - Project Management: application/project_management.md
   - Access to the Cluster:
