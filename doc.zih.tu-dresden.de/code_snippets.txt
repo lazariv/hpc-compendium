@@ -1,0 +1,2542 @@
+====tests.md====
+import os
+
+def debug(mystring):
+  print("Debug: ", mystring)
+
+debug("Dies ist ein Syntax-Highligthing-Test")
+
+====data_moving.md====
+# Copy file from your local machine. For example: scp helloworld.txt mustermann@taurusexport.hrsk.tu-dresden.de:/scratch/ws/mastermann-Macine_learning_project/
+scp <file> <zih-user>@taurusexport.hrsk.tu-dresden.de:<target-location>
+
+scp -r <directory> <zih-user>@taurusexport.hrsk.tu-dresden.de:<target-location>          #Copy directory from your local machine.
+
+------------
+# Copy file. For example: scp mustermann@taurusexport.hrsk.tu-dresden.de:/scratch/ws/mastermann-Macine_learning_project/helloworld.txt /home/mustermann/Downloads
+scp <zih-user>@taurusexport.hrsk.tu-dresden.de:<file> <target-location>
+
+scp -r <zih-user>@taurusexport.hrsk.tu-dresden.de:<directory> <target-location>          #Copy directory
+
+====export_nodes.md====
+# Copy file
+scp <file> <zih-user>@<machine>:<target-location>
+# Copy directory
+scp -r <directory> <zih-user>@<machine>:<target-location>
+
+------------
+# Copy file
+scp <zih-user>@<machine>:<file> <target-location>
+# Copy directory
+scp -r <zih-user>@<machine>:<directory> <target-location>
+
+------------
+scp helloworld.txt mustermann@taurusexport.hrsk.tu-dresden.de:~/.
+
+------------
+# Enter virtual command line
+sftp <zih-user>@<machine>
+# Exit virtual command line
+sftp> exit 
+# or
+sftp> <Ctrl+D>
+
+------------
+# Copy file
+sftp> put <file>
+# Copy directory
+sftp> put -r <directory>
+
+------------
+# Copy file
+sftp> get <file>
+# Copy directory
+sftp> get -r <directory>
+
+------------
+sftp> get helloworld.txt
+
+------------
+# Copy file
+rsync <file> <zih-user>@<machine>:<target-location>
+# Copy directory
+rsync -r <directory> <zih-user>@<machine>:<target-location>
+
+------------
+# Copy file
+rsync <zih-user>@<machine>:<file> <target-location>
+# Copy directory
+rsync -r <zih-user>@<machine>:<directory> <target-location>
+
+------------
+rsync helloworld.txt mustermann@taurusexport.hrsk.tu-dresden.de:~/.
+
+====access.md====
+ssh <zih-login>@taurus.hrsk.tu-dresden.de
+
+====jupyterhub_for_teaching.md====
+https://taurus.hrsk.tu-dresden.de/jupyter/hub/spawn#/~(partition~'interactive~environment~'test)
+
+------------
+https://taurus.hrsk.tu-dresden.de/jupyter/hub/user-redirect/git-pull?repo=https://github.com/jdwittenauer/ipython-notebooks&urlpath=/tree/ipython-notebooks/notebooks/language/Intro.ipynb#/~(partition~'interactive~environment~'test)
+
+====web_vnc.md====
+srun --pty -p interactive --mem-per-cpu=2500 -c 4 -t 8:00:00 singularity exec
+/scratch/singularity/xfce.sif runVNC
+
+------------
+Note: Certificate file /home/user/self.pem already exists. Skipping generation.  Starting VNC
+server...  Server started successfully.  Please browse to: https://172.24.146.46:5901/vnc.html
+The one-time password is: 71149997
+
+------------
+ssh -NL <local port>:<compute node>:<remote port> <zih login>@tauruslogin.hrsk.tu-dresden.de
+e.g. ssh NL 5901:172.24.146.46:5901 rotscher@tauruslogin.hrsk.tu-dresden.de
+
+------------
+https://localhost:<local port>/vnc.html (e.g. https://localhost:5901/vnc.html)
+
+====jupyterhub.md====
+$ module load Python/3.8.6-GCCcore-10.2.0
+
+$ mkdir user-kernel         #please use Workspaces!
+
+$ cd user-kernel
+
+$ virtualenv --system-site-packages my-kernel
+Using base prefix '/sw/installed/Python/3.6.6-fosscuda-2018b'
+New python executable in .../user-kernel/my-kernel/bin/python
+Installing setuptools, pip, wheel...done.
+
+$ source my-kernel/bin/activate
+
+(my-kernel) $ pip install ipykernel
+Collecting ipykernel
+...
+Successfully installed ... ipykernel-5.1.0 ipython-7.5.0 ...
+
+(my-kernel) $ pip install --upgrade pip
+
+(my-kernel) $ python -m ipykernel install --user --name my-kernel --display-name="my kernel"
+Installed kernelspec my-kernel in .../.local/share/jupyter/kernels/my-kernel
+
+[now install additional packages for your notebooks]
+
+(my-kernel) $ deactivate
+
+------------
+module load Anaconda3
+
+------------
+module load PythonAnaconda
+
+------------
+$ mkdir user-kernel         #please use Workspaces!
+
+$ conda create --prefix /home/<USER>/user-kernel/my-kernel python=3.6
+Collecting package metadata: done
+Solving environment: done
+[...]
+
+$ conda activate /home/<USER>/user-kernel/my-kernel
+
+$ conda install ipykernel
+Collecting package metadata: done
+Solving environment: done
+[...]
+
+$ python -m ipykernel install --user --name my-kernel --display-name="my kernel"
+Installed kernelspec my-kernel in [...]
+
+[now install additional packages for your notebooks]
+
+$ conda deactivate
+
+====login.md====
+user@pc:~# ssh <zih-login>@taurus.hrsk.tu-dresden.de
+The authenticity of host 'taurus.hrsk.tu-dresden.de (141.30.73.104)' can't be established.
+RSA key fingerprint is SHA256:HjpVeymTpk0rqoc8Yvyc8d9KXQ/p2K0R8TJ27aFnIL8.
+Are you sure you want to continue connecting (yes/no)?
+
+====desktop_cloud_visualization.md====
+glxinfo name of display: :1 display: :1 screen: 0 direct rendering: Yes      # &lt;--- This
+line!  ...
+
+------------
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64/nvidia/
+
+====migrate_to_atlas.md====
+    bsub -W 2:00 -M 200 -n 8 mpirun a.out
+
+====load_leveler.md====
+#@ job_name = my_job
+#@ output = $(job_name).$(jobid).out
+#@ error  = $(job_name).$(jobid).err
+#@ class = short
+#@ group = triton-ww | triton-ipf | triton-ism | triton-et
+#@ wall_clock_limit = 00:30:00
+#@ resources = ConsumableMemory(1 gb)
+#@ environment = COPY_ALL
+#@ notification = complete
+#@ notify_user = your_email@adress
+#@ queue
+
+./my_serial_program
+
+------------
+#@ job_name = my_job
+#@ output = $(job_name).$(jobid).out
+#@ error  = $(job_name).$(jobid).err
+#@ job_type = parallel
+#@ node = 2
+#@ tasks_per_node = 8
+#@ class = short
+#@ group = triton-ww | triton-ipf | triton-ism | triton-et
+#@ wall_clock_limit = 00:30:00
+#@ resources = ConsumableMemory(1 gb)
+#@ environment = COPY_ALL
+#@ notification = complete
+#@ notify_user = your_email@adress
+#@ queue
+
+mpirun -x OMP_NUM_THREADS=1 -x LD_LIBRARY_PATH -np 16 ./my_mpi_program
+
+------------
+#@ job_name = my_job
+#@ output = $(job_name).$(jobid).out
+#@ error  = $(job_name).$(jobid).err
+#@ job_type = parallel
+#@ node = 4
+#@ tasks_per_node = 8
+#@ class = short
+#@ group = triton-ww | triton-ipf | triton-ism | triton-et
+#@ wall_clock_limit = 00:30:00
+#@ resources = ConsumableMemory(1 gb)
+#@ environment = COPY_ALL
+#@ notification = complete
+#@ notify_user = your_email@adress
+#@ queue
+
+mpirun -x OMP_NUM_THREADS=8 -x LD_LIBRARY_PATH -np 4 --bynode ./my_hybrid_program
+
+------------
+#@ job_name = my_job
+#@ output = $(job_name).$(jobid).out
+#@ error  = $(job_name).$(jobid).err
+#@ job_type = parallel
+#@ node = 2
+#@ tasks_per_node = 8
+#@ class = short
+#@ wall_clock_limit = 00:30:00
+#@ resources = ConsumableMemory(1 gb)
+#@ environment = COPY_ALL
+#@ notification = complete
+#@ notify_user = your_email@adress
+#@ queue
+
+echo $LOADL_PROCESSOR_LIST
+echo $LOADL_STEP_ID
+echo $LOADL_JOB_NAME
+mpirun -np 16 ./my_mpi_program
+
+------------
+Name                 MaxJobCPU     MaxProcCPU  Free   Max Description          
+                    d+hh:mm:ss     d+hh:mm:ss Slots Slots                      
+--------------- -------------- -------------- ----- ----- ---------------------
+interactive          undefined      undefined    32    32 interactive, exclusive shared nodes, max. 12h runtime
+triton_ism           undefined      undefined     8    80 exclusive, serial + parallel queue, nodes shared, unlimited runtime
+openend              undefined      undefined   272   384 serial + parallel queue, nodes shared, unlimited runtime
+long                 undefined      undefined   272   384 serial + parallel queue, nodes shared, max. 7 days runtime
+medium               undefined      undefined   272   384 serial + parallel queue, nodes shared, max. 3 days runtime
+short                undefined      undefined   272   384 serial + parallel queue, nodes shared, max. 4 hours runtime
+
+------------
+# llq
+
+------------
+# llq -u username
+
+------------
+# llq -s job-id
+
+------------
+==================== EVALUATIONS FOR JOB STEP l1f1n01.4604.0 ====================
+The class of this job step is "workq".
+Total number of available initiators of this class on all machines in the cluster: 0
+Minimum number of initiators of this class required by job step: 4
+The number of available initiators of this class is not sufficient for this job step.
+Not enough resources to start now.
+Not enough resources for this step as backfill.
+
+------------
+==================== EVALUATIONS FOR JOB STEP l1f1n01.8207.0 ====================
+The class of this job step is "checkpt".
+Total number of available initiators of this class on all machines in the cluster: 8
+Minimum number of initiators of this class required by job step: 32
+The number of available initiators of this class is not sufficient for this job step.
+Not enough resources to start now.
+This step is top-dog. 
+Considered at: Fri Jul 13 12:12:04 2007
+Will start by: Tue Jul 17 18:10:32 2007
+
+------------
+# llq -l job-id
+
+------------
+# llcancel job-id
+
+------------
+# llcancel -u username
+
+------------
+# llsummary -u estrabd /var/loadl/archive/history.archive
+
+------------
+       Name   Jobs   Steps        Job Cpu    Starter Cpu     Leverage
+    estrabd    118     128       07:55:57       00:00:45        634.6
+      TOTAL    118     128       07:55:57       00:00:45        634.6
+      Class   Jobs   Steps        Job Cpu    Starter Cpu     Leverage
+    checkpt     13      23       03:09:32       00:00:18        631.8
+interactive    105     105       04:46:24       00:00:26        660.9
+      TOTAL    118     128       07:55:57       00:00:45        634.6
+      Group   Jobs   Steps        Job Cpu    Starter Cpu     Leverage
+   No_Group    118     128       07:55:57       00:00:45        634.6
+      TOTAL    118     128       07:55:57       00:00:45        634.6
+    Account   Jobs   Steps        Job Cpu    Starter Cpu     Leverage
+       NONE    118     128       07:55:57       00:00:45        634.6
+      TOTAL    118     128       07:55:57       00:00:45        634.6
+
+------------
+root@triton[0]:~# llstatus
+Name                      Schedd InQ  Act Startd Run LdAvg Idle Arch      OpSys    
+n01                       Avail     0   0 Idle     0 0.00  2403 AMD64     Linux2   
+n02                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n03                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n04                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n05                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n06                       Avail     0   0 Idle     0 0.71  9999 AMD64     Linux2   
+n07                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n08                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n09                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n10                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n11                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n12                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n13                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n14                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n15                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n16                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n17                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n18                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n19                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n20                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n21                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n22                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n23                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n24                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n25                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n26                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n27                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n28                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n29                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n30                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n31                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n32                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n33                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n34                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n35                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n36                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n37                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n38                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n39                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n40                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n41                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n42                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n43                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n44                       Avail     0   0 Idle     0 0.01  9999 AMD64     Linux2   
+n45                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n46                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n47                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n48                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n49                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n50                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n51                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n52                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n53                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n54                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n55                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n56                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n57                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n58                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n59                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n60                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n61                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n62                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n63                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+n64                       Avail     0   0 Idle     0 0.00  9999 AMD64     Linux2   
+triton                    Avail     0   0 Idle     0 0.00   585 AMD64     Linux2   
+
+AMD64/Linux2               65 machines      0  jobs      0  running tasks
+Total Machines             65 machines      0  jobs      0  running tasks
+
+The Central Manager is defined on triton
+
+The BACKFILL scheduler is in use
+
+All machines on the machine_list are present.
+
+------------
+# llstatus -l n54
+
+====vampir_trace.md====
+module load vampirtrace
+
+====system_venus.md====
+MD5:63:65:c6:d6:4e:5e:03:9e:07:9e:70:d1:bc:b4:94:64
+
+------------
+SHA256:Qq1OrgSCTzgziKoop3a/pyVcypxRfPcZT7oUQ3V7E0E
+
+------------
+% icc -o myprog -g -O2 -xHost myprog.c -lmpi
+
+------------
+srun -n 16 a.out
+
+====knl_nodes.md====
+srun -p knl -N 1 --mem=90000 -n 1 -c 64 a.out
+
+====phase2_migration.md====
+ssh <username>@tauruslogin[1-2].hrsk.tu-dresden.de
+
+------------
+dtcp -r /atlas_scratch/<project or user>/<directory> /scratch/<project or user>/<directory>
+
+e.g. file: dtcp -r /atlas_scratch/rotscher/file.txt /scratch/rotscher/
+e.g. directory: dtcp -r /atlas_scratch/rotscher/directory /scratch/rotscher/
+
+------------
+ssh <username>@tauruslogin[3-5].hrsk.tu-dresden.de
+
+------------
+dtcp -r /phase1_scratch/<project or user>/<directory> /scratch/<project or user>/<directory>
+
+e.g. file: dtcp -r /phase1_scratch/rotscher/file.txt /scratch/rotscher/
+e.g. directory: dtcp -r /phase1_scratch/rotscher/directory /scratch/rotscher/
+
+------------
+% dtcp -r /atlas_scratch/jurenz/results /taurus_scratch/jurenz/
+
+------------
+% dtmv /venus_scratch/jurenz/results/ /taurus_scratch/jurenz/venus_results
+
+------------
+% dttar -czf /archiv/jurenz/taurus_results_20140523.tgz /taurus_scratch/jurenz/results
+
+====platform_lsf.md====
+bsub <my_jobfile>
+
+------------
+#!/bin/bash
+#BSUB -J my_job                     # the job's name
+#BSUB -W 4:00                       # max. wall clock time 4h
+#BSUB -R "span[hosts=1]"            # run on a single node
+#BSUB -n 4                          # number of processors
+#BSUB -M 500                        # 500MB per core memory limit
+#BSUB -o out.%J                     # output file
+#BSUB -u name@tu-dresden.de         # email address; works ONLY with @tu-dresden.de 
+
+echo Starting Program
+cd $HOME/work
+a.out                               # e.g. an OpenMP program
+echo Finished Program
+
+------------
+bsub -Is -XF matlab
+
+------------
+bsub -Is -n 2 -W &lt;hh:mm&gt; -P &lt;project&gt; bash
+
+------------
+#!/bin/bash
+
+#BSUB -W 00:10
+#BSUB -n 1           
+#BSUB -J "myTask[1-100:2]" # create job array with 50 tasks
+#BSUB -o logs/out.%J.%I    # appends the standard output of the job to the specified file that
+                           # contains the job information (%J) and the task information (%I)
+#BSUB -e logs/err.%J.%I    # appends the error output of the job to the specified file that 
+                           # contains the job information (%J) and the task information (%I)
+
+echo "Hello Job $LSB_JOBID Task $LSB_JOBINDEX"
+
+------------
+bsub -n 1 -W 00:10 -J "myTask[1-100:2]" -o "logs/out.%J.%I" -e "logs/err.%J.%I" "echo Hello Job \$LSB_JOBID Task \$LSB_JOBINDEX"
+
+------------
+#!/bin/bash
+
+#job parameters
+time="4:00"
+mem="rusage[mem=2000] span[host=1]"
+n="8"
+
+#iteration parameters
+start=1
+end=10
+i=$start
+
+#create chain job with 10 jobs
+while [ "$i" -lt "`expr $end + 1`" ]
+do
+   if [ "$i" -eq "$start" ];then
+      #create jobname
+      JOBNAME="${USER}_job_$i"
+      bsub -n "$n" -W "$time" -R "$mem" -J "$JOBNAME" &lt;job&gt;
+   else
+      #create jobname
+      OJOBNAME=$JOBNAME
+      JOBNAME="${USER}_job_$i"
+      #only start a job if the preceding job has the status done
+      bsub -n "$n" -W "$time" -R "$mem" -J "$JOBNAME" -w "done($OJOBNAME)" &lt;job&gt;
+   fi
+   i=`expr $i + 1`
+done
+
+------------
+You have 1 running job using 64 cores
+You have 1 pending job
+
+------------
+# -------------------------------------------
+
+nodes available: 714/714 nodes damaged: 0
+
+# -------------------------------------------
+
+jobs running: 1797 \| cores closed (exclusive jobs): 94 jobs wait: 3361
+\| cores closed by ADMIN: 129 jobs suspend: 0 \| cores working: 2068
+jobs damaged: 0 \|
+
+# -------------------------------------------
+
+normal working cores: 2556 cores free for jobs: 265
+
+------------
+watch -n10 tail -n2 '*out'
+
+====ram_disk_documentation.md====
+module load ramdisk
+
+------------
+make-ramdisk &laquo;size of the ramdisk in GB&raquo; 
+
+------------
+parallel-copy.sh &laquo;source directory or file&raquo; &laquo;target directory&raquo;
+
+------------
+kill-ramdisk
+
+------------
+lsof +d /ramdisks/&laquo;JOBID&raquo;
+
+====system_atlas.md====
+bsub -n <N> mpirun <program name>
+
+====system_altix.md====
+bsub -R "span[hosts=1]" -n 16 mpirun -np 16 a.out<
+
+------------
+bsub -n 1024 pamrun a.out
+
+====alpha_centauri.md====
+module load modenv/hiera
+
+------------
+module load modenv/hiera GCC/10.2.0 CUDA/11.1.1 OpenMPI/4.0.5 PyTorch/1.7.1 module load
+modenv/hiera GCC/10.2.0 CUDA/11.1.1 OpenMPI/4.0.5 TensorFlow/2.4.1
+
+------------
+module available
+
+------------
+module spider <name_of_the_module>
+
+------------
+srun -p alpha-interactive -N 1 -n 1 --gres=gpu:1 --time=01:00:00 --pty bash  # Job submission in
+alpha nodes with 1 gpu on 1 node.
+
+mkdir conda-virtual-environments            #create a folder, please use Workspaces!
+cd conda-virtual-environments               #go to folder
+which python                                #check which python are you using ml modenv/hiera
+ml Miniconda3
+which python                                #check which python are you using now
+conda create -n conda-testenv python=3.8    #create virtual environment with the name conda-testenv and Python version 3.8
+conda activate
+conda-testenv                               #activate conda-testenv virtual environment
+conda deactivate                            #Leave the virtual environment
+
+------------
+srun -p alpha-interactive -N 1 -n 1 --gres=gpu:1 --time=01:00:00 --pty bash
+#Job submission in alpha nodes with 1 gpu on 1 node.
+
+mkdir python-environments && cd "$_"           # Optional: Create folder. Please use Workspaces!
+
+module load modenv/hiera modenv/hiera GCC/10.2.0 CUDA/11.1.1 OpenMPI/4.0.5 Python/3.8.6   #Changing the environment and load necessary modules
+which python                                                     #Check which python are you using
+virtualenv --system-site-packages python-environments/envtest    #Create virtual environment
+source python-environments/envtest/bin/activate                  #Activate virtual environment. Example output: (envtest) bash-4.2$
+
+------------
+conda activate conda-testenv
+conda install pytorch torchvision cudatoolkit=11.1 -c pytorch -c nvidia
+conda install -c anaconda pillow
+
+------------
+python                                                           #Start python from time import
+gmtime, strftime print(strftime("%Y-%m-%d %H:%M:%S", gmtime()))  #Example output: 2019-11-18 13:54:16
+
+deactivate                                                       #Leave the virtual environment
+
+------------
+python                      #Start python import torch torch.version.__version__   #Example output: 1.8.1
+
+------------
+#!/bin/bash #SBATCH --mem=40GB                # specify the needed memory. Same amount memory as
+on the GPU #SBATCH -p alpha                  # specify Alpha-Centauri partition #SBATCH
+--gres=gpu:1              # use 1 GPU per node (i.e. use one GPU per task) #SBATCH --nodes=1
+# request 1 node #SBATCH --time=00:15:00           # runs for 15 minutes #SBATCH -c 2
+# how many cores per task allocated #SBATCH -o HLR_name_your_script.out        # save output
+message under HLR_${SLURMJOBID}.out #SBATCH -e HLR_name_your_script.err        # save error
+messages under HLR_${SLURMJOBID}.err
+
+module load modenv/hiera eval "$(conda shell.bash hook)" conda activate conda-testenv && python
+machine_learning_example.py
+
+## when finished writing, submit with:  sbatch <script_name> For example: sbatch
+machine_learning_script.sh
+
+====rome_nodes.md====
+    $ ml spider CP2K
+    #or:
+    $ ml avail CP2K/
+
+------------
+$ ml_arch_avail CP2K/6
+CP2K/6.1-foss-2019a: haswell, rome
+CP2K/6.1-foss-2019a-spglib: haswell, rome
+CP2K/6.1-intel-2018a: sandy, haswell
+CP2K/6.1-intel-2018a-spglib: haswell
+
+------------
+#!/bin/bash
+#SBATCH --partition=romeo
+#SBATCH --ntasks-per-node=128
+#SBATCH --nodes=1
+#SBATCH --mem-per-cpu=1972
+
+srun cp2k.popt input.inp
+
+------------
+    export MKL_DEBUG_CPU_TYPE=5
+
+------------
+    int mkl_serv_intel_cpu_true() {
+      return 1;
+    }
+
+------------
+    gcc -shared -fPIC -o libfakeintel.so fakeintel.c
+    export LD_PRELOAD=libfakeintel.so
+
+====slurm.md====
+#!/bin/bash
+#SBATCH --time=01:00:00
+#SBATCH --output=simulation-m-%j.out
+#SBATCH --error=simulation-m-%j.err
+#SBATCH --ntasks=512
+#SBATCH -A myproject
+
+echo Starting Program
+
+------------
+tauruslogin3 /home/mark; srun --pty -n 1 -c 4 --time=1:00:00 --mem-per-cpu=1700 bash<br />srun: job 13598400 queued and waiting for resources<br />srun: job 13598400 has been allocated resources
+taurusi1262 /home/mark;   # start interactive work with e.g. 4 cores.
+
+------------
+module load matlab
+srun --ntasks=1 --cpus-per-task=8 --time=1:00:00 --pty --x11=first matlab
+
+------------
+srun: error: x11: unable to connect node taurusiXXXX
+
+------------
+#!/bin/bash
+#SBATCH -A Project1            # account CPU time to Project1
+#SBATCH --nodes=2              # request 2 nodes<br />#SBATCH --mincpus=1            # allocate one task per node...<br />#SBATCH --ntasks=2             # ...which means 2 tasks in total (see note below)
+#SBATCH --cpus-per-task=6      # use 6 threads per task
+#SBATCH --gres=gpu:1           # use 1 GPU per node (i.e. use one GPU per task)
+#SBATCH --time=01:00:00        # run for 1 hour
+srun ./your/cuda/application   # start you application (probably requires MPI to use both nodes)
+
+------------
+Batch job submission failed: Requested node configuration is not available
+
+------------
+#!/bin/bash
+#SBATCH -J Science1
+#SBATCH --nodes=1
+#SBATCH --tasks-per-node=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mail-type=end
+#SBATCH --mail-user=your.name@tu-dresden.de
+#SBATCH --time=08:00:00
+
+export OMP_NUM_THREADS=8
+./path/to/binary
+
+------------
+#!/bin/bash
+#SBATCH -J Science1
+#SBATCH --ntasks=864
+#SBATCH --mail-type=end
+#SBATCH --mail-user=your.name@tu-dresden.de
+#SBATCH --time=08:00:00
+
+srun ./path/to/binary
+
+------------
+#!/bin/bash
+#SBATCH -J PseudoParallelJobs
+#SBATCH --ntasks=4
+#SBATCH --cpus-per-task=1
+#SBATCH --mail-type=end
+#SBATCH --mail-user=your.name@tu-dresden.de
+#SBATCH --time=01:00:00 
+
+# The following sleep command was reported to fix warnings/errors with srun by users (feel free to uncomment).
+#sleep 5
+srun --exclusive --ntasks=1 ./path/to/binary &
+
+#sleep 5
+srun --exclusive --ntasks=1 ./path/to/binary &
+
+#sleep 5
+srun --exclusive --ntasks=1 ./path/to/binary &
+
+#sleep 5
+srun --exclusive --ntasks=1 ./path/to/binary &
+
+echo "Waiting for parallel job steps to complete..."
+wait
+echo "All parallel job steps completed!"
+
+------------
+#!/bin/bash
+#SBATCH -J Benchmark<br />#SBATCH -p haswell<br />#SBATCH --nodes=2<br />#SBATCH --ntasks-per-node=2
+#SBATCH --cpus-per-task=8<br />#SBATCH --exclusive    # ensure that nobody spoils my measurement on 2 x 2 x 8 cores<br />#SBATCH --mail-user=your.name@tu-dresden.de
+#SBATCH --time=00:10:00
+
+srun ./my_benchmark
+
+------------
+#!/bin/bash
+#SBATCH -J Science1
+#SBATCH --array 0-9
+#SBATCH -o arraytest-%A_%a.out
+#SBATCH -e arraytest-%A_%a.err
+#SBATCH --ntasks=864
+#SBATCH --mail-type=end
+#SBATCH --mail-user=your.name@tu-dresden.de
+#SBATCH --time=08:00:00
+
+echo "Hi, I am step $SLURM_ARRAY_TASK_ID in this array job $SLURM_ARRAY_JOB_ID"
+
+------------
+#SBATCH --array=1-100000%100
+
+------------
+#!/bin/bash
+TASK_NUMBERS="1 2 4 8"
+DEPENDENCY=""
+JOB_FILE="myjob.slurm"
+
+for TASKS in $TASK_NUMBERS ; do
+    JOB_CMD="sbatch --ntasks=$TASKS"
+    if [ -n "$DEPENDENCY" ] ; then
+        JOB_CMD="$JOB_CMD --dependency afterany:$DEPENDENCY"
+    fi
+    JOB_CMD="$JOB_CMD $JOB_FILE"
+    echo -n "Running command: $JOB_CMD  "
+    OUT=`$JOB_CMD`
+    echo "Result: $OUT"
+    DEPENDENCY=`echo $OUT | awk '{print $4}'`
+done
+
+------------
+#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --tasks-per-node=1
+#SBATCH --cpus-per-task=16
+
+export OMP_NUM_THREADS=16
+
+srun --ntasks 1 --cpus-per-task $OMP_NUM_THREADS ./application
+
+------------
+#!/bin/bash
+#SBATCH --nodes=2
+#SBATCH --tasks-per-node=16
+#SBATCH --cpus-per-task=1
+
+srun --ntasks 32 ./application
+
+------------
+#!/bin/bash
+#SBATCH --nodes=2
+#SBATCH --tasks-per-node=4
+#SBATCH --cpus-per-task=4
+
+export OMP_NUM_THREADS=4
+
+srun --ntasks 8 --cpus-per-task $OMP_NUM_THREADS ./application
+
+------------
+# show all own jobs contained in the accounting database
+sacct
+# show specific job
+sacct -j &lt;JOBID&gt;
+# specify fields
+sacct -j &lt;JOBID&gt; -o JobName,MaxRSS,MaxVMSize,CPUTime,ConsumedEnergy
+# show all fields
+sacct -j &lt;JOBID&gt; -o ALL
+
+------------
+# show all jobs since the beginning of year 2020:
+sacct -S 2020-01-01
+
+------------
+# create energy and task profiling data (--acctg-freq is the sampling rate in seconds)
+srun --profile=All --acctg-freq=5,energy=5 -n 32 ./a.out
+# create task profiling data only
+srun --profile=All --acctg-freq=5 -n 32 ./a.out
+
+# merge the node local files in /lustre/scratch2/profiling/${USER} to single file
+# (without -o option output file defaults to job_&lt;JOBID&gt;.h5)
+sh5util -j &lt;JOBID&gt; -o profile.h5
+# in jobscripts or in interactive sessions (via salloc):
+sh5util -j ${SLURM_JOBID} -o profile.h5
+
+# view data:
+module load HDFView
+hdfview.sh profile.h5
+
+------------
+scontrol show res=<reservation name>
+# e.g. scontrol show res=hpcsupport_123
+
+====checkpoint_restart.md====
+#/bin/bash #SBATCH --time=00:01:00
+#SBATCH --cpus-per-task=8 #SBATCH --mem-per-cpu=1500
+
+source $DMTCP_ROOT/bin/bash start_coordinator -i 40 --exit-after-ckpt
+
+dmtcp_launch ./my-application #for sequential/multithreaded applications
+#or: srun dmtcp_launch --ib --rm ./my-mpi-application #for MPI
+applications
+
+------------
+#/bin/bash #SBATCH --time=00:01:00 #SBATCH --cpus-per-task=8
+#SBATCH --mem-per-cpu=1500
+
+source $DMTCP_ROOT/bin/bash start_coordinator -i 40 --exit-after-ckpt
+
+./dmtcp_restart_script.sh -h $DMTCP_COORD_HOST -p
+$DMTCP_COORD_PORT
+
+====binding_and_distribution_of_tasks.md====
+#!/bin/bash 
+#SBATCH --nodes=2                        # request 2 nodes 
+#SBATCH --cpus-per-task=4                # use 4 cores per task 
+#SBATCH --tasks-per-node=4               # allocate 4 tasks per node - 2 per socket 
+
+srun --ntasks 8 --cpus-per-task 4 --cpu_bind=cores --distribution=block:block ./application
+
+------------
+#!/bin/bash
+#SBATCH --nodes=2
+#SBATCH --tasks-per-node=16
+#SBATCH --cpus-per-task=1
+
+srun --ntasks 32 ./application
+
+------------
+#!/bin/bash
+#SBATCH --nodes=2
+#SBATCH --tasks-per-node=16
+#SBATCH --cpus-per-task=1
+
+srun --ntasks 32 --cpu_bind=cores --distribution=block:block ./application
+
+------------
+#!/bin/bash
+#SBATCH --nodes=2
+#SBATCH --tasks-per-node=16
+#SBATCH --cpus-per-task=1
+
+srun --ntasks 32 --cpu_bind=cores --distribution=cyclic:cyclic
+
+------------
+#!/bin/bash
+#SBATCH --nodes=2
+#SBATCH --tasks-per-node=16
+#SBATCH --cpus-per-task=1
+
+srun --ntasks 32 -cpu_bind=sockets ./application
+
+------------
+#!/bin/bash
+#SBATCH --nodes=2
+#SBATCH --tasks-per-node=16
+#SBATCH --cpus-per-task=1
+
+srun --ntasks 32 --cpu_bind=sockets --distribution=block:block ./application
+
+------------
+#!/bin/bash
+#SBATCH --nodes=2
+#SBATCH --tasks-per-node=4
+#SBATCH --cpus-per-task=4
+
+export OMP_NUM_THREADS=4
+
+srun --ntasks 8 --cpus-per-task $OMP_NUM_THREADS ./application
+
+------------
+#!/bin/bash
+#SBATCH --nodes=2
+#SBATCH --tasks-per-node=4
+#SBATCH --cpus-per-task=4
+
+export OMP_NUM_THREADS=4
+
+srun --ntasks 8 --cpus-per-task $OMP_NUM_THREADS --cpu_bind=cores --distribution=block:block ./application
+
+------------
+#!/bin/bash
+#SBATCH --nodes=2
+#SBATCH --tasks-per-node=4
+#SBATCH --cpus-per-task=4
+
+export OMP_NUM_THREADS=4<br /><br />srun --ntasks 8 --cpus-per-task $OMP_NUM_THREADS --cpu_bind=cores --distribution=cyclic:block ./application
+
+====python.md====
+srun -p ml -N 1 -n 1 -c 7 --mem-per-cpu=5772 --gres=gpu:1 --time=04:00:00 --pty bash   #Job submission in ml nodes with 1 gpu on 1 node.
+
+mkdir python-environments        # Optional: Create folder. Please use Workspaces!
+
+module load modenv/ml            # Changing the environment. Example output: The following have been reloaded with a version change: 1 modenv/scs5 => modenv/ml
+ml av Python                     #Check the available modules with Python
+module load Python               #Load default Python. Example output: Module Python/3.7 4-GCCcore-8.3.0 with 7 dependencies loaded
+which python                                                   #Check which python are you using
+virtualenv --system-site-packages python-environments/envtest  #Create virtual environment
+source python-environments/envtest/bin/activate                #Activate virtual environment. Example output: (envtest) bash-4.2$
+python                                                         #Start python
+
+from time import gmtime, strftime
+print(strftime("%Y-%m-%d %H:%M:%S", gmtime()))                 #Example output: 2019-11-18 13:54:16
+deactivate                                                     #Leave the virtual environment
+
+------------
+srun -p ml -N 1 -n 1 -c 7 --mem-per-cpu=5772 --gres=gpu:1 --time=04:00:00 --pty bash  # Job submission in ml nodes with 1 gpu on 1 node.
+
+module load modenv/ml 
+mkdir conda-virtual-environments            #create a folder
+cd conda-virtual-environments               #go to folder
+which python                                #check which python are you using
+module load PythonAnaconda/3.6              #load Anaconda module
+which python                                #check which python are you using now
+
+conda create -n conda-testenv python=3.6        #create virtual environment with the name conda-testenv and Python version 3.6 
+conda activate conda-testenv                    #activate conda-testenv virtual environment                                            
+
+conda deactivate                                #Leave the virtual environment
+
+------------
+conda create --prefix /scratch/ws/<name_of_your_workspace>/conda-virtual-environment/<name_of_your_environment>
+
+------------
+srun -p ml --time=04:00:00 -n 1 --pty --mem-per-cpu=8000 bash                            #allocate recources
+module load modenv/ml
+module load PythonAnaconda/3.6                                                           #load module to use conda
+conda create --prefix=<location_for_your_environment> python=3.6 anaconda                #create conda virtual environment
+
+conda activate <location_for_your_environment>                                          #activate your virtual environment
+
+conda install -c conda-forge mpi4py                                                      #install mpi4py
+
+python                                                                                   #start python
+
+from mpi4py import MPI                                                                   #verify your mpi4py
+comm = MPI.COMM_WORLD
+print("%d of %d" % (comm.Get_rank(), comm.Get_size()))
+
+------------
+ml av Horovod            #Check available modules with Python
+module load Horovod      #Loading of the module
+
+------------
+srun -N 1 --ntasks-per-node=6 -p ml --time=08:00:00 --pty bash                    #allocate a Slurm job allocation, which is a set of resources (nodes)
+module load modenv/ml                                                             #Load dependencies by using modules 
+module load OpenMPI/3.1.4-gcccuda-2018b
+module load Python/3.6.6-fosscuda-2018b
+module load cuDNN/7.1.4.18-fosscuda-2018b
+module load CMake/3.11.4-GCCcore-7.3.0
+virtualenv --system-site-packages <location_for_your_environment>                 #create virtual environment
+source <location_for_your_environment>/bin/activate                               #activate virtual environment
+
+------------
+srun -N 1 --ntasks-per-node=6 -p ml --time=08:00:00 --pty bash                            #allocate a Slurm job allocation, which is a set of resources (nodes)
+module load modenv/ml                                                                     #Load dependencies by using modules
+module load OpenMPI/3.1.4-gcccuda-2018b
+module load PythonAnaconda/3.6
+module load cuDNN/7.1.4.18-fosscuda-2018b
+module load CMake/3.11.4-GCCcore-7.3.0
+
+conda create --prefix=<location_for_your_environment> python=3.6 anaconda                 #create virtual environment
+
+conda activate  <location_for_your_environment>                                           #activate virtual environment
+
+------------
+cd /tmp
+git clone https://github.com/pytorch/pytorch                                  #clone Pytorch from the source
+cd pytorch                                                                    #go to folder
+git checkout v1.7.1                                                           #Checkout version (example: 1.7.1)
+git submodule update --init                                                   #Update dependencies
+python setup.py install                                                       #install it with python
+
+------------
+HOROVOD_GPU_ALLREDUCE=MPI HOROVOD_WITHOUT_TENSORFLOW=1 HOROVOD_WITH_PYTORCH=1 HOROVOD_WITHOUT_MXNET=1 pip install --no-cache-dir horovod 
+
+------------
+python                                           #start python
+import torch                                     #import pytorch
+import horovod.torch as hvd                      #import horovod
+hvd.init()                                       #initialize horovod
+hvd.size()
+hvd.rank()
+print('Hello from:', hvd.rank())
+
+------------
+module load NCCL/2.3.7-fosscuda-2018b
+HOROVOD_GPU_ALLREDUCE=NCCL HOROVOD_GPU_BROADCAST=NCCL HOROVOD_WITHOUT_TENSORFLOW=1 HOROVOD_WITH_PYTORCH=1 HOROVOD_WITHOUT_MXNET=1 pip install --no-cache-dir horovod
+
+====modules.md====
+module load
+
+------------
+module available
+#or
+module avail
+#or
+ml av
+
+
+------------
+module help             #show all module options
+module list             #list all user-installed modules
+module purge            #remove all user-installed modules
+module spider           #search for modules across all environments, can take a parameter
+module load <modname>   #load module modname
+module rm <modname>     #unload module modname
+module switch <mod> <mod2>  #unload module mod1; load module mod2
+
+------------
+module load modenv/ml
+
+------------
+ml_arch_avail CP2K
+
+Example output:
+
+#CP2K/6.1-foss-2019a: haswell, rome
+#CP2K/5.1-intel-2018a: haswell
+#CP2K/6.1-foss-2019a-spglib: haswell, rome
+#CP2K/6.1-intel-2018a: haswell
+#CP2K/6.1-intel-2018a-spglib: haswell
+
+------------
+module use <path_to_module_files>
+
+------------
+cd
+mkdir privatemodules && cd privatemodules
+mkdir testsoftware && cd testsoftware
+
+------------
+module use $HOME/privatemodules
+
+------------
+#%Module######################################################################
+##
+##     testsoftware modulefile
+##
+proc ModulesHelp { } {
+        puts stderr "Loads testsoftware"
+}
+
+set version 1.0
+set arch    x86_64
+set path    /home/<user>/opt/testsoftware/$version/$arch/
+
+prepend-path PATH            $path/bin
+prepend-path LD_LIBRARY_PATH $path/lib
+
+if [ module-info mode load ] {
+        puts stderr "Load testsoftware version $version"
+}
+
+------------
+--------------------- /home/masterman/privatemodules ---------------------
+   testsoftware/1.0
+
+------------
+Load testsoftware version 1.0
+Module testsoftware/1.0 loaded.
+
+------------
+module use /projects/p_projectname/privatemodules
+
+====scs5_software.md====
+module available
+# or short:
+ml av
+
+------------
+$ ml modenv/classic ansys/19.0
+
+The following have been reloaded with a version change:
+  1) modenv/scs5 => modenv/classic
+
+Module ansys/19.0 loaded.
+
+====bioinformatics.md====
+bsub -n 4 -e %J_err.txt -a openmpi mpirun.lsf cmsearch --mpi --fil-no-hmm --fil-no-qdb 12smito.cm NC_003179.fas
+
+====keras.md====
+srun -p ml --gres=gpu:1 -n 1 --pty --mem-per-cpu=8000 bash
+
+module load modenv/ml                           #example output: The following have been reloaded with a version change:  1) modenv/scs5 => modenv/ml
+
+mkdir python-virtual-environments 
+cd python-virtual-environments
+module load TensorFlow                          #example output: Module TensorFlow/1.10.0-PythonAnaconda-3.6 and 1 dependency loaded.
+which python
+python3 -m venv --system-site-packages env      #create virtual environment "env" which inheriting with global site packages
+source env/bin/activate                         #example output: (env) bash-4.2$
+module load TensorFlow
+python
+import tensorflow as tf
+from tensorflow.keras import layers
+
+print(tf.VERSION)                               #example output: 1.10.0
+print(tf.keras.__version__)                     #example output: 2.1.6-tf
+
+------------
+import tensorflow as tf
+from tensorflow.keras import layers
+import numpy as np
+
+# Numpy arrays to train and evaluate a model
+data = np.random.random((50000, 32))
+labels = np.random.random((50000, 10))
+
+# Create a custom layer by subclassing
+class MyLayer(layers.Layer):
+
+  def __init__(self, output_dim, **kwargs):
+    self.output_dim = output_dim
+    super(MyLayer, self).__init__(**kwargs)
+
+# Create the weights of the layer
+  def build(self, input_shape):
+    shape = tf.TensorShape((input_shape[1], self.output_dim))
+# Create a trainable weight variable for this layer
+    self.kernel = self.add_weight(name='kernel',
+                                  shape=shape,
+                                  initializer='uniform',
+                                  trainable=True)
+    super(MyLayer, self).build(input_shape)
+# Define the forward pass
+  def call(self, inputs):
+    return tf.matmul(inputs, self.kernel)
+
+# Specify how to compute the output shape of the layer given the input shape.
+  def compute_output_shape(self, input_shape):
+    shape = tf.TensorShape(input_shape).as_list()
+    shape[-1] = self.output_dim
+    return tf.TensorShape(shape)
+
+# Serializing the layer
+  def get_config(self):
+    base_config = super(MyLayer, self).get_config()
+    base_config['output_dim'] = self.output_dim
+    return base_config
+
+  @classmethod
+  def from_config(cls, config):
+    return cls(**config)
+# Create a model using your custom layer
+model = tf.keras.Sequential([
+    MyLayer(10),
+    layers.Activation('softmax')])
+
+# The compile step specifies the training configuration
+model.compile(optimizer=tf.compat.v1.train.RMSPropOptimizer(0.001),
+              loss='categorical_crossentropy',
+              metrics=['accuracy'])
+
+# Trains for 10 epochs(steps).
+model.fit(data, labels, batch_size=32, epochs=10)
+
+------------
+#!/bin/bash
+#SBATCH --mem=4GB                         # specify the needed memory
+#SBATCH -p ml                             # specify ml partition
+#SBATCH --gres=gpu:1                      # use 1 GPU per node (i.e. use one GPU per task)
+#SBATCH --nodes=1                         # request 1 node
+#SBATCH --time=00:05:00                   # runs for 5 minutes
+#SBATCH -c 16                             # how many cores per task allocated
+#SBATCH -o HLR_Keras_example.out          # save output message under HLR_${SLURMJOBID}.out
+#SBATCH -e HLR_Keras_example.err          # save error messages under HLR_${SLURMJOBID}.err
+
+module load modenv/ml
+module load TensorFlow
+
+python Keras_example.py
+
+## when finished writing, submit with:  sbatch <script_name>
+
+------------
+......
+Epoch 9/10
+50000/50000 [==============================] - 2s 37us/sample - loss: 11.5159 - acc: 0.1000
+Epoch 10/10
+50000/50000 [==============================] - 2s 37us/sample - loss: 11.5159 - acc: 0.1020
+
+------------
+import tensorflow.compat.v1 as tf 
+tf.disable_v2_behavior()                  #instead of "import tensorflow as tf"
+
+====pika.md====
+#SBATCH --exclusive
+#SBATCH --comment=no_monitoring
+
+====data_analytics_with_r.md====
+# job submission in haswell nodes with allocating: 1 task per node, 1 node, 4 CPUs per task with 2583 mb per CPU(core) on 1 hour
+srun --partition=haswell --ntasks=1 --nodes=1 --cpus-per-task=4 --mem-per-cpu=2583 --time=01:00:00 --pty bash
+
+# Ensure that you are using the scs5 partition. Example output: The following have been reloaded with a version change: 1) modenv/ml => modenv/scs5
+module load modenv/scs5
+# Check all availble modules with R version 3.6. You could use also "ml av R" but it gives huge output.
+module available R/3.6
+# Load default R module Example output: Module R/3.6.0-foss 2019a and 56 dependencies loaded.
+module load R
+# Checking of current version of R 
+which R
+# Start R console
+R
+
+------------
+# Run Rscript directly. For instance: Rscript /scratch/ws/mastermann-study_project/da_script.r 
+Rscript /path/to/script/your_script.R param1 param2
+
+------------
+srun -p haswell -N 1 -n 1 -c 4 --mem-per-cpu=2583 --time=01:00:00 --pty bash     #job submission to the haswell nodes with allocating: 1 task per node, 1 node,  4 CPUs per task with 2583 mb per CPU(core) in 1 hour
+module purge
+module load modenv/scs5                                        #Changing the environment. Example output: The following have been reloaded with a version change: 1) modenv/ml => modenv/scs5
+
+module load R                                                  #Load R module Example output: Module R/3.6.0-foss-2019a and 56 dependencies loaded.
+which R                                                        #Checking of current version of R
+R                                                              #Start of R console
+install.packages("package_name")                               #For instance: install.packages("ggplot2") 
+
+------------
+srun -p ml -N 1 -n 1 -c 7 --mem-per-cpu=5772 --gres=gpu:1 --time=04:00:00 --pty bash
+
+module purge                                               #clear modules
+ml modenv/ml                                               #load ml environment
+ml TensorFlow
+ml R
+
+which python
+mkdir python-virtual-environments                          #Create folder. Please use Workspaces!
+cd python-virtual-environments                             #Go to folder
+python3 -m venv --system-site-packages R-TensorFlow        #create python virtual environment
+source R-TensorFlow/bin/activate                           #activate environment
+module list                                                
+which R
+
+------------
+Sys.setenv(RETICULATE_PYTHON = "/sw/installed/Anaconda3/2019.03/bin/python")    #assign the output of the 'which python' to the RETICULATE_PYTHON 
+
+------------
+R
+install.packages("reticulate")
+library(reticulate)
+reticulate::py_config()
+install.packages("tensorflow")
+library(tensorflow)
+tf$constant("Hellow Tensorflow")         #In the output 'Tesla V100-SXM2-32GB' should be mentioned
+
+------------
+#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --tasks-per-node=1
+#SBATCH --cpus-per-task=16
+#SBATCH --time=00:10:00
+#SBATCH -o test_Rmpi.out
+#SBATCH -e test_Rmpi.err
+
+module purge
+module load modenv/scs5
+module load R
+
+R CMD BATCH Rcode.R
+
+------------
+#!/bin/bash
+#SBATCH --partition=haswell                  #specify the partition
+#SBATCH --ntasks=16                  #This parameter determines how many processes will be spawned. Please use >= 8.
+#SBATCH --cpus-per-task=1
+#SBATCH --time=00:10:00
+#SBATCH -o test_Rmpi.out
+#SBATCH -e test_Rmpi.err
+
+module purge
+module load modenv/scs5
+module load R
+
+mpirun -n 1 R CMD BATCH Rmpi.R            #specify the absolute path to the R script, like: /scratch/ws/max1234-Work/R/Rmpi.R
+
+# when finished writing, submit with sbatch <script_name> 
+
+------------
+#!/bin/bash
+#SBATCH --nodes=2
+#SBATCH --tasks-per-node=16
+#SBATCH --cpus-per-task=1
+module purge
+module load modenv/scs5
+module load R
+
+time mpirun -quiet -np 1 R CMD BATCH --no-save --no-restore Rmpi_c.R    #this command will calculate the time of completion for your script
+
+====deep_learning.md====
+module load TensorFlow
+
+------------
+git clone https://github.com/fchollet/keras.git'>https://github.com/fchollet/keras.git
+cd keras/examples/
+
+------------
+#!/bin/bash
+#SBATCH --gres=gpu:1                         # 1 - using one gpu, 2 - for using 2 gpus
+#SBATCH --mem=8000
+#SBATCH -p gpu2                              # select the type of nodes (opitions: haswell, smp, sandy, west,gpu, ml) K80 GPUs on Haswell node
+#SBATCH --time=00:30:00
+#SBATCH -o HLR_&lt;name_of_your_script&gt;.out     # save output under HLR_${SLURMJOBID}.out
+#SBATCH -e HLR_&lt;name_of_your_script&gt;.err     # save error messages under HLR_${SLURMJOBID}.err
+
+module purge                                 # purge if you already have modules loaded
+module load modenv/scs5                      # load scs5 environment
+module load Keras                            # load Keras module
+module load TensorFlow                       # load TensorFlow module
+
+# if you see 'broken pipe error's (might happen in interactive session after the second srun
+command) uncomment line below
+# module load h5py
+
+python mnist_cnn.py
+
+------------
+x_train shape: (60000, 28, 28, 1) 60000 train samples 10000 test samples Train on 60000 samples,
+validate on 10000 samples Epoch 1/12
+
+128/60000 [..............................] - ETA: 12:08 - loss: 2.3064 - acc: 0.0781 256/60000
+[..............................] - ETA: 7:04 - loss: 2.2613 - acc: 0.1523 384/60000
+[..............................] - ETA: 5:22 - loss: 2.2195 - acc: 0.2005
+
+...
+
+60000/60000 [==============================] - 128s 2ms/step - loss: 0.0296 - acc: 0.9905 -
+val_loss: 0.0268 - val_acc: 0.9911 Test loss: 0.02677746053306255 Test accuracy: 0.9911
+
+------------
+srun --pty -n 1 --cpus-per-task=2 --time=2:00:00 --mem-per-cpu=2500 --x11=first bash -l -i
+
+------------
+mkdir Jupyter cd Jupyter
+
+------------
+module load modenv/scs5 module load Anaconda3
+
+------------
+wget https://repo.continuum.io/archive/Anaconda3-2019.03-Linux-x86_64.sh chmod 744
+Anaconda3-2019.03-Linux-x86_64.sh ./Anaconda3-2019.03-Linux-x86_64.sh
+
+(during installation you have to confirm the licence agreement)
+
+------------
+conda create --name jnb
+
+------------
+source activate jnb conda install jupyter
+
+------------
+jupyter notebook --generate-config
+
+------------
+jupyter notebook password Enter password: Verify password: 
+
+------------
+[NotebookPasswordApp] Wrote *hashed password* to
+/home/<zih_user>/.jupyter/jupyter_notebook_config.json
+
+------------
+openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mykey.key -out mycert.pem
+
+------------
+c.NotebookApp.certfile = u'<path-to-cert>/mycert.pem' c.NotebookApp.keyfile =
+u'<path-to-cert>/mykey.key'
+
+# set ip to '*' otherwise server is bound to localhost only c.NotebookApp.ip = '*'
+c.NotebookApp.open_browser = False
+
+# copy hashed password from the jupyter_notebook_config.json c.NotebookApp.password = u'<your
+hashed password here>' c.NotebookApp.port = 9999 c.NotebookApp.allow_remote_access = True
+
+------------
+#!/bin/bash -l #SBATCH --gres=gpu:1 # request GPU #SBATCH --partition=gpu2 # use GPU partition
+SBATCH --output=notebok_output.txt #SBATCH --nodes=1 #SBATCH --ntasks=1 #SBATCH --time=02:30:00
+SBATCH --mem=4000M #SBATCH -J "jupyter-notebook" # job-name #SBATCH -A <name_of_your_project>
+
+unset XDG_RUNTIME_DIR   # might be required when interactive instead of sbatch to avoid
+'Permission denied error' srun jupyter notebook
+
+------------
+sbatch jnotebook.slurm
+
+------------
+https://(taurusi2092.taurus.hrsk.tu-dresden.de or 127.0.0.1):9999/
+
+------------
+node=taurusi2092                      #see the name of the node with squeue -u <your_login>
+localport=8887                        #local port on your computer remoteport=9999
+#pay attention on the value. It should be the same value as value in the notebook_output.txt ssh
+-fNL ${localport}:${node}:${remoteport} <zih_user>@taurus.hrsk.tu-dresden.de         #configure
+of the ssh tunnel for connection to your remote server pgrep -f "ssh -fNL ${localport}"
+#verify that tunnel is alive
+
+------------
+#comand on remote terminal taurusi2092$> host taurusi2092 # copy IP address from output # paste
+IP to your browser or call on local terminal e.g.  local$> firefox https://<IP>:<PORT>  # https
+important to use SSL cert
+
+====mpi_usage_error_detection.md====
+module avail must
+
+------------
+module load must
+
+------------
+mustrun -np <NPROC> ./a.out
+
+====fem_software.md====
+#!/bin/bash<br>
+### Thanks to Benjamin Groeger, Institut fuer Leichtbau und Kunststofftechnik, 38748<br />### runs on taurus and needs ca 20sec with 4cpu<br />### generates files:
+###  yyyy.com
+###  yyyy.dat
+###  yyyy.msg
+###  yyyy.odb
+###  yyyy.prt
+###  yyyy.sim
+###  yyyy.sta
+#SBATCH --nodes=1  ### with &gt;1 node abaqus needs a nodeliste
+#SBATCH --ntasks-per-node=4
+#SBATCH --mem=500  ### memory (sum)
+#SBATCH --time=00:04:00
+### give a name, what ever you want
+#SBATCH --job-name=yyyy
+### you get emails when the job will finished or failed
+### set your right email
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=xxxxx.yyyyyy@mailbox.tu-dresden.de
+### set your project
+#SBATCH -A p_xxxxxxx
+### Abaqus have its own MPI
+unset SLURM_GTIDS
+### load and start
+module load ABAQUS/2019
+abaqus interactive input=Rot-modell-BenjaminGroeger.inp job=yyyy cpus=4 mp_mode=mpi
+
+
+------------
+sbatch batch-Rot-modell-BenjaminGroeger      --->; you will get a jobnumber = JobID (for example 3130522)
+
+------------
+squeue -u your_login     -->; in column "ST" (Status) you will find a R=Running or P=Pending (waiting for resources)
+
+------------
+module avail ANSYS
+...
+module load ANSYS/VERSION
+
+------------
+# Connect to taurus, e.g. ssh -CX
+module load ANSYS/VERSION
+runwb2
+
+------------
+module load ANSYS/VERSION  
+srun -t 00:30:00 --x11=first [SLURM_OPTIONS] --pty bash
+runwb2
+
+------------
+module load ANSYS
+
+------------
+unset SLURM_GTIDS
+
+------------
+runwb2
+
+====debuggers.md====
+    % module load ddt
+    % salloc --x11 -n 1 --time=2:00:00
+    salloc: Granted job allocation 123456
+    % ddt ./myprog
+
+------------
+    % module load ddt
+    % salloc --x11 -n 1 --cpus-per-task=<number of threads> --time=2:00:00
+    salloc: Granted job allocation 123456
+    % srun --x11=first ddt ./myprog
+
+------------
+    % module load ddt
+    % module load bullxmpi  # Taurus only
+    % salloc --x11 -n <number of processes> --time=2:00:00
+    salloc: Granted job allocation 123456
+    % ddt -np <number of processes> ./myprog
+
+------------
+    % module load Valgrind
+    % valgrind ./myprog
+
+------------
+    % module load Valgrind
+    % mpirun -np 4 valgrind --log-file=valgrind.%p.out ./myprog
+
+====nanoscale_simulations.md====
+export NODELISTFILE="/tmp/slurm.nodelist.$SLURM_JOB_ID"
+for LINE in `scontrol show hostname $SLURM_JOB_NODELIST` ; do
+  echo "host $LINE" >> $NODELISTFILE ;
+done
+
+# launch NAMD processes. Note that the environment variable $SLURM_NTASKS is only available if you have
+# used the -n|--ntasks parameter. Otherwise, you have to specify the number of processes manually, e.g. +p64
+charmrun +p$SLURM_NTASKS ++nodelist $NODELISTFILE $NAMD inputfile.namd
+
+# clean up afterwards:
+test -f $NODELISTFILE && rm -f $NODELISTFILE
+
+------------
+#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=4    # this number of CPU's has to match with the %nproc in the inputfile
+#SBATCH --mem=4000
+#SBATCH --time=00:10:00        # hh:mm:ss
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=vorname.nachname@tu-dresden.de
+#SBATCH -A ...your_projectname...
+
+####
+make available the access to Gaussian 16
+module load modenv/classic
+module load gaussian/g16_avx2
+export GAUSS_SCRDIR=...path_to_the_Workspace_that_you_generated_before...
+g16 < my_input.com > my_output.out
+
+------------
+%mem=4GB
+%nproc=4
+
+#P B3LYP/6-31G* opt
+
+Toluol
+
+0 1
+C    1.108640   0.464239  -0.122043
+C    1.643340  -0.780361   0.210457
+C    0.794940  -1.850561   0.494257
+C   -0.588060  -1.676061   0.445657
+C   -1.122760  -0.431461   0.113257
+C   -0.274360   0.638739  -0.170643
+C   -0.848171   1.974558  -0.527484
+H    1.777668   1.308198  -0.345947
+H    2.734028  -0.917929   0.248871
+H    1.216572  -2.832148   0.756392
+H   -1.257085  -2.520043   0.669489
+H   -2.213449  -0.293864   0.074993
+H   -1.959605   1.917127  -0.513867
+H   -0.507352   2.733596   0.211754
+H   -0.504347   2.265972  -1.545144
+
+------------
+sbatch mybatch.sh
+
+------------
+#!/bin/bash
+#SBATCH -t 120
+#SBATCH -n 8
+#SBATCH --ntasks-per-node=2
+# you have to make sure that on each node runs an even number of tasks !!
+#SBATCH --mem-per-cpu=1900
+module load gamess
+rungms.slurm cTT_M_025.inp /scratch/mark/gamess
+#                          the third parameter is the location of the scratch directory
+
+------------
+%pal nprocs 16 end
+
+------------
+#!/bin/bash #SBATCH --ntasks=16 #SBATCH --nodes=1 #SBATCH --mem-per-cpu=2000M
+
+$ORCA_ROOT/orca example.inp
+
+====get_started_with_hpcda.md====
+ssh <zih-login>@taurus.hrsk.tu-dresden.de
+
+------------
+ws_allocate -F scratch Machine_learning_project 50    #allocating workspase in scratch directory for 50 days
+
+------------
+scp &lt;file&gt; &lt;zih-user&gt;@taurusexport.hrsk.tu-dresden.de:&lt;target-location&gt;                  #Copy file from your local machine. For example: scp helloworld.txt mustermann@taurusexport.hrsk.tu-dresden.de:/scratch/ws/mastermann-Macine_learning_project/
+
+scp -r &lt;directory&gt; &lt;zih-user&gt;@taurusexport.hrsk.tu-dresden.de:&lt;target-location&gt;          #Copy directory from your local machine.
+
+------------
+scp &lt;zih-user&gt;@taurusexport.hrsk.tu-dresden.de:&lt;file&gt; &lt;target-location&gt;                  #Copy file. For example: scp mustermann@taurusexport.hrsk.tu-dresden.de:/scratch/ws/mastermann-Macine_learning_project/helloworld.txt /home/mustermann/Downloads
+
+scp -r &lt;zih-user&gt;@taurusexport.hrsk.tu-dresden.de:&lt;directory&gt; &lt;target-location&gt;          #Copy directory
+
+------------
+dtcp -r /scratch/ws/&lt;name_of_your_workspace&gt;/results /luste/ssd/ws/&lt;name_of_your_workspace&gt;       #Copy from workspace in scratch to ssd.<br />dtwget https://www.cs.toronto.edu/~kriz/cifar-100-python.tar.gz                                   #Download archive CIFAR-100.
+
+------------
+srun -p ml -N 1 --gres=gpu:1 --time=01:00:00 --pty --mem-per-cpu=8000 bash   #Job submission in ml nodes with allocating: 1 node, 1 gpu per node, with 8000 mb on 1 hour.
+
+------------
+#!/bin/bash
+#SBATCH --mem=8GB                         # specify the needed memory
+#SBATCH -p ml                             # specify ml partition
+#SBATCH --gres=gpu:1                      # use 1 GPU per node (i.e. use one GPU per task)
+#SBATCH --nodes=1                         # request 1 node
+#SBATCH --time=00:15:00                   # runs for 10 minutes
+#SBATCH -c 1                              # how many cores per task allocated
+#SBATCH -o HLR_name_your_script.out       # save output message under HLR_${SLURMJOBID}.out
+#SBATCH -e HLR_name_your_script.err       # save error messages under HLR_${SLURMJOBID}.err
+
+module load modenv/ml
+module load TensorFlow
+
+python machine_learning_example.py
+
+## when finished writing, submit with:  sbatch &lt;script_name&gt; For example: sbatch machine_learning_script.slurm
+
+------------
+srun -p ml -N 1 -n 1 -c 2 --gres=gpu:1 --time=01:00:00 --pty --mem-per-cpu=8000 bash   #job submission in ml nodes with allocating: 1 node, 1 task per node, 2 CPUs per task, 1 gpu per node, with 8000 mb on 1 hour.
+
+module load modenv/ml                    #example output: The following have been reloaded with a version change:  1) modenv/scs5 =&gt; modenv/ml
+
+mkdir python-virtual-environments        #create folder for your environments
+cd python-virtual-environments           #go to folder
+module load TensorFlow                   #load TensorFlow module to use python. Example output: Module Module TensorFlow/2.1.0-fosscuda-2019b-Python-3.7.4 and 31 dependencies loaded.
+which python                             #check which python are you using
+python3 -m venv --system-site-packages env                         #create virtual environment "env" which inheriting with global site packages
+source env/bin/activate                                            #activate virtual environment "env". Example output: (env) bash-4.2$
+
+------------
+python                                                           # start python
+import tensorflow as tf
+print(tf.__version__)                                            # example output: 2.1.0
+
+------------
+srun -p ml -N 1 --gres=gpu:1 --time=02:00:00 --pty --mem-per-cpu=8000 bash           #allocating resourses from ml nodes to start the job to create a container.<br />singularity build my-ML-container.sif docker://ibmcom/tensorflow-ppc64le             #create a container from the DockerHub with the last TensorFlow version<br />singularity run --nv my-ML-container.sif                                            #run my-ML-container.sif container with support of the Nvidia's GPU. You could also entertain with your container by commands: singularity shell, singularity exec
+
+====cfd.md====
+module load OpenFOAM/VERSION
+source $FOAM_BASH
+# source $FOAM_CSH
+
+------------
+#!/bin/bash
+#SBATCH --time=12:00:00     # walltime
+#SBATCH --ntasks=60         # number of processor cores (i.e. tasks)
+#SBATCH --mem-per-cpu=500M  # memory per CPU core
+#SBATCH -J "Test"           # job name
+#SBATCH --mail-user=mustermann@tu-dresden.de  # email address (only tu-dresden)
+#SBATCH --mail-type=ALL
+
+OUTFILE="Output"
+module load OpenFOAM
+source $FOAM_BASH
+cd /scratch/<YOURUSERNAME>  # work directory in /scratch...!
+srun pimpleFoam -parallel > "$OUTFILE" 
+
+------------
+#!/bin/bash
+#SBATCH --time=12:00                                       # walltime
+#SBATCH --ntasks=4                                         # number of processor cores (i.e. tasks)
+#SBATCH --mem-per-cpu=1900M                                # memory per CPU core
+#SBATCH --mail-user=.......@tu-dresden.de                  # email address (only tu-dresden)
+#SBATCH --mail-type=ALL
+
+module load ANSYS
+cd /scratch/<YOURUSERNAME>                                 # work directory in /scratch...!
+cfx-parallel.sh -double -def StaticMixer.def 
+
+------------
+#!/bin/bash
+#SBATCH --time=12:00                        # walltime
+#SBATCH --ntasks=4                          # number of processor cores (i.e. tasks)
+#SBATCH --mem-per-cpu=1900M                 # memory per CPU core
+#SBATCH --mail-user=.......@tu-dresden.de   # email address (only tu-dresden)
+#SBATCH --mail-type=ALL
+module load ANSYS
+
+nodeset -e $SLURM_JOB_NODELIST | xargs -n1 > hostsfile_job_$SLURM_JOBID.txt
+
+fluent 2ddp -t$SLURM_NTASKS -g -mpi=intel -pinfiniband -cnf=hostsfile_job_$SLURM_JOBID.txt < input.in
+
+------------
+module load ANSYS/19.2
+srun -N 1 --cpus-per-task=4 --time=1:00:00 --pty --x11=first bash
+fluent &
+
+------------
+#!/bin/bash
+#SBATCH --time=12:00                        # walltime
+#SBATCH --ntasks=32                         # number of processor cores (i.e. tasks)
+#SBATCH --mem-per-cpu=2500M                 # memory per CPU core
+#SBATCH --mail-user=.......@tu-dresden.de   # email address (only tu-dresden)
+#SBATCH --mail-type=ALL
+
+module load STAR-CCM+
+
+LICPATH="port@host"
+PODKEY="your podkey"
+INPUT_FILE="your_simulation.sim"
+starccm+ -collab -rsh ssh -cpubind off -np $SLURM_NTASKS -on $(/sw/taurus/tools/slurmtools/default/bin/create_rankfile -f CCM) -batch -power -licpath $LICPATH -podkey $PODKEY $INPUT_FILE
+
+====runtime_environment.md====
+module load modenv/ml
+
+------------
+$ ml_arch_avail CP2K
+CP2K/6.1-foss-2019a: haswell, rome
+CP2K/5.1-intel-2018a: sandy, haswell
+CP2K/6.1-foss-2019a-spglib: haswell, rome
+CP2K/6.1-intel-2018a: sandy, haswell
+CP2K/6.1-intel-2018a-spglib: haswell
+
+------------
+dolescha@venus:~/module use $HOME/privatemodules
+
+dolescha@venus:~/privatemodules&gt; ls
+null  testsoftware
+
+dolescha@venus:~/privatemodules/testsoftware&gt; ls
+1.0
+
+dolescha@venus:~&gt; module av
+------------------------------- /work/home0/dolescha/privatemodules ---------------------------
+null             testsoftware/1.0
+
+dolescha@venus:~&gt; module load testsoftware
+Load testsoftware version 1.0
+
+dolescha@venus:~/privatemodules/testsoftware&gt; cat 1.0 
+#%Module######################################################################
+##
+##     testsoftware modulefile
+##
+proc ModulesHelp { } {
+        puts stderr "Loads testsoftware"
+}
+
+set version 1.0
+set arch    x86_64
+set path    /home/&lt;user&gt;/opt/testsoftware/$version/$arch/
+
+prepend-path PATH            $path/bin
+prepend-path LD_LIBRARY_PATH $path/lib
+
+if [ module-info mode load ] {
+        puts stderr "Load testsoftware version $version"
+}
+
+====dask.md====
+# Job submission in ml nodes with allocating: 1 node, 1 gpu per node, 4 hours
+srun -p ml -N 1 -n 1 --mem-per-cpu=5772 --gres=gpu:1 --time=04:00:00 --pty bash
+
+------------
+conda create --prefix /scratch/ws/0/aabc1234-Workproject/conda-virtual-environment/dask-test python=3.6
+
+------------
+conda create -n dask-test python=3.6
+
+------------
+ml modenv/ml
+ml PythonAnaconda/3.6
+conda activate /scratch/ws/0/aabc1234-Workproject/conda-virtual-environment/dask-test python=3.6
+which python
+which conda
+conda install dask
+python
+
+from dask.distributed import Client, progress
+client = Client(n_workers=4, threads_per_worker=1)
+client
+
+------------
+srun -p ml -N 1 -n 1 --mem-per-cpu=5772 --gres=gpu:1 --time=04:00:00 --pty bash
+
+cd /scratch/ws/0/aabc1234-Workproject/python-virtual-environment/dask-test
+
+ml modenv/ml
+module load PythonAnaconda/3.6
+which python
+
+python3 -m venv --system-site-packages dask-test
+source dask-test/bin/activate
+python -m pip install "dask[complete]"
+
+python
+from dask.distributed import Client, progress
+client = Client(n_workers=4, threads_per_worker=1)
+client
+
+------------
+srun -p haswell -N 1 -n 1 -c 4 --mem-per-cpu=2583 --time=01:00:00 --pty bash
+cd
+/scratch/ws/0/aabc1234-Workproject/python-virtual-environment/dask-test
+ml modenv/ml module load PythonAnaconda/3.6 which python
+
+source dask-test/bin/activate pip
+install dask-jobqueue --upgrade # Install everything from last released version
+
+------------
+srun -p haswell -N 1 -n 1 -c 4 --mem-per-cpu=2583 --time=01:00:00 --pty bash
+
+ml modenv/ml module load PythonAnaconda/3.6 source
+dask-test/bin/activate
+
+conda install dask-jobqueue -c conda-forge\</verbatim>
+
+====tensor_flow_on_jupyter_notebook.md====
+    (env) bash-4.2$ pip install ipykernel                        #example output: Collecting ipykernel
+    ...
+                                                                 #example output: Successfully installed ... ipykernel-5.1.0 ipython-7.5.0 ...
+
+    (env) bash-4.2$ python -m ipykernel install --user --name env --display-name="env"
+
+                                              #example output: Installed kernelspec my-kernel in .../.local/share/jupyter/kernels/env
+    [install now additional packages for your notebooks]
+
+------------
+    ws_list
+    cd <name_of_your_workspace>                  #go to workspace
+
+    wget https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/TensorFlowOnJupyterNotebook/Mnistmodel.zip
+    unzip Example_TensorFlow_Automobileset.zip
+
+====vampir.md====
+module load vampir
+
+------------
+vampir
+
+------------
+vampirserver start
+
+------------
+vampirserver start mpi
+
+------------
+vampirserver start srun
+
+------------
+vampirserver stop
+
+------------
+vampirserver help 
+
+------------
+which vampirserver
+
+------------
+vampirserver start
+
+------------
+Launching VampirServer...
+Submitting slurm 30 minutes job (this might take a while)...
+salloc: Granted job allocation 2753510
+VampirServer 8.1.0 (r8451)
+Licensed to ZIH, TU Dresden
+Running 4 analysis processes... (abort with vampirserver stop 594)
+VampirServer  listens on: taurusi1253:30055
+
+------------
+ssh -L 30000:taurusi1253:30055 taurus.hrsk.tu-dresden.de
+
+====score_p.md====
+module load scorep
+
+====singularity_example_definitions.md====
+Bootstrap: docker
+From: alpine
+
+%post
+  . /.singularity.d/env/10-docker*.sh
+
+  apk add g++ gcc make wget cmake
+
+  wget https://github.com/fmtlib/fmt/archive/5.3.0.tar.gz
+  tar -xf 5.3.0.tar.gz
+  mkdir build && cd build
+  cmake ../fmt-5.3.0 -DFMT_TEST=OFF
+  make -j$(nproc) install
+  cd ..
+  rm -r fmt-5.3.0*
+
+  cat hello.cpp
+#include &lt;fmt/format.h&gt;
+
+int main(int argc, char** argv){
+  if(argc == 1) fmt::print("No arguments passed!\n");
+  else fmt::print("Hello {}!\n", argv[1]);
+}
+EOF
+
+  g++ hello.cpp -o hello -lfmt
+  mv hello /usr/bin/hello
+
+%runscript
+  hello "$@"
+
+%labels
+  Author Alexander Grund
+  Version 1.0.0
+
+%help
+  Display a greeting using the fmt library
+
+  Usage:
+    ./hello 
+
+------------
+Bootstrap: docker
+From: nvidia/cuda-ppc64le:10.1-cudnn7-devel-ubuntu18.04
+
+%labels
+    Author ZIH
+    Requires CUDA driver 418.39+.
+
+%post
+    . /.singularity.d/env/10-docker*.sh
+
+    apt-get update
+    apt-get install -y cuda-compat-10.1
+    apt-get install -y libibverbs-dev ibverbs-utils
+    # Install basic development tools
+    apt-get install -y gcc g++ make wget python
+    apt-get autoremove; apt-get clean
+
+    cd /tmp
+
+    : ${SLURM_VERSION:=17-02-11-1}
+    wget https://github.com/SchedMD/slurm/archive/slurm-${SLURM_VERSION}.tar.gz
+    tar -xf slurm-${SLURM_VERSION}.tar.gz
+        cd slurm-slurm-${SLURM_VERSION}
+        ./configure --prefix=/usr/ --sysconfdir=/etc/slurm --localstatedir=/var --disable-debug
+        make -C contribs/pmi2 -j$(nproc) install
+    cd ..
+    rm -rf slurm-*
+
+    : ${OPENMPI_VERSION:=3.1.4}
+    wget https://download.open-mpi.org/release/open-mpi/v${OPENMPI_VERSION%.*}/openmpi-${OPENMPI_VERSION}.tar.gz
+    tar -xf openmpi-${OPENMPI_VERSION}.tar.gz
+    cd openmpi-${OPENMPI_VERSION}/
+    ./configure --prefix=/usr/ --with-pmi --with-verbs --with-cuda
+    make -j$(nproc) install
+    echo "mpi_warn_on_fork = 0" >> /usr/etc/openmpi-mca-params.conf
+    echo "btl_openib_warn_default_gid_prefix = 0" >> /usr/etc/openmpi-mca-params.conf
+    cd ..
+    rm -rf openmpi-*
+
+====containers.md====
+wget <https://storage.googleapis.com/golang/getgo/installer_linux> && chmod +x
+installer_linux && ./installer_linux && source $HOME/.bash_profile
+
+------------
+mkdir -p ${GOPATH}/src/github.com/sylabs && cd ${GOPATH}/src/github.com/sylabs && git clone <https://github.com/sylabs/singularity.git> && cd
+singularity
+
+------------
+git checkout v3.2.1\
+
+------------
+cd ${GOPATH}/src/github.com/sylabs/singularity && ./mconfig && cd ./builddir && make && sudo
+make install
+
+------------
+singularity build myContainer.sif myDefinition.def
+
+------------
+Bootstrap: docker<br />From: ubuntu:trusty<br /><br />%runscript<br />   echo "This is what happens when you run the container..."<br /><br />%post<br />    apt-get install g++
+
+------------
+singularity build ubuntu.sif ubuntu.def
+
+------------
+BootStrap: yum
+OSVersion: 7
+MirrorURL: http://mirror.centos.org/centos-%{OSVERSION}/%{OSVERSION}/os/$basearch/
+Include: yum
+
+%runscript
+    echo "This is what happens when you run the container..."
+
+%post
+    echo "Hello from inside the container"
+    yum -y install vim-minimal
+
+------------
+singularity build my-container.sif docker://ubuntu:latest
+
+------------
+# Start a docker registry
+$ docker run -d -p 5000:5000 --restart=always --name registry registry:2
+
+# Push local docker container to it
+$ docker tag alpine localhost:5000/alpine
+$ docker push localhost:5000/alpine
+
+# Create def file for singularity like this...
+$ cat example.def
+Bootstrap: docker
+Registry: <a href="http://localhost:5000" rel="nofollow" target="_blank">http://localhost:5000</a>
+From: alpine 
+
+# Build singularity container
+$ singularity build --nohttps alpine.sif example.def
+
+------------
+singularity shell my-container.sif
+
+------------
+singularity shell --contain -B /scratch,/my/folder-on-host:/folder-in-container my-container.sif
+
+------------
+singularity shell -w my-container.sif
+Singularity.my-container.sif> yum install htop
+
+------------
+singularity exec my-container.img /opt/myapplication/bin/run_myapp
+
+------------
+#!/bin/bash
+
+X=`which singularity 2>/dev/null`
+if [ "z$X" = "z" ] ; then
+        echo "Singularity not found. Is the module loaded?"
+        exit 1
+fi
+
+singularity exec /scratch/p_myproject/my-container.sif /opt/myapplication/run_myapp "$@"
+The better approach for that however is to use `singularity run` for that, which executes whatever was set in the _%runscript_ section of the definition file with the arguments you pass to it.
+Example:
+Build the following definition file into an image:
+Bootstrap: docker
+From: ubuntu:trusty
+
+%post
+  apt-get install -y g++
+  echo '#include <iostream>' > main.cpp
+  echo 'int main(int argc, char** argv){ std::cout << argc << " args for " << argv[0] << std::endl; }' >> main.cpp
+  g++ main.cpp -o myCoolApp
+  mv myCoolApp /usr/local/bin/myCoolApp
+
+%runscript
+  myCoolApp "$@
+singularity build my-container.sif example.def
+
+------------
+singularity run my-container.sif first_arg 2nd_arg
+
+------------
+./my-container.sif first_arg 2nd_arg
+
+------------
+mv my-container.sif myCoolAp
+
+------------
+$ singularity exec /scratch/singularity/centos7.img ldd --version
+ldd (GNU libc) 2.17
+
+====vm_tools.md====
+sudo singularity build myContainer.sif myDefinition.def
+
+------------
+buildSingularityImage --arch=power9 myContainer.sif myDefinition.def
+
+------------
+buildSingularityImage --arch=power9 --interactive myContainer.sif myDefinition.def
+
+------------
+startInVM --arch=power9
+
+====virtual_machines.md====
+rotscher@tauruslogin3:~&gt; srun -p ml -N 1 -c 4 --hint=nomultithread --cloud=kvm --pty /bin/bash
+srun: job 6969616 queued and waiting for resources
+srun: job 6969616 has been allocated resources
+bash-4.2$
+
+------------
+rotscher@tauruslogin3:~&gt; srun -p hpdlf -N 1 -c 4 --hint=nomultithread --cloud=kvm --pty /bin/bash
+srun: job 2969732 queued and waiting for resources
+srun: job 2969732 has been allocated resources
+bash-4.2$
+
+------------
+bash-4.2$ cat /tmp/rotscher_2759627/activate 
+#!/bin/bash
+
+if ! grep -q -- "Key for the VM on the ml partition" "/home/rotscher/.ssh/authorized_keys" &gt;& /dev/null; then
+  cat "/tmp/rotscher_2759627/kvm.pub" &gt;&gt; "/home/rotscher/.ssh/authorized_keys"
+else
+  sed -i "s|.*Key for the VM on the ml partition.*|ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3siZfQ6vQ6PtXPG0RPZwtJXYYFY73TwGYgM6mhKoWHvg+ZzclbBWVU0OoU42B3Ddofld7TFE8sqkHM6M+9jh8u+pYH4rPZte0irw5/27yM73M93q1FyQLQ8Rbi2hurYl5gihCEqomda7NQVQUjdUNVc6fDAvF72giaoOxNYfvqAkw8lFyStpqTHSpcOIL7pm6f76Jx+DJg98sXAXkuf9QK8MurezYVj1qFMho570tY+83ukA04qQSMEY5QeZ+MJDhF0gh8NXjX/6+YQrdh8TklPgOCmcIOI8lwnPTUUieK109ndLsUFB5H0vKL27dA2LZ3ZK+XRCENdUbpdoG2Czz Key for the VM on the ml partition|" "/home/rotscher/.ssh/authorized_keys"
+fi
+
+ssh -i /tmp/rotscher_2759627/kvm root@192.168.0.6
+bash-4.2$ source /tmp/rotscher_2759627/activate 
+Last login: Fri Jul 24 13:53:48 2020 from gateway
+[root@rotscher_2759627 ~]#
+
+------------
+rm -rf /tmp/sbuild-*
+
+------------
+tmpDir="$( mktemp -d --tmpdir=/host_data/tmp )" && tmpImg="$tmpDir/singularity-build-temp-dir"
+export LANG_BACKUP=$LANG
+unset LANG
+truncate -s 25G "$tmpImg.ext4" && echo yes | mkfs.ext4 "$tmpImg.ext4"
+export LANG=$LANG_BACKUP
+
+------------
+mkdir -p "$tmpImg" && i=1 && while test -e "/dev/loop$i"; do (( ++i )); done && mknod -m 0660 "/dev/loop$i" b 7 "$i"<br />mount -o loop="/dev/loop$i" "$tmpImg"{.ext4,}<br /><br />export SINGULARITY_TMPDIR="$tmpImg"<br /><br />singularity build my-container.{sif,def}
+
+====perf_tools.md====
+module load perf/r31
+
+------------
+Performance counter stats for 'ls':= 
+          2,524235 task-clock                #    0,352 CPUs utilized           
+                15 context-switches          #    0,006 M/sec                   
+                 0 CPU-migrations            #    0,000 M/sec                   
+               292 page-faults               #    0,116 M/sec                   
+         6.431.241 cycles                    #    2,548 GHz                     
+         3.537.620 stalled-cycles-frontend   #   55,01% frontend cycles idle    
+         2.634.293 stalled-cycles-backend    #   40,96% backend  cycles idle    
+         6.157.440 instructions              #    0,96  insns per cycle         
+                                             #    0,57  stalled cycles per insn 
+         1.248.527 branches                  #  494,616 M/sec                   
+            34.044 branch-misses             #    2,73% of all branches         
+       0,007167707 seconds time elapsed
+
+------------
+#!/bin/bash
+perf record -o perf.data.$SLURM_JOB_ID.$SLURM_PROCID $@
+
+------------
+Available samples
+96 cycles
+11 cache-misse
+
+------------
+Events: 96  cycles
++  49,13%  test_gcc_perf  test_gcc_perf      [.] main.omp_fn.0
++  34,48%  test_gcc_perf  test_gcc_perf      [.] 
++   6,92%  test_gcc_perf  test_gcc_perf      [.] omp_get_thread_num@plt
++   5,20%  test_gcc_perf  libgomp.so.1.0.0   [.] omp_get_thread_num
++   2,25%  test_gcc_perf  test_gcc_perf      [.] main.omp_fn.1
++   2,02%  test_gcc_perf  [kernel.kallsyms]  [k] 0xffffffff8102e9ea
+
+------------
+Events: 7K cycles
++  42,61%  test_gcc_perf  test_gcc_perf      [.] p
++  40,28%  test_gcc_perf  test_gcc_perf      [.] main.omp_fn.0
++   6,07%  test_gcc_perf  test_gcc_perf      [.] omp_get_thread_num@plt
++   5,95%  test_gcc_perf  libgomp.so.1.0.0   [.] omp_get_thread_num
++   4,14%  test_gcc_perf  test_gcc_perf      [.] main.omp_fn.1
++   0,69%  test_gcc_perf  [kernel.kallsyms]  [k] 0xffffffff8102e9ea
++   0,04%  test_gcc_perf  ld-2.12.so         [.] check_match.12442
++   0,03%  test_gcc_perf  libc-2.12.so       [.] printf
++   0,03%  test_gcc_perf  libc-2.12.so       [.] vfprintf
++   0,03%  test_gcc_perf  libc-2.12.so       [.] __strchrnul
++   0,03%  test_gcc_perf  libc-2.12.so       [.] _dl_addr
++   0,02%  test_gcc_perf  ld-2.12.so         [.] do_lookup_x
++   0,01%  test_gcc_perf  libc-2.12.so       [.] _int_malloc
++   0,01%  test_gcc_perf  libc-2.12.so       [.] free
++   0,01%  test_gcc_perf  libc-2.12.so       [.] __sigprocmask
++   0,01%  test_gcc_perf  libgomp.so.1.0.0   [.] 0x87de
++   0,01%  test_gcc_perf  libc-2.12.so       [.] __sleep
++   0,01%  test_gcc_perf  ld-2.12.so         [.] _dl_check_map_versions
++   0,01%  test_gcc_perf  ld-2.12.so         [.] local_strdup
++   0,00%  test_gcc_perf  libc-2.12.so       [.] __execvpe
+
+====libraries.md====
+program ExampleProgram
+
+external dgesv
+integer:: n, m, c, d, e, Z(2)                           !parameter definition
+double precision:: A(2,2), B(2)
+
+n=2; m=1; c=2; d=2;
+
+A(1,1) = 1.0; A(1,2) = 2.0;                           !parameter setting
+A(2,1) = 3.0; A(2,2) = 4.0;
+
+B(1) = 14.0; B(2) = 32.0;
+
+Call dgesv(n,m,A,c,Z,B,d,e);                        !call the subroutine
+
+write(*,*) "Solution ", B(1), " ", B(2)             !display on desktop
+
+end program ExampleProgram
+
+------------
+ifort -I$MKL_INC -L$MKL_LIB -lmkl_core -lm -lmkl_gf_ilp64 -lmkl_lapack example.f90
+
+------------
+icc -O1 -I/sw/global/compilers/intel/2013/mkl//include -lmpi -mkl -lmkl_scalapack_lp64 -lmkl_blacs_sgimpt_lp64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core example.c
+
+====visualization.md====
+taurus$ module avail ParaView
+
+   ParaView/5.4.1-foss-2018b-mpi  (D)    ParaView/5.5.2-intel-2018a-mpi                ParaView/5.7.0-osmesa
+   ParaView/5.4.1-intel-2018a-mpi        ParaView/5.6.2-foss-2019b-Python-3.7.4-mpi    ParaView/5.7.0
+
+------------
+taurus$ module load ParaView/5.7.0-osmesa
+taurus$ which mpiexec
+/sw/installed/ParaView/5.7.0-osmesa/bin/mpiexec
+
+------------
+#!/bin/bash
+
+#SBATCH -N 1
+#SBATCH -c 12
+#SBATCH --time=01:00:00
+
+# Make sure to only use ParaView
+module purge
+module load ParaView/5.7.0-osmesa
+
+pvbatch --mpi --force-offscreen-rendering pvbatch-script.py
+
+------------
+taurus$ salloc -N 1 -c 16 --time=01:00:00 bash
+salloc: Pending job allocation 336202
+salloc: job 336202 queued and waiting for resources
+salloc: job 336202 has been allocated resources
+salloc: Granted job allocation 336202
+salloc: Waiting for resource configuration
+salloc: Nodes taurusi6605 are ready for job
+
+# Make sure to only use ParaView
+taurus$ module purge
+taurus$ module load ParaView/5.7.0-osmesa
+
+# Go to working directory, e.g. workspace
+taurus$ cd /path/to/workspace
+
+# Execute pvbatch using 16 MPI processes in parallel on allocated resources
+taurus$ pvbatch --mpi --force-offscreen-rendering pvbatch-script.py 
+
+------------
+#!/bin/bash
+
+#SBATCH -N 1
+#SBATCH -c 12
+#SBATCH --gres=gpu:2
+#SBATCH --partition=gpu2
+#SBATCH --time=01:00:00
+
+# Make sure to only use ParaView
+module purge
+module load ParaView/5.9.0-RC1-egl-mpi-Python-3.8
+
+mpiexec -n $SLURM_CPUS_PER_TASK -bind-to core pvbatch --mpi --egl-device-index=$CUDA_VISIBLE_DEVICES --force-offscreen-rendering pvbatch-script.py
+#or
+pvbatch --mpi --egl-device-index=$CUDA_VISIBLE_DEVICES --force-offscreen-rendering pvbatch-script.py
+
+------------
+taurus$ module load ParaView/5.7.0
+paraview
+
+------------
+taurus$ module ParaView/5.7.0-osmesa
+taurus$ srun -N1 -n8 --mem-per-cpu=2500 -p interactive --pty pvserver --force-offscreen-rendering
+srun: job 2744818 queued and waiting for resources
+srun: job 2744818 has been allocated resources
+Waiting for client...
+Connection URL: cs://taurusi6612.taurus.hrsk.tu-dresden.de:11111
+Accepting connection(s): taurusi6612.taurus.hrsk.tu-dresden.de:11111
+
+------------
+taurus$ host taurusi6605-mn<br />taurusi6605-mn.taurus.hrsk.tu-dresden.de has address 172.24.140.229
+
+------------
+localhost$ ssh -L 22222:10.10.32.228:11111 userlogin@cara.dlr.de
+
+------------
+# Replace "user" with your login name, of course:
+ssh -f -N -L11111:172.24.140.229:11111 user@login1.zih.tu-dresden.de
+
+====singularity_recipe_hints.md====
+Bootstrap: docker
+From: centos:7
+
+%post
+yum install -y xeyes
+
+------------
+singularity exec xeyes.sif xeyes.
+
+------------
+export SINGULARITY_DISPLAY=$DISPLAY
+
+------------
+Bootstrap: docker
+From: centos:7
+
+%post
+yum install -y glx-utils # for glxgears example app
+
+yum install -y curl
+VIRTUALGL_VERSION=2.6.2 # Replace by required (e.g. latest) version
+
+curl -sSL https://downloads.sourceforge.net/project/virtualgl/"${VIRTUALGL_VERSION}"/VirtualGL-"${VIRTUALGL_VERSION}".x86_64.rpm -o VirtualGL-"${VIRTUALGL_VERSION}".x86_64.rpm
+yum install -y VirtualGL*.rpm
+/opt/VirtualGL/bin/vglserver_config -config +s +f -t
+rm VirtualGL-*.rpm
+
+# Install video drivers AFTER VirtualGL to avoid them being overwritten
+yum install -y mesa-dri-drivers # for e.g. intel integrated GPU drivers. Replace by your driver
+
+------------
+singularity exec vgl.sif vglrun glxgears
+
+------------
+vblank_mode=0 singularity exec vgl.sif glxgears
+
+====data_management.md====
+Title:
+User: Date:
+Description:
+Software:
+Version:
+
+====intermediate_archive.md====
+dtcp -r /<directory> /archiv/<project or user>/<directory> # or
+dtrsync -av /<directory> /archiv/<project or user>/<directory>
+
+------------
+dtcp -r /archiv/<project or user>/<directory> /<directory> # or
+dtrsync -av /archiv/<project or user>/<directory> /<directory>
+
+------------
+dtcp -r /scratch/rotscher/results /archiv/rotscher/ # or
+dtrsync -av /scratch/rotscher/results /archiv/rotscher/results
+
+====file_systems.md====
+lfs setstripe -c 20  /scratch/ws/mark-stripe20/tar
+
+------------
+df
+
+------------
+findmnt -D
+
+------------
+lfs quota -h -u username /path/to/my/data
+
+------------
+lfs df -h /path/to/my/data
+
+------------
+lfs df -i /path/to/my/data
+
+------------
+lfs osts /path/to/my/data
+
+------------
+lfs getstripe myfile
+lfs getstripe -d mydirectory
+
+------------
+beegfs-df -p /beegfs/global0
+
+------------
+beegfs-ctl --listtargets --nodetype=storage --spaceinfo --longnodes --state --mount=/beegfs/global0
+
+------------
+beegfs-ctl --listtargets --nodetype=meta --spaceinfo --longnodes --state --mount=/beegfs/global0
+
+------------
+beegfs-ctl --getentryinfo /beegfs/global0/my-workspace/myfile --mount=/beegfs/global0
+
+------------
+beegfs-ctl --setpattern --chunksize=1m --numtargets=16 /beegfs/global0/my-workspace/ --mount=/beegfs/global0
+
+------------
+beegfs-ctl --find /beegfs/global0/my-workspace/ --targetid=4 --targetid=30 --mount=/beegfs/global0
+
+------------
+beegfs-ctl --listnodes --nodetype=meta --nicdetails --mount=/beegfs/global0
+beegfs-ctl --listnodes --nodetype=storage --nicdetails --mount=/beegfs/global0
+beegfs-ctl --listnodes --nodetype=client --nicdetails --mount=/beegfs/global0
+
+------------
+beegfs-net
+
+------------
+beegfs-check-servers -p /beegfs/global0
+
+====hpc_storage_concept2019.md====
+dtmv /scratch/p_myproject/some_data /scratch/ws/myuser-mynewworkspace
+#or:
+dtmv /scratch/p_myproject/some_data /warm_archive/ws/myuser-mynewworkspace
+
+------------
+dtrm -rf /scratch/p_myproject/some_old_data
+
+====workspaces.md====
+Available filesystems:
+scratch
+warm_archive
+ssd
+beegfs_global0
+
+------------
+duration
+
+##
+
+Options:
+  -h [ --help]              produce help message
+  -V [ --version ]           show version
+  -d [ --duration ] arg (=1) duration in days
+  -n [ --name ] arg          workspace name
+  -F [ --filesystem ] arg    filesystem
+  -r [ --reminder ] arg      reminder to be sent n days before expiration
+  -m [ --mailaddress ] arg   mailaddress to send reminder to  (works only with tu-dresden.de addresses)
+  -x [ --extension ]         extend workspace
+  -u [ --username ] arg      username
+  -g [ --group ]             group workspace
+  -c [ --comment ] arg       comment
+
+
+------------
+ws_allocate -F scratch -r 7 -m name.lastname@tu-dresden.de test-WS 90
+
+------------
+Info: creating workspace.
+/scratch/ws/mark-SPECint
+remaining extensions  : 10
+remaining time in days: 90
+
+------------
+ws_extend -F scratch test-WS 100      #extend the workspace for another 100 days
+
+------------
+Info: extending workspace.
+/scratch/ws/masterman-test_ws
+remaining extensions  : 1
+remaining time in days: 100
+
+------------
+ws_release -F scratch test_ws
+
+------------
+ws_restore -l -F scratch
+
+------------
+ws_restore -F scratch myuser-test_ws-1234567 new_ws
+
+------------
+#!/bin/bash
+#SBATCH --partition=haswell
+#SBATCH --time=96:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=24
+
+module load modenv/classic
+module load gaussian
+
+COMPUTE_DIR=gaussian_$SLURM_JOB_ID
+export GAUSS_SCRDIR=$(ws_allocate -F ssd $COMPUTE_DIR 7)
+echo $GAUSS_SCRDIR
+
+srun g16 inputfile.gjf logfile.log
+
+test -d $GAUSS_SCRDIR && rm -rf $GAUSS_SCRDIR/*
+ws_release -F ssd $COMPUTE_DIR
+
+------------
+ws_allocate -F scratch my_scratchdata 100
+
+------------
+Info: creating workspace.
+/scratch/ws/mark-my_scratchdata
+remaining extensions  : 2
+remaining time in days: 99
+
+------------
+chmod g+wrx /scratch/ws/mark-my_scratchdata
+
+------------
+ls -la /scratch/ws/mark-my_scratchdata
+
+------------
+total 8
+drwxrwx--- 2 mark    hpcsupport 4096 Jul 10 09:03 .
+drwxr-xr-x 5 operator adm       4096 Jul 10 09:01 ..
+
+------------
+ws_allocate -F warm_archive my_inputdata 365
+
+------------
+/warm_archive/ws/mark-my_inputdata
+remaining extensions  : 2
+remaining time in days: 365
+
+------------
+qinfo quota /warm_archive/ws/
+
+------------
+export LC_CTYPE=de_DE.UTF-8
+
