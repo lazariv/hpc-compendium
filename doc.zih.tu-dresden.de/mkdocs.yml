@@ -144,10 +144,10 @@ site_name: ZIH HPC Compendium
 site_description: ZIH HPC Compendium
 site_author: ZIH Team
 site_dir: public
-site_url: https://gitlab.hrz.tu-chemnitz.de/hpcsupport/hpc-compendium
+site_url: https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium
 # uncomment next 3 lines if link to repo should not be displayed in the navbar
 repo_name: GitLab hpc-compendium
-repo_url: https://gitlab.hrz.tu-chemnitz.de/hpcsupport/hpc-compendium
+repo_url: https://gitlab.hrz.tu-chemnitz.de/zih//hpc-compendium/hpc-compendium
 edit_uri: blob/master/docs/
 
 # Configuration
