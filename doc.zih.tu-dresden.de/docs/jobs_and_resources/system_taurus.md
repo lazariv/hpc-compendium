@@ -8,7 +8,7 @@ Detailed information on the current HPC hardware can be found
 ## Applying for Access to the System
 
 Project and login application forms for taurus are available
-[here](../access/access.md).
+[here](../access/overview.md).
 
 ## Login to the System
 
