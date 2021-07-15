@@ -1,4 +1,4 @@
-# Access to the cluster
+# Access to the Cluster
 
 ## SSH access
 

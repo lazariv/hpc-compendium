@@ -1,24 +1,24 @@
 nav:
   - Home: index.md
   - Application for Login and Resources:
-    - Overview: application/application.md
+    - Overview: application/overview.md
     - Access: application/access.md
     - Terms: application/terms_of_use.md
     - Request for Resources: application/request_for_resources.md
     - Project Request Form: application/project_request_form.md
     - Project Management: application/project_management.md
   - Access to the Cluster:
-    - Overview: access/access.md
+    - Overview: access/overview.md
     - Desktop Visualization: access/desktop_cloud_visualization.md
     - Web VNC: access/web_vnc.md
     - Login: access/login.md
     - Security Restrictions: access/security_restrictions.md
     - SSH with Putty: access/ssh_mit_putty.md
     - JupyterHub:
-      - Overview: ../../access/jupyterhub.md
-      - JupyterHub for Teaching: ../../access/jupyterhub_for_teaching.md
+      - JupyterHub: access/jupyterhub.md
+      - JupyterHub for Teaching: access/jupyterhub_for_teaching.md
   - Transfer of Data:
-    - Overview: data_transfer/data_moving.md
+    - Overview: data_transfer/overview.md
     - Data Mover: data_transfer/data_mover.md
     - Export Nodes: data_transfer/export_nodes.md
   - Environment and Software:
@@ -33,7 +33,7 @@ nav:
       - Singularity Example Definitions: software/singularity_example_definitions.md
       - VM tools: software/vm_tools.md
     - Applications:
-      - Overview: software/applications.md
+      - Overview: software/applications_overview.md
       - Bio Informatics: software/bioinformatics.md
       - Computational Fluid Dynamics (CFD): software/cfd.md
       - Nanoscale Simulations: software/nanoscale_simulations.md
@@ -57,7 +57,7 @@ nav:
     - Virtual Machines: software/virtual_machines.md
     - Virtual Desktops: software/virtual_desktops.md
     - Software Development and Tools:
-      - Overview: software/software_development.md
+      - Overview: software/software_development_overview.md
       - Building Software: software/building_software.md
       - GPU Programming: software/gpu_programming.md
       - Compilers: software/compilers.md
@@ -71,7 +71,7 @@ nav:
       - Vampir: software/vampir.md
       - Mathematics: software/mathematics.md
   - Data Lifecycle Management:
-    - Overview: data_lifecycle/data_management.md
+    - Overview: data_lifecycle/overview.md
     - Quotas: data_lifecycle/quotas.md
     - Workspaces: data_lifecycle/workspaces.md
     - BeeGFS: data_lifecycle/bee_gfs.md
@@ -82,7 +82,7 @@ nav:
     - Preservation of Research Data: data_lifecycle/preservation_research_data.md
     - Structuring Experiments: data_lifecycle/experiments.md
   - Jobs and Resources:
-    - Overview: jobs_and_resources/use_of_hardware.md
+    - Overview: jobs_and_resources/overview.md
     - Batch Systems: jobs_and_resources/batch_systems.md
     - Hardware Resources:
       - Hardware Taurus: jobs_and_resources/hardware_taurus.md
@@ -109,6 +109,7 @@ nav:
   #- Tests: tests.md
   - Support: support.md
   - Archive:
+    - Overview: archive/overview.md
     - CXFS End of Support: archive/cxfs_end_of_support.md
     - Debugging Tools: archive/debugging_tools.md
     - Hardware: archive/hardware.md
@@ -139,13 +140,13 @@ nav:
 
 
 # Project Information
-site_name: ZIH HPC Compendium 2.0
-site_description: ZIH HPC Compendium 2.0
+site_name: ZIH HPC Compendium
+site_description: ZIH HPC Compendium
 site_author: ZIH Team
 site_dir: public
 site_url: https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium
 # uncomment next 3 lines if link to repo should not be displayed in the navbar
-repo_name: GitLab hpcsupport/hpc-compendium
+repo_name: GitLab hpc-compendium
 repo_url: https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium
 edit_uri: blob/master/docs/
 

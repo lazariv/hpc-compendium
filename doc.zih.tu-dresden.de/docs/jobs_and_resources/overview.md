@@ -1,4 +1,4 @@
-# Use of Hardware
+# Jobs and Resources
 
 To run the software, do some calculations or compile your code compute nodes have to be used. Login
 nodes which are using for login can not be used for your computations. Submit your tasks (by using

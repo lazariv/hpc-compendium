@@ -1,4 +1,4 @@
-# Installed Applications
+# Applications
 
 The following applications are available on the HRSK systems. (General
 descriptions are taken from the vendor's web site or from
