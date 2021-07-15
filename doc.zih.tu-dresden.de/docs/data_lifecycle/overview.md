@@ -1,4 +1,4 @@
-# Create a Project Structure / Data Management
+# Data Lifecycle Management
 
 Correct organisation of the project structure is a straightforward way to the efficient work of the
 whole team. There have to be rules and regulations for working with the project that every member
