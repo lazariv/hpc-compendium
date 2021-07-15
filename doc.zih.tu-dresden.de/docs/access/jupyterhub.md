@@ -19,7 +19,7 @@ support in every case.
 ## Access
 
 <span style="color:red">**NOTE**</span> This service is only available for users with
-an active HPC project. See [here](../access/access.md) how to apply for an HPC
+an active HPC project. See [here](../access/overview.md) how to apply for an HPC
 project.
 
 JupyterHub is available here:\
