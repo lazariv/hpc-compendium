@@ -38,8 +38,10 @@ where you have to give the name of the computer and you have to switch ON the "X
 (please look at the figures)
 
 ![PuTTY: Name of HPC System](misc/putty1.jpg)
+{: align="center"}
 
-![PuTTY: Switch on X11](misc/putty2.jpg){: align="center"}
+![PuTTY: Switch on X11](misc/putty2.jpg)
+{: align="center"}
 
 <!--\<img alt="" src="%PUBURL%/Compendium/Login/putty1.jpg" title="putty:-->
 <!--name of HPC-machine" width="300" /> \<img alt=""-->
@@ -55,30 +57,31 @@ instructions about the modules.
 Take the following steps if your Workstation has a Windows operating system. You need putty (see
 above) and your favorite SCP program, in this example WinSCP.
 
-- Make a connection to `login1.zih.tu-dresden.de`
-  ![Tunnel 1](misc/tunnel1.png)
-  <!--\<br /> \<img-->
-  <!--alt="tunnel1.png" src="%PUBURL%/Compendium/Login/tunnel1.png"-->
-  <!--width="300" />-->
-- Setup SSH tunnel (data from your machine port 1222 will be directed
-  to deimos port 22)
-  ![Tunnel 2](misc/tunnel2.png)
-  <!--\<br /> \<img alt="tunnel2.png"-->
-  <!--src="%PUBURL%/Compendium/Login/tunnel2.png" width="300" />-->
-- After clicking on the "Add" button, the tunnel should look like that
-  ![Tunnel 3](misc/tunnel3.png)
-  <!--\<br /> \<img alt="tunnel3.png"-->
-  <!--src="%PUBURL%/Compendium/Login/tunnel3.png" width="300" />-->
-- Click "Open" and enter your login and password (upon successful
-  login, the tunnel will exist)
-  ![Tunnel 4](misc/tunnel4.png)
-  <!--\<br /> \<img alt="tunnel4.png"-->
-  <!--src="%PUBURL%/Compendium/Login/tunnel4.png" width="300" />-->
-- Put the putty window in the background (leave it running) and open
-  WinSCP (or your favorite SCP program), connect to localhost:1222
+* Make a connection to `login1.zih.tu-dresden.de`
 
-  ![Tunnel 5](misc/tunnel5.png)
-  <!--\<br/> \<img alt="tunnel5.png"-->
-  <!--src="%PUBURL%/Compendium/Login/tunnel5.png" width="300" />-->
+![Tunnel 1](misc/tunnel1.png)
+{: align="center"}
+
+* Setup SSH tunnel (data from your machine port 1222 will be directed to deimos port 22)
+
+![Tunnel 2](misc/tunnel2.png)
+{: align="center"}
+
+* After clicking on the "Add" button, the tunnel should look like that
+
+![Tunnel 3](misc/tunnel3.png)
+{: align="center"}
+
+- Click "Open" and enter your login and password (upon successful login, the tunnel will exist)
+
+![Tunnel 4](misc/tunnel4.png)
+{: align="center"}
+
+- Put the putty window in the background (leave it running) and open  WinSCP (or your favorite SCP
+  program), connect to localhost:1222
+
+![Tunnel 5](misc/tunnel5.png)
+{: align="center"}
+
 - After hitting "Login" and entering your username/password, you can
   access your files on deimos.
