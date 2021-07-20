@@ -173,6 +173,9 @@ extra_css:
 markdown_extensions:
     - toc:
         permalink: True
+    - pymdownx.highlight
+    - pymdownx.superfences
+
 
 extra:
   homepage: https://tu-dresden.de
