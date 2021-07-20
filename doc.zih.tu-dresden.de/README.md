@@ -424,3 +424,18 @@ Stick to the Unix rules on optional and required arguments, and seclection of it
 * `[optional argument or value]`
 * `{choice1|choice2|choice3}`
 
+
+# Graphics and Attachments
+
+All graphics and attachments are saved within `misc` directory of the respective sub directory in
+`docs`.
+
+The syntax to insert a graphic or attachment into a page is
+
+```Bash
+![PuTTY: Switch on X11](misc/putty2.jpg)
+{: align="center"}
+```
+
+The attribute `align` is optional. By default, graphics are left aligned. **Note:** It is crucial to
+have `{: align="center"}` on a new line.
