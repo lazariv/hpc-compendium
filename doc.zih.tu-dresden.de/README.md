@@ -7,6 +7,7 @@ which rules should be followed when adding to this project. Although, this docum
 long describing complex steps, contributing is quite easy - trust us.
 
 ## Contribute via Issue
+
 Users can contribute to the documentation via the
 [issue tracking system](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/issues).
 For that, open an issue to report typos and missing documentation or request for more precise
@@ -17,6 +18,7 @@ documentation.
 [hpcsupport@zih.tu-dresden.de](mailto:hpcsupport@zih.tu-dresden.de).
 
 ## Preparation
+
 Contributions can be done via editing the repository through GitLab's web interface or following
 the git-based workflow. Both ways are described in the following.
 
@@ -174,11 +176,6 @@ incoporate the changes and improvements into the HPC Compendium. For this, creat
 [merge request](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/merge_requests/new)
 to the `main` branch.
 
-
-
-
-## 
-
 ### Important Branches
 
 There are two important branches in this repository:
@@ -190,7 +187,6 @@ There are two important branches in this repository:
 - Main: Branch which is deployed at [doc.zih.tu-dresden.de](doc.zih.tu-dresden.de) holding the
     current documentation (protected branch)
 
-
 If you are totally sure about your commit (e.g., fix a typo), it is only the following steps:
 
   1. Synchronize branches
@@ -198,7 +194,6 @@ If you are totally sure about your commit (e.g., fix a typo), it is only the fol
   1. Commit change
   1. Push commit to your fork and probably new branch
   1. Pose Merge Request
-
 
 ## Checks
 
@@ -217,6 +212,7 @@ The [markdown linter client](https://github.com/igorshubovych/markdownlint-cli) 
 markdown source code clean and consistent.
 
 Installation
+
 ```Shell Session
 ~ [sudo] npm [-g]  install markdownlint-cli
 ```
@@ -259,11 +255,13 @@ and *different to main branch*).
 #### Markdown-link-check
 
 Installation (see [official documentation](https://github.com/tcort/markdown-link-check#installation))
+
 ```Shell Session
 ~ [sudo] npm [-g] install markdown-link-check
 ```
 
 Run check
+
 ```Shell Session
 ~ cd doc.zih.tu-dresden.de/
 ~ markdown-link-check docs/jobs/Slurm.md
@@ -306,7 +304,6 @@ changes to make sure your commit passes the CI/CD pipeline.
 ### Check Code and Commands
 
 1. All code blocks and commands should be runnable from a login node.
-1. 
 
 **TODO:** Implement [Issue #9](#9)
 
@@ -354,8 +351,10 @@ structure.
 ### Markdown
 
 1. Please keep things simple, i.e., avoid using fancy markdown dialects.
+
   * [Cheat Sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
   * [Style Guide](https://github.com/google/styleguide/blob/gh-pages/docguide/style.md)
+
 1. Do not add large binary files or high resolution images to the repository. See this valuable
    document for [image optimization](https://web.dev/fast/#optimize-your-images).
 
@@ -424,8 +423,7 @@ Stick to the Unix rules on optional and required arguments, and seclection of it
 * `[optional argument or value]`
 * `{choice1|choice2|choice3}`
 
-
-# Graphics and Attachments
+## Graphics and Attachments
 
 All graphics and attachments are saved within `misc` directory of the respective sub directory in
 `docs`.
