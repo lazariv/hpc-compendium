@@ -62,14 +62,8 @@ plotting, history, debugging and workspace management. RStudio is also available
 The easiest option is to run RStudio in JupyterHub directly in the browser. It can be started 
 similarly to a new kernel from [JupyterLab](../access/jupyterhub.md#jupyterlab) launcher. 
 
-**todo** image
-\<img alt="environments.png" height="70"
-src="%ATTACHURL%/environments.png" title="environments.png" width="300"
-/>
-
-**todo** image
-\<img alt="Launcher.png" height="205" src="%ATTACHURL%/Launcher.png"
-title="Launcher.png" width="195" />
+![RStudio launcher in JupyterHub](misc/data_analytics_with_r_RStudio_launcher.png)
+{: align="center"}
 
 Please keep in mind that it is currently not recommended to use the interactive x11 job with the
 desktop version of RStudio, as described, for example, in introduction HPC-DA slides. 
@@ -139,16 +133,84 @@ library(reticulate)
 reticulate::py_config()
 install.packages("tensorflow")
 library(tensorflow)
-tf$constant("Hellow Tensorflow")         #In the output 'Tesla V100-SXM2-32GB' should be mentioned
+tf$constant("Hello Tensorflow")         #In the output 'Tesla V100-SXM2-32GB' should be mentioned
 ```
 
-Please find the example of the code in the [attachment]**todo**
-%ATTACHURL%/TensorflowMNIST.R?t=1597837603.  The example shows the use of the TensorFlow package
-with the R for the classification problem related to the MNIST dataset.  As an alternative to the
-TensorFlow rTorch can be used.
-[rTorch](https://cran.r-project.org/web/packages/rTorch/index.html) is the interface to 
-the [PyTorch](https://pytorch.org/) Machine Learning framework.
+??? example
+    The example shows the use of the TensorFlow package with the R for the classification problem 
+    related to the MNIST dataset.
+    ```R
+    library(tensorflow)
+    library(keras)
 
+    # Data preparation
+    batch_size <- 128
+    num_classes <- 10
+    epochs <- 12
+
+    # Input image dimensions
+    img_rows <- 28
+    img_cols <- 28
+
+    # Shuffled and split the data between train and test sets
+    mnist <- dataset_mnist()
+    x_train <- mnist$train$x
+    y_train <- mnist$train$y
+    x_test <- mnist$test$x
+    y_test <- mnist$test$y
+
+    # Redefine dimension of train/test inputs
+    x_train <- array_reshape(x_train, c(nrow(x_train), img_rows, img_cols, 1))
+    x_test <- array_reshape(x_test, c(nrow(x_test), img_rows, img_cols, 1))
+    input_shape <- c(img_rows, img_cols, 1)
+
+    # Transform RGB values into [0,1] range
+    x_train <- x_train / 255
+    x_test <- x_test / 255
+
+    cat('x_train_shape:', dim(x_train), '\n')
+    cat(nrow(x_train), 'train samples\n')
+    cat(nrow(x_test), 'test samples\n')
+
+    # Convert class vectors to binary class matrices
+    y_train <- to_categorical(y_train, num_classes)
+    y_test <- to_categorical(y_test, num_classes)
+
+    # Define Model
+    model <- keras_model_sequential() %>%
+      layer_conv_2d(filters = 32, kernel_size = c(3,3), activation = 'relu',
+                    input_shape = input_shape) %>%
+      layer_conv_2d(filters = 64, kernel_size = c(3,3), activation = 'relu') %>%
+      layer_max_pooling_2d(pool_size = c(2, 2)) %>%
+      layer_dropout(rate = 0.25) %>%
+      layer_flatten() %>%
+      layer_dense(units = 128, activation = 'relu') %>%
+      layer_dropout(rate = 0.5) %>%
+      layer_dense(units = num_classes, activation = 'softmax')
+
+    # Compile model
+    model %>% compile(
+      loss = loss_categorical_crossentropy,
+      optimizer = optimizer_adadelta(),
+      metrics = c('accuracy')
+    )
+
+    # Train model
+    model %>% fit(
+      x_train, y_train,
+      batch_size = batch_size,
+      epochs = epochs,
+      validation_split = 0.2
+    )
+    scores <- model %>% evaluate(
+      x_test, y_test, verbose = 0
+    )
+
+    # Output metrics
+    cat('Test loss:', scores[[1]], '\n')
+    cat('Test accuracy:', scores[[2]], '\n')
+    ```
+    
 ## Parallel Computing with R
 
 Generally, the R code is serial. However, many computations in R can be made faster by the use of
@@ -162,7 +224,7 @@ concentrates on most general methods and examples. The Information here is Tauru
 The [parallel](https://www.rdocumentation.org/packages/parallel/versions/3.6.2) library
 will be used below.
 
-**Note:** Please do not install or update R packages related to parallelism as it could lead to
+**Warning:** Please do not install or update R packages related to parallelism as it could lead to
 conflicts with other pre-installed packages.
 
 ### Basic Lapply-Based Parallelism
@@ -178,10 +240,38 @@ lapply. The "mc" stands for "multicore". This function distributes the `lapply` 
 multiple CPU cores to be executed in parallel.
 
 This is a simple option for parallelization. It doesn't require much effort to rewrite the serial
-code to use `mclapply` function. Check out an [example]**todo** %ATTACHURL%/multicore.R. The 
-disadvantages of using shared-memory parallelism approach are, that the number of parallel tasks
-is limited to the number of cores on a single node. The maximum number of cores on a single node 
-can be found [here](../jobs_and_resources/hardware_taurus.md).
+code to use `mclapply` function. Check out an example below. 
+
+??? example
+    ```R
+    library(parallel)
+
+    # here some function that needs to be executed in parallel
+    average <- function(size){
+      norm_vector <- rnorm(n=size, mean=mu, sd=sigma)
+      return(mean(norm_vector))
+    }
+
+    # variable initialization
+    mu <- 1.0
+    sigma <- 1.0
+    vector_length <- 10^7
+    n_repeat <- 100
+    sample_sizes <- rep(vector_length, times=n_repeat)
+
+
+    # shared-memory version
+    threads <- as.integer(Sys.getenv("SLURM_CPUS_ON_NODE"))  
+    # here the name of the variable depends on the correct sbatch configuration
+    # unfortunately the built-in function gets the total number of physical cores without 
+    # taking into account allocated cores by Slurm
+
+    list_of_averages <- mclapply(X=sample_sizes, FUN=average, mc.cores=threads)  # apply function "average" 100 times
+    ```
+
+The disadvantages of using shared-memory parallelism approach are, that the number of parallel 
+tasks is limited to the number of cores on a single node. The maximum number of cores on a single 
+node can be found [here](../jobs_and_resources/hardware_taurus.md).
 
 Submitting a multicore R job to Slurm is very similar to submitting an 
 [OpenMP Job](../jobs_and_resources/slurm.md#binding-and-distribution-of-tasks),
@@ -254,9 +344,66 @@ module load R
 mpirun -np 1 R CMD BATCH --no-save --no-restore Rmpi_c.R
 ```
 
-The illustration above shows the binding of an MPI-job. Use an [example]**todo**
-%ATTACHURL%/Rmpi_c.R from the attachment. In which 32 global ranks are distributed over 2 nodes with
-16 cores(CPUs) each. Each MPI rank has 1 core assigned to it.
+Use an example below, where 32 global ranks are distributed over 2 nodes with 16 cores each. 
+Each MPI rank has 1 core assigned to it.
+
+??? example
+    ```R
+    library(Rmpi)
+
+    # initialize an Rmpi environment
+    ns <- mpi.universe.size()-1
+    mpi.spawn.Rslaves(nslaves=ns)
+
+    # send these commands to the slaves
+    mpi.bcast.cmd( id <- mpi.comm.rank() )
+    mpi.bcast.cmd( ns <- mpi.comm.size() )
+    mpi.bcast.cmd( host <- mpi.get.processor.name() )
+
+    # all slaves execute this command
+    mpi.remote.exec(paste("I am", id, "of", ns, "running on", host))
+
+    # close down the Rmpi environment
+    mpi.close.Rslaves(dellog = FALSE)
+    mpi.exit()
+    ```
+
+Another example:
+
+??? example
+    ```R
+    library(Rmpi)
+    library(parallel)
+
+    # here some function that needs to be executed in parallel
+    average <- function(size){
+      norm_vector <- rnorm(n=size, mean=mu, sd=sigma)
+      return(mean(norm_vector))
+    }
+
+    # variable initialization
+    mu <- 1.0
+    sigma <- 1.0
+    vector_length <- 10^7
+    n_repeat <- 100
+    sample_sizes <- rep(vector_length, times=n_repeat)
+
+    # cluster setup
+    # get number of available MPI ranks
+    threads = mpi.universe.size()-1  
+    print(paste("The cluster of size", threads, "will be setup..."))
+
+    # initialize MPI cluster
+    cl <- makeCluster(threads, type="MPI", outfile="")
+
+    # distribute required variables for the execution over the cluster
+    clusterExport(cl, list("mu","sigma"))  
+
+    list_of_averages <- parLapply(X=sample_sizes, fun=average, cl=cl)
+
+    # shut down the cluster
+    #snow::stopCluster(cl)  # usually it hangs over here with OpenMPI > 2.0. In this case this command may be avoided, Slurm will clean up after the job finishes
+    ```
 
 To use Rmpi and MPI please use one of these partitions: **haswell**, **broadwell** or **rome**.
 
@@ -272,8 +419,42 @@ On the other hand, TCP sockets are relatively
 [slow](http://glennklockwood.blogspot.com/2013/06/whats-killing-cloud-interconnect.html). Creating
 a PSOCK cluster is similar to launching an MPI cluster, but instead of specifying the number of
 parallel workers, you have to manually specify the number of nodes according to the
-hardware specification and parameters of your job. The example of the code could be found as an
-[attachment]**todo** %ATTACHURL%/RPSOCK.R?t=1597043002.
+hardware specification and parameters of your job. 
+
+??? example
+    ```R
+    library(parallel)
+
+    # a function that needs to be executed in parallel
+    average <- function(size){
+      norm_vector <- rnorm(n=size, mean=mu, sd=sigma)
+      return(mean(norm_vector))
+    }
+
+    # variable initialization
+    mu <- 1.0
+    sigma <- 1.0
+    vector_length <- 10^7
+    n_repeat <- 100
+    sample_sizes <- rep(vector_length, times=n_repeat)
+
+    # cluster setup
+
+    # get number of available nodes (should be equal to "ntasks")
+    mynodes = 8  
+    print(paste("The cluster of size", threads, "will be setup..."))
+
+    # initialize cluster
+    cl <- makeCluster(mynodes, type="PSOCK", outfile="")
+
+    # distribute required variables for the execution over the cluster
+    clusterExport(cl, list("mu","sigma"))  
+
+    list_of_averages <- parLapply(X=sample_sizes, fun=average, cl=cl)
+
+    # shut down the cluster
+    print(paste("Program finished"))
+    ```
 
 #### FORK cluster
 
@@ -284,8 +465,6 @@ requires exporting the workspace data to other processes. The FORK method in a c
 parallel process.
 
 ### Other parallel options
-
-There exist other methods of parallelization for R:
 
 - [foreach](https://cran.r-project.org/web/packages/foreach/index.html) library. 
   It is functionally equivalent to the 
@@ -302,17 +481,3 @@ There exist other methods of parallelization for R:
   method. R has [OpenMP](https://www.openmp.org/resources/) support. Thus using OpenMP is a simple
   method where you don't need to know much about the parallelism options in your code. Please be 
   careful and don't mix this technique with other methods!
-
-**todo** Attachments
-<!---   [TensorflowMNIST.R](%ATTACHURL%/TensorflowMNIST.R?t=1597837603)\<span-->
-    <!--style="font-size: 13px;">: TensorflowMNIST.R\</span>-->
-<!---   [lapply.R](%ATTACHURL%/lapply.R)\<span style="font-size: 13px;">:-->
-    <!--lapply.R\</span>-->
-<!---   [multicore.R](%ATTACHURL%/multicore.R)\<span style="font-size:-->
-    <!--13px;">: multicore.R\</span>-->
-<!---   [Rmpi.R](%ATTACHURL%/Rmpi.R)\<span style="font-size: 13px;">:-->
-    <!--Rmpi.R\</span>-->
-<!---   [Rmpi_c.R](%ATTACHURL%/Rmpi_c.R)\<span style="font-size: 13px;">:-->
-    <!--Rmpi_c.R\</span>-->
-<!---   [RPSOCK.R](%ATTACHURL%/RPSOCK.R)\<span style="font-size: 13px;">:-->
-    <!--RPSOCK.R\</span>-->
