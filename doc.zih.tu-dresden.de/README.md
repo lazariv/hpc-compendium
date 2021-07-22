@@ -303,7 +303,7 @@ changes to make sure your commit passes the CI/CD pipeline.
 
 ### Check Code and Commands
 
-1. All code blocks and commands should be runnable from a login node.
+The script `xyz.sh` checks if the code chunks are runnable on a login node. It is invoked as follows ...
 
 **TODO:** Implement [Issue #9](#9)
 
@@ -351,9 +351,8 @@ structure.
 ### Markdown
 
 1. Please keep things simple, i.e., avoid using fancy markdown dialects.
-
-  * [Cheat Sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
-  * [Style Guide](https://github.com/google/styleguide/blob/gh-pages/docguide/style.md)
+    * [Cheat Sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+    * [Style Guide](https://github.com/google/styleguide/blob/gh-pages/docguide/style.md)
 
 1. Do not add large binary files or high resolution images to the repository. See this valuable
    document for [image optimization](https://web.dev/fast/#optimize-your-images).
@@ -369,14 +368,6 @@ should be highlighted, etc. Code examples, longer than half screen height should
     # very long example here
     [...]
     ``` 
-
-
-
-### Code Blocks and Commands
-
-* Use ticks to mark code blocks and commands, not italic font.
-* Specify language for code blocks, refer to [highlight.js](https://highlightjs.org/static/demo/)
-    for supported languages.
 
 ### Writing Style
 
@@ -403,15 +394,21 @@ there is a list of conventions w.r.t.  spelling and technical wording.
 Showing commands and sample output is an important part of all technical documentation. Thus, some
 rules have to be followed.
 
+1. Use ticks to mark code blocks and commands, not italic font.
+
+1. Specify language for code blocks, refer to [highlight.js](https://highlightjs.org/static/demo/)
+    for supported languages.
+
+1. All code blocks and commands should be runnable from a login node.
+
 1. Prompts: It should be clear from the prompt, where the command is run (e.g. Taurus, specific
    partition or local machine).
-
-  * Taurus / HPC systems of TUD in general: `taurus$`
-  * Specific kind of node or partition: `tauruslogin$`, `taurus-ml$` `taurus-rome$`etc.
-    * TODO: Remove prefix `taurus`?
-  * Local machine: `localhost$`
-  * No output: Omit prompt (copy-paste)
-  * With Output: Add prompt (make clear what is the command and what is the output)
+    * Taurus / HPC systems of TUD in general: `taurus$`
+    * Specific kind of node or partition: `tauruslogin$`, `taurus-ml$` `taurus-rome$`etc.
+      * TODO: Remove prefix `taurus`? [Issue #40](#40) 
+    * Local machine: `localhost$`
+    * No output: Omit prompt (copy-paste)
+    * With Output: Add prompt (make clear what is the command and what is the output)
 
 ### Data Privacy and Generic User Name
 
