@@ -358,6 +358,20 @@ structure.
 1. Do not add large binary files or high resolution images to the repository. See this valuable
    document for [image optimization](https://web.dev/fast/#optimize-your-images).
 
+1. [Admonitions](https://squidfunk.github.io/mkdocs-material/reference/admonitions/) may be 
+actively used, especially for longer code examples, warnings, tips, important information that 
+should be highlighted, etc. Code examples, longer than half screen height should collapsed 
+(and indented):
+
+??? example
+    ```Bash   
+    [...]
+    # very long example here
+    [...]
+    ``` 
+
+
+
 ### Code Blocks and Commands
 
 * Use ticks to mark code blocks and commands, not italic font.
