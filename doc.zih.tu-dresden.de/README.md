@@ -415,6 +415,7 @@ Use the following short codes within this project for consistency:
 
 Line numbers can be added via
 
+```` markdown
 ```bash linenums="1"
 #!/bin/bash
 
@@ -424,9 +425,11 @@ Line numbers can be added via
 
 srun a.out
 ```
+````
 
 and specific Lines can be highlighted by using
 
+```` markdown
 ```bash hl_lines="2 3"
 #!/bin/bash
 
@@ -436,6 +439,7 @@ and specific Lines can be highlighted by using
 
 srun a.out
 ```
+````
 
 
 ### Data Privacy and Generic User Name
