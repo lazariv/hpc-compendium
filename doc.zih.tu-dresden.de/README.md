@@ -429,15 +429,7 @@ srun a.out
 
 _Result_:
 
-```bash linenums="1"
-#!/bin/bash
-
-#SBATCH -N 1
-#SBATCH -n 23
-#SBATCH -t 02:10:00
-
-srun a.out
-```
+![lines](misc/lines.png)
 
 Specific Lines can be highlighted by using
 
@@ -455,16 +447,7 @@ srun a.out
 
 _Result_:
 
-```bash hll_lines="2 3"
-#!/bin/bash
-
-#SBATCH -N 1
-#SBATCH -n 23
-#SBATCH -t 02:10:00
-=======
-
-srun a.out
-```
+![lines](misc/highlight_lines.png)
 
 ### Data Privacy and Generic User Name
 
