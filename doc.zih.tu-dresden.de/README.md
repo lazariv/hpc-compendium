@@ -303,7 +303,8 @@ changes to make sure your commit passes the CI/CD pipeline.
 
 ### Check Code and Commands
 
-The script `xyz.sh` checks if the code chunks are runnable on a login node. It is invoked as follows ...
+The script `xyz.sh` checks if the code chunks are runnable on a login node. 
+It is invoked as follows ...
 
 **TODO:** Implement [Issue #9](#9)
 
