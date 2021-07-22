@@ -415,6 +415,20 @@ Use the following short codes within this project for consistency:
 
 Line numbers can be added via
 
+```` markdown
+```bash linenums="1"
+#!/bin/bash
+
+#SBATCH -N 1
+#SBATCH -n 23
+#SBATCH -t 02:10:00
+
+srun a.out
+```
+````
+
+_Result_:
+
 ```bash linenums="1"
 #!/bin/bash
 
@@ -425,8 +439,9 @@ Line numbers can be added via
 srun a.out
 ```
 
-and specific Lines can be highlighted by using
+Specific Lines can be highlighted by using
 
+```` markdown
 ```bash hl_lines="2 3"
 #!/bin/bash
 
@@ -436,7 +451,19 @@ and specific Lines can be highlighted by using
 
 srun a.out
 ```
+````
 
+_Result_:
+
+```bash hll_lines="2 3"
+#!/bin/bash
+
+#SBATCH -N 1
+#SBATCH -n 23
+#SBATCH -t 02:10:00
+
+srun a.out
+```
 
 ### Data Privacy and Generic User Name
 
