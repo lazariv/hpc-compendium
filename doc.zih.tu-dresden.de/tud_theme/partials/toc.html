@@ -48,15 +48,15 @@
   {% endif %}
 
   <!-- hpc operation status -->
-  <hr class="solid">
-  <label class="md-nav__title" for="operation_status">
-    HPC Support
-  </label>
-  <p>
-    <img alt="" src="https://bs.zih.tu-dresden.de/bs.php?action=status_icon&dienst=6" style="vertical-align: middle;" width="10">
-    Operation Status 
-  </p>
-  <p>
-    <a href="mailto:{{ config.extra.hpcsupport_mail }}">{{ config.extra.hpcsupport_mail }}</a>
-  <p>
+  <div class="operation-status">
+    <hr class="solid">
+    <label class="md-nav__title" for="operation_status">
+      HPC Support
+    </label>
+    <p>
+      <img alt="" src="https://bs.zih.tu-dresden.de/bs.php?action=status_icon&dienst=6" style="vertical-align: middle;" width="10">
+      Operation Status 
+      <a href="mailto:{{ config.extra.hpcsupport_mail }}">{{ config.extra.hpcsupport_mail }}</a>
+    <p>
+  </div>
 </nav>

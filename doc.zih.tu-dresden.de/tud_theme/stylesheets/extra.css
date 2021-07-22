@@ -142,8 +142,14 @@ strong {
     }
 }
 /* toc */
+/* operation-status */
+
 hr.solid {
     border-top: 2px solid #bbb;
+}
+
+p {
+    padding: 0 0.6rem;
 }
 /* main */
 
