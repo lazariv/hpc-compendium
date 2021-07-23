@@ -399,6 +399,55 @@ rules have to be followed.
   * No output: Omit prompt (copy-paste)
   * With Output: Add prompt (make clear what is the command and what is the output)
 
+#### Code Blocks and Syntax Highlighting
+
+This project makes use of the extension
+[pymdownx.highlight](https://squidfunk.github.io/mkdocs-material/reference/code-blocks/) for syntax
+highlighting.
+
+There is complete list of supported [language short codes](https://pygments.org/docs/lexers/).
+Use the following short codes within this project for consistency:
+
+* `{bash}` for shell scripts
+* `{shell-session}` for command lines including prompt
+* `{python}` for Python source code
+
+Line numbers can be added via
+
+```` markdown
+```bash linenums="1"
+#!/bin/bash
+
+#SBATCH -N 1
+#SBATCH -n 23
+#SBATCH -t 02:10:00
+
+srun a.out
+```
+````
+
+_Result_:
+
+![lines](misc/lines.png)
+
+Specific Lines can be highlighted by using
+
+```` markdown
+```bash hl_lines="2 3"
+#!/bin/bash
+
+#SBATCH -N 1
+#SBATCH -n 23
+#SBATCH -t 02:10:00
+
+srun a.out
+```
+````
+
+_Result_:
+
+![lines](misc/highlight_lines.png)
+
 ### Data Privacy and Generic User Name
 
 Where possible, replace login, project name and other private data with clearly arbitrary placeholders.
@@ -417,7 +466,7 @@ If showing only a snippet of a long output, omissions are marked with `[...]`.
 
 ### Mark Placeholders
 
-Stick to the Unix rules on optional and required arguments, and seclection of item sets.
+Stick to the Unix rules on optional and required arguments, and selection of item sets.
 
 * `<required argument or value>`
 * `[optional argument or value]`
