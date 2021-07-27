@@ -3,9 +3,10 @@
 <span class="twiki-macro RED"></span> **This page is under
 construction** <span class="twiki-macro ENDCOLOR"></span>
 
-
-
-[Apache Spark](https://spark.apache.org/), [Apache Flink](https://flink.apache.org/) and [Apache Hadoop](https://hadoop.apache.org/) are frameworks for processing and integrating Big Data. These frameworks are also offered as software [modules](modules.md) on Taurus for both ml and scs5 partitions. You could check module availability with the command:
+[Apache Spark](https://spark.apache.org/), [Apache Flink](https://flink.apache.org/)
+and [Apache Hadoop](https://hadoop.apache.org/) are frameworks for processing and integrating
+Big Data. These frameworks are also offered as software [modules](modules.md) on Taurus
+for both ml and scs5 partitions. You could check module availability with the command:
 
 ```bash
 ml av Spark
@@ -14,8 +15,8 @@ ml av Spark
 **Aim** of this page is to introduce users on how to start working with
 the frameworks on Taurus in general as well as on the [HPC-DA](../jobs_and_resources/hpcda.md) system.
 
-**Prerequisites:** To work with the frameworks, you need [access](../access/login.md) to the Taurus system and basic
-knowledge about data analysis and [Slurm](Slurm).
+**Prerequisites:** To work with the frameworks, you need [access](../access/login.md) to the Taurus
+system and basic knowledge about data analysis and [Slurm](../jobs_and_resources/slurm.md).
 
 The usage of big data frameworks is
 different from other modules due to their master-worker approach. That
@@ -103,8 +104,9 @@ setup [here](DeepLearning).
 
 ### Preparation
 
-If you want to run Spark in Jupyter notebooks, you have to prepare it
-first. This is comparable to the [description for custom environments](../access/jupyterhub.md#Conda_environment). You start with an allocation:
+If you want to run Spark in Jupyter notebooks, you have to prepare it first. This is comparable
+to the [description for custom environments](../access/jupyterhub.md#Conda_environment).
+You start with an allocation:
 
 ```bash
 srun --pty -n 1 -c 2 --mem-per-cpu 2583 -t 01:00:00 bash -l
@@ -134,8 +136,9 @@ You are now ready to spawn a notebook with Spark.
 
 ### Spawning a notebook
 
-Assuming that you have prepared everything as described above, you can
-go to [https://taurus.hrsk.tu-dresden.de/jupyter](https://taurus.hrsk.tu-dresden.de/jupyter). In the tab "Advanced", go
+Assuming that you have prepared everything as described above, you can go to
+[https://taurus.hrsk.tu-dresden.de/jupyter](https://taurus.hrsk.tu-dresden.de/jupyter).
+In the tab "Advanced", go
 to the field "Preload modules" and select one of the Spark modules.
 When your jupyter instance is started, check whether the kernel that
 you created in the preparation phase (see above) is shown in the top
@@ -197,7 +200,8 @@ every time to log in to nodes. For the details, please check the
 ## FAQ
 
 Q: Command `source framework-configure.sh hadoop
-$HADOOP_ROOT_DIR/etc/hadoop` gives the output: `bash: framework-configure.sh: No such file or directory`. How can this be resolved?
+$HADOOP_ROOT_DIR/etc/hadoop` gives the output:
+`bash: framework-configure.sh: No such file or directory`. How can this be resolved?
 
 A: Please try to re-submit or re-run the job and if that doesn't help
 re-login to Taurus.
