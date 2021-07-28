@@ -1,29 +1,33 @@
 # Workspaces
 
-## Introduction
+Storage systems differ in terms of capacity, streaming bandwidth, IOPS rate etc. Price and
+efficiency don't allow to have it all in one. That is why, fast parallel file systems at ZIH have
+restrictions wrt. **age of files** and [quota](quotas.md). The mechanism of workspaces enables users to
+better manage the data life cycle of their HPC data.
+<!--Workspaces are primarily login-related.-->
+The tool concept of "workspaces" is common in a large number of HPC centers.
 
-Storage systems come in many different ways in terms of: size, streaming bandwidth, IOPS rate.
+!!! note
 
-Price and efficiency don't allow to have it all in one. That is the reason why Taurus fast parallel
-file systems have restrictions wrt. age of files. The mechanism of workspaces enables users to
-better manage the data life cycle of their HPC data. Workspaces are primarily login-related. The
-tool concept of "workspaces" is common in a large number of HPC centers. The idea is to request for
-a workspace directory in a certain storage system - connected with an expiry date. After a grace
-period the data is deleted automatically. The maximum lifetime of a workspace depends on the storage
-system. All workspaces can be extended.
+    A workspace is a directory, with an associated expiration date, created on behalf of a user in a
+    certain storage system.
 
-Use the fastest file systems according to recommendations. Please keep track of the data and move it
-to a capacity oriented filesystem after the end of computations.
+After a grace period the data is deleted automatically. The maximum lifetime of a workspace depends
+on the storage system. All workspaces can be extended.
 
-## Commands. Workspace Management.
+!!! tip
 
-The lifecycle of workspaces controls with commands. The basic commands will be presented below.
+    Use the fastest file systems according to recommendations. Please keep track of the data and
+    move it to a capacity oriented filesystem after the end of computations.
 
-To list all available filesystems for using workspaces use `ws_find -l`
+## Workspace Management
 
-Output:
+### List Available File Systems
 
-```
+To list all available file systems for using workspaces use
+
+```bash
+zih$ ws_find -l
 Available filesystems:
 scratch
 warm_archive
@@ -31,13 +35,12 @@ ssd
 beegfs_global0
 ```
 
-### Creation of the Workspace
+### Allocate of Workspace
 
 To create a workspace in one of the listed filesystems use `ws_allocate`. It is necessary to specify
 a unique name and the duration of the workspace.
 
-``` ws_allocate: [options] <workspace_name>
-duration
+``` ws_allocate: [options] <workspace_name> duration
 
 ##
 
@@ -62,7 +65,7 @@ For example:
 ws_allocate -F scratch -r 7 -m name.lastname@tu-dresden.de test-WS 90
 ```
 
-The command creates a workspace with the name test-WS on the scratch filesystem for 90 days with an
+The command creates a workspace with the name `test-WS` on the `/scratch` file system for 90 days with an
 e-mail reminder for 7 days before the expiration.
 
 Output:
@@ -74,8 +77,7 @@ remaining extensions  : 10
 remaining time in days: 90
 ```
 
-<span style="color:red">Note:</span> The overview of currently used workspaces can be obtained with
-the `ws_list` command.
+Note: The overview of currently used workspaces can be obtained with the `ws_list` command.
 
 ### Extention of the Workspace
 
