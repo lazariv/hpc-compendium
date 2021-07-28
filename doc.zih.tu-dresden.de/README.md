@@ -376,7 +376,7 @@ should be highlighted, etc. Code examples, longer than half screen height should
 
 **TODO** Guide [Issue #14](#14)
 
-* Capitalize headings
+* Capitalize headings, e.g. *Exclusive Reservation of Hardware*
 
 ### Spelling and Technical Wording
 
@@ -384,9 +384,9 @@ To provide a consistent and high quality documentation, and help users to find t
 there is a list of conventions w.r.t. spelling and technical wording.
 
 * Language settings: en_us
-* I/O not IO
-* Slurm not SLURM
-* Filesystem not file system
+* `I/O` not `IO`
+* `Slurm` not `SLURM`
+* `Filesystem` not `file system`
 * `ZIH system` and `ZIH systems` not `Taurus`, `HRSKII`, `our HPC systems` etc.
 
 **TODO:** Put into file
