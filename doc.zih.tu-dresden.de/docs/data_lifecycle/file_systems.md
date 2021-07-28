@@ -1,5 +1,9 @@
 # File Systems
 
+As soon as you have access to ZIH systems you have to manage your data. Several file systems are
+available. Each file system serves for special purpose according to their respective capacity,
+performance and permanence.
+
 ## Permanent File Systems
 
 ### Global /home File System
@@ -102,6 +106,25 @@ directory will be distributed over 20 OSTs.
 
 ## Warm Archive
 
+!!! warning
+    This is under construction. The functionality is not there, yet.
+
+The warm archive is intended a storage space for the duration of a running HPC-DA project. It can
+NOT substitute a long-term archive. It consists of 20 storage nodes with a net capacity of 10 PB.
+Within Taurus (including the HPC-DA nodes), the management software "Quobyte" enables access via
+
+- native quobyte client - read-only from compute nodes, read-write
+  from login and nvme nodes
+- S3 - read-write from all nodes,
+- Cinder (from OpenStack cluster).
+
+For external access, you can use:
+
+- S3 to `<bucket>.s3.taurusexport.hrsk.tu-dresden.de`
+- or normal file transfer via our taurusexport nodes (see [DataManagement](overview.md)).
+
+An HPC-DA project can apply for storage space in the warm archive. This is limited in capacity and
+duration.
 TODO
 
 ## Recommendations for File System Usage
