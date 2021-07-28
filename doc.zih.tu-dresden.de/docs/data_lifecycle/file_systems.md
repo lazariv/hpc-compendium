@@ -127,8 +127,6 @@ An HPC-DA project can apply for storage space in the warm archive. This is limit
 duration.
 TODO
 
-
-
 ## Recommendations for File System Usage
 
 To work as efficient as possible, consider the following points

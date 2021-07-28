@@ -87,8 +87,8 @@ illustration of the above:
 ![Organizing_Data-using_file_systems.png](misc/Organizing_Data-using_file_systems.png)
 {: align="center"}
 
-Keep in mind the [input-process-output pattern](https://en.wikipedia.org/wiki/IPO_model#Programming) for
-the folder structure within your projects.
+Keep in mind the [input-process-output pattern](https://en.wikipedia.org/wiki/IPO_model#Programming)
+for the folder structure within your projects.
 
 #### README Recommendation
 
