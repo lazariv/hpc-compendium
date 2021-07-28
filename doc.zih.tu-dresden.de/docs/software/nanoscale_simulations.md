@@ -182,7 +182,7 @@ pair and many-body potentials.
 
 The CPMD code is a plane wave/pseudopotential implementation of Density Functional Theory,
 particularly designed for ab-initio molecular dynamics. For examples and documentations see
-[CPMD homepage](http://www.cpmd.org).
+[CPMD homepage](https://www.lcrc.anl.gov/for-users/software/available-software/cpmd/).
 
 ## GROMACS
 
