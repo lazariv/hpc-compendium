@@ -407,9 +407,8 @@ rules have to be followed.
 
 1. Prompts: It should be clear from the prompt, where the command is run (e.g. Taurus, specific
    partition or local machine).
-    * Taurus / HPC systems of TUD in general: `taurus$`
+    * ZIH HPC systems in general: `zih$`
     * Specific kind of node or partition: `tauruslogin$`, `taurus-ml$` `taurus-rome$`etc.
-      * TODO: Remove prefix `taurus`? [Issue #40](#40) 
     * Local machine: `localhost$`
     * No output: Omit prompt (copy-paste)
     * With Output: Add prompt (make clear what is the command and what is the output)
