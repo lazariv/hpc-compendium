@@ -53,6 +53,7 @@ nav:
       - Dask: software/dask.md
       - Power AI: software/power_ai.md
       - PyTorch: software/py_torch.md
+      - Apache Spark, Apache Flink, Apache Hadoop: software/big_data_frameworks.md
     - SCS5 Migration Hints: software/scs5_software.md
     - Virtual Machines: software/virtual_machines.md
     - Virtual Desktops: software/virtual_desktops.md
