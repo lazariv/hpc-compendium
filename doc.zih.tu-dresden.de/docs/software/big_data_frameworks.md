@@ -1,7 +1,8 @@
 # BIG DATA FRAMEWORKS: APACHE SPARK, APACHE FLINK, APACHE HADOOP
 
-<span class="twiki-macro RED"></span> **This page is under
-construction** <span class="twiki-macro ENDCOLOR"></span>
+!!! note
+
+    This page is under construction
 
 [Apache Spark](https://spark.apache.org/), [Apache Flink](https://flink.apache.org/)
 and [Apache Hadoop](https://hadoop.apache.org/) are frameworks for processing and integrating
@@ -90,17 +91,17 @@ launch your jobs in the background using batch jobs**. For that, you can
 conveniently put the parameters directly into the job file which you can
 submit using `sbatch \[options\] \<job file>`.
 
-Please use a [batch job](Slurm) similar to the one attached:
+Please use a [batch job](../jobs_and_resources/slurm.md) similar to the one attached:
 [example-spark.sbatch](misc/example-spark.sbatch).
 
-## Apache Spark with [Jupyter](JupyterHub) notebook
+## Apache Spark with Jupyter Notebook
 
 There are two general options on how to work with Jupyter notebooks on
-Taurus:\<br />There is [jupyterhub](JupyterHub), where you can simply
+Taurus:\<br />There is [jupyterhub](../access/jupyterhub.md), where you can simply
 run your Jupyter notebook on HPC nodes (the preferable way). Also, you
 can run a remote jupyter server manually within a sbatch GPU job and
 with the modules and packages you need. You can find the manual server
-setup [here](DeepLearning).
+setup [here](deep_learning.md).
 
 ### Preparation
 
