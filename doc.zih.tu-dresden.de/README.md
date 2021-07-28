@@ -343,8 +343,9 @@ docs/
 
 To add a new page to the documentation follow these two steps:
 
-1. Create a new markdown file under `docs/SUBDIR/NEW.md` and put the documentation inside.
-1. Add `SUBDIR/NEW.md` to the configuration file `mkdocs.yml` by updating the navigation section.
+1. Create a new markdown file under `docs/subdir/file_name.md` and put the documentation inside.
+  - The file name should follow the pattern `fancy_title_and_more.md`.
+1. Add `subdir/file_name.md` to the configuration file `mkdocs.yml` by updating the navigation section.
 
 Make sure that the new page **is not floating**, i.e., it can be reached directly from the documentation
 structure.
@@ -379,12 +380,13 @@ should be highlighted, etc. Code examples, longer than half screen height should
 ### Spelling and Technical Wording
 
 To provide a consistent and high quality documentation, and help users to find the right pages,
-there is a list of conventions w.r.t.  spelling and technical wording.
+there is a list of conventions w.r.t. spelling and technical wording.
 
 * Language settings: en_us
 * I/O not IO
 * Slurm not SLURM
 * Filesystem not file system
+* `ZIH system` and `ZIH systems` not `Taurus`, `HRSKII`, `our HPC systems` etc.
 
 **TODO:** Put into file
 
