@@ -343,9 +343,10 @@ docs/
 
 To add a new page to the documentation follow these two steps:
 
-1. Create a new markdown file under `docs/subdir/file_name.md` and put the documentation inside.
-  - The file name should follow the pattern `fancy_title_and_more.md`.
-1. Add `subdir/file_name.md` to the configuration file `mkdocs.yml` by updating the navigation section.
+1. Create a new markdown file under `docs/subdir/file_name.md` and put the documentation inside. The
+   sub directory and file name should follow the pattern `fancy_title_and_more.md`.
+1. Add `subdir/file_name.md` to the configuration file `mkdocs.yml` by updating the navigation
+   section.
 
 Make sure that the new page **is not floating**, i.e., it can be reached directly from the documentation
 structure.
