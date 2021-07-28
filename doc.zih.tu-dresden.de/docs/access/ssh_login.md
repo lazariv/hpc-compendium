@@ -1,40 +1,55 @@
 # Login to the High Performance Computers
 
-The best way to login to the Linux machines is via ssh. From a Linux console, the command syntax is
-`ssh user@host`. The additional option `-XC` enables X11 forwarding for graphical applications (the
-`-C` enables compression which usually improves usability in this case).
+The best way to login to the HPC systems is via ssh. <br></br>
+From a Linux console, the command syntax is: `ssh user@host`. <br></br>
+The additional option `-XC` enables X11 forwarding for graphical applications <br></br>
+(the `-C` enables compression which usually improves usability in this case).
 
 The following table gives an overview of all clusters.
 
-| Host name                  | Description         |
-|:--------------------------|:--------------------|
-| taurus.hrsk.tu-dresden.de | BULL system - SLURM |
-
-**Attention:** For security reasons, this port is only accessible for hosts within the domains of TU
-Dresden. Guests from other research institutes can use the
+**Attention:** <br></br>
+For security reasons, this port is only accessible for hosts within the domains of <br></br>
+TU Dresden. Guests from other research institutes can use the 
 [VPN](https://tu-dresden.de/zih/dienste/service-katalog/arbeitsumgebung/zugang_datennetz/vpn)
-gateway of the ZIH. Information on these topics can be found on our web pages
-<http://www.tu-dresden.de/zih>.
+gateway of the ZIH. <br></br> 
+Information on these topics can be found on our web pages <http://www.tu-dresden.de/zih>.
 
-## Access from a Windows workstation
+## SSH Access
+### SSH Key
+All public ssh keys for Taurus have to be generated with the following attributes:
+  * the **ED25519** algorithm has to be used <br></br>
+    (command: `ssh-keygen -t ed25519`)
+  * a passphrase for the private key must be set (**<ins>not empty!</ins>** )
 
-We suggest Windows users use MobaXTerm. **TODO Link MobaXTerm**.
-Benefits of MobaXTerm include:
+### Access from a Windows workstation
 
-- easy to use
-- graphical user interface
-- file transfer via drag and drop
+To access HPC systems from a windows workstation we suggest one of <br></br>
+the following applications:
+  * MobaXTerm [link](https://mobaxterm.mobatek.net)
+  * PuTTY [link](https://www.putty.org)
+  * OpenSSH Server [link](https://docs.microsoft.com/de-de/windows-server/administration/openssh/openssh_install_firstuse)
 
-## Access from a Linux Workstation
+**Note:** <br></br>
+Some applications need get X-forwarding enabled before they support specific software <br></br>
+from our [modules system](../software/modules.md/).
 
-### SSH Access
+### Access from a Linux Workstation
 
-**Attention:** Please use an up-to-date SSH client. The login nodes accept the following encryption
-algorithms: `aes128-ctr`, `aes192-ctr`, `aes256-ctr`, `aes128-gcm@openssh.com`,
-`aes256-gcm@openssh.com`, `chacha20-poly1305@openssh.com`, `chacha20-poly1305@openssh.com`
+**Attention:** <br></br>
+ Please use an up-to-date SSH client. The login nodes accept the following encryption
+algorithms: <br></br>
+  * `aes128-ctr`
+  * `aes192-ctr`
+  * `aes256-ctr`
+  * `aes128-gcm@openssh.com`
+  * `aes256-gcm@openssh.com`
+  * `chacha20-poly1305@openssh.com`
+  * `chacha20-poly1305@openssh.com`
+
+### SSH session
 
 If your workstation is within the campus network, you can connect to the
-HPC login servers directly, e.g., for Taurus:
+HPC login servers directly (Port 22), e.g., for Taurus:
 
 ```Bash
 ssh <zih-login>@taurus.hrsk.tu-dresden.de
@@ -43,7 +58,7 @@ ssh <zih-login>@taurus.hrsk.tu-dresden.de
 If you connect for the fist time, the client will ask you to verify the host by the fingerprint:
 
 ```Bash
-user@pc:~# ssh <zih-login>@taurus.hrsk.tu-dresden.de
+localhost$: ssh <zih-login>@taurus.hrsk.tu-dresden.de
 The authenticity of host 'taurus.hrsk.tu-dresden.de (141.30.73.104)' can't be established.
 RSA key fingerprint is SHA256:HjpVeymTpk0rqoc8Yvyc8d9KXQ/p2K0R8TJ27aFnIL8.
 Are you sure you want to continue connecting (yes/no)?
@@ -67,17 +82,17 @@ they match you can type "yes".
 |                                  | MD5:96:62:c6:80:a8:1f:34:64:86:f3:cf:c5:9b:cd:af:da (ECDSA)   |
 |                                  | MD5:fe:0a:d2:46:10:4a:08:40:fd:e1:99:b7:f2:06:4f:bc (ED25519) |
 
-From outside the TUD campus network
-
-Use a VPN (Virtual Private Network) to enter the campus network, which allows you to connect
-directly to the HPC login servers.
+### VPN (Virtual Private Network)
+To access HPC systems from outside the campus networks its recommended to set up <br></br>
+a VPN connection to enter the campus network. <br></br>
+While active it allows the user to connect directly to the HPC login servers.
 
 For more information on our VPN and how to set it up, please visit the corresponding
 [ZIH service catalogue page](https://tu-dresden.de/zih/dienste/service-katalog/arbeitsumgebung/zugang_datennetz/vpn).
 
 ### Access using JupyterHub
 
-A JupyterHub installation offering IPython Notebook is available under
+A JupyterHub installation offering IPython Notebook is available under: <br></br>
 https://taurus.hrsk.tu-dresden.de/jupyter
 
 See the documentation under [JupyterHub](../access/jupyterhub.md).

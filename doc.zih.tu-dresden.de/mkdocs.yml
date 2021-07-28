@@ -11,9 +11,9 @@ nav:
     - Overview: access/overview.md
     - Desktop Visualization: access/desktop_cloud_visualization.md
     - Web VNC: access/web_vnc.md
-    - Login: access/login.md
+    - Login via ssh: access/ssh_login.md
     - Security Restrictions: access/security_restrictions.md
-    - SSH with Putty: access/ssh_mit_putty.md
+#    - SSH with Putty: access/ssh_with_putty.md
     - JupyterHub:
       - JupyterHub: access/jupyterhub.md
       - JupyterHub for Teaching: access/jupyterhub_for_teaching.md
