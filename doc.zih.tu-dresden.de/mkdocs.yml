@@ -71,7 +71,7 @@ nav:
       - PIKA: software/pika.md
       - Vampir: software/vampir.md
       - Mathematics: software/mathematics.md
-  - Data Lifecycle Management:
+  - Data Life Cycle Management:
     - Overview: data_lifecycle/overview.md
     - Filesystems:
       - Filesystems: data_lifecycle/file_systems.md
