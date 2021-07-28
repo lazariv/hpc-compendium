@@ -73,11 +73,12 @@ nav:
       - Mathematics: software/mathematics.md
   - Data Lifecycle Management:
     - Overview: data_lifecycle/overview.md
-    - Quotas: data_lifecycle/quotas.md
+    - Filesystems:
+      - Filesystems: data_lifecycle/file_systems.md
+      - BeeGFS: data_lifecycle/bee_gfs.md
+      - Intermediate Archive: data_lifecycle/intermediate_archive.md
+      - Quotas: data_lifecycle/quotas.md
     - Workspaces: data_lifecycle/workspaces.md
-    - BeeGFS: data_lifecycle/bee_gfs.md
-    - Intermediate Archive: data_lifecycle/intermediate_archive.md
-    - Filesystems: data_lifecycle/file_systems.md
     - HPC Storage Concept 2019: data_lifecycle/hpc_storage_concept2019.md
     - Preservation of Research Data: data_lifecycle/preservation_research_data.md
     - Structuring Experiments: data_lifecycle/experiments.md
