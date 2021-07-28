@@ -35,7 +35,7 @@ src="%ATTACHURL%/bandwidth.png" title="bandwidth.png" width="250" />
 
 - [Nodes for machine learning (Power9)](../jobs_and_resources/power9.md)
 - [NVMe Storage](../jobs_and_resources/nvme_storage.md) (2 PB)
-- [Warm archive](../data_lifecycle/warm_archive.md) (10 PB)
+- [Warm archive](../data_lifecycle/file_systems.md#warm-archive) (10 PB)
 - HPC nodes (x86) for DA (island 6)
 - Compute nodes with high memory bandwidth:
   [AMD Rome Nodes](../jobs_and_resources/rome_nodes.md) (island 7)
