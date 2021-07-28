@@ -1,33 +1,55 @@
 # Environment and Software
 
+A joyful and efficient usage of ZIH systems bases on a profound understanding of the working
+environment, which comprises your personal *user environment* and the *software environment*.
+
+## User Environment
+
+All ZIH systems use global home directories to provide homogeneous user environments across all
+systems. The default login shell is `bash`. Personal additions and modifications can be put into
+so called dotfiles in your home directory, e.g., `~/.bashrc` or `~/.bash_profile`.
+
+## Software Environment
+
+There are different options to work with software on ZIH systems: [modules](#modules),
+[JupyterNotebook](#jupyternotebook) and [containers](#containers). Brief descriptions and related
+links on these options are provided below.
+
+!!! note
+    There are two different software environments:
+
+    * `scs5` environment for the x86 architecture based compute resources
+    * and `ml` environment for the Machine Learning partition based on the Power9 architecture.
+
 According to [What software do I need]**todo link**, first of all, check the [Software module
-list]**todo link**.  Keep in mind that there are two different environments: **scs5** (for the x86
-architecture) and **ml** (environment for the Machine Learning partition based on the Power9
-architecture).
+list]**todo link**.
 
-Work with the software on Taurus could be started only after allocating the resources by [batch
-systems]**todo link**. By default, you are in the login nodes. They are not specified for the work,
-only for the login. Allocating resources will be done by batch system [SLURM]**todo link**.
+<!--Work with the software on ZIH systems could be started only after allocating the resources by [batch-->
+<!--systems]**todo link**.-->
 
-There are a lot of different possibilities to work with software on Taurus:
+<!--After logging in, you are on one of the login nodes. They are not meant for work, but only for the-->
+<!--login process and short tests. Allocating resources will be done by batch system-->
+<!--[SLURM](../jobs_and_resources/slurm.md).-->
 
 ## Modules
 
-Usage of software on HPC systems is managed by a **modules system**. Thus, it is crucial to
-be familiar with the [modules concept and commands](modules.md).  Modules are a way to use
-frameworks, compilers, loader, libraries, and utilities. A module is a user interface that provides
-utilities for the dynamic modification of a user's environment without manual modifications. You
-could use them for `srun`, batch jobs (`sbatch`) and the Jupyterhub.
+Usage of software on HPC systems, e.g., frameworks, compilers, loader and libraries, is
+almost always managed by a **modules system**. Thus, it is crucial to be familiar with the
+[modules concept and its commands](modules.md).  A module is a user interface that provides
+utilities for the dynamic modification of a user's environment without manual modifications.
 
-## JupyterNotebook
+Modules are used to set up the environment when working on ZIH systems via batch system (e.g.,
+`srun` or `sbatch`), and the [JupyterHub](../access/jupyterhub.md).
 
-The Jupyter Notebook is an open-source web application that allows creating documents containing
-live code, equations, visualizations, and narrative text. There is [jupyterhub]**todo link** on
-Taurus, where you can simply run your Jupyter notebook on HPC nodes using modules, preloaded or
-custom virtual environments. Moreover, you can run a [manually created remote jupyter server]**todo
-link** for more specific cases.
+## Jupyter Notebook
+
+The [Jupyter Notebook](https://jupyter.org/) is an open-source web application that allows creating
+documents containing live code, equations, visualizations, and narrative text. There is a
+[JupyterHub](../access/jupyterhub.md) service on ZIH systems, where you can simply run your Jupyter
+notebook on compute nodes using [modules](#modules), preloaded or custom virtual environments.
+Moreover, you can run a [manually created remote jupyter server](deep_learning.md) for more specific
+cases.
 
 ## Containers
 
-Some tasks require using containers. It can be done on Taurus by [Singularity]**todo link**. Details
-could be found in the [following chapter]**todo link**.
+Some tasks require using containers. It can be done on ZIH Systems by [Singularity](containers.md).
