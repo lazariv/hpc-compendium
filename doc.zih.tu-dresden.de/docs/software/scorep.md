@@ -71,7 +71,7 @@ With a combination of the above mentioned approaches, hybrid applications can be
 * original:	`mpif90 -openmp hybrid.F90 -o hybrid`
 * with instrumentation: `scorep mpif90 -openmp hybrid.F90 -o hybrid`
 
-## Score-P instrumenter option overview
+## Score-P Instrumenter Option Overview
 
 | Type of instrumentation | Instrumenter switch | Default value | Runtime measurement control |
 | --- | --- | --- | --- |
