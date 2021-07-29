@@ -109,6 +109,30 @@ INFO    -  Start watching changes
 
 Open `http://127.0.0.1:8000` with a web browser to preview the local copy of the documentation.
 
+#### Preview Using mkdocs With Dockerfile
+
+You can also use `docker` to build a container from the `Dockerfile`, if you are familiar with it.
+This may take a while, as mkdocs and other necessary software needs to be downloaded.
+Building a container with the documentation inside could be done with the following steps:
+
+```Bash
+cd /PATH/TO/hpc-compendium
+docker build hpc-compendium .
+```
+
+**Note:** Whenever you change the documentation, you need to rebuild the container, so that
+recent changes are included in the container.
+
+Afterwards, inspect the output. `mkdocs` was automatically invoked to build the documentation,
+so it should have given some information if some things were not as expected.
+If you want to see how it looks in your browser, you can use shell commands to serve
+the documentation (first line) and get the URL for your browser's address bar (second line):
+ 
+```Bash
+docker run -it hpc-compendium mkdocs serve -a 0.0.0.0:8000
+docker inspect `docker ps | grep hpc-compendium | cut -d' ' -f1` | sed -n '/\<IPAd/s#^.*"\([0-9.]*\)".*$#http://\1:8000#p' | head -n1
+```
+
 #### Build Static Documentation
 
 To build the documentation, invoke `mkdocs build`. This will create a new directory named `public`
