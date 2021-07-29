@@ -102,4 +102,4 @@ results, you may configure the trace buffer limits, filtering or selective recor
 traces.  Score-P allows to configure several parameters via environment variables. After the
 measurement run you can find a `scorep.cfg` file in your experiment directory which contains the
 configuration of the measurement run. If you had not set configuration values explicitly, the file
-will contain the default values. 
+will contain the default values.

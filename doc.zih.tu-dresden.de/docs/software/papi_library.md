@@ -22,7 +22,7 @@ resources. (see the uncore manuals listed in top of this documentation).
 
 ## Usage
 
-[Score-P](score_p.md) supports per-core PMCs. To include uncore PMCs into Score-P traces use the
+[Score-P](scorep.md) supports per-core PMCs. To include uncore PMCs into Score-P traces use the
 software module **scorep-uncore/2016-03-29**on the Haswell partition. If you do so, disable
 profiling to include the uncore measurements. This metric plugin is available at
 [github](https://github.com/score-p/scorep_plugin_uncore/).
@@ -33,7 +33,7 @@ the environment variables **PAPI_INC**, **PAPI_LIB**, and **PAPI_ROOT**. Have a 
 
 ## Related Software
 
-* [Score-P](score_p.md)
+* [Score-P](scorep.md)
 * [Linux Perf Tools](perf_tools.md)
 
 If you just need a short summary of your job, you might want to have a look at
