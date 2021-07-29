@@ -93,9 +93,8 @@ Whether a profile and/or a trace is recorded, is specified by the environment va
 [documentation](https://perftools.pages.jsc.fz-juelich.de/cicd/scorep/tags/latest/html/measurement.html)).
 If the value of this variables is zero or false, profiling/tracing is disabled. Otherwise Score-P
 will record a profile and/or trace. By default, profiling is enabled and tracing is disabled. For
-more information please see
-[the list of Score-P measurement configuration variables]
-(https://perftools.pages.jsc.fz-juelich.de/cicd/scorep/tags/latest/html/scorepmeasurementconfig.html)
+more information please see the list of Score-P measurement
+[configuration variables](https://perftools.pages.jsc.fz-juelich.de/cicd/scorep/tags/latest/html/scorepmeasurementconfig.html).
 
 You may start with a profiling run, because of its lower space requirements. According to profiling
 results, you may configure the trace buffer limits, filtering or selective recording for recording
