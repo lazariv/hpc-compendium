@@ -39,7 +39,7 @@ ssd
 beegfs_global0
 ```
 
-### List current workspaces
+### List Current Workspaces
 
 To list all workspaces you currently own, use:
 
@@ -59,8 +59,8 @@ id: test-workspace
 To create a workspace in one of the listed filesystems use `ws_allocate`. It is necessary to specify
 a unique name and the duration of the workspace.
 
-``` bash
-ws_allocate: [options] <workspace_name> duration
+```bash
+ws_allocate: [options] workspace_name duration
 
 Options:
   -h [ --help]               produce help message
@@ -77,52 +77,41 @@ Options:
 
 ```
 
-For example:
+!!! example
 
-```
-ws_allocate -F scratch -r 7 -m marie.testuser@tu-dresden.de test-workspace 90
-```
+    ```bash
+    zih$ ws_allocate -F scratch -r 7 -m marie.testuser@tu-dresden.de test-workspace 90
+    Info: creating workspace.
+    /scratch/ws/marie-test-workspace
+    remaining extensions  : 10
+    remaining time in days: 90
+    ```
 
-The command creates a workspace with the name `test-workspace` on the `/scratch` file system for 90
-days with an E-mail reminder for 7 days before the expiration.
-
-Output:
-
-```
-Info: creating workspace.
-/scratch/ws/marie-test-workspace
-remaining extensions  : 10
-remaining time in days: 90
-```
+This will create a workspace with the name `test-workspace` on the `/scratch` file system for 90
+days with an email reminder for 7 days before the expiration.
 
 !!! Note
 
-    Setting the reminder to `7` means you will get 1 E-Mail a day starting one week before your
-    expiration date, reminding you that your workspace will expire.
+    Setting the reminder to `7` means you will get a reminder email on every day starting `7` prior
+    to expiration date.
 
 ### Extention of a Workspace
 
-The lifetime of the workspace is finite. Different file systems (storage systems) have different
+The lifetime of a workspace is finite. Different file systems (storage systems) have different
 maximum durations. A workspace can be extended multiple times, depending on the file system.
 
-The maximum duration depends on the storage system:
 
 | Storage system (use with parameter -F ) | Duration, days | Extensions | Remarks |
 |:------------------------------------------:|:----------:|:-------:|:---------------------------------------------------------------------------------------:|
-| ssd                                        | 30 | 10 | High-IOPS file system (/lustre/ssd) on SSDs.                                          |
-| beegfs                                     | 30 | 2 | High-IOPS file system (/lustre/ssd) onNVMes.                                          |
-| scratch                                    | 100 | 2 | Scratch file system (/scratch) with high streaming bandwidth, based on spinning disks |
-| warm_archive                               | 365 | 2 | Capacity file system based on spinning disks                                          |
+| `ssd`                                       | 30 | 10 | High-IOPS file system (`/lustre/ssd`) on SSDs.                                          |
+| `beegfs`                                     | 30 | 2 | High-IOPS file system (`/lustre/ssd`) onNVMes.                                          |
+| `scratch`                                    | 100 | 2 | Scratch file system (/scratch) with high streaming bandwidth, based on spinning disks |
+| `warm_archive`                               | 365 | 2 | Capacity file system based on spinning disks                                          |
 
 To extend your workspace use the following command:
 
 ```
-ws_extend -F scratch test-workspace 100      #extend the workspace for 100 days
-```
-
-Output:
-
-```
+zih$ ws_extend -F scratch test-workspace 100      #extend the workspace for 100 days
 Info: extending workspace.
 /scratch/ws/marie-test-workspace
 remaining extensions  : 1
@@ -130,22 +119,20 @@ remaining time in days: 100
 ```
 
 !!!Attention
-    With the `ws_extend` command, a new duration for the workspace is set. This means when you
-    extend a workspace that expires in 90 days with the `ws_extend -F scratch my-workspace 40`,
-    it will now expire in 40 days **not** 130 days.
+
+    With the `ws_extend` command, a new duration for the workspace is set. The new duration is not
+    added!
+
+This means when you extend a workspace that expires in 90 days with the `ws_extend -F scratch
+my-workspace 40`, it will now expire in 40 days **not** 130 days.
 
 ### Deletion of a Workspace
 
-To delete workspace use the `ws_release` command. It is necessary to specify the name of the
-workspace and the storage system in which it is located:
+To delete a workspace use the `ws_release` command. It is mandatory to specify the name of the
+workspace and the file system in which it is located:
 
 `ws_release -F <file system> <workspace name>`
 
-For example:
-
-```
-ws_release -F scratch test-workspace
-```
 
 ### Restoring Expired Workspaces
 
@@ -183,70 +170,65 @@ well as a workspace that already contains data.
 
 ## Linking Workspaces in HOME
 
-It might be valuable to have links to personal workspaces within a certain directory, e.g., the user
-home directory. The command `ws_register DIR` will create and manage links to all personal
+It might be valuable to have links to personal workspaces within a certain directory, e.g., your 
+`home` directory. The command `ws_register DIR` will create and manage links to all personal
 workspaces within in the directory `DIR`. Calling this command will do the following:
 
-- The directory `DIR` will be created if necessary
+- The directory `DIR` will be created if necessary.
 - Links to all personal workspaces will be managed:
-  	- Creates links to all available workspaces if not already present
-  	- Removes links to released workspaces
+  	- Create links to all available workspaces if not already present.
+  	- Remove links to released workspaces.
 
 **Remark**: An automatic update of the workspace links can be invoked by putting the command
-`ws_register DIR` in the user's personal shell configuration file (e.g., .bashrc, .zshrc).
+`ws_register DIR` in your personal `shell` configuration file (e.g., `.bashrc`).
 
 ## How to use Workspaces
 
 There are three typical options for the use of workspaces:
 
-### Per-job storage
+### Per-Job Storage
 
 A batch job needs a directory for temporary data. This can be deleted afterwards.
 
-Here an example for the use with Gaussian:
+!!! example "Use with Gaussian"
 
-```
-#!/bin/bash
-#SBATCH --partition=haswell
-#SBATCH --time=96:00:00
-#SBATCH --nodes=1
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=24
-
-module load modenv/classic
-module load gaussian
-
-COMPUTE_DIR=gaussian_$SLURM_JOB_ID
-export GAUSS_SCRDIR=$(ws_allocate -F ssd $COMPUTE_DIR 7)
-echo $GAUSS_SCRDIR
-
-srun g16 inputfile.gjf logfile.log
-
-test -d $GAUSS_SCRDIR && rm -rf $GAUSS_SCRDIR/*
-ws_release -F ssd $COMPUTE_DIR
-```
+    ```
+    #!/bin/bash
+    #SBATCH --partition=haswell
+    #SBATCH --time=96:00:00
+    #SBATCH --nodes=1
+    #SBATCH --ntasks=1
+    #SBATCH --cpus-per-task=24
+    
+    module load modenv/classic
+    module load gaussian
+    
+    COMPUTE_DIR=gaussian_$SLURM_JOB_ID
+    export GAUSS_SCRDIR=$(ws_allocate -F ssd $COMPUTE_DIR 7)
+    echo $GAUSS_SCRDIR
+    
+    srun g16 inputfile.gjf logfile.log
+    
+    test -d $GAUSS_SCRDIR && rm -rf $GAUSS_SCRDIR/*
+    ws_release -F ssd $COMPUTE_DIR
+    ```
 
 Likewise, other jobs can use temporary workspaces.
 
-### Data for a campaign
+### Data for a Campaign
 
-For a series of calculations that works on the same data, you could allocate a workspace in the
-scratch for e.g. 100 days:
-
-```
-ws_allocate -F scratch my_scratchdata 100
-```
-
-Output:
+For a series of jobs or calculations that work on the same data, you should allocate a workspace
+once, e.g., in `scratch` for 100 days:
 
 ```
+zih$ ws_allocate -F scratch my_scratchdata 100
 Info: creating workspace.
 /scratch/ws/marie-my_scratchdata
 remaining extensions  : 2
 remaining time in days: 99
 ```
 
-If you want to share it with your project group, set the correct access attributes, e.g:
+You can grant your project group access rights:
 
 ```
 chmod g+wrx /scratch/ws/marie-my_scratchdata
@@ -255,36 +237,27 @@ chmod g+wrx /scratch/ws/marie-my_scratchdata
 And verify it with:
 
 ```
-ls -la /scratch/ws/marie-my_scratchdata
-```
-
-Output:
-
-```
+zih $ ls -la /scratch/ws/marie-my_scratchdata
 total 8
 drwxrwx--- 2 marie    hpcsupport 4096 Jul 10 09:03 .
-drwxr-xr-x 5 operator adm       4096 Jul 10 09:01 ..
+drwxr-xr-x 5 operator adm        4096 Jul 10 09:01 ..
 ```
 
-### Mid-Term storage
+### Mid-Term Storage
 
-For data that seldomly changes but consumes a lot of space, the warm archive can be used. Note that
+For data that seldom changes but consumes a lot of space, the warm archive can be used. Note that
 this is mounted read-only on the compute nodes, so you cannot use it as a work directory for your
 jobs!
 
 ```
-ws_allocate -F warm_archive my_inputdata 365
-```
-
-Output:
-
-```
+zih$ ws_allocate -F warm_archive my_inputdata 365
 /warm_archive/ws/marie-my_inputdata
 remaining extensions  : 2
 remaining time in days: 365
 ```
 
 !!!Attention 
+
     The warm archive is not built for billions of files. There
     is a quota for 100.000 files per group. Please archive data. 
 
@@ -294,7 +267,7 @@ To see your active quota use:
 qinfo quota /warm_archive/ws/
 ```
 
-Note that the workspaces reside under the mountpoint /warm_archive/ws/ and not /warm_archive
+Note that the workspaces reside under the mountpoint `/warm_archive/ws/` and not `/warm_archive`
 anymore.
 
 ## F.A.Q
@@ -302,12 +275,8 @@ anymore.
 **Q**: I am getting the error `Error: could not create workspace directory!`
 
 **A**: Please check the "locale" setting of your ssh client. Some clients (e.g. the one from MacOSX)
-set values that are not valid on our zih systems. You should overwrite LC_CTYPE and set it to a
-valid locale value like:
-
-```
-export LC_CTYPE=de_DE.UTF-8
-```
+set values that are not valid on our ZIH systems. You should overwrite `LC_CTYPE` and set it to a
+valid locale value like `export LC_CTYPE=de_DE.UTF-8`.
 
 A list of valid locales can be retrieved via `locale -a`. Please only use UTF8 (or plain) settings.
 Avoid "iso" codepages!
