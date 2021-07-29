@@ -66,8 +66,10 @@ strong {
 .md-grid {
     max-width: 1600px;
 }
-
 /* header */
+.zih-logo img{
+    display: inline-none;
+}
 @media screen and (min-width: 76.25rem) {
     .md-header,
     .md-header__title, 
@@ -82,19 +84,14 @@ strong {
         padding: 0 0.6rem;
         margin: 0;
     }
+
+    .zih-logo img{
+        display: inline-block;
+        height: 100%;
+        margin: 0 auto;
+    }
 }
 
-.md-header__button.md-logo {
-    width: 12.1rem;
-}
-
-.zih-logo img {
-    display: inline-block;
-    width: 70%;
-    height: auto;
-    margin: auto;
-    padding: 0 .6rem 1rem;
-}
 
 .md-header__topic{
     padding: 0 30px;
