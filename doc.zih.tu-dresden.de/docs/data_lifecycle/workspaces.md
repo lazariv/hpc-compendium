@@ -1,30 +1,34 @@
 # Workspaces
 
-Storage systems differ in terms of capacity, streaming bandwidth, IOPS rate etc. Price and
-efficiency don't allow to have it all in one. That is why, fast parallel file systems at ZIH have
-restrictions wrt. **age of files** and [quota](quotas.md). The mechanism of workspaces enables users to
-better manage the data life cycle of their HPC data.
+Storage systems differ in terms of capacity, streaming bandwidth, IOPS rate, etc. Price and
+efficiency don't allow to have it all in one. That is why fast parallel file systems at ZIH have
+restrictions with regards to **age of files** and [quota](quotas.md). The mechanism of workspaces
+enables users to better manage their HPC data.
 <!--Workspaces are primarily login-related.-->
-The tool concept of "workspaces" is common in a large number of HPC centers.
+The concept of "workspaces" is common and used at a large number of HPC centers.
 
 !!! note
 
     A workspace is a directory, with an associated expiration date, created on behalf of a user in a
     certain storage system.
 
-After a grace period the data is deleted automatically. The maximum lifetime of a workspace depends
-on the storage system. All workspaces can be extended.
+Once the workspace has reached its expiration date, it gets moved to a hidden directory and enters a
+grace period. Once the grace period ends, the workspace is deleted permanently. The maximum lifetime
+of a workspace depends on the storage system. All workspaces can be extended a certain amount of
+times.
 
 !!! tip
 
-    Use the fastest file systems according to recommendations. Please keep track of the data and
-    move it to a capacity oriented filesystem after the end of computations.
+    Use the faster file systems if you need to write temporary data in your computations, and use
+    the capacity oriented file systems if you only need to read data for your computations. Please
+    keep track of your data and move it to a capacity oriented filesystem after the end of your
+    computations.
 
 ## Workspace Management
 
 ### List Available File Systems
 
-To list all available file systems for using workspaces use
+To list all available file systems for using workspaces use:
 
 ```bash
 zih$ ws_find -l
@@ -35,23 +39,37 @@ ssd
 beegfs_global0
 ```
 
-### Allocate of Workspace
+### List current workspaces
+
+To list all workspaces you currently own, use:
+
+```bash
+zih$ ws_list
+id: test-workspace
+     workspace directory  : /scratch/ws/0/marie-test-workspace
+     remaining time       : 89 days 23 hours
+     creation time        : Thu Jul 29 10:30:04 2021
+     expiration date      : Wed Oct 27 10:30:04 2021
+     filesystem name      : scratch
+     available extensions : 10
+```
+
+### Allocate a Workspace
 
 To create a workspace in one of the listed filesystems use `ws_allocate`. It is necessary to specify
 a unique name and the duration of the workspace.
 
-``` ws_allocate: [options] <workspace_name> duration
-
-##
+``` bash
+ws_allocate: [options] <workspace_name> duration
 
 Options:
-  -h [ --help]              produce help message
+  -h [ --help]               produce help message
   -V [ --version ]           show version
   -d [ --duration ] arg (=1) duration in days
   -n [ --name ] arg          workspace name
   -F [ --filesystem ] arg    filesystem
   -r [ --reminder ] arg      reminder to be sent n days before expiration
-  -m [ --mailaddress ] arg   mailaddress to send reminder to  (works only with tu-dresden.de addresses)
+  -m [ --mailaddress ] arg   mailaddress to send reminder to (works only with tu-dresden.de mails)
   -x [ --extension ]         extend workspace
   -u [ --username ] arg      username
   -g [ --group ]             group workspace
@@ -62,54 +80,64 @@ Options:
 For example:
 
 ```
-ws_allocate -F scratch -r 7 -m name.lastname@tu-dresden.de test-WS 90
+ws_allocate -F scratch -r 7 -m marie.testuser@tu-dresden.de test-workspace 90
 ```
 
-The command creates a workspace with the name `test-WS` on the `/scratch` file system for 90 days with an
-e-mail reminder for 7 days before the expiration.
+The command creates a workspace with the name `test-workspace` on the `/scratch` file system for 90
+days with an E-mail reminder for 7 days before the expiration.
+
 
 Output:
 
 ```
 Info: creating workspace.
-/scratch/ws/mark-SPECint
+/scratch/ws/marie-test-workspace
 remaining extensions  : 10
 remaining time in days: 90
 ```
 
-Note: The overview of currently used workspaces can be obtained with the `ws_list` command.
+!!! Note
 
-### Extention of the Workspace
+    Setting the reminder to `7` means you will get 1 E-Mail a day starting one week before your
+    expiration date, reminding you that your workspace will expire.
 
-The lifetime of the workspace is finite. Different filesystems (storagesystems) have different
-maximum durations. A workspace can be extended.
+
+### Extention of a Workspace
+
+The lifetime of the workspace is finite. Different file systems (storage systems) have different
+maximum durations. A workspace can be extended multiple times, depending on the file system.
 
 The maximum duration depends on the storage system:
 
-| Storage system (use with parameter -F ) | Duration, days | Remarks                                                                                |
-|:------------------------------------------:|:----------:|:---------------------------------------------------------------------------------------:|
-| ssd                                        | 30  | High-IOPS file system (/lustre/ssd) on SSDs.                                          |
-| beegfs                                     | 30  | High-IOPS file system (/lustre/ssd) onNVMes.                                          |
-| scratch                                    | 100  | Scratch file system (/scratch) with high streaming bandwidth, based on spinning disks |
-| warm_archive                               | 365  | Capacity file system based on spinning disks                                          |
+| Storage system (use with parameter -F ) | Duration, days | Extensions | Remarks |
+|:------------------------------------------:|:----------:|:-------:|:---------------------------------------------------------------------------------------:|
+| ssd                                        | 30 | 10 | High-IOPS file system (/lustre/ssd) on SSDs.                                          |
+| beegfs                                     | 30 | 2 | High-IOPS file system (/lustre/ssd) onNVMes.                                          |
+| scratch                                    | 100 | 2 | Scratch file system (/scratch) with high streaming bandwidth, based on spinning disks |
+| warm_archive                               | 365 | 2 | Capacity file system based on spinning disks                                          |
+
+To extend your workspace use the following command:
 
 ```
-ws_extend -F scratch test-WS 100      #extend the workspace for another 100 days
+ws_extend -F scratch test-workspace 100      #extend the workspace for another 100 days
 ```
 
 Output:
 
 ```
 Info: extending workspace.
-/scratch/ws/masterman-test_ws
+/scratch/ws/marie-test-workspace
 remaining extensions  : 1
 remaining time in days: 100
 ```
 
-A workspace can be extended twice. With the `ws_extend` command, a new duration for the workspace is
-set (not cumulative).
+!!!Attention
+    With the `ws_extend` command, a new duration for the workspace is set. This means when you
+    extend a workspace that expires in 90 days with the value 40, it will now expire in 40 days
+    **not** 130 days.
 
-### Deletion of the Workspace
+
+### Deletion of a Workspace
 
 To delete workspace use the `ws_release` command. It is necessary to specify the name of the
 workspace and the storage system in which it is located:
@@ -119,14 +147,23 @@ workspace and the storage system in which it is located:
 For example:
 
 ```
-ws_release -F scratch test_ws
+ws_release -F scratch test-workspace
 ```
+
 
 ### Restoring Expired Workspaces
 
-At expiration time (or when you manually release your workspace), your workspace will be moved to a
-special, hidden directory. For a month (in warm_archive: 2 months), you can still restore your data
-into a valid workspace. For that, use
+At expiration time your workspace will be moved to a special, hidden directory. For a month (in
+warm_archive: 2 months), you can still restore your data into an existing workspace.
+
+!!!Warning
+
+    When you release a workspace **by hand**, it will not receive a grace period and be
+    **permanently deleted** the **next day**. The advantage of this design is that you can create
+    and release workspaces inside jobs and not swamp the file system with data no one needs anymore
+    in the hidden directories (when workspaces are in the grace period).
+
+Use:
 
 ```
 ws_restore -l -F scratch
@@ -136,13 +173,19 @@ to get a list of your expired workspaces, and then restore them like that into a
 workspace 'new_ws':
 
 ```
-ws_restore -F scratch myuser-test_ws-1234567 new_ws
+ws_restore -F scratch marie-test-workspace-1234567 new_ws
 ```
 
-<span style="color:red">Note:</span> the expired workspace has to be specified using the full name
-as listed by `ws_restore -l`, including username prefix and timestamp suffix (otherwise, it cannot
-be uniquely identified).  The target workspace, on the other hand, must be given with just its short
-name as listed by `ws_list`, without the username prefix.
+
+The expired workspace has to be specified by its full name as listed by `ws_restore -l`, including
+username prefix and timestamp suffix (otherwise, it cannot be uniquely identified). The target
+workspace, on the other hand, must be given with just its short name, as listed by `ws_list`,
+without the username prefix.
+
+Both workspaces must be on the same file system. The data from the old workspace will be moved into
+a directory in the new workspace with the name of the old one. This means a fresh workspace works as
+well as a workspace that already contains data.
+
 
 ## Linking Workspaces in HOME
 
@@ -158,7 +201,7 @@ workspaces within in the directory `DIR`. Calling this command will do the follo
 **Remark**: An automatic update of the workspace links can be invoked by putting the command
 `ws_register DIR` in the user's personal shell configuration file (e.g., .bashrc, .zshrc).
 
-## How to Use Workspaces
+## How to use Workspaces
 
 There are three typical options for the use of workspaces:
 
@@ -204,7 +247,7 @@ Output:
 
 ```
 Info: creating workspace.
-/scratch/ws/mark-my_scratchdata
+/scratch/ws/marie-my_scratchdata
 remaining extensions  : 2
 remaining time in days: 99
 ```
@@ -212,20 +255,20 @@ remaining time in days: 99
 If you want to share it with your project group, set the correct access attributes, e.g:
 
 ```
-chmod g+wrx /scratch/ws/mark-my_scratchdata
+chmod g+wrx /scratch/ws/marie-my_scratchdata
 ```
 
 And verify it with:
 
 ```
-ls -la /scratch/ws/mark-my_scratchdata
+ls -la /scratch/ws/marie-my_scratchdata
 ```
 
 Output:
 
 ```
 total 8
-drwxrwx--- 2 mark    hpcsupport 4096 Jul 10 09:03 .
+drwxrwx--- 2 marie    hpcsupport 4096 Jul 10 09:03 .
 drwxr-xr-x 5 operator adm       4096 Jul 10 09:01 ..
 ```
 
@@ -242,31 +285,41 @@ ws_allocate -F warm_archive my_inputdata 365
 Output:
 
 ```
-/warm_archive/ws/mark-my_inputdata
+/warm_archive/ws/marie-my_inputdata
 remaining extensions  : 2
 remaining time in days: 365
 ```
 
-<span style="color:red">Attention:</span> The warm archive is not built for billions of files. There
-is a quota active of 100.000 files per group. Please archive data. To see your active quota use:
+!!!Attention 
+    The warm archive is not built for billions of files. There
+    is a quota for 100.000 files per group. Please archive data. 
+
+To see your active quota use:
 
 ```
 qinfo quota /warm_archive/ws/
 ```
 
-Note that the workspaces reside under the mountpoint /warm_archive/ws/ and not /warm_archive anymore.
+Note that the workspaces reside under the mountpoint /warm_archive/ws/ and not /warm_archive
+anymore.
 
 ## F.A.Q
 
 **Q**: I am getting the error `Error: could not create workspace directory!`
 
 **A**: Please check the "locale" setting of your ssh client. Some clients (e.g. the one from MacOSX)
-set values that are not valid on Taurus. You should overwrite LC_CTYPE and set it to a valid locale
-value like:
+set values that are not valid on our zih systems. You should overwrite LC_CTYPE and set it to a
+valid locale value like:
 
 ```
 export LC_CTYPE=de_DE.UTF-8
 ```
 
-A list of valid locales can be retrieved via `locale -a`. Please use only UTF8 (or plain) settings.
+A list of valid locales can be retrieved via `locale -a`. Please only use UTF8 (or plain) settings.
 Avoid "iso" codepages!
+
+**Q**: I am getting the error `Error: target workspace does not exist!`  when trying to restore my
+workspace.
+
+**A**: The workspace you want to restore into is either not on the same file system or you used the
+wrong name. Use only the short name that is listed after `id:` when using `ws_list`
