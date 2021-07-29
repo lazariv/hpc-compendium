@@ -86,7 +86,6 @@ ws_allocate -F scratch -r 7 -m marie.testuser@tu-dresden.de test-workspace 90
 The command creates a workspace with the name `test-workspace` on the `/scratch` file system for 90
 days with an E-mail reminder for 7 days before the expiration.
 
-
 Output:
 
 ```
@@ -100,7 +99,6 @@ remaining time in days: 90
 
     Setting the reminder to `7` means you will get 1 E-Mail a day starting one week before your
     expiration date, reminding you that your workspace will expire.
-
 
 ### Extention of a Workspace
 
@@ -136,7 +134,6 @@ remaining time in days: 100
     extend a workspace that expires in 90 days with the `ws_extend -F scratch my-workspace 40`,
     it will now expire in 40 days **not** 130 days.
 
-
 ### Deletion of a Workspace
 
 To delete workspace use the `ws_release` command. It is necessary to specify the name of the
@@ -149,7 +146,6 @@ For example:
 ```
 ws_release -F scratch test-workspace
 ```
-
 
 ### Restoring Expired Workspaces
 
@@ -176,7 +172,6 @@ workspace 'new_ws':
 ws_restore -F scratch marie-test-workspace-1234567 new_ws
 ```
 
-
 The expired workspace has to be specified by its full name as listed by `ws_restore -l`, including
 username prefix and timestamp suffix (otherwise, it cannot be uniquely identified). The target
 workspace, on the other hand, must be given with just its short name, as listed by `ws_list`,
@@ -185,7 +180,6 @@ without the username prefix.
 Both workspaces must be on the same file system. The data from the old workspace will be moved into
 a directory in the new workspace with the name of the old one. This means a fresh workspace works as
 well as a workspace that already contains data.
-
 
 ## Linking Workspaces in HOME
 
