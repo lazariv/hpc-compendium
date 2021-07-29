@@ -68,7 +68,7 @@ strong {
 }
 /* header */
 .zih-logo img{
-    display: inline-none;
+    display: none;
 }
 @media screen and (min-width: 76.25rem) {
     .md-header,
