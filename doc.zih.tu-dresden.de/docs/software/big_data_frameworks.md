@@ -14,10 +14,10 @@ ml av Spark
 ```
 
 **Aim** of this page is to introduce users on how to start working with
-the frameworks on Taurus in general as well as on the [HPC-DA](../jobs_and_resources/hpcda.md) system.
+the frameworks on ZIH systems, e. g. on the [HPC-DA](../jobs_and_resources/hpcda.md) system.
 
-**Prerequisites:** To work with the frameworks, you need [access](../access/login.md) to the Taurus
-system and basic knowledge about data analysis and [Slurm](../jobs_and_resources/slurm.md).
+**Prerequisites:** To work with the frameworks, you need [access](../access/login.md) to the ZIH
+system and basic knowledge about data analysis and the batch system [Slurm](../jobs_and_resources/slurm.md).
 
 The usage of big data frameworks is
 different from other modules due to their master-worker approach. That
@@ -89,7 +89,7 @@ spark-submit --class org.apache.spark.examples.SparkPi $SPARK_HOME/examples/jars
 !!! warning
 
     Please do not delete the directory `cluster-conf-<JOB_ID>` while the job is still
-    running. This may lead to errors.
+    running. This leads to errors.
 
 ## Batch jobs
 
@@ -99,13 +99,13 @@ launch your jobs in the background using batch jobs**. For that, you can
 conveniently put the parameters directly into the job file which you can
 submit using `sbatch [options] <job file>`.
 
-Please use a [batch job](../jobs_and_resources/slurm.md) similar to the one attached:
+Please use a [batch job](../jobs_and_resources/slurm.md) similar to
 [example-spark.sbatch](misc/example-spark.sbatch).
 
 ## Apache Spark with Jupyter Notebook
 
-There are two general options on how to work with Jupyter notebooks on
-Taurus:<br />There is [jupyterhub](../access/jupyterhub.md), where you can simply
+There are two general options on how to work with Jupyter notebooks:
+There is [jupyterhub](../access/jupyterhub.md), where you can simply
 run your Jupyter notebook on HPC nodes (the preferable way). Also, you
 can run a remote jupyter server manually within a sbatch GPU job and
 with the modules and packages you need. You can find the manual server
@@ -215,7 +215,7 @@ $HADOOP_ROOT_DIR/etc/hadoop` gives the output:
 `bash: framework-configure.sh: No such file or directory`. How can this be resolved?
 
 A: Please try to re-submit or re-run the job and if that doesn't help
-re-login to Taurus.
+re-login to the ZIH system.
 
 Q: There are a lot of errors and warnings during the set up of the
 session
