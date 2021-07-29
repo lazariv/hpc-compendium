@@ -10,7 +10,7 @@ Big Data. These frameworks are also offered as software [modules](modules.md) on
 for both ml and scs5 partitions. You could check module availability with the command:
 
 ```bash
-ml av Spark
+module av Spark
 ```
 
 **Aim** of this page is to introduce users on how to start working with
@@ -59,7 +59,7 @@ srun -p ml -N 1 -n 1 -c 2 --gres=gpu:1 --time=01:00:00 --pty --mem-per-cpu=10000
 Once you have the shell, load Spark using the following command:
 
 ```bash
-ml Spark
+module load Spark
 ```
 
 Before the application can be started, the Spark cluster needs to be set
@@ -196,8 +196,8 @@ If you want to use Spark and HDFS together (or in general more than one
 framework), a scheme similar to the following can be used:
 
 ```bash
-ml Hadoop
-ml Spark
+module load Hadoop
+module load Spark
 source framework-configure.sh hadoop $HADOOP_ROOT_DIR/etc/hadoop
 source framework-configure.sh spark $SPARK_HOME/conf
 start-dfs.sh
