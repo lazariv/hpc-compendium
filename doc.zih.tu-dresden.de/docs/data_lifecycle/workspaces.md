@@ -119,7 +119,7 @@ The maximum duration depends on the storage system:
 To extend your workspace use the following command:
 
 ```
-ws_extend -F scratch test-workspace 100      #extend the workspace for another 100 days
+ws_extend -F scratch test-workspace 100      #extend the workspace for 100 days
 ```
 
 Output:
@@ -133,8 +133,8 @@ remaining time in days: 100
 
 !!!Attention
     With the `ws_extend` command, a new duration for the workspace is set. This means when you
-    extend a workspace that expires in 90 days with the value 40, it will now expire in 40 days
-    **not** 130 days.
+    extend a workspace that expires in 90 days with the `ws_extend -F scratch my-workspace 40`,
+    it will now expire in 40 days **not** 130 days.
 
 
 ### Deletion of a Workspace
