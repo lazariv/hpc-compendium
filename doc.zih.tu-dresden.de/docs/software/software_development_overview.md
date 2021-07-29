@@ -40,7 +40,7 @@ Subsections:
 - [Debugging Tools](Debugging Tools.md)
   - [Debuggers](debuggers.md) (GDB, Allinea DDT, Totalview)
   - [Tools to detect MPI usage errors](mpi_usage_error_detection.md) (MUST)
-- PerformanceTools.md: [Score-P](score_p.md), [Vampir](vampir.md), [Papi Library](papi_library.md)
+- PerformanceTools.md: [Score-P](scorep.md), [Vampir](vampir.md), [Papi Library](papi_library.md)
 - [Libraries](libraries.md)
 
 Intel Tools Seminar \[Oct. 2013\]
