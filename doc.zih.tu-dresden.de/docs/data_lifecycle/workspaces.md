@@ -100,7 +100,6 @@ days with an email reminder for 7 days before the expiration.
 The lifetime of a workspace is finite. Different file systems (storage systems) have different
 maximum durations. A workspace can be extended multiple times, depending on the file system.
 
-
 | Storage system (use with parameter -F ) | Duration, days | Extensions | Remarks |
 |:------------------------------------------:|:----------:|:-------:|:---------------------------------------------------------------------------------------:|
 | `ssd`                                       | 30 | 10 | High-IOPS file system (`/lustre/ssd`) on SSDs.                                          |
@@ -132,7 +131,6 @@ To delete a workspace use the `ws_release` command. It is mandatory to specify t
 workspace and the file system in which it is located:
 
 `ws_release -F <file system> <workspace name>`
-
 
 ### Restoring Expired Workspaces
 
