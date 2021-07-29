@@ -1,4 +1,4 @@
-# BIG DATA FRAMEWORKS: APACHE SPARK, APACHE FLINK, APACHE HADOOP
+# Big Data Frameworks: Apache Spark, Apache Flink, Apache Hadoop
 
 !!! note
 
@@ -87,8 +87,9 @@ spark-submit --class org.apache.spark.examples.SparkPi $SPARK_HOME/examples/jars
 ```
 
 !!! warning
-   Please do not delete the directory `cluster-conf-<JOB_ID>` while the job is still
-   running. This may lead to errors.
+
+    Please do not delete the directory `cluster-conf-<JOB_ID>` while the job is still
+    running. This may lead to errors.
 
 ## Batch jobs
 
@@ -157,6 +158,7 @@ have created an example notebook that you can use as a starting point
 for convenience: [SparkExample.ipynb](misc/SparkExample.ipynb)
 
 !!! note
+
     You could work with simple examples in your home directory but according to the
     [storage concept](../data_lifecycle/hpc_storage_concept2019.md)
     **please use [workspaces](../data_lifecycle/workspaces.md) for
@@ -222,5 +224,6 @@ A: Please check the work capability on a simple example. The source of
 warnings could be ssh etc, and it could be not affecting the frameworks
 
 !!! help
+
     If you have questions or need advice, please see
     [https://www.scads.ai/services](https://www.scads.ai/services) or contact the HPC support.
