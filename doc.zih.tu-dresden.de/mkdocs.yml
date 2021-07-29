@@ -33,7 +33,7 @@ nav:
       - Singularity Example Definitions: software/singularity_example_definitions.md
       - VM tools: software/vm_tools.md
     - Applications:
-      - Overview: software/applications_overview.md
+      - Licenses: software/licenses.md
       - Bio Informatics: software/bioinformatics.md
       - Computational Fluid Dynamics (CFD): software/cfd.md
       - Nanoscale Simulations: software/nanoscale_simulations.md
