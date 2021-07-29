@@ -36,6 +36,7 @@ nav:
       - Overview: software/applications_overview.md
       - Bio Informatics: software/bioinformatics.md
       - Computational Fluid Dynamics (CFD): software/cfd.md
+      - Mathematics: software/mathematics.md
       - Nanoscale Simulations: software/nanoscale_simulations.md
       - FEM Software: software/fem_software.md
     - Visualization: software/visualization.md
@@ -70,7 +71,6 @@ nav:
       - Perf Tools: software/perf_tools.md 
       - PIKA: software/pika.md
       - Vampir: software/vampir.md
-      - Mathematics: software/mathematics.md
   - Data Life Cycle Management:
     - Overview: data_lifecycle/overview.md
     - Filesystems:
