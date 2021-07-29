@@ -25,8 +25,15 @@ means, before an application can be started, one has to do additional
 steps. In the following, we assume that a Spark application should be
 started.
 
-The steps are: 1 Load the Spark software module 1 Configure the Spark
-cluster 1 Start a Spark cluster 1 Start the Spark application
+The steps are:
+
+1. Load the Spark software module
+
+2. Configure the Spark cluster
+
+3. Start a Spark cluster
+
+4. Start the Spark application
 
 ## Interactive jobs with Apache Spark with the default configuration
 
@@ -79,9 +86,9 @@ application, e. g.:
 spark-submit --class org.apache.spark.examples.SparkPi $SPARK_HOME/examples/jars/spark-examples_2.11-2.4.4.jar 1000
 ```
 
-%RED%Note<span class="twiki-macro ENDCOLOR"></span>: Please do not
-delete the directory `cluster-conf-<JOB_ID>` while the job is still
-running. This may lead to errors.
+!!! warning
+   Please do not delete the directory `cluster-conf-<JOB_ID>` while the job is still
+   running. This may lead to errors.
 
 ## Batch jobs
 
@@ -89,7 +96,7 @@ Using `srun` directly on the shell blocks the shell and launches an
 interactive job. Apart from short test runs, it is **recommended to
 launch your jobs in the background using batch jobs**. For that, you can
 conveniently put the parameters directly into the job file which you can
-submit using `sbatch \[options\] \<job file>`.
+submit using `sbatch [options] <job file>`.
 
 Please use a [batch job](../jobs_and_resources/slurm.md) similar to the one attached:
 [example-spark.sbatch](misc/example-spark.sbatch).
@@ -97,7 +104,7 @@ Please use a [batch job](../jobs_and_resources/slurm.md) similar to the one atta
 ## Apache Spark with Jupyter Notebook
 
 There are two general options on how to work with Jupyter notebooks on
-Taurus:\<br />There is [jupyterhub](../access/jupyterhub.md), where you can simply
+Taurus:<br />There is [jupyterhub](../access/jupyterhub.md), where you can simply
 run your Jupyter notebook on HPC nodes (the preferable way). Also, you
 can run a remote jupyter server manually within a sbatch GPU job and
 with the modules and packages you need. You can find the manual server
@@ -106,7 +113,7 @@ setup [here](deep_learning.md).
 ### Preparation
 
 If you want to run Spark in Jupyter notebooks, you have to prepare it first. This is comparable
-to the [description for custom environments](../access/jupyterhub.md#Conda_environment).
+to the [description for custom environments](../access/jupyterhub.md#conda-environment).
 You start with an allocation:
 
 ```bash
@@ -149,11 +156,12 @@ in the notebook requires more steps than in an interactive session, we
 have created an example notebook that you can use as a starting point
 for convenience: [SparkExample.ipynb](misc/SparkExample.ipynb)
 
-%RED%Note<span class="twiki-macro ENDCOLOR"></span>: You could work with
-simple examples in your home directory but according to the [storage concept](../data_lifecycle/hpc_storage_concept2019.md)
-**please use [workspaces](../data_lifecycle/workspaces.md) for
-your study and work projects**. For this reason, you have to use
-advanced options of Jupyterhub and put "/" in "Workspace scope" field.
+!!! note
+    You could work with simple examples in your home directory but according to the
+    [storage concept](../data_lifecycle/hpc_storage_concept2019.md)
+    **please use [workspaces](../data_lifecycle/workspaces.md) for
+    your study and work projects**. For this reason, you have to use
+    advanced options of Jupyterhub and put "/" in "Workspace scope" field.
 
 ## Interactive jobs using a custom configuration
 
@@ -196,7 +204,7 @@ start-all.sh
 
 Note: It is recommended to use ssh keys to avoid entering the password
 every time to log in to nodes. For the details, please check the
-[documentation](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/s2-ssh-configuration-keypairs).
+[external documentation](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/s2-ssh-configuration-keypairs).
 
 ## FAQ
 
@@ -213,5 +221,6 @@ session
 A: Please check the work capability on a simple example. The source of
 warnings could be ssh etc, and it could be not affecting the frameworks
 
-Note: If you have questions or need advice, please see
-[https://www.scads.ai/services](https://www.scads.ai/services) or contact the HPC support.
+!!! help
+    If you have questions or need advice, please see
+    [https://www.scads.ai/services](https://www.scads.ai/services) or contact the HPC support.
