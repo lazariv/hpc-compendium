@@ -152,3 +152,11 @@ strong {
 .md-footer {
     background-color: var(--md-primary-fg-color);
 }
+
+.highlight .go {
+    user-select: none;
+}
+
+.highlight .gp {
+    user-select: none;
+}
