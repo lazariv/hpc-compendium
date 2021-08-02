@@ -25,8 +25,8 @@ developed by ZIH and its partners and is especially designed for massively paral
 Prior to using Vampir you need to set up the correct environment on one
 the HPC systems with:
 
-```Bash
-module load Vampir
+```console
+$ module load Vampir
 ```
 
 For members of TU Dresden the Vampir tool is also available as
@@ -36,8 +36,8 @@ for installation on your personal computer.
 Make sure, that compressed display forwarding (e.g., `ssh -YC taurus.hrsk.tu-dresden.de`) is
 enabled. Start the GUI by typing
 
-```Bash
-vampir
+```console
+$ vampir
 ```
 
 on your command line or by double-clicking the Vampir icon on your personal computer.
@@ -67,20 +67,20 @@ Please be patient and take a look at available resources beforehand.
 
 VampirServer is a parallel MPI program, which can also be started manually by typing:
 
-```Bash
-vampirserver start
+```console
+$ vampirserver start
 ```
 
 Above automatically allocates its resources via the respective batch system. Use
 
-```Bash
-vampirserver start mpi
+```console
+$ vampirserver start mpi
 ```
 
 or
 
-```Bash
-vampirserver start srun
+```console
+$ vampirserver start srun
 ```
 
 if you want to start vampirserver without batch allocation or inside an interactive allocation. The
@@ -98,22 +98,22 @@ name* in the *Open Remote* dialog of Vampir.
 Please make sure you stop VampirServer after finishing your work with
 the front-end or with
 
-```Bash
-vampirserver stop
+```console
+$ vampirserver stop
 ```
 
 Type
 
-```Bash
-vampirserver help 
+```console
+$ vampirserver help
 ```
 
 for further information. The [user manual](http://tu-dresden.de/die_tu_dresden/zentrale_einrichtungen/zih/forschung/projekte/vampir/dateien/VampirServer-User-Manual.pdf)
 of VampirServer can be found at `doc/vampirserver-manual.pdf` in the installation directory.
 Type
 
-```Bash
-which vampirserver
+```console
+$ which vampirserver
 ```
 
 to find the revision dependent *installation directory*.
@@ -127,13 +127,13 @@ the tunneling to a VampirServer on a compute node.
 
 Start VampirServer on the ZIH system and wait for its scheduling:
 
-```Bash
-vampirserver start
+```console
+$ vampirserver start
 ```
 
 and wait for scheduling
 
-```Bash
+```console
 Launching VampirServer...
 Submitting slurm 30 minutes job (this might take a while)...
 salloc: Granted job allocation 2753510
@@ -145,8 +145,8 @@ VampirServer  listens on: taurusi1253:30055
 
 Open a second console on your local desktop and create an ssh tunnel to the compute node with:
 
-```Bash
-ssh -L 30000:taurusi1253:30055 taurus.hrsk.tu-dresden.de
+```console
+$ ssh -L 30000:taurusi1253:30055 taurus.hrsk.tu-dresden.de
 ```
 
 Now, the port 30000 on your desktop is connected to the VampirServer port 30055 at the compute node

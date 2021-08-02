@@ -15,8 +15,8 @@ Only the basic usage is shown in this Wiki. For a comprehensive Score-P user man
 
 Before using Score-P, set up the correct environment with
 
-```Bash
-module load Score-P
+```console
+$ module load Score-P
 ```
 
 To make measurements with Score-P, the user's application program needs to be instrumented, i.e., at
