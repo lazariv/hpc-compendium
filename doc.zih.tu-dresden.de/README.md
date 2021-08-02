@@ -173,9 +173,9 @@ whereas *upstream-zih* points to the original documentation repository at GitLab
 ```Shell Session
 $ git remote -v
 origin  git@gitlab.hrz.tu-chemnitz.de:LOGIN/hpc-compendium.git (fetch)
-origin	git@gitlab.hrz.tu-chemnitz.de:LOGIN/hpc-compendium.git (push)
+origin  git@gitlab.hrz.tu-chemnitz.de:LOGIN/hpc-compendium.git (push)
 upstream-zih  git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git (fetch)
-upstream-zih	git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git (push)
+upstream-zih  git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git (push)
 ```
 
 Next, you should synchronize your `main` branch with the upstream.
