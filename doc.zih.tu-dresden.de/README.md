@@ -127,7 +127,7 @@ INFO    -  Documentation built in 0.09 seconds
 
 It is crucial to keep your branch synchronized with the upstream repository when you are working
 locally on the documentation. At first, you should add a remote pointing to the official
-documentation. 
+documentation.
 
 ```Shell Session
 ~ git remote add upstream-zih git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git
@@ -303,7 +303,7 @@ changes to make sure your commit passes the CI/CD pipeline.
 
 ### Check Code and Commands
 
-The script `xyz.sh` checks if the code chunks are runnable on a login node. 
+The script `xyz.sh` checks if the code chunks are runnable on a login node.
 It is invoked as follows ...
 
 **TODO:** Implement [Issue #9](#9)
@@ -317,7 +317,7 @@ the second check tests if every markdown file is included in the navigation sect
 The script is invoked and reports as follows
 
 ```Shell Session
-~ sh doc.zih.tu-dresden.de/util/check-no-floating.sh doc.zih.tu-dresden.de 
+~ sh doc.zih.tu-dresden.de/util/check-no-floating.sh doc.zih.tu-dresden.de
 HardwareTaurus.md is not included in nav
 BigDataFrameworksApacheSparkApacheFlinkApacheHadoop.md is not included in nav
 pika.md is not included in nav
@@ -360,17 +360,17 @@ structure.
 1. Do not add large binary files or high resolution images to the repository. See this valuable
    document for [image optimization](https://web.dev/fast/#optimize-your-images).
 
-1. [Admonitions](https://squidfunk.github.io/mkdocs-material/reference/admonitions/) may be 
-actively used, especially for longer code examples, warnings, tips, important information that 
-should be highlighted, etc. Code examples, longer than half screen height should collapsed 
+1. [Admonitions](https://squidfunk.github.io/mkdocs-material/reference/admonitions/) may be
+actively used, especially for longer code examples, warnings, tips, important information that
+should be highlighted, etc. Code examples, longer than half screen height should collapsed
 (and indented):
 
 ??? example
-    ```Bash   
+    ```Bash
     [...]
     # very long example here
     [...]
-    ``` 
+    ```
 
 ### Writing Style
 
@@ -395,23 +395,34 @@ there is a list of conventions w.r.t. spelling and technical wording.
 
 ### Code Blocks and Command Prompts
 
-Showing commands and sample output is an important part of all technical documentation. Thus, some
-rules have to be followed.
+Showing commands and sample output is an important part of all technical documentation. To make
+things as clear for readers as possible and provide a consistent documentation, some rules have to
+be followed.
 
 1. Use ticks to mark code blocks and commands, not italic font.
 
 1. Specify language for code blocks, refer to [highlight.js](https://highlightjs.org/static/demo/)
     for supported languages.
 
-1. All code blocks and commands should be runnable from a login node.
+1. All code blocks and commands should be runnable from a login node or a node within a specific partition (e.g., `ml`).
 
-1. Prompts: It should be clear from the prompt, where the command is run (e.g. Taurus, specific
-   partition or local machine).
-    * ZIH HPC systems in general: `zih$`
-    * Specific kind of node or partition: `tauruslogin$`, `taurus-ml$` `taurus-rome$`etc.
-    * Local machine: `localhost$`
-    * No output: Omit prompt (copy-paste)
-    * With Output: Add prompt (make clear what is the command and what is the output)
+1. It should be clear from the prompt, where the command is run (e.g. local machine, login node or
+   specific partition). We follow this rules regarding prompts
+
+| Host/Partition         | Prompt           |
+|------------------------|------------------|
+| Login nodes            | `marie@taurus$`  |
+| Arbirtray compute node | `marie@compute$` |
+| `haswell` partition    | `marie@haswell$` |
+| `ml` partition         | `marie@ml$`      |
+| `alpha` partition      | `marie@alpha$`   |
+| `alpha` partition      | `marie@alpha$`   |
+| `romeo` partition      | `marie@romeo$`   |
+| `julia` partition      | `marie@julia$`   |
+| localhost              | `marie@local$`   |
+
+**Always use a prompt**, even there is no output. Using some magic, the prompt is identified and will
+not be copied!
 
 #### Code Blocks and Syntax Highlighting
 
