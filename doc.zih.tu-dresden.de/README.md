@@ -122,7 +122,7 @@ docker build -t hpc-compendium .
 
 If you want to see how it looks in your browser, you can use shell commands to serve
 the documentation (first line) and get the URL for your browser's address bar (second line):
- 
+
 ```Bash
 docker run -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium bash -c "mkdocs build --verbose && mkdocs serve -a 0.0.0.0:8000"
 docker inspect `docker ps | grep hpc-compendium | cut -d' ' -f1` | sed -n '/\<IPAd/s#^.*"\([0-9.]*\)".*$#http://\1:8000#p' | head -n1
@@ -161,7 +161,7 @@ INFO    -  Documentation built in 0.09 seconds
 
 It is crucial to keep your branch synchronized with the upstream repository when you are working
 locally on the documentation. At first, you should add a remote pointing to the official
-documentation. 
+documentation.
 
 ```Shell Session
 ~ git remote add upstream-zih git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git
@@ -337,7 +337,7 @@ changes to make sure your commit passes the CI/CD pipeline.
 
 ### Check Code and Commands
 
-The script `xyz.sh` checks if the code chunks are runnable on a login node. 
+The script `xyz.sh` checks if the code chunks are runnable on a login node.
 It is invoked as follows ...
 
 **TODO:** Implement [Issue #9](#9)
@@ -351,7 +351,7 @@ the second check tests if every markdown file is included in the navigation sect
 The script is invoked and reports as follows
 
 ```Shell Session
-~ sh doc.zih.tu-dresden.de/util/check-no-floating.sh doc.zih.tu-dresden.de 
+~ sh doc.zih.tu-dresden.de/util/check-no-floating.sh doc.zih.tu-dresden.de
 HardwareTaurus.md is not included in nav
 BigDataFrameworksApacheSparkApacheFlinkApacheHadoop.md is not included in nav
 pika.md is not included in nav
@@ -394,17 +394,17 @@ structure.
 1. Do not add large binary files or high resolution images to the repository. See this valuable
    document for [image optimization](https://web.dev/fast/#optimize-your-images).
 
-1. [Admonitions](https://squidfunk.github.io/mkdocs-material/reference/admonitions/) may be 
-actively used, especially for longer code examples, warnings, tips, important information that 
-should be highlighted, etc. Code examples, longer than half screen height should collapsed 
+1. [Admonitions](https://squidfunk.github.io/mkdocs-material/reference/admonitions/) may be
+actively used, especially for longer code examples, warnings, tips, important information that
+should be highlighted, etc. Code examples, longer than half screen height should collapsed
 (and indented):
 
 ??? example
-    ```Bash   
+    ```Bash
     [...]
     # very long example here
     [...]
-    ``` 
+    ```
 
 ### Writing Style
 
