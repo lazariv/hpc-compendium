@@ -139,7 +139,8 @@ If you want to check whether the markdown files are formatted properly, use the 
 docker run -it hpc-compendium markdownlint docs
 ```
 
-To check whether there are links that point to a wrong target, use (this may take a while and gives a lot of output because it runs over all files):
+To check whether there are links that point to a wrong target, use
+(this may take a while and gives a lot of output because it runs over all files):
 
 ```Bash
 docker run -it hpc-compendium bash -c "find docs -type f -name '*.md' | xargs -L1 markdown-link-check"
