@@ -198,6 +198,6 @@ There is a test example of a deep learning task that could be used for the test.
 work, Pytorch and Pillow package should be installed in your virtual environment (how it was shown
 above in the interactive job example)
 
-- [example_pytorch_image_recognition.zip]**todo attachment** 
+- [example_pytorch_image_recognition.zip]**todo attachment**
 <!--%ATTACHURL%/example_pytorch_image_recognition.zip:-->
     <!--example_pytorch_image_recognition.zip-->

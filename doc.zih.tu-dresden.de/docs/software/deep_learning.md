@@ -45,7 +45,7 @@ On this page for all examples default scs5 partition used. There are numerous di
 possibilities on how to work with [TensorFlow](tensor_flow.md) and Keras
 on Taurus. Generally, the easiest way is using the [module system](modules.md) and Python
 virtual environment (test case) to see Tensorflow part above.
-For examples of using Keras for ml partition with the module system see the 
+For examples of using Keras for ml partition with the module system see the
 [Keras page for HPC-DA](keras.md).
 
 It can either use TensorFlow as its backend. As mentioned in Keras documentation Keras capable of
@@ -210,14 +210,14 @@ notebook server:
 jupyter notebook --generate-config
 ```
 
-Find a path of the configuration file, usually in the home under `.jupyter` directory, e.g. 
+Find a path of the configuration file, usually in the home under `.jupyter` directory, e.g.
 `/home//.jupyter/jupyter_notebook_config.py`
 
 Set a password (choose easy one for testing), which is needed later on to log into the server
 in browser session:
 
 ```Bash
-jupyter notebook password Enter password: Verify password: 
+jupyter notebook password Enter password: Verify password:
 ```
 
 you will get a message like that:

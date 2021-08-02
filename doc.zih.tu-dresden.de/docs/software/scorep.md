@@ -29,7 +29,7 @@ the program.
 ## Serial Programs
 
 * original: `ifort a.f90 b.f90 -o myprog`
-* with instrumentation:	`scorep ifort a.f90 b.f90 -o myprog`
+* with instrumentation: `scorep ifort a.f90 b.f90 -o myprog`
 
 This will instrument user functions (if supported by the compiler) and link the Score-P library.
 
@@ -61,14 +61,14 @@ option `--nocompiler` to disable automatic instrumentation of user functions.
 When Score-P detects OpenMP flags on the command line, OPARI2 is invoked for automatic source code
 instrumentation of OpenMP events:
 
-* original:	`ifort -openmp pi.f -o pi`
-* with instrumentation:	`scorep ifort -openmp pi.f -o pi`
+* original: `ifort -openmp pi.f -o pi`
+* with instrumentation: `scorep ifort -openmp pi.f -o pi`
 
 ## Hybrid MPI/OpenMP Parallel Programs
 
 With a combination of the above mentioned approaches, hybrid applications can be instrumented:
 
-* original:	`mpif90 -openmp hybrid.F90 -o hybrid`
+* original: `mpif90 -openmp hybrid.F90 -o hybrid`
 * with instrumentation: `scorep mpif90 -openmp hybrid.F90 -o hybrid`
 
 ## Score-P Instrumenter Option Overview

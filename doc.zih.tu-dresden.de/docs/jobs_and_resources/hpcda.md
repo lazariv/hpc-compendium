@@ -28,7 +28,7 @@ src="%ATTACHURL%/bandwidth.png" title="bandwidth.png" width="250" />
 
 ## Access
 
-- Application for access using this 
+- Application for access using this
   [Online Web Form](https://tu-dresden.de/zih/hochleistungsrechnen/zugang/hpc-da)
 
 ## Hardware Overview

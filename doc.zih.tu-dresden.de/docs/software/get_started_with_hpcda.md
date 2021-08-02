@@ -67,7 +67,7 @@ details check the [login page](../access/login.md).
 
 As soon as you have access to HPC-DA you have to manage your data. The main method of working with
 data on Taurus is using Workspaces.  You could work with simple examples in your home directory
-(where you are loading by default). However, in accordance with the 
+(where you are loading by default). However, in accordance with the
 [storage concept](../data_lifecycle/hpc_storage_concept2019.md)
 **please use** a [workspace](../data_lifecycle/workspaces.md)
 for your study and work projects.

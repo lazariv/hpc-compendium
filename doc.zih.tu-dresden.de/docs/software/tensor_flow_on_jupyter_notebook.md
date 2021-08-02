@@ -1,4 +1,4 @@
-# Tensorflow on Jupyter Notebook 
+# Tensorflow on Jupyter Notebook
 
 %RED%Note: This page is under construction<span
 class="twiki-macro ENDCOLOR"></span>
@@ -64,7 +64,7 @@ is a self-contained directory tree that contains a Python installation
 for a particular version of Python, plus several additional packages. At
 its core, the main purpose of Python virtual environments is to create
 an isolated environment for Python projects. Python virtual environment is
-the main method to work with Deep Learning software as TensorFlow on the 
+the main method to work with Deep Learning software as TensorFlow on the
 [HPCDA](../jobs_and_resources/hpcda.md) system.
 
 ### Conda and Virtualenv
@@ -73,12 +73,12 @@ There are two methods of how to work with virtual environments on
 Taurus. **Vitualenv (venv)** is a
 standard Python tool to create isolated Python environments. We
 recommend using venv to work with Tensorflow and Pytorch on Taurus. It
-has been integrated into the standard library under 
+has been integrated into the standard library under
 the [venv](https://docs.python.org/3/library/venv.html).
 However, if you have reasons (previously created environments etc) you
 could easily use conda. The conda is the second way to use a virtual
-environment on the Taurus. 
-[Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) 
+environment on the Taurus.
+[Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
 is an open-source package management system and environment management system
 from the Anaconda.
 
@@ -113,7 +113,7 @@ Now you can check the working capacity of the current environment.
 ### Install Ipykernel
 
 Ipykernel is an interactive Python shell and a Jupyter kernel to work
-with Python code in Jupyter notebooks. The IPython kernel is the Python 
+with Python code in Jupyter notebooks. The IPython kernel is the Python
 execution backend for Jupyter. The Jupyter Notebook
 automatically ensures that the IPython kernel is available.
 
@@ -150,7 +150,7 @@ will recommend using Jupyterhub for our examples.
 
 JupyterHub is available [here](https://taurus.hrsk.tu-dresden.de/jupyter)
 
-Please check updates and details [JupyterHub](../access/jupyterhub.md). However, 
+Please check updates and details [JupyterHub](../access/jupyterhub.md). However,
 the general pipeline can be briefly explained as follows.
 
 After logging, you can start a new session and configure it. There are
@@ -167,9 +167,9 @@ contains all you need for the start of the work. Please put the file
 into your previously created virtual environment in your working
 directory or use the kernel for your notebook.
 
-Note: You could work with simple examples in your home directory but according to 
-[new storage concept](../data_lifecycle/hpc_storage_concept2019.md) please use 
-[workspaces](../data_lifecycle/workspaces.md) for your study and work projects**. 
+Note: You could work with simple examples in your home directory but according to
+[new storage concept](../data_lifecycle/hpc_storage_concept2019.md) please use
+[workspaces](../data_lifecycle/workspaces.md) for your study and work projects**.
 For this reason, you have to use advanced options and put "/" in "Workspace scope" field.
 
 To download the first example (from the list below) into your previously
@@ -183,7 +183,7 @@ created virtual environment you could use the following command:
     unzip Example_TensorFlow_Automobileset.zip
 ```
 
-Also, you could use kernels for all notebooks, not only for them which placed 
+Also, you could use kernels for all notebooks, not only for them which placed
 in your virtual environment. See the [jupyterhub](../access/jupyterhub.md) page.
 
 ### Examples:
@@ -249,4 +249,4 @@ your study.
 -   [Example_TensorFlow_Meteo_airport.zip]**todo**(Example_TensorFlow_Meteo_airport.zip):
     Example_TensorFlow_Meteo_airport.zip
 -   [Example_TensorFlow_3D_road_network.zip]**todo**(Example_TensorFlow_3D_road_network.zip):
-    Example_TensorFlow_3D_road_network.zip 
+    Example_TensorFlow_3D_road_network.zip

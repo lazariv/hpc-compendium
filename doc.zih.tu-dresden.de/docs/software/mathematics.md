@@ -1,7 +1,7 @@
 # Mathematics Applications
 
 !!! cite
-    
+
     Nature is written in mathematical language.
 
     (Galileo Galilei)
