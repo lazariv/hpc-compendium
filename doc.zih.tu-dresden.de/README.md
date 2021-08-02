@@ -117,7 +117,7 @@ Building a container with the documentation inside could be done with the follow
 
 ```Bash
 cd /PATH/TO/hpc-compendium
-docker build hpc-compendium .
+docker build -t hpc-compendium .
 ```
 
 **Note:** Whenever you change the documentation, you need to rebuild the container, so that
