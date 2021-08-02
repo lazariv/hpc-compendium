@@ -47,7 +47,7 @@ system.
 
 The information about the Jupyter notebook and the **JupyterHub** could
 be found [here](../access/jupyterhub.md). The use of
-Containers is described [here](tensor_flow_container_on_hpcda.md).
+Containers is described [here](tensorflow_container_on_hpcda.md).
 
 Keras contains numerous implementations of commonly used neural-network
 building blocks such as layers,
@@ -71,7 +71,7 @@ Keras (using the module system). To get started, import [tf.keras](https://www.t
 as part of your TensorFlow program setup.
 tf.keras is TensorFlow's implementation of the [Keras API
 specification](https://keras.io/). This is a modified example that we
-used for the [Tensorflow page](./tensor_flow.md).
+used for the [Tensorflow page](./tensorflow.md).
 
 ```bash
 srun -p ml --gres=gpu:1 -n 1 --pty --mem-per-cpu=8000 bash

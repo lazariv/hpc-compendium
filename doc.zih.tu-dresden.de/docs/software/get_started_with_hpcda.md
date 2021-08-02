@@ -283,7 +283,7 @@ Several Tensorflow and PyTorch examples for the Jupyter notebook have been prepa
 simple tasks and models which will give you an understanding of how to work with ML frameworks and
 JupyterHub. It could be found as the [attachment] **todo** %ATTACHURL%/machine_learning_example.py
 in the bottom of the page. A detailed explanation and examples for TensorFlow can be found
-[here](tensor_flow_on_jupyter_notebook.md). For the Pytorch - [here](py_torch.md).  Usage information
+[here](tensorflow_on_jupyter_notebook.md). For the Pytorch - [here](py_torch.md).  Usage information
 about the environments for the JupyterHub could be found [here](../access/jupyterhub.md) in the chapter
 *Creating and using your own environment*.
 
