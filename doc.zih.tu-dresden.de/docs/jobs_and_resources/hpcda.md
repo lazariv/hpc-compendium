@@ -60,7 +60,7 @@ Additional hardware:
 - [Tensorflow on Jupyter notebook](../software/tensorflow_on_jupyter_notebook.md)
 - Create and run your own TensorFlow container for HPC-DA (Power9) (todo: no link at all in old compendium)
 - [TensorFlow on x86](../software/deep_learning.md)
-- [PyTorch on HPC-DA (Power9)](../software/py_torch.md)
+- [PyTorch on HPC-DA (Power9)](../software/pytorch.md)
 - [Python on HPC-DA (Power9)](../software/python.md)
 - [JupyterHub](../access/jupyterhub.md)
 - [R on HPC-DA (Power9)](../software/data_analytics_with_r.md)
