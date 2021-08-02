@@ -22,14 +22,14 @@ recommend using Ml partition [HPC-DA](../jobs_and_resources/hpcda.md). For examp
 module load TensorFlow
 ```
 
-There are numerous different possibilities on how to work with [TensorFlow](tensor_flow.md) on
+There are numerous different possibilities on how to work with [TensorFlow](tensorflow.md) on
 Taurus. On this page, for all examples default, scs5 partition is used. Generally, the easiest way
 is using the [modules system](modules.md)
 and Python virtual environment (test case). However, in some cases, you may need directly installed
 Tensorflow stable or night releases. For this purpose use the
-[EasyBuild](custom_easy_build_environment.md), [Containers](tensor_flow_container_on_hpcda.md) and see
+[EasyBuild](custom_easy_build_environment.md), [Containers](tensorflow_container_on_hpcda.md) and see
 [the example](https://www.tensorflow.org/install/pip). For examples of using TensorFlow for ml partition
-with module system see [TensorFlow page for HPC-DA](tensor_flow.md).
+with module system see [TensorFlow page for HPC-DA](tensorflow.md).
 
 Note: If you are going used manually installed Tensorflow release we recommend use only stable
 versions.
@@ -42,7 +42,7 @@ environments [ml environment and scs5 environment](modules.md#module-environment
 name "Keras".
 
 On this page for all examples default scs5 partition used. There are numerous different
-possibilities on how to work with [TensorFlow](tensor_flow.md) and Keras
+possibilities on how to work with [TensorFlow](tensorflow.md) and Keras
 on Taurus. Generally, the easiest way is using the [module system](modules.md) and Python
 virtual environment (test case) to see Tensorflow part above.
 For examples of using Keras for ml partition with the module system see the

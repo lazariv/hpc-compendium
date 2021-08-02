@@ -33,7 +33,7 @@ HPC-DA system.
 
 The information about the Jupyter notebook and the **JupyterHub** could
 be found [here](../access/jupyterhub.md). The use of
-Containers is described [here](tensor_flow_container_on_hpcda.md).
+Containers is described [here](tensorflow_container_on_hpcda.md).
 
 On Taurus, there exist different module environments, each containing a set
 of software modules. The default is *modenv/scs5* which is already loaded,
