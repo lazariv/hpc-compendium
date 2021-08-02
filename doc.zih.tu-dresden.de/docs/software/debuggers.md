@@ -159,7 +159,7 @@ noch **TODO: ddt.png title=DDT Main Window**
 ```Bash
     % module load Valgrind
     % valgrind ./myprog
-``` 
+```
 
 -   for MPI parallel programs (every rank writes own valgrind logfile):
 

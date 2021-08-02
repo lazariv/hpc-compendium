@@ -67,7 +67,7 @@ details check the [login page](../access/login.md).
 
 As soon as you have access to HPC-DA you have to manage your data. The main method of working with
 data on Taurus is using Workspaces.  You could work with simple examples in your home directory
-(where you are loading by default). However, in accordance with the 
+(where you are loading by default). However, in accordance with the
 [storage concept](../data_lifecycle/hpc_storage_concept2019.md)
 **please use** a [workspace](../data_lifecycle/workspaces.md)
 for your study and work projects.
@@ -283,7 +283,7 @@ Several Tensorflow and PyTorch examples for the Jupyter notebook have been prepa
 simple tasks and models which will give you an understanding of how to work with ML frameworks and
 JupyterHub. It could be found as the [attachment] **todo** %ATTACHURL%/machine_learning_example.py
 in the bottom of the page. A detailed explanation and examples for TensorFlow can be found
-[here](tensor_flow_on_jupyter_notebook.md). For the Pytorch - [here](py_torch.md).  Usage information
+[here](tensorflow_on_jupyter_notebook.md). For the Pytorch - [here](pytorch.md).  Usage information
 about the environments for the JupyterHub could be found [here](../access/jupyterhub.md) in the chapter
 *Creating and using your own environment*.
 

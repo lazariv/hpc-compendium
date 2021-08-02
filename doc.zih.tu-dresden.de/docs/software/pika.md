@@ -7,7 +7,7 @@ interface](https://selfservice.zih.tu-dresden.de/l/index.php/hpcportal/jobmonito
 **Hint:** To understand this small guide, it is recommended to open the
 [web
 interface](https://selfservice.zih.tu-dresden.de/l/index.php/hpcportal/jobmonitoring/z../jobs_and_resources)
-in a separate window. Furthermore, at least one real HPC job should have been submitted on Taurus. 
+in a separate window. Furthermore, at least one real HPC job should have been submitted on Taurus.
 
 ## Overview
 
@@ -112,7 +112,7 @@ flags in the job script:
 #SBATCH --exclusive
 #SBATCH --comment=no_monitoring
 ```
-	
+
 **Note:** Disabling Pika monitoring is possible only for exclusive jobs!
 
 ## Known Issues

@@ -28,7 +28,7 @@ src="%ATTACHURL%/bandwidth.png" title="bandwidth.png" width="250" />
 
 ## Access
 
-- Application for access using this 
+- Application for access using this
   [Online Web Form](https://tu-dresden.de/zih/hochleistungsrechnen/zugang/hpc-da)
 
 ## Hardware Overview
@@ -56,11 +56,11 @@ Additional hardware:
 - [Get started with HPC-DA](../software/get_started_with_hpcda.md)
 - [IBM Power AI](../software/power_ai.md)
 - [Work with Singularity Containers on Power9]**todo** Cloud
-- [TensorFlow on HPC-DA (native)](../software/tensor_flow.md)
-- [Tensorflow on Jupyter notebook](../software/tensor_flow_on_jupyter_notebook.md)
+- [TensorFlow on HPC-DA (native)](../software/tensorflow.md)
+- [Tensorflow on Jupyter notebook](../software/tensorflow_on_jupyter_notebook.md)
 - Create and run your own TensorFlow container for HPC-DA (Power9) (todo: no link at all in old compendium)
 - [TensorFlow on x86](../software/deep_learning.md)
-- [PyTorch on HPC-DA (Power9)](../software/py_torch.md)
+- [PyTorch on HPC-DA (Power9)](../software/pytorch.md)
 - [Python on HPC-DA (Power9)](../software/python.md)
 - [JupyterHub](../access/jupyterhub.md)
 - [R on HPC-DA (Power9)](../software/data_analytics_with_r.md)

@@ -7,14 +7,14 @@ machine learning applications on the [HPC-DA](../jobs_and_resources/hpcda.md) sy
 
 \<span style="font-size: 1em;">On the machine learning nodes (machine
 learning partition), you can use the tools from [IBM PowerAI](power_ai.md) or the other
-modules. PowerAI is an enterprise software distribution that combines popular open-source 
+modules. PowerAI is an enterprise software distribution that combines popular open-source
 deep learning frameworks, efficient AI development tools (Tensorflow, Caffe, etc). For
 this page and examples was used [PowerAI version 1.5.4](https://www.ibm.com/support/knowledgecenter/en/SS5SF7_1.5.4/navigation/pai_software_pkgs.html)
 
 [TensorFlow](https://www.tensorflow.org/guide/) is a free end-to-end open-source
 software library for dataflow and differentiable programming across many
 tasks. It is a symbolic math library, used primarily for machine
-learning applications. It has a comprehensive, flexible ecosystem of tools, libraries and 
+learning applications. It has a comprehensive, flexible ecosystem of tools, libraries and
 community resources. It is available on taurus along with other common machine
 learning packages like Pillow, SciPY, Numpy.
 
@@ -26,32 +26,32 @@ TensorFlow on the \<a href="HPCDA" target="\_self">HPC-DA\</a> system -
 part of the TU Dresden HPC system.
 
 There are three main options on how to work with Tensorflow on the
-HPC-DA: **1.** **Modules,** **2.** **JupyterNotebook, 3. Containers**. The best option is 
-to use [module system](../software/runtime_environment.md#Module_Environments) and 
+HPC-DA: **1.** **Modules,** **2.** **JupyterNotebook, 3. Containers**. The best option is
+to use [module system](../software/runtime_environment.md#Module_Environments) and
 Python virtual environment. Please see the next chapters and the [Python page](python.md) for the
 HPC-DA system.
 
 The information about the Jupyter notebook and the **JupyterHub** could
 be found [here](../access/jupyterhub.md). The use of
-Containers is described [here](tensor_flow_container_on_hpcda.md).
+Containers is described [here](tensorflow_container_on_hpcda.md).
 
-On Taurus, there exist different module environments, each containing a set 
-of software modules. The default is *modenv/scs5* which is already loaded, 
-however for the HPC-DA system using the "ml" partition you need to use *modenv/ml*. 
+On Taurus, there exist different module environments, each containing a set
+of software modules. The default is *modenv/scs5* which is already loaded,
+however for the HPC-DA system using the "ml" partition you need to use *modenv/ml*.
 To find out which partition are you using use: `ml list`.
-You can change the module environment with the command: 
+You can change the module environment with the command:
 
     module load modenv/ml
 
-The machine learning partition is based on the PowerPC Architecture (ppc64le) 
-(Power9 processors), which means that the software built for x86_64 will not 
-work on this partition, so you most likely can't use your already locally 
-installed packages on Taurus. Also, users need to use the modules which are 
-specially made for the ml partition (from modenv/ml) and not for the rest 
-of Taurus (e.g. from modenv/scs5). 
+The machine learning partition is based on the PowerPC Architecture (ppc64le)
+(Power9 processors), which means that the software built for x86_64 will not
+work on this partition, so you most likely can't use your already locally
+installed packages on Taurus. Also, users need to use the modules which are
+specially made for the ml partition (from modenv/ml) and not for the rest
+of Taurus (e.g. from modenv/scs5).
 
-Each node on the ml partition has 6x Tesla V-100 GPUs, with 176 parallel threads 
-on 44 cores per node (Simultaneous multithreading (SMT) enabled) and 256GB RAM. 
+Each node on the ml partition has 6x Tesla V-100 GPUs, with 176 parallel threads
+on 44 cores per node (Simultaneous multithreading (SMT) enabled) and 256GB RAM.
 The specification could be found [here](../jobs_and_resources/power9.md).
 
 %RED%Note:<span class="twiki-macro ENDCOLOR"></span> Users should not

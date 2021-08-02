@@ -15,8 +15,8 @@ Only the basic usage is shown in this Wiki. For a comprehensive Score-P user man
 
 Before using Score-P, set up the correct environment with
 
-```Bash
-module load Score-P
+```console
+$ module load Score-P
 ```
 
 To make measurements with Score-P, the user's application program needs to be instrumented, i.e., at
@@ -29,7 +29,7 @@ the program.
 ## Serial Programs
 
 * original: `ifort a.f90 b.f90 -o myprog`
-* with instrumentation:	`scorep ifort a.f90 b.f90 -o myprog`
+* with instrumentation: `scorep ifort a.f90 b.f90 -o myprog`
 
 This will instrument user functions (if supported by the compiler) and link the Score-P library.
 
@@ -61,14 +61,14 @@ option `--nocompiler` to disable automatic instrumentation of user functions.
 When Score-P detects OpenMP flags on the command line, OPARI2 is invoked for automatic source code
 instrumentation of OpenMP events:
 
-* original:	`ifort -openmp pi.f -o pi`
-* with instrumentation:	`scorep ifort -openmp pi.f -o pi`
+* original: `ifort -openmp pi.f -o pi`
+* with instrumentation: `scorep ifort -openmp pi.f -o pi`
 
 ## Hybrid MPI/OpenMP Parallel Programs
 
 With a combination of the above mentioned approaches, hybrid applications can be instrumented:
 
-* original:	`mpif90 -openmp hybrid.F90 -o hybrid`
+* original: `mpif90 -openmp hybrid.F90 -o hybrid`
 * with instrumentation: `scorep mpif90 -openmp hybrid.F90 -o hybrid`
 
 ## Score-P Instrumenter Option Overview
@@ -93,9 +93,8 @@ Whether a profile and/or a trace is recorded, is specified by the environment va
 [documentation](https://perftools.pages.jsc.fz-juelich.de/cicd/scorep/tags/latest/html/measurement.html)).
 If the value of this variables is zero or false, profiling/tracing is disabled. Otherwise Score-P
 will record a profile and/or trace. By default, profiling is enabled and tracing is disabled. For
-more information please see
-[the list of Score-P measurement configuration variables]
-(https://perftools.pages.jsc.fz-juelich.de/cicd/scorep/tags/latest/html/scorepmeasurementconfig.html)
+more information please see the list of Score-P measurement
+[configuration variables](https://perftools.pages.jsc.fz-juelich.de/cicd/scorep/tags/latest/html/scorepmeasurementconfig.html).
 
 You may start with a profiling run, because of its lower space requirements. According to profiling
 results, you may configure the trace buffer limits, filtering or selective recording for recording

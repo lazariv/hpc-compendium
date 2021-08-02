@@ -29,8 +29,8 @@ For obtaining access to the machines, the following forms have to be filled in:
 1. an [online application](https://hpcprojekte.zih.tu-dresden.de/) form for the project (one form
    per project).  The data will be stored automatically in a database.
 
-1. Users/guests at TU Dresden without a ZIH-login have to fill in the following 
-   [pdf] **todo** additionally.  TUD-external Users fill please  [this form (pdf)] **todo** 
+1. Users/guests at TU Dresden without a ZIH-login have to fill in the following
+   [pdf] **todo** additionally.  TUD-external Users fill please  [this form (pdf)] **todo**
    to get a login. Please sign
    and stamp it and send it by fax to +49 351 46342328, or by mail to TU Dresden, ZIH - Service
    Desk, 01062 Dresden, Germany. To add members with a valid ZIH-login to your

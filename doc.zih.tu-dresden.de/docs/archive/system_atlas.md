@@ -94,7 +94,7 @@ available for longer running jobs (>10 min).
 | `bsub -n 4 -M 1800`    | All nodes      | Is allowed to oversubscribe on small nodes n\[001-047\]                                                         |
 | `bsub -n 64 -M 1800`   | `n[049-092]`   | 64\*1800 will not fit onto a single small node and is therefore restricted to running on medium and large nodes |
 | `bsub -n 4 -M 2000`    | `-n[049-092]`  | Over limit for oversubscribing on small nodes `n[001-047]`, but may still go to medium nodes                    |
-| `bsub -n 32 -M 2000`   | `-n[049-092]`  | Same as above                                                                                     |              
+| `bsub -n 32 -M 2000`   | `-n[049-092]`  | Same as above                                                                                     |
 | `bsub -n 32 -M 1880`   | All nodes      | Using max. 1880 MB, the job is eligible for running on any node                                   |
 | `bsub -n 64 -M 2000`   | `-n[085-092]`  | Maximum for medium nodes is 1950 per slot - does the job **really** need **2000 MB** per process? |
 | `bsub -n 64 -M 1950`   | `n[049-092]`   | When using 1950 as maximum, it will fit to the medium nodes                                       |

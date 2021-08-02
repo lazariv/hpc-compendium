@@ -47,9 +47,9 @@ src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHubForTeachin
 style="border: 1px solid #888;" title="URL with git-pull
 parameters"/>\</a>
 
-This example would clone the repository 
+This example would clone the repository
 [https://github.com/jdwittenauer/ipython-notebooks](
-    https://github.com/jdwittenauer/ipython-notebooks) 
+    https://github.com/jdwittenauer/ipython-notebooks)
 and afterwards open the **Intro.ipynb** notebook in the given path.
 
 The following parameters are available:
@@ -68,7 +68,7 @@ might help creating those links
 ## Spawner options passthrough with URL params
 
 The spawn form now offers a quick start mode by passing url
-parameters.  
+parameters.
 An example: The following link would create a jupyter notebook session
 on the `interactive` partition with the `test` environment being loaded:
 
@@ -137,5 +137,5 @@ src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHubForTeachin
 style="border: 1px solid #888;" title="URL with git-pull and quickstart
 parameters"/>\</a>
 
-This link would redirect to 
+This link would redirect to
 `https://taurus.hrsk.tu-dresden.de/jupyter/user/{login}/notebooks/demo.ipynb` .
