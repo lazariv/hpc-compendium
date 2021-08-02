@@ -120,20 +120,17 @@ cd /PATH/TO/hpc-compendium
 docker build -t hpc-compendium .
 ```
 
-**Note:** Whenever you change the documentation, you need to rebuild the container, so that
-recent changes are included in the container.
-
-Afterwards, inspect the output. `mkdocs` was automatically invoked to build the documentation,
-so it should have given some information if some things were not as expected.
 If you want to see how it looks in your browser, you can use shell commands to serve
 the documentation (first line) and get the URL for your browser's address bar (second line):
  
 ```Bash
-docker run -it hpc-compendium mkdocs serve -a 0.0.0.0:8000
+docker run -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium bash -c "mkdocs build --verbose && mkdocs serve -a 0.0.0.0:8000"
 docker inspect `docker ps | grep hpc-compendium | cut -d' ' -f1` | sed -n '/\<IPAd/s#^.*"\([0-9.]*\)".*$#http://\1:8000#p' | head -n1
 ```
 
-If you want to check whether the markdown files are formatted properly, use the following command:
+The first line (with the mount option) automatically takes care of the file changes and rebuilds
+the documentation. If you want to check whether the markdown files are formatted properly, use the
+following command:
 
 ```Bash
 docker run -it hpc-compendium markdownlint docs

@@ -18,4 +18,6 @@ RUN npm install -g markdownlint-cli markdown-link-check
 
 WORKDIR /src/doc.zih.tu-dresden.de
 
+VOLUME ["/docs"]
+
 CMD ["mkdocs", "build", "--verbose"]
