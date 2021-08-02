@@ -116,10 +116,10 @@ expected? (software and version)
 
 Another important aspect is the Metadata. It is sufficient to use
 [Metadata](preservation_research_data.md#what-are-meta-data) for your HPC project. Metadata
-standards, i.e., 
+standards, i.e.,
 [Dublin core](http://dublincore.org/resources/metadata-basics/),
 [OME](https://www.openmicroscopy.org/),
-will help to do it easier. 
+will help to do it easier.
 
 ### Data Hygiene
 

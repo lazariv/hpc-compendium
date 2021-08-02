@@ -168,14 +168,14 @@ well as a workspace that already contains data.
 
 ## Linking Workspaces in HOME
 
-It might be valuable to have links to personal workspaces within a certain directory, e.g., your 
+It might be valuable to have links to personal workspaces within a certain directory, e.g., your
 `home` directory. The command `ws_register DIR` will create and manage links to all personal
 workspaces within in the directory `DIR`. Calling this command will do the following:
 
 - The directory `DIR` will be created if necessary.
 - Links to all personal workspaces will be managed:
-  	- Create links to all available workspaces if not already present.
-  	- Remove links to released workspaces.
+  - Create links to all available workspaces if not already present.
+  - Remove links to released workspaces.
 
 **Remark**: An automatic update of the workspace links can be invoked by putting the command
 `ws_register DIR` in your personal `shell` configuration file (e.g., `.bashrc`).
@@ -197,16 +197,16 @@ A batch job needs a directory for temporary data. This can be deleted afterwards
     #SBATCH --nodes=1
     #SBATCH --ntasks=1
     #SBATCH --cpus-per-task=24
-    
+
     module load modenv/classic
     module load gaussian
-    
+
     COMPUTE_DIR=gaussian_$SLURM_JOB_ID
     export GAUSS_SCRDIR=$(ws_allocate -F ssd $COMPUTE_DIR 7)
     echo $GAUSS_SCRDIR
-    
+
     srun g16 inputfile.gjf logfile.log
-    
+
     test -d $GAUSS_SCRDIR && rm -rf $GAUSS_SCRDIR/*
     ws_release -F ssd $COMPUTE_DIR
     ```
@@ -254,10 +254,10 @@ remaining extensions  : 2
 remaining time in days: 365
 ```
 
-!!!Attention 
+!!!Attention
 
     The warm archive is not built for billions of files. There
-    is a quota for 100.000 files per group. Please archive data. 
+    is a quota for 100.000 files per group. Please archive data.
 
 To see your active quota use:
 

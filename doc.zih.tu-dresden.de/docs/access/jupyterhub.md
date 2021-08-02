@@ -60,7 +60,7 @@ the import/export feature (available through the button) to save your
 presets in text files.
 
 Note: the [<span style="color:blue">**alpha**</span>]
-(https://doc.zih.tu-dresden.de/hpc-wiki/bin/view/Compendium/AlphaCentauri) 
+(https://doc.zih.tu-dresden.de/hpc-wiki/bin/view/Compendium/AlphaCentauri)
 partition is available only in the extended form.
 
 ## Applications
@@ -107,7 +107,7 @@ create new notebooks, files, directories or terminals.
 
 ## The notebook
 
-In JupyterHub you can create scripts in notebooks.  
+In JupyterHub you can create scripts in notebooks.
 Notebooks are programs which are split in multiple logical code blocks.
 In between those code blocks you can insert text blocks for
 documentation and each block can be executed individually. Each notebook
@@ -172,7 +172,7 @@ style="border: 1px solid #888;" title="Error message: Directory not
 found"/>\</a>
 
 If the connection to your notebook server unexpectedly breaks you maybe
-will get this error message.  
+will get this error message.
 Sometimes your notebook server might hit a Slurm or hardware limit and
 gets killed. Then usually the logfile of the corresponding Slurm job
 might contain useful information. These logfiles are located in your
@@ -229,7 +229,7 @@ Here's a short list of some included software:
 ### Creating and using your own environment
 
 Interactive code interpreters which are used by Jupyter Notebooks are
-called kernels.  
+called kernels.
 Creating and using your own kernel has the benefit that you can install
 your own preferred python packages and use them in your notebooks.
 
@@ -373,7 +373,7 @@ mention in the same list.
 ### Loading modules
 
 You have now the option to preload modules from the LMOD module
-system.  
+system.
 Select multiple modules that will be preloaded before your notebook
 server starts. The list of available modules depends on the module
 environment you want to start the session in (scs5 or ml). The right
