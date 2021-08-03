@@ -139,9 +139,9 @@ whereas *upstream-zih* points to the original documentation repository at GitLab
 ```Shell Session
 $ git remote -v
 origin  git@gitlab.hrz.tu-chemnitz.de:LOGIN/hpc-compendium.git (fetch)
-origin	git@gitlab.hrz.tu-chemnitz.de:LOGIN/hpc-compendium.git (push)
+origin  git@gitlab.hrz.tu-chemnitz.de:LOGIN/hpc-compendium.git (push)
 upstream-zih  git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git (fetch)
-upstream-zih	git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git (push)
+upstream-zih  git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git (push)
 ```
 
 Next, you should synchronize your `main` branch with the upstream.
@@ -401,7 +401,8 @@ be followed.
 
 1. Use ticks to mark code blocks and commands, not italic font.
 1. Specify language for code blocks ([see below](#code-blocks-and-syntax-highlighting)).
-1. All code blocks and commands should be runnable from a login node or a node within a specific partition (e.g., `ml`).
+1. All code blocks and commands should be runnable from a login node or a node within a specific
+   partition (e.g., `ml`).
 1. It should be clear from the prompt, where the command is run (e.g. local machine, login node or
    specific partition).
 
@@ -412,7 +413,7 @@ We follow this rules regarding prompts:
 | Host/Partition         | Prompt           |
 |------------------------|------------------|
 | Login nodes            | `marie@login$`   |
-| Arbirtray compute node | `marie@compute$` |
+| Arbitrary compute node | `marie@compute$` |
 | `haswell` partition    | `marie@haswell$` |
 | `ml` partition         | `marie@ml$`      |
 | `alpha` partition      | `marie@alpha$`   |
