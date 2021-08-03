@@ -400,18 +400,18 @@ things as clear for readers as possible and provide a consistent documentation, 
 be followed.
 
 1. Use ticks to mark code blocks and commands, not italic font.
-
-1. Specify language for code blocks, refer to [highlight.js](https://highlightjs.org/static/demo/)
-    for supported languages.
-
+1. Specify language for code blocks ([see below](#code-blocks-and-syntax-highlighting)).
 1. All code blocks and commands should be runnable from a login node or a node within a specific partition (e.g., `ml`).
-
 1. It should be clear from the prompt, where the command is run (e.g. local machine, login node or
-   specific partition). We follow this rules regarding prompts
+   specific partition).
+
+#### Prompts
+
+We follow this rules regarding prompts:
 
 | Host/Partition         | Prompt           |
 |------------------------|------------------|
-| Login nodes            | `marie@taurus$`  |
+| Login nodes            | `marie@login$`   |
 | Arbirtray compute node | `marie@compute$` |
 | `haswell` partition    | `marie@haswell$` |
 | `ml` partition         | `marie@ml$`      |
@@ -419,23 +419,72 @@ be followed.
 | `alpha` partition      | `marie@alpha$`   |
 | `romeo` partition      | `marie@romeo$`   |
 | `julia` partition      | `marie@julia$`   |
-| localhost              | `marie@local$`   |
+| Localhost              | `marie@local$`   |
 
-**Always use a prompt**, even there is no output. Using some magic, the prompt is identified and will
-not be copied!
+*Remarks:*
+
+* **Always use a prompt**, even there is no output provided for the show command.
+* Using some magic, the prompt as well as the output is identified and will not be copied!
+* Stick to the [generic user name](#data-privacy-and-generic-user-name) `marie`.
 
 #### Code Blocks and Syntax Highlighting
 
 This project makes use of the extension
 [pymdownx.highlight](https://squidfunk.github.io/mkdocs-material/reference/code-blocks/) for syntax
-highlighting.
+highlighting.  There is a complete list of supported
+[language short codes](https://pygments.org/docs/lexers/).
 
-There is complete list of supported [language short codes](https://pygments.org/docs/lexers/).
-Use the following short codes within this project for consistency:
+For consistency, use the following short codes within this project:
 
-* `{bash}` for shell scripts
-* `{shell-session}` for command lines including prompt
-* `{python}` for Python source code
+* `bash` for shell scripts
+* `console` for command lines including prompt w/o output
+* `python` for Python source code
+* `pycon` for Python console output
+
+
+Shell session and console:
+
+```` markdown
+```console
+marie@login$ ls
+foo
+bar
+```
+````
+
+Shell scripts such as jobfiles:
+
+```` markdown
+```bash
+#!/bin/bash
+#SBATCH -N 1
+#SBATCH -t 01:00:00
+#SBATCH -o slurm-%j.out
+
+module load foss
+
+srun a.out
+```
+````
+
+Python source code:
+
+```` markdown
+```python
+from time import gmtime, strftime
+print(strftime("%Y-%m-%d %H:%M:%S", gmtime()))
+```
+````
+
+Python console:
+
+```` markdown
+```pycon
+>>> from time import gmtime, strftime
+>>> print(strftime("%Y-%m-%d %H:%M:%S", gmtime()))
+2021-08-03 07:20:33
+```
+````
 
 Line numbers can be added via
 
@@ -476,10 +525,10 @@ _Result_:
 ### Data Privacy and Generic User Name
 
 Where possible, replace login, project name and other private data with clearly arbitrary placeholders.
-E.g., use generic login `marie` and project name `p_marie`.
+E.g., use the generic login `marie` and the corresponding project name `p_marie`.
 
-```Shell Session
-taurus$ ls -l
+```console
+marie@login$ ls -l
 drwxr-xr-x   3 marie p_marie      4096 Jan 24  2020 code
 drwxr-xr-x   3 marie p_marie      4096 Feb 12  2020 data
 -rw-rw----   1 marie p_marie      4096 Jan 24  2020 readme.md
@@ -491,7 +540,7 @@ If showing only a snippet of a long output, omissions are marked with `[...]`.
 
 ### Mark Placeholders
 
-Stick to the Unix rules on optional and required arguments, and selection of item sets.
+Stick to the Unix rules on optional and required arguments, and selection of item sets:
 
 * `<required argument or value>`
 * `[optional argument or value]`
