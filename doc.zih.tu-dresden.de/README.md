@@ -423,7 +423,7 @@ We follow this rules regarding prompts:
 
 *Remarks:*
 
-* **Always use a prompt**, even there is no output provided for the show command.
+* **Always use a prompt**, even there is no output provided for the shown command.
 * Using some magic, the prompt as well as the output is identified and will not be copied!
 * Stick to the [generic user name](#data-privacy-and-generic-user-name) `marie`.
 
@@ -436,13 +436,7 @@ highlighting.  There is a complete list of supported
 
 For consistency, use the following short codes within this project:
 
-* `bash` for shell scripts
-* `console` for command lines including prompt w/o output
-* `python` for Python source code
-* `pycon` for Python console output
-
-
-Shell session and console:
+`console` for shell session and console:
 
 ```` markdown
 ```console
@@ -452,7 +446,7 @@ bar
 ```
 ````
 
-Shell scripts such as jobfiles:
+`bash` for shell scripts such as jobfiles:
 
 ```` markdown
 ```bash
@@ -467,7 +461,7 @@ srun a.out
 ```
 ````
 
-Python source code:
+`python` for Python source code:
 
 ```` markdown
 ```python
@@ -476,7 +470,7 @@ print(strftime("%Y-%m-%d %H:%M:%S", gmtime()))
 ```
 ````
 
-Python console:
+`pycon` for Python console:
 
 ```` markdown
 ```pycon
