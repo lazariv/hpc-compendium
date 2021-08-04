@@ -74,7 +74,9 @@ nav:
   - Data Life Cycle Management:
     - Overview: data_lifecycle/overview.md
     - Filesystems:
-      - Filesystems: data_lifecycle/file_systems.md
+      - Overview: data_lifecycle/file_systems.md
+      - Permanent File Systems: data_lifecycle/permanent.md
+      - Lustre: data_lifecycle/lustre.md
       - BeeGFS: data_lifecycle/bee_gfs.md
       - Intermediate Archive: data_lifecycle/intermediate_archive.md
       - Quotas: data_lifecycle/quotas.md
