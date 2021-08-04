@@ -226,4 +226,4 @@ warnings could be ssh etc, and it could be not affecting the frameworks
 !!! help
 
     If you have questions or need advice, please see
-    [https://www.scads.ai/services](https://www.scads.ai/services) or contact the HPC support.
+    [https://www.scads.de/transfer-2/beratung-und-support-en/](https://www.scads.de/transfer-2/beratung-und-support-en/) or contact the HPC support.
