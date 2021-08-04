@@ -133,14 +133,20 @@ the documentation. If you want to check whether the markdown files are formatted
 following command:
 
 ```Bash
-docker run -it hpc-compendium markdownlint docs
+docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium markdownlint docs
 ```
 
 To check whether there are links that point to a wrong target, use
 (this may take a while and gives a lot of output because it runs over all files):
 
 ```Bash
-docker run -it hpc-compendium bash -c "find docs -type f -name '*.md' | xargs -L1 markdown-link-check"
+docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium bash -c "find docs -type f -name '*.md' | xargs -L1 markdown-link-check"
+```
+
+To check a single file, e. g. `doc.zih.tu-dresden.de/docs/software/big_data_frameworks.md`, use:
+
+```Bash
+docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium markdown-link-check docs/software/big_data_frameworks.md
 ```
 
 #### Build Static Documentation
