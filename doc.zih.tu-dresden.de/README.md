@@ -127,7 +127,7 @@ INFO    -  Documentation built in 0.09 seconds
 
 It is crucial to keep your branch synchronized with the upstream repository when you are working
 locally on the documentation. At first, you should add a remote pointing to the official
-documentation. 
+documentation.
 
 ```Shell Session
 ~ git remote add upstream-zih git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git
@@ -139,9 +139,9 @@ whereas *upstream-zih* points to the original documentation repository at GitLab
 ```Shell Session
 $ git remote -v
 origin  git@gitlab.hrz.tu-chemnitz.de:LOGIN/hpc-compendium.git (fetch)
-origin	git@gitlab.hrz.tu-chemnitz.de:LOGIN/hpc-compendium.git (push)
+origin  git@gitlab.hrz.tu-chemnitz.de:LOGIN/hpc-compendium.git (push)
 upstream-zih  git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git (fetch)
-upstream-zih	git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git (push)
+upstream-zih  git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git (push)
 ```
 
 Next, you should synchronize your `main` branch with the upstream.
@@ -303,7 +303,7 @@ changes to make sure your commit passes the CI/CD pipeline.
 
 ### Check Code and Commands
 
-The script `xyz.sh` checks if the code chunks are runnable on a login node. 
+The script `xyz.sh` checks if the code chunks are runnable on a login node.
 It is invoked as follows ...
 
 **TODO:** Implement [Issue #9](#9)
@@ -317,7 +317,7 @@ the second check tests if every markdown file is included in the navigation sect
 The script is invoked and reports as follows
 
 ```Shell Session
-~ sh doc.zih.tu-dresden.de/util/check-no-floating.sh doc.zih.tu-dresden.de 
+~ sh doc.zih.tu-dresden.de/util/check-no-floating.sh doc.zih.tu-dresden.de
 HardwareTaurus.md is not included in nav
 BigDataFrameworksApacheSparkApacheFlinkApacheHadoop.md is not included in nav
 pika.md is not included in nav
@@ -360,17 +360,17 @@ structure.
 1. Do not add large binary files or high resolution images to the repository. See this valuable
    document for [image optimization](https://web.dev/fast/#optimize-your-images).
 
-1. [Admonitions](https://squidfunk.github.io/mkdocs-material/reference/admonitions/) may be 
-actively used, especially for longer code examples, warnings, tips, important information that 
-should be highlighted, etc. Code examples, longer than half screen height should collapsed 
+1. [Admonitions](https://squidfunk.github.io/mkdocs-material/reference/admonitions/) may be
+actively used, especially for longer code examples, warnings, tips, important information that
+should be highlighted, etc. Code examples, longer than half screen height should collapsed
 (and indented):
 
 ??? example
-    ```Bash   
+    ```Bash
     [...]
     # very long example here
     [...]
-    ``` 
+    ```
 
 ### Writing Style
 
@@ -395,36 +395,91 @@ there is a list of conventions w.r.t. spelling and technical wording.
 
 ### Code Blocks and Command Prompts
 
-Showing commands and sample output is an important part of all technical documentation. Thus, some
-rules have to be followed.
+Showing commands and sample output is an important part of all technical documentation. To make
+things as clear for readers as possible and provide a consistent documentation, some rules have to
+be followed.
 
 1. Use ticks to mark code blocks and commands, not italic font.
+1. Specify language for code blocks ([see below](#code-blocks-and-syntax-highlighting)).
+1. All code blocks and commands should be runnable from a login node or a node within a specific
+   partition (e.g., `ml`).
+1. It should be clear from the prompt, where the command is run (e.g. local machine, login node or
+   specific partition).
 
-1. Specify language for code blocks, refer to [highlight.js](https://highlightjs.org/static/demo/)
-    for supported languages.
+#### Prompts
 
-1. All code blocks and commands should be runnable from a login node.
+We follow this rules regarding prompts:
 
-1. Prompts: It should be clear from the prompt, where the command is run (e.g. Taurus, specific
-   partition or local machine).
-    * ZIH HPC systems in general: `zih$`
-    * Specific kind of node or partition: `tauruslogin$`, `taurus-ml$` `taurus-rome$`etc.
-    * Local machine: `localhost$`
-    * No output: Omit prompt (copy-paste)
-    * With Output: Add prompt (make clear what is the command and what is the output)
+| Host/Partition         | Prompt           |
+|------------------------|------------------|
+| Login nodes            | `marie@login$`   |
+| Arbitrary compute node | `marie@compute$` |
+| `haswell` partition    | `marie@haswell$` |
+| `ml` partition         | `marie@ml$`      |
+| `alpha` partition      | `marie@alpha$`   |
+| `alpha` partition      | `marie@alpha$`   |
+| `romeo` partition      | `marie@romeo$`   |
+| `julia` partition      | `marie@julia$`   |
+| Localhost              | `marie@local$`   |
+
+*Remarks:*
+
+* **Always use a prompt**, even there is no output provided for the shown command.
+* Using some magic, the prompt as well as the output is identified and will not be copied!
+* Stick to the [generic user name](#data-privacy-and-generic-user-name) `marie`.
 
 #### Code Blocks and Syntax Highlighting
 
 This project makes use of the extension
 [pymdownx.highlight](https://squidfunk.github.io/mkdocs-material/reference/code-blocks/) for syntax
-highlighting.
+highlighting.  There is a complete list of supported
+[language short codes](https://pygments.org/docs/lexers/).
 
-There is complete list of supported [language short codes](https://pygments.org/docs/lexers/).
-Use the following short codes within this project for consistency:
+For consistency, use the following short codes within this project:
 
-* `{bash}` for shell scripts
-* `{shell-session}` for command lines including prompt
-* `{python}` for Python source code
+`console` for shell session and console:
+
+```` markdown
+```console
+marie@login$ ls
+foo
+bar
+```
+````
+
+`bash` for shell scripts such as jobfiles:
+
+```` markdown
+```bash
+#!/bin/bash
+#SBATCH -N 1
+#SBATCH -t 01:00:00
+#SBATCH -o slurm-%j.out
+
+module load foss
+
+srun a.out
+```
+````
+
+`python` for Python source code:
+
+```` markdown
+```python
+from time import gmtime, strftime
+print(strftime("%Y-%m-%d %H:%M:%S", gmtime()))
+```
+````
+
+`pycon` for Python console:
+
+```` markdown
+```pycon
+>>> from time import gmtime, strftime
+>>> print(strftime("%Y-%m-%d %H:%M:%S", gmtime()))
+2021-08-03 07:20:33
+```
+````
 
 Line numbers can be added via
 
@@ -465,10 +520,10 @@ _Result_:
 ### Data Privacy and Generic User Name
 
 Where possible, replace login, project name and other private data with clearly arbitrary placeholders.
-E.g., use generic login `marie` and project name `p_marie`.
+E.g., use the generic login `marie` and the corresponding project name `p_marie`.
 
-```Shell Session
-taurus$ ls -l
+```console
+marie@login$ ls -l
 drwxr-xr-x   3 marie p_marie      4096 Jan 24  2020 code
 drwxr-xr-x   3 marie p_marie      4096 Feb 12  2020 data
 -rw-rw----   1 marie p_marie      4096 Jan 24  2020 readme.md
@@ -480,7 +535,7 @@ If showing only a snippet of a long output, omissions are marked with `[...]`.
 
 ### Mark Placeholders
 
-Stick to the Unix rules on optional and required arguments, and selection of item sets.
+Stick to the Unix rules on optional and required arguments, and selection of item sets:
 
 * `<required argument or value>`
 * `[optional argument or value]`
