@@ -30,7 +30,7 @@ module load ramdisk
 Afterwards, the ramdisk can be created with the command
 
 ```Bash
-make-ramdisk &laquo;size of the ramdisk in GB&raquo; 
+make-ramdisk &laquo;size of the ramdisk in GB&raquo;
 ```
 
 The path to the ramdisk is fixed to `/ramdisks/«JOBID»`.
@@ -63,7 +63,7 @@ this is typically that some process still has a file open within the
 ramdisk or that there is still a program using the ramdisk or having the
 ramdisk as its current path. Locating these processes, that block the
 destruction of the ramdisk is possible via using the command
- 
+
 ```Bash
 lsof +d /ramdisks/&laquo;JOBID&raquo;
 ```

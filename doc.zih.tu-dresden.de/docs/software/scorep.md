@@ -2,34 +2,34 @@
 
 The Score-P measurement infrastructure is a highly scalable and easy-to-use tool suite for
 profiling, event tracing, and online analysis of HPC applications. Currently, it works with the
-analysis tools Vampir, Scalasca, Periscope, and Tau. Score-P supports lots of features e.g.
+analysis tools Vampir, Scalasca, and Tau. Score-P supports lots of features e.g.
 
-* MPI, SHMEM, OpenMP, pthreads, and hybrid programs
+* MPI, SHMEM, OpenMP, Pthreads, and hybrid programs
 * Manual source code instrumentation
-* Monitoring of CUDA applications
+* Monitoring of CUDA, OpenCL, and OpenACC applications
 * Recording hardware counter by using PAPI library
-* Function filtering and grouping 
+* Function filtering and grouping
 
 Only the basic usage is shown in this Wiki. For a comprehensive Score-P user manual refer to the
-[Score-P website](https://www.vi-hps.org/projects/score-p/).
+[Score-P website](https://score-p.org/).
 
 Before using Score-P, set up the correct environment with
 
-```Bash
-module load scorep
+```console
+$ module load Score-P
 ```
 
 To make measurements with Score-P, the user's application program needs to be instrumented, i.e., at
 specific important points ("events") Score-P measurement calls have to be activated. By default,
 Score-P handles this automatically. In order to enable instrumentation of function calls, MPI as
-well as OpenMP events, the user only needs to prepend the Score-P wrapper to the usual compiler and
-linker commands. The following sections show some examples depending on the parallelization type of
+well as OpenMP events, the user only needs to prepend the Score-P wrapper to the usual compile and
+link commands. The following sections show some examples depending on the parallelization type of
 the program.
 
 ## Serial Programs
 
 * original: `ifort a.f90 b.f90 -o myprog`
-* with instrumentation:	`scorep ifort a.f90 b.f90 -o myprog`
+* with instrumentation: `scorep ifort a.f90 b.f90 -o myprog`
 
 This will instrument user functions (if supported by the compiler) and link the Score-P library.
 
@@ -41,13 +41,13 @@ automatically:
 * original: `mpicc hello.c -o hello`
 * with instrumentation: `scorep mpicc hello.c -o hello`
 
-MPI implementations without own compilers (as on the Altix) require the user to link the MPI library
+MPI implementations without own compilers require the user to link the MPI library
 manually. Even in this case, Score-P will detect MPI parallelization automatically:
 
 * original: `icc hello.c -o hello -lmpi`
 * with instrumentation: `scorep icc hello.c -o hello -lmpi`
 
-However, if Score-P falis to detect MPI parallelization automatically you can manually select MPI
+However, if Score-P fails to detect MPI parallelization automatically you can manually select MPI
 instrumentation:
 
 * original: `icc hello.c -o hello -lmpi`
@@ -61,17 +61,17 @@ option `--nocompiler` to disable automatic instrumentation of user functions.
 When Score-P detects OpenMP flags on the command line, OPARI2 is invoked for automatic source code
 instrumentation of OpenMP events:
 
-* original:	`ifort -openmp pi.f -o pi`
-* with instrumentation:	`scorep ifort -openmp pi.f -o pi`
+* original: `ifort -openmp pi.f -o pi`
+* with instrumentation: `scorep ifort -openmp pi.f -o pi`
 
 ## Hybrid MPI/OpenMP Parallel Programs
 
 With a combination of the above mentioned approaches, hybrid applications can be instrumented:
 
-* original:	`mpif90 -openmp hybrid.F90 -o hybrid`
+* original: `mpif90 -openmp hybrid.F90 -o hybrid`
 * with instrumentation: `scorep mpif90 -openmp hybrid.F90 -o hybrid`
 
-## Score-P instrumenter option overview
+## Score-P Instrumenter Option Overview
 
 | Type of instrumentation | Instrumenter switch | Default value | Runtime measurement control |
 | --- | --- | --- | --- |
@@ -90,16 +90,15 @@ After the application run, you will find an experiment directory in your current
 which contains all recorded data.  In general, you can record a profile and/or a event trace.
 Whether a profile and/or a trace is recorded, is specified by the environment variables
 `SCOREP_ENABLE_PROFILING` and `SCOREP_ENABLE_TRACING` (see
-[documentation](https://perftools.pages.jsc.fz-juelich.de/cicd/scorep/tags/scorep-7.0/html/measurement.html)).
+[documentation](https://perftools.pages.jsc.fz-juelich.de/cicd/scorep/tags/latest/html/measurement.html)).
 If the value of this variables is zero or false, profiling/tracing is disabled. Otherwise Score-P
 will record a profile and/or trace. By default, profiling is enabled and tracing is disabled. For
-more information please see
-[the list of Score-P measurement configuration variables]
-(https://perftools.pages.jsc.fz-juelich.de/cicd/scorep/tags/scorep-7.0/html/scorepmeasurementconfig.html)
+more information please see the list of Score-P measurement
+[configuration variables](https://perftools.pages.jsc.fz-juelich.de/cicd/scorep/tags/latest/html/scorepmeasurementconfig.html).
 
 You may start with a profiling run, because of its lower space requirements. According to profiling
 results, you may configure the trace buffer limits, filtering or selective recording for recording
 traces.  Score-P allows to configure several parameters via environment variables. After the
-measurement run you can find a scorep.cfg file in your experiment directory which contains the
+measurement run you can find a `scorep.cfg` file in your experiment directory which contains the
 configuration of the measurement run. If you had not set configuration values explicitly, the file
-will contain the default values. 
+will contain the default values.

@@ -5,7 +5,7 @@ Keras machine learning application on the new machine learning partition
 of Taurus.
 
 Keras is a high-level neural network API,
-written in Python and capable of running on top of 
+written in Python and capable of running on top of
 [TensorFlow](https://github.com/tensorflow/tensorflow).
 In this page, [Keras](https://www.tensorflow.org/guide/keras) will be
 considered as a TensorFlow's high-level API for building and training
@@ -28,7 +28,7 @@ options:
 - use Keras separately and use Tensorflow as an interface between
     Keras and GPUs.
 
-**Prerequisites**: To work with Keras you, first of all, need 
+**Prerequisites**: To work with Keras you, first of all, need
 [access](../access/login.md) for the Taurus system, loaded
 Tensorflow module on ml partition, activated Python virtual environment.
 Basic knowledge about Python, SLURM system also required.
@@ -41,19 +41,19 @@ There are three main options on how to work with Keras and Tensorflow on
 the HPC-DA: 1. Modules; 2. JupyterNotebook; 3. Containers. One of the
 main ways is using the **TODO LINK MISSING** (Modules
 system)(RuntimeEnvironment#Module_Environments) and Python virtual
-environment. Please see the 
+environment. Please see the
 [Python page](./python.md) for the HPC-DA
 system.
 
 The information about the Jupyter notebook and the **JupyterHub** could
 be found [here](../access/jupyterhub.md). The use of
-Containers is described [here](tensor_flow_container_on_hpcda.md).
+Containers is described [here](tensorflow_container_on_hpcda.md).
 
 Keras contains numerous implementations of commonly used neural-network
 building blocks such as layers,
 [objectives](https://en.wikipedia.org/wiki/Objective_function),
 [activation functions](https://en.wikipedia.org/wiki/Activation_function)
-[optimizers](https://en.wikipedia.org/wiki/Mathematical_optimization), 
+[optimizers](https://en.wikipedia.org/wiki/Mathematical_optimization),
 and a host of tools
 to make working with image and text data easier. Keras, for example, has
 a library for preprocessing the image data.
@@ -62,7 +62,7 @@ The core data structure of Keras is a
 **model**, a way to organize layers. The Keras functional API is the way
 to go for defining as simple (sequential) as complex models, such as
 multi-output models, directed acyclic graphs, or models with shared
-layers. 
+layers.
 
 ## Getting started with Keras
 
@@ -71,14 +71,14 @@ Keras (using the module system). To get started, import [tf.keras](https://www.t
 as part of your TensorFlow program setup.
 tf.keras is TensorFlow's implementation of the [Keras API
 specification](https://keras.io/). This is a modified example that we
-used for the [Tensorflow page](./tensor_flow.md).
+used for the [Tensorflow page](./tensorflow.md).
 
 ```bash
 srun -p ml --gres=gpu:1 -n 1 --pty --mem-per-cpu=8000 bash
 
 module load modenv/ml                           #example output: The following have been reloaded with a version change:  1) modenv/scs5 => modenv/ml
 
-mkdir python-virtual-environments 
+mkdir python-virtual-environments
 cd python-virtual-environments
 module load TensorFlow                          #example output: Module TensorFlow/1.10.0-PythonAnaconda-3.6 and 1 dependency loaded.
 which python
@@ -164,8 +164,8 @@ Generally, for machine learning purposes ml partition is used but for
 some special issues, SCS5 partition can be useful. The following sbatch
 script will automatically execute the above Python script on ml
 partition. If you have a question about the sbatch script see the
-article about [SLURM](./../jobs_and_resources/binding_and_distribution_of_tasks.md). 
-Keep in mind that you need to put the executable file (Keras_example) with 
+article about [SLURM](./../jobs_and_resources/binding_and_distribution_of_tasks.md).
+Keep in mind that you need to put the executable file (Keras_example) with
 python code to the same folder as bash script or specify the path.
 
 ```bash
@@ -220,13 +220,13 @@ renaming symbols, and changing default values for parameters. Thus in
 some cases, it makes code written for the TensorFlow 1 not compatible
 with TensorFlow 2. However, If you are using the high-level APIs
 **(tf.keras)** there may be little or no action you need to take to make
-your code fully TensorFlow 2.0 [compatible](https://www.tensorflow.org/guide/migrate). 
+your code fully TensorFlow 2.0 [compatible](https://www.tensorflow.org/guide/migrate).
 It is still possible to run 1.X code,
 unmodified ([except for contrib](https://github.com/tensorflow/community/blob/master/rfcs/20180907-contrib-sunset.md)
 ), in TensorFlow 2.0:
 
 ```python
-import tensorflow.compat.v1 as tf 
+import tensorflow.compat.v1 as tf
 tf.disable_v2_behavior()                  #instead of "import tensorflow as tf"
 ```
 

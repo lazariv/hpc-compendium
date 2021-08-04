@@ -4,14 +4,6 @@
 entry focusses on the latter. These tools are installed on taurus, and others and provides support
 for sampling applications and reading performance counters.
 
-## Installation
-
-On taurus load the module via
-
-```Bash
-module load perf/r31
-```
-
 ## Configuration
 
 Admins can change the behaviour of the perf tools kernel part via the

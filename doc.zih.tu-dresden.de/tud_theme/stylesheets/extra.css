@@ -66,9 +66,15 @@ strong {
 .md-grid {
     max-width: 1600px;
 }
+
+.md-typeset code {
+    word-break: normal;
+}
+
+
 /* header */
 .zih-logo img{
-    display: inline-none;
+    display: none;
 }
 @media screen and (min-width: 76.25rem) {
     .md-header,
@@ -145,4 +151,12 @@ strong {
 
 .md-footer {
     background-color: var(--md-primary-fg-color);
+}
+
+.highlight .go {
+    user-select: none;
+}
+
+.highlight .gp {
+    user-select: none;
 }
