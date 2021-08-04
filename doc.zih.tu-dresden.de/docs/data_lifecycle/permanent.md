@@ -5,12 +5,10 @@
 Each user has 50 GB in a `/home` directory independent of the granted capacity for the project.
 Hints for the usage of the global home directory:
 
+- Do not use your `/home` as work directory: Frequent changes (like temporary output from a
+  running job) would fill snapshots and backups (see below).
 - If you need distinct `.bashrc` files for each machine, you should
   create separate files for them, named `.bashrc_<machine_name>`
-- If you use various machines frequently, it might be useful to set
-  the environment variable HISTFILE in `.bashrc_deimos` and
-  `.bashrc_mars` to `$HOME/.bash_history_<machine_name>`. Setting
-  HISTSIZE and HISTFILESIZE to 10000 helps as well.
 - Further, you may use private module files to simplify the process of
   loading the right installation directories, see
   **todo link: private modules - AnchorPrivateModule**.
@@ -19,8 +17,7 @@ Hints for the usage of the global home directory:
 
 For project data, we have a global project directory, that allows better collaboration between the
 members of an HPC project. However, for compute nodes /projects is mounted as read-only, because it
-is not a filesystem for parallel I/O. See below and also check the
-**todo link: HPC introduction - %PUBURL%/Compendium/WebHome/HPC-Introduction.pdf** for more details.
+is not a filesystem for parallel I/O.
 
 ## Backup and Snapshots of the File System
 
@@ -70,4 +67,3 @@ In case a project is above it's limits please ...
     archives with meaningful names or IDs and store e.g. them in an
     [archive](intermediate_archive.md).
   - Refer to the hints for [long term preservation for research data](preservation_research_data.md)
-  

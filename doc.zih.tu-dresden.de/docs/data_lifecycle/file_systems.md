@@ -4,7 +4,6 @@ As soon as you have access to ZIH systems you have to manage your data. Several 
 available. Each file system serves for special purpose according to their respective capacity,
 performance and permanence.
 
-
 ## Work Directories
 
 | File system | Usable directory  | Capacity | Availability | Backup | Remarks                                                                                                                                                         |
@@ -12,8 +11,7 @@ performance and permanence.
 | `Lustre`    | `/scratch/`       | 4 PB     | global       | No     | Only accessible via **todo link: workspaces - WorkSpaces**. Not made for billions of files!                                                                                   |
 | `Lustre`    | `/lustre/ssd`     | 40 TB    | global       | No     | Only accessible via **todo link: workspaces - WorkSpaces**. For small I/O operations                                                                                          |
 | `BeeGFS`    | `/beegfs/global0` | 232 TB   | global       | No     | Only accessible via **todo link: workspaces - WorkSpaces**. Fastest available file system, only for large parallel applications running with millions of small I/O operations |
-| `ext4`      | `/tmp`            | 95.0 GB  | local        | No     | is cleaned up after the job automatically                                                                                                                       |
-
+| `ext4`      | `/tmp`            | 95.0 GB  | local        | No     | is cleaned up after the job automatically  |
 
 ## Warm Archive
 
@@ -77,8 +75,6 @@ output.
 
 We do **not recommend** the usage of the "du"-command for this purpose.  It is able to cause issues
 for other users, while reading data from the filesystem.
-
-
 
 ### BeeGFS
 

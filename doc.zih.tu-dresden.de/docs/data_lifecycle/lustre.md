@@ -1,8 +1,6 @@
 # Lustre File System(s)
 
-
-
-### Large Files in /scratch
+## Large Files in /scratch
 
 The data containers in Lustre are called object storage targets (OST).  The capacity of one OST is
 about 21 TB. All files are striped over a certain number of these OSTs. For small and medium files,
@@ -20,8 +18,8 @@ lfs setstripe -c 20  /scratch/ws/mark-stripe20/tar
 **Note:** This does not affect existing files. But all files that **will be created** in this
 directory will be distributed over 20 OSTs.
 
-
 ## Useful Commands for Lustre
+
 These commands work for `/scratch` and `/ssd`.
 
 ### Listing Disk Usages per OST and MDT
@@ -57,5 +55,4 @@ lfs getstripe myfile
 lfs getstripe -d mydirectory
 ```
 
-The `-d`-parameter will also display striping for all files in the directory
-
+The `-d`-parameter will also display striping for all files in the directory.
