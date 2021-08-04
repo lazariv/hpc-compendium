@@ -9,8 +9,8 @@ and [Apache Hadoop](https://hadoop.apache.org/) are frameworks for processing an
 Big Data. These frameworks are also offered as software [modules](modules.md) on Taurus
 for both ml and scs5 partitions. You could check module availability with the command:
 
-```bash
-module av Spark
+```console
+marie@login$ module av Spark
 ```
 
 **Aim** of this page is to introduce users on how to start working with
@@ -43,31 +43,34 @@ Thus, it could be used for different CPU architectures: Haswell, Power9
 
 Let us assume that 2 nodes should be used for the computation. Use a
 `srun` command similar to the following to start an interactive session
-using the Haswell partition:
+using the Haswell partition. The following code snippet shows a job submission
+to haswell nodes with an allocation of 2 nodes with 60 GB main memory
+exclusively for 1 hour:
 
-```bash
-srun --partition=haswell -N2 --mem=60g --exclusive --time=01:00:00 --pty bash -l                     #Job submission to haswell nodes with an allocation of 2 nodes with 60 GB main memory exclusively for 1 hour
+```console
+marie@login$ srun --partition=haswell -N2 --mem=60g --exclusive --time=01:00:00 --pty bash -l
 ```
 
 The command for different resource allocation on the **ml** partition is
-similar:
+similar, e. g. for a job submission to **ml** nodes with an allocation of 1
+node, 1 task per node, 2 CPUs per task, 1 gpu per node, with 10000 MB for 1 hour:
 
-```bash
-srun -p ml -N 1 -n 1 -c 2 --gres=gpu:1 --time=01:00:00 --pty --mem-per-cpu=10000 bash    #job submission to ml nodes with an allocation of 1 node, 1 task per node, 2 CPUs per task, 1 gpu per node, with 10000 MB for 1 hour.
+```console
+marie@login$ srun -p ml -N 1 -n 1 -c 2 --gres=gpu:1 --time=01:00:00 --pty --mem-per-cpu=10000 bash
 ```
 
 Once you have the shell, load Spark using the following command:
 
-```bash
-module load Spark
+```console
+marie@compute$ module load Spark
 ```
 
 Before the application can be started, the Spark cluster needs to be set
 up. To do this, configure Spark first using configuration template at
 `$SPARK_HOME/conf`:
 
-```bash
-source framework-configure.sh spark $SPARK_HOME/conf
+```console
+marie@compute$ source framework-configure.sh spark $SPARK_HOME/conf
 ```
 
 This places the configuration in a directory called
@@ -75,15 +78,15 @@ This places the configuration in a directory called
 for the job id of the SLURM job. After that, you can start Spark in the
 usual way:
 
-```bash
-start-all.sh
+```console
+marie@compute$ start-all.sh
 ```
 
 The Spark processes should now be set up and you can start your
 application, e. g.:
 
-```bash
-spark-submit --class org.apache.spark.examples.SparkPi $SPARK_HOME/examples/jars/spark-examples_2.11-2.4.4.jar 1000
+```console
+marie@compute$ spark-submit --class org.apache.spark.examples.SparkPi $SPARK_HOME/examples/jars/spark-examples_2.11-2.4.4.jar 1000
 ```
 
 !!! warning
@@ -117,28 +120,32 @@ If you want to run Spark in Jupyter notebooks, you have to prepare it first. Thi
 to the [description for custom environments](../access/jupyterhub.md#conda-environment).
 You start with an allocation:
 
-```bash
-srun --pty -n 1 -c 2 --mem-per-cpu 2583 -t 01:00:00 bash -l
+```console
+marie@login$ srun --pty -n 1 -c 2 --mem-per-cpu 2500 -t 01:00:00 bash -l
 ```
 
 When a node is allocated, install the required package with Anaconda:
 
-```bash
-module load Anaconda3
-cd
-mkdir user-kernel
-conda create --prefix $HOME/user-kernel/haswell-py3.6-spark python=3.6      #Example output: Collecting package metadata:done Solving environment: done [...]
+```console
+marie@compute$ module load Anaconda3
+marie@compute$ cd
+marie@compute$ mkdir user-kernel
+marie@compute$ conda create --prefix $HOME/user-kernel/haswell-py3.6-spark python=3.6
+Collecting package metadata: done
+Solving environment: done [...]
 
-conda activate $HOME/user-kernel/haswell-py3.6-spark
-conda install ipykernel                                            #Example output: Collecting package metadata: done Solving environment: done[...]
+marie@compute$ conda activate $HOME/user-kernel/haswell-py3.6-spark
+marie@compute$ conda install ipykernel
+Collecting package metadata: done
+Solving environment: done [...]
 
-python -m ipykernel install --user --name haswell-py3.6-spark --display-name="haswell-py3.6-spark"   #Example output: Installed kernelspec haswell-py3.6-spark in [...]
+marie@compute$ python -m ipykernel install --user --name haswell-py3.6-spark --display-name="haswell-py3.6-spark"
+Installed kernelspec haswell-py3.6-spark in [...]
 
-conda install -c conda-forge findspark
-conda install pyspark
-conda install keras
+marie@compute$ conda install -c conda-forge findspark
+marie@compute$ conda install pyspark
 
-conda deactivate
+marie@compute$ conda deactivate
 ```
 
 You are now ready to spawn a notebook with Spark.
@@ -152,7 +159,7 @@ to the field "Preload modules" and select one of the Spark modules.
 When your jupyter instance is started, check whether the kernel that
 you created in the preparation phase (see above) is shown in the top
 right corner of the notebook. If it is not already selected, select the
-kernel haswell-py3.6-spark. Then, you can set up Spark. Since the setup
+kernel **haswell-py3.6-spark**. Then, you can set up Spark. Since the setup
 in the notebook requires more steps than in an interactive session, we
 have created an example notebook that you can use as a starting point
 for convenience: [SparkExample.ipynb](misc/SparkExample.ipynb)
@@ -179,15 +186,15 @@ configuration template is reusable for different jobs. You can start
 with a copy of the default configuration ahead of your interactive
 session:
 
-```bash
-cp -r $SPARK_HOME/conf my-config-template
+```console
+marie@login$ cp -r $SPARK_HOME/conf my-config-template
 ```
 
 After you have changed `my-config-template`, you can use your new template
 in an interactive job with:
 
-```bash
-source framework-configure.sh spark my-config-template 
+```console
+marie@compute$ source framework-configure.sh spark my-config-template 
 ```
 
 ## Interactive jobs with Spark and Hadoop Distributed File System (HDFS)
@@ -195,13 +202,13 @@ source framework-configure.sh spark my-config-template
 If you want to use Spark and HDFS together (or in general more than one
 framework), a scheme similar to the following can be used:
 
-```bash
-module load Hadoop
-module load Spark
-source framework-configure.sh hadoop $HADOOP_ROOT_DIR/etc/hadoop
-source framework-configure.sh spark $SPARK_HOME/conf
-start-dfs.sh
-start-all.sh
+```console
+marie@compute$ module load Hadoop
+marie@compute$ module load Spark
+marie@compute$ source framework-configure.sh hadoop $HADOOP_ROOT_DIR/etc/hadoop
+marie@compute$ source framework-configure.sh spark $SPARK_HOME/conf
+marie@compute$ start-dfs.sh
+marie@compute$ start-all.sh
 ```
 
 Note: It is recommended to use ssh keys to avoid entering the password
