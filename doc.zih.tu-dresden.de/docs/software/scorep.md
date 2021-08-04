@@ -16,7 +16,7 @@ Only the basic usage is shown in this Wiki. For a comprehensive Score-P user man
 Before using Score-P, set up the correct environment with
 
 ```console
-$ module load Score-P
+marie@login$ module load Score-P
 ```
 
 To make measurements with Score-P, the user's application program needs to be instrumented, i.e., at
@@ -28,8 +28,17 @@ the program.
 
 ## Serial Programs
 
-* original: `ifort a.f90 b.f90 -o myprog`
-* with instrumentation: `scorep ifort a.f90 b.f90 -o myprog`
+Original:
+
+```console
+marie@login$ ifort a.f90 b.f90 -o myprog
+```
+
+With instrumentation:
+
+```console
+marie@login$ scorep ifort a.f90 b.f90 -o myprog
+```
 
 This will instrument user functions (if supported by the compiler) and link the Score-P library.
 
@@ -38,20 +47,47 @@ This will instrument user functions (if supported by the compiler) and link the 
 If your MPI implementation uses MPI compilers, Score-P will detect MPI parallelization
 automatically:
 
-* original: `mpicc hello.c -o hello`
-* with instrumentation: `scorep mpicc hello.c -o hello`
+Original:
+
+```console
+marie@login$ mpicc hello.c -o hello
+```
+
+With instrumentation:
+
+```console
+marie@login$ scorep mpicc hello.c -o hello
+```
 
 MPI implementations without own compilers require the user to link the MPI library
 manually. Even in this case, Score-P will detect MPI parallelization automatically:
 
-* original: `icc hello.c -o hello -lmpi`
-* with instrumentation: `scorep icc hello.c -o hello -lmpi`
+Original:
+
+```console
+marie@login$ icc hello.c -o hello -lmpi
+```
+
+With instrumentation:
+
+```console
+marie@login$ scorep icc hello.c -o hello -lmpi
+```
 
 However, if Score-P fails to detect MPI parallelization automatically you can manually select MPI
 instrumentation:
 
-* original: `icc hello.c -o hello -lmpi`
-* with instrumentation: `scorep --mpp=mpi icc hello.c -o hello -lmpi`
+Original:
+
+```console
+marie@login$ icc hello.c -o hello -lmpi
+```
+
+With instrumentation:
+
+```console
+marie@login$ scorep --mpp=mpi icc hello.c -o hello -lmpi
+```
 
 If you want to instrument MPI events only (creates less overhead and smaller trace files) use the
 option `--nocompiler` to disable automatic instrumentation of user functions.
@@ -61,15 +97,33 @@ option `--nocompiler` to disable automatic instrumentation of user functions.
 When Score-P detects OpenMP flags on the command line, OPARI2 is invoked for automatic source code
 instrumentation of OpenMP events:
 
-* original: `ifort -openmp pi.f -o pi`
-* with instrumentation: `scorep ifort -openmp pi.f -o pi`
+Original:
+
+```console
+marie@login$ ifort -openmp pi.f -o pi
+```
+
+With instrumentation:
+
+```console
+marie@login$ scorep ifort -openmp pi.f -o pi
+```
 
 ## Hybrid MPI/OpenMP Parallel Programs
 
 With a combination of the above mentioned approaches, hybrid applications can be instrumented:
 
-* original: `mpif90 -openmp hybrid.F90 -o hybrid`
-* with instrumentation: `scorep mpif90 -openmp hybrid.F90 -o hybrid`
+Original:
+
+```console
+marie@login$ mpif90 -openmp hybrid.F90 -o hybrid
+```
+
+With instrumentation:
+
+```console
+marie@login$ scorep mpif90 -openmp hybrid.F90 -o hybrid
+```
 
 ## Score-P Instrumenter Option Overview
 

@@ -26,7 +26,7 @@ Prior to using Vampir you need to set up the correct environment on one
 the HPC systems with:
 
 ```console
-$ module load Vampir
+marie@login$ module load Vampir
 ```
 
 For members of TU Dresden the Vampir tool is also available as
@@ -37,7 +37,7 @@ Make sure, that compressed display forwarding (e.g., `ssh -YC taurus.hrsk.tu-dre
 enabled. Start the GUI by typing
 
 ```console
-$ vampir
+marie@login$ vampir
 ```
 
 on your command line or by double-clicking the Vampir icon on your personal computer.
@@ -65,26 +65,20 @@ Please be patient and take a look at available resources beforehand.
 
 ### Manual Server Startup
 
-VampirServer is a parallel MPI program, which can also be started manually by typing:
+VampirServer is a parallel MPI program, which should be started by typing:
 
 ```console
-$ vampirserver start
+marie@login$ vampirserver start
+Launching VampirServer...
+Submitting slurm 30 minutes job (this might take a while)...
 ```
 
-Above automatically allocates its resources via the respective batch system. Use
+Above automatically allocates its resources via the respective batch system. If you want to start
+VampirServer without a batch allocation or from inside an interactive allocation, use
 
 ```console
-$ vampirserver start mpi
+marie@compute$ vampirserver start srun
 ```
-
-or
-
-```console
-$ vampirserver start srun
-```
-
-if you want to start vampirserver without batch allocation or inside an interactive allocation. The
-latter is needed whenever you manually take care of the resource allocation by yourself.
 
 After scheduling this job the server prints out the port number it is serving on, like `Listen port:
 30088`.
@@ -96,16 +90,16 @@ name* in the *Open Remote* dialog of Vampir.
 {: align="center"}
 
 Please make sure you stop VampirServer after finishing your work with
-the front-end or with
+the front-end (*File* → *Shutdown Server...*) or with
 
 ```console
-$ vampirserver stop
+marie@login$ vampirserver stop
 ```
 
 Type
 
 ```console
-$ vampirserver help
+marie@login$ vampirserver help
 ```
 
 for further information. The [user manual](http://tu-dresden.de/die_tu_dresden/zentrale_einrichtungen/zih/forschung/projekte/vampir/dateien/VampirServer-User-Manual.pdf)
@@ -113,7 +107,7 @@ of VampirServer can be found at `doc/vampirserver-manual.pdf` in the installatio
 Type
 
 ```console
-$ which vampirserver
+marie@login$ which vampirserver
 ```
 
 to find the revision dependent *installation directory*.
@@ -128,33 +122,39 @@ the tunneling to a VampirServer on a compute node.
 Start VampirServer on the ZIH system and wait for its scheduling:
 
 ```console
-$ vampirserver start
-```
-
-and wait for scheduling
-
-```console
+marie@login$ vampirserver start
 Launching VampirServer...
 Submitting slurm 30 minutes job (this might take a while)...
 salloc: Granted job allocation 2753510
 VampirServer 8.1.0 (r8451)
 Licensed to ZIH, TU Dresden
 Running 4 analysis processes... (abort with vampirserver stop 594)
-VampirServer  listens on: taurusi1253:30055
+VampirServer <594> listens on: taurusi1253:30055
 ```
 
-Open a second console on your local desktop and create an ssh tunnel to the compute node with:
+Or choose from an already running VampirServer:
 
 ```console
-$ ssh -L 30000:taurusi1253:30055 taurus.hrsk.tu-dresden.de
+marie@login$ vampirserver list
+594 taurusi1253:30055 [4x, slurm]
+```
+
+Open a second console on your local computer and establish an SSH tunnel to the compute node with:
+
+```console
+marie@local$ ssh -L 30000:taurusi1253:30055 taurus.hrsk.tu-dresden.de
 ```
 
 Now, the port 30000 on your desktop is connected to the VampirServer port 30055 at the compute node
 taurusi1253 of Taurus. Finally, start your local Vampir client and establish a remote connection to
 `localhost`, port 30000 as described in the manual.
 
-Remark: Please substitute the ports given in this example with appropriate numbers and available
-ports.
+```console
+marie@local$ vampir
+```
+
+**Remark:** Please substitute the ports given in this example with appropriate numbers and available
+ports based on the output from `vampirserver start` or `vampirserver list`.
 
 ### Nightly Builds (unstable)
 
