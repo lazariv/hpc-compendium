@@ -6,23 +6,24 @@
 
 [Apache Spark](https://spark.apache.org/), [Apache Flink](https://flink.apache.org/)
 and [Apache Hadoop](https://hadoop.apache.org/) are frameworks for processing and integrating
-Big Data. These frameworks are also offered as software [modules](modules.md) on Taurus
-for both ml and scs5 partitions. You could check module availability with the command:
+Big Data. These frameworks are also offered as software [modules](modules.md) on both `ml` and
+`scs5` partition. You can check module versions and availability with the command
 
 ```console
 marie@login$ module av Spark
 ```
 
-**Aim** of this page is to introduce users on how to start working with
-the frameworks on ZIH systems, e. g. on the [HPC-DA](../jobs_and_resources/hpcda.md) system.
+The **aim** of this page is to introduce users on how to start working with
+these frameworks on ZIH systems, e. g. on the [HPC-DA](../jobs_and_resources/hpcda.md) system.
 
-**Prerequisites:** To work with the frameworks, you need [access](../access/login.md) to the ZIH
-system and basic knowledge about data analysis and the batch system [Slurm](../jobs_and_resources/slurm.md).
+**Prerequisites:** To work with the frameworks, you need [access](../access/login.md) to ZIH
+systems and basic knowledge about data analysis and the batch system
+[Slurm](../jobs_and_resources/slurm.md).
 
-The usage of big data frameworks is
+The usage of Big Data frameworks is
 different from other modules due to their master-worker approach. That
-means, before an application can be started, one has to do additional
-steps. In the following, we assume that a Spark application should be
+means, before an application can be started, one has to do additional steps.
+In the following, we assume that a Spark application should be
 started.
 
 The steps are:
@@ -32,31 +33,41 @@ The steps are:
 3. Start a Spark cluster
 4. Start the Spark application
 
-## Interactive jobs with Apache Spark with the default configuration
+Apache Spark can be used in [interactive](#interactive-jobs) and [batch](#batch-jobs) jobs as well
+as via [Jupyter notebook](#jupyter-notebook). All three ways are outlined in the following.
 
-The Spark module is available for both **scs5** and **ml** partitions.
-Thus, it could be used for different CPU architectures: Haswell, Power9
-(ml partition) etc.
+!!! note
 
-Let us assume that 2 nodes should be used for the computation. Use a
+    It is recommended to use ssh keys to avoid entering the password
+    every time to log in to nodes. For the details, please check the
+    [external documentation](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/s2-ssh-configuration-keypairs).
+
+## Interactive Jobs
+
+### Default Configuration
+
+The Spark module is available for both `scs5` and `ml` partitions.
+Thus, Spark can be executed using different CPU architectures, e. g., Haswell and Power9.
+
+Let us assume that two nodes should be used for the computation. Use a
 `srun` command similar to the following to start an interactive session
 using the Haswell partition. The following code snippet shows a job submission
-to haswell nodes with an allocation of 2 nodes with 60 GB main memory
-exclusively for 1 hour:
+to Haswell nodes with an allocation of two nodes with 60 GB main memory
+exclusively for one hour:
 
 ```console
-marie@login$ srun --partition=haswell -N2 --mem=60g --exclusive --time=01:00:00 --pty bash -l
+marie@login$ srun --partition=haswell -N 2 --mem=60g --exclusive --time=01:00:00 --pty bash -l
 ```
 
-The command for different resource allocation on the **ml** partition is
-similar, e. g. for a job submission to **ml** nodes with an allocation of 1
-node, 1 task per node, 2 CPUs per task, 1 gpu per node, with 10000 MB for 1 hour:
+The command for different resource allocation on the `ml` partition is
+similar, e. g. for a job submission to `ml` nodes with an allocation of one
+node, one task per node, two CPUs per task, one GPU per node, with 10000 MB for one hour:
 
 ```console
-marie@login$ srun -p ml -N 1 -n 1 -c 2 --gres=gpu:1 --time=01:00:00 --pty --mem-per-cpu=10000 bash
+marie@login$ srun --partition=ml -N 1 -n 1 -c 2 --gres=gpu:1 --mem-per-cpu=10000 --time=01:00:00 --pty bash
 ```
 
-Once you have the shell, load Spark using the following command:
+Once you have the shell, load Spark using the command
 
 ```console
 marie@compute$ module load Spark
@@ -71,8 +82,8 @@ marie@compute$ source framework-configure.sh spark $SPARK_HOME/conf
 ```
 
 This places the configuration in a directory called
-`cluster-conf-<JOB_ID>` in your home directory, where `<JOB_ID>` stands
-for the job id of the SLURM job. After that, you can start Spark in the
+`cluster-conf-<JOB_ID>` in your `home` directory, where `<JOB_ID>` stands
+for the id of the Slurm job. After that, you can start Spark in the
 usual way:
 
 ```console
@@ -88,27 +99,66 @@ marie@compute$ spark-submit --class org.apache.spark.examples.SparkPi $SPARK_HOM
 
 !!! warning
 
-    Please do not delete the directory `cluster-conf-<JOB_ID>` while the job is still
+    Do not delete the directory `cluster-conf-<JOB_ID>` while the job is still
     running. This leads to errors.
 
-## Batch jobs
+### Custom Configuration
+
+The script `framework-configure.sh` is used to derive a configuration from
+a template. It takes two parameters:
+
+- The framework to set up (Spark, Flink, Hadoop)
+- A configuration template
+
+Thus, you can modify the configuration by replacing the default
+configuration template with a customized one. This way, your custom
+configuration template is reusable for different jobs. You can start
+with a copy of the default configuration ahead of your interactive
+session:
+
+```console
+marie@login$ cp -r $SPARK_HOME/conf my-config-template
+```
+
+After you have changed `my-config-template`, you can use your new template
+in an interactive job with:
+
+```console
+marie@compute$ source framework-configure.sh spark my-config-template
+```
+
+### Using Hadoop Distributed File System (HDFS)
+
+If you want to use Spark and HDFS together (or in general more than one
+framework), a scheme similar to the following can be used:
+
+```console
+marie@compute$ module load Hadoop
+marie@compute$ module load Spark
+marie@compute$ source framework-configure.sh hadoop $HADOOP_ROOT_DIR/etc/hadoop
+marie@compute$ source framework-configure.sh spark $SPARK_HOME/conf
+marie@compute$ start-dfs.sh
+marie@compute$ start-all.sh
+```
+
+## Batch Jobs
 
 Using `srun` directly on the shell blocks the shell and launches an
 interactive job. Apart from short test runs, it is **recommended to
 launch your jobs in the background using batch jobs**. For that, you can
-conveniently put the parameters directly into the job file which you can
-submit using `sbatch [options] <job file>`.
+conveniently put the parameters directly into the job file and submit it via
+`sbatch [options] <job file>`.
 
 Please use a [batch job](../jobs_and_resources/slurm.md) similar to
 [example-spark.sbatch](misc/example-spark.sbatch).
 
-## Apache Spark with Jupyter Notebook
+## Jupyter Notebook
 
 There are two general options on how to work with Jupyter notebooks:
 There is [jupyterhub](../access/jupyterhub.md), where you can simply
 run your Jupyter notebook on HPC nodes (the preferable way). Also, you
-can run a remote jupyter server manually within a sbatch GPU job and
-with the modules and packages you need. You can find the manual server
+can run a remote Jupyter server manually within a GPU job using
+the modules and packages you need. You can find the manual server
 setup [here](deep_learning.md).
 
 ### Preparation
@@ -118,7 +168,7 @@ to the [description for custom environments](../access/jupyterhub.md#conda-envir
 You start with an allocation:
 
 ```console
-marie@login$ srun --pty -n 1 -c 2 --mem-per-cpu 2500 -t 01:00:00 bash -l
+marie@login$ srun --pty -n 1 -c 2 --mem-per-cpu=2500 -t 01:00:00 bash -l
 ```
 
 When a node is allocated, install the required package with Anaconda:
@@ -147,7 +197,7 @@ marie@compute$ conda deactivate
 
 You are now ready to spawn a notebook with Spark.
 
-### Spawning a notebook
+### Spawning a Notebook
 
 Assuming that you have prepared everything as described above, you can go to
 [https://taurus.hrsk.tu-dresden.de/jupyter](https://taurus.hrsk.tu-dresden.de/jupyter).
@@ -156,7 +206,7 @@ to the field "Preload modules" and select one of the Spark modules.
 When your jupyter instance is started, check whether the kernel that
 you created in the preparation phase (see above) is shown in the top
 right corner of the notebook. If it is not already selected, select the
-kernel **haswell-py3.6-spark**. Then, you can set up Spark. Since the setup
+kernel `haswell-py3.6-spark`. Then, you can set up Spark. Since the setup
 in the notebook requires more steps than in an interactive session, we
 have created an example notebook that you can use as a starting point
 for convenience: [SparkExample.ipynb](misc/SparkExample.ipynb)
@@ -168,49 +218,6 @@ for convenience: [SparkExample.ipynb](misc/SparkExample.ipynb)
     **please use [workspaces](../data_lifecycle/workspaces.md) for
     your study and work projects**. For this reason, you have to use
     advanced options of Jupyterhub and put "/" in "Workspace scope" field.
-
-## Interactive jobs using a custom configuration
-
-The script `framework-configure.sh` is used to derive a configuration from
-a template. It takes 2 parameters:
-
--   The framework to set up (Spark, Flink, Hadoop)
--   A configuration template
-
-Thus, you can modify the configuration by replacing the default
-configuration template with a customized one. This way, your custom
-configuration template is reusable for different jobs. You can start
-with a copy of the default configuration ahead of your interactive
-session:
-
-```console
-marie@login$ cp -r $SPARK_HOME/conf my-config-template
-```
-
-After you have changed `my-config-template`, you can use your new template
-in an interactive job with:
-
-```console
-marie@compute$ source framework-configure.sh spark my-config-template 
-```
-
-## Interactive jobs with Spark and Hadoop Distributed File System (HDFS)
-
-If you want to use Spark and HDFS together (or in general more than one
-framework), a scheme similar to the following can be used:
-
-```console
-marie@compute$ module load Hadoop
-marie@compute$ module load Spark
-marie@compute$ source framework-configure.sh hadoop $HADOOP_ROOT_DIR/etc/hadoop
-marie@compute$ source framework-configure.sh spark $SPARK_HOME/conf
-marie@compute$ start-dfs.sh
-marie@compute$ start-all.sh
-```
-
-Note: It is recommended to use ssh keys to avoid entering the password
-every time to log in to nodes. For the details, please check the
-[external documentation](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/s2-ssh-configuration-keypairs).
 
 ## FAQ
 
