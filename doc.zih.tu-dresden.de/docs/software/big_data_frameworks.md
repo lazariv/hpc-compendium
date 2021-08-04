@@ -28,11 +28,8 @@ started.
 The steps are:
 
 1. Load the Spark software module
-
 2. Configure the Spark cluster
-
 3. Start a Spark cluster
-
 4. Start the Spark application
 
 ## Interactive jobs with Apache Spark with the default configuration
