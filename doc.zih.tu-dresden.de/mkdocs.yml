@@ -75,8 +75,7 @@ nav:
     - Overview: data_lifecycle/overview.md
     - Filesystems:
       - Overview: data_lifecycle/file_systems.md
-      - Home: data_lifecycle/home.md
-      - Project File System: data_lifecycle/projects.md
+      - Permanent File Systemis: data_lifecycle/permanent.md
       - Lustre: data_lifecycle/lustre.md
       - BeeGFS: data_lifecycle/bee_gfs.md
       - Intermediate Archive: data_lifecycle/intermediate_archive.md
