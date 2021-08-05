@@ -41,16 +41,10 @@ nav:
       - FEM Software: software/fem_software.md
     - Visualization: software/visualization.md
     - Machine Learning:
-      - Get started with HPC-DA: software/get_started_with_hpcda.md
       - Overview: software/machine_learning.md
-      - Deep Learning: software/deep_learning.md
-      - TensorFlow: 
-        - TensorFlow Overview: software/tensorflow.md
-        - TensorFlow in Container: software/tensor_flow_container_on_hpcda.md
-        - TensorFlow in JupyterHub: software/tensor_flow_on_jupyter_notebook.md 
-      - Tensorboard: software/tensorboard.md
-      - Keras: software/keras.md
+      - TensorFlow: software/tensorflow.md
       - PyTorch: software/pytorch.md
+      - Tensorboard: software/tensorboard.md
       - Distributed Training: software/distributed_training.md
       - Hyperparameter Optimization (OmniOpt): software/hyperparameter_optimization.md
     - Data Analytics:

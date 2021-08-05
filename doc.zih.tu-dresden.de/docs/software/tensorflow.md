@@ -77,138 +77,63 @@ check the next chapter for the details about the virtual environment.
     import tensorflow as tf
     print(tf.VERSION)                                            #example output: 1.10.0
 
-Keep in mind that using **srun** directly on the shell will be blocking
-and launch an interactive job. Apart from short test runs, it is
-recommended to launch your jobs into the background by using batch
-jobs:\<span> **sbatch \[options\] \<job file>** \</span>. The example
-will be presented later on the page.
+On the machine learning nodes, you can use the tools from [IBM Power
+AI](power_ai.md).
 
-As a Tensorflow example, we will use a \<a
-href="<https://www.tensorflow.org/tutorials>" target="\_blank">simple
-mnist model\</a>. Even though this example is in Python, the information
-here will still apply to other tools.
+## Interactive Session Examples
 
-The ml partition has very efficacious GPUs to offer. Do not assume that
-more power means automatically faster computational speed. The GPU is
-only one part of a typical machine learning application. Do not forget
-that first the input data needs to be loaded and in most cases even
-rescaled or augmented. If you do not specify that you want to use more
-than the default one worker (=one CPU thread), then it is very likely
-that your GPU computes faster, than it receives the input data. It is,
-therefore, possible, that you will not be any faster, than on other GPU
-partitions. \<span style="font-size: 1em;">You can solve this by using
-multithreading when loading your input data. The \</span>\<a
-href="<https://keras.io/models/sequential/#fit_generator>"
-target="\_blank">fit_generator\</a>\<span style="font-size: 1em;">
-method supports multiprocessing, just set \`use_multiprocessing\` to
-\`True\`, \</span>\<a href="Slurm#Job_Submission"
-target="\_blank">request more Threads\</a>\<span style="font-size:
-1em;"> from SLURM and set the \`Workers\` amount accordingly.\</span>
+### Tensorflow-Test
 
-The example below with a \<a
-href="<https://www.tensorflow.org/tutorials>" target="\_blank">simple
-mnist model\</a> of the python script illustrates using TF-Keras API
-from TensorFlow. \<a href="<https://www.tensorflow.org/guide/keras>"
-target="\_top">Keras\</a> is TensorFlows high-level API.
+    tauruslogin6 :~> srun -p ml --gres=gpu:1 -n 1 --pty --mem-per-cpu=10000 bash
+    srun: job 4374195 queued and waiting for resources
+    srun: job 4374195 has been allocated resources
+    taurusml22 :~> ANACONDA2_INSTALL_PATH='/opt/anaconda2'
+    taurusml22 :~> ANACONDA3_INSTALL_PATH='/opt/anaconda3'
+    taurusml22 :~> export PATH=$ANACONDA3_INSTALL_PATH/bin:$PATH
+    taurusml22 :~> source /opt/DL/tensorflow/bin/tensorflow-activate
+    taurusml22 :~> tensorflow-test
+    Basic test of tensorflow - A Hello World!!!...
 
-**You can read in detail how to work with Keras on Taurus \<a
-href="Keras" target="\_blank">here\</a>.**
+    #or:
+    taurusml22 :~> module load TensorFlow/1.10.0-PythonAnaconda-3.6
 
-    import tensorflow as tf
-    # Load and prepare the MNIST dataset. Convert the samples from integers to floating-point numbers:
-    mnist = tf.keras.datasets.mnist
+Or to use the whole node: `--gres=gpu:6 --exclusive --pty`
 
-    (x_train, y_train),(x_test, y_test) = mnist.load_data()
-    x_train, x_test = x_train / 255.0, x_test / 255.0
+### In Singularity container:
 
-    # Build the tf.keras model by stacking layers. Select an optimizer and loss function used for training
-    model = tf.keras.models.Sequential([
-      tf.keras.layers.Flatten(input_shape=(28, 28)),
-      tf.keras.layers.Dense(512, activation=tf.nn.relu),
-      tf.keras.layers.Dropout(0.2),
-      tf.keras.layers.Dense(10, activation=tf.nn.softmax)
-    ])
-    model.compile(optimizer='adam',
-                  loss='sparse_categorical_crossentropy',
-                  metrics=['accuracy'])
+    rotscher@tauruslogin6:~&gt; srun -p ml --gres=gpu:6 --pty bash
+    [rotscher@taurusml22 ~]$ singularity shell --nv /scratch/singularity/powerai-1.5.3-all-ubuntu16.04-py3.img
+    Singularity powerai-1.5.3-all-ubuntu16.04-py3.img:~&gt; export PATH=/opt/anaconda3/bin:$PATH
+    Singularity powerai-1.5.3-all-ubuntu16.04-py3.img:~&gt; . /opt/DL/tensorflow/bin/tensorflow-activate
+    Singularity powerai-1.5.3-all-ubuntu16.04-py3.img:~&gt; tensorflow-test
 
-    # Train and evaluate model
-    model.fit(x_train, y_train, epochs=5)
-    model.evaluate(x_test, y_test)
+## Additional libraries
 
-The example can train an image classifier with \~98% accuracy based on
-this dataset.
+The following NVIDIA libraries are available on all nodes:
 
-## Python virtual environment
+|       |                                       |
+|-------|---------------------------------------|
+| NCCL  | /usr/local/cuda/targets/ppc64le-linux |
+| cuDNN | /usr/local/cuda/targets/ppc64le-linux |
 
-A virtual environment is a cooperatively isolated runtime environment
-that allows Python users and applications to install and update Python
-distribution packages without interfering with the behaviour of other
-Python applications running on the same system. At its core, the main
-purpose of Python virtual environments is to create an isolated
-environment for Python projects.
+Note: For optimal NCCL performance it is recommended to set the
+**NCCL_MIN_NRINGS** environment variable during execution. You can try
+different values but 4 should be a pretty good starting point.
 
-**Vitualenv**is a standard Python tool to create isolated Python
-environments and part of the Python installation/module. We recommend
-using virtualenv to work with Tensorflow and Pytorch on Taurus.\<br
-/>However, if you have reasons (previously created environments etc) you
-can also use conda which is the second way to use a virtual environment
-on the Taurus. \<a
-href="<https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html>"
-target="\_blank">Conda\</a> is an open-source package management system
-and environment management system. Note that using conda means that
-working with other modules from taurus will be harder or impossible.
-Hence it is highly recommended to use virtualenv.
+    export NCCL_MIN_NRINGS=4
 
-## Running the sbatch script on ML modules (modenv/ml) and SCS5 modules (modenv/scs5)
+\<span style="color: #222222; font-size: 1.385em;">HPC\</span>
 
-Generally, for machine learning purposes the ml partition is used but
-for some special issues, the other partitions can be useful also. The
-following sbatch script can execute the above Python script both on ml
-partition or gpu2 partition.\<br /> When not using the
-TensorFlow-Anaconda modules you may need some additional modules that
-are not included (e.g. when using the TensorFlow module from modenv/scs5
-on gpu2).\<br />If you have a question about the sbatch script see the
-article about \<a href="Slurm" target="\_blank">SLURM\</a>. Keep in mind
-that you need to put the executable file (machine_learning_example.py)
-with python code to the same folder as the bash script file
-\<script_name>.sh (see below) or specify the path.
+The following HPC related software is installed on all nodes:
 
-    #!/bin/bash
-    #SBATCH --mem=8GB                         # specify the needed memory
-    #SBATCH -p ml                             # specify ml partition or gpu2 partition
-    #SBATCH --gres=gpu:1                      # use 1 GPU per node (i.e. use one GPU per task)
-    #SBATCH --nodes=1                         # request 1 node
-    #SBATCH --time=00:10:00                   # runs for 10 minutes
-    #SBATCH -c 7                              # how many cores per task allocated
-    #SBATCH -o HLR_<name_your_script>.out     # save output message under HLR_${SLURMJOBID}.out
-    #SBATCH -e HLR_<name_your_script>.err     # save error messages under HLR_${SLURMJOBID}.err
-
-    if [ "$SLURM_JOB_PARTITION" == "ml" ]; then
-        module load modenv/ml
-        module load TensorFlow/2.0.0-PythonAnaconda-3.7
-    else
-        module load modenv/scs5
-        module load TensorFlow/2.0.0-fosscuda-2019b-Python-3.7.4
-        module load Pillow/6.2.1-GCCcore-8.3.0               # Optional
-        module load h5py/2.10.0-fosscuda-2019b-Python-3.7.4  # Optional
-    fi
-
-    python machine_learning_example.py
-
-    ## when finished writing, submit with:  sbatch <script_name>
-
-Output results and errors file can be seen in the same folder in the
-corresponding files after the end of the job. Part of the example
-output:
-
-     1600/10000 [===>..........................] - ETA: 0s
-     3168/10000 [========>.....................] - ETA: 0s
-     4736/10000 [=============>................] - ETA: 0s
-     6304/10000 [=================>............] - ETA: 0s
-     7872/10000 [======================>.......] - ETA: 0s
-     9440/10000 [===========================>..] - ETA: 0s
-    10000/10000 [==============================] - 0s 38us/step
+|                  |                        |
+|------------------|------------------------|
+| IBM Spectrum MPI | /opt/ibm/spectrum_mpi/ |
+| PGI compiler     | /opt/pgi/              |
+| IBM XLC Compiler | /opt/ibm/xlC/          |
+| IBM XLF Compiler | /opt/ibm/xlf/          |
+| IBM ESSL         | /opt/ibmmath/essl/     |
+| IBM PESSL        | /opt/ibmmath/pessl/    |
 
 ## TensorFlow 2
 
