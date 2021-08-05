@@ -131,6 +131,7 @@ You can view the documentation via [http://localhost:8000](http://localhost:8000
 
 If that does not work, check if you can get the URL for your browser's address
 bar from a different terminal window:
+
 ```Bash
 echo http://$(docker inspect -f "{{.NetworkSettings.IPAddress}}" $(docker ps -qf "name=hpc-compendium")):8000
 ```
