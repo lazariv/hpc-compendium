@@ -163,7 +163,9 @@ For spell-checking all files, use:
 docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium ./spellcheck.sh
 ```
 
-This outputs all words of all files that are unknown to the spell checker. To let the spell checker "know" a word, append it to `doc.zih.tu-dresden.de/wordlist.aspell`.
+This outputs all words of all files that are unknown to the spell checker.
+To let the spell checker "know" a word, append it to
+`doc.zih.tu-dresden.de/wordlist.aspell`.
 
 #### Build Static Documentation
 
