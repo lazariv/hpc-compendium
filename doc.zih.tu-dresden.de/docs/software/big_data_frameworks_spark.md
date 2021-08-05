@@ -1,4 +1,4 @@
-# BIG DATA FRAMEWORKS: APACHE SPARK, APACHE FLINK, APACHE HADOOP
+# Big Data Frameworks: Apache Spark
 
 !!! note
 
