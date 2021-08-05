@@ -24,7 +24,7 @@ ZIH uses the batch system Slurm for resource management and job scheduling.
     * who gets an email on which occasion,
 
     The runtime environment (see [here](../software/overview.md)) as well as the executable and
-    certain command-line agruments have to be specified to run the computational work.
+    certain command-line arguments have to be specified to run the computational work.
 
 ??? note "Batch System"
 
@@ -49,8 +49,8 @@ a single GPU's core can handle is small), GPUs are not as versatile as CPUs.
 ### Available Hardware
 
 ZIH provides a broad variety of compute resources ranging from normal server CPUs of different
-manufactures, to large shared memory nodes, GPU-assisted nodes up to highly specialised resources for
-[Machine Learing](../software/machine_learning.md) and AI.
+manufactures, to large shared memory nodes, GPU-assisted nodes up to highly specialized resources for
+[Machine Learning](../software/machine_learning.md) and AI.
 The page [Hardware Taurus](hardware_taurus.md) holds a comprehensive overview.
 
 The desired hardware can be specified by the partition `-p, --partition` flag in Slurm.
@@ -81,7 +81,7 @@ with the `--x11` option. To use an interactive job you have to specify `-X` flag
 
 However, using `srun` directly on the Shell will lead to blocking and launch an interactive job.
 Apart from short test runs, it is recommended to encapsulate your experiments and computational
-tasks into batchjobs and submit them to the batch system. For that, you can conveniently put the
+tasks into batch jobs and submit them to the batch system. For that, you can conveniently put the
 parameters directly into the job file which you can submit using `sbatch [options] <job file>`.
 
 ## Processing of Data for Input and Output

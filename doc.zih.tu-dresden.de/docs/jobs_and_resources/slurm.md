@@ -19,7 +19,7 @@ Some options of `srun/sbatch` are:
 | -n \<N> or --ntasks \<N>               | set a number of tasks to N(default=1). This determines how many processes will be spawned by srun (for MPI jobs).                                                                                                                                                                                                                                                                                                                                          |
 | -N \<N> or --nodes \<N>                | set number of nodes that will be part of a job, on each node there will be --ntasks-per-node processes started, if the option --ntasks-per-node is not given, 1 process per node will be started                                                                                                                                                                                                                                                           |
 | --ntasks-per-node \<N>                 | how many tasks per allocated node to start, as stated in the line before                                                                                                                                                                                                                                                                                                                                                                                   |
-| -c \<N> or --cpus-per-task \<N>        | this option is needed for multithreaded (e.g. OpenMP) jobs, it tells SLURM to allocate N cores per task allocated; typically N should be equal to the number of threads you program spawns, e.g. it should be set to the same number as OMP_NUM_THREADS                                                                                                                                                                                                    |
+| -c \<N> or --cpus-per-task \<N>        | this option is needed for multithreaded (e.g. OpenMP) jobs, it tells Slurm to allocate N cores per task allocated; typically N should be equal to the number of threads you program spawns, e.g. it should be set to the same number as OMP_NUM_THREADS                                                                                                                                                                                                    |
 | -p \<name> or --partition \<name>      | select the type of nodes where you want to execute your job, on Taurus we currently have haswell, `smp`, `sandy`, `west`, ml and `gpu` available                                                                                                                                                                                                                                                                                                           |
 | --mem-per-cpu \<name>                  | specify the memory need per allocated CPU in MB                                                                                                                                                                                                                                                                                                                                                                                                            |
 | --time \<HH:MM:SS>                     | specify the maximum runtime of your job, if you just put a single number in, it will be interpreted as minutes                                                                                                                                                                                                                                                                                                                                             |
@@ -27,7 +27,7 @@ Some options of `srun/sbatch` are:
 | --mail-type ALL                        | specify for what type of events you want to get a mail; valid options beside ALL are: BEGIN, END, FAIL, REQUEUE                                                                                                                                                                                                                                                                                                                                            |
 | -J \<name> or --job-name \<name>       | give your job a name which is shown in the queue, the name will also be included in job emails (but cut after 24 chars within emails)                                                                                                                                                                                                                                                                                                                      |
 | --no-requeue                           | At node failure, jobs are requeued automatically per default. Use this flag to disable requeueing.                                                                                                                                                                                                                                                                                                                                                         |
-| --exclusive                            | tell SLURM that only your job is allowed on the nodes allocated to this job; please be aware that you will be charged for all CPUs/cores on the node                                                                                                                                                                                                                                                                                                       |
+| --exclusive                            | tell Slurm that only your job is allowed on the nodes allocated to this job; please be aware that you will be charged for all CPUs/cores on the node                                                                                                                                                                                                                                                                                                       |
 | -A \<project>                          | Charge resources used by this job to the specified project, useful if a user belongs to multiple projects.                                                                                                                                                                                                                                                                                                                                                 |
 | -o \<filename> or --output \<filename> | \<p>specify a file name that will be used to store all normal output (stdout), you can use %j (job id) and %N (name of first node) to automatically adopt the file name to the job, per default stdout goes to "slurm-%j.out"\</p> \<p>%RED%NOTE:<span class="twiki-macro ENDCOLOR"></span> the target path of this parameter must be writeable on the compute nodes, i.e. it may not point to a read-only mounted file system like /projects.\</p>        |
 | -e \<filename> or --error \<filename>  | \<p>specify a file name that will be used to store all error output (stderr), you can use %j (job id) and %N (name of first node) to automatically adopt the file name to the job, per default stderr goes to "slurm-%j.out" as well\</p> \<p>%RED%NOTE:<span class="twiki-macro ENDCOLOR"></span> the target path of this parameter must be writeable on the compute nodes, i.e. it may not point to a read-only mounted file system like /projects.\</p> |
@@ -51,7 +51,7 @@ echo Starting Program
 During runtime, the environment variable SLURM_JOB_ID will be set to the id of your job.
 
 You can also use our [Slurm Batch File Generator]**todo** Slurmgenerator, which could help you create
-basic SLURM job scripts.
+basic Slurm job scripts.
 
 Detailed information on [memory limits on Taurus]**todo**
 
@@ -78,7 +78,7 @@ one job per user. Please check the availability of nodes there with `sinfo -p in
 
 ### Interactive X11/GUI Jobs
 
-SLURM will forward your X11 credentials to the first (or even all) node
+Slurm will forward your X11 credentials to the first (or even all) node
 for a job with the (undocumented) --x11 option. For example, an
 interactive session for 1 hour with Matlab using eigth cores can be
 started with:
@@ -100,7 +100,7 @@ by simply deleting the known_hosts file altogether if you don't have important o
 
 ### Requesting an Nvidia K20X / K80 / A100
 
-SLURM will allocate one or many GPUs for your job if requested. Please note that GPUs are only
+Slurm will allocate one or many GPUs for your job if requested. Please note that GPUs are only
 available in certain partitions, like `gpu2`, `gpu3` or `gpu2-interactive`. The option
 for sbatch/srun in this case is `--gres=gpu:[NUM_PER_NODE]` (where `NUM_PER_NODE` can be `1`, 2 or
 4, meaning that one, two or four of the GPUs per node will be used for the job). A sample job file
@@ -118,10 +118,10 @@ srun ./your/cuda/application   # start you application (probably requires MPI to
 
 Please be aware that the partitions `gpu`, `gpu1` and `gpu2` can only be used for non-interactive
 jobs which are submitted by `sbatch`.  Interactive jobs (`salloc`, `srun`) will have to use the
-partition `gpu-interactive`. SLURM will automatically select the right partition if the partition
+partition `gpu-interactive`. Slurm will automatically select the right partition if the partition
 parameter (-p) is omitted.
 
-**Note:** Due to an unresolved issue concering the SLURM job scheduling behavior, it is currently
+**Note:** Due to an unresolved issue concerning the Slurm job scheduling behavior, it is currently
 not practical to use `--ntasks-per-node` together with GPU jobs.  If you want to use multiple nodes,
 please use the parameters `--ntasks` and `--mincpus` instead. The values of mincpus \* nodes has to
 equal ntasks in this case.
@@ -156,7 +156,7 @@ depend on the type of parallelization and architecture.
 
 An SMP-parallel job can only run within a node, so it is necessary to include the options `-N 1` and
 `-n 1`. The maximum number of processors for an SMP-parallel program is 488 on Venus and 56 on
-taurus (smp island). Using --cpus-per-task N SLURM will start one task and you will have N CPUs
+taurus (smp island). Using --cpus-per-task N Slurm will start one task and you will have N CPUs
 available for your job. An example job file would look like:
 
 ```Bash
@@ -229,7 +229,7 @@ echo "All parallel job steps completed!"
 
 Jobs on taurus run, by default, in shared-mode, meaning that multiple jobs can run on the same
 compute nodes. Sometimes, this behaviour is not desired (e.g. for benchmarking purposes), in which
-case it can be turned off by specifying the SLURM parameter: `--exclusive` .
+case it can be turned off by specifying the Slurm parameter: `--exclusive` .
 
 Setting `--exclusive` **only** makes sure that there will be **no other jobs running on your nodes**.
 It does not, however, mean that you automatically get access to all the resources which the node
@@ -238,7 +238,7 @@ generic resources parameter (gres) to run on the GPU partitions, or you still ha
 cores of a node if you need them. CPU cores can either to be used for a task (`--ntasks`) or for
 multi-threading within the same task (--cpus-per-task). Since those two options are semantically
 different (e.g., the former will influence how many MPI processes will be spawned by 'srun' whereas
-the latter does not), SLURM cannot determine automatically which of the two you might want to use.
+the latter does not), Slurm cannot determine automatically which of the two you might want to use.
 Since we use cgroups for separation of jobs, your job is not allowed to use more resources than
 requested.*
 
@@ -301,7 +301,7 @@ For further details please read the Slurm documentation at
 
 You can use chain jobs to create dependencies between jobs. This is often the case if a job relies
 on the result of one or more preceding jobs. Chain jobs can also be used if the runtime limit of the
-batch queues is not sufficient for your job. SLURM has an option `-d` or "--dependency" that allows
+batch queues is not sufficient for your job. Slurm has an option `-d` or "--dependency" that allows
 to specify that a job is only allowed to start if another job finished.
 
 Here is an example of how a chain job can look like, the example submits 4 jobs (described in a job
@@ -328,7 +328,7 @@ done
 
 ### Binding and Distribution of Tasks
 
-The SLURM provides several binding strategies to place and bind the tasks and/or threads of your job
+The Slurm provides several binding strategies to place and bind the tasks and/or threads of your job
 to cores, sockets and nodes. Note: Keep in mind that the distribution method has a direct impact on
 the execution time of your application. The manipulation of the distribution can either speed up or
 slow down your application. More detailed information about the binding can be found
@@ -457,7 +457,7 @@ of the possible job status:
 | Resources          | The job is waiting for resources to become available.                                                                                            |
 | NodeDown           | A node required by the job is down.                                                                                                              |
 | BadConstraints     | The jobs constraints can not be satisfied.                                                                                                       |
-| SystemFailure      | Failure of the SLURM system, a file system, the network, etc.                                                                                    |
+| SystemFailure      | Failure of the Slurm system, a file system, the network, etc.                                                                                    |
 | JobLaunchFailure   | The job could not be launched. This may be due to a file system problem, invalid program name, etc.                                              |
 | NonZeroExitCode    | The job terminated with a non-zero exit code.                                                                                                    |
 | TimeLimit          | The job exhausted its time limit.                                                                                                                |
@@ -470,7 +470,7 @@ For detailed information on why your submitted job has not started yet, you can 
 
 ## Accounting
 
-The SLRUM command `sacct` provides job statistics like memory usage, CPU
+The Slurm command `sacct` provides job statistics like memory usage, CPU
 time, energy usage etc. Examples:
 
 ```Shell Session
@@ -513,7 +513,7 @@ nodes that will work for you.
 src="%ATTACHURL%/hdfview_memory.png" style="float: right; margin-left:
 10px;" title="hdfview" width="324" /> \</a>
 
-SLURM offers the option to gather profiling data from every task/node of the job. Following data can
+Slurm offers the option to gather profiling data from every task/node of the job. Following data can
 be gathered:
 
 - Task data, such as CPU frequency, CPU utilization, memory
@@ -548,7 +548,7 @@ module load HDFView
 hdfview.sh profile.h5
 ```
 
-More information about profiling with SLURM:
+More information about profiling with Slurm:
 
 - [Slurm Profiling](http://slurm.schedmd.com/hdf5_profile_user_guide.html)
 - [sh5util](http://slurm.schedmd.com/sh5util.html)

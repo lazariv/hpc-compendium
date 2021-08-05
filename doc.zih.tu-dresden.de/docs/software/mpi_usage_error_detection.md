@@ -1,6 +1,6 @@
 # Introduction
 
-MPI as the de-facto standard for parallel applications of the the massage passing paradigm offers
+MPI as the de-facto standard for parallel applications of the message passing paradigm offers
 more than one hundred different API calls with complex restrictions. As a result, developing
 applications with this interface is error prone and often time consuming. Some usage errors of MPI
 may only manifest on some platforms or some application runs, which further complicates the
@@ -51,13 +51,13 @@ task**.
 
 Finally, MUST assumes that your application may crash at any time. To still gather correctness
 results under this assumption is extremely expensive in terms of performance overheads. Thus, if
-your application does not crashs, you should add an "--must:nocrash" to the mustrun command to make
+your application does not crash, you should add an "--must:nocrash" to the mustrun command to make
 MUST aware of this knowledge. Overhead is drastically reduced with this switch.
 
 ### Result Files
 
 After running your application with MUST you will have its output in the working directory of your
-application. The output is named `MUST_Output.html`. Open this files in a browser to anlyze the
+application. The output is named `MUST_Output.html`. Open this files in a browser to analyze the
 results. The HTML file is color coded: Entries in green represent notes and useful information.
 Entries in yellow represent warnings, and entries in red represent errors.
 

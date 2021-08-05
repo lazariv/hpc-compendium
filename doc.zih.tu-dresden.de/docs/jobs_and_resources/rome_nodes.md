@@ -13,11 +13,11 @@ intend to use SMT (SLURM_HINT=nomultithread which is the default).
 You can use them by specifying partition romeo: **-p romeo**
 
 **Note:** If you are running a job here with only ONE process (maybe
-multiple cores), please explicitely set the option `-n 1` !
+multiple cores), please explicitly set the option `-n 1` !
 
 Be aware that software built with Intel compilers and `-x*` optimization
 flags will not run on those AMD processors! That's why most older
-modules built with intel toolchains are not availabe on **romeo**.
+modules built with intel toolchains are not available on **romeo**.
 
 We provide the script: **ml_arch_avail** that you can use to check if a
 certain module is available on rome architecture.
@@ -68,7 +68,7 @@ srun cp2k.popt input.inp
 Currently, we have only newer toolchains starting at `intel/2019b`
 installed for the Rome nodes. Even though they have AMD CPUs, you can
 still use the Intel compilers on there and they don't even create
-bad-performaning code. When using the MKL up to version 2019, though,
+bad-performing code. When using the MKL up to version 2019, though,
 you should set the following environment variable to make sure that AVX2
 is used:
 
