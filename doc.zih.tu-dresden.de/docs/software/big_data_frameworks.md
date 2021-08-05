@@ -29,9 +29,9 @@ started.
 The steps are:
 
 1. Load the Spark software module
-2. Configure the Spark cluster
-3. Start a Spark cluster
-4. Start the Spark application
+1. Configure the Spark cluster
+1. Start a Spark cluster
+1. Start the Spark application
 
 Apache Spark can be used in [interactive](#interactive-jobs) and [batch](#batch-jobs) jobs as well
 as via [Jupyter notebook](#jupyter-notebook). All three ways are outlined in the following.
@@ -47,7 +47,7 @@ as via [Jupyter notebook](#jupyter-notebook). All three ways are outlined in the
 ### Default Configuration
 
 The Spark module is available for both `scs5` and `ml` partitions.
-Thus, Spark can be executed using different CPU architectures, e. g., Haswell and Power9.
+Thus, Spark can be executed using different CPU architectures, e.g., Haswell and Power9.
 
 Let us assume that two nodes should be used for the computation. Use a
 `srun` command similar to the following to start an interactive session
@@ -155,7 +155,7 @@ Please use a [batch job](../jobs_and_resources/slurm.md) similar to
 ## Jupyter Notebook
 
 There are two general options on how to work with Jupyter notebooks:
-There is [jupyterhub](../access/jupyterhub.md), where you can simply
+There is [JupyterHub](../access/jupyterhub.md), where you can simply
 run your Jupyter notebook on HPC nodes (the preferable way). Also, you
 can run a remote Jupyter server manually within a GPU job using
 the modules and packages you need. You can find the manual server
@@ -203,7 +203,7 @@ Assuming that you have prepared everything as described above, you can go to
 [https://taurus.hrsk.tu-dresden.de/jupyter](https://taurus.hrsk.tu-dresden.de/jupyter).
 In the tab "Advanced", go
 to the field "Preload modules" and select one of the Spark modules.
-When your jupyter instance is started, check whether the kernel that
+When your Jupyter instance is started, check whether the kernel that
 you created in the preparation phase (see above) is shown in the top
 right corner of the notebook. If it is not already selected, select the
 kernel `haswell-py3.6-spark`. Then, you can set up Spark. Since the setup
