@@ -8,10 +8,10 @@ performance and permanence.
 
 | File system | Usable directory  | Capacity | Availability | Backup | Remarks                                                                                                                                                         |
 |:------------|:------------------|:---------|:-------------|:-------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Lustre`    | `/scratch/`       | 4 PB     | global       | No     | Only accessible via **todo link: workspaces - WorkSpaces**. Not made for billions of files!                                                                                   |
-| `Lustre`    | `/lustre/ssd`     | 40 TB    | global       | No     | Only accessible via **todo link: workspaces - WorkSpaces**. For small I/O operations                                                                                          |
-| `BeeGFS`    | `/beegfs/global0` | 232 TB   | global       | No     | Only accessible via **todo link: workspaces - WorkSpaces**. Fastest available file system, only for large parallel applications running with millions of small I/O operations |
-| `ext4`      | `/tmp`            | 95.0 GB  | local        | No     | is cleaned up after the job automatically  |
+| `Lustre`    | `/scratch/`       | 4 PB     | global       | No     | Only accessible via [Workspaces](workspaces.md). Not made for billions of files!                                                                                   |
+| `Lustre`    | `/lustre/ssd`     | 40 TB    | global       | No     | Only accessible via [Workspaces](workspaces.md). For small I/O operations                                                                                          |
+| `BeeGFS`    | `/beegfs/global0` | 232 TB   | global       | No     | Only accessible via [Workspaces](workspaces.md). Fastest available file system, only for large parallel applications running with millions of small I/O operations |
+| `ext4`      | `/tmp`            | 95 GB    | local        | No     | is cleaned up after the job automatically  |
 
 ## Warm Archive
 
