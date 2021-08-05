@@ -12,7 +12,7 @@ The following libraries are available on our platforms:
 ## The Boost Library
 
 Boost provides free peer-reviewed portable C++ source libraries, ranging from multithread and MPI
-support to regular expression and numeric funtions. See at http://www.boost.org for detailed
+support to regular expression and numeric functions. See at http://www.boost.org for detailed
 documentation.
 
 ## BLAS/LAPACK
@@ -51,7 +51,7 @@ fourier transformations (FFT). It contains routines for:
 - General scientific, financial - vector transcendental functions,
   vector markup language (XML)
 
-More speciﬁcally it contains the following components:
+More specifically it contains the following components:
 
 - BLAS:
   - Level 1 BLAS: vector-vector operations, 48 functions
@@ -95,4 +95,4 @@ icc -O1 -I/sw/global/compilers/intel/2013/mkl//include -lmpi -mkl -lmkl_scalapac
 FFTW is a C subroutine library for computing the discrete Fourier transform (DFT) in one or more
 dimensions, of arbitrary input size, and of both real and complex data (as well as of even/odd data,
 i.e. the discrete cosine/sine transforms or DCT/DST). Before using this library, please check out
-the functions of vendor speciﬁc libraries ACML and/or MKL.
+the functions of vendor specific libraries ACML and/or MKL.

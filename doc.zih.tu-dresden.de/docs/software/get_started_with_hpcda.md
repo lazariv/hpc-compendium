@@ -107,17 +107,17 @@ command was used.
 #### Copy data from lm to hm
 
 ```Bash
-scp &lt;file&gt; &lt;zih-user&gt;@taurusexport.hrsk.tu-dresden.de:&lt;target-location&gt;                  #Copy file from your local machine. For example: scp helloworld.txt mustermann@taurusexport.hrsk.tu-dresden.de:/scratch/ws/mastermann-Macine_learning_project/
+scp <file> <zih-user>@taurusexport.hrsk.tu-dresden.de:<target-location>                  #Copy file from your local machine. For example: scp helloworld.txt mustermann@taurusexport.hrsk.tu-dresden.de:/scratch/ws/mastermann-Macine_learning_project/
 
-scp -r &lt;directory&gt; &lt;zih-user&gt;@taurusexport.hrsk.tu-dresden.de:&lt;target-location&gt;          #Copy directory from your local machine.
+scp -r <directory> <zih-user>@taurusexport.hrsk.tu-dresden.de:<target-location>          #Copy directory from your local machine.
 ```
 
 #### Copy data from hm to lm
 
 ```Bash
-scp &lt;zih-user&gt;@taurusexport.hrsk.tu-dresden.de:&lt;file&gt; &lt;target-location&gt;                  #Copy file. For example: scp mustermann@taurusexport.hrsk.tu-dresden.de:/scratch/ws/mastermann-Macine_learning_project/helloworld.txt /home/mustermann/Downloads
+scp <zih-user>@taurusexport.hrsk.tu-dresden.de:<file> <target-location>                  #Copy file. For example: scp mustermann@taurusexport.hrsk.tu-dresden.de:/scratch/ws/mastermann-Macine_learning_project/helloworld.txt /home/mustermann/Downloads
 
-scp -r &lt;zih-user&gt;@taurusexport.hrsk.tu-dresden.de:&lt;directory&gt; &lt;target-location&gt;          #Copy directory
+scp -r <zih-user>@taurusexport.hrsk.tu-dresden.de:<directory> <target-location>          #Copy directory
 ```
 
 #### Moving data inside the HPC machines. Datamover
@@ -133,7 +133,8 @@ These commands submit a job to the data transfer machines that execute the selec
 for the `dt` prefix, their syntax is the same as the shell command without the `dt`.
 
 ```Bash
-dtcp -r /scratch/ws/&lt;name_of_your_workspace&gt;/results /luste/ssd/ws/&lt;name_of_your_workspace&gt;       #Copy from workspace in scratch to ssd.<br />dtwget https://www.cs.toronto.edu/~kriz/cifar-100-python.tar.gz                                   #Download archive CIFAR-100.
+dtcp -r /scratch/ws/<name_of_your_workspace>/results /lustre/ssd/ws/<name_of_your_workspace>;       #Copy from workspace in scratch to ssd.
+dtwget https://www.cs.toronto.edu/~kriz/cifar-100-python.tar.gz                                   #Download archive CIFAR-100.
 ```
 
 ## BatchSystems. SLURM
@@ -178,7 +179,7 @@ module load TensorFlow
 
 python machine_learning_example.py
 
-## when finished writing, submit with:  sbatch &lt;script_name&gt; For example: sbatch machine_learning_script.slurm
+## when finished writing, submit with:  sbatch <script_name> For example: sbatch machine_learning_script.slurm
 ```
 
 The `machine_learning_example.py` contains a simple ml application based on the mnist model to test
@@ -224,7 +225,7 @@ modules) and to run the job exist two main options:
 ```Bash
 srun -p ml -N 1 -n 1 -c 2 --gres=gpu:1 --time=01:00:00 --pty --mem-per-cpu=8000 bash   #job submission in ml nodes with allocating: 1 node, 1 task per node, 2 CPUs per task, 1 gpu per node, with 8000 mb on 1 hour.
 
-module load modenv/ml                    #example output: The following have been reloaded with a version change:  1) modenv/scs5 =&gt; modenv/ml
+module load modenv/ml                    #example output: The following have been reloaded with a version change:  1) modenv/scs5 => modenv/ml
 
 mkdir python-virtual-environments        #create folder for your environments
 cd python-virtual-environments           #go to folder
@@ -310,7 +311,9 @@ SingularityHub container with TensorFlow. It does **not require root privileges*
 Taurus directly:
 
 ```Bash
-srun -p ml -N 1 --gres=gpu:1 --time=02:00:00 --pty --mem-per-cpu=8000 bash           #allocating resourses from ml nodes to start the job to create a container.<br />singularity build my-ML-container.sif docker://ibmcom/tensorflow-ppc64le             #create a container from the DockerHub with the last TensorFlow version<br />singularity run --nv my-ML-container.sif                                            #run my-ML-container.sif container with support of the Nvidia's GPU. You could also entertain with your container by commands: singularity shell, singularity exec
+srun -p ml -N 1 --gres=gpu:1 --time=02:00:00 --pty --mem-per-cpu=8000 bash           #allocating resourses from ml nodes to start the job to create a container.
+singularity build my-ML-container.sif docker://ibmcom/tensorflow-ppc64le             #create a container from the DockerHub with the last TensorFlow version
+singularity run --nv my-ML-container.sif                                            #run my-ML-container.sif container with support of the Nvidia's GPU. You could also entertain with your container by commands: singularity shell, singularity exec
 ```
 
 There are two sources for containers for Power9 architecture with
