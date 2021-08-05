@@ -42,16 +42,21 @@ nav:
     - Visualization: software/visualization.md
     - Machine Learning:
       - Get started with HPC-DA: software/get_started_with_hpcda.md
-      - Machine Learning: software/machine_learning.md
+      - Overview: software/machine_learning.md
       - Deep Learning: software/deep_learning.md
       - TensorFlow: 
-        - TensorFlow Overview: software/tensor_flow.md
+        - TensorFlow Overview: software/tensorflow.md
         - TensorFlow in Container: software/tensor_flow_container_on_hpcda.md
         - TensorFlow in JupyterHub: software/tensor_flow_on_jupyter_notebook.md 
+      - Tensorboard: software/tensorboard.md
       - Keras: software/keras.md
-      - PyTorch: software/py_torch.md
+      - PyTorch: software/pytorch.md
+      - Distributed Training: software/distributed_training.md
+      - Hyperparameter Optimization (OmniOpt): software/hyperparameter_optimization.md
     - Data Analytics:
+      - Overview: software/data_analytics.md
       - Data Analytics with R: software/data_analytics_with_r.md
+      - Data Analytics with RStudio: software/rstudio.md
       - Data Analytics with Python: software/python.md
       - Dask: software/dask.md
       - Power AI: software/power_ai.md
