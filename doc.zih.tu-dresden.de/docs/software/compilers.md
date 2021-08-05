@@ -55,7 +55,7 @@ Description\* \|
 |                      | `-ipa`             | `-ipo`                                                                                                                                                                                                                                                                       | `-Mipa`     | `-ipa`          | inter procedure optimization (across files)                                         |
 |                      |                    | `-ip`                                                                                                                                                                                                                                                                        | `-Mipa`     |                 | inter procedure optimization (within files)                                         |
 |                      | `-apo`             | `-parallel`                                                                                                                                                                                                                                                                  | `-Mconcur`  | `-apo`          | Auto-parallelizer                                                                   |
-| `-fprofile-generate` |                    | `-prof-gen`                                                                                                                                                                                                                                                                  | `-Mpfi`     | `-fb-create`    | Create intrumented code to generate profile in file \<FN>                           |
+| `-fprofile-generate` |                    | `-prof-gen`                                                                                                                                                                                                                                                                  | `-Mpfi`     | `-fb-create`    | Create instrumented code to generate profile in file \<FN>                           |
 | `-fprofile-use`      |                    | `-prof-use`                                                                                                                                                                                                                                                                  | `-Mpfo`     | `-fb-opt`       | Use profile data for optimization. - Leave all other optimization options           |
 
 *We can not generally give advice as to which option should be used - even -O0 sometimes leads to a
@@ -100,8 +100,8 @@ style):
 |--------------------------|-----------------------------------|
 | `CDEC$ ivdep`            | ignore assumed vector dependences |
 | `CDEC$ swp`              | try to software-pipeline          |
-| `CDEC$ noswp`            | disable softeware-pipeling        |
-| `CDEC$ loop count (n)`   | hint for optimzation              |
+| `CDEC$ noswp`            | disable software-pipeline         |
+| `CDEC$ loop count (n)`   | hint for optimization             |
 | `CDEC$ distribute point` | split this large loop             |
 | `CDEC$ unroll (n)`       | unroll (n) times                  |
 | `CDEC$ nounroll`         | do not unroll                     |

@@ -103,7 +103,7 @@ modules).
 Private module files allow you to load your own installed software packages into your environment
 and to handle different versions without getting into conflicts. Private modules can be setup for a
 single user as well as all users of project group. The workflow and settings for user private module
-files is described in the follwing. The [settings for project private
+files is described in the following. The [settings for project private
 modules](#project-private-modules) differ only in details.
 
 The command
