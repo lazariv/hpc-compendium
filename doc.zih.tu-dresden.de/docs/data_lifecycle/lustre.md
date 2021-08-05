@@ -2,13 +2,13 @@
 
 ## Large Files in /scratch
 
-The data containers in Lustre are called object storage targets (OST).  The capacity of one OST is
+The data containers in Lustre are called object storage targets (OST). The capacity of one OST is
 about 21 TB. All files are striped over a certain number of these OSTs. For small and medium files,
 the default number is 2. As soon as a file grows above \~1 TB it makes sense to spread it over a
-higher number of OSTs, eg. 16. Once the file system is used \> 75%, the average space per OST is
+higher number of OSTs, e.g. 16. Once the file system is used \> 75%, the average space per OST is
 only 5 GB. So, it is essential to split your larger files so that the chunks can be saved!
 
-Lets assume you have a dierctory where you tar your results, e.g.  `/scratch/mark/tar`. Now, simply
+Lets assume you have a directory where you tar your results, e.g. `/scratch/mark/tar`. Now, simply
 set the stripe count to a higher number in this directory with:
 
 ```Bash
