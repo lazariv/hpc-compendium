@@ -109,6 +109,54 @@ INFO    -  Start watching changes
 
 Open `http://127.0.0.1:8000` with a web browser to preview the local copy of the documentation.
 
+#### Preview Using mkdocs With Dockerfile
+
+You can also use `docker` to build a container from the `Dockerfile`, if you are familiar with it.
+This may take a while, as mkdocs and other necessary software needs to be downloaded.
+Building a container with the documentation inside could be done with the following steps:
+
+```Bash
+cd /PATH/TO/hpc-compendium
+docker build -t hpc-compendium .
+```
+
+If you want to see how it looks in your browser, you can use shell commands to serve
+the documentation:
+
+```Bash
+docker run --name=hpc-compendium -p 8000:8000 --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium bash -c "mkdocs build --verbose && mkdocs serve -a 0.0.0.0:8000"
+```
+
+You can view the documentation via [http://localhost:8000](http://localhost:8000) in your browser, now.
+
+If that does not work, check if you can get the URL for your browser's address
+bar from a different terminal window:
+
+```Bash
+echo http://$(docker inspect -f "{{.NetworkSettings.IPAddress}}" $(docker ps -qf "name=hpc-compendium")):8000
+```
+
+The running container automatically takes care of file changes and rebuilds the
+documentation.  If you want to check whether the markdown files are formatted
+properly, use the following command:
+
+```Bash
+docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium markdownlint docs
+```
+
+To check whether there are links that point to a wrong target, use
+(this may take a while and gives a lot of output because it runs over all files):
+
+```Bash
+docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium bash -c "find docs -type f -name '*.md' | xargs -L1 markdown-link-check"
+```
+
+To check a single file, e. g. `doc.zih.tu-dresden.de/docs/software/big_data_frameworks.md`, use:
+
+```Bash
+docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium markdown-link-check docs/software/big_data_frameworks.md
+```
+
 #### Build Static Documentation
 
 To build the documentation, invoke `mkdocs build`. This will create a new directory named `public`
