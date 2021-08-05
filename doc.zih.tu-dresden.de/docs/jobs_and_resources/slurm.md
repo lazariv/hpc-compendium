@@ -80,7 +80,7 @@ one job per user. Please check the availability of nodes there with `sinfo -p in
 
 Slurm will forward your X11 credentials to the first (or even all) node
 for a job with the (undocumented) --x11 option. For example, an
-interactive session for 1 hour with Matlab using eigth cores can be
+interactive session for 1 hour with Matlab using eight cores can be
 started with:
 
 ```Shell Session
@@ -190,7 +190,7 @@ specifically for their target.
 srun ./path/to/binary
 ```
 
-#### Multiple Programms Running Simultaneously in a Job
+#### Multiple Programs Running Simultaneously in a Job
 
 In this short example, our goal is to run four instances of a program concurrently in a **single**
 batch script. Of course we could also start a batch script four times with sbatch but this is not
@@ -251,8 +251,13 @@ other jobs, even if it doesn't use up all resources in the nodes:
 
 ```Bash
 #!/bin/bash
-#SBATCH -J Benchmark<br />#SBATCH -p haswell<br />#SBATCH --nodes=2<br />#SBATCH --ntasks-per-node=2
-#SBATCH --cpus-per-task=8<br />#SBATCH --exclusive    # ensure that nobody spoils my measurement on 2 x 2 x 8 cores<br />#SBATCH --mail-user=your.name@tu-dresden.de
+#SBATCH -J Benchmark
+#SBATCH -p haswell
+#SBATCH --nodes=2
+#SBATCH --ntasks-per-node=2
+#SBATCH --cpus-per-task=8
+#SBATCH --exclusive    # ensure that nobody spoils my measurement on 2 x 2 x 8 cores
+#SBATCH --mail-user=your.name@tu-dresden.de
 #SBATCH --time=00:10:00
 
 srun ./my_benchmark
@@ -400,7 +405,7 @@ src="data:;base64,iVBORw0KGgoAAAANSUhEUgAAAvoAAADyCAIAAACzsfbGAAAABmJLR0QA/wD/AP
 ### Node Features for Selective Job Submission
 
 The nodes in our HPC system are becoming more diverse in multiple aspects: hardware, mounted
-storage, software. The system administrators can decribe the set of properties and it is up to the
+storage, software. The system administrators can describe the set of properties and it is up to the
 user to specify her/his requirements. These features should be thought of as changing over time
 (e.g. a file system get stuck on a certain node).
 

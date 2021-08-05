@@ -37,7 +37,7 @@ optimization, data alignment and so on. You can list all available compiler opti
 `-help`. Reading the man-pages is a good idea, too.
 
 The user benefits from the (nearly) same set of compiler flags for optimization for the C,C++, and
-Fortran-compilers. In the following table, only a couple of important compiler-dependant options are
+Fortran-compilers. In the following table, only a couple of important compiler-dependent options are
 listed.  For more detailed information, the user should refer to the man pages or use the option
 -help to list all options of the compiler.
 
@@ -96,17 +96,17 @@ parallelism in the code. Therefore it is sometimes necessary to provide
 the compiler with some hints. Some possible directives are (Fortran
 style):
 
-|                          |                                   |
-|--------------------------|-----------------------------------|
-| `CDEC$ ivdep`            | ignore assumed vector dependences |
-| `CDEC$ swp`              | try to software-pipeline          |
-| `CDEC$ noswp`            | disable software-pipeline         |
-| `CDEC$ loop count (n)`   | hint for optimization             |
-| `CDEC$ distribute point` | split this large loop             |
-| `CDEC$ unroll (n)`       | unroll (n) times                  |
-| `CDEC$ nounroll`         | do not unroll                     |
-| `CDEC$ prefetch a`       | prefetch array a                  |
-| `CDEC$ noprefetch a`     | do not prefetch array a           |
+|                          |                                    |
+|--------------------------|------------------------------------|
+| `CDEC$ ivdep`            | ignore assumed vector dependencies |
+| `CDEC$ swp`              | try to software-pipeline           |
+| `CDEC$ noswp`            | disable software-pipeline          |
+| `CDEC$ loop count (n)`   | hint for optimization              |
+| `CDEC$ distribute point` | split this large loop              |
+| `CDEC$ unroll (n)`       | unroll (n) times                   |
+| `CDEC$ nounroll`         | do not unroll                      |
+| `CDEC$ prefetch a`       | prefetch array a                   |
+| `CDEC$ noprefetch a`     | do not prefetch array a            |
 
 The compiler directives are the same for `ifort` and `icc` . The syntax for C/C++ is like `#pragma
 ivdep`, `#pragma swp`, and so on.

@@ -29,7 +29,7 @@ ZIH uses the batch system Slurm for resource management and job scheduling.
 ??? note "Batch System"
 
     The batch system is the central organ of every HPC system users interact with its compute
-    resources. The batchsystem finds an adequate compute system (partition/island) for your compute
+    resources. The batch system finds an adequate compute system (partition/island) for your compute
     jobs. It organizes the queueing and messaging, if all resources are in use. If resources are
     available for your job, the batch system allocates and connects to these resources, transfers
     run-time environment, and starts the job.
