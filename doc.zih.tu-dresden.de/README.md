@@ -157,6 +157,14 @@ To check a single file, e. g. `doc.zih.tu-dresden.de/docs/software/big_data_fram
 docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium markdown-link-check docs/software/big_data_frameworks.md
 ```
 
+For spell-checking all files, use:
+
+```Bash
+docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium ./spellcheck.sh
+```
+
+This outputs all words of all files that are unknown to the spell checker. To let the spell checker "know" a word, append it to `doc.zih.tu-dresden.de/wordlist.aspell`.
+
 #### Build Static Documentation
 
 To build the documentation, invoke `mkdocs build`. This will create a new directory named `public`
