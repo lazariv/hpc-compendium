@@ -121,16 +121,23 @@ docker build -t hpc-compendium .
 ```
 
 If you want to see how it looks in your browser, you can use shell commands to serve
-the documentation (first line) and get the URL for your browser's address bar (second line):
+the documentation:
 
 ```Bash
-docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium bash -c "mkdocs build --verbose && mkdocs serve -a 0.0.0.0:8000"
+docker run --name=hpc-compendium -p 8000:8000 --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium bash -c "mkdocs build --verbose && mkdocs serve -a 0.0.0.0:8000"
+```
+
+You can view the documentation via [http://localhost:8000](http://localhost:8000) in your browser, now.
+
+If that does not work, check if you can get the URL for your browser's address
+bar from a different terminal window:
+```Bash
 echo http://$(docker inspect -f "{{.NetworkSettings.IPAddress}}" $(docker ps -qf "name=hpc-compendium")):8000
 ```
 
-The first line (with the mount option) automatically takes care of the file changes and rebuilds
-the documentation. If you want to check whether the markdown files are formatted properly, use the
-following command:
+The running container automatically takes care of file changes and rebuilds the
+documentation.  If you want to check whether the markdown files are formatted
+properly, use the following command:
 
 ```Bash
 docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium markdownlint docs
