@@ -157,6 +157,12 @@ To check a single file, e. g. `doc.zih.tu-dresden.de/docs/software/big_data_fram
 docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium markdown-link-check docs/software/big_data_frameworks.md
 ```
 
+For spell-checking a single file, use:
+
+```Bash
+docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium ./spellcheck-file.sh <file>
+```
+
 For spell-checking all files, use:
 
 ```Bash
