@@ -5,7 +5,7 @@ Pre-requisites: see Readme.md
 I want to change something in the RomeNodes.md documentation!
 
 ```Bash
-git clone git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git
+git clone git@gitlab.hrz.tu-chemnitz.de:zih/hpcsupport/hpc-compendium.git
 cd hpc-compendium/
 git checkout preview
 cd doc.zih.tu-dresden.de
