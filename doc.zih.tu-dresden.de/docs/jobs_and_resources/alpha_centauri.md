@@ -46,7 +46,7 @@ modules with CUDA11, GCC 10 and OpenMPI4:
 
 ```Bash
 module load modenv/hiera GCC/10.2.0 CUDA/11.1.1 OpenMPI/4.0.5 PyTorch/1.7.1 module load
-modenv/hiera GCC/10.2.0 CUDA/11.1.1 OpenMPI/4.0.5 TensorFlow/2.4.1
+module load modenv/hiera GCC/10.2.0 CUDA/11.1.1 OpenMPI/4.0.5 TensorFlow/2.4.1
 ```
 
 **Hint**: To check the available modules for the **hiera** software environment, use the command:
