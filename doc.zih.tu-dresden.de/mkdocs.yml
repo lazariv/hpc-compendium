@@ -112,7 +112,7 @@ nav:
   - Support: support.md
   - Archive:
     - Overview: archive/overview.md
-    - Bio Informatics: software/bioinformatics.md
+    - Bio Informatics: archive/bioinformatics.md
     - CXFS End of Support: archive/cxfs_end_of_support.md
     - Debugging Tools: archive/debugging_tools.md
     - Hardware: archive/hardware.md
