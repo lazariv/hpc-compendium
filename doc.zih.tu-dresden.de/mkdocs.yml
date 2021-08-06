@@ -7,13 +7,13 @@ nav:
     - Request for Resources: application/request_for_resources.md
     - Project Request Form: application/project_request_form.md
     - Project Management: application/project_management.md
-  - Access to the Cluster:
+  - Access to ZIH Systems:
     - Overview: access/overview.md
+    - Connecting with SSH: access/ssh_login.md
+    - Key Fingerprints: access/key_fingerprints.md  
     - Desktop Visualization: access/desktop_cloud_visualization.md
     - Web VNC: access/web_vnc.md
-    - Login via SSH: access/ssh_login.md
     - Security Restrictions: access/security_restrictions.md
-    #- SSH with Putty: access/ssh_mit_putty.md
     - JupyterHub:
       - JupyterHub: access/jupyterhub.md
       - JupyterHub for Teaching: access/jupyterhub_for_teaching.md

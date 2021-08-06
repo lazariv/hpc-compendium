@@ -9,7 +9,7 @@ and tasks connected with the big data.
 The main **aim** of this guide is to help users who have started working with Taurus and focused on
 working with Machine learning frameworks such as TensorFlow or Pytorch.
 
-**Prerequisites:** To work with HPC-DA, you need [Login](../access/login.md) for the Taurus system
+**Prerequisites:** To work with HPC-DA, you need [Login](../access/ssh_login.md) for the Taurus system
 and preferably have basic knowledge about High-Performance computers and Python.
 
 **Disclaimer:** This guide provides the main steps on the way of using Taurus, for details please
@@ -59,7 +59,7 @@ during the access procedure. Accept the host verifying and enter your password.
 
 This method requires two conditions:
 Linux OS, workstation within the campus network. For other options and
-details check the [login page](../access/login.md).
+details check the [login page](../access/ssh_login.md).
 
 ## Data management
 
