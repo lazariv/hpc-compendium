@@ -390,6 +390,8 @@ specific_software.md is not included in nav
 
 ## Content Rules
 
+**Remark:** Avoid using tabs both in markdown files and in `mkdocs.yaml`. Type spaces instead.
+
 ### New Page and Pages Structure
 
 The pages structure is defined in the configuration file [mkdocs.yaml](doc.zih.tu-dresden.de/mkdocs.yml).

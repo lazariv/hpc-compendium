@@ -1,6 +1,6 @@
 # Deep learning
 
-**Prerequisites**: To work with Deep Learning tools you obviously need [Login](../access/login.md)
+**Prerequisites**: To work with Deep Learning tools you obviously need [Login](../access/ssh_login.md)
 for the Taurus system and basic knowledge about Python, Slurm manager.
 
 **Aim** of this page is to introduce users on how to start working with Deep learning software on

@@ -8,7 +8,7 @@ PyTorch provides a core datastructure, the tensor, a multi-dimensional array tha
 similarities with Numpy arrays.
 PyTorch also consumed Caffe2 for its backend and added support of ONNX.
 
-**Prerequisites:** To work with PyTorch you obviously need [access](../access/login.md) for the
+**Prerequisites:** To work with PyTorch you obviously need [access](../access/ssh_login.md) for the
 Taurus system and basic knowledge about Python, Numpy and SLURM system.
 
 **Aim** of this page is to introduce users on how to start working with PyTorch on the
