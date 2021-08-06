@@ -16,7 +16,7 @@ Here are the major changes from the user's perspective:
 Due to the new operating system, the host keys of the login nodes have also changed. If you have
 logged into tauruslogin6 before and still have the old one saved in your `known_hosts` file, just
 remove it and accept the new one after comparing its fingerprint with those listed under
-[Login](../access/login.md#ssh-access).
+[Login](../access/key_fingerprints.md).
 
 ## Using Software Modules
 
