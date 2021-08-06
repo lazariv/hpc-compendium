@@ -19,7 +19,7 @@ community resources. It is available on taurus along with other common machine
 learning packages like Pillow, SciPY, Numpy.
 
 **Prerequisites:** To work with Tensorflow on Taurus, you obviously need
-[access](../access/login.md) for the Taurus system and basic knowledge about Python, SLURM system.
+[access](../access/ssh_login.md) for the Taurus system and basic knowledge about Python, SLURM system.
 
 **Aim** of this page is to introduce users on how to start working with
 TensorFlow on the \<a href="HPCDA" target="\_self">HPC-DA\</a> system -

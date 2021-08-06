@@ -6,7 +6,7 @@ effective. Taurus allows working with a lot of available packages and
 libraries which give more useful functionalities and allow use all
 features of Python and to avoid minuses.
 
-**Prerequisites:** To work with PyTorch you obviously need [access](../access/login.md) for the
+**Prerequisites:** To work with PyTorch you obviously need [access](../access/ssh_login.md) for the
 Taurus system and basic knowledge about Python, Numpy and SLURM system.
 
 **Aim** of this page is to introduce users on how to start working with Python on the
