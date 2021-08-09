@@ -1,6 +1,6 @@
 # How to work with the git
 
-Pre-requisites: see Readme.md
+Pre-requisites: see [Readme.md](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/blob/preview/doc.zih.tu-dresden.de/README.md)
 
 I want to change something in the RomeNodes.md documentation!
 
