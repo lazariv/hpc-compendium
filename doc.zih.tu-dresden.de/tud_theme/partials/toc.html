@@ -34,6 +34,22 @@
     {% set toc = first.children %}
   {% endif %}
 
+  <!-- hpc operation status -->
+  <div class="operation-status">
+    <label class="md-nav__title" for="operation_status">
+      HPC Support
+    </label>
+    <p>
+      <img class="operation-status-logo" alt="operation status" src="https://bs.zih.tu-dresden.de/bs.php?action=status_icon&dienst=6">
+      <a href="http://tu-dresden.de/die_tu_dresden/zentrale_einrichtungen/zih/aktuelles/betriebsstatus/index_html?action=dienstinfo&dienst=6">
+      Operation Status 
+      </a>
+      <a href="mailto:{{ config.extra.hpcsupport_mail }}">{{ config.extra.hpcsupport_mail }}</a>
+    <p>
+  </div>
+  
+  <hr class="solid">
+
   <!-- Render item list -->
   {% if toc %}
     <label class="md-nav__title" for="__toc">
@@ -47,16 +63,4 @@
     </ul>
   {% endif %}
 
-  <!-- hpc operation status -->
-  <div class="operation-status">
-    <hr class="solid">
-    <label class="md-nav__title" for="operation_status">
-      HPC Support
-    </label>
-    <p>
-      <img alt="" src="https://bs.zih.tu-dresden.de/bs.php?action=status_icon&dienst=6" style="vertical-align: middle;" width="10">
-      Operation Status 
-      <a href="mailto:{{ config.extra.hpcsupport_mail }}">{{ config.extra.hpcsupport_mail }}</a>
-    <p>
-  </div>
 </nav>

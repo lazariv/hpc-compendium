@@ -143,7 +143,10 @@ strong {
 }
 /* toc */
 /* operation-status */
-
+.operation-status-logo {
+    width: 0.5rem;
+}
+    
 hr.solid {
     border-top: 2px solid #bbb;
 }
