@@ -76,7 +76,9 @@ nav:
       - Overview: data_lifecycle/file_systems.md
       - Permanent File Systems: data_lifecycle/permanent.md
       - Lustre: data_lifecycle/lustre.md
-      - BeeGFS: data_lifecycle/bee_gfs.md
+      - BeeGFS 1: data_lifecycle/beegfs.md
+      - BeeGFS 2: data_lifecycle/bee_gfs.md
+      - WarmArchive: data_lifecycle/warm_archive.md
       - Intermediate Archive: data_lifecycle/intermediate_archive.md
       - Quotas: data_lifecycle/quotas.md
     - Workspaces: data_lifecycle/workspaces.md
