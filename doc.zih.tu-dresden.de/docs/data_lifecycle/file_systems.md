@@ -36,15 +36,15 @@ their data.
 
 For the first view, you can easily use the "df-command".
 
-```Bash
-df
+``` console
+marie@login$ df
 ```
 
 Alternativly you can use the "findmnt"-command, which is also able to perform an `df` by adding the
-"-D"-parameter.
+"-D"-parameter:
 
-```Bash
-findmnt -D
+``` console
+marie@login$ findmnt -D
 ```
 
 Optional you can use the `-t`-parameter to specify the fs-type or the `-o`-parameter to alter the
