@@ -33,6 +33,7 @@ You can load a MUST module as follows:
 
 ```console
 marie@login$ module load MUST
+Module MUST/1.6.0-rc3-intel-2018a and 16 dependencies loaded.
 ```
 
 Besides loading a MUST module, no further changes are needed during compilation and linking.
