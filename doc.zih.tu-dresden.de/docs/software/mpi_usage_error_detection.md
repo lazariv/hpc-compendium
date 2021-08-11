@@ -1,6 +1,6 @@
 # Correctes Checking and Usage Error Detection for MPI Parallel Applications  
 
-MPI as the de-facto standard for parallel applications of the the massage passing paradigm offers
+MPI as the de-facto standard for parallel applications of the massage passing paradigm offers
 more than one hundred different API calls with complex restrictions. As a result, developing
 applications with this interface is error prone and often time consuming. Some usage errors of MPI
 may only manifest on some platforms or some application runs, which further complicates the
