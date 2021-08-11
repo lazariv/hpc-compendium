@@ -24,14 +24,14 @@ combination of a compiler and an MPI library, make sure to use a combination tha
 Right now we only provide a single combination on each system, contact us if you need further
 combinations. You can query for the available modules with:
 
-```Bash
-module avail must
+```console
+marie@login$ module avail must
 ```
 
 You can load a MUST module as follows:
 
-```Bash
-module load must
+```console
+marie@login$ module load must
 ```
 
 Besides loading a MUST module, no further changes are needed during compilation and linking.
@@ -40,11 +40,11 @@ Besides loading a MUST module, no further changes are needed during compilation 
 
 In order to run with MUST you need to replace the mpirun/mpiexec command with mustrun:
 
-```Bash
-mustrun -np <NPROC> ./a.out
+```console
+marie@login$ mustrun -np <NPROC> ./a.out
 ```
 
-Besides replacing the mpiexec command you need to be aware that **MUST always allocates an extra
+Besides replacing the srun command you need to be aware that **MUST always allocates an extra
 process**. I.e. if you issue a `mustrun -np 4 ./a.out` then MUST will start 5 processes instead.
 This is usually not critical, however in batch jobs **make sure to allocate space for this extra
 task**.
