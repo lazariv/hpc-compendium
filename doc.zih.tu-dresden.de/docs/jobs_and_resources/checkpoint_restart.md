@@ -14,42 +14,45 @@ work application-agnostic. One such project which we recommend is DMTCP:
 Distributed MultiThreaded CheckPointing
 (<http://dmtcp.sourceforge.net>).
 
-It is available on Taurus after having loaded the "dmtcp" module:
+It is available on ZIH systems after having loaded the "dmtcp" module:
 
-    module load DMTCP
+```console
+module load DMTCP
+```
 
-While our batch system of choice, SLURM, also provides a checkpointing
+While our batch system of choice, Slurm, also provides a checkpointing
 interface to the user, unfortunately it does not yet support DMTCP at
-this time. However, there are ongoing efforts of writing a SLURM plugin
+this time. However, there are ongoing efforts of writing a Slurm plugin
 that hopefully will change this in the near future. We will update this
 documentation as soon as it becomes available.
 
 In order to help with setting up checkpointing for your jobs, we have
 written a few scripts that make it easier to utilize DMTCP together with
-SLURM on our cluster.
+Slurm on our cluster.
 
-## Using our Chain-Job Script
+## Using our [Chain-Job](../jobs_and_resources/slurm.md#chain-jobs) Script
 
 For long-running jobs that you wish to split into multiple shorter jobs,
 thereby enabling the job scheduler to fill the cluster much more
 efficiently and also providing some level of fault-tolerance, we have
-written a script **TODO Slurm Chain_Jobs**
-that automatically creates a number of jobs for your
+written a script that automatically creates a number of jobs for your
 desired runtime and adds the checkpoint/restart bits transparently to
 your batch script. You just have to specify the targeted total runtime
 of your calculation and the interval in which you wish to do
 checkpoints. The latter (plus the time it takes to write the checkpoint)
 will then be the runtime of the individual jobs. This should be targeted
 at below 24 hours in order to be able to run on all of our
- **TODO link haswell64 partitions - SystemTaurus Runtime_Limits** , for increased
-fault-tolerance it can be chosen even shorter.
+[haswell64 partitions](../jobs_and_resources/system_taurus.md#run-time-limits),
+for increased fault-tolerance, it can be chosen even shorter.
 
 To use it, first add a `dmtcp_launch` before your application call in
-your batch script. In case of MPI applications, you have to add the
-parameters "--ib --rm" and put it between srun and your application
+your batch script. In the case of MPI applications, you have to add the
+parameters `--ib --rm` and put it between srun and your application
 call, e.g.:
 
-    srun dmtcp_launch --ib --rm ./my-mpi-application
+```console
+srun dmtcp_launch --ib --rm ./my-mpi-application
+```
 
 `Note:` we have successfully tested checkpointing MPI applications with
 the latest `Intel MPI` (module: intelmpi/2018.0.128). While it might
@@ -61,9 +64,11 @@ Then just substitute your usual `sbatch` call with `dmtcp_sbatch` and be
 sure to specify the `-t` and `-i` parameters (don't forget you need to
 have loaded the dmtcp module).
 
-    dmtcp_sbatch -t 2-00:00:00 -i 28000,800 my_batchfile.sh
+```console
+dmtcp_sbatch -t 2-00:00:00 -i 28000,800 my_batchfile.sh
+```
 
-With `-t|--time` you set the total runtime of your calculation over all
+With `-t|--time` you set the total runtime of your calculation overall
 jobs. This will be replaced in the batch script in order to shorten your
 individual jobs.
 
@@ -88,7 +93,7 @@ Hints:
     the checkpoint file compression by setting: `export DMTCP_GZIP=0`
 -   Note that all jobs the script deems necessary for your chosen
     timelimit/interval values are submitted right when first calling the
-    script. If your applications takes considerably less time than what
+    script. If your applications take considerably less time than what
     you specified, some of the individual jobs will be unnecessary. As
     soon as one job does not find a checkpoint to resume from, it will
     cancel all subsequent jobs for you.
@@ -107,22 +112,22 @@ What happens in your work directory?
     chain
 
 If you wish to restart manually from one of your checkpoints (e.g., if
-something went wrong in your later jobs or the jobs vanished from the
-queue for some reason), you have to call `dmtcp_sbatch` with the
+something went wrong in your later jobs or the jobs vanished from
+the queue for some reason), you have to call `dmtcp_sbatch` with the
 `-r|--resume` parameter, specifying a cpkt\_\* directory to resume from.
 Then it will use the same parameters as in the initial run of this job
-chain. If you wish to adjust the timelimit, for instance because you
+chain. If you wish to adjust the time limit, for instance, because you
 realized that your original limit was too short, just use the
 `-t|--time` parameter again on resume.
 
 ## Using DMTCP manually
 
-If for some reason our automatic chain job script is not suitable to
-your use-case, you could also just use DMTCP on its own. In the
+If for some reason our automatic chain job script is not suitable for
+your use case, you could also just use DMTCP on its own. In the
 following we will give you step-by-step instructions on how to
 checkpoint your job manually: 1 Load the dmtcp module:
 `module load dmtcp` 1 DMTCP usually runs an additional process that
-manages the creation of checkpoints and such, the so called
+manages the creation of checkpoints and such, the so-called
 `coordinator`. It must be started in your batch script before the actual
 start of your application. To help you with this process, we have
 created a bash function called `start_coordinator` that is available
@@ -136,8 +141,10 @@ own. 1 In front of your program call, you have to add the wrapper
 script: `dmtcp_launch` **TODO check**
 
 ```bash
-#/bin/bash #SBATCH --time=00:01:00
-#SBATCH --cpus-per-task=8 #SBATCH --mem-per-cpu=1500
+#/bin/bash 
+#SBATCH --time=00:01:00
+#SBATCH --cpus-per-task=8 
+#SBATCH --mem-per-cpu=1500
 
 source $DMTCP_ROOT/bin/bash start_coordinator -i 40 --exit-after-ckpt
 
@@ -151,18 +158,20 @@ terminate your application and with it the job. If the job runs into its
 timelimit (here: 60 seconds), the time to write out the checkpoint was
 probably not long enough. If all went well, you should find cpkt\* files
 in your work directory together with a script called
-./dmtcp_restart_script.sh that can be used to resume from the
+`./dmtcp_restart_script.sh` that can be used to resume from the
 checkpoint. 1 To restart your application, you need another batch file
-(similiar to the one above) where once again you first have to start the
+(similar to the one above) where once again you first have to start the
 DMTCP coordinator. The requested resources should match those of your
 original job. If you do not wish to create another checkpoint in your
-restarted run again, you can omit the -i and --exit-after-ckpt
+restarted run again, you can omit the `-i` and `--exit-after-ckpt`
 parameters this time. Afterwards, the application must be run using the
 restart script, specifying the host and port of the coordinator (they
 have been exported by the start_coordinator function). Example:
 
 ```bash
-#/bin/bash #SBATCH --time=00:01:00 #SBATCH --cpus-per-task=8
+#/bin/bash 
+#SBATCH --time=00:01:00 
+#SBATCH --cpus-per-task=8
 #SBATCH --mem-per-cpu=1500
 
 source $DMTCP_ROOT/bin/bash start_coordinator -i 40 --exit-after-ckpt
