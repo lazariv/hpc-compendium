@@ -54,7 +54,7 @@ marie@login$ mustrun -np <number of MPI processes> ./<your binary>
 [MUST] Generating P^nMPI configuration ... success
 [MUST] Search for linked P^nMPI ... not found ... using LD_PRELOAD to load P^nMPI ... success
 [MUST] Executing application:
-...
+{...}
 [MUST] Execution finished, inspect "/home/marie/MUST_Output.html"!
 ```
 
