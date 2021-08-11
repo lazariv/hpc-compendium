@@ -80,7 +80,6 @@ nav:
       - BeeGFS 2: data_lifecycle/bee_gfs.md
       - WarmArchive: data_lifecycle/warm_archive.md
       - Intermediate Archive: data_lifecycle/intermediate_archive.md
-      - Quotas: data_lifecycle/quotas.md
     - Workspaces: data_lifecycle/workspaces.md
     - Preservation of Research Data: data_lifecycle/preservation_research_data.md
     - Structuring Experiments: data_lifecycle/experiments.md
