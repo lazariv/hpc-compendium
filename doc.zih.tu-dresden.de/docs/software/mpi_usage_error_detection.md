@@ -15,7 +15,7 @@ MUST checks if your application conforms to the MPI standard and will issue warn
 errors or non-portable constructs. You can apply MUST without modifying your source code, though we
 suggest to add the debugging flag "-g" during compilation.
 
-See also [MUST Introduction Slides](misc/parallel_debugging_must.pdf)
+See also [MUST Introduction Slides](misc/parallel_debugging_must.pdf).
 
 ### Setup and Modules
 
