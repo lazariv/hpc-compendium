@@ -38,9 +38,9 @@ Module MUST/1.6.0-rc3-intel-2018a and 16 dependencies loaded.
 
 Besides loading a MUST module, no further changes are needed during compilation and linking.
 
-### Running with MUST
+### Running your Application with MUST
 
-In order to run with MUST you need to replace the srun command with mustrun:
+In order to run your application with MUST you need to replace the srun command with mustrun:
 
 ```console
 marie@login$ mustrun -np <number of MPI processes> ./<your binary>
