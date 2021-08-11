@@ -16,7 +16,7 @@ errors or non-portable constructs. You can apply MUST without modifying your sou
 suggest to add the debugging flag "-g" during compilation.
 
 ![MUST Introduction Slides](misc/parallel_debugging_must.pdf)
-{: align="left"}
+{: align="center"}
 
 ### Setup and Modules
 
