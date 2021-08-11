@@ -60,7 +60,7 @@ marie@login$ mustrun -np <number of MPI processes> ./<your binary>
 
 Besides replacing the srun command you need to be aware that **MUST always allocates an extra
 process**, i.e. if you issue a `mustrun -np 4 ./a.out` then MUST will start 5 processes instead.
-This is usually not critical, however in batch jobs **make sure to allocate CPUs for this extra
+This is usually not critical, however in batch jobs **make sure to allocate an extra CPU for this
 task**.
 
 Finally, MUST assumes that your application may crash at any time. To still gather correctness
