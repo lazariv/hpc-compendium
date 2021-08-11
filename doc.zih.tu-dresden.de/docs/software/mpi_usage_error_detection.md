@@ -1,4 +1,4 @@
-# Usage Error Detection and Correctes Chekcing for MPI Parallel Applications  
+# Correctes Checking and Usage Error Detection for MPI Parallel Applications  
 
 MPI as the de-facto standard for parallel applications of the the massage passing paradigm offers
 more than one hundred different API calls with complex restrictions. As a result, developing
