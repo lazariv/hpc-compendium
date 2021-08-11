@@ -1,4 +1,4 @@
-# Introduction
+# Usage Error Detection and Correctes Chekcing for MPI Parallel Applications  
 
 MPI as the de-facto standard for parallel applications of the the massage passing paradigm offers
 more than one hundred different API calls with complex restrictions. As a result, developing
@@ -75,7 +75,7 @@ application. The output is named `MUST_Output.html`. Open this files in a browse
 results. The HTML file is color coded: Entries in green represent notes and useful information.
 Entries in yellow represent warnings, and entries in red represent errors.
 
-## Other MPI Correctness Tools
+## Further MPI Correctness Tools
 
 Besides MUST, there exist further MPI correctness tools, these are:
 
