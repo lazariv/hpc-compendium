@@ -40,15 +40,27 @@ Besides loading a MUST module, no further changes are needed during compilation 
 
 ### Running with MUST
 
-In order to run with MUST you need to replace the mpirun/mpiexec command with mustrun:
+In order to run with MUST you need to replace the srun command with mustrun:
 
 ```console
-marie@login$ mustrun -np <NPROC> ./a.out
+marie@login$ mustrun -np <number of MPI processes> ./<your binary>
+[MUST] MUST configuration ... centralized checks with fall-back application crash handling (very slow)
+[MUST] Weaver ... success
+[MUST] Code generation ... success
+[MUST] Build file generation ... success
+[MUST] Configuring intermediate build ... success
+[MUST] Building intermediate sources ... success
+[MUST] Installing intermediate modules ... success
+[MUST] Generating P^nMPI configuration ... success
+[MUST] Search for linked P^nMPI ... not found ... using LD_PRELOAD to load P^nMPI ... success
+[MUST] Executing application:
+...
+[MUST] Execution finished, inspect "/home/marie/MUST_Output.html"!
 ```
 
 Besides replacing the srun command you need to be aware that **MUST always allocates an extra
-process**. I.e. if you issue a `mustrun -np 4 ./a.out` then MUST will start 5 processes instead.
-This is usually not critical, however in batch jobs **make sure to allocate space for this extra
+process**, i.e. if you issue a `mustrun -np 4 ./a.out` then MUST will start 5 processes instead.
+This is usually not critical, however in batch jobs **make sure to allocate CPUs for this extra
 task**.
 
 Finally, MUST assumes that your application may crash at any time. To still gather correctness
