@@ -34,7 +34,7 @@ if [ $# -eq 1 ]; then
   ;;
   esac
 elif [ $# -eq 0 ]; then
-  for i in `find -name \*.md`; do
+  for i in `find $basedir/docs -name \*.md`; do
   spell_check $i
   done
 else
