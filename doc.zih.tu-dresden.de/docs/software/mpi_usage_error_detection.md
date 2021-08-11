@@ -26,12 +26,13 @@ combinations. You can query for the available modules with:
 
 ```console
 marie@login$ module avail must
+   MUST/1.6.0-rc3-intel-2018a (L)
 ```
 
 You can load a MUST module as follows:
 
 ```console
-marie@login$ module load must
+marie@login$ module load MUST
 ```
 
 Besides loading a MUST module, no further changes are needed during compilation and linking.
