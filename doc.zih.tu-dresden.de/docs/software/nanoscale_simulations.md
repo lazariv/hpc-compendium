@@ -15,49 +15,53 @@
 | **[Siesta](#Siesta)**     | 3.2, 4.0, 4.1                     | siesta     |
 | **[VASP](#VASP)**         | 5.3, 5.4.1, 5.4.4                 | vasp       |
 
-## NAMD
+## ABINIT
 
-[NAMD](http://www.ks.uiuc.edu/Research/namd) is a parallel molecular dynamics code designed for
-high-performance simulation of large biomolecular systems.
+[ABINIT](http://www.abinit.org) is a package whose main program allows one to find the total energy,
+charge density and electronic structure of systems made of electrons and nuclei (molecules and
+periodic solids) within Density Functional Theory (DFT), using pseudopotentials and a planewave
+basis. ABINIT also includes options to optimize the geometry according to the DFT forces and
+stresses, or to perform molecular dynamics simulations using these forces, or to generate dynamical
+matrices, Born effective charges, and dielectric tensors. Excited states can be computed within the
+Time-Dependent Density Functional Theory (for molecules), or within Many-Body Perturbation Theory
+(the GW approximation).
 
-The current version in modenv/scs5 can be started with `srun` as usual.
+## CP2K
 
-Note that the old version from modenv/classic does not use MPI but rather uses Infiniband directly.
-Therefore, you cannot not use srun/mpirun to spawn the processes but have to use the supplied
-"charmrun" command instead. Also, since this is batch system agnostic, it has no possiblity of
-knowing which nodes are reserved for it use, so if you want it to run on more than node, you have to
-create a hostlist file and feed it to charmrun via the parameter "++nodelist". Otherwise, all
-processes will be launched on the same node (localhost) and the other nodes remain unused.
+[CP2K](http://cp2k.berlios.de/) performs atomistic and molecular simulations of solid state, liquid,
+molecular and biological systems. It provides a general framework for different methods such as e.g.
+density functional theory (DFT) using a mixed Gaussian and plane waves approach (GPW), and classical
+pair and many-body potentials.
 
-You can use the following snippet in your batch file to create a hostlist file:
+## CPMD
+
+The CPMD code is a plane wave/pseudopotential implementation of Density Functional Theory,
+particularly designed for ab-initio molecular dynamics. For examples and documentations see
+[CPMD homepage](https://www.lcrc.anl.gov/for-users/software/available-software/cpmd/).
+
+## GAMESS US
+
+GAMESS is an ab-initio quantum mechanics program, which provides many methods for computation of the
+properties of molecular systems using standard quantum chemical methods. For a detailed description,
+please look at the [GAMESS home page](http://www.msg.ameslab.gov/GAMESS/GAMESS.html).
+
+For runs with Slurm, please use a script like this:
 
 ```Bash
-export NODELISTFILE="/tmp/slurm.nodelist.$SLURM_JOB_ID"
-for LINE in `scontrol show hostname $SLURM_JOB_NODELIST` ; do
-  echo "host $LINE" >> $NODELISTFILE ;
-done
-
-# launch NAMD processes. Note that the environment variable $SLURM_NTASKS is only available if you have
-# used the -n|--ntasks parameter. Otherwise, you have to specify the number of processes manually, e.g. +p64
-charmrun +p$SLURM_NTASKS ++nodelist $NODELISTFILE $NAMD inputfile.namd
-
-# clean up afterwards:
-test -f $NODELISTFILE && rm -f $NODELISTFILE
+#!/bin/bash
+#SBATCH -t 120
+#SBATCH -n 8
+#SBATCH --ntasks-per-node=2
+# you have to make sure that on each node runs an even number of tasks !!
+#SBATCH --mem-per-cpu=1900
+module load gamess
+rungms.slurm cTT_M_025.inp /scratch/mark/gamess
+#                          the third parameter is the location of the scratch directory
 ```
 
-The current version 2.7b1 of NAMD runs much faster than 2.6. - Especially on the SGI Altix. Since
-the parallel performance strongly depends on the size of the given problem one cannot give a general
-advice for the optimum number of CPUs to use. (Please check this by running NAMD with your molecules
-and just a few time steps.)
-
-Any published work which utilizes NAMD shall include the following reference:
-
-*James C. Phillips, Rosemary Braun, Wei Wang, James Gumbart, Emad Tajkhorshid, Elizabeth Villa, Christophe
-Chipot, Robert D.  Skeel, Laxmikant Kale, and Klaus Schulten. Scalable molecular dynamics with NAMD.
-Journal of Computational Chemistry, 26:1781-1802, 2005.*
-
-Electronic documents will include a direct link to the official NAMD page at
-http://www.ks.uiuc.edu/Research/namd
+*GAMESS should be cited as:* M.W.Schmidt, K.K.Baldridge, J.A.Boatz, S.T.Elbert, M.S.Gordon,
+J.H.Jensen, S.Koseki, N.Matsunaga, K.A.Nguyen, S.J.Su, T.L.Windus, M.Dupuis, J.A.Montgomery,
+J.Comput.Chem. 14, 1347-1363(1993).
 
 ## Gaussian
 
@@ -128,62 +132,6 @@ You have to start the job with command:
 sbatch mybatch.sh
 ```
 
-## GAMESS US
-
-GAMESS is an ab-initio quantum mechanics program, which provides many methods for computation of the
-properties of molecular systems using standard quantum chemical methods. For a detailed description,
-please look at the [GAMESS home page](http://www.msg.ameslab.gov/GAMESS/GAMESS.html).
-
-For runs with Slurm, please use a script like this:
-
-```Bash
-#!/bin/bash
-#SBATCH -t 120
-#SBATCH -n 8
-#SBATCH --ntasks-per-node=2
-# you have to make sure that on each node runs an even number of tasks !!
-#SBATCH --mem-per-cpu=1900
-module load gamess
-rungms.slurm cTT_M_025.inp /scratch/mark/gamess
-#                          the third parameter is the location of the scratch directory
-```
-
-*GAMESS should be cited as:* M.W.Schmidt, K.K.Baldridge, J.A.Boatz, S.T.Elbert, M.S.Gordon,
-J.H.Jensen, S.Koseki, N.Matsunaga, K.A.Nguyen, S.J.Su, T.L.Windus, M.Dupuis, J.A.Montgomery,
-J.Comput.Chem. 14, 1347-1363(1993).
-
-## LAMMPS
-
-[LAMMPS](http://lammps.sandia.gov) is a classical molecular dynamics code that models an ensemble of
-particles in a liquid, solid, or gaseous state. It can model atomic, polymeric, biological,
-metallic, granular, and coarse-grained systems using a variety of force fields and boundary
-conditions. For examples of LAMMPS simulations, documentations, and more visit
-[LAMMPS sites](http://lammps.sandia.gov).
-
-## ABINIT
-
-[ABINIT](http://www.abinit.org) is a package whose main program allows one to find the total energy,
-charge density and electronic structure of systems made of electrons and nuclei (molecules and
-periodic solids) within Density Functional Theory (DFT), using pseudopotentials and a planewave
-basis. ABINIT also includes options to optimize the geometry according to the DFT forces and
-stresses, or to perform molecular dynamics simulations using these forces, or to generate dynamical
-matrices, Born effective charges, and dielectric tensors. Excited states can be computed within the
-Time-Dependent Density Functional Theory (for molecules), or within Many-Body Perturbation Theory
-(the GW approximation).
-
-## CP2K
-
-[CP2K](http://cp2k.berlios.de/) performs atomistic and molecular simulations of solid state, liquid,
-molecular and biological systems. It provides a general framework for different methods such as e.g.
-density functional theory (DFT) using a mixed Gaussian and plane waves approach (GPW), and classical
-pair and many-body potentials.
-
-## CPMD
-
-The CPMD code is a plane wave/pseudopotential implementation of Density Functional Theory,
-particularly designed for ab-initio molecular dynamics. For examples and documentations see
-[CPMD homepage](https://www.lcrc.anl.gov/for-users/software/available-software/cpmd/).
-
 ## GROMACS
 
 GROMACS is a versatile package to perform molecular dynamics, i.e.  simulate the Newtonian equations
@@ -194,6 +142,58 @@ usually dominate simulations) many groups are also using it for research on non-
 e.g. polymers.
 
 For documentations see [Gromacs homepage](http://www.gromacs.org/).
+
+## LAMMPS
+
+[LAMMPS](http://lammps.sandia.gov) is a classical molecular dynamics code that models an ensemble of
+particles in a liquid, solid, or gaseous state. It can model atomic, polymeric, biological,
+metallic, granular, and coarse-grained systems using a variety of force fields and boundary
+conditions. For examples of LAMMPS simulations, documentations, and more visit
+[LAMMPS sites](http://lammps.sandia.gov).
+
+## NAMD
+
+[NAMD](http://www.ks.uiuc.edu/Research/namd) is a parallel molecular dynamics code designed for
+high-performance simulation of large biomolecular systems.
+
+The current version in modenv/scs5 can be started with `srun` as usual.
+
+Note that the old version from modenv/classic does not use MPI but rather uses Infiniband directly.
+Therefore, you cannot not use srun/mpirun to spawn the processes but have to use the supplied
+"charmrun" command instead. Also, since this is batch system agnostic, it has no possiblity of
+knowing which nodes are reserved for it use, so if you want it to run on more than node, you have to
+create a hostlist file and feed it to charmrun via the parameter "++nodelist". Otherwise, all
+processes will be launched on the same node (localhost) and the other nodes remain unused.
+
+You can use the following snippet in your batch file to create a hostlist file:
+
+```Bash
+export NODELISTFILE="/tmp/slurm.nodelist.$SLURM_JOB_ID"
+for LINE in `scontrol show hostname $SLURM_JOB_NODELIST` ; do
+  echo "host $LINE" >> $NODELISTFILE ;
+done
+
+# launch NAMD processes. Note that the environment variable $SLURM_NTASKS is only available if you have
+# used the -n|--ntasks parameter. Otherwise, you have to specify the number of processes manually, e.g. +p64
+charmrun +p$SLURM_NTASKS ++nodelist $NODELISTFILE $NAMD inputfile.namd
+
+# clean up afterwards:
+test -f $NODELISTFILE && rm -f $NODELISTFILE
+```
+
+The current version 2.7b1 of NAMD runs much faster than 2.6. - Especially on the SGI Altix. Since
+the parallel performance strongly depends on the size of the given problem one cannot give a general
+advice for the optimum number of CPUs to use. (Please check this by running NAMD with your molecules
+and just a few time steps.)
+
+Any published work which utilizes NAMD shall include the following reference:
+
+*James C. Phillips, Rosemary Braun, Wei Wang, James Gumbart, Emad Tajkhorshid, Elizabeth Villa, Christophe
+Chipot, Robert D.  Skeel, Laxmikant Kale, and Klaus Schulten. Scalable molecular dynamics with NAMD.
+Journal of Computational Chemistry, 26:1781-1802, 2005.*
+
+Electronic documents will include a direct link to the official NAMD page at
+http://www.ks.uiuc.edu/Research/namd
 
 ## ORCA
 
