@@ -53,9 +53,8 @@ marie@login$ module avail CP2K
    CP2K/6.1-foss-2019a-spglib    CP2K/6.1-intel-2018a        (D)
    CP2K/6.1-foss-2019a
 [...]
-marie@login$ module load CP2K/6.1-foss-2019a
-[...]
-Module CP2K/6.1-foss-2019a and 21 dependencies loaded.
+marie@login$ module load CP2K
+Module CP2K/6.1-intel-2018a and 25 dependencies loaded.
 ```
 
 ## CPMD
