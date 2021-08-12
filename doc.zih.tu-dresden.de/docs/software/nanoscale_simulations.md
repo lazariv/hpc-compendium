@@ -45,6 +45,19 @@ molecular and biological systems. It provides a general framework for different 
 density functional theory (DFT) using a mixed Gaussian and plane waves approach (GPW), and classical
 pair and many-body potentials.
 
+Available CP2K packages can be listed and loaded with the following commands:  
+```console
+marie@login$ module avail CP2K
+---------------------------- /sw/modules/scs5/chem -----------------------------
+   CP2K/5.1-intel-2018a          CP2K/6.1-intel-2018a-spglib
+   CP2K/6.1-foss-2019a-spglib    CP2K/6.1-intel-2018a        (D)
+   CP2K/6.1-foss-2019a
+[...]
+marie@login$ module load CP2K/6.1-foss-2019a
+[...]
+Module CP2K/6.1-foss-2019a and 21 dependencies loaded.
+```
+
 ## CPMD
 
 The CPMD code is a plane wave/pseudopotential implementation of Density Functional Theory,
