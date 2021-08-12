@@ -26,7 +26,7 @@ matrices, Born effective charges, and dielectric tensors. Excited states can be 
 Time-Dependent Density Functional Theory (for molecules), or within Many-Body Perturbation Theory
 (the GW approximation).
 
-Available ABINIT packages can be listerd and loaded with the following commands:  
+Available ABINIT packages can be listed and loaded with the following commands:  
 ```console
 marie@login$ module avail ABINIT
 ---------------------------- /sw/modules/scs5/chem -----------------------------
