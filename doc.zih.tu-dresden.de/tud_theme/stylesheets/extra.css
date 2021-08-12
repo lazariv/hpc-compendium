@@ -63,16 +63,13 @@ strong {
     color: var(--tud-red-90);
 }
 
-.md-typeset code {
-    font-size: 1rem;
-}
-
 .md-grid {
     max-width: 1600px;
 }
 
 .md-typeset code {
     word-break: normal;
+    font-size: 0.8rem;
 }
 
 
