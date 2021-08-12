@@ -26,6 +26,18 @@ matrices, Born effective charges, and dielectric tensors. Excited states can be 
 Time-Dependent Density Functional Theory (for molecules), or within Many-Body Perturbation Theory
 (the GW approximation).
 
+Available ABINIT packages can be listerd and loaded with the following commands:  
+```console
+marie@login$ module avail ABINIT
+---------------------------- /sw/modules/scs5/chem -----------------------------
+   ABINIT/8.6.3-intel-2018a         Wannier90/2.0.1.1-foss-2018b-abinit
+   ABINIT/8.10.3-intel-2018b        Wannier90/2.0.1.1-intel-2018b-abinit
+   ABINIT/9.2.1-intel-2020a  (D)
+
+marie@login$ module load ABINIT
+Module ABINIT/9.2.1-intel-2020a and 16 dependencies loaded.
+```
+
 ## CP2K
 
 [CP2K](http://cp2k.berlios.de/) performs atomistic and molecular simulations of solid state, liquid,
