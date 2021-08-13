@@ -1,44 +1,56 @@
-# AMD EPYC Nodes (Zen 2, Codename "Rome")
+# Island 7 - AMD Rome Nodes
 
-The nodes **taurusi\[7001-7192\]** are each equipped 2x AMD EPYC 7702
-64-Core processors, so there is a total of 128 physical cores in each
+## Hardware
+
+- Slurm partiton: romeo
+- Module architecture: rome
+- 192 nodes taurusi[7001-7192], each:
+    - 2x AMD EPYC CPU 7702 (64 cores) @ 2.0GHz, MultiThreading
+    - 512 GB RAM
+    - 200 GB SSD disk mounted on /tmp
+
+## Usage
+
+There is a total of 128 physical cores in each
 node. SMT is also active, so in total, 256 logical cores are available
 per node.
+
+!!! note
+
+      Multithreading is disabled per default in a job. To make use of it 
+      include the Slurm parameter `--hint=multithread` in your job script
+      or command line, or set 
+      the environment variable `SLURM_HINT=multithread` before jub submission.
 
 Each node brings 512 GB of main memory, so you can request roughly
 1972MB per logical core (using --mem-per-cpu). Note that you will always
 get the memory for the logical core sibling too, even if you do not
-intend to use SMT (SLURM_HINT=nomultithread which is the default).
+intend to use SMT.
 
-You can use them by specifying partition romeo: **-p romeo**
+!!! Note
 
-**Note:** If you are running a job here with only ONE process (maybe
-multiple cores), please explicitely set the option `-n 1` !
+      If you are running a job here with only ONE process (maybe
+      multiple cores), please explicitely set the option `-n 1` !
 
 Be aware that software built with Intel compilers and `-x*` optimization
 flags will not run on those AMD processors! That's why most older
 modules built with intel toolchains are not availabe on **romeo**.
 
-We provide the script: **ml_arch_avail** that you can use to check if a
+We provide the script: `ml_arch_avail` that you can use to check if a
 certain module is available on rome architecture.
 
 ## Example, running CP2K on Rome
 
 First, check what CP2K modules are available in general:
-
-```bash
-    $ ml spider CP2K
-    #or:
-    $ ml avail CP2K/
-```
+`ml spider CP2K` or `ml avail CP2K`.
 
 You will see that there are several different CP2K versions avail, built
 with different toolchains. Now let's assume you have to decided you want
 to run CP2K version 6 at least, so to check if those modules are built
 for rome, use:
 
-```bash
-$ ml_arch_avail CP2K/6
+```console
+marie@login$ ml_arch_avail CP2K/6
 CP2K/6.1-foss-2019a: haswell, rome
 CP2K/6.1-foss-2019a-spglib: haswell, rome
 CP2K/6.1-intel-2018a: sandy, haswell
@@ -73,7 +85,7 @@ you should set the following environment variable to make sure that AVX2
 is used:
 
 ```bash
-    export MKL_DEBUG_CPU_TYPE=5
+export MKL_DEBUG_CPU_TYPE=5
 ```
 
 Without it, the MKL does a CPUID check and disables AVX2/FMA on
@@ -85,16 +97,16 @@ provide somewhat better performance, so a new workaround would be to
 overwrite the `mkl_serv_intel_cpu_true` symbol with a custom function:
 
 ```c
-    int mkl_serv_intel_cpu_true() {
-      return 1;
-    }
+int mkl_serv_intel_cpu_true() {
+    return 1;
+}
 ```
 
 and preloading this in a library:
 
-```bash
-    gcc -shared -fPIC -o libfakeintel.so fakeintel.c
-    export LD_PRELOAD=libfakeintel.so
+```console
+ marie@login$ gcc -shared -fPIC -o libfakeintel.so fakeintel.c
+ marie@login$ export LD_PRELOAD=libfakeintel.so
 ```
 
 As for compiler optimization flags, `-xHOST` does not seem to produce
