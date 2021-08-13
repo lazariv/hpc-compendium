@@ -18,7 +18,7 @@ List storage and inode capacity, reachability and consistency information of eac
 beegfs-ctl --listtargets --nodetype=storage --spaceinfo --longnodes --state --mount=/beegfs/global0
 ```
 
-To check the capacity of the metadata server just toggle the `--nodetype` argument.
+To check the capacity of the metadata server, just toggle the `--nodetype` argument.
 
 ```Bash
 beegfs-ctl --listtargets --nodetype=meta --spaceinfo --longnodes --state --mount=/beegfs/global0
