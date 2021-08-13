@@ -62,6 +62,8 @@ Module CP2K/6.1-intel-2018a and 25 dependencies loaded.
 The CPMD code is a plane wave/pseudopotential implementation of Density Functional Theory,
 particularly designed for ab-initio molecular dynamics. For examples and documentations see
 [CPMD homepage](https://www.lcrc.anl.gov/for-users/software/available-software/cpmd/).
+CPMD is currently not installed as a module. 
+Please, contact hpcsupport@zih.tu-dresden.de if you need assitance.
 
 ## GAMESS US
 
