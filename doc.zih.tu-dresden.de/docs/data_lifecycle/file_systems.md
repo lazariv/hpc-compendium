@@ -40,7 +40,7 @@ For the first view, you can easily use the "df-command".
 marie@login$ df
 ```
 
-Alternativly you can use the "findmnt"-command, which is also able to perform an `df` by adding the
+Alternatively, you can use the `findmnt`-command, which is also able to report space usage by adding the
 parameter `-D`:
 
 ``` console
