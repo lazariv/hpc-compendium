@@ -56,6 +56,7 @@ JupyterHub contain R kernel. It can be started either in the notebook or in the 
 ## RStudio
 
 For using R with RStudio please refer to [Data Analytics with RStudio](data_analytics_with_rstudio.md).
+
 ## Install Packages in R
 
 By default, user-installed packages are saved in the users home in a subfolder depending on
