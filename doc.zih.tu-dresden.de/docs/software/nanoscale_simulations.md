@@ -1,20 +1,5 @@
 # Nanoscale Modeling Tools
 
-|                           |                                   |            |
-|---------------------------|-----------------------------------|------------|
-|                           | **Taurus**                        | **module** |
-| **[ABINIT](#ABINIT)**     | 7.21, 8.2.3, 8.6.3                | abinit     |
-| **[CP2K](#CP2K)**         | 2.3, 2.4, 2.6, 3.0, 4.1, 5.1, 6.1 | cp2k       |
-| **[CPMD](#CPMD)**         |                                   | \-         |
-| **[Gamess US](#gamess)**  | 2013                              | gamess     |
-| **[Gaussian](#Gaussian)** | g03e01, g09, g09b01, g16          | gaussian   |
-| **[GROMACS](#GROMACS)**   | 4.6.5, 4.6.7,5.1, 5.1.4, 2018.2   | gromacs    |
-| **[LAMMPS](#lammps)**     | 2014, 2015, 2016, 2018            | lammps     |
-| **[NAMD](#NAMD)**         | 2.10, 2.12                        | namd       |
-| **[ORCA](#ORCA)**         | 3.0.3, 4.0, 4.0.1                 | orca       |
-| **[Siesta](#Siesta)**     | 3.2, 4.0, 4.1                     | siesta     |
-| **[VASP](#VASP)**         | 5.3, 5.4.1, 5.4.4                 | vasp       |
-
 ## ABINIT
 
 [ABINIT](http://www.abinit.org) is a package whose main program allows one to find the total energy,
