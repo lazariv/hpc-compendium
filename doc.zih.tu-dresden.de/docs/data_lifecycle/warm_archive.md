@@ -16,7 +16,7 @@ duration.
 
 ### As File System
 
-Uses from our HPC systems can access the warm archive via [workspaces](workspaces.md)).
+On ZIH systems, users can access the warm archive via [workspaces](workspaces.md)).
 Although the lifetime is considerable long, please be aware that the data will be
 deleted as soon as the urser's login expires.
 
