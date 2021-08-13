@@ -139,11 +139,27 @@ Module GROMACS/2020-fosscuda-2019b and 17 dependencies loaded.
 
 ## LAMMPS
 
-[LAMMPS](http://lammps.sandia.gov) is a classical molecular dynamics code that models an ensemble of
+[LAMMPS](https://www.lammps.org) is a classical molecular dynamics code that models an ensemble of
 particles in a liquid, solid, or gaseous state. It can model atomic, polymeric, biological,
 metallic, granular, and coarse-grained systems using a variety of force fields and boundary
 conditions. For examples of LAMMPS simulations, documentations, and more visit
-[LAMMPS sites](http://lammps.sandia.gov).
+[LAMMPS sites](https://www.lammps.org).
+
+Available LAMMPS packages can be listed and loaded with the following commands:  
+```console
+marie@login$:~> module avail LAMMPS
+---------------------------- /sw/modules/scs5/chem -----------------------------
+   LAMMPS/3Mar2020-foss-2020a-Python-3.8.2-kokkos
+   LAMMPS/3Mar2020-intel-2020a-Python-3.8.2-kokkos
+   LAMMPS/7Aug19-foss-2019a-Python-2.7.15
+   LAMMPS/12Dec2018-foss-2019a                     (D)
+   LAMMPS/20180316-foss-2018a-Python-3.6.4
+[...]
+marie@login$ module load LAMMPS
+[...]
+Module LAMMPS/12Dec2018-foss-2019a and 33 dependencies loaded.
+```
+
 
 ## NAMD
 
