@@ -16,25 +16,23 @@ node. SMT is also active, so in total, 256 logical cores are available
 per node.
 
 !!! note
-
-      Multithreading is disabled per default in a job. To make use of it 
-      include the Slurm parameter `--hint=multithread` in your job script
-      or command line, or set 
-      the environment variable `SLURM_HINT=multithread` before jub submission.
+    Multithreading is disabled per default in a job. To make use of it 
+    include the Slurm parameter `--hint=multithread` in your job script
+    or command line, or set 
+    the environment variable `SLURM_HINT=multithread` before job submission.
 
 Each node brings 512 GB of main memory, so you can request roughly
 1972MB per logical core (using --mem-per-cpu). Note that you will always
 get the memory for the logical core sibling too, even if you do not
 intend to use SMT.
 
-!!! Note
-
-      If you are running a job here with only ONE process (maybe
-      multiple cores), please explicitely set the option `-n 1` !
+!!! note
+    If you are running a job here with only ONE process (maybe
+    multiple cores), please explicitly set the option `-n 1` !
 
 Be aware that software built with Intel compilers and `-x*` optimization
 flags will not run on those AMD processors! That's why most older
-modules built with intel toolchains are not availabe on **romeo**.
+modules built with intel toolchains are not available on **romeo**.
 
 We provide the script: `ml_arch_avail` that you can use to check if a
 certain module is available on rome architecture.
@@ -80,7 +78,7 @@ srun cp2k.popt input.inp
 Currently, we have only newer toolchains starting at `intel/2019b`
 installed for the Rome nodes. Even though they have AMD CPUs, you can
 still use the Intel compilers on there and they don't even create
-bad-performaning code. When using the MKL up to version 2019, though,
+bad-performing code. When using the MKL up to version 2019, though,
 you should set the following environment variable to make sure that AVX2
 is used:
 
@@ -89,12 +87,13 @@ export MKL_DEBUG_CPU_TYPE=5
 ```
 
 Without it, the MKL does a CPUID check and disables AVX2/FMA on
-non-Intel CPUs, leading to much worse performance. **NOTE:** in version
-2020, Intel has removed this environment variable and added separate Zen
-codepaths to the library. However, they are still incomplete and do not
-cover every BLAS function. Also, the Intel AVX2 codepaths still seem to
-provide somewhat better performance, so a new workaround would be to
-overwrite the `mkl_serv_intel_cpu_true` symbol with a custom function:
+non-Intel CPUs, leading to much worse performance. 
+!!! note
+    In version 2020, Intel has removed this environment variable and added separate Zen
+    codepaths to the library. However, they are still incomplete and do not
+    cover every BLAS function. Also, the Intel AVX2 codepaths still seem to
+    provide somewhat better performance, so a new workaround would be to
+    overwrite the `mkl_serv_intel_cpu_true` symbol with a custom function:
 
 ```c
 int mkl_serv_intel_cpu_true() {
@@ -105,8 +104,8 @@ int mkl_serv_intel_cpu_true() {
 and preloading this in a library:
 
 ```console
- marie@login$ gcc -shared -fPIC -o libfakeintel.so fakeintel.c
- marie@login$ export LD_PRELOAD=libfakeintel.so
+marie@login$ gcc -shared -fPIC -o libfakeintel.so fakeintel.c
+marie@login$ export LD_PRELOAD=libfakeintel.so
 ```
 
 As for compiler optimization flags, `-xHOST` does not seem to produce
