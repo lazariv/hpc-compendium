@@ -26,7 +26,7 @@ beegfs-ctl --listtargets --nodetype=meta --spaceinfo --longnodes --state --mount
 
 ## Striping
 
-View the stripe information of a given file on the file system and shows on which storage target the
+Show the stripe information of a given file on the file system and on which storage target the
 file is stored.
 
 ```Bash
