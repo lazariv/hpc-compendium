@@ -114,65 +114,8 @@ molecules and reactions under a wide range of conditions, including both stable 
 compounds which are difficult or impossible to observe experimentally such as short-lived
 intermediates and transition structures.
 
-With `module load gaussian` (or `gaussian/g09`) a number of environment variables are set according
-to the needs of Gaussian. Please, set the directory for temporary data (GAUSS_SCRDIR) manually to
-somewhere below `/scratch` (you get the path, when you generated a workspace for your
-calculation).
-
-This is a small example, kindly provide by Arno Schneeweis (Inst. fr Angewandte Physik). You need a
-batch file - for example called "mybatch.sh" with the following content:
-
-```Bash
-#!/bin/bash
-#SBATCH --nodes=1
-#SBATCH --ntasks-per-node=4    # this number of CPU's has to match with the %nproc in the inputfile
-#SBATCH --mem=4000
-#SBATCH --time=00:10:00        # hh:mm:ss
-#SBATCH --mail-type=END,FAIL
-#SBATCH --mail-user=vorname.nachname@tu-dresden.de
-#SBATCH -A ...your_projectname...
-
-####
-make available the access to Gaussian 16
-module load modenv/classic
-module load gaussian/g16_avx2
-export GAUSS_SCRDIR=...path_to_the_Workspace_that_you_generated_before...
-g16 < my_input.com > my_output.out
-```
-
-*As example the input for gaussian could be this my_input.com:*
-
-```Bash
-%mem=4GB
-%nproc=4
-
-#P B3LYP/6-31G* opt
-
-Toluol
-
-0 1
-C    1.108640   0.464239  -0.122043
-C    1.643340  -0.780361   0.210457
-C    0.794940  -1.850561   0.494257
-C   -0.588060  -1.676061   0.445657
-C   -1.122760  -0.431461   0.113257
-C   -0.274360   0.638739  -0.170643
-C   -0.848171   1.974558  -0.527484
-H    1.777668   1.308198  -0.345947
-H    2.734028  -0.917929   0.248871
-H    1.216572  -2.832148   0.756392
-H   -1.257085  -2.520043   0.669489
-H   -2.213449  -0.293864   0.074993
-H   -1.959605   1.917127  -0.513867
-H   -0.507352   2.733596   0.211754
-H   -0.504347   2.265972  -1.545144
-```
-
-You have to start the job with command:
-
-```Batch
-sbatch mybatch.sh
-```
+Gaussian is currently not installed as a module. 
+Please, contact hpcsupport@zih.tu-dresden.de if you need assitance.
 
 ## GROMACS
 
