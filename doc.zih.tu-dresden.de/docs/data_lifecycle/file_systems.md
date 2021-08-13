@@ -50,5 +50,7 @@ marie@login$ findmnt -D
 Optional you can use the `-t`-parameter to specify the fs-type or the `-o`-parameter to alter the
 output.
 
-We do **not recommend** the usage of the "du"-command for this purpose.  It is able to cause issues
-for other users, while reading data from the filesystem.
+!!! important
+
+    **Don't use** the `du`-command for this purpose. It is able to cause issues
+    for other users, while reading data from the filesystem.
