@@ -163,35 +163,10 @@ Module LAMMPS/12Dec2018-foss-2019a and 33 dependencies loaded.
 
 ## NAMD
 
-[NAMD](http://www.ks.uiuc.edu/Research/namd) is a parallel molecular dynamics code designed for
+[NAMD](https://www.ks.uiuc.edu/Research/namd) is a parallel molecular dynamics code designed for
 high-performance simulation of large biomolecular systems.
 
-The current version in modenv/scs5 can be started with `srun` as usual.
-
-Note that the old version from modenv/classic does not use MPI but rather uses Infiniband directly.
-Therefore, you cannot not use srun/mpirun to spawn the processes but have to use the supplied
-"charmrun" command instead. Also, since this is batch system agnostic, it has no possiblity of
-knowing which nodes are reserved for it use, so if you want it to run on more than node, you have to
-create a hostlist file and feed it to charmrun via the parameter "++nodelist". Otherwise, all
-processes will be launched on the same node (localhost) and the other nodes remain unused.
-
-You can use the following snippet in your batch file to create a hostlist file:
-
-```Bash
-export NODELISTFILE="/tmp/slurm.nodelist.$SLURM_JOB_ID"
-for LINE in `scontrol show hostname $SLURM_JOB_NODELIST` ; do
-  echo "host $LINE" >> $NODELISTFILE ;
-done
-
-# launch NAMD processes. Note that the environment variable $SLURM_NTASKS is only available if you have
-# used the -n|--ntasks parameter. Otherwise, you have to specify the number of processes manually, e.g. +p64
-charmrun +p$SLURM_NTASKS ++nodelist $NODELISTFILE $NAMD inputfile.namd
-
-# clean up afterwards:
-test -f $NODELISTFILE && rm -f $NODELISTFILE
-```
-
-The current version 2.7b1 of NAMD runs much faster than 2.6. - Especially on the SGI Altix. Since
+NAMD can be started as parallel program with `srun`. Since
 the parallel performance strongly depends on the size of the given problem one cannot give a general
 advice for the optimum number of CPUs to use. (Please check this by running NAMD with your molecules
 and just a few time steps.)
@@ -203,7 +178,19 @@ Chipot, Robert D.  Skeel, Laxmikant Kale, and Klaus Schulten. Scalable molecular
 Journal of Computational Chemistry, 26:1781-1802, 2005.*
 
 Electronic documents will include a direct link to the official NAMD page at
-http://www.ks.uiuc.edu/Research/namd
+https://www.ks.uiuc.edu/Research/namd
+
+Available NAMD packages can be listed and loaded with the following commands:  
+```console
+marie@login$:~> module avail NAMD
+---------------------------- /sw/modules/scs5/chem -----------------------------
+   NAMD/2.12-intel-2018a-mpi
+[...]
+marie@login$ module load NAMD
+[...]
+Module NAMD/2.12-intel-2018a-mpi and 12 dependencies loaded.
+```
+
 
 ## ORCA
 
