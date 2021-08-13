@@ -171,15 +171,6 @@ the parallel performance strongly depends on the size of the given problem one c
 advice for the optimum number of CPUs to use. (Please check this by running NAMD with your molecules
 and just a few time steps.)
 
-Any published work which utilizes NAMD shall include the following reference:
-
-*James C. Phillips, Rosemary Braun, Wei Wang, James Gumbart, Emad Tajkhorshid, Elizabeth Villa, Christophe
-Chipot, Robert D.  Skeel, Laxmikant Kale, and Klaus Schulten. Scalable molecular dynamics with NAMD.
-Journal of Computational Chemistry, 26:1781-1802, 2005.*
-
-Electronic documents will include a direct link to the official NAMD page at
-https://www.ks.uiuc.edu/Research/namd
-
 Available NAMD packages can be listed and loaded with the following commands:  
 ```console
 marie@login$:~> module avail NAMD
@@ -190,6 +181,14 @@ marie@login$ module load NAMD
 [...]
 Module NAMD/2.12-intel-2018a-mpi and 12 dependencies loaded.
 ```
+Any published work which utilizes NAMD shall include the following reference:
+
+*James C. Phillips, Rosemary Braun, Wei Wang, James Gumbart, Emad Tajkhorshid, Elizabeth Villa, Christophe
+Chipot, Robert D.  Skeel, Laxmikant Kale, and Klaus Schulten. Scalable molecular dynamics with NAMD.
+Journal of Computational Chemistry, 26:1781-1802, 2005.*
+
+Electronic documents will include a direct link to the official NAMD page at
+https://www.ks.uiuc.edu/Research/namd
 
 
 ## ORCA
