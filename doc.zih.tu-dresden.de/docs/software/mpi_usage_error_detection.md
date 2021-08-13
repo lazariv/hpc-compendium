@@ -45,8 +45,10 @@ In order to run your application with MUST you need to replace the srun command 
 ```console
 marie@login$ mustrun -np <number of MPI processes> ./<your binary>
 ```
+
 Suppose your application is called `fancy-program` and is normally run with 4 processes.
 The invocation should then be
+
 ```console
 marie@login$ mustrun -np 4 ./fancy-program
 [MUST] MUST configuration ... centralized checks with fall-back application crash handling (very slow)
