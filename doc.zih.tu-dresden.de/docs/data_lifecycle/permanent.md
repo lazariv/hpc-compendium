@@ -88,6 +88,6 @@ In case a quota is above it's limits:
   - Check your workflow and use /tmp or the scratch file systems for temporary files
   - *Systematically* handle your important data:
     - For later use (weeks...months) at the HPC systems, build and zip tar
-      archives with meaningful names or IDs and store e.g. them in a workspace in the
+      archives with meaningful names or IDs and store them e.g. in a workspace in the
       [warm archive](warm_archive.md) or an [archive](intermediate_archive.md).
     - Refer to the hints for [long term preservation for research data](preservation_research_data.md)
