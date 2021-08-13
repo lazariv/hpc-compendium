@@ -32,7 +32,8 @@ Typically, all members of the project have read/write access to that directory.
 It can only be written to on the login and export nodes.
 
 !!! note
-   On compute nodes, /projects is mounted as read-only, because it must nut be used as
+
+   On compute nodes, /projects is mounted as read-only, because it must not be used as
    work directory and heavy I/O.
 
 ## Snapshots
