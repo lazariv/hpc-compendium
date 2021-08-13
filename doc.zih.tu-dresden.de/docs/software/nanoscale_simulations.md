@@ -261,6 +261,18 @@ Junquera, P. Ordejon, and D. Sanchez-Portal, J. Phys.: Condens. Matt.  14, 2745-
 ## VASP
 
 "VAMP/VASP is a package for performing ab-initio quantum-mechanical molecular dynamics (MD) using
-pseudopotentials and a plane wave basis set." [VASP](https://www.vasp.at). It is installed on mars.
-If you are interested in using VASP on ZIH machines, please contact [Dr. Ulf
-Markwardt](http://tu-dresden.de/die_tu_dresden/zentrale_einrichtungen/zih/wir_ueber_uns/mitarbeiter/markwardt).
+pseudopotentials and a plane wave basis set." [VASP](https://www.vasp.at).
+
+Available VASP packages can be listed and loaded with the following commands:  
+```console
+marie@login$:~> module avail VASP
+---------------------------- /sw/modules/scs5/phys -----------------------------
+   VASP/5.4.4-intel-2018a-optics    VASP/5.4.4-intel-2019b (L,D)
+   VASP/5.4.4-intel-2018a
+[...]
+marie@login$ module load VASP
+[...]
+Module VASP/5.4.4-intel-2019b loaded.
+```
+
+
