@@ -3,18 +3,18 @@
 This section describes how to start the debuggers on the HPC systems of
 ZIH.
 
-Detailed i nformation about how to use the debuggers can be found on the
+Detailed information about how to use the debuggers can be found on the
 website of the debuggers (see below).
 
-## Overview of available Debuggers
+## Overview of available Debuggers at ZIH
 
-|--------------------|-----------------------------------|--|
-|                    | **GNU Debugger** | **DDT**  |
-| Interface          | command line   | graphical user interface |
-| Languages          | C, C++, Fortran| C, C++, Fortran, F95 |
-| Parallel Debugging | Threads        | Threads, MPI, hybrid |
-| Debugger Backend   | GDB            | |
-| Licenses at ZIH    | free           | 1024 |
+| | GDB | Arm DDT  |
+|---|:---|:---|
+| Interface          | Command line   | Graphical user interface |
+| Languages          | C/C++, Fortran | C/C++, Fortran, Python (limited) |
+| Parallel Debugging | Threads        | Threads, MPI, GPU, hybrid |
+| Licenses at ZIH    | Free           | 1024 (max. number of processes/threads) |
+| Official documentation | [GDB website](https://www.gnu.org/software/gdb/) | [Arm DDT website](https://developer.arm.com/tools-and-software/server-and-hpc/debug-and-profile/arm-forge/arm-ddt) |
 
 ## General Advices
 
@@ -23,40 +23,35 @@ website of the debuggers (see below).
     variable and function names, source code lines etc. into the
     executable.
 -   It is also recommendable to reduce or even disable optimizations
-    (`-O0`). At least inlining should be disabled (usually
-    `-fno-inline`)
--   For parallel applications: try to reconstruct the problem with less
-    processes before using a parallel debugger.
+    (`-O0` or gcc's `-Og`). At least inlining should be disabled (usually
+    `-fno-inline`).
+-   For parallel applications: try to reproduce the problem with less
+    processes or threads before using a parallel debugger.
 -   The flag `-traceback` of the Intel Fortran compiler causes to print
     stack trace and source code location when the program terminates
     abnormally.
 -   If your program crashes and you get an address of the failing
     instruction, you can get the source code line with the command
-    `addr2line -e <executable> <address>`
+    `addr2line -e <executable> <address>`.
 -   Use the compiler's check capabilites to find typical problems at
-    compile time or run time
-    -   Read manual (`man gcc`, `man ifort`, etc.)
-    -   Intel C compile time checks:
-        `-Wall -Wp64 -Wuninitialized -strict-ansi`
-    -   Intel Fortran compile time checks: `-warn all -std95`
-    -   Intel Fortran run time checks: `-C -fpe0 -traceback`
--   Use **TODO: memory debuggers - Compendium.Debuggers, Memory_Debugging** to
+    compile time or run time, read the manual (`man gcc`, `man ifort`, etc.)
+    -  Intel C++ example: `icpc -g -std=c++14 -w3 -check=stack,uninit -check-pointers=rw -fp-trap=all`
+    -  Intel Fortran example: `ifort -g -std03 -warn all -check all -fpe-all=0 -traceback`
+-   Use [Memory Debuggers](#memory-debugging) to
     verify the proper usage of memory.
 -   Core dumps are useful when your program crashes after a long
     runtime.
--   More hints: **TODO: Slides about typical Bugs in parallel
-    Programs - typical_bugs.pdf**
+-   Slides from user training: [Introduction to Parallel Debugging](misc/debugging_intro.pdf)
 
-## GNU Debugger
+## GNU Debugger (GDB)
 
 The GNU Debugger (GDB) offers only limited to no support for parallel
 applications and Fortran 90. However, it might be the debugger you are
 most used to. GDB works best for serial programs. You can start GDB in
 several ways:
 
-|                               |                                |
-|-------------------------------|--------------------------------|
 |                               | Command                        |
+|-------------------------------|:-------------------------------|
 | Run program under GDB         | `gdb <executable>`             |
 | Attach running program to GDB | `gdb --pid <process ID>`       |
 | Open a core dump              | `gdb <executable> <core file>` |
@@ -65,14 +60,14 @@ This [GDB Reference
 Sheet](http://users.ece.utexas.edu/~adnan/gdb-refcard.pdf) makes life
 easier when you often use GDB.
 
-Fortran 90 programmers which like to use the GDB should issue an
+Fortran 90 programmers may issue an
 `module load ddt` before their debug session. This makes the GDB
 modified by DDT available, which has better support for Fortran 90 (e.g.
 derived types).
 
-## DDT
+## Arm DDT
 
-noch **TODO: ddt.png title=DDT Main Window**
+![DDT Main Window](misc/ddt-main-window.png)
 
 -   Commercial tool of Arm shipped as "Forge" together with MAP profiler
 -   Intuitive graphical user interface
@@ -87,83 +82,85 @@ noch **TODO: ddt.png title=DDT Main Window**
         want to find
 -   Module to load before using: `module load ddt`
 -   Start: `ddt <executable>`
--   If you experience problems in DDTs configuration when changing the
-    HPC system, you should issue `rm -r ~/.ddt.`
--   More Info
-    -   **TODO** Slides about basic DDT usage: parallel_debugging_ddt.pdf
-    -   [Official Userguide](https://developer.arm.com/docs/101136/latest/ddt)
+-   If the GUI runs too slow over your remote connection: Use [WebVNC](../access/web_vnc.md) to start a remote desktop session in a web browser.
+-   Slides from user training: [Parallel Debugging with DDT](misc/debugging_ddt.pdf)
 
-### Serial Program Example (Taurus, Venus)
 
-```Bash
-    % module load ddt
-    % salloc --x11 -n 1 --time=2:00:00
-    salloc: Granted job allocation 123456
-    % ddt ./myprog
+### Serial Program Example
+
+```console
+marie@login$ module load ddt
+Module ddt/20.2.1-Redhat-7.0 loaded.
+marie@login$ srun --pty --x11=first -n 1 --time=2:00:00 bash
+srun: job 123456 queued and waiting for resources
+srun: job 123456 has been allocated resources
+marie@compute$ ddt ./myprog
 ```
 
--   uncheck MPI, uncheck OpenMP
--   hit *Run*.
+-   Run dialog window of DDT opens.
+-   Optionally: configure options like program arguments.
+-   Hit *Run*.
 
-### Multithreaded Program Example (Taurus, Venus)
+### Multi-threaded Program Example
 
-```Bash
-    % module load ddt
-    % salloc --x11 -n 1 --cpus-per-task=<number of threads> --time=2:00:00
-    salloc: Granted job allocation 123456
-    % srun --x11=first ddt ./myprog
+```console
+marie@login$ module load ddt
+Module ddt/20.2.1-Redhat-7.0 loaded.
+marie@login$ srun --pty --x11=first -n 1 -c <number of threads> --time=2:00:00 bash
+srun: job 123457 queued and waiting for resources
+srun: job 123457 has been allocated resources
+marie@compute$ ddt ./myprog
 ```
 
--   uncheck MPI
--   select OpenMP, set number of threads (if OpenMP)
--   hit *Run*
+-   Run dialog window of DDT opens.
+-   Optionally: configure options like program arguments.
+-   If OpenMP: set number of threads.
+-   Hit *Run*.
 
-### MPI-Parallel Program Example (Taurus, Venus)
+### MPI-Parallel Program Example
 
-```Bash
-    % module load ddt
-    % module load bullxmpi  # Taurus only
-    % salloc --x11 -n <number of processes> --time=2:00:00
-    salloc: Granted job allocation 123456
-    % ddt -np <number of processes> ./myprog
+```console
+marie@login$ module load ddt
+Module ddt/20.2.1-Redhat-7.0 loaded.
+marie@login$ salloc --x11=first -n <number of processes> --time=2:00:00
+salloc: Pending job allocation 123458
+salloc: job 123458 queued and waiting for resources
+salloc: job 123458 has been allocated resources
+salloc: Granted job allocation 123458
+marie@login$ ddt srun ./myprog
 ```
 
--   select MPI
--   set the MPI implementation to "SLURM (generic)"
--   set number of processes
--   hit *Run*
+
+-   Run dialog window of DDT opens.
+-   If MPI-OpenMP-hybrid: set number of threads.
+-   Hit *Run*
 
 ## Memory Debugging
 
--   Memory debuggers find memory management bugs, e.g.
+-   Memory debuggers are very valuable tools as they find memory management bugs, e.g.
     -   Use of non-initialized memory
     -   Access memory out of allocated bounds
--   Very valuable tools to find bugs
--   DDT and Totalview have memory debugging included (needs to be
-    enabled before run)
+-   DDT has memory debugging included (needs to be enabled in the run dialog)
 
 ### Valgrind
 
--   <http://www.valgrind.org>
--   Simulation of the program run in a virtual machine which accurately
-    observes memory operations
--   Extreme run time slow-down
-    -   Use small program runs
--   Sees more memory errors than the other debuggers
--   Not available on mars
+-   Simulation of the program run in a virtual machine which accurately observes memory operations.
+-   Extreme run time slow-down: use small program runs!
+-   Sees more memory errors than other debuggers.
+-   Further information: [Valgrind Website](http://www.valgrind.org)
+-   For serial or multi-threaded programs:
 
-<!-- -->
-
--   for serial programs:
-
-```Bash
-    % module load Valgrind
-    % valgrind ./myprog
+```console
+marie@login$ module load Valgrind
+Module Valgrind/3.14.0-foss-2018b and 12 dependencies loaded.
+marie@login$ srun -n 1 valgrind ./myprog
 ```
 
--   for MPI parallel programs (every rank writes own valgrind logfile):
+-   Not recommended for MPI parallel programs, since usually the MPI library will throw a lot of errors. But you may use valgrind the following way such that every rank writes its own valgrind logfile:
 
-```Bash
-    % module load Valgrind
-    % mpirun -np 4 valgrind --log-file=valgrind.%p.out ./myprog
+```console
+marie@login$ module load Valgrind
+Module Valgrind/3.14.0-foss-2018b and 12 dependencies loaded.
+marie@login$ srun -n <number of processes> valgrind --log-file=valgrind-%p.out ./myprog 
 ```
+
