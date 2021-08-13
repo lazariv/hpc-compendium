@@ -234,9 +234,23 @@ Module ORCA/4.2.1-gompi-2019b and 11 dependencies loaded.
 
 ## Siesta
 
-Siesta (Spanish Initiative for Electronic Simulations with Thousands of Atoms) is both a method and
+[Siesta](https://www.uam.es/siesta) (Spanish Initiative for Electronic Simulations with Thousands of Atoms) is both a method and
 its computer program implementation, to perform electronic structure calculations and ab initio
-molecular dynamics simulations of molecules and solids. <http://www.uam.es/siesta>
+molecular dynamics simulations of molecules and solids.
+
+Available Siesta packages can be listed and loaded with the following commands:  
+```console
+marie@login$:~> module avail Siesta
+---------------------------- /sw/modules/scs5/phys -----------------------------
+   Siesta/4.1-b3-intel-2018a    Siesta/4.1-b4-intel-2019b
+
+---------------------------- /sw/modules/scs5/chem -----------------------------
+   Siesta/4.1-MaX-1.0-intel-2019b (D)
+[...]
+marie@login$ module load Siesta
+[...]
+Module Siesta/4.1-MaX-1.0-intel-2019b and 26 dependencies loaded.
+```
 
 In any paper or other academic publication containing results wholly or partially derived from the
 results of use of the SIESTA package, the following papers must be cited in the normal manner: 1
