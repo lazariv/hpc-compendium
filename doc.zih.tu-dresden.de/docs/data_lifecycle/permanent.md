@@ -81,7 +81,7 @@ The following commands can be used for monitoring:
 - `showquota` shows your projects' usage of the file system.
 - `quota -s -f /home` shows the user's usage of the file system.
 
-In case a quota is above it's limits:
+In case a quota is above its limits:
 
   - Remove core dumps and temporary data
   - Talk with your colleagues to identify the hotspots,
