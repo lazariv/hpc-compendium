@@ -84,7 +84,7 @@ The following commands can be used for monitoring:
 In case a quota is above its limits:
 
   - Remove core dumps and temporary data
-  - Talk with your colleagues to identify the hotspots,
+  - Talk with your colleagues to identify unused or unnecessarily stored data,
   - Check your workflow and use /tmp or the scratch file systems for temporary files
   - *Systematically* handle your important data:
     - For later use (weeks...months) at the HPC systems, build and zip tar
