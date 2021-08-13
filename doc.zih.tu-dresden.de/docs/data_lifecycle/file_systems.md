@@ -41,7 +41,7 @@ marie@login$ df
 ```
 
 Alternativly you can use the "findmnt"-command, which is also able to perform an `df` by adding the
-"-D"-parameter:
+parameter `-D`:
 
 ``` console
 marie@login$ findmnt -D
