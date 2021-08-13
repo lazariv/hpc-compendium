@@ -3,7 +3,7 @@
 On the machine learning nodes, you can use the tools from [IBM Power
 AI](power_ai.md).
 
-# Get started with HPC-DA
+## Get started with HPC-DA
 
 HPC-DA (High-Performance Computing and Data Analytics) is a part of TU-Dresden general purpose HPC
 cluster (Taurus). HPC-DA is the best **option** for **Machine learning, Deep learning** applications
@@ -197,7 +197,6 @@ Virtual Machine (VM) should be used! There are two main options on how
 to work with VM on Taurus: [VM tools](vm_tools.md) - automotive algorithms
 for using virtual machines; [Manual method](virtual_machines.md) - it requires more
 operations but gives you more flexibility and reliability.
-
 
 ## Interactive Session Examples
 
