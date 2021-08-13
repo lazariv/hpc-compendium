@@ -18,7 +18,7 @@ duration.
 
 On ZIH systems, users can access the warm archive via [workspaces](workspaces.md)).
 Although the lifetime is considerable long, please be aware that the data will be
-deleted as soon as the urser's login expires.
+deleted as soon as the user's login expires.
 
 Attention: These workspaces can be written to from login or export nodes.
 On all compute nodes, the warmarchive is mounted read-only.
