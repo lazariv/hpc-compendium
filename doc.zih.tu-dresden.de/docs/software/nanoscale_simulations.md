@@ -212,10 +212,25 @@ batch file. Just set --ntasks to the same number as in your input file and call 
 executable directly.  For parallel runs, it must be called with the full path:
 
 ```Bash
-#!/bin/bash #SBATCH --ntasks=16 #SBATCH --nodes=1 #SBATCH --mem-per-cpu=2000M
+#!/bin/bash
+#SBATCH --ntasks=16
+#SBATCH --nodes=1
+#SBATCH --mem-per-cpu=2000M
 
 $ORCA_ROOT/orca example.inp
 ```
+
+Available ORCA packages can be listed and loaded with the following commands:  
+```console
+marie@login$:~> module avail ORCA
+---------------------------- /sw/modules/scs5/chem -----------------------------
+   ORCA/4.1.1-OpenMPI-2.1.5    ORCA/4.2.1-gompi-2019b (D)
+[...]
+marie@login$ module load ORCA
+[...]
+Module ORCA/4.2.1-gompi-2019b and 11 dependencies loaded.
+```
+
 
 ## Siesta
 
