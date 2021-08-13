@@ -44,7 +44,7 @@ This will set the stripe pattern for `/beegfs/global0/path/to/mydir/` to a chunk
 distributed over 16 storage targets.
 
 Find files located on certain server or targets. The following command searches all files that are
-stored on the storage targets with id 4 or 30 und my-workspace directory.
+stored on the storage targets with id 4 or 30 and my-workspace directory.
 
 ```Bash
 beegfs-ctl --find /beegfs/global0/my-workspace/ --targetid=4 --targetid=30 --mount=/beegfs/global0
