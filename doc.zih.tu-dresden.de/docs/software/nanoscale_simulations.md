@@ -66,24 +66,39 @@ particularly designed for ab-initio molecular dynamics. For examples and documen
 CPMD is currently not installed as a module. 
 Please, contact hpcsupport@zih.tu-dresden.de if you need assitance.
 
-## GAMESS US
+## GAMESS
 
 GAMESS is an ab-initio quantum mechanics program, which provides many methods for computation of the
 properties of molecular systems using standard quantum chemical methods. For a detailed description,
-please look at the [GAMESS home page](http://www.msg.ameslab.gov/GAMESS/GAMESS.html).
+please look at the [GAMESS home page](https://www.msg.chem.iastate.edu/gamess/index.html).
+
+Available GAMESS packages can be listed and loaded with the following commands:  
+```console
+marie@login$ module load modenv/classic
+[...]
+marie@login$:~> module avail gamess
+----------------------- /sw/modules/taurus/applications ------------------------
+   gamess/2013
+[...]
+marie@login$ module load gamess
+Start gamess like this:
+ rungms.slurm <inputfile> [scratch_path]
+Module gamess/2013 and 2 dependencies loaded.
+```
 
 For runs with Slurm, please use a script like this:
-
 ```Bash
 #!/bin/bash
 #SBATCH -t 120
 #SBATCH -n 8
 #SBATCH --ntasks-per-node=2
-# you have to make sure that on each node runs an even number of tasks !!
+## you have to make sure that on each node runs an even number of tasks !!
 #SBATCH --mem-per-cpu=1900
+
+module load modenv/classic
 module load gamess
-rungms.slurm cTT_M_025.inp /scratch/mark/gamess
-#                          the third parameter is the location of the scratch directory
+rungms.slurm cTT_M_025.inp /scratch/ws/0/marie-gamess
+#                          the third parameter is the location of your scratch directory
 ```
 
 *GAMESS should be cited as:* M.W.Schmidt, K.K.Baldridge, J.A.Boatz, S.T.Elbert, M.S.Gordon,
