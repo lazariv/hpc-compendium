@@ -124,9 +124,18 @@ of motion for systems with hundreds to millions of particles. It is primarily de
 biochemical molecules like proteins, lipids and nucleic acids that have a lot of complicated bonded
 interactions, but since GROMACS is extremely fast at calculating the nonbonded interactions (that
 usually dominate simulations) many groups are also using it for research on non-biological systems,
-e.g. polymers.
+e.g. polymers. For documentations see [Gromacs homepage](https://www.gromacs.org/).
 
-For documentations see [Gromacs homepage](http://www.gromacs.org/).
+Available GROMACS packages can be listed and loaded with the following commands:  
+```console
+marie@login$:~> module avail GROMACS
+----------------------------- /sw/modules/scs5/bio -----------------------------
+   GROMACS/2018.2-foss-2018a-CUDA-9.2.88    GROMACS/2019.4-fosscuda-2019a
+   GROMACS/2018.2-intel-2018a               GROMACS/2020-fosscuda-2019b   (D)
+[...]
+marie@login$ module load GROMACS
+Module GROMACS/2020-fosscuda-2019b and 17 dependencies loaded.
+```
 
 ## LAMMPS
 
