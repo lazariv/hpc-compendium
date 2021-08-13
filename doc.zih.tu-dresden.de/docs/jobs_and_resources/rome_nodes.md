@@ -16,9 +16,9 @@ node. SMT is also active, so in total, 256 logical cores are available
 per node.
 
 !!! note
-    Multithreading is disabled per default in a job. To make use of it 
+    Multithreading is disabled per default in a job. To make use of it
     include the Slurm parameter `--hint=multithread` in your job script
-    or command line, or set 
+    or command line, or set
     the environment variable `SLURM_HINT=multithread` before job submission.
 
 Each node brings 512 GB of main memory, so you can request roughly
@@ -40,7 +40,7 @@ certain module is available on rome architecture.
 ## Example, running CP2K on Rome
 
 First, check what CP2K modules are available in general:
-`ml spider CP2K` or `ml avail CP2K`.
+`module load spider CP2K` or `module avail CP2K`.
 
 You will see that there are several different CP2K versions avail, built
 with different toolchains. Now let's assume you have to decided you want
@@ -87,7 +87,7 @@ export MKL_DEBUG_CPU_TYPE=5
 ```
 
 Without it, the MKL does a CPUID check and disables AVX2/FMA on
-non-Intel CPUs, leading to much worse performance. 
+non-Intel CPUs, leading to much worse performance.
 !!! note
     In version 2020, Intel has removed this environment variable and added separate Zen
     codepaths to the library. However, they are still incomplete and do not
