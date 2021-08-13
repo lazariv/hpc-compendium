@@ -17,7 +17,7 @@ performance and permanence.
 
 To work as efficient as possible, consider the following points
 
-- Save source code etc. in `/home` or /projects/...
+- Save source code etc. in `/home` or `/projects/...`
 - Store checkpoints and other temporary data in `/scratch/ws/...`
 - Compilation in `/dev/shm` or `/tmp`
 
