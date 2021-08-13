@@ -55,19 +55,7 @@ JupyterHub contain R kernel. It can be started either in the notebook or in the 
 
 ## RStudio
 
-[RStudio](<https://rstudio.com/) is an integrated development environment (IDE) for R. It includes
-a console, syntax-highlighting editor that supports direct code execution, as well as tools for
-plotting, history, debugging and workspace management. RStudio is also available on Taurus.
-
-The easiest option is to run RStudio in JupyterHub directly in the browser. It can be started
-similarly to a new kernel from [JupyterLab](../access/jupyterhub.md#jupyterlab) launcher.
-
-![RStudio launcher in JupyterHub](misc/data_analytics_with_r_RStudio_launcher.png)
-{: align="center"}
-
-Please keep in mind that it is currently not recommended to use the interactive x11 job with the
-desktop version of RStudio, as described, for example, in introduction HPC-DA slides.
-
+For using R with RStudio please refer to [Data Analytics with RStudio](data_analytics_with_rstudio.md).
 ## Install Packages in R
 
 By default, user-installed packages are saved in the users home in a subfolder depending on
