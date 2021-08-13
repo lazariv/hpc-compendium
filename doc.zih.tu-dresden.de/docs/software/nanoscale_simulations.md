@@ -12,6 +12,7 @@ Time-Dependent Density Functional Theory (for molecules), or within Many-Body Pe
 (the GW approximation).
 
 Available ABINIT packages can be listed and loaded with the following commands:  
+
 ```console
 marie@login$ module avail ABINIT
 ---------------------------- /sw/modules/scs5/chem -----------------------------
@@ -31,6 +32,7 @@ density functional theory (DFT) using a mixed Gaussian and plane waves approach 
 pair and many-body potentials.
 
 Available CP2K packages can be listed and loaded with the following commands:  
+
 ```console
 marie@login$ module avail CP2K
 ---------------------------- /sw/modules/scs5/chem -----------------------------
@@ -58,6 +60,7 @@ properties of molecular systems using standard quantum chemical methods. For a d
 please look at the [GAMESS home page](https://www.msg.chem.iastate.edu/gamess/index.html).
 
 Available GAMESS packages can be listed and loaded with the following commands:  
+
 ```console
 marie@login$ module load modenv/classic
 [...]
@@ -72,6 +75,7 @@ Module gamess/2013 and 2 dependencies loaded.
 ```
 
 For runs with Slurm, please use a script like this:
+
 ```Bash
 #!/bin/bash
 #SBATCH -t 120
@@ -112,6 +116,7 @@ usually dominate simulations) many groups are also using it for research on non-
 e.g. polymers. For documentations see [Gromacs homepage](https://www.gromacs.org/).
 
 Available GROMACS packages can be listed and loaded with the following commands:  
+
 ```console
 marie@login$:~> module avail GROMACS
 ----------------------------- /sw/modules/scs5/bio -----------------------------
@@ -131,6 +136,7 @@ conditions. For examples of LAMMPS simulations, documentations, and more visit
 [LAMMPS sites](https://www.lammps.org).
 
 Available LAMMPS packages can be listed and loaded with the following commands:  
+
 ```console
 marie@login$:~> module avail LAMMPS
 ---------------------------- /sw/modules/scs5/chem -----------------------------
@@ -157,6 +163,7 @@ advice for the optimum number of CPUs to use. (Please check this by running NAMD
 and just a few time steps.)
 
 Available NAMD packages can be listed and loaded with the following commands:  
+
 ```console
 marie@login$:~> module avail NAMD
 ---------------------------- /sw/modules/scs5/chem -----------------------------
@@ -205,6 +212,7 @@ $ORCA_ROOT/orca example.inp
 ```
 
 Available ORCA packages can be listed and loaded with the following commands:  
+
 ```console
 marie@login$:~> module avail ORCA
 ---------------------------- /sw/modules/scs5/chem -----------------------------
@@ -223,6 +231,7 @@ its computer program implementation, to perform electronic structure calculation
 molecular dynamics simulations of molecules and solids.
 
 Available Siesta packages can be listed and loaded with the following commands:  
+
 ```console
 marie@login$:~> module avail Siesta
 ---------------------------- /sw/modules/scs5/phys -----------------------------
@@ -249,6 +258,7 @@ Junquera, P. Ordejon, and D. Sanchez-Portal, J. Phys.: Condens. Matt.  14, 2745-
 pseudopotentials and a plane wave basis set." [VASP](https://www.vasp.at).
 
 Available VASP packages can be listed and loaded with the following commands:  
+
 ```console
 marie@login$:~> module avail VASP
 ---------------------------- /sw/modules/scs5/phys -----------------------------
@@ -259,5 +269,3 @@ marie@login$ module load VASP
 [...]
 Module VASP/5.4.4-intel-2019b loaded.
 ```
-
-
