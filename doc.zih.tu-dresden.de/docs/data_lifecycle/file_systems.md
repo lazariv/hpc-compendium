@@ -29,7 +29,7 @@ Getting high I/O-bandwitdh
 
 ## Cheat Sheet for Debugging File System Issues
 
-Every Taurus-User should normaly be able to perform the following commands to get some intel about
+Users can select from the following commands to get some idea about
 their data.
 
 ### General
