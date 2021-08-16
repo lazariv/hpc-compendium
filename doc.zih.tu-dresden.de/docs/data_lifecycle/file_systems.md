@@ -40,8 +40,8 @@ For the first view, you can easily use the "df-command".
 marie@login$ df
 ```
 
-Alternatively, you can use the `findmnt`-command, which is also able to report space usage by adding the
-parameter `-D`:
+Alternatively, you can use the `findmnt`-command, which is also able to report space usage
+by adding the parameter `-D`:
 
 ``` console
 marie@login$ findmnt -D
