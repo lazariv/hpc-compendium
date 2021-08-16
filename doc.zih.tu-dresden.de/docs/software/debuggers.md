@@ -164,4 +164,3 @@ marie@login$ module load Valgrind
 Module Valgrind/3.14.0-foss-2018b and 12 dependencies loaded.
 marie@login$ srun -n <number of processes> valgrind --log-file=valgrind-%p.out ./myprog 
 ```
-
