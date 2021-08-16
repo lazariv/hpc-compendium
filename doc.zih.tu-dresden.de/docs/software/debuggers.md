@@ -82,9 +82,9 @@ derived types).
         want to find
 -   Module to load before using: `module load ddt`
 -   Start: `ddt <executable>`
--   If the GUI runs too slow over your remote connection: Use [WebVNC](../access/web_vnc.md) to start a remote desktop session in a web browser.
+-   If the GUI runs too slow over your remote connection:
+    Use [WebVNC](../access/web_vnc.md) to start a remote desktop session in a web browser.
 -   Slides from user training: [Parallel Debugging with DDT](misc/debugging_ddt.pdf)
-
 
 ### Serial Program Example
 
@@ -130,7 +130,6 @@ salloc: Granted job allocation 123458
 marie@login$ ddt srun ./myprog
 ```
 
-
 -   Run dialog window of DDT opens.
 -   If MPI-OpenMP-hybrid: set number of threads.
 -   Hit *Run*
@@ -156,7 +155,9 @@ Module Valgrind/3.14.0-foss-2018b and 12 dependencies loaded.
 marie@login$ srun -n 1 valgrind ./myprog
 ```
 
--   Not recommended for MPI parallel programs, since usually the MPI library will throw a lot of errors. But you may use valgrind the following way such that every rank writes its own valgrind logfile:
+-   Not recommended for MPI parallel programs, since usually the MPI library will throw
+    a lot of errors. But you may use valgrind the following way such that every rank
+    writes its own valgrind logfile:
 
 ```console
 marie@login$ module load Valgrind
