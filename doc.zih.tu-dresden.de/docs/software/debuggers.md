@@ -1,7 +1,6 @@
 # Debuggers
 
-This section describes how to start the debuggers on the HPC systems of
-ZIH.
+This section describes how to start the debuggers on the ZIH systems.
 
 Detailed information about how to use the debuggers can be found on the
 website of the debuggers (see below).
@@ -27,16 +26,16 @@ website of the debuggers (see below).
     `-fno-inline`).
 -   For parallel applications: try to reproduce the problem with less
     processes or threads before using a parallel debugger.
--   The flag `-traceback` of the Intel Fortran compiler causes to print
-    stack trace and source code location when the program terminates
-    abnormally.
--   If your program crashes and you get an address of the failing
-    instruction, you can get the source code line with the command
-    `addr2line -e <executable> <address>`.
 -   Use the compiler's check capabilites to find typical problems at
     compile time or run time, read the manual (`man gcc`, `man ifort`, etc.)
     -  Intel C++ example: `icpc -g -std=c++14 -w3 -check=stack,uninit -check-pointers=rw -fp-trap=all`
     -  Intel Fortran example: `ifort -g -std03 -warn all -check all -fpe-all=0 -traceback`
+    -  The flag `-traceback` of the Intel Fortran compiler causes to print
+       stack trace and source code location when the program terminates
+       abnormally.
+-   If your program crashes and you get an address of the failing
+    instruction, you can get the source code line with the command
+    `addr2line -e <executable> <address>` (if compiled with `-g`).
 -   Use [Memory Debuggers](#memory-debugging) to
     verify the proper usage of memory.
 -   Core dumps are useful when your program crashes after a long
@@ -69,13 +68,11 @@ derived types).
 
 ![DDT Main Window](misc/ddt-main-window.png)
 
--   Commercial tool of Arm shipped as "Forge" together with MAP profiler
--   Intuitive graphical user interface
--   Great support for parallel applications
+-   Intuitive graphical user interface and great support for parallel applications
 -   We have 1024 licences, so many user can use this tool for parallel
     debugging
 -   Don't expect that debugging an MPI program with 100ths of process
-    will work without problems
+    will always work without problems
     -   The more processes and nodes involved, the higher is the
         probability for timeouts or other problems
     -   Debug with as few processes as required to reproduce the bug you
@@ -136,17 +133,20 @@ marie@login$ ddt srun ./myprog
 
 ## Memory Debugging
 
--   Memory debuggers are very valuable tools as they find memory management bugs, e.g.
+-   Memory debuggers find memory management bugs, e.g.
     -   Use of non-initialized memory
     -   Access memory out of allocated bounds
 -   DDT has memory debugging included (needs to be enabled in the run dialog)
 
-### Valgrind
+### Valgrind (Memcheck)
 
 -   Simulation of the program run in a virtual machine which accurately observes memory operations.
 -   Extreme run time slow-down: use small program runs!
--   Sees more memory errors than other debuggers.
--   Further information: [Valgrind Website](http://www.valgrind.org)
+-   Finds more memory errors than other debuggers.
+-   Further information:
+    -   [Valgrind Website](http://www.valgrind.org)
+    -   [Memcheck Manual](https://www.valgrind.org/docs/manual/mc-manual.html)
+        (explanation of output, command-line options)
 -   For serial or multi-threaded programs:
 
 ```console
