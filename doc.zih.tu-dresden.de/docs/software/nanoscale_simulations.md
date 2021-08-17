@@ -51,7 +51,7 @@ particularly designed for ab-initio molecular dynamics. For examples and documen
 [CPMD homepage](https://www.lcrc.anl.gov/for-users/software/available-software/cpmd/).
 
 CPMD is currently not installed as a module.
-Please, contact hpcsupport@zih.tu-dresden.de if you need assistance.
+Please, contact [hpcsupport@zih.tu-dresden.de](mailto:hpcsupport@zih.tu-dresden.de) if you need assistance.
 
 ## GAMESS
 
@@ -104,7 +104,7 @@ compounds which are difficult or impossible to observe experimentally such as sh
 intermediates and transition structures.
 
 Gaussian is currently not installed as a module.
-Please, contact hpcsupport@zih.tu-dresden.de if you need assistance.
+Please, contact [hpcsupport@zih.tu-dresden.de](mailto:hpcsupport@zih.tu-dresden.de) if you need assistance.
 
 ## GROMACS
 
@@ -179,8 +179,7 @@ Any published work which utilizes NAMD shall include the following reference:
 Chipot, Robert D.  Skeel, Laxmikant Kale, and Klaus Schulten. Scalable molecular dynamics with NAMD.
 Journal of Computational Chemistry, 26:1781-1802, 2005.*
 
-Electronic documents will include a direct link to the official NAMD page at
-https://www.ks.uiuc.edu/Research/namd
+Electronic documents will include a direct link to the [official NAMD page](https://www.ks.uiuc.edu/Research/namd)
 
 ## ORCA
 
@@ -255,7 +254,7 @@ J. D. Gale, A. Garcia, J. Junquera, P. Ordejon, and D. Sanchez-Portal, J. Phys.:
 ## VASP
 
 "VAMP/VASP is a package for performing ab-initio quantum-mechanical molecular dynamics (MD) using
-pseudopotentials and a plane wave basis set." [VASP](https://www.vasp.at).
+pseudopotentials and a plane wave basis set.", see [VASP](https://www.vasp.at).
 
 Available VASP packages can be listed and loaded with the following commands:  
 
