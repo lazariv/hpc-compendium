@@ -39,13 +39,15 @@ marie@ml$ module load modenv/ml    #example output: The following have been relo
 This example shows how to install and start working with TensorFlow (with using modules system)
 
 ```console
-marie@ml$ module load TensorFlow    #load TensorFlow module. example output: Module TensorFlow/1.10.0-PythonAnaconda-3.6 and 1 dependency loaded.
+marie@ml$ module load TensorFlow  
+Module TensorFlow/1.10.0-PythonAnaconda-3.6 and 1 dependency loaded.
 ```
 
 Now we check that we can access TensorFlow. One example is tensorflow-test:
 
 ```console
-marie@ml$ tensorflow-test    #example output: Basic test of tensorflow - A Hello World!!!...
+marie@ml$ tensorflow-test    
+Basic test of tensorflow - A Hello World!!!...
 ```
 
 Following example shows how to create python virtual environment and import TensorFlow.
@@ -53,7 +55,9 @@ Following example shows how to create python virtual environment and import Tens
 ```console
 marie@ml$ mkdir python-environments    #create folder 
 marie@ml$ which python    #check which python are you using
+/sw/installed/Python/3.7.4-GCCcore-8.3.0/bin/python
 marie@ml$ virtualenv --system-site-packages python-environments/env    #create virtual environment "env" which inheriting with global site packages
+[...]
 marie@ml$ source python-environments/env/bin/activate    #activate virtual environment "env". Example output: (env) bash-4.2$
 marie@ml$ python -c "import tensorflow as tf; print(tf.__version__)"
 ```
@@ -79,13 +83,19 @@ marie@ml$ singularity shell --nv /scratch/singularity/powerai-1.5.3-all-ubuntu16
 marie@ml$ export PATH=/opt/anaconda3/bin:$PATH                                               
 marie@ml$ source activate /opt/anaconda3    #activate conda environment
 marie@ml$ . /opt/DL/tensorflow/bin/tensorflow-activate
-marie@ml$ tensorflow-test    #example output: Basic test of tensorflow - A Hello World!!!...
+marie@ml$ tensorflow-test
+Basic test of tensorflow - A Hello World!!!...
 ```
 
 ## TensorFlow with Python or R
 
 For further information on TensorFlow in combination with Python see
 [here](data_analytics_with_python.md), for R see [here](data_analytics_with_r.md).
+
+## Distributed TensorFlow
+
+For details on how to run TensorFlow with multiple GPUs and/or multiple nodes, see
+[distributed training](distributed_training.md).
 
 ## Compatibility TF2 and TF1
 
