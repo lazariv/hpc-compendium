@@ -11,6 +11,10 @@
         local('Open Sans Semibold'),
         url('./Open_Sans/OpenSans-Semibold-webfont.woff') format('woff')
 }
+/*  
+    change colors via "css color variables"
+    https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#custom-colors
+*/
 :root {
     --md-text-font-family: 'Open Sans Regular', sans-serif;
 
@@ -19,7 +23,7 @@
     --md-footer-bg-color:         rgb(0, 37, 87);
     --tud-grey-100:               rgb(51, 51, 51);
     --tud-red-90:                 rgb(221, 29, 29);
-
+    --fg-color--light:              rgba(0, 0, 0, 0.6);
 }
 
 .md-typeset h1, 
@@ -66,9 +70,24 @@ strong {
 .md-grid {
     max-width: 1600px;
 }
+/* accessabilty */
 
+/* hide toogles */
+.md-toggle {
+    left: -100vw;
+    position: absolute;
+}
+/* admonitions */
 .md-typeset code {
     word-break: normal;
+}
+
+* { 
+    --md-code-hl-comment-color:   var(--fg-color--light);
+}
+
+.md-clipboard {
+    color: var(--fg-color--light)
 }
 
 

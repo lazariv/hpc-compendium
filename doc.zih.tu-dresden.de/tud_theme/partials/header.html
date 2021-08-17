@@ -24,6 +24,7 @@
   >
 
     <!-- Link to home -->
+    <!-- TUD Logo -->
     <a
       href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}"
       title="{{ config.site_name | e }}"
@@ -31,9 +32,9 @@
       aria-label="{{ config.site_name }}"
       data-md-component="logo"
     >
-      {% include "partials/logo.html" %}
+      <img src="{{ config.theme.logo | url }}" alt="tu dresden logo" />
     </a>
-
+    <!-- ZIH Logo -->
     <a
     href="{{ config.extra.zih_homepage | url }}"
     title="{{ config.zih_name | e }}"
@@ -41,7 +42,7 @@
     aria-label="{{ config.zih_name }}"
     data-md-component="logo"
     >
-      <img src="{{ config.theme.second_logo | url }}" alt="logo" />
+      <img src="{{ config.theme.second_logo | url }}" alt=" zih logo" />
     </a>
 
     <!-- Button to open drawer -->
