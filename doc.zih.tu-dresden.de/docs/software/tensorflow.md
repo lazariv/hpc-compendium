@@ -113,20 +113,3 @@ tf.disable_v2_behavior()    #instead of "import tensorflow as tf"
 
 To make the transition to TF 2.0 as seamless as possible, the TensorFlow team has created the
 tf_upgrade_v2 utility to help transition legacy code to the new API.
-
-## Additional libraries
-
-The following NVIDIA libraries are available on all nodes:
-
-|       |                                       |
-|-------|---------------------------------------|
-| NCCL  | /usr/local/cuda/targets/ppc64le-linux |
-| cuDNN | /usr/local/cuda/targets/ppc64le-linux |
-
-Note: For optimal NCCL performance it is recommended to set the
-**NCCL_MIN_NRINGS** environment variable during execution. You can try
-different values but 4 should be a pretty good starting point.
-
-```console
-export NCCL_MIN_NRINGS=4
-```
