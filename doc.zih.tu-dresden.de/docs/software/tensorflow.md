@@ -22,38 +22,38 @@ and the TensorFlow library. You can find detailed hardware specification
 
 On the **Alpha** partition load the module environment:
 
-```Bash
-tauruslogin:~> srun -p alpha --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=8000 bash   #Job submission on alpha nodes with 1 gpu on 1 node with 8000 mb.
-taurus-rome:~> module load modenv/scs5
+```console
+marie@login$ srun -p alpha --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=8000 bash   #Job submission on alpha nodes with 1 gpu on 1 node with 8000 mb.
+marie@romeo$ module load modenv/scs5
 ```
 
 On the **ML** partition load the module environment:
 
-```Bash
-tauruslogin:~> srun -p ml --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=8000 bash    #Job submission in ml nodes with 1 gpu on 1 node with 8000 mb.
-taurus-ml:~> module load modenv/ml    #example output: The following have been reloaded with a version change:  1) modenv/scs5 => modenv/ml
+```console
+marie@login$ srun -p ml --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=8000 bash    #Job submission in ml nodes with 1 gpu on 1 node with 8000 mb.
+marie@ml$ module load modenv/ml    #example output: The following have been reloaded with a version change:  1) modenv/scs5 => modenv/ml
 ```
 
 This example shows how to install and start working with TensorFlow (with using modules system)
 
-```Bash
-taurus-ml:~> module load TensorFlow    #load TensorFlow module. example output: Module TensorFlow/1.10.0-PythonAnaconda-3.6 and 1 dependency loaded.
+```console
+marie@ml$ module load TensorFlow    #load TensorFlow module. example output: Module TensorFlow/1.10.0-PythonAnaconda-3.6 and 1 dependency loaded.
 ```
 
 Now we check that we can access TensorFlow. One example is tensorflow-test:
 
-```Bash
-taurus-ml:~> tensorflow-test    #example output: Basic test of tensorflow - A Hello World!!!...
+```console
+marie@ml$ tensorflow-test    #example output: Basic test of tensorflow - A Hello World!!!...
 ```
 
 As another example we use a python virtual environment and import TensorFlow.
 
-```Bash
-taurus-ml:~> mkdir python-environments    #create folder 
-taurus-ml:~> which python    #check which python are you using
-taurus-ml:~> virtualenvv --system-site-packages python-environments/env    #create virtual environment "env" which inheriting with global site packages
-taurus-ml:~> source python-environments/env/bin/activate    #activate virtual environment "env". Example output: (env) bash-4.2$
-taurus-ml:~> python    #start python
+```console
+marie@ml$ mkdir python-environments    #create folder 
+marie@ml$ which python    #check which python are you using
+marie@ml$ virtualenvv --system-site-packages python-environments/env    #create virtual environment "env" which inheriting with global site packages
+marie@ml$ source python-environments/env/bin/activate    #activate virtual environment "env". Example output: (env) bash-4.2$
+marie@ml$ python    #start python
 >>> import tensorflow as tf
 >>> print(tf.VERSION)    #example output: 1.10.0
 ```
@@ -73,13 +73,13 @@ Another option to use TensorFlow are containers. In the HPC domain, the
 [Singularity](https://singularity.hpcng.org/) container system is a widely used tool. In the
 following example, we use the tensorflow-test in a Singularity container:
 
-```Bash
-tauruslogin:~> srun -p ml --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=8000 bash    #Job submission in ml nodes with 1 gpu on 1 node with 8000 mb.
-taurus-ml:~> singularity shell --nv /scratch/singularity/powerai-1.5.3-all-ubuntu16.04-py3.img
-taurus-ml:~> export PATH=/opt/anaconda3/bin:$PATH                                               
-taurus-ml:~> source activate /opt/anaconda3    #activate conda environment
-taurus-ml:~> . /opt/DL/tensorflow/bin/tensorflow-activate
-taurus-ml:~> tensorflow-test    #example output: Basic test of tensorflow - A Hello World!!!...
+```console
+marie@login$ srun -p ml --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=8000 bash    #Job submission in ml nodes with 1 gpu on 1 node with 8000 mb.
+marie@ml$ singularity shell --nv /scratch/singularity/powerai-1.5.3-all-ubuntu16.04-py3.img
+marie@ml$ export PATH=/opt/anaconda3/bin:$PATH                                               
+marie@ml$ source activate /opt/anaconda3    #activate conda environment
+marie@ml$ . /opt/DL/tensorflow/bin/tensorflow-activate
+marie@ml$ tensorflow-test    #example output: Basic test of tensorflow - A Hello World!!!...
 ```
 
 ## TensorFlow with Python or R
@@ -117,6 +117,6 @@ Note: For optimal NCCL performance it is recommended to set the
 **NCCL_MIN_NRINGS** environment variable during execution. You can try
 different values but 4 should be a pretty good starting point.
 
-```Bash
+```console
 export NCCL_MIN_NRINGS=4
 ```
