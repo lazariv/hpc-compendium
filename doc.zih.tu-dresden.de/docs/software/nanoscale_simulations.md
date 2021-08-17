@@ -246,11 +246,12 @@ Module Siesta/4.1-MaX-1.0-intel-2019b and 26 dependencies loaded.
 ```
 
 In any paper or other academic publication containing results wholly or partially derived from the
-results of use of the SIESTA package, the following papers must be cited in the normal manner: 1
-"Self-consistent order-N density-functional calculations for very large systems", P.  Ordejon, E.
-Artacho and J. M. Soler, Phys. Rev. B (Rapid Comm.) 53, R10441-10443 (1996). 1 "The SIESTA method
-for ab initio order-N materials simulation" J. M. Soler, E. Artacho, J. D. Gale, A. Garcia, J.
-Junquera, P. Ordejon, and D. Sanchez-Portal, J. Phys.: Condens. Matt.  14, 2745-2779 (2002).
+results of use of the SIESTA package, the following papers must be cited in the normal manner:
+1. "Self-consistent order-N density-functional calculations for very large systems",
+P.  Ordejon, E. Artacho and J. M. Soler, Phys. Rev. B (Rapid Comm.) 53, R10441-10443 (1996).
+1. "The SIESTA method for ab initio order-N materials simulation", J. M. Soler, E. Artacho,
+J. D. Gale, A. Garcia, J. Junquera, P. Ordejon, and D. Sanchez-Portal, J. Phys.: Condens. Matt. 14,
+2745-2779 (2002).
 
 ## VASP
 
