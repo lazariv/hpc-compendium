@@ -1,17 +1,24 @@
-Classical simulation methods as well as machine learning methods (e.g. neural networks) have a large number of hyperparameters that significantly determine the accuracy, efficiency, and transferability of the method.
-In classical simulations, the hyperparameters are usually determined by adaptation to measured values.
-Esp. in neural networks, the hyperparameters determine the network architecture: number and type of layers, number of neurons, activation functions, measures against overfitting etc. 
-The most common methods to determine hyperparameters are intuitive testing, grid search or random search.
+# Hyperparameter Optimization (OmniOpt)
 
-The tool OmniOpt performs hyperparameter optimization within a broad range of applications as classical simulations or machine learning algorithms.
-Omniopt is robust and it checks and installs all dependencies automatically and fixes many problems in the background.
-While Omniopt optimizes, no further intervention is required. 
+Classical simulation methods as well as machine learning methods (e.g. neural networks) have
+a large number of hyperparameters that significantly determine the accuracy, efficiency, and
+transferability of the method. In classical simulations, the hyperparameters are usually
+determined by adaptation to measured values. Esp. in neural networks, the hyperparameters
+determine the network architecture: number and type of layers, number of neurons, activation
+functions, measures against overfitting etc. The most common methods to determine hyperparameters
+are intuitive testing, grid search or random search.
+
+The tool OmniOpt performs hyperparameter optimization within a broad range of applications as
+classical simulations or machine learning algorithms.
+Omniopt is robust and it checks and installs all dependencies automatically and fixes many
+problems in the background. While Omniopt optimizes, no further intervention is required.
 You can follow the ongoing stdout (standard output) live in the console.
 Omniopt’s overhead is minimal and virtually imperceptible.
 
 ## Quickstart with OmniOpt
 
-The following instructions demonstrate the basic usage of OmniOpt on the ZIH system, based on the hyperparameter optimization for a neural network.
+The following instructions demonstrate the basic usage of OmniOpt on the ZIH system, based
+on the hyperparameter optimization for a neural network.
 
 The typical OmniOpt workflow comprises at least the following steps:
 
@@ -21,24 +28,33 @@ The typical OmniOpt workflow comprises at least the following steps:
 
 ### Prepare Application Script and Software Environment
 
-The following example application script was created from [https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html){:target="_blank"} as a starting point.
-Therein, a neural network is trained on the MNIST Fashion dataset. 
+The following example application script was created from
+[https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html){:target="_blank"}
+as a starting point.
+Therein, a neural network is trained on the MNIST Fashion dataset.
 
 There are three script preparation steps for OmniOpt:
 
-  + Changing hard-coded hyperparameters (chosen here: batch size, epochs, size of layer 1 and 2) into command line parameters. 
-      Esp. for this example, the Python module argparse (see the docs at [https://docs.python.org/3/library/argparse.html](https://docs.python.org/3/library/argparse.html){:target="_blank"}) is used.
+  + Changing hard-coded hyperparameters (chosen here: batch size, epochs, size of layer 1 and 2)
+  into command line parameters.
+      Esp. for this example, the Python module `argparse` (see the docs at
+      [https://docs.python.org/3/library/argparse.html](https://docs.python.org/3/library/argparse.html){:target="_blank"})
+      is used.
 
     ??? note "Parsing arguments in Python"
-        There are many ways for parsing arguments into Python scripts. 
-        The most easiest approach is the sys module (see [https://www.geeksforgeeks.org/how-to-use-sys-argv-in-python/](https://www.geeksforgeeks.org/how-to-use-sys-argv-in-python/){:target="_blank"}), which would be fully sufficient for usage with OmniOpt. 
-        Nevertheless, this basic approach has no consistency checks or error handling etc. 
+        There are many ways for parsing arguments into Python scripts.
+        The most easiest approach is the sys module (see
+        [https://www.geeksforgeeks.org/how-to-use-sys-argv-in-python/](https://www.geeksforgeeks.org/how-to-use-sys-argv-in-python/){:target="_blank"}),
+        which would be fully sufficient for usage with OmniOpt.
+        Nevertheless, this basic approach has no consistency checks or error handling etc.
 
-  + Mark the output of the optimization target (chosen here: average loss) by prefixing it with the RESULT string.
+  + Mark the output of the optimization target (chosen here: average loss) by prefixing it with
+  the RESULT string.
     OmniOpt takes the **last appearing value** prefixed with the RESULT string.
-    In the example different epochs are performed and the average from the last epoch is catched by OmniOpt.
-    Additionally, the RESULT output has to be a **single line**.
-    After all these changes, the final script is as follows (with the lines containing relevant changes highlighted). 
+    In the example different epochs are performed and the average from the last epoch is catched
+    by OmniOpt. Additionally, the RESULT output has to be a **single line**.
+    After all these changes, the final script is as follows (with the lines containing relevant
+    changes highlighted).
 
     ??? example "Final modified Python script: MNIST Fashion "
         ```python linenums="1" hl_lines="18-33 52-53 66-68 72 74 76 85 125-126"
@@ -176,16 +192,28 @@ There are three script preparation steps for OmniOpt:
         print("Done!")
         ```
 
-  + Testing script functionality and determine software requirements. 
+  + Testing script functionality and determine software requirements.
 
 ### Configure and Run OmniOpt
 
+TODO
+
 ### Check and Evaluate OmniOpt Results
+
+TODO
 
 ## Details on OmniOpt
 
+TODO
+
 ### Configuration
+
+TODO
 
 ### Monitoring
 
+TODO
+
 ### Evaluation of Results
+
+TODO
