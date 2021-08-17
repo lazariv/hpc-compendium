@@ -47,11 +47,11 @@ Module CP2K/6.1-intel-2018a and 25 dependencies loaded.
 ## CPMD
 
 The CPMD code is a plane wave/pseudopotential implementation of Density Functional Theory,
-particularly designed for ab-initio molecular dynamics. For examples and documentations see
+particularly designed for ab-initio molecular dynamics. For examples and documentations, see
 [CPMD homepage](https://www.lcrc.anl.gov/for-users/software/available-software/cpmd/).
 
 CPMD is currently not installed as a module. 
-Please, contact hpcsupport@zih.tu-dresden.de if you need assitance.
+Please, contact hpcsupport@zih.tu-dresden.de if you need assistance.
 
 ## GAMESS
 
@@ -81,7 +81,7 @@ For runs with Slurm, please use a script like this:
 #SBATCH -t 120
 #SBATCH -n 8
 #SBATCH --ntasks-per-node=2
-## you have to make sure that on each node runs an even number of tasks !!
+## you have to make sure that an even number of tasks runs on each node !!
 #SBATCH --mem-per-cpu=1900
 
 module load modenv/classic
@@ -104,15 +104,15 @@ compounds which are difficult or impossible to observe experimentally such as sh
 intermediates and transition structures.
 
 Gaussian is currently not installed as a module. 
-Please, contact hpcsupport@zih.tu-dresden.de if you need assitance.
+Please, contact hpcsupport@zih.tu-dresden.de if you need assistance.
 
 ## GROMACS
 
-GROMACS is a versatile package to perform molecular dynamics, i.e.  simulate the Newtonian equations
+GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations
 of motion for systems with hundreds to millions of particles. It is primarily designed for
 biochemical molecules like proteins, lipids and nucleic acids that have a lot of complicated bonded
 interactions, but since GROMACS is extremely fast at calculating the nonbonded interactions (that
-usually dominate simulations) many groups are also using it for research on non-biological systems,
+usually dominate simulations), many groups are also using it for research on non-biological systems,
 e.g. polymers. For documentations see [Gromacs homepage](https://www.gromacs.org/).
 
 Available GROMACS packages can be listed and loaded with the following commands:  
@@ -158,7 +158,7 @@ Module LAMMPS/12Dec2018-foss-2019a and 33 dependencies loaded.
 high-performance simulation of large biomolecular systems.
 
 NAMD can be started as parallel program with `srun`. Since
-the parallel performance strongly depends on the size of the given problem one cannot give a general
+the parallel performance strongly depends on the size of the given problem, one cannot give a general
 advice for the optimum number of CPUs to use. (Please check this by running NAMD with your molecules
 and just a few time steps.)
 
@@ -198,7 +198,7 @@ for example 16 processes):
 %pal nprocs 16 end
 ```
 
-Note that Orca does the MPI process spawning itself, so you may not use "srun" to launch it in your
+Note, that Orca spawns MPI processes itself, so you must not use "srun" to launch it in your
 batch file. Just set --ntasks to the same number as in your input file and call the "orca"
 executable directly.  For parallel runs, it must be called with the full path:
 
