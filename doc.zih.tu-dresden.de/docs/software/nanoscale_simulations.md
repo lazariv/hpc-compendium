@@ -50,7 +50,7 @@ The CPMD code is a plane wave/pseudopotential implementation of Density Function
 particularly designed for ab-initio molecular dynamics. For examples and documentations, see
 [CPMD homepage](https://www.lcrc.anl.gov/for-users/software/available-software/cpmd/).
 
-CPMD is currently not installed as a module. 
+CPMD is currently not installed as a module.
 Please, contact hpcsupport@zih.tu-dresden.de if you need assistance.
 
 ## GAMESS
@@ -103,7 +103,7 @@ molecules and reactions under a wide range of conditions, including both stable 
 compounds which are difficult or impossible to observe experimentally such as short-lived
 intermediates and transition structures.
 
-Gaussian is currently not installed as a module. 
+Gaussian is currently not installed as a module.
 Please, contact hpcsupport@zih.tu-dresden.de if you need assistance.
 
 ## GROMACS
@@ -151,7 +151,6 @@ marie@login$ module load LAMMPS
 Module LAMMPS/12Dec2018-foss-2019a and 33 dependencies loaded.
 ```
 
-
 ## NAMD
 
 [NAMD](https://www.ks.uiuc.edu/Research/namd) is a parallel molecular dynamics code designed for
@@ -173,6 +172,7 @@ marie@login$ module load NAMD
 [...]
 Module NAMD/2.12-intel-2018a-mpi and 12 dependencies loaded.
 ```
+
 Any published work which utilizes NAMD shall include the following reference:
 
 *James C. Phillips, Rosemary Braun, Wei Wang, James Gumbart, Emad Tajkhorshid, Elizabeth Villa, Christophe
@@ -181,7 +181,6 @@ Journal of Computational Chemistry, 26:1781-1802, 2005.*
 
 Electronic documents will include a direct link to the official NAMD page at
 https://www.ks.uiuc.edu/Research/namd
-
 
 ## ORCA
 
@@ -223,11 +222,11 @@ marie@login$ module load ORCA
 Module ORCA/4.2.1-gompi-2019b and 11 dependencies loaded.
 ```
 
-
 ## Siesta
 
-[Siesta](https://www.uam.es/siesta) (Spanish Initiative for Electronic Simulations with Thousands of Atoms) is both a method and
-its computer program implementation, to perform electronic structure calculations and ab initio
+[Siesta](https://www.uam.es/siesta) (Spanish Initiative for Electronic Simulations with
+Thousands of Atoms) is both a method and its computer program implementation,
+to perform electronic structure calculations and ab initio
 molecular dynamics simulations of molecules and solids.
 
 Available Siesta packages can be listed and loaded with the following commands:  
