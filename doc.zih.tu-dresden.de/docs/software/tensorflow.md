@@ -7,7 +7,9 @@ resources.
 
 Please check the software modules list via
 
-    module spider TensorFlow
+```console
+marie@login$ module spider TensorFlow
+```
 
 to find out, which TensorFlow modules are available on your partition.
 
@@ -23,14 +25,14 @@ and the TensorFlow library. You can find detailed hardware specification
 On the **Alpha** partition load the module environment:
 
 ```console
-marie@login$ srun -p alpha --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=8000 bash   #Job submission on alpha nodes with 1 gpu on 1 node with 8000 mb.
+marie@login$ srun -p alpha --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=8000 bash   #Job submission on alpha nodes with 1 gpu on 1 node with 8000 Mb per CPU
 marie@romeo$ module load modenv/scs5
 ```
 
 On the **ML** partition load the module environment:
 
 ```console
-marie@login$ srun -p ml --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=8000 bash    #Job submission in ml nodes with 1 gpu on 1 node with 8000 mb.
+marie@login$ srun -p ml --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=8000 bash    #Job submission in ml nodes with 1 gpu on 1 node with 8000 Mb per CPU
 marie@ml$ module load modenv/ml    #example output: The following have been reloaded with a version change:  1) modenv/scs5 => modenv/ml
 ```
 
@@ -46,16 +48,14 @@ Now we check that we can access TensorFlow. One example is tensorflow-test:
 marie@ml$ tensorflow-test    #example output: Basic test of tensorflow - A Hello World!!!...
 ```
 
-As another example we use a python virtual environment and import TensorFlow.
+Following example shows how to create python virtual environment and import TensorFlow.
 
 ```console
 marie@ml$ mkdir python-environments    #create folder 
 marie@ml$ which python    #check which python are you using
-marie@ml$ virtualenvv --system-site-packages python-environments/env    #create virtual environment "env" which inheriting with global site packages
+marie@ml$ virtualenv --system-site-packages python-environments/env    #create virtual environment "env" which inheriting with global site packages
 marie@ml$ source python-environments/env/bin/activate    #activate virtual environment "env". Example output: (env) bash-4.2$
-marie@ml$ python    #start python
->>> import tensorflow as tf
->>> print(tf.VERSION)    #example output: 1.10.0
+marie@ml$ python -c "import tensorflow as tf; print(tf.__version__)"
 ```
 
 ## TensorFlow in JupyterHub
@@ -74,7 +74,7 @@ Another option to use TensorFlow are containers. In the HPC domain, the
 following example, we use the tensorflow-test in a Singularity container:
 
 ```console
-marie@login$ srun -p ml --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=8000 bash    #Job submission in ml nodes with 1 gpu on 1 node with 8000 mb.
+marie@login$ srun -p ml --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=8000 bash    
 marie@ml$ singularity shell --nv /scratch/singularity/powerai-1.5.3-all-ubuntu16.04-py3.img
 marie@ml$ export PATH=/opt/anaconda3/bin:$PATH                                               
 marie@ml$ source activate /opt/anaconda3    #activate conda environment
@@ -96,7 +96,7 @@ may be little or no action you need to take to make your code fully [TensorFlow
 2.0](https://www.tensorflow.org/guide/migrate) compatible. It is still possible to run 1.X code,
 unmodified (except for contrib), in TensorFlow 2.0:
 
-```Python
+```python
 import tensorflow.compat.v1 as tf
 tf.disable_v2_behavior()    #instead of "import tensorflow as tf"
 ```
