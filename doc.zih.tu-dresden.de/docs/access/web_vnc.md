@@ -8,37 +8,33 @@ browser, so there's no additional client software necessary.
 
 Also, we have prepared a script that makes launching the VNC server much easier.
 
-## Method with JupyterHub
+## Access with JupyterHub
 
-**Check out the [new documentation about virtual desktops](../software/virtual_desktops.md).**
+**Check out our new documentation about [Virtual Desktops](../software/virtual_desktops.md).**
 
-The [JupyterHub](../access/jupyterhub.md) service is now able to start a VNC session based on the
-Singularity container mentioned here.
+Click on the following link to start a session on our JupyterHub. [https://taurus.hrsk.tu-dresden.de/jupyter/hub/spawn#/~(partition~'interactive~cpuspertask~'2~mempercpu~'2583~environment~'production)](https://taurus.hrsk.tu-dresden.de/jupyter/hub/spawn#/~(partition~'interactive~cpuspertask~'2~mempercpu~'2583~environment~'production))
+This link starts a Slurm job on the interactive partition (taurusi\[6605-6612\]) with two CPU cores
+and 2583 MB memory per core. Optionally you can modify many different Slurm parameters. For this
+follow the general [JupyterHub](../access/jupyterhub.md) documentation.
 
-Quickstart: 1 Click here to start a session immediately: \<a
-href="<https://taurus.hrsk.tu-dresden.de/jupyter/hub/spawn#/>\~(partition\~'interactive\~cpuspertask\~'2\~mempercpu\~'2583\~environment\~'test)"
-target="\_blank"><https://taurus.hrsk.tu-dresden.de/jupyter/hub/spawn#/>\~(partition\~'interactive\~cpuspertask\~'2\~mempercpu\~'2583\~environment\~'test)\</a>
-1 Wait for the JupyterLab interface to appear. Then click on the + in the upper left corner -> New
-launcher -> WebVNC.
+Your browser now should load into JupyterLab which looks like this:
 
-Steps to get started manually:
+![JupyterLab and WebVNC](misc/jupyterlab_and_webvnc.png)
+{: align="center"}
 
-1. Visit <https://taurus.hrsk.tu-dresden.de> to login to JupyterHub.
-1. Choose your (SLURM) parameters for the job on Taurus.
-1. Select the "test" environment in the "advanced" tab.
-1. Click on the "Spawn" button. 1 Wait for the JupyterLab interface to appear. Then
-click on the WebVNC button.
+Click on the `WebVNC` button. A new tab with the noVNC client will be opened.
 
-## Example usage
+## Access with terminal
 
 ### Step 1
 
 Start the `runVNC` script in our prepared container in an interactive batch job (here with 4 cores
 and 2.5 GB of memory per core):
 
-```Bash
-srun --pty -p interactive --mem-per-cpu=2500 -c 4 -t 8:00:00 singularity exec
+```console
+marie@login$ srun --pty -p interactive --mem-per-cpu=2500 -c 4 -t 8:00:00 singularity exec
 /scratch/singularity/xfce.sif runVNC
+[...]
 ```
 
 Of course, you can adjust the batch job parameters to your liking. Note that the default timelimit
@@ -50,36 +46,47 @@ directory under the name `self.pem`. This path can be overridden via the --cert 
 
 On success, it will print you an URL and a one-time password:
 
-```Bash
+```console
+[...]
 Note: Certificate file /home/user/self.pem already exists. Skipping generation.  Starting VNC
 server...  Server started successfully.  Please browse to: https://172.24.146.46:5901/vnc.html
 The one-time password is: 71149997
 ```
 
-### Setp 1.2
+### Step 2
 
-**NEW**: Since the last security issue direct access to the compute nodes is not allowed anymore.
-Therefore you have to create a tunnel from your laptop or workstation through the specific compute
-node and Port as follows.
+Direct access to the compute nodes is not allowed, therefore you have to create a tunnel from your laptop or workstation through the specific compute
+node and port as follows.
 
-```Bash
-ssh -NL <local port>:<compute node>:<remote port> <zih login>@tauruslogin.hrsk.tu-dresden.de
-e.g. ssh NL 5901:172.24.146.46:5901 rotscher@tauruslogin.hrsk.tu-dresden.de
+```console
+marie@local$ ssh -NL <local port>:<compute node>:<remote port> <zih login>@tauruslogin.hrsk.tu-dresden.de
 ```
 
-### Step 2:
+e.g.
+
+```console
+marie@local$ ssh NL 5901:172.24.146.46:5901 rotscher@tauruslogin.hrsk.tu-dresden.de
+```
+
+### Step 3
 
 Open your local web-browser and connect to the following URL.
 
-```Bash
-https://localhost:<local port>/vnc.html (e.g. https://localhost:5901/vnc.html)
+```
+https://localhost:<local port>/vnc.html
+```
+
+e.g.
+
+```
+https://localhost:5901/vnc.html
 ```
 
 Since you are using a self-signed certificate and the node does not have a public DNS name, your
 browser will not be able to verify it and you will have to add an exception (via the "Advanced"
 button).
 
-### Step 3:
+### Step 4
 
 On the website, click the `Connect` button and enter the one-time password that was previously
 displayed in order to authenticate. You will then see an Xfce4 desktop and can start a terminal in
