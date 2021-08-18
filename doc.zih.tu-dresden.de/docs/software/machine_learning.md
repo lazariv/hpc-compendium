@@ -6,8 +6,8 @@ For machine learning purposes, we recommend to use the **Alpha** and/or **ML** p
 ## ML partition
 
 The compute nodes of the ML partition are built on the base of [Power9](https://www.ibm.com/it-infrastructure/power/power9)
-architecture from IBM. The system was created for AI challenges, analytics and working with, 
-Machine learning, data-intensive workloads, deep-learning frameworks and accelerated databases. 
+architecture from IBM. The system was created for AI challenges, analytics and working with,
+Machine learning, data-intensive workloads, deep-learning frameworks and accelerated databases.
 
 The main feature of the nodes is the ability to work with the
 [NVIDIA Tesla V100](https://www.nvidia.com/en-gb/data-center/tesla-v100/) GPU with **NV-Link**
@@ -40,13 +40,12 @@ marie@login$ srun -p alpha --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=8000 bash 
 marie@romeo$ module load modenv/scs5
 ```
 
-
 ## Machine Learning Console and Virtual Environment
 
 A virtual environment is a cooperatively isolated runtime environment that allows Python users and
 applications to install and update Python distribution packages without interfering with the
 behaviour of other Python applications running on the same system. At its core, the main purpose of
-Python virtual environments is to create an isolated environment for Python projects. 
+Python virtual environments is to create an isolated environment for Python projects.
 
 ### Conda virtual environment
 
@@ -68,7 +67,7 @@ environment.
 
 ### Python virtual environment
 
-**Virtualenv (venv)** is a standard Python tool to create isolated Python environments. 
+**Virtualenv (venv)** is a standard Python tool to create isolated Python environments.
 It has been integrated into the standard library under the [venv module](https://docs.python.org/3/library/venv.html).
 
 ```console
@@ -84,24 +83,23 @@ marie@ml$ source env/bin/activate                                            #ac
 The inscription (env) at the beginning of each line represents that now you are in the virtual
 environment.
 
-Note: However in case of using [sbatch files](link) to send your job you usually don't need a 
+Note: However in case of using [sbatch files](link) to send your job you usually don't need a
 virtual environment.
 
 ## Machine Learning with Jupyter
 
-The [Jupyter Notebook](https://jupyter.org/) is an open-source web application that allows you to 
-create documents containing live code, equations, visualizations, and narrative text. [JupyterHub](../access/jupyterhub.md) 
-allows to work with machine learning frameworks (e.g. TensorFlow or Pytorch) on Taurus and to run 
+The [Jupyter Notebook](https://jupyter.org/) is an open-source web application that allows you to
+create documents containing live code, equations, visualizations, and narrative text. [JupyterHub](../access/jupyterhub.md)
+allows to work with machine learning frameworks (e.g. TensorFlow or Pytorch) on Taurus and to run
 your Jupyter notebooks on HPC nodes.
 
-After accessing JupyterHub, you can start a new session and configure it. For machine learning 
-purposes, select either **Alpha** or **ML** partition and the resources, your application requires. 
-
+After accessing JupyterHub, you can start a new session and configure it. For machine learning
+purposes, select either **Alpha** or **ML** partition and the resources, your application requires.
 
 ## Machine Learning with Containers
 
 Some machine learning tasks require using containers. In the HPC domain, the [Singularity](https://singularity.hpcng.org/)
-container system is a widely used tool. Docker containers can also be used by Singularity. You can 
+container system is a widely used tool. Docker containers can also be used by Singularity. You can
 find further information on working with containers on ZIH systems [here](containers.md)
 
 There are two sources for containers for Power9 architecture with
@@ -119,13 +117,11 @@ page of the container.
 In the following example, we build a Singularity container with TensorFlow from the DockerHub and
 start it:
 
-
 ```console
 marie@login$ srun -p ml -N 1 --gres=gpu:1 --time=02:00:00 --pty --mem-per-cpu=8000 bash           #allocating resourses from ml nodes to start the job to create a container.
 marie@ml$ singularity build my-ML-container.sif docker://ibmcom/tensorflow-ppc64le             #create a container from the DockerHub with the last TensorFlow version
 marie@ml$ singularity run --nv my-ML-container.sif                                            #run my-ML-container.sif container with support of the Nvidia's GPU. You could also entertain with your container by commands: singularity shell, singularity exec
 ```
-
 
 ## Additional Libraries for Machine Learning
 
