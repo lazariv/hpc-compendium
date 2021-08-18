@@ -491,6 +491,11 @@ We follow this rules regarding prompts:
 *Remarks:*
 
 * **Always use a prompt**, even there is no output provided for the shown command.
+* All code blocks should use long parameter names, if available.
+* All code blocks which specify some general command templates, e.g. containing `<` and `>`
+  (see [Placeholders](#mark-placeholders)), should use `bash` for the code block. Additionally,
+  an example invocation, perhaps with output, should be given with the normal `console` code block.
+  See also [Code Block description below](#code-blocks-and-syntax-highlighting).
 * Using some magic, the prompt as well as the output is identified and will not be copied!
 * Stick to the [generic user name](#data-privacy-and-generic-user-name) `marie`.
 
@@ -503,7 +508,7 @@ highlighting.  There is a complete list of supported
 
 For consistency, use the following short codes within this project:
 
-`console` for shell session and console:
+With the exception of command templates, use `console` for shell session and console:
 
 ```` markdown
 ```console
@@ -513,20 +518,38 @@ bar
 ```
 ````
 
-`bash` for shell scripts such as jobfiles:
+Command templates use [Placeholders](#mark-placeholders) to mark replaceable code parts. Command
+templates should give a general idea of invocation and thus, do not contain any output. Use a
+`bash` code block followed by an invocation example (with `console`):
+
+```` markdown
+```bash
+marie@login$ ssh -NL <local port>:<compute node>:<remote port> <zih login>@tauruslogin.hrsk.tu-dresden.de
+```
+
+```console
+ssh -NL 5901:172.24.146.46:5901 marie@tauruslogin.hrsk.tu-dresden.de
+```
+````
+
+Also use `bash` for shell scripts such as jobfiles:
 
 ```` markdown
 ```bash
 #!/bin/bash
-#SBATCH -N 1
-#SBATCH -t 01:00:00
-#SBATCH -o slurm-%j.out
+#SBATCH --nodes=1
+#SBATCH --time=01:00:00
+#SBATCH --output=slurm-%j.out
 
 module load foss
 
 srun a.out
 ```
 ````
+
+!!! important
+
+    Use long parameter names where possible to ease understanding.
 
 `python` for Python source code:
 
