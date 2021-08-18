@@ -77,8 +77,8 @@ marie@alpha$ pip list
 [...]
 marie@alpha$ virtualenv --system-site-packages python-environments/my-torch-env
 created virtual environment CPython3.8.6.final.0-64 in 42960ms
-  creator CPython3Posix(dest=/home/h5/lazariv/python-environments/my-torch-env, clear=False, global=True)
-  seeder FromAppData(download=False, pip=bundle, setuptools=bundle, wheel=bundle, via=copy, app_data_dir=/home/h5/lazariv/.local/share/virtualenv)
+  creator CPython3Posix(dest=~/python-environments/my-torch-env, clear=False, global=True)
+  seeder FromAppData(download=False, pip=bundle, setuptools=bundle, wheel=bundle, via=copy, app_data_dir=~/.local/share/virtualenv)
     added seed packages: pip==21.1.3, setuptools==57.2.0, wheel==0.36.2
   activators BashActivator,CShellActivator,FishActivator,PowerShellActivator,PythonActivator,XonshActivator
 marie@alpha$ source python-environments/my-torch-env/bin/activate
