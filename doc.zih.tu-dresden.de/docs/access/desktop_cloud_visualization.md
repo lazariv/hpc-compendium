@@ -12,7 +12,7 @@ not necessary anymore.
 **Check out our new documentation about** [Virtual Desktops](../software/virtual_desktops.md).
 
 Click on the following link to start a session on our JupyterHub.
-[https://taurus.hrsk.tu-dresden.de/jupyter/hub/spawn#/~(partition~'dcv~cpuspertask~'6~gres~'gpu*3a1~mempercpu~'2583~environment~'production)](https://taurus.hrsk.tu-dresden.de/jupyter/hub/spawn#/~(partition~'dcv~cpuspertask~'6~gres~'gpu*3a1~mempercpu~'2583~environment~'test))
+[https://taurus.hrsk.tu-dresden.de/jupyter/hub/spawn#/~(partition~'dcv~cpuspertask~'6~gres~'gpu*3a1~mempercpu~'2583~environment~'production)](https://taurus.hrsk.tu-dresden.de/jupyter/hub/spawn#/~(partition~'dcv~cpuspertask~'6~gres~'gpu*3a1~mempercpu~'2583~environment~'production))
 This link starts a Slurm job on the dcv partition (taurusi210\[4-8\]) with one GPU, six CPU cores
 and 2583 MB memory per core. Optionally you can modify many different Slurm parameters. For this
 follow the general [JupyterHub](../access/jupyterhub.md) documentation.
