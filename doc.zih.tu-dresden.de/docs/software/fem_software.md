@@ -149,7 +149,7 @@ runwb2
 The ANSYS workbench (runwb2) can also be used in a batch script to start
 calculations (the solver, not GUI) from a workbench project into the
 background. To do so, you have to specify the -B parameter (for batch
-mode), -F for your project file, and can then either add differerent
+mode), -F for your project file, and can then either add different
 commands via -E parameters directly, or specify a workbench script file
 containing commands via -R.
 

@@ -12,7 +12,7 @@ RUN pip install -r /src/doc.zih.tu-dresden.de/requirements.txt
 # Linter #
 ##########
 
-RUN apt update && apt install -y nodejs npm
+RUN apt update && apt install -y nodejs npm aspell
 
 RUN npm install -g markdownlint-cli markdown-link-check
 

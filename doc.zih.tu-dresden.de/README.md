@@ -40,7 +40,7 @@ Now, create a local clone of your fork
 
 #### Install Dependencies
 
-**TODO:** Describtion
+**TODO:** Description
 
 ```Shell Session
 ~ cd hpc-compendium/doc.zih.tu-dresden.de
@@ -61,7 +61,7 @@ editor are invoked: Do your changes, add a meaningful commit message and commit 
 The more sophisticated integrated Web IDE is reached from the top level menu of the repository or
 by selecting any source file.
 
-Other git services might have an aquivivalent web interface to interact with the repository. Please
+Other git services might have an equivalent web interface to interact with the repository. Please
 refer to the corresponding documentation for further information.
 
 <!--This option of contributing is only available for users of-->
@@ -157,6 +157,22 @@ To check a single file, e. g. `doc.zih.tu-dresden.de/docs/software/big_data_fram
 docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium markdown-link-check docs/software/big_data_frameworks.md
 ```
 
+For spell-checking a single file, use:
+
+```Bash
+docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium ./util/check-spelling.sh <file>
+```
+
+For spell-checking all files, use:
+
+```Bash
+docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium ./util/check-spelling.sh
+```
+
+This outputs all words of all files that are unknown to the spell checker.
+To let the spell checker "know" a word, append it to
+`doc.zih.tu-dresden.de/wordlist.aspell`.
+
 #### Build Static Documentation
 
 To build the documentation, invoke `mkdocs build`. This will create a new directory named `public`
@@ -220,7 +236,7 @@ new branch (a so-called feature branch) basing on the `main` branch and commit y
 ```
 
 The last command pushes the changes to your remote at branch `FEATUREBRANCH`. Now, it is time to
-incoporate the changes and improvements into the HPC Compendium. For this, create a
+incorporate the changes and improvements into the HPC Compendium. For this, create a
 [merge request](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/merge_requests/new)
 to the `main` branch.
 

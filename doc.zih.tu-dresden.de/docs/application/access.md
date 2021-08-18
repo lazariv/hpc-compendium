@@ -13,7 +13,7 @@ project manager is called to inform the ZIH about any changes according the staf
 also trial accounts have to fill in the application form.)\<br />**
 
 It is invariably possible to apply for more/different resources. Whether additional resources are
-granted or not depends on the current allocations and on the availablility of the installed systems.
+granted or not depends on the current allocations and on the availability of the installed systems.
 
 The terms of use of the HPC systems are only [available in German](terms_of_use.md) - at the
 moment.
@@ -39,13 +39,13 @@ For obtaining access to the machines, the following forms have to be filled in:
 
 ### Subsequent applications / view for project leader
 
-Subsequent applications will be neccessary,
+Subsequent applications will be necessary,
 
 - if the end of project is reached
 - if the applied resources won't be sufficient
 
 The project leader and one person instructed by him, the project administrator, should use
-[this website](https://hpcprojekte.zih.tu-dresden.de/managers/) (ZIH-login neccessary). At this
+[this website](https://hpcprojekte.zih.tu-dresden.de/managers/) (ZIH-login necessary). At this
 website you have an overview of your projects, the usage of resources, you can submit subsequent
 applications, and you are able to add staff members to your project.
 
@@ -77,8 +77,8 @@ LaTeX-template(
 
 If you plan to publish a paper with results based on the used CPU hours of our machines, please
 insert in the acknowledgement an small part with thank for the support by the machines of the
-ZIH/TUD. (see example below) Please send us a link/reference to the paper if it was puplished.  It
-will be very helpfull for the next acquirement of compute power.  Thank you very much.
+ZIH/TUD. (see example below) Please send us a link/reference to the paper if it was published. It
+will be very helpful for the next acquirement of compute power.  Thank you very much.
 
 Two examples:
 
