@@ -10,6 +10,7 @@ It has 34 nodes, each with:
 - Slurm partition `alpha` for batch jobs and `alpha-interactive` for interactive jobs
 
 !!! note
+
     The NVIDIA A100 GPUs may only be used with **CUDA 11** or later. Earlier versions do not
     recognize the new hardware properly. Make sure the software you are using is built with CUDA11.
 
@@ -20,7 +21,12 @@ It has 34 nodes, each with:
 The easiest way is using the [module system](../software/modules.md).
 The software for the `alpha` partition is available in `modenv/hiera` module environment.
 
-To check the available modules for `modenv/hiera`, use the command `module spider <module_name>`:
+To check the available modules for `modenv/hiera`, use the command
+```bash
+module spider <module_name>
+```
+
+For example, to check whether PyTorch is available in version 1.7.1:
 
 ```console
 marie@alpha$ module spider PyTorch/1.7.1
@@ -88,8 +94,8 @@ Successfully installed torchvision-0.10.0
 
 ### JupyterHub
 
-[JupyterHub](../access/jupyterhub.md) can be used to run Jupyter notebooks on Alphacentauri
-sub-cluster. As a starting configuration a "GPU (NVIDIA Ampere A100)" preset can be used
+[JupyterHub](../access/jupyterhub.md) can be used to run Jupyter notebooks on AlphaCentauri
+sub-cluster. As a starting configuration, a "GPU (NVIDIA Ampere A100)" preset can be used
 in the advanced form. In order to use latest software, it is recommended to choose
 `fosscuda-2020b` as a standard environment. Already installed modules from `modenv/hiera`
 can be pre-loaded in "Preload modules (modules load):" field.
