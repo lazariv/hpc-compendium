@@ -7,7 +7,8 @@ solution.
 Note that with the 2017 version (and later), while there is still a separate client available, it is
 not necessary anymore.
 
-Look [here](https://docs.aws.amazon.com/dcv/latest/userguide/client-web.html) if you want to know if your browser is supported by DCV.
+Look [here](https://docs.aws.amazon.com/dcv/latest/userguide/client-web.html) if you want to know
+if your browser is supported by DCV.
 
 ## Access with JupyterHub
 
