@@ -19,7 +19,7 @@ and 2583 MB memory per core, click on:
 Optionally, you can modify many different Slurm parameters. For this
 follow the general [JupyterHub](../access/jupyterhub.md) documentation.
 
-Your browser now should load into JupyterLab which looks like this:
+Your browser should load JupyterLab, which looks like this:
 
 ![JupyterLab and DCV](misc/jupyterlab_and_dcv.png)
 {: align="center"}
