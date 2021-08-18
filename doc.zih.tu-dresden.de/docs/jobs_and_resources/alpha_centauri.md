@@ -1,11 +1,11 @@
 # Alpha Centauri - Multi-GPU sub-cluster
 
 The sub-cluster "AlphaCentauri" had been installed for AI-related computations (ScaDS.AI).
-It has 34 nodes, each with: 
+It has 34 nodes, each with:
 
 - 8 x NVIDIA A100-SXM4 (40 GB RAM)
 - 2 x AMD EPYC CPU 7352 (24 cores) @ 2.3 GHz with multithreading enabled
-- 1 TB RAM 3.5 TB `/tmp` local NVMe device 
+- 1 TB RAM 3.5 TB `/tmp` local NVMe device
 - Hostnames: `taurusi[8001-8034]`
 - Slurm partition `alpha` for batch jobs and `alpha-interactive` for interactive jobs
 
@@ -41,6 +41,7 @@ marie@alpha$ module spider PyTorch/1.7.1
 ```
 
 The output of `module spider <module_name>` provides hints which dependencies should be loaded beforehand:
+
 ```console
 marie@alpha$ module load modenv/hiera GCC/10.2.0 CUDA/11.1.1 OpenMPI/4.0.5
 Module GCC/10.2.0, CUDA/11.1.1, OpenMPI/4.0.5 and 15 dependencies loaded.
@@ -52,12 +53,12 @@ Module PyTorch/1.7.1 and 39 dependencies loaded.
 marie@alpha$ python -c "import torch; print(torch.__version__); print(torch.cuda.is_available())"
 1.7.1
 True
-``` 
+```
 
 ### Python Virtual Environments
 
-Virtual environments allow users to install additional python packages and create an isolated 
-runtime environment. We recommend using `virtualenv` for this purpose. 
+Virtual environments allow users to install additional python packages and create an isolated
+runtime environment. We recommend using `virtualenv` for this purpose.
 
 ```console
 marie@login$ srun --partition=alpha-interactive --nodes=1 --cpus-per-task=1 --gres=gpu:1 --time=01:00:00 --pty bash
@@ -87,15 +88,15 @@ Successfully installed torchvision-0.10.0
 
 ### JupyterHub
 
-[JupyterHub](../access/jupyterhub.md) can be used to run Jupyter notebooks on Alphacentauri 
-sub-cluster. As a starting configuration a "GPU (NVIDIA Ampere A100)" preset can be used 
-in the advanced form. In order to use latest software, it is recommended to choose 
-`fosscuda-2020b` as a standard environment. Already installed modules from `modenv/hiera` 
+[JupyterHub](../access/jupyterhub.md) can be used to run Jupyter notebooks on Alphacentauri
+sub-cluster. As a starting configuration a "GPU (NVIDIA Ampere A100)" preset can be used
+in the advanced form. In order to use latest software, it is recommended to choose
+`fosscuda-2020b` as a standard environment. Already installed modules from `modenv/hiera`
 can be pre-loaded in "Preload modules (modules load):" field.
 
 ### Containers
 
-Singularity containers enable users to have full control of their software environment. 
+Singularity containers enable users to have full control of their software environment.
 Detailed information about containers can be found [here](../software/containers.md).
 
 Nvidia
