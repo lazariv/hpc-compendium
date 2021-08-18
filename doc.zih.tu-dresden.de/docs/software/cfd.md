@@ -1,35 +1,34 @@
 # Computational Fluid Dynamics (CFD)
 
-|               |            |           |            |
-|---------------|------------|-----------|------------|
-|               | **Taurus** | **Venus** | **Module** |
-| **OpenFOAM**  | x          |           | openfoam   |
-| **CFX**       | x          | x         | ansys      |
-| **Fluent**    | x          | x         | ansys      |
-| **ICEM CFD**  | x          | x         | ansys      |
-| **STAR-CCM+** | x          |           | star       |
+|               | **Taurus** | **Module** |
+|---------------|------------|------------|
+| **OpenFOAM**  | x          | openfoam   |
+| **CFX**       | x          | ansys      |
+| **Fluent**    | x          | ansys      |
+| **ICEM CFD**  | x          | ansys      |
+| **STAR-CCM+** | x          | star       |
 
 ## OpenFOAM
 
-The OpenFOAM (Open Field Operation and Manipulation) CFD Toolbox can simulate anything from complex
+The OpenFOAM (Open Field Operation and Manipulation) CFD Toolbox can simulate anything from a complex
 fluid flows involving chemical reactions, turbulence and heat transfer, to solid dynamics,
-electromagnetics and the pricing of financial options. OpenFOAM is develop primarly by
-[OpenCFD Ltd](https://www.openfoam.com) and is freely available and open source,
+electromagnetics and the pricing of financial options. OpenFOAM is developed primarily by
+[OpenCFD Ltd](https://www.openfoam.com) and is freely available and open-source,
 licensed under the GNU General Public Licence.
 
-The command "module spider OpenFOAM" provides the list of installed OpenFOAM versions. In order to
+The command `module spider OpenFOAM` provides the list of installed OpenFOAM versions. In order to
 use OpenFOAM, it is mandatory to set the environment by sourcing the \`bashrc\` (for users running
-bash or ksh) or \`cshrc\` `(for users running tcsh` or `csh)` provided by OpenFOAM:
+bash or ksh) or \`cshrc\` (for users running tcsh or csh) provided by OpenFOAM:
 
-```Shell Session
-module load OpenFOAM/VERSION
-source $FOAM_BASH
-# source $FOAM_CSH
+```console
+marie@login$ module load OpenFOAM/VERSION
+marie@login$ source $FOAM_BASH
+marie@login$ # source $FOAM_CSH
 ```
 
 Example for OpenFOAM job script:
 
-```Bash
+```bash
 #!/bin/bash
 #SBATCH --time=12:00:00     # walltime
 #SBATCH --ntasks=60         # number of processor cores (i.e. tasks)
@@ -47,13 +46,13 @@ srun pimpleFoam -parallel > "$OUTFILE"
 
 ## Ansys CFX
 
-Ansys CFX is a powerful finite-volume-based program package for modeling general fluid flow in
+Ansys CFX is a powerful finite-volume-based program package for modelling general fluid flow in
 complex geometries. The main components of the CFX package are the flow solver cfx5solve, the
 geometry and mesh generator cfx5pre, and the post-processor cfx5post.
 
 Example for CFX job script:
 
-```Bash
+```bash
 #!/bin/bash
 #SBATCH --time=12:00                                       # walltime
 #SBATCH --ntasks=4                                         # number of processor cores (i.e. tasks)
@@ -70,7 +69,7 @@ cfx-parallel.sh -double -def StaticMixer.def
 
 Fluent need the hostnames and can be run in parallel like this:
 
-```Bash
+```bash
 #!/bin/bash
 #SBATCH --time=12:00                        # walltime
 #SBATCH --ntasks=4                          # number of processor cores (i.e. tasks)
@@ -84,23 +83,23 @@ nodeset -e $SLURM_JOB_NODELIST | xargs -n1 > hostsfile_job_$SLURM_JOBID.txt
 fluent 2ddp -t$SLURM_NTASKS -g -mpi=intel -pinfiniband -cnf=hostsfile_job_$SLURM_JOBID.txt < input.in
 ```
 
-To use fluent interactive please try
+To use fluent interactive, please try:
 
-```Shell Session
-module load ANSYS/19.2
-srun -N 1 --cpus-per-task=4 --time=1:00:00 --pty --x11=first bash
-fluent &
+```console
+marie@login$ module load ANSYS/19.2
+marie@login$ srun -N 1 --cpus-per-task=4 --time=1:00:00 --pty --x11=first bash
+marie@login$ fluent &
 ```
 
 ## STAR-CCM+
 
 Note: you have to use your own license in order to run STAR-CCM+ on Taurus, so you have to specify
-the parameters -licpath and -podkey, see the example below.
+the parameters `-licpath` and `-podkey`, see the example below.
 
 Our installation provides a script `create_rankfile -f CCM` that generates a hostlist from the SLURM
-job environment that can be passed to starccm+ enabling it to run across multiple nodes.
+job environment that can be passed to starccm+, enabling it to run across multiple nodes.
 
-```Bash
+```bash
 #!/bin/bash
 #SBATCH --time=12:00                        # walltime
 #SBATCH --ntasks=32                         # number of processor cores (i.e. tasks)
