@@ -180,6 +180,15 @@ There are three script preparation steps for OmniOpt:
 
 ### Configure and Run OmniOpt
 
+As a starting point, configuring OmniOpt is done via a GUI at [https://imageseg.scads.ai/omnioptgui/](https://imageseg.scads.ai/omnioptgui/). 
+This GUI guides through the configuration process and as result the config file is created automatically according to the GUI input.
+If you are more familiar with using OmniOpt later on, this config file can be modified directly without using the GUI. 
+
+A screenshot of the GUI, including a properly configuration for the MNIST fashion example is shown below. 
+
+![GUI for configuring OmniOpt](misc/tensorflow_jupyter_module.png)
+{: align="center"}
+
 ### Check and Evaluate OmniOpt Results
 
 ## Details on OmniOpt
