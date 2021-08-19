@@ -34,8 +34,7 @@ Start the `runVNC` script in our prepared container in an interactive batch job 
 and 2.5 GB of memory per core):
 
 ```console
-marie@login$ srun --pty -p interactive --mem-per-cpu=2500 -c 4 -t 8:00:00 singularity exec
-/scratch/singularity/xfce.sif runVNC
+marie@login$ srun --pty --partition=interactive --mem-per-cpu=2500 --cpus-per-task=4 --time=8:00:00 singularity exec /scratch/singularity/xfce.sif runVNC
 [...]
 ```
 
