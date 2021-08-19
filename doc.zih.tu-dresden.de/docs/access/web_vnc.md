@@ -56,8 +56,8 @@ The one-time password is: 71149997
 
 ### Step 2
 
-Direct access to the compute nodes is not allowed, therefore you have to create a tunnel from your
-laptop or workstation through the specific compute node and port as follows.
+Direct access to the compute nodes is not allowed. Therefore, you have to create a tunnel from your
+laptop or workstation to the specific compute node and port as follows.
 
 ```console
 marie@local$ ssh -NL <local port>:<compute node>:<remote port> <zih login>@tauruslogin.hrsk.tu-dresden.de
