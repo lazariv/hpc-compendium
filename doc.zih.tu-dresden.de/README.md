@@ -491,7 +491,7 @@ We follow this rules regarding prompts:
 *Remarks:*
 
 * **Always use a prompt**, even there is no output provided for the shown command.
-* All code blocks should use long parameter names, if available.
+* All code blocks should use long parameter names (e.g. Slurm parameters), if available.
 * All code blocks which specify some general command templates, e.g. containing `<` and `>`
   (see [Placeholders](#mark-placeholders)), should use `bash` for the code block. Additionally,
   an example invocation, perhaps with output, should be given with the normal `console` code block.
@@ -518,17 +518,19 @@ bar
 ```
 ````
 
+Make sure that shell session and console code blocks are executable on the login nodes of HPC system.
+
 Command templates use [Placeholders](#mark-placeholders) to mark replaceable code parts. Command
 templates should give a general idea of invocation and thus, do not contain any output. Use a
 `bash` code block followed by an invocation example (with `console`):
 
 ```` markdown
 ```bash
-marie@login$ ssh -NL <local port>:<compute node>:<remote port> <zih login>@tauruslogin.hrsk.tu-dresden.de
+marie@local$ ssh -NL <local port>:<compute node>:<remote port> <zih login>@tauruslogin.hrsk.tu-dresden.de
 ```
 
 ```console
-ssh -NL 5901:172.24.146.46:5901 marie@tauruslogin.hrsk.tu-dresden.de
+marie@local$ ssh -NL 5901:172.24.146.46:5901 marie@tauruslogin.hrsk.tu-dresden.de
 ```
 ````
 
