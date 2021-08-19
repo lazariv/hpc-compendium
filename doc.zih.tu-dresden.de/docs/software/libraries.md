@@ -1,6 +1,6 @@
 # Libraries
 
-The following libraries are available on our platforms:
+The following libraries are available on our system:
 
 |           | **Taurus**            | **module** |
 |-----------|-----------------------|------------|
@@ -17,28 +17,27 @@ documentation.
 
 ## BLAS/LAPACK
 
-### Example
+???+ example 
+    ```Fortran
+    program ExampleProgram
 
-```Fortran
-program ExampleProgram
+    external dgesv
+    integer:: n, m, c, d, e, Z(2)                       !parameter definition
+    double precision:: A(2,2), B(2)
 
-external dgesv
-integer:: n, m, c, d, e, Z(2)                       !parameter definition
-double precision:: A(2,2), B(2)
+    n=2; m=1; c=2; d=2;
 
-n=2; m=1; c=2; d=2;
+    A(1,1) = 1.0; A(1,2) = 2.0;                         !parameter setting
+    A(2,1) = 3.0; A(2,2) = 4.0;
 
-A(1,1) = 1.0; A(1,2) = 2.0;                         !parameter setting
-A(2,1) = 3.0; A(2,2) = 4.0;
+    B(1) = 14.0; B(2) = 32.0;
 
-B(1) = 14.0; B(2) = 32.0;
+    Call dgesv(n,m,A,c,Z,B,d,e);                        !call the subroutine
 
-Call dgesv(n,m,A,c,Z,B,d,e);                        !call the subroutine
+    write(*,*) "Solution ", B(1), " ", B(2)             !display on desktop
 
-write(*,*) "Solution ", B(1), " ", B(2)             !display on desktop
-
-end program ExampleProgram
-```
+    end program ExampleProgram
+    ```
 
 ### Math Kernel Library (MKL)
 
@@ -66,10 +65,11 @@ More specific it contains the following components:
   functions
 - Parallel Sparse Direct Linear Solver (Pardiso)
 
-Please note: MKL comes in an OpenMP-parallel version. If you want to use it, make sure you know how
-to place your jobs. [^1]
-[^1]: In \[c't 18, 2010\], Andreas Stiller proposes the usage of
-`GOMP_CPU_AFFINITY` to allow the mapping of AMD cores. KMP_AFFINITY works only for Intel processors.
+!!! note
+    MKL comes in an OpenMP-parallel version. If you want to use it, make sure you know how
+    to place your jobs. [^1]
+    [^1]: In \[c't 18, 2010\], Andreas Stiller proposes the usage of
+    `GOMP_CPU_AFFINITY` to allow the mapping of AMD cores. KMP_AFFINITY works only for Intel processors.
 
 #### Linking with the MKL
 
