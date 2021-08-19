@@ -7,14 +7,14 @@ solution.
 Look [here](https://docs.aws.amazon.com/dcv/latest/userguide/client-web.html) if you want to know
 if your browser is supported by DCV.
 
-## Access with JupyterHub
+## Access via JupyterHub
 
 **Check out our new documentation about** [Virtual Desktops](../software/virtual_desktops.md).
 
 To start a JupyterHub session on the dcv partition (taurusi210\[4-8\]) with one GPU, six CPU cores
 and 2583 MB memory per core, click on:
 [https://taurus.hrsk.tu-dresden.de/jupyter/hub/spawn#/~(partition~'dcv~cpuspertask~'6~gres~'gpu*3a1~mempercpu~'2583~environment~'production)](https://taurus.hrsk.tu-dresden.de/jupyter/hub/spawn#/~(partition~'dcv~cpuspertask~'6~gres~'gpu*3a1~mempercpu~'2583~environment~'production))
-Optionally, you can modify many different Slurm parameters. For this
+Optionally, you can modify many different Slurm parameters. For this,
 follow the general [JupyterHub](../access/jupyterhub.md) documentation.
 
 Your browser should load JupyterLab, which looks like this:
