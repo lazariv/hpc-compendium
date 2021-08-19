@@ -181,6 +181,7 @@ markdown_extensions:
     - toc:
         permalink: True
     - attr_list
+    - footnotes
 
 extra:
   homepage: https://tu-dresden.de
