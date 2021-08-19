@@ -12,7 +12,7 @@ nav:
     - Connecting with SSH: access/ssh_login.md
     - Key Fingerprints: access/key_fingerprints.md  
     - Desktop Visualization: access/desktop_cloud_visualization.md
-    - Web VNC: access/web_vnc.md
+    - WebVNC: access/web_vnc.md
     - Security Restrictions: access/security_restrictions.md
     - JupyterHub:
       - JupyterHub: access/jupyterhub.md
