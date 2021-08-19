@@ -4,9 +4,6 @@ NICE DCV enables remote accessing OpenGL 3D applications running on ZIH systems 
 server's GPUs. If you don't need OpenGL acceleration, you might also want to try our [WebVNC](web_vnc.md)
 solution.
 
-Note that with the 2017 version (and later), while there is still a separate client available, it is
-not necessary anymore.
-
 Look [here](https://docs.aws.amazon.com/dcv/latest/userguide/client-web.html) if you want to know
 if your browser is supported by DCV.
 
