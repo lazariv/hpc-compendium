@@ -17,7 +17,7 @@ documentation.
 
 ## BLAS/LAPACK
 
-???+ example 
+???+ example
     ```Fortran
     program ExampleProgram
 
