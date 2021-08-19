@@ -10,7 +10,7 @@
 
 ## OpenFOAM
 
-The OpenFOAM (Open Field Operation and Manipulation) CFD Toolbox can simulate anything from a complex
+The OpenFOAM (Open Field Operation and Manipulation) CFD Toolbox can simulate anything from complex
 fluid flows involving chemical reactions, turbulence and heat transfer, to solid dynamics,
 electromagnetics and the pricing of financial options. OpenFOAM is developed primarily by
 [OpenCFD Ltd](https://www.openfoam.com) and is freely available and open-source,
