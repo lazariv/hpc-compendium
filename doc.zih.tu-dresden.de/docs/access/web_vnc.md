@@ -66,7 +66,7 @@ marie@local$ ssh -NL <local port>:<compute node>:<remote port> <zih login>@tauru
 e.g.
 
 ```console
-marie@local$ ssh NL 5901:172.24.146.46:5901 rotscher@tauruslogin.hrsk.tu-dresden.de
+marie@local$ ssh -NL 5901:172.24.146.46:5901 marie@tauruslogin.hrsk.tu-dresden.de
 ```
 
 ### Step 3
