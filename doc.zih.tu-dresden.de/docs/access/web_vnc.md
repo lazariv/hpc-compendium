@@ -16,8 +16,8 @@ can use with your browser, so there's no additional client software necessary.
 
 To start a JupyterHub session on the partition `interactive` with two CPU
 cores and 2583 MB memory per core, click on: [https://taurus.hrsk.tu-dresden.de/jupyter/hub/spawn#/~(partition~'interactive~cpuspertask~'2~mempercpu~'2583~environment~'production)](https://taurus.hrsk.tu-dresden.de/jupyter/hub/spawn#/~(partition~'interactive~cpuspertask~'2~mempercpu~'2583~environment~'production))
-Optionally you can modify many different Slurm parameters.
-For this follow the general [JupyterHub](../access/jupyterhub.md) documentation.
+Optionally, you can modify many different Slurm parameters.
+For this, follow the general [JupyterHub](../access/jupyterhub.md) documentation.
 
 Your browser should load JupyterLab, which looks like this:
 
