@@ -9,7 +9,7 @@ senseless filling the disks,
 ## Global /home File System
 
 Each user has 50 GB in a `/home` directory independent of the granted capacity for the project.
-This file system is mounted with read-write permissions on all HPC systems.
+The home directory is mounted with read-write permissions on all nodes of the ZIH system.
 
 Hints for the usage of the global home directory:
 
