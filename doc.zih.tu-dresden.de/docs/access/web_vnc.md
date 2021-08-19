@@ -1,12 +1,14 @@
-# WebVNC
+# Graphical Applications with WebVNC
 
-We provide a Singularity container with a VNC setup that can be used as an alternative to
-X-Forwarding to start graphical applications on the cluster.
+While many of the applications that run on ZIH systems are used from the command line,
+graphical user interfaces are sometimes beneficial for particular use cases.
+In order to simplify the setup, few solutions are available, which are described in the following.
 
-It utilizes [noVNC](https://novnc.com) to offer a web-based client that you can use with your
-browser, so there's no additional client software necessary.
+The solutions provided here are based on a Singularity container with a VNC setup that can be
+used as an alternative to SSH's X-Forwarding option to start graphical applications.
 
-Also, we have prepared a script that makes launching the VNC server much easier.
+Internally, the solution utilizes [noVNC](https://novnc.com) to offer a web-based client that you
+can use with your browser, so there's no additional client software necessary.
 
 ## Access with JupyterHub
 
