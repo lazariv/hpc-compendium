@@ -11,8 +11,8 @@ nav:
     - Overview: access/overview.md
     - Connecting with SSH: access/ssh_login.md
     - Key Fingerprints: access/key_fingerprints.md  
-    - Desktop Cloud Visualization (DCV): access/desktop_cloud_visualization.md
-    - Web VNC: access/web_vnc.md
+    - Desktop Visualization: access/desktop_cloud_visualization.md
+    - Graphical Applications with WebVNC: access/graphical_applications_with_webvnc.md
     - Security Restrictions: access/security_restrictions.md
     - JupyterHub:
       - JupyterHub: access/jupyterhub.md

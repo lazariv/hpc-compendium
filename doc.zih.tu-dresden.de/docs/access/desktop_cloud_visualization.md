@@ -29,7 +29,7 @@ Click on the `DCV` button. A new tab with the DCV client will be opened.
 - Check GPU support via:
 
 ```console hl_lines="4"
-marie@compute$ glxinfo 
+marie@compute$ glxinfo
 name of display: :1
 display: :1  screen: 0
 direct rendering: Yes
