@@ -45,7 +45,7 @@ The script will automatically generate a self-signed SSL certificate and place i
 directory under the name `self.pem`. This path can be overridden via the parameter `--cert` to
 `runVNC`.
 
-On success, it will print you an URL and a one-time password:
+On success, it will give you an URL and a one-time password:
 
 ```console
 [...]
