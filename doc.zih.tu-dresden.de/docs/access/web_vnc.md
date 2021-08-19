@@ -26,7 +26,7 @@ Your browser should load JupyterLab, which looks like this:
 
 Click on the `WebVNC` button. A new tab with the noVNC client will be opened.
 
-## Access with terminal
+## Access via terminal
 
 ### Step 1
 
