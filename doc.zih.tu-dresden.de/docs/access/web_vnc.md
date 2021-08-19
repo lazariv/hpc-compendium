@@ -10,7 +10,7 @@ used as an alternative to SSH's X-Forwarding option to start graphical applicati
 Internally, the solution utilizes [noVNC](https://novnc.com) to offer a web-based client that you
 can use with your browser, so there's no additional client software necessary.
 
-## Access with JupyterHub
+## Access via JupyterHub
 
 **Check out our new documentation about [Virtual Desktops](../software/virtual_desktops.md).**
 
