@@ -1,12 +1,12 @@
 # Computational Fluid Dynamics (CFD)
 
-|               | **Taurus** | **Module** |
-|---------------|------------|------------|
-| **OpenFOAM**  | x          | openfoam   |
-| **CFX**       | x          | ansys      |
-| **Fluent**    | x          | ansys      |
-| **ICEM CFD**  | x          | ansys      |
-| **STAR-CCM+** | x          | star       |
+|               | **Module** |
+|---------------|------------|
+| **OpenFOAM**  | openfoam   |
+| **CFX**       | ansys      |
+| **Fluent**    | ansys      |
+| **ICEM CFD**  | ansys      |
+| **STAR-CCM+** | star       |
 
 ## OpenFOAM
 
