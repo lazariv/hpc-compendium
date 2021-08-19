@@ -92,8 +92,9 @@ marie@login$ fluent &
 
 ## STAR-CCM+
 
-!!! note 
-    You have to use your own license in order to run STAR-CCM+ on ZIH systems, so you have to specify the parameters `-licpath` and `-podkey`, see the example below.
+!!! note
+    You have to use your own license in order to run STAR-CCM+ on ZIH systems, so you have to specify
+    the parameters `-licpath` and `-podkey`, see the example below.
 
 Our installation provides a script `create_rankfile -f CCM` that generates a host list from the
 Slurm job environment that can be passed to `starccm+`, enabling it to run across multiple nodes.
