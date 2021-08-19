@@ -11,7 +11,8 @@ The following libraries are available on our platforms:
 ## The Boost Library
 
 Boost provides free peer-reviewed portable C++ source libraries, ranging from multithread and MPI
-support to regular expression and numeric functions. See at [http://www.boost.org](http://www.boost.org) for detailed
+support to regular expression and numeric functions. See at
+[http://www.boost.org](http://www.boost.org) for detailed
 documentation.
 
 ## BLAS/LAPACK
