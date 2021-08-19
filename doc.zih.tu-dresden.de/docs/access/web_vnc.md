@@ -71,7 +71,8 @@ marie@local$ ssh -NL 5901:172.24.146.46:5901 marie@tauruslogin.hrsk.tu-dresden.d
 
 ### Step 3
 
-Open your local web-browser and connect to the following URL, replacing `<local port>` with the local port you specified in the previous step:
+Open your local web-browser and connect to the following URL, replacing `<local port>` with the
+local port you specified in the previous step:
 
 ```
 https://localhost:<local port>/vnc.html
