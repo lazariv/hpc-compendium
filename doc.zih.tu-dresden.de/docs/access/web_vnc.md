@@ -12,12 +12,12 @@ Also, we have prepared a script that makes launching the VNC server much easier.
 
 **Check out our new documentation about [Virtual Desktops](../software/virtual_desktops.md).**
 
-Click on the following link to start a session on our JupyterHub. [https://taurus.hrsk.tu-dresden.de/jupyter/hub/spawn#/~(partition~'interactive~cpuspertask~'2~mempercpu~'2583~environment~'production)](https://taurus.hrsk.tu-dresden.de/jupyter/hub/spawn#/~(partition~'interactive~cpuspertask~'2~mempercpu~'2583~environment~'production))
-This link starts a Slurm job on the interactive partition (taurusi\[6605-6612\]) with two CPU cores
-and 2583 MB memory per core. Optionally you can modify many different Slurm parameters. For this
-follow the general [JupyterHub](../access/jupyterhub.md) documentation.
+To start a JupyterHub session on the interactive partition (taurusi\[6605-6612\]) with two CPU
+cores and 2583 MB memory per core, click on: [https://taurus.hrsk.tu-dresden.de/jupyter/hub/spawn#/~(partition~'interactive~cpuspertask~'2~mempercpu~'2583~environment~'production)](https://taurus.hrsk.tu-dresden.de/jupyter/hub/spawn#/~(partition~'interactive~cpuspertask~'2~mempercpu~'2583~environment~'production))
+Optionally you can modify many different Slurm parameters.
+For this follow the general [JupyterHub](../access/jupyterhub.md) documentation.
 
-Your browser now should load into JupyterLab which looks like this:
+Your browser should load JupyterLab, which looks like this:
 
 ![JupyterLab and WebVNC](misc/jupyterlab_and_webvnc.png)
 {: align="center"}
@@ -55,8 +55,8 @@ The one-time password is: 71149997
 
 ### Step 2
 
-Direct access to the compute nodes is not allowed, therefore you have to create a tunnel from your laptop or workstation through the specific compute
-node and port as follows.
+Direct access to the compute nodes is not allowed, therefore you have to create a tunnel from your
+laptop or workstation through the specific compute node and port as follows.
 
 ```console
 marie@local$ ssh -NL <local port>:<compute node>:<remote port> <zih login>@tauruslogin.hrsk.tu-dresden.de
