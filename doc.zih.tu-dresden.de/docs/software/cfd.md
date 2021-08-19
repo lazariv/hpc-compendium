@@ -1,5 +1,7 @@
 # Computational Fluid Dynamics (CFD)
 
+The following CFD applications are available on our system:
+
 |               | **Module** |
 |---------------|------------|
 | **OpenFOAM**  | openfoam   |
