@@ -80,7 +80,8 @@ derived types).
 -   Module to load before using: `module load ddt`
 -   Start: `ddt <executable>`
 -   If the GUI runs too slow over your remote connection:
-    Use [WebVNC](../access/web_vnc.md) to start a remote desktop session in a web browser.
+    Use [WebVNC](../access/graphical_applications_with_webvnc.md) to start a remote desktop
+    session in a web browser.
 -   Slides from user training: [Parallel Debugging with DDT](misc/debugging_ddt.pdf)
 
 ### Serial Program Example
