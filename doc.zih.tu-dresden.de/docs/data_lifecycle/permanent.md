@@ -4,7 +4,7 @@ Do not use permanent file systems as work directories:
 
 - Even temporary files are kept in the snapshots and in the backup tapes over a long time,
 senseless filling the disks,
-- By the sheer number and volume of work files they may keep the backup from working efficiently.
+- By the sheer number and volume of work files, they may keep the backup from working efficiently.
 
 ## Global /home File System
 
