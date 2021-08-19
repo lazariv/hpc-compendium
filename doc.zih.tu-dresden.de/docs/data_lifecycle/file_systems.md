@@ -34,13 +34,13 @@ their data.
 
 ### General
 
-For the first view, you can easily use the "df-command".
+For the first view, you can use the command `df`.
 
 ``` console
 marie@login$ df
 ```
 
-Alternatively, you can use the `findmnt`-command, which is also able to report space usage
+Alternatively, you can use the command `findmnt`, which is also able to report space usage
 by adding the parameter `-D`:
 
 ``` console
