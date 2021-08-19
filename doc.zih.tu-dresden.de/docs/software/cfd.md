@@ -19,8 +19,8 @@ electromagnetics and the pricing of financial options. OpenFOAM is developed pri
 licensed under the GNU General Public Licence.
 
 The command `module spider OpenFOAM` provides the list of installed OpenFOAM versions. In order to
-use OpenFOAM, it is mandatory to set the environment by sourcing the \`bashrc\` (for users running
-bash or ksh) or \`cshrc\` (for users running tcsh or csh) provided by OpenFOAM:
+use OpenFOAM, it is mandatory to set the environment by sourcing the `bashrc` (for users running
+bash or ksh) or `cshrc` (for users running tcsh or csh) provided by OpenFOAM:
 
 ```console
 marie@login$ module load OpenFOAM/VERSION
