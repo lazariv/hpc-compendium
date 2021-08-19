@@ -33,20 +33,20 @@ Example for OpenFOAM job script:
 #SBATCH --time=12:00:00     # walltime
 #SBATCH --ntasks=60         # number of processor cores (i.e. tasks)
 #SBATCH --mem-per-cpu=500M  # memory per CPU core
-#SBATCH -J "Test"           # job name
-#SBATCH --mail-user=mustermann@tu-dresden.de  # email address (only tu-dresden)
+#SBATCH -job-name="Test"    # job name
+#SBATCH --mail-user=marie@tu-dresden.de  # email address (only tu-dresden)
 #SBATCH --mail-type=ALL
 
 OUTFILE="Output"
 module load OpenFOAM
 source $FOAM_BASH
-cd /scratch/<YOURUSERNAME>  # work directory in /scratch...!
+cd /scratch/ws/1/marie-example-workspace  # work directory using workspace
 srun pimpleFoam -parallel > "$OUTFILE" 
 ```
 
 ## Ansys CFX
 
-Ansys CFX is a powerful finite-volume-based program package for modelling general fluid flow in
+Ansys CFX is a powerful finite-volume-based program package for modeling general fluid flow in
 complex geometries. The main components of the CFX package are the flow solver cfx5solve, the
 geometry and mesh generator cfx5pre, and the post-processor cfx5post.
 
@@ -57,24 +57,24 @@ Example for CFX job script:
 #SBATCH --time=12:00                                       # walltime
 #SBATCH --ntasks=4                                         # number of processor cores (i.e. tasks)
 #SBATCH --mem-per-cpu=1900M                                # memory per CPU core
-#SBATCH --mail-user=.......@tu-dresden.de                  # email address (only tu-dresden)
+#SBATCH --mail-user=marie@tu-dresden.de                    # email address (only tu-dresden)
 #SBATCH --mail-type=ALL
 
 module load ANSYS
-cd /scratch/<YOURUSERNAME>                                 # work directory in /scratch...!
+cd /scratch/ws/1/marie-example-workspace                   # work directory using workspace
 cfx-parallel.sh -double -def StaticMixer.def 
 ```
 
 ## Ansys Fluent
 
-Fluent need the hostnames and can be run in parallel like this:
+Fluent needs the host names and can be run in parallel like this:
 
 ```bash
 #!/bin/bash
 #SBATCH --time=12:00                        # walltime
 #SBATCH --ntasks=4                          # number of processor cores (i.e. tasks)
 #SBATCH --mem-per-cpu=1900M                 # memory per CPU core
-#SBATCH --mail-user=.......@tu-dresden.de   # email address (only tu-dresden)
+#SBATCH --mail-user=marie@tu-dresden.de     # email address (only tu-dresden)
 #SBATCH --mail-type=ALL
 module load ANSYS
 
@@ -83,28 +83,28 @@ nodeset -e $SLURM_JOB_NODELIST | xargs -n1 > hostsfile_job_$SLURM_JOBID.txt
 fluent 2ddp -t$SLURM_NTASKS -g -mpi=intel -pinfiniband -cnf=hostsfile_job_$SLURM_JOBID.txt < input.in
 ```
 
-To use fluent interactive, please try:
+To use fluent interactively, please try:
 
 ```console
 marie@login$ module load ANSYS/19.2
-marie@login$ srun -N 1 --cpus-per-task=4 --time=1:00:00 --pty --x11=first bash
+marie@login$ srun --nodes=1 --cpus-per-task=4 --time=1:00:00 --pty --x11=first bash
 marie@login$ fluent &
 ```
 
 ## STAR-CCM+
 
-Note: you have to use your own license in order to run STAR-CCM+ on Taurus, so you have to specify
+Note: you have to use your own license in order to run STAR-CCM+ on ZIH systems, so you have to specify
 the parameters `-licpath` and `-podkey`, see the example below.
 
-Our installation provides a script `create_rankfile -f CCM` that generates a hostlist from the SLURM
-job environment that can be passed to starccm+, enabling it to run across multiple nodes.
+Our installation provides a script `create_rankfile -f CCM` that generates a host list from the
+Slurm job environment that can be passed to `starccm+`, enabling it to run across multiple nodes.
 
 ```bash
 #!/bin/bash
 #SBATCH --time=12:00                        # walltime
 #SBATCH --ntasks=32                         # number of processor cores (i.e. tasks)
 #SBATCH --mem-per-cpu=2500M                 # memory per CPU core
-#SBATCH --mail-user=.......@tu-dresden.de   # email address (only tu-dresden)
+#SBATCH --mail-user=marie@tu-dresden.de     # email address (only tu-dresden)
 #SBATCH --mail-type=ALL
 
 module load STAR-CCM+
