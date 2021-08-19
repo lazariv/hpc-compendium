@@ -22,6 +22,7 @@ The easiest way is using the [module system](../software/modules.md).
 The software for the `alpha` partition is available in `modenv/hiera` module environment.
 
 To check the available modules for `modenv/hiera`, use the command
+
 ```bash
 module spider <module_name>
 ```
