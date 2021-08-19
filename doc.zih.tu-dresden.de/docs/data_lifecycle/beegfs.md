@@ -33,7 +33,7 @@ file is stored.
 marie@login$ beegfs-ctl --getentryinfo /beegfs/global0/my-workspace/myfile --mount=/beegfs/global0
 ```
 
-Set the stripe pattern for an directory. In BeeGFS the stripe pattern will be inherited form a
+Set the stripe pattern for a directory. In BeeGFS, the stripe pattern will be inherited from a
 directory to its children.
 
 ```console
