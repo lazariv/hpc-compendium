@@ -33,8 +33,18 @@ for f in $files; do
         if ! grep -n -i 'file \+system' "$f"; then
             any_fails=true
         fi
+        #check for word taurus, except when used in conjunction with .hrsk or /taurus,
+        #which might appear in code snippets
         echo "Checking wording of $f: taurus"
         if ! grep -n -i '\<taurus\>' "$f" | grep -v 'taurus\.hrsk' | grep -v '/taurus'; then
+            any_fails=true
+        fi
+        echo "Checking wording of $f: hrskii"
+        if ! grep -n -i '\<hrskii\>' "$f"; then
+            any_fails=true
+        fi
+        echo "Checking wording of $f: hpc system"
+        if ! grep -n -i 'hpc \+system' "$f"; then
             any_fails=true
         fi
     fi
