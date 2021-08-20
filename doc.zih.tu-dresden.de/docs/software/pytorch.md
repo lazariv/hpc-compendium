@@ -14,16 +14,16 @@ marie@login$ module spider pytorch
 to find out, which Pytorch modules are available on your partition.
 
 We recommend using **Alpha** and/or **ML** partitions when working with machine learning workflows
-and the Pytorch library. You can find detailed hardware specification
-[here](../jobs_and_resources/hardware_taurus.md).
+and the Pytorch library.
+You can find detailed hardware specification [here](../jobs_and_resources/hardware_taurus.md).
 
 ## Pytorch Console
 
 On the **Alpha** partition load the module environment:
 
 ```console
-marie@login$ srun -p alpha --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=800 bash   #Job submission on alpha nodes with 1 gpu on 1 node with 800 Mb per CPU
-marie@alpha$ module load modenv/hiera  GCC/10.2.0  CUDA/11.1.1  OpenMPI/4.0.5 PyTorch/1.9.0
+marie@login$ srun -p alpha --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=800 bash #Job submission on alpha nodes with 1 gpu on 1 node with 800 Mb per CPU
+marie@alpha$ module load modenv/hiera  GCC/10.2.0  CUDA/11.1.1 OpenMPI/4.0.5 PyTorch/1.9.0
 Die folgenden Module wurden in einer anderen Version erneut geladen:
   1) modenv/scs5 => modenv/hiera
 
@@ -31,17 +31,16 @@ Module GCC/10.2.0, CUDA/11.1.1, OpenMPI/4.0.5, PyTorch/1.9.0 and 54 dependencies
 ```
 
 ??? hint "Torchvision on alpha partition"
-	On the alpha partition the module torchvision is not yet available within the module system. (19.08.2021)
-	Torchvision can be made available by using a virtual environment: 
+    On the alpha partition the module torchvision is not yet available within the module system. (19.08.2021)
+    Torchvision can be made available by using a virtual environment:
 
-	```console
-	marie@alpha$ virtualenv --system-site-packages python-environments/torchvision_env
-	marie@alpha$ source python-environments/torchvision_env/bin/activate 
-	marie@alpha$ pip install torchvision --no-deps
-	```
+    ```console
+    marie@alpha$ virtualenv --system-site-packages python-environments/torchvision_env
+    marie@alpha$ source python-environments/torchvision_env/bin/activate
+    marie@alpha$ pip install torchvision --no-deps
+    ```
 
-	Using the **--no-deps** option for "pip install" is necessary here as otherwise the Pytorch version might be replaced and you will run into trouble with the cuda drivers. 
-
+    Using the **--no-deps** option for "pip install" is necessary here as otherwise the Pytorch version might be replaced and you will run into trouble with the cuda drivers.
 
 On the **ML** partition:
 
@@ -49,7 +48,7 @@ On the **ML** partition:
 marie@login$ srun -p ml --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=800 bash    #Job submission in ml nodes with 1 gpu on 1 node with 800 Mb per CPU
 ```
 
-after calling 
+after calling
 
 ```console
 marie@login$ module spider pytorch
@@ -65,13 +64,14 @@ Module torchvision/0.7.0-fosscuda-2019b-Python-3.7.4-PyTorch-1.6.0 and 55 depend
 Now we check that we can access Pytorch:
 
 ```console
-marie@{ml,alpha}$ python -c "import torch; print(torch.__version__)"    
+marie@{ml,alpha}$ python -c "import torch; print(torch.__version__)"
 ```
 
-The following example shows how to create a python virtual environment and import Pytorch.
+The following example shows how to create a python virtual environment and
+ import Pytorch.
 
 ```console
-marie@ml$ mkdir python-environments    #create folder 
+marie@ml$ mkdir python-environments    #create folder
 marie@ml$ which python    #check which python are you using
 /sw/installed/Python/3.7.4-GCCcore-8.3.0/bin/python
 marie@ml$ virtualenv --system-site-packages python-environments/env    #create virtual environment "env" which inheriting with global site packages
@@ -82,7 +82,7 @@ marie@ml$ python -c "import torch; print(torch.__version__)"
 
 ## Pytorch in JupyterHub
 
-In addition to using interactive and batch jobs, it is possible to work with Pytorch using JupyterHub. 
+In addition to using interactive and batch jobs, it is possible to work with Pytorch using JupyterHub.
 The production and test environments of JupyterHub contain Python kernels, that come with a Pytorch support.
 
 ![Pytorch module in JupyterHub](misc/Pytorch_jupyter_module.png)
@@ -90,6 +90,4 @@ The production and test environments of JupyterHub contain Python kernels, that 
 
 ## Distributed Pytorch
 
-For details on how to run Pytorch with multiple GPUs and/or multiple nodes, see
-[distributed training](distributed_training.md).
-
+For details on how to run Pytorch with multiple GPUs and/or multiple nodes, see [distributed training](distributed_training.md).
