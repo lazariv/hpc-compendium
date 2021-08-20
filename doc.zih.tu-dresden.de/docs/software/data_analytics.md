@@ -11,9 +11,10 @@ The following tools are available in the ZIH system, among others:
 1. [R](data_analytics_with_r.md)
 1. [Rstudio](data_analytics_with_rstudio.md)
 1. [Big Data framework Spark](big_data_frameworks_spark.md)
-1. [TensorFlow](tensorflow.md)
-1. [Pytorch](pytorch.md)
 1. [MATLAB and Mathematica](mathematics.md)
+
+Detailed information about frameworks for machine learning, such as [TensorFlow](tensorflow.md)
+or [PyTorch](pytorch.md), can be found in [machine learning](machine_learning.md) subsection.
 
 Other software not listed here can be searched with
 
