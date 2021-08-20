@@ -27,6 +27,13 @@ Test mkdocs:
     stage: test
     script: docker run ${DOCKER_IMAGE}
 
+Check wording of changed md-files:
+    stage: test
+    script:
+        - docker run --rm -w /src -e CI_MERGE_REQUEST_TARGET_BRANCH_NAME "${DOCKER_IMAGE}"
+          doc.zih.tu-dresden.de/util/grep-forbidden-words.sh
+    only: [ merge_requests ]
+
 Lint changed md-files:
     stage: test
     script:
