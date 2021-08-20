@@ -11,7 +11,7 @@ any_fails=false
 
 files=$(git diff --name-only "$(git merge-base HEAD "$branch")")
 for f in $files; do
-    if [ "${f: -3}" == ".md" ]; then
+    if [ "$f" != doc.zih.tu-dresden.de/README.md -a "${f: -3}" == ".md" ]; then
         #The following checks assume that grep signals success when it finds something,
         #while it signals failure if it doesn't find something.
         #We assume that we are successful if we DON'T find the pattern,
