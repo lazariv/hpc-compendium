@@ -10,6 +10,7 @@ The following tools are available in the ZIH system, among others:
 1. [Big Data framework Spark](big_data_frameworks_spark.md)
 1. [TensorFlow](tensorflow.md)
 1. [Pytorch](pytorch.md)
+1. [MATLAB and Mathematica](mathematics.md)
 
 Additional software or special versions of individual modules can be installed individually by each user.
 If possible, the use of virtual environments is recommended (e.g. for Python). 
