@@ -1,6 +1,6 @@
 variables:
     GIT_STRATEGY: none
-    DOCKER_IMAGE: webpage:$CI_PIPELINE_IID
+    DOCKER_IMAGE: webpage:$CI_PIPELINE_ID
 
 workflow:
   rules:
@@ -68,6 +68,6 @@ Release:
 Cleanup docker:
     stage: cleanup
     script:
-        - docker rmi "${DOCKER_IMAGE}"
+        - docker rmi -f "${DOCKER_IMAGE}"
         - docker system prune --force
     when: always
