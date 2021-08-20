@@ -66,7 +66,6 @@ nav:
       - Libraries: software/libraries.md
       - MPI Error Detection: software/mpi_usage_error_detection.md
       - Score-P: software/scorep.md
-      - PAPI Library: software/papi_library.md 
       - Perf Tools: software/perf_tools.md 
       - PIKA: software/pika.md
       - Vampir: software/vampir.md
@@ -123,7 +122,6 @@ nav:
     - Hardware Titan: archive/hardware_titan.md
     - Hardware Triton: archive/hardware_triton.md
     - Hardware Venus: archive/hardware_venus.md
-    - Introduction: archive/introduction.md
     - KNL Nodes: archive/knl_nodes.md
     - Load Leveler: archive/load_leveler.md
     - Migrate to Atlas: archive/migrate_to_atlas.md
@@ -131,15 +129,13 @@ nav:
     - Phase2 Migration: archive/phase2_migration.md
     - Platform LSF: archive/platform_lsf.md
     - RamDisk Documentation: archive/ram_disk_documentation.md
-    - Step by Step Taurus: archive/step_by_step_taurus.md
     - System Altix: archive/system_altix.md
     - System Atlas: archive/system_atlas.md
     - System Venus: archive/system_venus.md
     - Taurus II: archive/taurus_ii.md
     - UNICORE Rest API: archive/unicore_rest_api.md
     - Vampir Trace: archive/vampir_trace.md
-    - Venus Open: archive/venus_open.md
-    - Windows Batchjobs: jobs/windows_batch.md
+    - Windows Batchjobs: archive/windows_batch.md
 
 
 # Project Information

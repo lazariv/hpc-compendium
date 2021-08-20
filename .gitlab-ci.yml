@@ -56,13 +56,13 @@ Check links for md-files:
 Release preview branch:
     stage: release
     script:
-        - docker run --rm -v /var/www/html/preview:/mnt "${DOCKER_IMAGE}" mkdocs build --site-dir /mnt
+        - docker run --rm -v /var/www/html/preview:/mnt "${DOCKER_IMAGE}" mkdocs build --strict --site-dir /mnt
     only: [ preview ]
 
 Release:
     stage: release
     script:
-        - docker run --rm -v /var/www/html/hpc-wiki:/mnt "${DOCKER_IMAGE}" mkdocs build --site-dir /mnt
+        - docker run --rm -v /var/www/html/hpc-wiki:/mnt "${DOCKER_IMAGE}" mkdocs build --strict --site-dir /mnt
     only: [ main ]
 
 Cleanup docker:
