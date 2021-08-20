@@ -11,17 +11,16 @@ Espresso, STAR-CCM+, VASP
 In case your program does not natively support checkpointing, there are
 attempts at creating generic checkpoint/restart solutions that should
 work application-agnostic. One such project which we recommend is DMTCP:
-Distributed MultiThreaded CheckPointing
-(<http://dmtcp.sourceforge.net>).
+[Distributed MultiThreaded CheckPointing](<http://dmtcp.sourceforge.net>).
 
 It is available on ZIH systems after having loaded the "dmtcp" module:
 
 ```console
-module load DMTCP
+marie@login$ module load DMTCP
 ```
 
 While our batch system of choice, Slurm, also provides a checkpointing
-interface to the user, unfortunately it does not yet support DMTCP at
+interface to the user, unfortunately, it does not yet support DMTCP at
 this time. However, there are ongoing efforts of writing a Slurm plugin
 that hopefully will change this in the near future. We will update this
 documentation as soon as it becomes available.
@@ -51,21 +50,22 @@ parameters `--ib --rm` and put it between srun and your application
 call, e.g.:
 
 ```console
-srun dmtcp_launch --ib --rm ./my-mpi-application
+marie@login$ srun dmtcp_launch --ib --rm ./my-mpi-application
 ```
 
-`Note:` we have successfully tested checkpointing MPI applications with
-the latest `Intel MPI` (module: intelmpi/2018.0.128). While it might
-work with other MPI libraries, too, we have no experience in this
-regard, so you should always try it out before using it for your
-productive jobs.
+!!! note
+    We have successfully tested checkpointing MPI applications with
+    the latest `Intel MPI` (module: intelmpi/2018.0.128). While it might
+    work with other MPI libraries, too, we have no experience in this
+    regard, so you should always try it out before using it for your
+    productive jobs.
 
 Then just substitute your usual `sbatch` call with `dmtcp_sbatch` and be
 sure to specify the `-t` and `-i` parameters (don't forget you need to
 have loaded the dmtcp module).
 
 ```console
-dmtcp_sbatch -t 2-00:00:00 -i 28000,800 my_batchfile.sh
+marie@login$ dmtcp_sbatch --time 2-00:00:00 --interval 28000,800 my_batchfile.sh
 ```
 
 With `-t|--time` you set the total runtime of your calculation overall
@@ -80,9 +80,9 @@ out the checkpoint files, separated from the interval time via comma
 In the above example, there will be 6 jobs each running 8 hours, so
 about 2 days in total.
 
-Hints:
+!!! Hints
 
--   If you see your first job running into the timelimit, that probably
+    -   If you see your first job running into the timelimit, that probably 
     means the timeout for writing out checkpoint files does not suffice
     and should be increased. Our tests have shown that it takes
     approximately 5 minutes to write out the memory content of a fully
@@ -91,14 +91,13 @@ Hints:
     depending on how much memory your application uses. If your memory
     content is rather incompressible, it might be a good idea to disable
     the checkpoint file compression by setting: `export DMTCP_GZIP=0`
--   Note that all jobs the script deems necessary for your chosen
+    -   Note that all jobs the script deems necessary for your chosen
     timelimit/interval values are submitted right when first calling the
     script. If your applications take considerably less time than what
     you specified, some of the individual jobs will be unnecessary. As
     soon as one job does not find a checkpoint to resume from, it will
     cancel all subsequent jobs for you.
--   See `dmtcp_sbatch -h` for a list of available parameters and more
-    help
+    -   See `dmtcp_sbatch -h` for a list of available parameters and more help
 
 What happens in your work directory?
 
@@ -140,18 +139,20 @@ can be useful if you wish to implement some sort of job chaining on your
 own. 1 In front of your program call, you have to add the wrapper
 script: `dmtcp_launch` **TODO check**
 
-```bash
-#/bin/bash 
-#SBATCH --time=00:01:00
-#SBATCH --cpus-per-task=8 
-#SBATCH --mem-per-cpu=1500
+???+ example
 
-source $DMTCP_ROOT/bin/bash start_coordinator -i 40 --exit-after-ckpt
+    ```bash
+    #/bin/bash 
+    #SBATCH --time=00:01:00
+    #SBATCH --cpus-per-task=8 
+    #SBATCH --mem-per-cpu=1500
 
-dmtcp_launch ./my-application #for sequential/multithreaded applications
-#or: srun dmtcp_launch --ib --rm ./my-mpi-application #for MPI
-applications
-```
+    source $DMTCP_ROOT/bin/bash start_coordinator -i 40 --exit-after-ckpt
+
+    dmtcp_launch ./my-application #for sequential/multithreaded applications
+    #or: srun dmtcp_launch --ib --rm ./my-mpi-application #for MPI
+    applications
+    ```
 
 This will create a checkpoint automatically after 40 seconds and then
 terminate your application and with it the job. If the job runs into its
@@ -166,16 +167,18 @@ original job. If you do not wish to create another checkpoint in your
 restarted run again, you can omit the `-i` and `--exit-after-ckpt`
 parameters this time. Afterwards, the application must be run using the
 restart script, specifying the host and port of the coordinator (they
-have been exported by the start_coordinator function). Example:
+have been exported by the start_coordinator function).
 
-```bash
-#/bin/bash 
-#SBATCH --time=00:01:00 
-#SBATCH --cpus-per-task=8
-#SBATCH --mem-per-cpu=1500
+???+ example
 
-source $DMTCP_ROOT/bin/bash start_coordinator -i 40 --exit-after-ckpt
+    ```bash
+    #/bin/bash 
+    #SBATCH --time=00:01:00 
+    #SBATCH --cpus-per-task=8
+    #SBATCH --mem-per-cpu=1500
 
-./dmtcp_restart_script.sh -h $DMTCP_COORD_HOST -p
-$DMTCP_COORD_PORT
-```
+    source $DMTCP_ROOT/bin/bash start_coordinator -i 40 --exit-after-ckpt
+
+    ./dmtcp_restart_script.sh -h $DMTCP_COORD_HOST -p
+    $DMTCP_COORD_PORT
+    ```
