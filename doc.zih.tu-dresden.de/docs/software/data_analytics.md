@@ -12,6 +12,12 @@ The following tools are available in the ZIH system, among others:
 1. [Pytorch](pytorch.md)
 1. [MATLAB and Mathematica](mathematics.md)
 
+Other software not listed here can be searched with 
+
+```bash
+module spider <software_name>
+```
+
 Additional software or special versions of individual modules can be installed individually by each user.
 If possible, the use of virtual environments is recommended (e.g. for Python). 
 Likewise software can be used within [containers](containers.md). 
