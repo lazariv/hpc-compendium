@@ -34,6 +34,13 @@ Lint changed md-files:
           doc.zih.tu-dresden.de/util/lint-changes.sh
     only: [ merge_requests ]
 
+Check spelling for changed md-files:
+    stage: test
+    script:
+        - docker run --rm -w /src -e CI_MERGE_REQUEST_TARGET_BRANCH_NAME "${DOCKER_IMAGE}"
+          doc.zih.tu-dresden.de/util/check-spelling-changes.sh
+    only: [ merge_requests ]
+
 Check links for changed md-files:
     stage: test
     script:
