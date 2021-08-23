@@ -47,6 +47,10 @@ for f in $files; do
         if ! grep -n -i 'hpc \+system' "$f"; then
             any_fails=true
         fi
+        echo "Checking wording of $f: hpc-da"
+        if ! grep -n -i 'hpc[ -]\+da\>' "$f"; then
+            any_fails=true
+        fi
     fi
 done
 
