@@ -1,8 +1,12 @@
 # Bioinformatics
 
-|                                   |                                           |
+!!! warning
+
+    This page is outdated!
+
+
+| Software                          | Module                                    |
 |-----------------------------------|-------------------------------------------|
-|                                   | **module**                                |
 | **[Infernal](#Infernal)**         | infernal                                  |
 | **[OpenProspect](#OpenProspect)** | openprospect, openprospect/885-mpi        |
 | **[Phylip](#Phylip)**             | phylip                                    |
@@ -17,9 +21,9 @@ a combination of sequence consensus and RNA secondary structure consensus, so in
 more capable of identifying RNA homologs that conserve their secondary structure more than their
 primary sequence. Documentations can be found at [Infernal homepage](http://infernal.janelia.org)
 
-A parallel version is available. It can be used at Deimos like:
+A parallel version is available. It can be used at [Deimos](hardware_deimos.md) like:
 
-```Shell Session
+```console
 bsub -n 4 -e %J_err.txt -a openmpi mpirun.lsf cmsearch --mpi --fil-no-hmm --fil-no-qdb 12smito.cm NC_003179.fas
 ```
 
@@ -43,5 +47,4 @@ Documentations can be found at [Phylip homepage](https://evolution.genetics.wash
 ## PhyML
 
 A simple, fast, and accurate algorithm to estimate large phylogenies by maximum likelihood.
-
 Documentations can be found at [PhyML homepage](http://atgc.lirmm.fr/phyml).
