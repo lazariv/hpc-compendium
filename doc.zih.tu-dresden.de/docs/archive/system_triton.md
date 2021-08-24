@@ -1,11 +1,15 @@
-# Hardware
+# IBM-iDataPlex Cluster Trition
 
-## IBM-iDataPlex
+!!! warning
 
-is a cluster based on quadcore Intel Xeon CPUs. The nodes are operated
+    **This page is deprecated! Trition is a former system!**
+
+Trition is a cluster based on quadcore Intel Xeon CPUs. The nodes are operated
 by the Linux operating system SuSE SLES 11. Currently, the following
 hardware is installed:
 
+| Component | Count |
+|-----------|-------|
 |CPUs |Intel quadcore E5530 |
 |RAM per core |6 GB |
 |Number of cores |512 |
@@ -20,6 +24,9 @@ the login node triton.hrsk.tu-dresden.de .
 The cluster is based on dual-core Intel Xeon E5530 processor. One core
 has the following basic properties:
 
+| Component | Count |
+|-----------|-------|
+|CPUs |Intel quadcore E5530 |
 |clock rate |2.4 GHz |
 |Cores |4 |
 |Threads |8 |

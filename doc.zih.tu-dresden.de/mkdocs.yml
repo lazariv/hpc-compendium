@@ -114,14 +114,6 @@ nav:
     - Bio Informatics: archive/bioinformatics.md
     - CXFS End of Support: archive/cxfs_end_of_support.md
     - Debugging Tools: archive/debugging_tools.md
-    - Hardware: archive/hardware.md
-    - Hardware Altix: archive/hardware_altix.md
-    - Hardware Atlas: archive/hardware_atlas.md
-    - Hardware Deimos: archive/hardware_deimos.md
-    - Hardware Phobos: archive/hardware_phobos.md
-    - Hardware Titan: archive/hardware_titan.md
-    - Hardware Triton: archive/hardware_triton.md
-    - Hardware Venus: archive/hardware_venus.md
     - KNL Nodes: archive/knl_nodes.md
     - Load Leveler: archive/load_leveler.md
     - Migrate to Atlas: archive/migrate_to_atlas.md
@@ -129,9 +121,15 @@ nav:
     - Phase2 Migration: archive/phase2_migration.md
     - Platform LSF: archive/platform_lsf.md
     - RamDisk Documentation: archive/ram_disk_documentation.md
-    - System Altix: archive/system_altix.md
-    - System Atlas: archive/system_atlas.md
-    - System Venus: archive/system_venus.md
+    - Switched-Off Systems:
+      - Overview: archive/systems_switched_off.md
+      - System Altix: archive/system_altix.md
+      - System Atlas: archive/system_atlas.md
+      - System Deimos: archive/system_deimos.md
+      - System Phobos: archive/system_phobos.md
+      - System Titan: archive/system_titan.md
+      - System Triton: archive/system_triton.md
+      - System Venus: archive/system_venus.md
     - Taurus II: archive/taurus_ii.md
     - UNICORE Rest API: archive/unicore_rest_api.md
     - Vampir Trace: archive/vampir_trace.md

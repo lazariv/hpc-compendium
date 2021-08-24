@@ -45,7 +45,7 @@ general project Details.\<br />Any project have:
 <span class="twiki-macro IMAGE" type="frame" align="right"
 caption="picture 4: hardware" width="170" zoom="on
 ">%ATTACHURL%/request_step3_machines.png</span> This step inquire the
-required hardware. You can find the specifications [here](../archive/hardware.md).
+required hardware. You can find the specifications [here]**todo fix link**
 \<br />For your guidance:
 
 -   gpu => taurus
