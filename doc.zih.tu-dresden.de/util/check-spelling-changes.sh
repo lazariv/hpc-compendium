@@ -5,10 +5,12 @@ set -euo pipefail
 scriptpath=${BASH_SOURCE[0]}
 basedir=`dirname "$scriptpath"`
 basedir=`dirname "$basedir"`
-wordlistfile="./$basedir/wordlist.aspell"
+wordlistfile=$basedir/wordlist.aspell
 
 echo "scriptpath: $scriptpath"
 echo "basedir: $basedir"
+echo "wordlistfile: $wordlistfile"
+wordlistfile=$(realpath $wordlistfile)
 echo "wordlistfile: $wordlistfile"
 
 function getNumberOfAspellOutputLines(){
