@@ -1,7 +1,7 @@
 # Overview
 
-As soon as you have access to ZIH systems, you have to manage your data. Several file systems are
-available. Each file system serves for special purpose according to their respective capacity,
+As soon as you have access to ZIH systems, you have to manage your data. Several filesystems are
+available. Each filesystem serves for special purpose according to their respective capacity,
 performance and permanence.
 
 ## Work Directories
