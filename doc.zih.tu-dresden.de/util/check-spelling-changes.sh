@@ -21,6 +21,8 @@ any_fails=false
 source_hash=`git merge-base HEAD "$branch"`
 #Remove everything except lines beginning with --- or +++
 files=`git diff $source_hash | sed -n 's/^[-+]\{3,3\} //p'`
+echo "$files"
+echo "-------------------------"
 #Assume that we have pairs of lines (starting with --- and +++).
 while read oldfile; do
     read newfile
@@ -38,6 +40,11 @@ while read oldfile; do
             #Remove the prefix "b/"
             newfile=${newfile:2}
             current_count=`cat "$newfile" | getNumberOfAspellOutputLines`
+            echo "======"
+            echo "$current_count"
+            echo "$newfile"
+            cat - | aspell -p "$wordlistfile" --ignore 2 -l en_US list --mode=markdown
+            echo "======"
         fi
         if [ $current_count -gt $previous_count ]; then
             echo "-- File $newfile"
@@ -50,5 +57,3 @@ done <<< "$files"
 if [ "$any_fails" == true ]; then
     exit 1
 fi
-
-echo "hier"
