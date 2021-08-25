@@ -49,7 +49,7 @@ These snapshots are taken (subject to changes):
 To restore a previous version of a file:
 
 1. Go to the parent directory of the file you want to restore.
-1. Run `cd .snapshot` (this subdirectory exists in every directory on the `/home` file system
+1. Run `cd .snapshot` (this subdirectory exists in every directory on the `/home` filesystem
   although it is not visible with `ls -a`).
 1. List the snapshots with `ls -l`.
 1. Just `cd` into the directory of the point in time you wish to restore and copy the file you
