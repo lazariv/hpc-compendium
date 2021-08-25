@@ -1,4 +1,4 @@
-# Permanent File Systems
+# Permanent Filesystems
 
 Do not use permanent filesystems as work directories:
 
