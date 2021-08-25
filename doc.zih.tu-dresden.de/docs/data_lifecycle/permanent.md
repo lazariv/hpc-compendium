@@ -78,8 +78,8 @@ main reason for performance degradation of the filesystem.
 
 The following commands can be used for monitoring:
 
-- `showquota` shows your projects' usage of the file system.
-- `quota -s -f /home` shows the user's usage of the file system.
+- `showquota` shows your projects' usage of the filesystem.
+- `quota -s -f /home` shows the user's usage of the filesystem.
 
 In case a quota is above its limits:
 
