@@ -14,7 +14,7 @@ duration.
 
 ## Access
 
-### As File System
+### As Filesystem
 
 On ZIH systems, users can access the warm archive via [workspaces](workspaces.md)).
 Although the lifetime is considerable long, please be aware that the data will be
