@@ -19,7 +19,7 @@ for f in $files; do
 
         echo "Checking wording of $f: IO"
         #io must be the whole word
-        if ! grep -n -i '\<io\>' "$f"; then
+        if ! grep -n -i '\<io\>' "$f" | grep -v '\.io'; then
             any_fails=true
         fi
         echo "Checking wording of $f: SLURM"
