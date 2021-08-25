@@ -47,8 +47,8 @@ by adding the parameter `-D`:
 marie@login$ findmnt -D
 ```
 
-Optional you can use the `-t`-parameter to specify the fs-type or the `-o`-parameter to alter the
-output.
+Optionally, you can use the parameter `-t` to specify the filesystem type or the parameter `-o` to
+alter the output.
 
 !!! important
 
