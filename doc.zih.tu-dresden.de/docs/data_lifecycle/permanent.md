@@ -24,7 +24,7 @@ submit jobs into the batch system. Running jobs are not affected.
      We have no feasible way to get the contribution of
      a single user to a project's disk usage.
 
-## Global /projects File System
+## Global /projects Filesystem
 
 For project data, we have a global project directory, that allows better collaboration between the
 members of an HPC project.
