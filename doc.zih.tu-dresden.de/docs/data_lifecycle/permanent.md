@@ -85,7 +85,7 @@ In case a quota is above its limits:
 
   - Remove core dumps and temporary data
   - Talk with your colleagues to identify unused or unnecessarily stored data,
-  - Check your workflow and use /tmp or the scratch file systems for temporary files
+  - Check your workflow and use `/tmp` or the scratch filesystems for temporary files
   - *Systematically* handle your important data:
     - For later use (weeks...months) at the HPC systems, build and zip tar
       archives with meaningful names or IDs and store them e.g. in a workspace in the
