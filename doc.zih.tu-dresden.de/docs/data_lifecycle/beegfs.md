@@ -1,8 +1,8 @@
 # BeeGFS
 
-Commands to work with the BeeGFS file system.
+Commands to work with the BeeGFS filesystem.
 
-## Capacity and file system health
+## Capacity and filesystem health
 
 View storage and inode capacity and utilization for metadata and storage targets.
 
