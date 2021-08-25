@@ -6,7 +6,7 @@ Link to this page from other DA/ML topics.
 
 ## copied from alpha_centauri.md
 
-??? comment 
+??? comment
     copied from `alpha_centauri.md`. Please remove there if this article is finished
 
 Virtual environments allow users to install additional python packages and create an isolated
@@ -40,7 +40,7 @@ Successfully installed torchvision-0.10.0
 
 ## copied from python.md
 
-??? comment 
+??? comment
     clear up the following. Maybe leave only conda stuff...
 
 There are two methods of how to work with virtual environments on
@@ -129,4 +129,3 @@ interactive job. Apart from short test runs, it is **recommended to
 launch your jobs into the background by using Slurm**. For that, you can conveniently put
 the parameters directly into the job file which you can submit using
 `sbatch [options] <job file>.`
-

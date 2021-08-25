@@ -2,8 +2,10 @@
 
 [PyTorch](https://pytorch.org/){:target="_blank"} is an open-source machine learning framework.
 It is an optimized tensor library for deep learning using GPUs and CPUs.
-PyTorch is a machine learning tool developed by Facebooks AI division to process large-scale object detection, segmentation, classification, etc.
-PyTorch provides a core datastructure, the tensor, a multi-dimensional array that shares many similarities with Numpy arrays.
+PyTorch is a machine learning tool developed by Facebooks AI division to process large-scale
+object detection, segmentation, classification, etc.
+PyTorch provides a core datastructure, the tensor, a multi-dimensional array that shares many
+similarities with Numpy arrays.
 
 Please check the software modules list via
 
