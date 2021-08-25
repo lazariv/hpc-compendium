@@ -76,8 +76,7 @@ nav:
       - Overview: data_lifecycle/file_systems.md
       - Permanent File Systems: data_lifecycle/permanent.md
       - Lustre: data_lifecycle/lustre.md
-      - BeeGFS 1: data_lifecycle/beegfs.md
-      - BeeGFS 2: data_lifecycle/bee_gfs.md
+      - BeeGFS: data_lifecycle/beegfs.md
       - WarmArchive: data_lifecycle/warm_archive.md
       - Intermediate Archive: data_lifecycle/intermediate_archive.md
     - Workspaces: data_lifecycle/workspaces.md
@@ -135,6 +134,7 @@ nav:
     - System Altix: archive/system_altix.md
     - System Atlas: archive/system_atlas.md
     - System Venus: archive/system_venus.md
+    - BeeGFS on Demand: archive/beegfs_on_demand.md
     - Taurus II: archive/taurus_ii.md
     - UNICORE Rest API: archive/unicore_rest_api.md
     - Vampir Trace: archive/vampir_trace.md
