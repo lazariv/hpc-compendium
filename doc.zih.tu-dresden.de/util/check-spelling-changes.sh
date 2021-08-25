@@ -42,8 +42,8 @@ while read oldfile; do
             current_count=`cat "$newfile" | getNumberOfAspellOutputLines`
             echo "======"
             echo "$current_count"
-#            echo "$newfile"
-#            cat - | aspell -p "$wordlistfile" --ignore 2 -l en_US list --mode=markdown
+            echo "$newfile"
+            cat - | aspell -p "$wordlistfile" --ignore 2 -l en_US list --mode=markdown
             echo "======"
         fi
         if [ $current_count -gt $previous_count ]; then
