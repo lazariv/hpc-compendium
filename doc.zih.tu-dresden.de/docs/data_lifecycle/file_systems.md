@@ -13,7 +13,7 @@ performance and permanence.
 | `BeeGFS`    | `/beegfs/global0` | 232 TB   | global       | No     | Only accessible via [Workspaces](workspaces.md). Fastest available file system, only for large parallel applications running with millions of small I/O operations |
 | `ext4`      | `/tmp`            | 95 GB    | local        | No     | is cleaned up after the job automatically  |
 
-## Recommendations for File System Usage
+## Recommendations for Filesystem Usage
 
 To work as efficient as possible, consider the following points
 
