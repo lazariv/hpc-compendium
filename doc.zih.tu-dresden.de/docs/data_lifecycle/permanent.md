@@ -6,7 +6,7 @@ Do not use permanent filesystems as work directories:
 senselessly filling the disks,
 - By the sheer number and volume of work files, they may keep the backup from working efficiently.
 
-## Global /home File System
+## Global /home Filesystem
 
 Each user has 50 GB in a `/home` directory independent of the granted capacity for the project.
 The home directory is mounted with read-write permissions on all nodes of the ZIH system.
