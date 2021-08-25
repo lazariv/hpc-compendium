@@ -62,7 +62,7 @@ To restore a previous version of a file:
 
 ## Backup
 
-Just for the eventuality of a major file system crash, we keep tape-based backups of our
+Just for the eventuality of a major filesystem crash, we keep tape-based backups of our
 permanent filesystems for 180 days.
 
 ## Quotas
