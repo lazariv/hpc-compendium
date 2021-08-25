@@ -2,12 +2,12 @@
 
 !!! warning
 
-    **This page is deprecated! The SGI Atlix is a former system!**
+    **This page is deprecated! The SGI Altix is a former system!**
 
 ## System
 
 The SGI Altix 4700 is a shared memory system with dual core Intel Itanium 2 CPUs (Montecito)
-operated by the Linux operating system SuSE SLES 10 with a 2.6 kernel. Currently, the following
+operated by the Linux operating system SUSE SLES 10 with a 2.6 kernel. Currently, the following
 Altix partitions are installed at ZIH:
 
 |Name|Total Cores|Compute Cores|Memory per Core|
@@ -22,23 +22,23 @@ The jobs for these partitions (except Neptun) are scheduled by the [Platform LSF
 batch system running on `mars.hrsk.tu-dresden.de`. The actual placement of a submitted job may
 depend on factors like memory size, number of processors, time limit.
 
-### Filesystems
+### File Systems
 
-All partitions share the same CXFS filesystems `/work` and `/fastfs`.
+All partitions share the same CXFS file systems `/work` and `/fastfs`.
 
-### ccNuma Architecture
+### ccNUMA Architecture
 
-The SGI Altix has a ccNUMA architecture, which stands for Cache Coherent Non-Uniform Memory Access.
+The SGI Altix has a ccNUMA architecture, which stands for *Cache Coherent Non-Uniform Memory Access*.
 It can be considered as a SM-MIMD (*shared memory - multiple instruction multiple data*) machine.
-The SGI ccNuma system has the following properties:
+The SGI ccNUMA system has the following properties:
 
 - Memory is physically distributed but logically shared
 - Memory is kept coherent automatically by hardware.
 - Coherent memory: memory is always valid (caches hold copies)
-- Granularity is L3 cacheline (128 B)
-- Bandwidth of NumaLink4 is 6.4 GB/s
+- Granularity is L3 cache line (128 B)
+- Bandwidth of NUMAlink4 is 6.4 GB/s
 
-The ccNuma is a compromise between a distributed memory system and a flat symmetric multi processing
+The ccNUMA is a compromise between a distributed memory system and a flat symmetric multi processing
 machine (SMP). Although the memory is shared, the access properties are not the same.
 
 ### Compute Module
@@ -69,7 +69,7 @@ Remote memory access via SHUBs and NUMAlink
 ### CPU
 
 The current SGI Altix is based on the dual core Intel Itanium 2
-processor (codename "Montecito"). One core has the following basic
+processor (code name "Montecito"). One core has the following basic
 properties:
 
 |                                     |                            |

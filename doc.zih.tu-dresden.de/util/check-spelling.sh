@@ -4,7 +4,7 @@ scriptpath=${BASH_SOURCE[0]}
 basedir=`dirname "$scriptpath"`
 basedir=`dirname "$basedir"`
 wordlistfile=$basedir/wordlist.aspell
-acmd="aspell -p $wordlistfile --ignore 2 -l en_US list"
+acmd="aspell -p $wordlistfile --ignore 2 -l en_US list --mode=markdown"
 
 function spell_check () {
   file_to_check=$1

@@ -8,7 +8,7 @@ basedir=`dirname "$basedir"`
 wordlistfile=$basedir/wordlist.aspell
 
 function getNumberOfAspellOutputLines(){
-  cat - | aspell -p "$wordlistfile" --ignore 2 -l en_US list | sort -u | wc -l
+  cat - | aspell -p "$wordlistfile" --ignore 2 -l en_US list --mode=markdown | sort -u | wc -l
 }
 
 branch="preview"
@@ -50,3 +50,5 @@ done <<< "$files"
 if [ "$any_fails" == true ]; then
     exit 1
 fi
+
+echo "hier"

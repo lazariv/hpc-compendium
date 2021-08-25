@@ -5,7 +5,7 @@
     **This page is deprecated! Trition is a former system!**
 
 Trition is a cluster based on quadcore Intel Xeon CPUs. The nodes are operated
-by the Linux operating system SuSE SLES 11. Currently, the following
+by the Linux operating system SUSE SLES 11. Currently, the following
 hardware is installed:
 
 | Component | Count |

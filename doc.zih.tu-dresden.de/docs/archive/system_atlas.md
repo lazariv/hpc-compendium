@@ -7,14 +7,14 @@
 ## System
 
 The PC farm `Atlas` is a heterogeneous, general purpose cluster based on multicore chips AMD Opteron
-6274 ("Bulldozer"). The nodes are operated by the Linux operating system SuSE SLES 11 with a 2.6
+6274 ("Bulldozer"). The nodes are operated by the Linux operating system SUSE SLES 11 with a 2.6
 kernel. Currently, the following hardware is installed:
 
 | Component | Count |
 |-----------|--------|
 | CPUs |AMD Opteron 6274 |
 | number of cores | 5120 |
-|th. peak performance | 45 TFlops |
+|th. peak performance | 45 TFLOPS |
 |compute nodes | 4-way nodes *Saxonid* with 64 cores |
 |nodes with 64 GB RAM | 48 |
 |nodes with 128 GB RAM | 12 |
@@ -23,7 +23,7 @@ kernel. Currently, the following hardware is installed:
 Mars and Deimos users: Please read the [migration hints](migrate_to_atlas.md).
 
 All nodes share the `/home` and `/fastfs` file system with our other HPC systems. Each
-node has 180 GB local disk space for scratch mounted on `/tmp` . The jobs for the compute nodes are
+node has 180 GB local disk space for scratch mounted on `/tmp`. The jobs for the compute nodes are
 scheduled by the [Platform LSF](platform_lsf.md) batch system from the login nodes
 `atlas.hrsk.tu-dresden.de` .
 
@@ -44,7 +44,7 @@ below the mount point `/hpc_work`.
 | L2 cache | 2 MB per module |
 | L3 cache | 12 MB total, 6 MB shared between 4 modules = 8 cores |
 | FP units | 1 per module (supports fused multiply-add) |
-| th. peak performance | 8.8 GFlops per core (w/o turbo) |
+| th. peak performance | 8.8 GFLOPS per core (w/o turbo) |
 
 The CPU belongs to the x86_64 family. Since it is fully capable of
 running x86-code, one should compare the performances of the 32 and 64
@@ -86,7 +86,7 @@ user's job. Normally a job can be submitted with these data:
 
 #### LSF
 
-The batch sytem on Atlas is LSF. For general information on LSF, please follow
+The batch system on Atlas is LSF. For general information on LSF, please follow
 [this link](platform_lsf.md).
 
 #### Submission of Parallel Jobs

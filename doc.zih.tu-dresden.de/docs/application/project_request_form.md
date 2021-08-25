@@ -9,10 +9,10 @@ type="frame" align="right" caption="picture 1: login screen" width="170"
 zoom="on
 ">%ATTACHURL%/request_step1_b.png</span>
 
-The first step is asking for the personal informations of the requester.
+The first step is asking for the personal information of the requester.
 **That's you**, not the leader of this project! \<br />If you have an
 ZIH-Login, you can use it \<sup>\[Pic 1\]\</sup>. If not, you have to
-fill in the whole informations \<sup>\[Pic.:2\]\</sup>. <span
+fill in the whole information \<sup>\[Pic.:2\]\</sup>. <span
 class="twiki-macro IMAGE">clear</span>
 
 ## second step (project details)
@@ -27,8 +27,8 @@ general project Details.\<br />Any project have:
     -   Projects starts at the first of a month and ends on the last day
         of a month. So you are not able to send on the second of a month
         a project request which start in this month.
-    -   The approval is for a maximum of one year. Be carfull: a
-        duratoin from "May, 2013" till "May 2014" has 13 month.
+    -   The approval is for a maximum of one year. Be careful: a
+        duration from "May, 2013" till "May 2014" has 13 month.
 -   a selected science, according to the DFG:
     <http://www.dfg.de/dfg_profil/gremien/fachkollegien/faecher/index.jsp>
 -   a sponsorship

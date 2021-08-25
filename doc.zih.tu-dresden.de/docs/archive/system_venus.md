@@ -19,9 +19,9 @@ the Linux operating system SLES 11 SP 3 with a kernel version 3.x.
 From our experience, most parallel applications benefit from using the additional hardware
 hyperthreads.
 
-### Filesystems
+### File Systems
 
-Venus uses the same HOME file system as all our other HPC installations.
+Venus uses the same `home` file system as all our other HPC installations.
 For computations, please use `/scratch`.
 
 ## Usage
@@ -77,7 +77,7 @@ nodes with dedicated resources for the user's job. Normally a job can be submitt
 - files for redirection of output and error messages,
 - executable and command line parameters.
 
-The batch sytem on Venus is Slurm. For general information on Slurm, please follow
+The batch system on Venus is Slurm. For general information on Slurm, please follow
 [this link](../jobs_and_resources/slurm.md).
 
 #### Submission of Parallel Jobs
