@@ -52,7 +52,7 @@ marie@login$ beegfs-ctl --find /beegfs/global0/my-workspace/ --targetid=4 --targ
 
 ## Network
 
-View the network addresses of the file system servers.
+View the network addresses of the filesystem servers.
 
 ```console
 marie@login$ beegfs-ctl --listnodes --nodetype=meta --nicdetails --mount=/beegfs/global0
