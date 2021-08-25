@@ -6,7 +6,7 @@ performance and permanence.
 
 ## Work Directories
 
-| File system | Usable directory  | Capacity | Availability | Backup | Remarks                                                                                                                                                         |
+| Filesystem  | Usable directory  | Capacity | Availability | Backup | Remarks                                                                                                                                                         |
 |:------------|:------------------|:---------|:-------------|:-------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `Lustre`    | `/scratch/`       | 4 PB     | global       | No     | Only accessible via [Workspaces](workspaces.md). Not made for billions of files!                                                                                   |
 | `Lustre`    | `/lustre/ssd`     | 40 TB    | global       | No     | Only accessible via [Workspaces](workspaces.md). For small I/O operations                                                                                          |
