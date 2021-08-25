@@ -7,10 +7,6 @@ basedir=`dirname "$scriptpath"`
 basedir=`dirname "$basedir"`
 wordlistfile=$(realpath $basedir/wordlist.aspell)
 
-echo "scriptpath: $scriptpath"
-echo "basedir: $basedir"
-echo "wordlistfile: $wordlistfile"
-
 function getNumberOfAspellOutputLines(){
   cat - | aspell -p "$wordlistfile" --ignore 2 -l en_US list --mode=markdown | sort -u | wc -l
 }
@@ -44,15 +40,6 @@ while read oldfile; do
             #Remove the prefix "b/"
             newfile=${newfile:2}
             current_count=`cat "$newfile" | getNumberOfAspellOutputLines`
-#            echo "======"
-#            echo "$current_count"
-#            echo "$newfile"
-#            echo "pwd $PWD"
-#            echo "wordlistfile: $wordlistfile"
-#            grep ZIH $wordlistfile
-#            echo "---"
-#            cat $newfile | aspell -p "$wordlistfile" --ignore 2 -l en_US list --mode=markdown
-#            echo "======"
         fi
         if [ $current_count -gt $previous_count ]; then
             echo "-- File $newfile"
