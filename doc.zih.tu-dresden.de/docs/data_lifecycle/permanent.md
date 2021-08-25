@@ -1,6 +1,6 @@
 # Permanent File Systems
 
-Do not use permanent file systems as work directories:
+Do not use permanent filesystems as work directories:
 
 - Even temporary files are kept in the snapshots and in the backup tapes over a long time,
 senselessly filling the disks,
