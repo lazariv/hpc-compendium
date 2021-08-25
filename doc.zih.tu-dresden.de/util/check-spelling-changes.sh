@@ -43,6 +43,9 @@ while read oldfile; do
             echo "======"
             echo "$current_count"
             echo "$newfile"
+            echo "wordlistfile: $wordlistfile"
+            grep ZIH $wordlistfile
+            echo "---"
             cat $newfile | aspell -p "$wordlistfile" --ignore 2 -l en_US list --mode=markdown
             echo "======"
         fi
