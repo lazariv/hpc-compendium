@@ -27,7 +27,7 @@ Getting high I/O-bandwitdh
 - Use many processes (writing in the same file at the same time is possible)
 - Use large I/O transfer blocks
 
-## Cheat Sheet for Debugging File System Issues
+## Cheat Sheet for Debugging Filesystem Issues
 
 Users can select from the following commands to get some idea about
 their data.
