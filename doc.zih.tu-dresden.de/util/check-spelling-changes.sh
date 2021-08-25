@@ -40,11 +40,11 @@ while read oldfile; do
             #Remove the prefix "b/"
             newfile=${newfile:2}
             current_count=`cat "$newfile" | getNumberOfAspellOutputLines`
-#            echo "======"
-#            echo "$current_count"
+            echo "======"
+            echo "$current_count"
 #            echo "$newfile"
 #            cat - | aspell -p "$wordlistfile" --ignore 2 -l en_US list --mode=markdown
-#            echo "======"
+            echo "======"
         fi
         if [ $current_count -gt $previous_count ]; then
             echo "-- File $newfile"
