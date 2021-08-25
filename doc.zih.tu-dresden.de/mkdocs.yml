@@ -128,6 +128,7 @@ nav:
     - No IB Jobs: archive/no_ib_jobs.md
     - Phase2 Migration: archive/phase2_migration.md
     - Platform LSF: archive/platform_lsf.md
+    - RamDisk Documentation: archive/ram_disk_documentation.md
     - System Altix: archive/system_altix.md
     - System Atlas: archive/system_atlas.md
     - System Venus: archive/system_venus.md
