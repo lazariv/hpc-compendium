@@ -77,5 +77,4 @@ so you have to compile the binaries specifically for their target.
 ### File Systems
 
 -   The large main memory on the system allows users to create ramdisks
-    within their own jobs. The documentation on how to use these
-    ramdisks can be found [here](ram_disk_documentation.md).
+    within their own jobs.
