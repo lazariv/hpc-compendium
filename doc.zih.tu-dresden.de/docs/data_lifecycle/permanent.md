@@ -67,7 +67,7 @@ permanent filesystems for 180 days.
 
 ## Quotas
 
-The quotas of the permanent file system are meant to help users to keep only data that is necessary.
+The quotas of the permanent filesystem are meant to help users to keep only data that is necessary.
 Especially in HPC, it happens that millions of temporary files are created within hours. This is the
 main reason for performance degradation of the file system.
 
