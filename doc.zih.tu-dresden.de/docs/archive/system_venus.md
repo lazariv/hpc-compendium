@@ -97,5 +97,5 @@ so you have to compile the binaries specifically for their target.
 
 #### File Systems
 
--   The large main memory on the system allows users to create ramdisks
-    within their own jobs.
+- The large main memory on the system allows users to create RAM disks
+  within their own jobs.
