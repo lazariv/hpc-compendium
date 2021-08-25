@@ -38,25 +38,27 @@ fi
 
 any_fails=false
 
-files=$(git diff --name-only "$(git merge-base HEAD "$branch")" | grep '.md$' | grep -v '^doc.zih.tu-dresden.de/README.md$')
+files=`git diff --name-only "$(git merge-base HEAD "$branch")"`
 for f in $files; do
-    while IFS=$'\t' read -r flags pattern exceptionPatterns; do
-        while IFS=$'\t' read -r -a exceptionPatternsArray; do
-            echo "Checking wording of $f: $pattern"
-            case "$flags" in
-                "i")
-                    if grep -n -i "$pattern" "$f" | grepExceptions "${exceptionPatternsArray[@]}" ; then
-                        any_fails=true
-                    fi
-                ;;
-                "s")
-                    if grep -n "$pattern" "$f" | grepExceptions "${exceptionPatternsArray[@]}" ; then
-                        any_fails=true
-                    fi
-                ;;
-            esac
-        done <<< $exceptionPatterns
-    done <<< $ruleset
+    if [ "$f" != doc.zih.tu-dresden.de/README.md -a "${f: -3}" == ".md" ]; then
+        while IFS=$'\t' read -r flags pattern exceptionPatterns; do
+            while IFS=$'\t' read -r -a exceptionPatternsArray; do
+                echo "Checking wording of $f: $pattern"
+                case "$flags" in
+                    "i")
+                        if grep -n -i "$pattern" "$f" | grepExceptions "${exceptionPatternsArray[@]}" ; then
+                            any_fails=true
+                        fi
+                    ;;
+                    "s")
+                        if grep -n "$pattern" "$f" | grepExceptions "${exceptionPatternsArray[@]}" ; then
+                            any_fails=true
+                        fi
+                    ;;
+                esac
+            done <<< $exceptionPatterns
+        done <<< $ruleset
+    fi
 done
 
 if [ "$any_fails" == true ]; then
