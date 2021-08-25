@@ -5,10 +5,10 @@
 ### Distributed TensorFlow
 
 TODO
- 
+
 ### Distributed Pytorch
 
-**hint: just copied some old content as starting point**
+just copied some old content as starting point
 
 #### Using Multiple GPUs with PyTorch
 
