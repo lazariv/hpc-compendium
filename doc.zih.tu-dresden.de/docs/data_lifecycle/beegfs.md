@@ -10,7 +10,7 @@ View storage and inode capacity and utilization for metadata and storage targets
 marie@login$ beegfs-df -p /beegfs/global0
 ```
 
-The `-p` parameter needs to be the mountpoint of the file system and is mandatory.
+The `-p` parameter needs to be the mountpoint of the filesystem and is mandatory.
 
 List storage and inode capacity, reachability and consistency information of each storage target.
 
