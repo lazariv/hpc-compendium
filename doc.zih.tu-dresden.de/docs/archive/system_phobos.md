@@ -1,12 +1,16 @@
 # Linux Networx PC-Cluster Phobos
 
-**Phobos was shut down on 1 November 2010.**
+!!! warning
+
+    **This page is deprecated! Phobos is a former system which was shut down on 1 November 2010.**
 
 `Phobos` is a cluster based on AMD Opteron CPUs. The nodes are operated
 by the Linux operating system SuSE SLES 9 with a 2.6 kernel. Currently,
 the following hardware is installed:
 
-|CPUs \|AMD Opteron 248 (single core) |
+| Component | Count |
+|-----------|-------|
+|CPUs |AMD Opteron 248 (single core) |
 |total peak performance |563.2 GFLOPS |
 |Number of nodes |64 compute + 1 master |
 |CPUs per node |2 |
@@ -25,6 +29,8 @@ and service purposes.
 `Phobos` is based on single-core AMD Opteron 248 processor. It has the
 following basic properties:
 
+| Component | Count |
+|-----------|-------|
 |clock rate |2.2 GHz |
 |floating point units |2 |
 |peak performance |4.4 GFLOPS |
@@ -32,6 +38,5 @@ following basic properties:
 |L2 cache |1 MB |
 |memory bus |128 bit x 200 MHz |
 
-The CPU belongs to the x86_64 family. Although it is fully capable of
-running x86-code, one should always try to use 64-bit programs due to
-their potentially higher performance.
+The CPU belongs to the x86_64 family. Although it is fully capable of running x86-code, one should
+always try to use 64-bit programs due to their potentially higher performance.
