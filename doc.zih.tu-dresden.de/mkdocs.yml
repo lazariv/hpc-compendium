@@ -120,7 +120,6 @@ nav:
     - No IB Jobs: archive/no_ib_jobs.md
     - Phase2 Migration: archive/phase2_migration.md
     - Platform LSF: archive/platform_lsf.md
-    - RamDisk Documentation: archive/ram_disk_documentation.md
     - Switched-Off Systems:
       - Overview: archive/systems_switched_off.md
       - System Altix: archive/system_altix.md
