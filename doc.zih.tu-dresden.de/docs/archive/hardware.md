@@ -3,7 +3,6 @@
 Here, you can find basic information about the hardware installed at ZIH. We try to keep this list
 up-to-date.
 
-- [BULL HPC-Cluster Taurus](taurus_ii.md)
 - [SGI Ultraviolet (UV)](hardware_venus.md)
 
 Hardware hosted by ZIH:
