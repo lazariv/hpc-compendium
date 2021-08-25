@@ -10,7 +10,8 @@ The following compilers are available on the ZIH system:
 | C++ Compiler         | `g++`      | `icpc`    | `pgc++`     |
 | Fortran Compiler     | `gfortran` | `ifort`   | `pgfortran` |
 
-For an overview of the installed compiler versions, please use `module spider <module name>` on the ZIH systems.
+For an overview of the installed compiler versions, please use `module spider <module name>`
+on the ZIH systems.
 
 All compilers support various language standards, at least up to ISO C11, ISO C++ 2014, and Fortran 2003.
 Please check the man pages to verify that your code can be compiled.
