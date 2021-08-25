@@ -114,7 +114,6 @@ nav:
     - Bio Informatics: archive/bioinformatics.md
     - CXFS End of Support: archive/cxfs_end_of_support.md
     - Debugging Tools: archive/debugging_tools.md
-    - KNL Nodes: archive/knl_nodes.md
     - Load Leveler: archive/load_leveler.md
     - Migrate to Atlas: archive/migrate_to_atlas.md
     - No IB Jobs: archive/no_ib_jobs.md
@@ -129,6 +128,7 @@ nav:
       - System Titan: archive/system_titan.md
       - System Triton: archive/system_triton.md
       - System Venus: archive/system_venus.md
+      - KNL Nodes: archive/knl_nodes.md
     - Taurus II: archive/taurus_ii.md
     - UNICORE Rest API: archive/unicore_rest_api.md
     - Vampir Trace: archive/vampir_trace.md

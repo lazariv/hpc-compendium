@@ -92,3 +92,10 @@ gnuplot
 RSA
 SHA
 pipelining
+LINPACK
+HPL
+SGEMM
+Xeon
+DDR
+GiB
+KNL
