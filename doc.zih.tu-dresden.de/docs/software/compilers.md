@@ -1,6 +1,6 @@
 # Compilers
 
-The following compilers are available on our platforms:
+The following compilers are available on the ZIH system:
 
 |                      | GNU Compiler Collection | Intel Compiler | PGI Compiler (Nvidia HPC SDK) |
 |----------------------|-----------|------------|-------------|
@@ -10,7 +10,7 @@ The following compilers are available on our platforms:
 | C++ Compiler         | `g++`      | `icpc`    | `pgc++`     |
 | Fortran Compiler     | `gfortran` | `ifort`   | `pgfortran` |
 
-For an overview of the installed compiler versions, please use `ml spider <module name>` on the ZIH systems.
+For an overview of the installed compiler versions, please use `module spider <module name>` on the ZIH systems.
 
 All compilers support various language standards, at least up to ISO C11, ISO C++ 2014, and Fortran 2003.
 Please check the man pages to verify that your code can be compiled.
@@ -23,15 +23,15 @@ the correct libraries.
 Common options are:
 
 - `-g` to include information required for debugging
-- `-pg` to generate gprof -style sample-based profiling information during the run
+- `-pg` to generate gprof-like sample-based profiling information during the run
 - `-O0`, `-O1`, `-O2`, `-O3` to customize the optimization level from
   no (`-O0`) to aggressive (`-O3`) optimization
 - `-I` to set search path for header files
 - `-L` to set search path for libraries
 
 Please note that aggressive optimization allows deviation from the strict IEEE arithmetic.
-Since the performance impact of options like `-fp-model strict` is very hard the user herself
-has to balance speed and desired accuracy of her application.
+Since the performance impact of options like `-fp-model strict` is very hard you
+have to balance speed and desired accuracy of your application yourself.
 
 The user benefits from the (nearly) same set of compiler flags for optimization for the C, C++, and
 Fortran-compilers.
