@@ -231,7 +231,7 @@ openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mykey.key -out mycer
 
 Fill in the form with decent values.
 
-Possible entries for your Jupyter config (`.jupyter/jupyter_notebook*config.py*`). 
+Possible entries for your Jupyter config (`.jupyter/jupyter_notebook*config.py*`).
 
 ```Bash
 c.NotebookApp.certfile = u'<path-to-cert>/mycert.pem' c.NotebookApp.keyfile =
