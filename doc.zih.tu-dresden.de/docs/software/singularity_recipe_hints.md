@@ -20,7 +20,7 @@ singularity exec xeyes.sif xeyes.
 ```
 
 This works because all the magic is done by singularity already like setting $DISPLAY to the outside
-display and mounting $HOME so $HOME/.Xauthority (X11 authentification cookie) is found. When you are
+display and mounting $HOME so $HOME/.Xauthority (X11 authentication cookie) is found. When you are
 using \`--contain\` or \`--no-home\` you have to set that cookie yourself or mount/copy it inside
 the container. Similar for \`--cleanenv\` you have to set $DISPLAY e.g. via
 

@@ -182,7 +182,7 @@ Dockerfile in the current folder into a singularity definition file:
 
 `spython recipe Dockerfile myDefinition.def<br />`
 
-Now please **verify** your generated defintion and adjust where
+Now please **verify** your generated definition and adjust where
 required!
 
 There are some notable changes between singularity definitions and

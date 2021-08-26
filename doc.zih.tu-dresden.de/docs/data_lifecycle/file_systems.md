@@ -21,7 +21,7 @@ To work as efficient as possible, consider the following points
 - Store checkpoints and other temporary data in `/scratch/ws/...`
 - Compilation in `/dev/shm` or `/tmp`
 
-Getting high I/O-bandwitdh
+Getting high I/O-bandwidth
 
 - Use many clients
 - Use many processes (writing in the same file at the same time is possible)

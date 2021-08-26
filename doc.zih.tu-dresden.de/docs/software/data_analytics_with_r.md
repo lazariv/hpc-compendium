@@ -24,7 +24,7 @@ tauruslogin$ srun --partition=haswell --ntasks=1 --nodes=1 --cpus-per-task=4 --m
 
 # Ensure that you are using the scs5 environment
 module load modenv/scs5
-# Check all availble modules for R with version 3.6
+# Check all available modules for R with version 3.6
 module available R/3.6
 # Load default R module
 module load R
