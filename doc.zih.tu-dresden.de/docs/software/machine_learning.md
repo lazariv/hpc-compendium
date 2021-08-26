@@ -16,7 +16,7 @@ ml partition has 6x Tesla V-100 GPUs. You can find a detailed specification of t
 
 **Note:** The ML partition is based on the PowerPC Architecture, which means that the software built
 for x86_64 will not work on this partition. Also, users need to use the modules which are
-specially made for the ml partition (from modenv/ml).
+specially made for the ml partition (from `modenv/ml`).
 
 ### Modules
 
@@ -42,9 +42,9 @@ marie@romeo$ module load modenv/scs5
 
 ## Machine Learning Console and Virtual Environment
 
-A virtual environment is a cooperatively isolated runtime environment that allows Python users and
+A virtual environment is a cooperatively isolated run-time environment that allows Python users and
 applications to install and update Python distribution packages without interfering with the
-behaviour of other Python applications running on the same system. At its core, the main purpose of
+behavior of other Python applications running on the same system. At its core, the main purpose of
 Python virtual environments is to create an isolated environment for Python projects.
 
 ### Conda virtual environment
@@ -67,7 +67,7 @@ environment.
 
 ### Python virtual environment
 
-**Virtualenv (venv)** is a standard Python tool to create isolated Python environments.
+**virtualenv (venv)** is a standard Python tool to create isolated Python environments.
 It has been integrated into the standard library under the [venv module](https://docs.python.org/3/library/venv.html).
 
 ```console
@@ -90,7 +90,7 @@ virtual environment.
 
 The [Jupyter Notebook](https://jupyter.org/) is an open-source web application that allows you to
 create documents containing live code, equations, visualizations, and narrative text. [JupyterHub](../access/jupyterhub.md)
-allows to work with machine learning frameworks (e.g. TensorFlow or Pytorch) on Taurus and to run
+allows to work with machine learning frameworks (e.g. TensorFlow or PyTorch) on Taurus and to run
 your Jupyter notebooks on HPC nodes.
 
 After accessing JupyterHub, you can start a new session and configure it. For machine learning
@@ -103,12 +103,12 @@ container system is a widely used tool. Docker containers can also be used by Si
 find further information on working with containers on ZIH systems [here](containers.md)
 
 There are two sources for containers for Power9 architecture with
-Tensorflow and PyTorch on the board:
+TensorFlow and PyTorch on the board:
 
-* [Tensorflow-ppc64le](https://hub.docker.com/r/ibmcom/tensorflow-ppc64le):
-  Community-supported ppc64le docker container for TensorFlow.
+* [TensorFlow-ppc64le](https://hub.docker.com/r/ibmcom/tensorflow-ppc64le):
+  Community-supported `ppc64le` docker container for TensorFlow.
 * [PowerAI container](https://hub.docker.com/r/ibmcom/powerai/):
-  Official Docker container with Tensorflow, PyTorch and many other packages.
+  Official Docker container with TensorFlow, PyTorch and many other packages.
   Heavy container. It requires a lot of space. Could be found on Taurus.
 
 Note: You could find other versions of software in the container on the "tag" tab on the docker web
@@ -127,10 +127,10 @@ marie@ml$ singularity run --nv my-ML-container.sif                              
 
 The following NVIDIA libraries are available on all nodes:
 
-|       |                                       |
-|-------|---------------------------------------|
-| NCCL  | /usr/local/cuda/targets/ppc64le-linux |
-| cuDNN | /usr/local/cuda/targets/ppc64le-linux |
+|       |                                         |
+|-------|-----------------------------------------|
+| NCCL  | `/usr/local/cuda/targets/ppc64le-linux` |
+| cuDNN | `/usr/local/cuda/targets/ppc64le-linux` |
 
 Note: For optimal NCCL performance it is recommended to set the
 **NCCL_MIN_NRINGS** environment variable during execution. You can try
@@ -144,11 +144,11 @@ marie@compute$ export NCCL_MIN_NRINGS=4
 
 The following HPC related software is installed on all nodes:
 
-|                  |                        |
-|------------------|------------------------|
-| IBM Spectrum MPI | /opt/ibm/spectrum_mpi/ |
-| PGI compiler     | /opt/pgi/              |
-| IBM XLC Compiler | /opt/ibm/xlC/          |
-| IBM XLF Compiler | /opt/ibm/xlf/          |
-| IBM ESSL         | /opt/ibmmath/essl/     |
-| IBM PESSL        | /opt/ibmmath/pessl/    |
+|                  |                          |
+|------------------|--------------------------|
+| IBM Spectrum MPI | `/opt/ibm/spectrum_mpi/` |
+| PGI compiler     | `/opt/pgi/`              |
+| IBM XLC Compiler | `/opt/ibm/xlC/`          |
+| IBM XLF Compiler | `/opt/ibm/xlf/`          |
+| IBM ESSL         | `/opt/ibmmath/essl/`     |
+| IBM PESSL        | `/opt/ibmmath/pessl/`    |
