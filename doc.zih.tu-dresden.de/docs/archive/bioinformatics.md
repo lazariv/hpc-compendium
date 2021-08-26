@@ -20,7 +20,7 @@ a combination of sequence consensus and RNA secondary structure consensus, so in
 more capable of identifying RNA homologs that conserve their secondary structure more than their
 primary sequence. Documentations can be found at [Infernal homepage](http://infernal.janelia.org)
 
-A parallel version is available. It can be used at [Deimos](hardware_deimos.md) like:
+A parallel version is available. It can be used at [Deimos](system_deimos.md) like:
 
 ```console
 bsub -n 4 -e %J_err.txt -a openmpi mpirun.lsf cmsearch --mpi --fil-no-hmm --fil-no-qdb 12smito.cm NC_003179.fas
