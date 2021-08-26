@@ -99,3 +99,6 @@ Xeon
 DDR
 GiB
 KNL
+stdout
+stderr
+multithreaded
