@@ -18,7 +18,8 @@ i	file \+system
 i	\<taurus\>	taurus\.hrsk	/taurus
 i	\<hrskii\>
 i	hpc \+system
-i	hpc[ -]\+da\>"
+i	hpc[ -]\+da\>
+i	work[ -]\+space"
 
 function grepExceptions () {
   if [ $# -gt 0 ]; then
