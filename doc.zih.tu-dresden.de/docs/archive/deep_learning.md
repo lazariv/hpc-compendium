@@ -1,10 +1,10 @@
 # Deep learning
 
 **Prerequisites**: To work with Deep Learning tools you obviously need [Login](../access/ssh_login.md)
-for the Taurus system and basic knowledge about Python, Slurm manager.
+for the ZIH system system and basic knowledge about Python, Slurm manager.
 
 **Aim** of this page is to introduce users on how to start working with Deep learning software on
-both the ml environment and the scs5 environment of the Taurus system.
+both the ml environment and the scs5 environment of the system.
 
 ## Deep Learning Software
 
@@ -13,23 +13,21 @@ both the ml environment and the scs5 environment of the Taurus system.
 [TensorFlow](https://www.tensorflow.org/guide/) is a free end-to-end open-source software library
 for dataflow and differentiable programming across a range of tasks.
 
-TensorFlow is available in both main partitions
-[ml environment and scs5 environment](modules.md#module-environments)
-under the module name "TensorFlow". However, for purposes of machine learning and deep learning, we
-recommend using Ml partition [HPC-DA](../jobs_and_resources/hpcda.md). For example:
+TensorFlow is available in both [ml environment and scs5 environment](modules.md#module-environments)
+under the module name "TensorFlow". For example:
 
 ```Bash
 module load TensorFlow
 ```
 
 There are numerous different possibilities on how to work with [TensorFlow](tensorflow.md) on
-Taurus. On this page, for all examples default, scs5 partition is used. Generally, the easiest way
+ZIH system. On this page, for all examples default, scs5 partition is used. Generally, the easiest way
 is using the [modules system](modules.md)
 and Python virtual environment (test case). However, in some cases, you may need directly installed
 TensorFlow stable or night releases. For this purpose use the
 [EasyBuild](custom_easy_build_environment.md), [Containers](tensorflow_container_on_hpcda.md) and see
 [the example](https://www.tensorflow.org/install/pip). For examples of using TensorFlow for ml partition
-with module system see [TensorFlow page for HPC-DA](tensorflow.md).
+with module system see [TensorFlow page](../software/tensorflow.md).
 
 Note: If you are going used manually installed TensorFlow release we recommend use only stable
 versions.
@@ -42,11 +40,11 @@ environments [ml environment and scs5 environment](modules.md#module-environment
 name "Keras".
 
 On this page for all examples default scs5 partition used. There are numerous different
-possibilities on how to work with [TensorFlow](tensorflow.md) and Keras
-on Taurus. Generally, the easiest way is using the [module system](modules.md) and Python
+possibilities on how to work with [TensorFlow](../software/tensorflow.md) and Keras
+on ZIH system. Generally, the easiest way is using the [module system](modules.md) and Python
 virtual environment (test case) to see TensorFlow part above.
 For examples of using Keras for ml partition with the module system see the
-[Keras page for HPC-DA](keras.md).
+[Keras page](../software/keras.md).
 
 It can either use TensorFlow as its backend. As mentioned in Keras documentation Keras capable of
 running on Theano backend. However, due to the fact that Theano has been abandoned by the
@@ -56,7 +54,7 @@ TensorFlow module. TensorFlow should be loaded automatically as a dependency.
 
 Test case: Keras with TensorFlow on MNIST data
 
-Go to a directory on Taurus, get Keras for the examples and go to the examples:
+Go to a directory on ZIH system, get Keras for the examples and go to the examples:
 
 ```Bash
 git clone https://github.com/fchollet/keras.git'>https://github.com/fchollet/keras.git
@@ -125,7 +123,7 @@ allocate massive files (more than one terabyte) please contact the support befor
 ### The ImageNet dataset
 
 The [ImageNet](http://www.image-net.org/) project is a large visual database designed for use in
-visual object recognition software research. In order to save space in the file system by avoiding
+visual object recognition software research. In order to save space in the filesystem by avoiding
 to have multiple duplicates of this lying around, we have put a copy of the ImageNet database
 (ILSVRC2012 and ILSVR2017) under `/scratch/imagenet` which you can use without having to download it
 again. For the future, the ImageNet dataset will be available in `/warm_archive`. ILSVR2017 also
@@ -144,7 +142,7 @@ JupyterHub.
 These sections show how to run and set up a remote Jupyter server within a sbatch GPU job and which
 modules and packages you need for that.
 
-**Note:** On Taurus, there is a [JupyterHub](../access/jupyterhub.md), where you do not need the
+**Note:** On ZIH system, there is a [JupyterHub](../access/jupyterhub.md), where you do not need the
 manual server setup described below and can simply run your Jupyter notebook on HPC nodes. Keep in
 mind, that, with JupyterHub, you can't work with some special instruments. However, general data
 analytics tools are available.
@@ -153,7 +151,7 @@ The remote Jupyter server is able to offer more freedom with settings and approa
 
 ### Preparation phase (optional)
 
-On Taurus, start an interactive session for setting up the
+On ZIH system, start an interactive session for setting up the
 environment:
 
 ```Bash
@@ -192,7 +190,7 @@ directory (/home/userxx/anaconda3). Create a new anaconda environment with the n
 conda create --name jnb
 ```
 
-### Set environmental variables on Taurus
+### Set environmental variables
 
 In shell activate previously created python environment (you can
 deactivate it also manually) and install Jupyter packages for this python environment:
@@ -251,7 +249,7 @@ hashed password here>' c.NotebookApp.port = 9999 c.NotebookApp.allow_remote_acce
 Note: `<path-to-cert>` - path to key and certificate files, for example:
 (`/home/\<username>/mycert.pem`)
 
-### Slurm job file to run the Jupyter server on Taurus with GPU (1x K80) (also works on K20)
+### Slurm job file to run the Jupyter server on ZIH system with GPU (1x K80) (also works on K20)
 
 ```Bash
 #!/bin/bash -l #SBATCH --gres=gpu:1 # request GPU #SBATCH --partition=gpu2 # use GPU partition
@@ -300,7 +298,7 @@ of the ssh tunnel for connection to your remote server pgrep -f "ssh -fNL ${loca
    hostname**, the **port** of the server and the **token** to login (see paragraph above).
 
 You can connect directly if you know the IP address (just ping the node's hostname while logged on
-Taurus).
+ZIH system).
 
 ```Bash
 #comand on remote terminal taurusi2092$> host taurusi2092 # copy IP address from output # paste
@@ -309,7 +307,7 @@ important to use SSL cert
 ```
 
 To login into the Jupyter notebook site, you have to enter the **token**.
-(`https://localhost:8887`). Now you can create and execute notebooks on Taurus with GPU support.
+(`https://localhost:8887`). Now you can create and execute notebooks on ZIH system with GPU support.
 
 If you would like to use [JupyterHub](../access/jupyterhub.md) after using a remote manually configured
 Jupyter server (example above) you need to change the name of the configuration file

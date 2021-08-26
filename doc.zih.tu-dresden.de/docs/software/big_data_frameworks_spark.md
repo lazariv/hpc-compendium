@@ -14,7 +14,7 @@ marie@login$ module av Spark
 ```
 
 The **aim** of this page is to introduce users on how to start working with
-these frameworks on ZIH systems, e. g. on the [HPC-DA](../jobs_and_resources/hpcda.md) system.
+these frameworks on ZIH systems.
 
 **Prerequisites:** To work with the frameworks, you need [access](../access/ssh_login.md) to ZIH
 systems and basic knowledge about data analysis and the batch system
@@ -127,7 +127,7 @@ in an interactive job with:
 marie@compute$ source framework-configure.sh spark my-config-template
 ```
 
-### Using Hadoop Distributed File System (HDFS)
+### Using Hadoop Distributed Filesystem (HDFS)
 
 If you want to use Spark and HDFS together (or in general more than one
 framework), a scheme similar to the following can be used:
