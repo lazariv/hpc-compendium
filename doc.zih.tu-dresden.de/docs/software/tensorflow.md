@@ -8,7 +8,7 @@ resources.
 Please check the software modules list via
 
 ```console
-marie@login$ module spider TensorFlow
+marie@compute$ module spider TensorFlow
 ```
 
 to find out, which TensorFlow modules are available on your partition.
@@ -26,7 +26,7 @@ On the **Alpha** partition load the module environment:
 
 ```console
 marie@login$ srun -p alpha --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=8000 bash   #Job submission on alpha nodes with 1 gpu on 1 node with 8000 Mb per CPU
-marie@romeo$ module load modenv/scs5
+marie@alpha$ module load modenv/scs5
 ```
 
 On the **ML** partition load the module environment:
