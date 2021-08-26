@@ -1,12 +1,12 @@
 # R for Data Analytics
 
 [R](https://www.r-project.org/about.html) is a programming language and environment for statistical
-computing and graphics. R provides a wide variety of statistical (linear and nonlinear modelling,
+computing and graphics. R provides a wide variety of statistical (linear and nonlinear modeling,
 classical statistical tests, time-series analysis, classification, etc) and graphical techniques. R
 is an integrated suite of software facilities for data manipulation, calculation and
 graphing.
 
-R possesses an extensive catalogue of statistical and graphical methods.  It includes machine
+R possesses an extensive catalog of statistical and graphical methods.  It includes machine
 learning algorithms, linear regression, time series, statistical inference.
 
 We recommend using **Haswell** and/or **Romeo** partitions to work with R. For more details
@@ -14,7 +14,7 @@ see [here](../jobs_and_resources/hardware_taurus.md).
 
 ## R Console
 
-This is a quickstart example. The `srun` command is used to submit a real-time execution job
+In the following example the `srun` command is used to submit a real-time execution job
 designed for interactive use with monitoring the output. Please check
 [the Slurm page](../jobs_and_resources/slurm.md) for details.
 
@@ -59,7 +59,7 @@ For using R with RStudio please refer to [Data Analytics with RStudio](data_anal
 
 ## Install Packages in R
 
-By default, user-installed packages are saved in the users home in a subfolder depending on
+By default, user-installed packages are saved in the users home in a folder depending on
 the architecture (x86 or PowerPC). Therefore the packages should be installed using interactive
 jobs on the compute node:
 
@@ -81,7 +81,7 @@ Therefore, using nodes with built-in GPUs ([ml](../jobs_and_resources/power9.md)
 ### R Interface to TensorFlow
 
 The ["TensorFlow" R package](https://tensorflow.rstudio.com/) provides R users access to the
-Tensorflow toolset. [TensorFlow](https://www.tensorflow.org/) is an open-source software library
+TensorFlow framework. [TensorFlow](https://www.tensorflow.org/) is an open-source software library
 for numerical computation using data flow graphs.
 
 ```Bash
@@ -122,12 +122,12 @@ library(reticulate)
 reticulate::py_config()
 install.packages("tensorflow")
 library(tensorflow)
-tf$constant("Hello Tensorflow")         #In the output 'Tesla V100-SXM2-32GB' should be mentioned
+tf$constant("Hello TensorFlow")         #In the output 'Tesla V100-SXM2-32GB' should be mentioned
 ```
 
 ??? example
     The example shows the use of the TensorFlow package with the R for the classification problem
-    related to the MNIST dataset.
+    related to the MNIST data set.
     ```R
     library(tensorflow)
     library(keras)
@@ -213,10 +213,11 @@ concentrates on most general methods and examples. The Information here is Tauru
 The [parallel](https://www.rdocumentation.org/packages/parallel/versions/3.6.2) library
 will be used below.
 
-**Warning:** Please do not install or update R packages related to parallelism as it could lead to
-conflicts with other pre-installed packages.
+!!! warning
+    Please do not install or update R packages related to parallelism as it could lead to
+    conflicts with other preinstalled packages.
 
-### Basic Lapply-Based Parallelism
+### Basic lapply-Based Parallelism
 
 `lapply()` function is a part of base R. lapply is useful for performing operations on list-objects.
 Roughly speaking, lapply is a vectorization of the source code and it is the first step before
@@ -294,7 +295,7 @@ running in parallel. The desired type of the cluster can be specified with a par
 This way of the R parallelism uses the
 [Rmpi](http://cran.r-project.org/web/packages/Rmpi/index.html) package and the
 [MPI](https://en.wikipedia.org/wiki/Message_Passing_Interface) (Message Passing Interface) as a
-"backend" for its parallel operations. The MPI-based job in R is very similar to submitting an
+"back-end" for its parallel operations. The MPI-based job in R is very similar to submitting an
 [MPI Job](../jobs_and_resources/slurm.md#binding-and-distribution-of-tasks) since both are running
 multicore jobs on multiple nodes. Below is an example of running R script with the Rmpi on Taurus:
 

@@ -1,6 +1,6 @@
 # Python Virtual Environments
 
-## ToDo
+## TODO
 
 Link to this page from other DA/ML topics.
 
@@ -10,7 +10,7 @@ Link to this page from other DA/ML topics.
     copied from `alpha_centauri.md`. Please remove there if this article is finished
 
 Virtual environments allow users to install additional python packages and create an isolated
-runtime environment. We recommend using `virtualenv` for this purpose.
+run-time environment. We recommend using `virtualenv` for this purpose.
 
 ```console
 marie@login$ srun --partition=alpha-interactive --nodes=1 --cpus-per-task=1 --gres=gpu:1 --time=01:00:00 --pty bash
@@ -46,12 +46,12 @@ Successfully installed torchvision-0.10.0
 There are two methods of how to work with virtual environments on
 Taurus:
 
-1. **Vitualenv** is a standard Python tool to create isolated Python environments.
+1. **virtualenv** is a standard Python tool to create isolated Python environments.
    It is the preferred interface for
    managing installations and virtual environments on Taurus and part of the Python modules.
 
-2. **Conda** is an alternative method for managing installations and
-virtual environments on Taurus. Conda is an open-source package
+2. **conda** is an alternative method for managing installations and
+virtual environments on Taurus. conda is an open-source package
 management system and environment management system from Anaconda. The
 conda manager is included in all versions of Anaconda and Miniconda.
 
@@ -60,7 +60,7 @@ with the virtual environments previously created with conda tool and
 vice versa! Prefer virtualenv whenever possible.
 
 This example shows how to start working
-with **Virtualenv** and Python virtual environment (using the module system)
+with **virtualenv** and Python virtual environment (using the module system)
 
 ```Bash
 srun -p ml -N 1 -n 1 -c 7 --mem-per-cpu=5772 --gres=gpu:1 --time=04:00:00 --pty bash   #Job submission in ml nodes with 1 gpu on 1 node.
@@ -81,7 +81,7 @@ deactivate                                                     #Leave the virtua
 ```
 
 The [virtualenv](https://virtualenv.pypa.io/en/latest/) Python module (Python 3) provides support
-for creating virtual environments with their own sitedirectories, optionally isolated from system
+for creating virtual environments with their own site-directories, optionally isolated from system
 site directories. Each virtual environment has its own Python binary (which matches the version of
 the binary that was used to create this environment) and can have its own independent set of
 installed Python packages in its site directories. This allows you to manage separate package
@@ -91,11 +91,11 @@ simply create a new virtual environment and not have to worry about breaking the
 in other environments.
 
 In your virtual environment, you can use packages from the (Complete List of
-Modules)(SoftwareModulesList) or if you didn't find what you need you can install required packages
+Modules) or if you didn't find what you need you can install required packages
 with the command: `pip install`. With the command `pip freeze`, you can see a list of all installed
 packages and their versions.
 
-This example shows how to start working with **Conda** and virtual
+This example shows how to start working with **conda** and virtual
 environment (with using module system)
 
 ```Bash

@@ -11,7 +11,7 @@ similarly to a new kernel from [JupyterLab](../access/jupyterhub.md#jupyterlab) 
 {: style="width:90%" }
 
 ???tip
-    If an error "could not start rstudio in time" occurs, try reloading the webpage with F5.
+    If an error "could not start RStudio in time" occurs, try reloading the web page with F5.
 
 ???note
     Please note that it is currently not recommended to use an interactive x11 job with the

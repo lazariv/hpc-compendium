@@ -10,12 +10,12 @@ are intuitive testing, grid search or random search.
 
 The tool OmniOpt performs hyperparameter optimization within a broad range of applications as
 classical simulations or machine learning algorithms.
-Omniopt is robust and it checks and installs all dependencies automatically and fixes many
-problems in the background. While Omniopt optimizes, no further intervention is required.
-You can follow the ongoing stdout (standard output) live in the console.
-Omniopt’s overhead is minimal and virtually imperceptible.
+OmniOpt is robust and it checks and installs all dependencies automatically and fixes many
+problems in the background. While OmniOpt optimizes, no further intervention is required.
+You can follow the ongoing output live in the console.
+Overhead of OmniOpt is minimal and virtually imperceptible.
 
-## Quickstart with OmniOpt
+## Quick start with OmniOpt
 
 The following instructions demonstrate the basic usage of OmniOpt on the ZIH system, based
 on the hyperparameter optimization for a neural network.
@@ -31,7 +31,7 @@ The typical OmniOpt workflow comprises at least the following steps:
 The following example application script was created from
 [https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html){:target="_blank"}
 as a starting point.
-Therein, a neural network is trained on the MNIST Fashion dataset.
+Therein, a neural network is trained on the MNIST Fashion data set.
 
 There are three script preparation steps for OmniOpt:
 
@@ -43,7 +43,7 @@ There are three script preparation steps for OmniOpt:
 
     ??? note "Parsing arguments in Python"
         There are many ways for parsing arguments into Python scripts.
-        The most easiest approach is the sys module (see
+        The most easiest approach is the `sys` module (see
         [https://www.geeksforgeeks.org/how-to-use-sys-argv-in-python/](https://www.geeksforgeeks.org/how-to-use-sys-argv-in-python/){:target="_blank"}),
         which would be fully sufficient for usage with OmniOpt.
         Nevertheless, this basic approach has no consistency checks or error handling etc.
@@ -51,7 +51,7 @@ There are three script preparation steps for OmniOpt:
   + Mark the output of the optimization target (chosen here: average loss) by prefixing it with
   the RESULT string.
     OmniOpt takes the **last appearing value** prefixed with the RESULT string.
-    In the example different epochs are performed and the average from the last epoch is catched
+    In the example different epochs are performed and the average from the last epoch is caught
     by OmniOpt. Additionally, the RESULT output has to be a **single line**.
     After all these changes, the final script is as follows (with the lines containing relevant
     changes highlighted).
@@ -92,7 +92,7 @@ There are three script preparation steps for OmniOpt:
         num_nodes_out1 = args.out_layer1
         num_nodes_out2 = args.out_layer2
 
-        # Download training data from open datasets.
+        # Download training data from open data sets.
         training_data = datasets.FashionMNIST(
             root="data",
             train=True,
@@ -100,7 +100,7 @@ There are three script preparation steps for OmniOpt:
             transform=ToTensor(),
         )
 
-        # Download test data from open datasets.
+        # Download test data from open data sets.
         test_data = datasets.FashionMNIST(
             root="data",
             train=False,
@@ -198,9 +198,9 @@ There are three script preparation steps for OmniOpt:
 
 As a starting point, configuring OmniOpt is done via a GUI at
 [https://imageseg.scads.ai/omnioptgui/](https://imageseg.scads.ai/omnioptgui/).
-This GUI guides through the configuration process and as result the config file is created
+This GUI guides through the configuration process and as result the configuration file is created
 automatically according to the GUI input. If you are more familiar with using OmniOpt later on,
-this config file can be modified directly without using the GUI.
+this configuration file can be modified directly without using the GUI.
 
 A screenshot of the GUI, including a properly configuration for the MNIST fashion example is shown below.
 The GUI, in which the displayed values are already entered, can be reached [here](https://imageseg.scads.ai/omnioptgui/?maxevalserror=5&mem_per_worker=1000&projectname=mnist-fashion-optimization-set-1&partition=alpha&searchtype=tpe.suggest&objective_program=bash%20%2Fscratch%2Fws%2Fpath%2Fto%2Fyou%2Fscript%2Frun-mnist-fashion.sh%20(%24x_0)%20(%24x_1)%20(%24x_2)&param_0_type=hp.randint&param_1_type=hp.randint&number_of_parameters=3){:target="_blank"}.

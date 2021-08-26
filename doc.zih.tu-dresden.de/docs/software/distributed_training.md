@@ -6,7 +6,7 @@
 
 TODO
 
-### Distributed Pytorch
+### Distributed PyTorch
 
 just copied some old content as starting point
 
@@ -60,14 +60,14 @@ package to synchronize gradients and buffers.
 
 The tutorial could be found [here](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html).
 
-To use distributed data parallelisation on Taurus please use following
+To use distributed data parallelization on Taurus please use following
 parameters: `--ntasks-per-node` -parameter to the number of GPUs you use
 per node. Also, it could be useful to increase `memomy/cpu` parameters
 if you run larger models. Memory can be set up to:
 
---mem=250000 and --cpus-per-task=7 for the **ml** partition.
+`--mem=250000` and `--cpus-per-task=7` for the `ml` partition.
 
---mem=60000 and --cpus-per-task=6 for the **gpu2** partition.
+`--mem=60000` and `--cpus-per-task=6` for the `gpu2` partition.
 
 Keep in mind that only one memory parameter (`--mem-per-cpu` = <MB> or `--mem`=<MB>) can be specified
 
@@ -82,7 +82,7 @@ TensorFlow.
 
 #### Why use Horovod?
 
-Horovod allows you to easily take a single-GPU TensorFlow and Pytorch
+Horovod allows you to easily take a single-GPU TensorFlow and PyTorch
 program and successfully train it on many GPUs! In
 some cases, the MPI model is much more straightforward and requires far
 less code changes than the distributed code from TensorFlow for
@@ -139,21 +139,21 @@ conda create --prefix=<location_for_your_environment> python=3.6 anaconda       
 conda activate  <location_for_your_environment>                                           #activate virtual environment
 ```
 
-Install Pytorch (not recommended)
+Install PyTorch (not recommended)
 
 ```Bash
 cd /tmp
-git clone https://github.com/pytorch/pytorch                                  #clone Pytorch from the source
+git clone https://github.com/pytorch/pytorch                                  #clone PyTorch from the source
 cd pytorch                                                                    #go to folder
 git checkout v1.7.1                                                           #Checkout version (example: 1.7.1)
 git submodule update --init                                                   #Update dependencies
 python setup.py install                                                       #install it with python
 ```
 
-##### Install Horovod for Pytorch with python and pip
+##### Install Horovod for PyTorch with python and pip
 
-In the example presented installation for the Pytorch without
-TensorFlow. Adapt as required and refer to the horovod documentation for
+In the example presented installation for the PyTorch without
+TensorFlow. Adapt as required and refer to the Horovod documentation for
 details.
 
 ```Bash

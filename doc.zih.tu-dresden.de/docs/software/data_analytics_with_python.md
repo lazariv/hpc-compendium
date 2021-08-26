@@ -15,7 +15,7 @@ For more details see [here](python_virtual_environments.md).
 
 Jupyter notebooks are a great way for interactive computing in a web
 browser. They allow working with data cleaning and transformation,
-numerical simulation, statistical modelling, data visualization and machine learning.
+numerical simulation, statistical modeling, data visualization and machine learning.
 
 On ZIH system a [JupyterHub](../access/jupyterhub.md) is available, which can be used to run
 a Jupyter notebook on an HPC node, as well using a GPU when needed.  
@@ -25,8 +25,8 @@ a Jupyter notebook on an HPC node, as well using a GPU when needed.
 ### Dask
 
 [Dask](https://dask.org/) is a flexible and open-source library for parallel computing in Python.
-It natively scales Python and provides advanced parallelism for analytics, enabling performance at
-scale for some of the popular tools. For instance: Dask arrays scale Numpy workflows, Dask
+It scales Python and provides advanced parallelism for analytics, enabling performance at
+scale for some of the popular tools. For instance: Dask arrays scale NumPy workflows, Dask
 dataframes scale Pandas workflows, Dask-ML scales machine learning APIs like Scikit-Learn and
 XGBoost.
 
@@ -95,17 +95,17 @@ a library specification that allows HPC to pass information between its
 various nodes and clusters. MPI is designed to provide access to advanced
 parallel hardware for end-users, library writers and tool developers.
 
-Mpi4py(MPI for Python) package provides bindings of the MPI standard for
+mpi4py(MPI for Python) package provides bindings of the MPI standard for
 the python programming language, allowing any Python program to exploit
 multiple processors.
 
-Mpi4py based on MPI-2 C++ bindings. It supports almost all MPI calls.
+mpi4py based on MPI-2 C++ bindings. It supports almost all MPI calls.
 This implementation is popular on Linux clusters and in the SciPy
 community. Operations are primarily methods of communicator objects. It
-supports communication of pickleable Python objects. Mpi4py provides
+supports communication of pickle-able Python objects. mpi4py provides
 optimized communication of NumPy arrays.
 
-Mpi4py is included as an extension of the SciPy-bundle modules on an HPC system
+mpi4py is included as an extension of the SciPy-bundle modules on an HPC system
 
 ```console
 marie@compute$ module load SciPy-bundle/2020.11-foss-2020b
