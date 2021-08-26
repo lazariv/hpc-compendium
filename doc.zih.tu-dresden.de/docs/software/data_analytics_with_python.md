@@ -24,7 +24,7 @@ browser. They allow working with data cleaning and transformation,
 numerical simulation, statistical modeling, data visualization and machine learning.
 
 On ZIH system a [JupyterHub](../access/jupyterhub.md) is available, which can be used to run
-a Jupyter notebook on an HPC node, as well using a GPU when needed.  
+a Jupyter notebook on a node, as well using a GPU when needed.  
 
 ## Parallel Computing with Python
 
@@ -81,7 +81,7 @@ marie@compute$ python -c "import dask; print(dask.__version__)"
 2021.08.1
 ```
 
-The preferred and simplest way to run Dask on HPC system is using
+The preferred and simplest way to run Dask on ZIH system is using
 [dask-jobqueue](https://jobqueue.dask.org/).
 
 **TODO** create better example with jobqueue
@@ -111,7 +111,7 @@ community. Operations are primarily methods of communicator objects. It
 supports communication of pickle-able Python objects. mpi4py provides
 optimized communication of NumPy arrays.
 
-mpi4py is included as an extension of the SciPy-bundle modules on an HPC system
+mpi4py is included as an extension of the SciPy-bundle modules on a ZIH system
 
 ```console
 marie@compute$ module load SciPy-bundle/2020.11-foss-2020b

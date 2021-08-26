@@ -90,7 +90,7 @@ virtual environment.
 
 The [Jupyter Notebook](https://jupyter.org/) is an open-source web application that allows you to
 create documents containing live code, equations, visualizations, and narrative text. [JupyterHub](../access/jupyterhub.md)
-allows to work with machine learning frameworks (e.g. TensorFlow or PyTorch) on Taurus and to run
+allows to work with machine learning frameworks (e.g. TensorFlow or PyTorch) on ZIH system and to run
 your Jupyter notebooks on HPC nodes.
 
 After accessing JupyterHub, you can start a new session and configure it. For machine learning
@@ -109,7 +109,6 @@ TensorFlow and PyTorch on the board:
   Community-supported `ppc64le` docker container for TensorFlow.
 * [PowerAI container](https://hub.docker.com/r/ibmcom/powerai/):
   Official Docker container with TensorFlow, PyTorch and many other packages.
-  Heavy container. It requires a lot of space. Could be found on Taurus.
 
 Note: You could find other versions of software in the container on the "tag" tab on the docker web
 page of the container.

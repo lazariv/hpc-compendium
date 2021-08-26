@@ -44,14 +44,14 @@ Successfully installed torchvision-0.10.0
     clear up the following. Maybe leave only conda stuff...
 
 There are two methods of how to work with virtual environments on
-Taurus:
+ZIH system:
 
 1. **virtualenv** is a standard Python tool to create isolated Python environments.
    It is the preferred interface for
-   managing installations and virtual environments on Taurus and part of the Python modules.
+   managing installations and virtual environments on ZIH system and part of the Python modules.
 
 2. **conda** is an alternative method for managing installations and
-virtual environments on Taurus. conda is an open-source package
+virtual environments on ZIH system. conda is an open-source package
 management system and environment management system from Anaconda. The
 conda manager is included in all versions of Anaconda and Miniconda.
 
