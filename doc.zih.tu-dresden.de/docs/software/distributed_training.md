@@ -60,7 +60,7 @@ package to synchronize gradients and buffers.
 
 The tutorial could be found [here](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html).
 
-To use distributed data parallelization on Taurus please use following
+To use distributed data parallelization on ZIH system please use following
 parameters: `--ntasks-per-node` -parameter to the number of GPUs you use
 per node. Also, it could be useful to increase `memomy/cpu` parameters
 if you run larger models. Memory can be set up to:
@@ -93,7 +93,7 @@ in some cases better results than pure TensorFlow and PyTorch.
 
 Horovod is available as a module with **TensorFlow** or **PyTorch**for **all** module environments.
 Please check the [software module list](modules.md) for the current version of the software.
-Horovod can be loaded like other software on the Taurus:
+Horovod can be loaded like other software on ZIH system:
 
 ```Bash
 ml av Horovod            #Check available modules with Python
