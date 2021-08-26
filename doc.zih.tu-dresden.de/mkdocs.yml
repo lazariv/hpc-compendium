@@ -62,9 +62,10 @@ nav:
       - Building Software: software/building_software.md
       - GPU Programming: software/gpu_programming.md
       - Compilers: software/compilers.md
-      - Debuggers: software/debuggers.md
+      - Debugging:
+        - Overview: software/debuggers.md
+        - MPI Error Detection: software/mpi_usage_error_detection.md
       - Libraries: software/libraries.md
-      - MPI Error Detection: software/mpi_usage_error_detection.md
       - Score-P: software/scorep.md
       - Perf Tools: software/perf_tools.md 
       - PIKA: software/pika.md
@@ -112,7 +113,6 @@ nav:
     - Overview: archive/overview.md
     - Bio Informatics: archive/bioinformatics.md
     - CXFS End of Support: archive/cxfs_end_of_support.md
-    - Debugging Tools: archive/debugging_tools.md
     - KNL Nodes: archive/knl_nodes.md
     - Load Leveler: archive/load_leveler.md
     - Migrate to Atlas: archive/migrate_to_atlas.md
@@ -180,9 +180,11 @@ extra:
   zih_homepage: https://tu-dresden.de/zih
   # links in footer
   footer:
-    - link: https://doc.zih.tu-dresden.de/hpc-wiki/bin/view/Compendium/Impressum
-      name: "Legal Notice"
-    - link: https://doc.zih.tu-dresden.de/hpc-wiki/bin/view/Compendium/Accessibility
-      name: "Accessibility"
+    - link: /legal_notice
+      name: "Legal Notice / Impressum"
+    - link: /accessibility
+      name: "Accessibility / Barrierefreiheit"
+    - link: /data_protection_declaration
+      name: "Data Protection Declaration / Datenschutzerklärung"
     - link: https://tu-dresden.de/zertifikate
       name: "Certificates"
