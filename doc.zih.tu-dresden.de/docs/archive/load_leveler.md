@@ -146,12 +146,10 @@ description of keywords\]\].
 Submission of a job without a job file can be done by the command:
 `llsub [llsub_options] <command>`
 
-This command is not part of the IBM Loadleveler software but was
-developed at ZIH.
+This command is not part of the IBM LoadLeveler software but was developed at ZIH.
 
-The job file will be created in background by means of the command line
-options. Afterwards, the job file will be passed to the command
-`llsubmit` which submit the job to LoadLeveler (see above).
+The job file will be created in background by means of the command line options. Afterwards, the job
+file will be passed to the command `llsubmit` which submit the job to LoadLeveler (see above).
 
 Important options are:
 
@@ -185,9 +183,9 @@ Interactive Jobs can be submitted by the command:
 llsub -I -q <interactive> <command>
 ```
 
-### Loadleveler Runtime Environment Variables
+### LoadLeveler Runtime Environment Variables
 
-Loadleveler Runtime Variables give you some information within the job
+LoadLeveler runtime variables give you some information within the job
 script, for example:
 
 ```Bash
