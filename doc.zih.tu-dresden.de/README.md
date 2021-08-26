@@ -455,10 +455,7 @@ there is a list of conventions w.r.t. spelling and technical wording.
 * `Filesystem` not `file system`
 * `ZIH system` and `ZIH systems` not `Taurus`, `HRSKII`, `our HPC systems` etc.
 * `Workspace` not `work space`
-
-**TODO:** Put into file
-
-**TODO:** Implement checks [Issue #13](#13)
+* avoid term `HPC-DA`
 
 ### Code Blocks and Command Prompts
 
