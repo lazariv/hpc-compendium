@@ -43,7 +43,7 @@ Successfully installed torchvision-0.10.0
 ??? comment
     clear up the following. Maybe leave only conda stuff...
 
-There are two methods of how to work with virtual environments on 
+There are two methods of how to work with virtual environments on
 ZIH system:
 
 1. **virtualenv** is a standard Python tool to create isolated Python environments.

@@ -84,7 +84,7 @@ Module TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4 and 15 dependencies loaded.
 ```
 
 !!! warning
-    Be aware that for compatibility reasons it is important to choose modules with 
+    Be aware that for compatibility reasons it is important to choose modules with
     the same toolchain version (in this case `fosscuda/2019b`). For reference see [here](modules.md)
 
 In order to interact with Python-based frameworks (like TensorFlow) `reticulate` R library is used.
@@ -201,7 +201,7 @@ tf.Tensor(b'Hello TensorFlow', shape=(), dtype=string)
 ## Parallel Computing with R
 
 Generally, the R code is serial. However, many computations in R can be made faster by the use of
-parallel computations. This section concentrates on most general methods and examples. 
+parallel computations. This section concentrates on most general methods and examples.
 The [parallel](https://www.rdocumentation.org/packages/parallel/versions/3.6.2) library
 will be used below.
 
@@ -289,7 +289,7 @@ This way of the R parallelism uses the
 [MPI](https://en.wikipedia.org/wiki/Message_Passing_Interface) (Message Passing Interface) as a
 "back-end" for its parallel operations. The MPI-based job in R is very similar to submitting an
 [MPI Job](../jobs_and_resources/slurm.md#binding-and-distribution-of-tasks) since both are running
-multicore jobs on multiple nodes. Below is an example of running R script with the Rmpi on 
+multicore jobs on multiple nodes. Below is an example of running R script with the Rmpi on
 ZIH system:
 
 ```Bash
