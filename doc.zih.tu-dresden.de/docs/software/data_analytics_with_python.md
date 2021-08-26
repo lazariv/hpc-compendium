@@ -12,6 +12,7 @@ a research group and/or teaching class. For this purpose python virtual environm
 For more details see [here](python_virtual_environments.md).
 
 The interactive Python interpreter can also be used on ZIH systems via an interactive job:
+
 ```console
 marie@login$ srun -p alpha --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=8000 bash   #Job submission on alpha nodes with 1 gpu on 1 node with 8000 Mb per CPU
 marie@alpha$ python
