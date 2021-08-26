@@ -1,11 +1,11 @@
-# BeeGFS file system
+# BeeGFS filesystem
 
 %RED%Note: This page is under construction. %ENDCOLOR%%RED%The pipeline
 will be changed soon%ENDCOLOR%
 
 **Prerequisites:** To work with Tensorflow you obviously need \<a
-href="Login" target="\_blank">access\</a> for the Taurus system and
-basic knowledge about Linux, mounting, SLURM system.
+href="Login" target="\_blank">access\</a> to the ZIH system and
+basic knowledge about Linux, mounting, Slurm system.
 
 **Aim** \<span style="font-size: 1em;"> of this page is to introduce
 users how to start working with the BeeGFS file\</span>\<span
@@ -15,37 +15,37 @@ system.\</span>
 ## Mount point
 
 Understanding of mounting and the concept of the mount point is
-important for using file systems and object storage. A mount point is a
+important for using filesystems and object storage. A mount point is a
 directory (typically an empty one) in the currently accessible file
-system on which an additional file system is mounted (i.e., logically
+system on which an additional filesystem is mounted (i.e., logically
 attached). \<span style="font-size: 1em;">The default mount points for a
-system are the directories in which file systems will be automatically
+system are the directories in which filesystems will be automatically
 mounted unless told by the user to do otherwise. \</span>\<span
 style="font-size: 1em;">All partitions are attached to the system via a
 mount point. The mount point defines the place of a particular data set
-in the file system. Usually, all partitions are connected through the
+in the filesystem. Usually, all partitions are connected through the
 root partition. On this partition, which is indicated with the slash
 (/), directories are created. \</span>
 
 ## BeeGFS introduction
 
 \<span style="font-size: 1em;"> [BeeGFS](https://www.beegfs.io/content/)
-is the parallel cluster file system. \</span>\<span style="font-size:
+is the parallel cluster filesystem. \</span>\<span style="font-size:
 1em;">BeeGFS spreads data \</span>\<span style="font-size: 1em;">across
 multiple \</span>\<span style="font-size: 1em;">servers to aggregate
 \</span>\<span style="font-size: 1em;">capacity and \</span>\<span
 style="font-size: 1em;">performance of all \</span>\<span
 style="font-size: 1em;">servers to provide a highly scalable shared
-network file system with striped file contents. This is made possible by
+network filesystem with striped file contents. This is made possible by
 the separation of metadata and file contents. \</span>
 
 BeeGFS is fast, flexible, and easy to manage storage if for your issue
 filesystem plays an important role use BeeGFS. It addresses everyone,
 who needs large and/or fast file storage
 
-## Create BeeGFS file system
+## Create BeeGFS filesystem
 
-To reserve nodes for creating BeeGFS file system you need to create a
+To reserve nodes for creating BeeGFS filesystem you need to create a
 [batch](../jobs_and_resources/slurm.md) job
 
     #!/bin/bash
@@ -65,13 +65,13 @@ Example output with job id:
 
 Check the status of the job with 'squeue -u \<username>'
 
-## Mount BeeGFS file system
+## Mount BeeGFS filesystem
 
-You can mount BeeGFS file system on the ML partition (ppc64
+You can mount BeeGFS filesystem on the ML partition (ppc64
 architecture) or on the Haswell [partition](../jobs_and_resources/system_taurus.md) (x86_64
 architecture)
 
-### Mount BeeGFS file system on the ML
+### Mount BeeGFS filesystem on the ML
 
 Job submission can be done with the command (use job id (n.1) from batch
 job used for creating BeeGFS system):
@@ -83,7 +83,7 @@ Example output:
     srun: job 11054579 queued and waiting for resources         #Job id n.2
     srun: job 11054579 has been allocated resources
 
-### Mount BeeGFS file system on the Haswell nodes (x86_64)
+### Mount BeeGFS filesystem on the Haswell nodes (x86_64)
 
 Job submission can be done with the command (use job id (n.1) from batch
 job used for creating BeeGFS system):
@@ -136,7 +136,7 @@ Example output:
     drwxrws--T 2 root swtest  6 21. Jun 10:54 .
     drwxr-xr-x 4 root root   36 21. Jun 10:54 ..
 
-Note: If you want to mount the BeeGFS file system on an x86 instead of
+Note: If you want to mount the BeeGFS filesystem on an x86 instead of
 an ML (power) node, you can either choose the partition "interactive" or
 the partition "haswell64", but for the partition "haswell64" you have to
 add the parameter "--exclude=taurusi\[4001-4104,5001- 5612\]" to your

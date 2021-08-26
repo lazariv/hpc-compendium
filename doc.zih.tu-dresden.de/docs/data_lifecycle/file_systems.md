@@ -10,7 +10,7 @@ performance and permanence.
 |:------------|:------------------|:---------|:-------------|:-------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `Lustre`    | `/scratch/`       | 4 PB     | global       | No     | Only accessible via [Workspaces](workspaces.md). Not made for billions of files!                                                                                   |
 | `Lustre`    | `/lustre/ssd`     | 40 TB    | global       | No     | Only accessible via [Workspaces](workspaces.md). For small I/O operations                                                                                          |
-| `BeeGFS`    | `/beegfs/global0` | 232 TB   | global       | No     | Only accessible via [Workspaces](workspaces.md). Fastest available file system, only for large parallel applications running with millions of small I/O operations |
+| `BeeGFS`    | `/beegfs/global0` | 232 TB   | global       | No     | Only accessible via [Workspaces](workspaces.md). Fastest available filesystem, only for large parallel applications running with millions of small I/O operations |
 | `ext4`      | `/tmp`            | 95 GB    | local        | No     | is cleaned up after the job automatically  |
 
 ## Recommendations for Filesystem Usage

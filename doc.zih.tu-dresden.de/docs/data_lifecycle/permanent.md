@@ -87,7 +87,7 @@ In case a quota is above its limits:
   - Talk with your colleagues to identify unused or unnecessarily stored data,
   - Check your workflow and use `/tmp` or the scratch filesystems for temporary files
   - *Systematically* handle your important data:
-    - For later use (weeks...months) at the HPC systems, build and zip tar
+    - For later use (weeks...months) at the ZIH systems, build and zip tar
       archives with meaningful names or IDs and store them e.g. in a workspace in the
       [warm archive](warm_archive.md) or an [archive](intermediate_archive.md).
     - Refer to the hints for [long term preservation for research data](preservation_research_data.md)
