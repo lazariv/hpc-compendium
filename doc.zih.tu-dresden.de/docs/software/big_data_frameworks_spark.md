@@ -202,14 +202,14 @@ You are now ready to spawn a notebook with Spark.
 Assuming that you have prepared everything as described above, you can go to
 [https://taurus.hrsk.tu-dresden.de/jupyter](https://taurus.hrsk.tu-dresden.de/jupyter).
 In the tab "Advanced", go
-to the field "Preload modules" and select one of the Spark modules.
+to the field `Preload modules` and select one of the Spark modules.
 When your Jupyter instance is started, check whether the kernel that
 you created in the preparation phase (see above) is shown in the top
 right corner of the notebook. If it is not already selected, select the
 kernel `haswell-py3.6-spark`. Then, you can set up Spark. Since the setup
 in the notebook requires more steps than in an interactive session, we
 have created an example notebook that you can use as a starting point
-for convenience: [SparkExample.ipynb](misc/SparkExample.ipynb)
+for convenience: [Spark-Example](misc/SparkExample.ipynb)
 
 !!! note
 

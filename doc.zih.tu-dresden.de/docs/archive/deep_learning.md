@@ -57,7 +57,7 @@ Test case: Keras with TensorFlow on MNIST data
 Go to a directory on ZIH system, get Keras for the examples and go to the examples:
 
 ```Bash
-git clone https://github.com/fchollet/keras.git'>https://github.com/fchollet/keras.git
+git clone https://github.com/fchollet/keras.git
 cd keras/examples/
 ```
 
@@ -79,8 +79,7 @@ module load modenv/scs5                      # load scs5 environment
 module load Keras                            # load Keras module
 module load TensorFlow                       # load TensorFlow module
 
-# if you see 'broken pipe error's (might happen in interactive session after the second srun
-command) uncomment line below
+# if you see 'broken pipe error's (might happen in interactive session after the second srun command) uncomment line below
 # module load h5py
 
 python mnist_cnn.py
@@ -105,14 +104,14 @@ validate on 10000 samples Epoch 1/12
 val_loss: 0.0268 - val_acc: 0.9911 Test loss: 0.02677746053306255 Test accuracy: 0.9911
 ```
 
-## Datasets
+## Data Sets
 
-There are many different datasets designed for research purposes. If you would like to download some
+There are many different data sets designed for research purposes. If you would like to download some
 of them, first of all, keep in mind that many machine learning libraries have direct access to
-public datasets without downloading it (for example
-[TensorFlow Datasets](https://www.tensorflow.org/datasets).
+public data sets without downloading it (for example
+[TensorFlow data sets](https://www.tensorflow.org/datasets).
 
-If you still need to download some datasets, first of all, be careful with the size of the datasets
+If you still need to download some data sets, first of all, be careful with the size of the data sets
 which you would like to download (some of them have a size of few Terabytes). Don't download what
 you really not need to use! Use login nodes only for downloading small files (hundreds of the
 megabytes). For downloading huge files use [DataMover](../data_transfer/data_mover.md).
@@ -120,14 +119,14 @@ For example, you can use command `dtwget` (it is an analogue of the general wget
 command). This command submits a job to the data transfer machines.  If you need to download or
 allocate massive files (more than one terabyte) please contact the support before.
 
-### The ImageNet dataset
+### The ImageNet Data Set
 
 The [ImageNet](http://www.image-net.org/) project is a large visual database designed for use in
 visual object recognition software research. In order to save space in the filesystem by avoiding
 to have multiple duplicates of this lying around, we have put a copy of the ImageNet database
 (ILSVRC2012 and ILSVR2017) under `/scratch/imagenet` which you can use without having to download it
-again. For the future, the ImageNet dataset will be available in `/warm_archive`. ILSVR2017 also
-includes a dataset for recognition objects from a video. Please respect the corresponding
+again. For the future, the ImageNet data set will be available in `/warm_archive`. ILSVR2017 also
+includes a data set for recognition objects from a video. Please respect the corresponding
 [Terms of Use](https://image-net.org/download.php).
 
 ## Jupyter Notebook
@@ -223,7 +222,7 @@ You get a message like that:
 /home/<zih_user>/.jupyter/jupyter_notebook_config.json
 ```
 
-I order to create an SSL certificate for https connections, you can create a self-signed
+I order to create an SSL certificate for secure connections, you can create a self-signed
 certificate:
 
 ```Bash
@@ -232,8 +231,7 @@ openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mykey.key -out mycer
 
 Fill in the form with decent values.
 
-Possible entries for your Jupyter config (`.jupyter/jupyter_notebook*config.py*`). Uncomment below
-lines:
+Possible entries for your Jupyter config (`.jupyter/jupyter_notebook*config.py*`).
 
 ```Bash
 c.NotebookApp.certfile = u'<path-to-cert>/mycert.pem' c.NotebookApp.keyfile =
@@ -318,7 +316,7 @@ Jupyter server (example above) you need to change the name of the configuration 
 **Q:** - I have an error to connect to the Jupyter server (e.g. "open failed: administratively
 prohibited: open failed")
 
-**A:** - Check the settings of your Jupyter config file. Is it all necessary lines uncommented, the
+**A:** - Check the settings of your Jupyter config file. Is it all necessary lines not commented, the
 right path to cert and key files, right hashed password from .json file? Check is the used local
 port [available](https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers)
 Check local settings e.g. (`/etc/ssh/sshd_config`, `/etc/hosts`).
