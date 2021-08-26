@@ -5,11 +5,17 @@ allows you to work with python quicker and more effective. Here the general intr
 with python on ZIH system is given. For specific machine learning frameworks see respective
 documentation in [machine learning](machine_learning.md) section.
 
-## Python Virtual Environments
+## Python Console and Virtual Environments
 
 Often it is useful to create an isolated development environment, which can be shared among
 a research group and/or teaching class. For this purpose python virtual environments can be used.
 For more details see [here](python_virtual_environments.md).
+
+The interactive Python interpreter can also be used on ZIH systems via an interactive job:
+```console
+marie@login$ srun -p alpha --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=8000 bash   #Job submission on alpha nodes with 1 gpu on 1 node with 8000 Mb per CPU
+marie@alpha$ python
+```
 
 ## Jupyter Notebooks
 
