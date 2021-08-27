@@ -39,6 +39,7 @@ squeue
 srun
 SSD
 TensorFlow
+TensorBoard
 Theano
 Vampir
 ZIH
