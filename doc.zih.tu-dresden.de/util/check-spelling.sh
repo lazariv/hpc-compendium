@@ -7,6 +7,10 @@ basedir=`dirname "$scriptpath"`
 basedir=`dirname "$basedir"`
 wordlistfile=$(realpath $basedir/wordlist.aspell)
 branch="origin/${CI_MERGE_REQUEST_TARGET_BRANCH_NAME:-preview}"
+aspellmode=
+if aspell dump modes | grep -q markdown; then
+  aspellmode="--mode=markdown"
+fi
 
 function usage() {
   cat <<-EOF
@@ -18,7 +22,7 @@ EOF
 }
 
 function getAspellOutput(){
-  aspell -p "$wordlistfile" --ignore 2 -l en_US --mode=markdown list | sort -u
+  aspell -p "$wordlistfile" --ignore 2 -l en_US $aspellmode list | sort -u
 }
 
 function getNumberOfAspellOutputLines(){
@@ -28,9 +32,16 @@ function getNumberOfAspellOutputLines(){
 function isMistakeCountIncreasedByChanges(){
   any_fails=false
 
+  #Unfortunately, sort depends on locale and docker does not provide much.
+  #Therefore, it uses bytewise comparison. We avoid problems with the command tr.
+  if ! sed 1d "$wordlistfile" | tr [:upper:] [:lower:] | sort -C; then
+    echo "Unsorted wordlist in $wordlistfile"
+    any_fails=true
+  fi
+
   source_hash=`git merge-base HEAD "$branch"`
   #Remove everything except lines beginning with --- or +++
-  files=`git diff $source_hash | sed -n 's#^[-+]\{3,3\} \(\(/\|./\)[^[:space:]]\+\)$#\1#p'`
+  files=`git diff $source_hash | sed -E -n 's#^(---|\+\+\+) ((/|./)[^[:space:]]+)$#\2#p'`
   #echo "$files"
   #echo "-------------------------"
   #Assume that we have pairs of lines (starting with --- and +++).
