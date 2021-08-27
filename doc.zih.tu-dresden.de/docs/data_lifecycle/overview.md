@@ -10,7 +10,7 @@ uniformity of the project can be achieved by taking into account and setting up 
 
 The used set of software within an HPC project can be management with environments on different
 levels either defined by [modules](../software/modules.md), [containers](../software/containers.md)
-or by [Python virtual environments](../software/python.md).
+or by [Python virtual environments](../software/python_virtual_environments.md).
 In the following, a brief overview on relevant topics w.r.t. data life cycle management is provided.
 
 ## Data Storage and Management
