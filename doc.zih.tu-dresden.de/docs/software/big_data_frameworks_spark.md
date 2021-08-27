@@ -156,10 +156,7 @@ Please use a [batch job](../jobs_and_resources/slurm.md) similar to
 
 There are two general options on how to work with Jupyter notebooks:
 There is [JupyterHub](../access/jupyterhub.md), where you can simply
-run your Jupyter notebook on HPC nodes (the preferable way). Also, you
-can run a remote Jupyter server manually within a GPU job using
-the modules and packages you need. You can find the manual server
-setup [here](deep_learning.md).
+run your Jupyter notebook on HPC nodes (the preferable way).
 
 ### Preparation
 
