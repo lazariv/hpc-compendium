@@ -120,3 +120,15 @@ tf.disable_v2_behavior()    #instead of "import tensorflow as tf"
 
 To make the transition to TF 2.0 as seamless as possible, the TensorFlow team has created the
 tf_upgrade_v2 utility to help transition legacy code to the new API.
+
+## Keras
+
+[Keras](keras.io) is a high-level neural network API, written in Python and capable of running on
+top of TensorFlow. Please check the software modules list via
+
+```console
+marie@compute$ module spider Keras
+```
+
+to find out, which Keras modules are available on your partition. TensorFlow should be automatically
+loaded as a dependency. After loading the module, you can use Keras as usual.

@@ -47,8 +47,11 @@ marie@romeo$ module load modenv/scs5
 ### Python and Virtual Environments
 
 Python users should use a [virtual environment](python_virtual_environments.md) when conducting
-machine learning tasks via console. In case of using [sbatch files](../jobs_and_resources/batch_systems.md)
-to send your job you usually don't need a virtual environment.
+machine learning tasks via console.
+
+??? hint
+    In case of using [sbatch files](../jobs_and_resources/batch_systems.md)
+    to send your job you usually don't need a virtual environment.
 
 For more details on machine learning or data science with Python see [here](data_analytics_with_python.md).
 
@@ -93,9 +96,9 @@ In the following example, we build a Singularity container with TensorFlow from 
 start it:
 
 ```console
-marie@login$ srun -p ml -N 1 --gres=gpu:1 --time=02:00:00 --pty --mem-per-cpu=8000 bash           #allocating resourses from ml nodes to start the job to create a container.
-marie@ml$ singularity build my-ML-container.sif docker://ibmcom/tensorflow-ppc64le             #create a container from the DockerHub with the last TensorFlow version
-marie@ml$ singularity run --nv my-ML-container.sif                                            #run my-ML-container.sif container with support of the Nvidia's GPU. You could also entertain with your container by commands: singularity shell, singularity exec
+marie@login$ srun -p ml -N 1 --gres=gpu:1 --time=02:00:00 --pty --mem-per-cpu=8000 bash    #allocating resourses from ml nodes to start the job to create a container.
+marie@ml$ singularity build my-ML-container.sif docker://ibmcom/tensorflow-ppc64le    #create a container from the DockerHub with the last TensorFlow version
+marie@ml$ singularity run --nv my-ML-container.sif    #run my-ML-container.sif container supporting the Nvidia's GPU. You can also work with your container by: singularity shell, singularity exec
 ```
 
 ## Additional Libraries for Machine Learning
@@ -127,3 +130,20 @@ The following HPC related software is installed on all nodes:
 | IBM XLF Compiler | `/opt/ibm/xlf/`          |
 | IBM ESSL         | `/opt/ibmmath/essl/`     |
 | IBM PESSL        | `/opt/ibmmath/pessl/`    |
+
+## Datasets for Machine Learning
+
+There are many different datasets designed for research purposes. If you would like to download some
+of them, keep in mind that many machine learning libraries have direct access to public datasets
+without downloading it, e.g. [TensorFlow Datasets](https://www.tensorflow.org/datasets). If you
+still need to download some datasets use [DataMover](../../data_transfer/data_mover).
+
+### The ImageNet dataset
+
+The ImageNet project is a large visual database designed for use in visual object recognition
+software research. In order to save space in the file system by avoiding to have multiple duplicates
+of this lying around, we have put a copy of the ImageNet database (ILSVRC2012 and ILSVR2017) under
+`/scratch/imagenet` which you can use without having to download it again. For the future,
+the ImageNet dataset will be available in warm_archive. ILSVR2017 also includes a dataset for
+recognition objects from a video. Please respect the corresponding
+[Terms of Use](https://image-net.org/download.php).
