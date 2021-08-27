@@ -19,7 +19,7 @@ The main concept of working with data on ZIH systems bases on [Workspaces](works
 properly:
 
   * use a `/home` directory for the limited amount of personal data, simple examples and the results
-    of calculations. The home directory is not a working directory! However, `/home` file system is
+    of calculations. The home directory is not a working directory! However, `/home` filesystem is
     [backed up](#backup) using snapshots;
   * use `workspaces` as a place for working data (i.e. datasets); Recommendations of choosing the
     correct storage system for workspace presented below.
@@ -35,11 +35,11 @@ filesystems.
 so-called--> <!--[Workspaces](workspaces.md) are compulsory for all HPC users to store data for a
 defined duration ---> <!--depending on the requirements and the storage system this time span might
 range from days to a few--> <!--years.-->
-<!--- [HPC file systems](file_systems.md)-->
+<!--- [HPC filesystems](file_systems.md)-->
 <!--- [Intermediate Archive](intermediate_archive.md)-->
 <!--- [Special data containers] **todo** Special data containers (was no valid link in old compendium)-->
-<!--- [Move data between file systems](../data_transfer/data_mover.md)-->
-<!--- [Move data to/from ZIH's file systems](../data_transfer/export_nodes.md)-->
+<!--- [Move data between filesystems](../data_transfer/data_mover.md)-->
+<!--- [Move data to/from ZIH's filesystems](../data_transfer/export_nodes.md)-->
 <!--- [Longterm Preservation for ResearchData](preservation_research_data.md)-->
 
 !!! hint "Recommendations to choose of storage system"
