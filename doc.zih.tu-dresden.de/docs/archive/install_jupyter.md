@@ -67,7 +67,7 @@ deactivate it also manually) and install Jupyter packages for this python enviro
 source activate jnb conda install jupyter
 ```
 
-If you need to adjust the configuration, you should create the template. Generate configuration 
+If you need to adjust the configuration, you should create the template. Generate configuration
 files for Jupyter notebook server:
 
 ```Bash
