@@ -29,7 +29,7 @@ properly:
 It is important to design your data workflow according to characteristics, like I/O footprint
 (bandwidth/IOPS) of the application, size of the data, (number of files,) and duration of the
 storage to efficiently use the provided storage and filesystems.
-The page [filesystems](file_systems.md) holds a comprehensive documentation on the different 
+The page [filesystems](file_systems.md) holds a comprehensive documentation on the different
 filesystems.
 <!--In general, the mechanisms of
 so-called--> <!--[Workspaces](workspaces.md) are compulsory for all HPC users to store data for a
@@ -172,4 +172,5 @@ changing permission command (i.e `chmod`) valid for ZIH system as well. The **gr
 contains members of your project group. Be careful with 'write' permission and never allow to change
 the original data.
 
-Useful links: [Data Management]**todo link**, [Filesystems]**todo link**, [Project Management]**todo link**, [Preservation research data[**todo link**
+Useful links: [Data Management]**todo link**, [Filesystems]**todo link**,
+[Project Management]**todo link**, [Preservation research data[**todo link**

@@ -142,7 +142,7 @@ still need to download some datasets use [DataMover](../../data_transfer/data_mo
 ### The ImageNet dataset
 
 The ImageNet project is a large visual database designed for use in visual object recognition
-software research. In order to save space in the file system by avoiding to have multiple duplicates
+software research. In order to save space in the filesystem by avoiding to have multiple duplicates
 of this lying around, we have put a copy of the ImageNet database (ILSVRC2012 and ILSVR2017) under
 `/scratch/imagenet` which you can use without having to download it again. For the future,
 the ImageNet dataset will be available in warm_archive. ILSVR2017 also includes a dataset for
