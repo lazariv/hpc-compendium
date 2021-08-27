@@ -454,10 +454,8 @@ there is a list of conventions w.r.t. spelling and technical wording.
 * `Slurm` not `SLURM`
 * `Filesystem` not `file system`
 * `ZIH system` and `ZIH systems` not `Taurus`, `HRSKII`, `our HPC systems` etc.
-
-**TODO:** Put into file
-
-**TODO:** Implement checks [Issue #13](#13)
+* `Workspace` not `work space`
+* avoid term `HPC-DA`
 
 ### Code Blocks and Command Prompts
 
