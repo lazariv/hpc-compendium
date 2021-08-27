@@ -2,7 +2,7 @@
 
 Virtual environments allow users to install additional python packages and create an isolated
 run-time environment. We recommend using `virtualenv` for this purpose. In your virtual environment,
-you can use packages from the (Complete List of Modules) or if you didn't find what you need you can
+you can use packages from the [modules list](modules.md) or if you didn't find what you need you can
 install required packages with the command: `pip install`. With the command `pip freeze`, you can
 see a list of all installed packages and their versions.
 
@@ -36,7 +36,7 @@ marie@alpha$ mkdir python-environments    #Optional: Create folder. Please use W
 Now we check available Python modules and load the preferred version:
 
 ```console
-marie@alpha$ ml av Python    #Check the available modules with Python
+marie@alpha$ module avail Python    #Check the available modules with Python
 marie@alpha$ module load Python    #Load default Python. Example output: Module Python/3.7 4-GCCcore-8.3.0 with 7 dependencies loaded
 marie@alpha$ which python    #Check which python are you using
 ```
