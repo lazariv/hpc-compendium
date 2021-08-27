@@ -8,7 +8,7 @@ resources.
 Please check the software modules list via
 
 ```console
-marie@login$ module spider TensorFlow
+marie@compute$ module spider TensorFlow
 ```
 
 to find out, which TensorFlow modules are available on your partition.
@@ -26,7 +26,7 @@ On the **Alpha** partition load the module environment:
 
 ```console
 marie@login$ srun -p alpha --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=8000 bash   #Job submission on alpha nodes with 1 gpu on 1 node with 8000 Mb per CPU
-marie@romeo$ module load modenv/scs5
+marie@alpha$ module load modenv/scs5
 ```
 
 On the **ML** partition load the module environment:
@@ -50,26 +50,33 @@ marie@ml$ tensorflow-test
 Basic test of tensorflow - A Hello World!!!...
 ```
 
-Following example shows how to create python virtual environment and import TensorFlow.
+??? example
+    Following example shows how to create python virtual environment and import TensorFlow.
 
-```console
-marie@ml$ mkdir python-environments    #create folder 
-marie@ml$ which python    #check which python are you using
-/sw/installed/Python/3.7.4-GCCcore-8.3.0/bin/python
-marie@ml$ virtualenv --system-site-packages python-environments/env    #create virtual environment "env" which inheriting with global site packages
-[...]
-marie@ml$ source python-environments/env/bin/activate    #activate virtual environment "env". Example output: (env) bash-4.2$
-marie@ml$ python -c "import tensorflow as tf; print(tf.__version__)"
-```
+    ```console
+    marie@ml$ mkdir python-environments    #create folder 
+    marie@ml$ which python    #check which python are you using
+    /sw/installed/Python/3.7.4-GCCcore-8.3.0/bin/python
+    marie@ml$ virtualenv --system-site-packages python-environments/env    #create virtual environment "env" which inheriting with global site packages
+    [...]
+    marie@ml$ source python-environments/env/bin/activate    #activate virtual environment "env". Example output: (env) bash-4.2$
+    marie@ml$ python -c "import tensorflow as tf; print(tf.__version__)"
+    ```
 
 ## TensorFlow in JupyterHub
 
 In addition to using interactive and batch jobs, it is possible to work with TensorFlow using
 JupyterHub. The production and test environments of JupyterHub contain Python and R kernels, that
-both come with a TensorFlow support.
+both come with a TensorFlow support. However, you can specify the TensorFlow version when spawning
+the notebook by pre-loading a specific TensorFlow module:
 
 ![TensorFlow module in JupyterHub](misc/tensorflow_jupyter_module.png)
 {: align="center"}
+
+??? hint
+    You can also define your own Jupyter kernel for more specific tasks. Please read there
+    documentation about JupyterHub, Jupyter kernels and virtual environments 
+    [here](../../access/jupyterhub/#creating-and-using-your-own-environment).
 
 ## TensorFlow in Containers
 
