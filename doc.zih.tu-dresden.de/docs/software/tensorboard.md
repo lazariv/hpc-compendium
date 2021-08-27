@@ -14,8 +14,8 @@ If TensorBoard occurs in the `Included extensions` section of the output, Tensor
 
 ## Using TensorBoard
 
-To use TensorBoard, you have to connect via ssh to the ZIH system as usual, schedule an interactive job and
-load a TensorFlow module:
+To use TensorBoard, you have to connect via ssh to the ZIH system as usual, schedule an interactive 
+job and load a TensorFlow module:
 
 ```console
 marie@login$ srun -p alpha -n 1 -c 1 --pty --mem-per-cpu=8000 bash   #Job submission on alpha node

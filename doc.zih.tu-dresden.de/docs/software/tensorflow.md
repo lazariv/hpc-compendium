@@ -73,6 +73,7 @@ the notebook by pre-loading a specific TensorFlow module:
 ![TensorFlow module in JupyterHub](misc/tensorflow_jupyter_module.png)
 {: align="center"}
 
+
 ??? hint
     You can also define your own Jupyter kernel for more specific tasks. Please read there
     documentation about JupyterHub, Jupyter kernels and virtual environments 
