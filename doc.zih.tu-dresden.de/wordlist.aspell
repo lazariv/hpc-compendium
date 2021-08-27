@@ -153,3 +153,6 @@ cuDNN
 env
 ppc
 venv
+stdout
+stderr
+multithreaded
