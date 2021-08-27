@@ -26,15 +26,15 @@ factorization, and eigenvalue problems.
 
 The [Scalable Linear Algebra PACKage](https://www.netlib.org/scalapack) (ScaLAPACK) takes the
 idea of high-performance linear algebra routines to parallel distributed memory machines. It offers
-functionality to solves dense and banded linear systems, least squares problems, eigenvalue
+functionality to solve dense and banded linear systems, least squares problems, eigenvalue
 problems, and singular value problems.
 
 <!--There is also an [optimized implementation](https://developer.amd.com/amd-aocl/scalapack/) addressing-->
 <!--AMD architectures.-->
 
 Many concrete implementations, often tuned and optimized for specific hardware architectures, have
-been developed over the last decades. The two hardware vendors Intel and AMD each offer a own math
-library - [Intel MKL](#math-kernel-library-mkl) and [AOCL](#amd-optimizing-cpu-libraries-aocl)).
+been developed over the last decades. The two hardware vendors Intel and AMD each offer their own math
+library - [Intel MKL](#math-kernel-library-mkl) and [AOCL](#amd-optimizing-cpu-libraries-aocl).
 Both libraries are worth to consider from a users point of view, since they provide extensive math
 functionality ranging from BLAS and LAPACK to random number generators and Fast Fourier
 Transformation with consistent interfaces and the "promises" to be highly tuned and optimized and
@@ -48,7 +48,7 @@ continuously developed further.
 
 ## AMD Optimizing CPU Libraries (AOCL)
 
-AMD Optimizing CPU Libraries (AOCL) (https://developer.amd.com/amd-aocl/) is a set of numerical
+[AMD Optimizing CPU Libraries](https://developer.amd.com/amd-aocl/) (AOCL) is a set of numerical
 libraries tuned specifically for AMD EPYC processor family. AOCL offers linear algebra libraries
 ([BLIS](https://developer.amd.com/amd-cpu-libraries/blas-library/),
  [libFLAME](https://developer.amd.com/amd-cpu-libraries/blas-library/#libflame),
@@ -59,7 +59,7 @@ libraries tuned specifically for AMD EPYC processor family. AOCL offers linear a
  as well as
  [AMD Random Number Generator Library](https://developer.amd.com/amd-cpu-libraries/rng-library/)
  and
- [AMD Secure RNG Library(https://developer.amd.com/amd-cpu-libraries/rng-library/#securerng).
+ [AMD Secure RNG Libraary](https://developer.amd.com/amd-cpu-libraries/rng-library/#securerng).
 
 ## Math Kernel Library (MKL)
 
@@ -92,7 +92,7 @@ For linker flag combinations, we highly recommand the
 
 GPU implementations of math functions and routines are often much faster compared to CPU
 implementations. This also holds for basic routines from BLAS and LAPACK. You should consider using
-this GPU implementations first in order to obtain better performance.
+GPU implementations in order to obtain better performance.
 
 There are several math libraries for Nvidia GPUs, e.g.
 
@@ -101,8 +101,8 @@ There are several math libraries for Nvidia GPUs, e.g.
 - [cuSPARSE](https://developer.nvidia.com/cusparse) (sparse matrix library)
 - [cuFFT](https://developer.nvidia.com/cufft)
 
-[This webpage](https://developer.nvidia.com/gpu-accelerated-libraries#linear-algebra) provides a
-comprehensive overview and starting point.
+Nvidia provides a
+[comprehensive overview and starting point](https://developer.nvidia.com/gpu-accelerated-libraries#linear-algebra).
 
 ### MAGMA
 
