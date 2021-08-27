@@ -46,9 +46,9 @@ marie@romeo$ module load modenv/scs5
 
 ### Python and Virtual Environments
 
-Python users should use a [virtual environment](python_virtual_environments.md) when conducting machine learning tasks via console.
-In case of using [sbatch files](../jobs_and_resources/batch_systems.md) to send your job you usually
-don't need a virtual environment.
+Python users should use a [virtual environment](python_virtual_environments.md) when conducting
+machine learning tasks via console. In case of using [sbatch files](../jobs_and_resources/batch_systems.md)
+to send your job you usually don't need a virtual environment.
 
 For more details on machine learning or data science with Python see [here](data_analytics_with_python.md).
 
