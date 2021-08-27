@@ -21,7 +21,7 @@ properly:
   * use a `/home` directory for the limited amount of personal data, simple examples and the results
     of calculations. The home directory is not a working directory! However, `/home` filesystem is
     [backed up](#backup) using snapshots;
-  * use `workspaces` as a place for working data (i.e. datasets); Recommendations of choosing the
+  * use `workspaces` as a place for working data (i.e. data sets); Recommendations of choosing the
     correct storage system for workspace presented below.
 
 ### Taxonomy of Filesystems
@@ -70,7 +70,7 @@ files can be restored directly by the users. Details can be found
 
 ### Folder Structure and Organizing Data
 
-Organizing of living data using the filesystem helps for consistency and structuredness of the
+Organizing of living data using the filesystem helps for consistency of the
 project. We recommend following the rules for your work regarding:
 
   * Organizing the data: Never change the original data; Automatize the organizing the data; Clearly
@@ -81,7 +81,7 @@ project. We recommend following the rules for your work regarding:
     don’t replace documentation and metadata; Use standards of your discipline; Make rules for your
     project, document and keep them (See the [README recommendations]**todo link** below)
 
-This is the example of an organisation (hierarchical) for the folder structure. Use it as a visual
+This is the example of an organization (hierarchical) for the folder structure. Use it as a visual
 illustration of the above:
 
 ![Organizing_Data-using_file_systems.png](misc/Organizing_Data-using_file_systems.png)
