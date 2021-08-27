@@ -113,6 +113,7 @@ nav:
     - Bio Informatics: archive/bioinformatics.md
     - CXFS End of Support: archive/cxfs_end_of_support.md
     - KNL Nodes: archive/knl_nodes.md
+    - Manual Jupyter Installation: archive/install_jupyter.md
     - Load Leveler: archive/load_leveler.md
     - Migrate to Atlas: archive/migrate_to_atlas.md
     - No IB Jobs: archive/no_ib_jobs.md
