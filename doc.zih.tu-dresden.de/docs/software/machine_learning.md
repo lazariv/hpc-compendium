@@ -44,7 +44,6 @@ marie@romeo$ module load modenv/scs5
 
 ## Machine Learning via Console
 
-
 ### Python and Virtual Environments
 
 Python users should use a [virtual environment](python_virtual_environments.md) when conducting machine learning tasks via console.
@@ -59,7 +58,6 @@ R also supports machine learning via console. It does not require a virtual envi
 different package managment.
 
 For more details on machine learning or data science with R see [here](../data_analytics_with_r/#r-console).
-
 
 ## Machine Learning with Jupyter
 
