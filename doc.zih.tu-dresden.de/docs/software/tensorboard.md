@@ -38,7 +38,7 @@ Then you can start TensorBoard and pass the directory of the event data:
 marie@alpha$ tensorboard --logdir /scratch/ws/1/marie-tensorboard_logdata --bind_all
 ```
 
-TensorBoard will then return a server address on taurus, e.g. `taurusi8034.taurus.hrsk.tu-dresden.de:6006`
+TensorBoard will then return a server address on Taurus, e.g. `taurusi8034.taurus.hrsk.tu-dresden.de:6006`
 
 For accessing TensorBoard now, you have to set up some port forwarding via ssh to your local
 machine:
@@ -47,6 +47,6 @@ machine:
 marie@local$ ssh -N -f -L 6006:taurusi8034.taurus.hrsk.tu-dresden.de:6006 <zih-login>@taurus.hrsk.tu-dresden.de
 ```
 
-Now you can see the tensorboard in your browser at `http://localhost:6006/`.
+Now you can see the TensorBoard in your browser at `http://localhost:6006/`.
 
-Note that you can also use tensorboard in an [sbatch file](../jobs_and_resources/batch_systems.md).
+Note that you can also use TensorBoard in an [sbatch file](../jobs_and_resources/batch_systems.md).

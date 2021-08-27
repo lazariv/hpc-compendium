@@ -48,7 +48,7 @@ marie@alpha$ virtualenv --system-site-packages python-environments/envtest  #Cre
 marie@alpha$ source python-environments/envtest/bin/activate    #Activate virtual environment. Example output: (envtest) bash-4.2$
 ```
 
-Now you can work in this isolated environment, without interferring with other tasks running on the
+Now you can work in this isolated environment, without interfering with other tasks running on the
 system. Note that the inscription (env) at the beginning of each line represents that you are in
 the virtual environment. You can deactivate the environment as follows:
 
@@ -75,7 +75,7 @@ marie@alpha$ conda create --prefix conda-virtual-environments/conda-testenv pyth
 marie@alpha$ conda activate conda-virtual-environments/conda-testenv    #activate conda-testenv virtual environment
 ```
 
-Now you can work in this isolated environment, without interferring with other tasks running on the
+Now you can work in this isolated environment, without interfering with other tasks running on the
 system. Note that the inscription (env) at the beginning of each line represents that you are in
 the virtual environment. You can deactivate the conda environment as follows:
 
