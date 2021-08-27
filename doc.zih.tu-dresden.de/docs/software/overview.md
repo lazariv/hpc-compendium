@@ -47,8 +47,8 @@ The [Jupyter Notebook](https://jupyter.org/) is an open-source web application t
 documents containing live code, equations, visualizations, and narrative text. There is a
 [JupyterHub](../access/jupyterhub.md) service on ZIH systems, where you can simply run your Jupyter
 notebook on compute nodes using [modules](#modules), preloaded or custom virtual environments.
-Moreover, you can run a [manually created remote jupyter server](deep_learning.md) for more specific
-cases.
+Moreover, you can run a [manually created remote jupyter server](../archive/install_jupyter.md) 
+for more specific cases.
 
 ## Containers
 

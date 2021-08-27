@@ -28,8 +28,7 @@ marie@compute$ R
 ```
 
 Using `srun` is recommended only for short test runs, while for larger runs batch jobs should be
-used. The examples can be found [here](get_started_with_hpcda.md) or
-[here](../jobs_and_resources/slurm.md).
+used. The examples can be found [here](../jobs_and_resources/slurm.md).
 
 It is also possible to run `Rscript` command directly (after loading the module):
 
