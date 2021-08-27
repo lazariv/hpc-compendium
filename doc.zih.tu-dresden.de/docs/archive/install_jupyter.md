@@ -1,7 +1,7 @@
 # Jupyter Installation
 
 Jupyter notebooks are a great way for interactive computing in your web browser. Jupyter allows
-working with data cleaning and transformation, numerical simulation, statistical modelling, data
+working with data cleaning and transformation, numerical simulation, statistical modeling, data
 visualization and of course with machine learning.
 
 There are two general options on how to work Jupyter notebooks using HPC: remote Jupyter server and
@@ -26,7 +26,7 @@ environment:
 srun --pty -n 1 --cpus-per-task=2 --time=2:00:00 --mem-per-cpu=2500 --x11=first bash -l -i
 ```
 
-Create a new subdirectory in your home, e.g. Jupyter
+Create a new directory in your home, e.g. Jupyter
 
 ```Bash
 mkdir Jupyter cd Jupyter
@@ -52,7 +52,7 @@ Anaconda3-2019.03-Linux-x86_64.sh ./Anaconda3-2019.03-Linux-x86_64.sh
 ```
 
 Next step will install the anaconda environment into the home
-directory (/home/userxx/anaconda3). Create a new anaconda environment with the name "jnb".
+directory (`/home/userxx/anaconda3`). Create a new anaconda environment with the name `jnb`.
 
 ```Bash
 conda create --name jnb
@@ -67,8 +67,8 @@ deactivate it also manually) and install Jupyter packages for this python enviro
 source activate jnb conda install jupyter
 ```
 
-If you need to adjust the configuration, you should create the template. Generate config files for
-Jupyter notebook server:
+If you need to adjust the configuration, you should create the template. Generate configuration 
+files for Jupyter notebook server:
 
 ```Bash
 jupyter notebook --generate-config
@@ -91,7 +91,7 @@ You get a message like that:
 /home/<zih_user>/.jupyter/jupyter_notebook_config.json
 ```
 
-I order to create an SSL certificate for secure connections, you can create a self-signed
+I order to create a certificate for secure connections, you can create a self-signed
 certificate:
 
 ```Bash
@@ -100,7 +100,7 @@ openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mykey.key -out mycer
 
 Fill in the form with decent values.
 
-Possible entries for your Jupyter config (`.jupyter/jupyter_notebook*config.py*`).
+Possible entries for your Jupyter configuration (`.jupyter/jupyter_notebook*config.py*`).
 
 ```Bash
 c.NotebookApp.certfile = u'<path-to-cert>/mycert.pem' c.NotebookApp.keyfile =
@@ -127,7 +127,7 @@ unset XDG_RUNTIME_DIR   # might be required when interactive instead of sbatch t
 'Permission denied error' srun jupyter notebook
 ```
 
-Start the script above (e.g. with the name jnotebook) with sbatch command:
+Start the script above (e.g. with the name `jnotebook`) with sbatch command:
 
 ```Bash
 sbatch jnotebook.slurm

@@ -156,3 +156,4 @@ workspaces
 stdout
 stderr
 multithreaded
+hostname
