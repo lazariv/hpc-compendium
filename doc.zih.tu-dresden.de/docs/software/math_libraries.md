@@ -5,7 +5,7 @@ Writing portable and fast math functions is a really challenging task. You can t
 really should avoid writing you own matrix-matrix multiplication. Thankfully, there are several
 high quality math libraries available at ZIH systems.
 
-In the following, a few often-used interafaces/specificationa and libraries are described. All
+In the following, a few often-used interfaces/specifications and libraries are described. All
 libraries are available as [modules](modules.md).
 
 ## BLAS, LAPACK and ScaLAPACK
