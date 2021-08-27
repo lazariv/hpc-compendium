@@ -97,7 +97,6 @@ nav:
     - Taurus: jobs_and_resources/system_taurus.md
     - Slurm Examples: jobs_and_resources/slurm_examples.md
     - Slurm: jobs_and_resources/slurm.md
-    - HPC-DA: jobs_and_resources/hpcda.md
     - Binding And Distribution Of Tasks: jobs_and_resources/binding_and_distribution_of_tasks.md
       #    - Queue Policy: jobs/policy.md
       #    - Examples: jobs/examples/index.md
