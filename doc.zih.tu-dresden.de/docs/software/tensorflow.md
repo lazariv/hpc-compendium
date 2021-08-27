@@ -123,7 +123,7 @@ tf_upgrade_v2 utility to help transition legacy code to the new API.
 
 ## Keras
 
-[Keras](https://keras.io) is a high-level neural network API, written in Python and capable 
+[Keras](https://keras.io) is a high-level neural network API, written in Python and capable
 of running on top of TensorFlow. Please check the software modules list via
 
 ```console
