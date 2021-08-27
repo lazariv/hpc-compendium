@@ -74,7 +74,7 @@ fi
 
 cnt=0
 for f in $files; do
-  if [ "$f" != doc.zih.tu-dresden.de/README.md -a "${f: -3}" == ".md" ]; then
+  if [ "$f" != doc.zih.tu-dresden.de/README.md -a "${f: -3}" == ".md" -a -f "$f" ]; then
     echo "Check wording in file $f"
     while IFS=$'\t' read -r flags pattern exceptionPatterns; do
       while IFS=$'\t' read -r -a exceptionPatternsArray; do
