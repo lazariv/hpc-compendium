@@ -87,7 +87,7 @@ marie@ml$ python -c "import torch; print(torch.__version__)"
 In addition to using interactive and batch jobs, it is possible to work with Pytorch using JupyterHub.
 The production and test environments of JupyterHub contain Python kernels, that come with a Pytorch support.
 
-![Pytorch module in JupyterHub](misc/Pytorch_jupyter_module.png)
+![Pytorch module in JupyterHub]**TODO**(misc/Pytorch_jupyter_module.png)
 {: align="center"}
 
 ## Distributed Pytorch
