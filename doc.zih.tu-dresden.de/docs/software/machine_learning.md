@@ -23,8 +23,8 @@ specially made for the ml partition (from `modenv/ml`).
 On the **ML** partition load the module environment:
 
 ```console
-marie@login$ srun -p ml --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=8000 bash    #Job submission in ml nodes with 1 gpu on 1 node with 8000 Mb per CPU
-marie@ml$ module load modenv/ml    #example output: The following have been reloaded with a version change:  1) modenv/scs5 => modenv/ml
+marie@ml$ module load modenv/ml
+The following have been reloaded with a version change:  1) modenv/scs5 => modenv/ml
 ```
 
 ## Alpha partition
@@ -38,8 +38,8 @@ space (/tmp) on an NVMe device. You can find more details of the partition [here
 On the **Alpha** partition load the module environment:
 
 ```console
-marie@login$ srun -p alpha --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=8000 bash   #Job submission on alpha nodes with 1 gpu on 1 node with 8000 Mb per CPU
-marie@romeo$ module load modenv/scs5
+marie@alpha$ module load modenv/scs5
+The following have been reloaded with a version change:  1) modenv/ml => modenv/scs5
 ```
 
 ## Machine Learning via Console
@@ -96,9 +96,10 @@ In the following example, we build a Singularity container with TensorFlow from 
 start it:
 
 ```console
-marie@login$ srun -p ml -N 1 --gres=gpu:1 --time=02:00:00 --pty --mem-per-cpu=8000 bash    #allocating resourses from ml nodes to start the job to create a container.
 marie@ml$ singularity build my-ML-container.sif docker://ibmcom/tensorflow-ppc64le    #create a container from the DockerHub with the last TensorFlow version
+[...]
 marie@ml$ singularity run --nv my-ML-container.sif    #run my-ML-container.sif container supporting the Nvidia's GPU. You can also work with your container by: singularity shell, singularity exec
+[...]
 ```
 
 ## Additional Libraries for Machine Learning

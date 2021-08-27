@@ -22,30 +22,35 @@ conda manager is included in all versions of Anaconda and Miniconda.
     with the virtual environments previously created with conda tool and
     vice versa! Prefer virtualenv whenever possible.
 
-## Python virtual environment
+## Python Virtual Environment
 
 This example shows how to start working with **virtualenv** and Python virtual environment (using
-the module system). At first we use an interactive job and create a directory for the virtual
-environment:
+the module system). 
+
+??? hint
+    We recommend to use [workspaces](../../data_lifecycle/workspaces) for your virtual environments.
+
+At first we check available Python modules and load the preferred version:
 
 ```console
-marie@login$ srun -p alpha -N 1 -n 1 -c 7 --mem-per-cpu=5772 --gres=gpu:1 --time=04:00:00 --pty bash    #Job submission in ml nodes with 1 gpu on 1 node.
-marie@alpha$ mkdir python-environments    #Optional: Create folder. Please use Workspaces!
+marie@compute$ module avail Python    #Check the available modules with Python
+[...]
+marie@compute$ module load Python    #Load default Python
+Module Python/3.7 2-GCCcore-8.2.0 with 10 dependencies loaded
+marie@compute$ which python    #Check which python are you using
+/sw/installed/Python/3.7.2-GCCcore-8.2.0/bin/python
 ```
 
-Now we check available Python modules and load the preferred version:
+Then create the virtual environment and activate it.
 
 ```console
-marie@alpha$ module avail Python    #Check the available modules with Python
-marie@alpha$ module load Python    #Load default Python. Example output: Module Python/3.7 4-GCCcore-8.3.0 with 7 dependencies loaded
-marie@alpha$ which python    #Check which python are you using
-```
-
-Then create the virtual environment and activate it:
-
-```console
-marie@alpha$ virtualenv --system-site-packages python-environments/envtest  #Create virtual environment
-marie@alpha$ source python-environments/envtest/bin/activate    #Activate virtual environment. Example output: (envtest) bash-4.2$
+marie@compute$ ws_allocate -F scratch python_virtual_environment 1
+Info: creating workspace.
+/scratch/ws/1/python_virtual_environment
+[...] 
+marie@compute$ virtualenv --system-site-packages /scratch/ws/1/python_virtual_environment/env  #Create virtual environment
+[...]
+marie@compute$ source /scratch/ws/1/python_virtual_environment/env/bin/activate    #Activate virtual environment. Example output: (envtest) bash-4.2$
 ```
 
 Now you can work in this isolated environment, without interfering with other tasks running on the
@@ -53,26 +58,28 @@ system. Note that the inscription (env) at the beginning of each line represents
 the virtual environment. You can deactivate the environment as follows:
 
 ```console
-(envtest) marie@alpha$ deactivate    #Leave the virtual environment
+(env) marie@compute$ deactivate    #Leave the virtual environment
 ```
 
-## Conda virtual environment
+## Conda Virtual Environment
 
 This example shows how to start working with **conda** and virtual environment (with using module
 system). At first we use an interactive job and create a directory for the conda virtual
 environment:
 
 ```console
-marie@login$ srun -p ml -N 1 -n 1 -c 7 --mem-per-cpu=5772 --gres=gpu:1 --time=04:00:00 --pty bash    #Job submission in ml nodes with 1 gpu on 1 node.
-marie@alpha$ mkdir conda-virtual-environments    #create a folder
+marie@compute$ ws_allocate -F scratch conda_virtual_environment 1
+Info: creating workspace.
+/scratch/ws/1/conda_virtual_environment
+[...]
 ```
 
 Then we load Anaconda, create an environment in our directory and activate the environment:
 
 ```console
-marie@alpha$ module load Anaconda3    #load Anaconda module
-marie@alpha$ conda create --prefix conda-virtual-environments/conda-testenv python=3.6    #create virtual environment with Python version 3.6
-marie@alpha$ conda activate conda-virtual-environments/conda-testenv    #activate conda-testenv virtual environment
+marie@compute$ module load Anaconda3    #load Anaconda module
+marie@compute$ conda create --prefix /scratch/ws/1/conda_virtual_environment/conda-testenv python=3.6    #create virtual environment with Python version 3.6
+marie@compute$ conda activate /scratch/ws/1/conda_virtual_environment/conda-testenv    #activate conda-testenv virtual environment
 ```
 
 Now you can work in this isolated environment, without interfering with other tasks running on the
@@ -80,7 +87,7 @@ system. Note that the inscription (env) at the beginning of each line represents
 the virtual environment. You can deactivate the conda environment as follows:
 
 ```console
-(conda-testenv) marie@alpha$ conda deactivate    #Leave the virtual environment
+(conda-testenv) marie@compute$ conda deactivate    #Leave the virtual environment
 ```
 
 TODO: Link to this page from other DA/ML topics. insert link in alpha centauri
