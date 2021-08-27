@@ -47,6 +47,7 @@ nav:
       - Tensorboard: software/tensorboard.md
       - Distributed Training: software/distributed_training.md
       - Hyperparameter Optimization (OmniOpt): software/hyperparameter_optimization.md
+      - PowerAI: software/power_ai.md
     - Data Analytics:
       - Overview: software/data_analytics.md
       - Data Analytics with R: software/data_analytics_with_r.md

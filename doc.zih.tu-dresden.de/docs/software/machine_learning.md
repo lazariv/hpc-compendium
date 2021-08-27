@@ -14,18 +14,24 @@ The main feature of the nodes is the ability to work with the
 support that allows a total bandwidth with up to 300 gigabytes per second (GB/sec). Each node on the
 ml partition has 6x Tesla V-100 GPUs. You can find a detailed specification of the partition [here](../jobs_and_resources/power9.md).
 
-**Note:** The ML partition is based on the Power9 architecture, which means that the software built
-for x86_64 will not work on this partition. Also, users need to use the modules which are
-specially made for the ml partition (from modenv/ml).
+!!! note
+    The ML partition is based on the Power9 architecture, which means that the software built
+    for `x86_64` will not work on this partition. Also, users need to use the modules which are
+    specially made for the `ml` partition (from `modenv/ml`).
 
 ### Modules
 
-On the **ML** partition load the module environment:
+On the `ml` partition load the module environment:
 
 ```console
 marie@login$ srun -p ml --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=8000 bash    #Job submission in ml nodes with 1 gpu on 1 node with 8000 Mb per CPU
 marie@ml$ module load modenv/ml    #example output: The following have been reloaded with a version change:  1) modenv/scs5 => modenv/ml
 ```
+
+### Power AI
+
+There are tools provided by IBM, that work on `ml` partition and are related to AI tasks. 
+For more information see [here](power_ai.md). 
 
 ## Alpha partition
 
@@ -58,7 +64,7 @@ For more details on machine learning or data science with Python see [here](data
 ### R
 
 R also supports machine learning via console. It does not require a virtual environment due to a
-different package managment.
+different package management.
 
 For more details on machine learning or data science with R see [here](../data_analytics_with_r/#r-console).
 
