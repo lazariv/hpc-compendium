@@ -20,7 +20,7 @@ Benchmarks, so far (single node):
 Each of them can run 4 threads, so one can start a job here with e.g.
 
 ```console
-srun -p knl -N 1 --mem=90000 -n 1 -c 64 a.out
+marie@login$ srun -p knl -N 1 --mem=90000 -n 1 -c 64 a.out
 ```
 
 In order to get their optimal performance please re-compile your code with the most recent Intel
