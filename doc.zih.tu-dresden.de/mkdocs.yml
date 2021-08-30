@@ -40,6 +40,12 @@ nav:
       - Nanoscale Simulations: software/nanoscale_simulations.md
       - FEM Software: software/fem_software.md
     - Visualization: software/visualization.md
+    - Data Analytics:
+      - Overview: software/data_analytics.md
+      - Data Analytics with R: software/data_analytics_with_r.md
+      - Data Analytics with RStudio: software/data_analytics_with_rstudio.md
+      - Data Analytics with Python: software/data_analytics_with_python.md
+      - Apache Spark: software/big_data_frameworks_spark.md
     - Machine Learning:
       - Overview: software/machine_learning.md
       - TensorFlow: software/tensorflow.md
@@ -48,12 +54,6 @@ nav:
       - Distributed Training: software/distributed_training.md
       - Hyperparameter Optimization (OmniOpt): software/hyperparameter_optimization.md
       - PowerAI: software/power_ai.md
-    - Data Analytics:
-      - Overview: software/data_analytics.md
-      - Data Analytics with R: software/data_analytics_with_r.md
-      - Data Analytics with RStudio: software/data_analytics_with_rstudio.md
-      - Data Analytics with Python: software/data_analytics_with_python.md
-      - Apache Spark: software/big_data_frameworks_spark.md
     - SCS5 Migration Hints: software/scs5_software.md
     - Virtual Machines: software/virtual_machines.md
     - Virtual Desktops: software/virtual_desktops.md
