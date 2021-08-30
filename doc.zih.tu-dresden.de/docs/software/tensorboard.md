@@ -21,7 +21,7 @@ ln -s <your-tensorboard-target-directory> /tmp/$USER/tf-logs
 
 Update TensorBoard tab if needed with `F5`.
 
-## Using TensorBoard
+## Using TensorBoard from Module Environment
 
 On ZIH systems, TensorBoard is also available as an extension of the TensorFlow module. To check
 whether a specific TensorFlow module provides TensorBoard, use the following command:
