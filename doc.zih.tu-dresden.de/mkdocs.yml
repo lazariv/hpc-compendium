@@ -43,8 +43,8 @@ nav:
     - Machine Learning:
       - Overview: software/machine_learning.md
       - TensorFlow: software/tensorflow.md
+      - TensorBoard: software/tensorboard.md
       - PyTorch: software/pytorch.md
-      - Tensorboard: software/tensorboard.md
       - Distributed Training: software/distributed_training.md
       - Hyperparameter Optimization (OmniOpt): software/hyperparameter_optimization.md
       - PowerAI: software/power_ai.md
