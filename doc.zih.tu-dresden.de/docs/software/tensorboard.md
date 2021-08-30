@@ -8,7 +8,7 @@ application.
 
 The easiest way to use TensorBoard is via [JupyterHub](../access/jupyterhub.md). The default
 TensorBoard log directory is set to `/tmp/<username>/tf-logs` on the compute node, where Jupyter
-session is running. In order to show your own directory with logs, it can be "sym-linked" to the
+session is running. In order to show your own directory with logs, it can be soft-linked to the
 default folder. Open a "New Launcher" menu (`Ctrl+Shift+L`) and select "Terminal" session. It
 will start new terminal on the respective compute node. Create a directory `/tmp/lazariv/tf-logs`
 and link it with your log directory
