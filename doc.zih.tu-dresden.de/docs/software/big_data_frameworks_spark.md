@@ -127,7 +127,7 @@ in an interactive job with:
 marie@compute$ source framework-configure.sh spark my-config-template
 ```
 
-### Using Hadoop Distributed Filesystem (HDFS)
+### Using Hadoop Distributed File System (HDFS)
 
 If you want to use Spark and HDFS together (or in general more than one
 framework), a scheme similar to the following can be used:
