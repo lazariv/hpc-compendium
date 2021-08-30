@@ -12,10 +12,10 @@ are valid for PowerAI version 1.5.4.
 -   [PowerAI Introduction](https://www.ibm.com/support/knowledgecenter/en/SS5SF7_1.5.3/welcome/welcome.htm)
     (note that you can select different PowerAI versions with the drop down menu
     "Change Product or version")
--   [PowerAI Developer Portal](https://developer.ibm.com/linuxonpower/deep-learning-powerai/) 
+-   [PowerAI Developer Portal](https://developer.ibm.com/linuxonpower/deep-learning-powerai/)
     (Some Use Cases and examples)
 -   [Included Software Packages](https://www.ibm.com/support/knowledgecenter/en/SS5SF7_1.5.4/navigation/pai_software_pkgs.html)
-    (note that you can select different PowerAI versions with the drop down menu "Change Product 
+    (note that you can select different PowerAI versions with the drop down menu "Change Product
     or version")
 
 ## Specific User Guides
@@ -24,11 +24,11 @@ are valid for PowerAI version 1.5.4.
 - [Caffe](https://www.ibm.com/support/knowledgecenter/SS5SF7_1.5.4/navigation/pai_getstarted_caffe.html)
 - [TensorFlow](https://www.ibm.com/support/knowledgecenter/SS5SF7_1.5.4/navigation/pai_getstarted_tensorflow.html?view=kc)
 - [TensorFlow Probability](https://www.ibm.com/support/knowledgecenter/SS5SF7_1.5.4/navigation/pai_getstarted_tensorflow_prob.html?view=kc)
-  This release of PowerAI includes TensorFlow Probability. TensorFlow Probability is a library 
+  This release of PowerAI includes TensorFlow Probability. TensorFlow Probability is a library
   for probabilistic reasoning and statistical analysis in TensorFlow.
 - [TensorBoard](https://www.ibm.com/support/knowledgecenter/SS5SF7_1.5.4/navigation/pai_getstarted_tensorboard.html?view=kc)
 - [Snap ML](https://www.ibm.com/support/knowledgecenter/SS5SF7_1.5.4/navigation/pai_getstarted_snapml.html)
-  This release of PowerAI includes Snap Machine Learning (Snap ML). Snap ML is a library for 
+  This release of PowerAI includes Snap Machine Learning (Snap ML). Snap ML is a library for
   training generalized linear models. It is being developed at IBM with the
   vision to remove training time as a bottleneck for machine learning
   applications. Snap ML supports many classical machine learning

@@ -196,12 +196,13 @@ There are three script preparation steps for OmniOpt:
 
 ### Configure and Run OmniOpt
 
-As a starting point, configuring OmniOpt is done via a GUI at [https://imageseg.scads.ai/omnioptgui/](https://imageseg.scads.ai/omnioptgui/). 
-This GUI guides through the configuration process and as result the config file is created automatically according to the GUI input.
-If you are more familiar with using OmniOpt later on, this config file can be modified directly without using the GUI. 
+As a starting point, configuring OmniOpt is done via a GUI at [https://imageseg.scads.ai/omnioptgui/](https://imageseg.scads.ai/omnioptgui/).
+This GUI guides through the configuration process and as result the config file is created
+automatically according to the GUI input. If you are more familiar with using OmniOpt later on, this
+config file can be modified directly without using the GUI.
 
-A screenshot of the GUI, including a properly configuration for the MNIST fashion example is shown below. 
-The GUI, in which the displayed values are already entered, can be reached [here](https://imageseg.scads.ai/omnioptgui/?maxevalserror=5&mem_per_worker=1000&projectname=mnist-fashion-optimization-set-1&partition=alpha&searchtype=tpe.suggest&objective_program=bash%20%2Fscratch%2Fws%2Fpath%2Fto%2Fyou%2Fscript%2Frun-mnist-fashion.sh%20(%24x_0)%20(%24x_1)%20(%24x_2)&param_0_type=hp.randint&param_1_type=hp.randint&number_of_parameters=3){:target="_blank"}.
+A screenshot of the GUI, including a properly configuration for the MNIST fashion example is shown
+below. The GUI, in which the displayed values are already entered, can be reached [here](https://imageseg.scads.ai/omnioptgui/?maxevalserror=5&mem_per_worker=1000&projectname=mnist-fashion-optimization-set-1&partition=alpha&searchtype=tpe.suggest&objective_program=bash%20%2Fscratch%2Fws%2Fpath%2Fto%2Fyou%2Fscript%2Frun-mnist-fashion.sh%20(%24x_0)%20(%24x_1)%20(%24x_2)&param_0_type=hp.randint&param_1_type=hp.randint&number_of_parameters=3){:target="_blank"}.
 
 ![GUI for configuring OmniOpt](misc/hyperparameter_optimization-OmniOpt-GUI.png)
 {: align="center"}

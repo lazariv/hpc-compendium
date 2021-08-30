@@ -1,14 +1,14 @@
 # Python for Data Analytics
 
-Python is a high-level interpreted language widely used in research and science. Using ZIH system 
+Python is a high-level interpreted language widely used in research and science. Using ZIH system
 allows you to work with python quicker and more effective. Here the general introduction to working
-with python on ZIH system is given. For specific machine learning frameworks see respective 
-documentation in [machine learning](machine_learning.md) section.   
+with python on ZIH system is given. For specific machine learning frameworks see respective
+documentation in [machine learning](machine_learning.md) section.
 
 ## Python Virtual Environments
 
-Often it is useful to create an isolated development environment, which can be shared among 
-a research group and/or teaching class. For this purpose python virtual environments can be used. 
+Often it is useful to create an isolated development environment, which can be shared among
+a research group and/or teaching class. For this purpose python virtual environments can be used.
 For more details see [here](python_virtual_environments.md).
 
 ## Jupyter Notebooks
@@ -17,7 +17,7 @@ Jupyter notebooks are a great way for interactive computing in a web
 browser. They allow working with data cleaning and transformation,
 numerical simulation, statistical modelling, data visualization and machine learning.
 
-On ZIH system a [JupyterHub](../access/jupyterhub.md) is available, which can be used to run 
+On ZIH system a [JupyterHub](../access/jupyterhub.md) is available, which can be used to run
 a Jupyter notebook on an HPC node, as well using a GPU when needed.  
 
 ## Dask
@@ -214,4 +214,3 @@ from mpi4py import MPI                                                          
 comm = MPI.COMM_WORLD
 print("%d of %d" % (comm.Get_rank(), comm.Get_size()))
 ```
-

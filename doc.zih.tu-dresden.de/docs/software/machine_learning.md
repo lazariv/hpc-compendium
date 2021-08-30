@@ -30,8 +30,8 @@ marie@ml$ module load modenv/ml    #example output: The following have been relo
 
 ### Power AI
 
-There are tools provided by IBM, that work on `ml` partition and are related to AI tasks. 
-For more information see [here](power_ai.md). 
+There are tools provided by IBM, that work on `ml` partition and are related to AI tasks.
+For more information see [here](power_ai.md).
 
 ## Alpha partition
 
