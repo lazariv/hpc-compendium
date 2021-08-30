@@ -10,9 +10,6 @@ similarly to a new kernel from [JupyterLab](../access/jupyterhub.md#jupyterlab) 
 ![RStudio launcher in JupyterHub](misc/data_analytics_with_rstudio_launcher.jpg)
 {: style="width:90%" }
 
-???tip
+!!! tip
     If an error "could not start RStudio in time" occurs, try reloading the web page with F5.
 
-???note
-    Please note that it is currently not recommended to use an interactive `x11` job with the
-    desktop version of RStudio as described in the introductory slides.
