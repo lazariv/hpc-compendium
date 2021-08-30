@@ -12,4 +12,3 @@ similarly to a new kernel from [JupyterLab](../access/jupyterhub.md#jupyterlab) 
 
 !!! tip
     If an error "could not start RStudio in time" occurs, try reloading the web page with `F5`.
-
