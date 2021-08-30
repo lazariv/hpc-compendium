@@ -27,7 +27,7 @@ conda manager is included in all versions of Anaconda and Miniconda.
 This example shows how to start working with **virtualenv** and Python virtual environment (using
 the module system).
 
-??? hint
+!!! hint
     We recommend to use [workspaces](../../data_lifecycle/workspaces) for your virtual environments.
 
 At first we check available Python modules and load the preferred version:
