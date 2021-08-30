@@ -1,6 +1,6 @@
 # TensorFlow
 
-TensorFlow is a free end-to-end open-source software library for dataflow and differentiable
+TensorFlow is a free end-to-end open-source software library for data flow and differentiable
 programming across many tasks. It is a symbolic math library, used primarily for machine learning
 applications. It has a comprehensive, flexible ecosystem of tools, libraries and community
 resources.
@@ -43,7 +43,8 @@ marie@ml$ module load TensorFlow
 Module TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4 and 47 dependencies loaded.
 ```
 
-Now we can use TensorFlow. In the following example, we create a python virtual environment and
+Now we can use TensorFlow. Nevertheless when working with Python in an interactive job, we recommend
+to use a virtual environment. In the following example, we create a python virtual environment and
 import TensorFlow:
 
 !!! example
@@ -95,8 +96,8 @@ Basic test of tensorflow - A Hello World!!!...
 
 ## TensorFlow with Python or R
 
-For further information on TensorFlow in combination with Python see
-[here](data_analytics_with_python.md), for R see [here](data_analytics_with_r.md).
+Further information on data analytics with Python can be found [here](data_analytics_with_python).
+For information about R, see [here](data_analytics_with_r).
 
 ## Distributed TensorFlow
 
