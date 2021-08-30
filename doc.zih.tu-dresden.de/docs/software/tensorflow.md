@@ -9,6 +9,7 @@ Please check the software modules list via
 
 ```console
 marie@compute$ module spider TensorFlow
+[...]
 ```
 
 to find out, which TensorFlow modules are available on your partition.
@@ -25,42 +26,40 @@ and the TensorFlow library. You can find detailed hardware specification
 On the **Alpha** partition load the module environment:
 
 ```console
-marie@login$ srun -p alpha --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=8000 bash   #Job submission on alpha nodes with 1 gpu on 1 node with 8000 Mb per CPU
 marie@alpha$ module load modenv/scs5
 ```
 
 On the **ML** partition load the module environment:
 
 ```console
-marie@login$ srun -p ml --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=8000 bash    #Job submission in ml nodes with 1 gpu on 1 node with 8000 Mb per CPU
-marie@ml$ module load modenv/ml    #example output: The following have been reloaded with a version change:  1) modenv/scs5 => modenv/ml
+marie@ml$ module load modenv/ml
+The following have been reloaded with a version change:  1) modenv/scs5 => modenv/ml
 ```
 
 This example shows how to install and start working with TensorFlow (with using modules system)
 
 ```console
 marie@ml$ module load TensorFlow  
-Module TensorFlow/1.10.0-PythonAnaconda-3.6 and 1 dependency loaded.
+Module TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4 and 47 dependencies loaded.
 ```
 
-Now we check that we can access TensorFlow. One example is tensorflow-test:
+Now we can use TensorFlow. In the following example, we create a python virtual environment and
+import TensorFlow:
 
-```console
-marie@ml$ tensorflow-test    
-Basic test of tensorflow - A Hello World!!!...
-```
-
-??? example
-    Following example shows how to create python virtual environment and import TensorFlow.
-
+!!! example
     ```console
-    marie@ml$ mkdir python-environments    #create folder 
-    marie@ml$ which python    #check which python are you using
-    /sw/installed/Python/3.7.4-GCCcore-8.3.0/bin/python
-    marie@ml$ virtualenv --system-site-packages python-environments/env    #create virtual environment "env" which inheriting with global site packages
+    marie@ml$ ws_allocate -F scratch python_virtual_environment 1
+    Info: creating workspace.
+    /scratch/ws/1/python_virtual_environment
     [...]
-    marie@ml$ source python-environments/env/bin/activate    #activate virtual environment "env". Example output: (env) bash-4.2$
+    marie@ml$ which python    #check which python are you using
+    /sw/installed/Python/3.7.2-GCCcore-8.2.0
+    marie@ml$ virtualenv --system-site-packages /scratch/ws/1/python_virtual_environment/env
+    [...]
+    marie@ml$ source /scratch/ws/1/python_virtual_environment/env/bin/activate
     marie@ml$ python -c "import tensorflow as tf; print(tf.__version__)"
+    [...]
+    2.3.1
     ```
 
 ## TensorFlow in JupyterHub
@@ -84,14 +83,14 @@ Another option to use TensorFlow are containers. In the HPC domain, the
 [Singularity](https://singularity.hpcng.org/) container system is a widely used tool. In the
 following example, we use the tensorflow-test in a Singularity container:
 
-```console
-marie@login$ srun -p ml --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=8000 bash    
+```console  
 marie@ml$ singularity shell --nv /scratch/singularity/powerai-1.5.3-all-ubuntu16.04-py3.img
-marie@ml$ export PATH=/opt/anaconda3/bin:$PATH                                               
-marie@ml$ source activate /opt/anaconda3    #activate conda environment
-marie@ml$ . /opt/DL/tensorflow/bin/tensorflow-activate
-marie@ml$ tensorflow-test
+Singularity>$ export PATH=/opt/anaconda3/bin:$PATH                                               
+Singularity>$ source activate /opt/anaconda3    #activate conda environment
+(base) Singularity>$ . /opt/DL/tensorflow/bin/tensorflow-activate
+(base) Singularity>$ tensorflow-test
 Basic test of tensorflow - A Hello World!!!...
+[...]
 ```
 
 ## TensorFlow with Python or R
@@ -123,11 +122,12 @@ tf_upgrade_v2 utility to help transition legacy code to the new API.
 
 ## Keras
 
-[Keras](keras.io) is a high-level neural network API, written in Python and capable of running on
-top of TensorFlow. Please check the software modules list via
+[Keras](https://keras.io) is a high-level neural network API, written in Python and capable
+of running on top of TensorFlow. Please check the software modules list via
 
 ```console
 marie@compute$ module spider Keras
+[...]
 ```
 
 to find out, which Keras modules are available on your partition. TensorFlow should be automatically

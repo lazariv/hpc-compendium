@@ -14,7 +14,7 @@ marie@login$ module av Spark
 ```
 
 The **aim** of this page is to introduce users on how to start working with
-these frameworks on ZIH systems, e. g. on the [HPC-DA](../jobs_and_resources/hpcda.md) system.
+these frameworks on ZIH systems.
 
 **Prerequisites:** To work with the frameworks, you need [access](../access/ssh_login.md) to ZIH
 systems and basic knowledge about data analysis and the batch system
@@ -127,7 +127,7 @@ in an interactive job with:
 marie@compute$ source framework-configure.sh spark my-config-template
 ```
 
-### Using Hadoop Distributed File System (HDFS)
+### Using Hadoop Distributed Filesystem (HDFS)
 
 If you want to use Spark and HDFS together (or in general more than one
 framework), a scheme similar to the following can be used:
@@ -156,10 +156,7 @@ Please use a [batch job](../jobs_and_resources/slurm.md) similar to
 
 There are two general options on how to work with Jupyter notebooks:
 There is [JupyterHub](../access/jupyterhub.md), where you can simply
-run your Jupyter notebook on HPC nodes (the preferable way). Also, you
-can run a remote Jupyter server manually within a GPU job using
-the modules and packages you need. You can find the manual server
-setup [here](deep_learning.md).
+run your Jupyter notebook on HPC nodes (the preferable way).
 
 ### Preparation
 
@@ -202,14 +199,14 @@ You are now ready to spawn a notebook with Spark.
 Assuming that you have prepared everything as described above, you can go to
 [https://taurus.hrsk.tu-dresden.de/jupyter](https://taurus.hrsk.tu-dresden.de/jupyter).
 In the tab "Advanced", go
-to the field "Preload modules" and select one of the Spark modules.
+to the field `Preload modules` and select one of the Spark modules.
 When your Jupyter instance is started, check whether the kernel that
 you created in the preparation phase (see above) is shown in the top
 right corner of the notebook. If it is not already selected, select the
 kernel `haswell-py3.6-spark`. Then, you can set up Spark. Since the setup
 in the notebook requires more steps than in an interactive session, we
 have created an example notebook that you can use as a starting point
-for convenience: [SparkExample.ipynb](misc/SparkExample.ipynb)
+for convenience: [Spark-Example](misc/SparkExample.ipynb)
 
 !!! note
 

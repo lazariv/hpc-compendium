@@ -37,9 +37,7 @@ Some questions you should ask yourself:
 Subsections:
 
 - [Compilers](compilers.md)
-- [Debugging Tools](Debugging Tools.md)
-  - [Debuggers](debuggers.md) (GDB, Allinea DDT, Totalview)
-  - [Tools to detect MPI usage errors](mpi_usage_error_detection.md) (MUST)
+- [Debugging](debuggers.md)
 - PerformanceTools.md: [Score-P](scorep.md), [Vampir](vampir.md)
 - [Libraries](libraries.md)
 

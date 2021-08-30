@@ -2,9 +2,10 @@
 
 [PyTorch](https://pytorch.org/){:target="_blank"} is an open-source machine learning framework.
 It is an optimized tensor library for deep learning using GPUs and CPUs.
-PyTorch is a machine learning tool developed by Facebooks AI division to process large-scale object
-detection, segmentation, classification, etc. PyTorch provides a core datastructure, the tensor, a
-multi-dimensional array that shares many similarities with Numpy arrays.
+PyTorch is a machine learning tool developed by Facebooks AI division to process large-scale
+object detection, segmentation, classification, etc.
+PyTorch provides a core datastructure, the tensor, a multi-dimensional array that shares many
+similarities with Numpy arrays.
 
 Please check the software modules list via
 
@@ -86,7 +87,7 @@ marie@ml$ python -c "import torch; print(torch.__version__)"
 In addition to using interactive and batch jobs, it is possible to work with Pytorch using JupyterHub.
 The production and test environments of JupyterHub contain Python kernels, that come with a Pytorch support.
 
-![Pytorch module in JupyterHub](misc/Pytorch_jupyter_module.png)
+![Pytorch module in JupyterHub]**TODO**(misc/Pytorch_jupyter_module.png)
 {: align="center"}
 
 ## Distributed Pytorch
