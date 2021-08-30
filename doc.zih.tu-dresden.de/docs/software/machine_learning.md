@@ -1,9 +1,9 @@
 # Machine Learning
 
 This is an introduction of how to run machine learning applications on ZIH systems.
-For machine learning purposes, we recommend to use the **Alpha** and/or **ML** partitions.
+For machine learning purposes, we recommend to use the [Alpha](#alpha-partition) and/or [ML](#ml-partition) partitions.
 
-## ML partition
+## ML Partition
 
 The compute nodes of the ML partition are built on the base of [Power9](https://www.ibm.com/it-infrastructure/power/power9)
 architecture from IBM. The system was created for AI challenges, analytics and working with
@@ -79,7 +79,7 @@ After accessing JupyterHub, you can start a new session and configure it. For ma
 purposes, select either **Alpha** or **ML** partition and the resources, your application requires.
 
 In your session you can use [Python](../data_analytics_with_python/#jupyter-notebooks), [R](../data_analytics_with_r/#r-in-jupyterhub)
-or [R studio](data_analytics_with_rstudio) for your machine learning and data science topics.
+or [R studio](../data_analytics_with_rstudio/) for your machine learning and data science topics.
 
 ## Machine Learning with Containers
 
@@ -112,7 +112,7 @@ marie@ml$ singularity run --nv my-ML-container.sif    #run my-ML-container.sif c
 
 The following NVIDIA libraries are available on all nodes:
 
-|       |                                         |
+| Name  |  Path                                   |
 |-------|-----------------------------------------|
 | NCCL  | `/usr/local/cuda/targets/ppc64le-linux` |
 | cuDNN | `/usr/local/cuda/targets/ppc64le-linux` |
@@ -129,7 +129,7 @@ marie@compute$ export NCCL_MIN_NRINGS=4
 
 The following HPC related software is installed on all nodes:
 
-|                  |                          |
+| Name             |  Path                    |
 |------------------|--------------------------|
 | IBM Spectrum MPI | `/opt/ibm/spectrum_mpi/` |
 | PGI compiler     | `/opt/pgi/`              |
