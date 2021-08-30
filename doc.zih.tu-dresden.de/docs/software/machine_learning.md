@@ -1,7 +1,8 @@
 # Machine Learning
 
 This is an introduction of how to run machine learning applications on ZIH systems.
-For machine learning purposes, we recommend to use the [Alpha](#alpha-partition) and/or [ML](#ml-partition) partitions.
+For machine learning purposes, we recommend to use the [Alpha](#alpha-partition) and/or
+[ML](#ml-partition) partitions.
 
 ## ML Partition
 
@@ -37,7 +38,7 @@ For more information see [here](power_ai.md).
 
 Another partition for machine learning tasks is Alpha. It is mainly dedicated to [ScaDS.AI](https://scads.ai/)
 topics. Each node on Alpha has 2x AMD EPYC CPUs, 8x NVIDIA A100-SXM4 GPUs, 1TB RAM and 3.5TB local
-space (/tmp) on an NVMe device. You can find more details of the partition [here](../jobs_and_resources/alpha_centauri.md).
+space (`/tmp`) on an NVMe device. You can find more details of the partition [here](../jobs_and_resources/alpha_centauri.md).
 
 ### Modules
 
@@ -55,7 +56,7 @@ The following have been reloaded with a version change:  1) modenv/ml => modenv/
 Python users should use a [virtual environment](python_virtual_environments.md) when conducting
 machine learning tasks via console.
 
-??? hint
+!!! hint
     In case of using [sbatch files](../jobs_and_resources/batch_systems.md)
     to send your job you usually don't need a virtual environment.
 
@@ -66,7 +67,7 @@ For more details on machine learning or data science with Python see [here](data
 R also supports machine learning via console. It does not require a virtual environment due to a
 different package management.
 
-For more details on machine learning or data science with R see [here](../data_analytics_with_r/#r-console).
+For more details on machine learning or data science with R see [here](data_analytics_with_r.md/#r-console).
 
 ## Machine Learning with Jupyter
 
@@ -78,8 +79,8 @@ your Jupyter notebooks on HPC nodes.
 After accessing JupyterHub, you can start a new session and configure it. For machine learning
 purposes, select either **Alpha** or **ML** partition and the resources, your application requires.
 
-In your session you can use [Python](../data_analytics_with_python/#jupyter-notebooks), [R](../data_analytics_with_r/#r-in-jupyterhub)
-or [R studio](../data_analytics_with_rstudio/) for your machine learning and data science topics.
+In your session you can use [Python](data_analytics_with_python.md/#jupyter-notebooks), [R](data_analytics_with_r.md/#r-in-jupyterhub)
+or [RStudio](data_analytics_with_rstudio.md) for your machine learning and data science topics.
 
 ## Machine Learning with Containers
 
@@ -143,7 +144,7 @@ The following HPC related software is installed on all nodes:
 There are many different datasets designed for research purposes. If you would like to download some
 of them, keep in mind that many machine learning libraries have direct access to public datasets
 without downloading it, e.g. [TensorFlow Datasets](https://www.tensorflow.org/datasets). If you
-still need to download some datasets use [DataMover](../../data_transfer/data_mover).
+still need to download some datasets use [DataMover](../data_transfer/data_mover.md).
 
 ### The ImageNet dataset
 
