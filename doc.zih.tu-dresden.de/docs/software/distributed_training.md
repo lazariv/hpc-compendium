@@ -6,7 +6,7 @@
 
 TODO
 
-### Distributed Pytorch
+### Distributed PyTorch
 
 Hint: just copied some old content as starting point
 

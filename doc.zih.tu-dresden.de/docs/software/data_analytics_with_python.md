@@ -159,4 +159,3 @@ print("%d of %d" % (comm.Get_rank(), comm.Get_size()))
 ```
 
 **TODO** verify mpi4py installation
-
