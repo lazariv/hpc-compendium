@@ -1,4 +1,4 @@
-# Pytorch
+# PyTorch
 
 [PyTorch](https://pytorch.org/){:target="_blank"} is an open-source machine learning framework.
 It is an optimized tensor library for deep learning using GPUs and CPUs.
@@ -13,13 +13,13 @@ Please check the software modules list via
 marie@login$ module spider pytorch
 ```
 
-to find out, which Pytorch modules are available on your partition.
+to find out, which PyTorch modules are available on your partition.
 
 We recommend using **Alpha** and/or **ML** partitions when working with machine learning workflows
-and the Pytorch library.
+and the PyTorch library.
 You can find detailed hardware specification [here](../jobs_and_resources/hardware_taurus.md).
 
-## Pytorch Console
+## PyTorch Console
 
 On the **Alpha** partition load the module environment:
 
@@ -42,7 +42,7 @@ Module GCC/10.2.0, CUDA/11.1.1, OpenMPI/4.0.5, PyTorch/1.9.0 and 54 dependencies
     marie@alpha$ pip install torchvision --no-deps
     ```
 
-    Using the **--no-deps** option for "pip install" is necessary here as otherwise the Pytorch version might be replaced and you will run into trouble with the cuda drivers.
+    Using the **--no-deps** option for "pip install" is necessary here as otherwise the PyTorch version might be replaced and you will run into trouble with the cuda drivers.
 
 On the **ML** partition:
 
@@ -56,21 +56,21 @@ after calling
 marie@login$ module spider pytorch
 ```
 
-we know that we can load Pytorch (including torchvision) with
+we know that we can load PyTorch (including torchvision) with
 
 ```console
 marie@ml$ mmodule load modenv/ml torchvision/0.7.0-fosscuda-2019b-Python-3.7.4-PyTorch-1.6.0
 Module torchvision/0.7.0-fosscuda-2019b-Python-3.7.4-PyTorch-1.6.0 and 55 dependencies loaded.
 ```
 
-Now we check that we can access Pytorch:
+Now we check that we can access PyTorch:
 
 ```console
 marie@{ml,alpha}$ python -c "import torch; print(torch.__version__)"
 ```
 
 The following example shows how to create a python virtual environment and
- import Pytorch.
+ import PyTorch.
 
 ```console
 marie@ml$ mkdir python-environments    #create folder
@@ -82,14 +82,14 @@ marie@ml$ source python-environments/env/bin/activate    #activate virtual envir
 marie@ml$ python -c "import torch; print(torch.__version__)"
 ```
 
-## Pytorch in JupyterHub
+## PyTorch in JupyterHub
 
-In addition to using interactive and batch jobs, it is possible to work with Pytorch using JupyterHub.
-The production and test environments of JupyterHub contain Python kernels, that come with a Pytorch support.
+In addition to using interactive and batch jobs, it is possible to work with PyTorch using JupyterHub.
+The production and test environments of JupyterHub contain Python kernels, that come with a PyTorch support.
 
-![Pytorch module in JupyterHub](misc/Pytorch_jupyter_module.png)
+![PyTorch module in JupyterHub](misc/Pytorch_jupyter_module.png)
 {: align="center"}
 
-## Distributed Pytorch
+## Distributed PyTorch
 
-For details on how to run Pytorch with multiple GPUs and/or multiple nodes, see [distributed training](distributed_training.md).
+For details on how to run PyTorch with multiple GPUs and/or multiple nodes, see [distributed training](distributed_training.md).
