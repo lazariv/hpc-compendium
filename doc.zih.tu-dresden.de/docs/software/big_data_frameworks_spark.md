@@ -206,7 +206,7 @@ right corner of the notebook. If it is not already selected, select the
 kernel `haswell-py3.6-spark`. Then, you can set up Spark. Since the setup
 in the notebook requires more steps than in an interactive session, we
 have created an example notebook that you can use as a starting point
-for convenience: [Spark-Example](misc/SparkExample.ipynb)
+for convenience: [SparkExample.ipynb](misc/SparkExample.ipynb)
 
 !!! note
 
