@@ -25,9 +25,49 @@ browser. They allow working with data cleaning and transformation,
 numerical simulation, statistical modeling, data visualization and machine learning.
 
 On ZIH system a [JupyterHub](../access/jupyterhub.md) is available, which can be used to run
-a Jupyter notebook on a node, as well using a GPU when needed.  
+a Jupyter notebook on a node, as well using a GPU when needed.
 
 ## Parallel Computing with Python
+
+### Pandas
+
+[Pandas](https://pandas.pydata.org/){:target="_blank"} is a widely used library for data analytics in Python.
+In many cases an existing source code using Pandas can be easily modified for parallel execution.
+The number of threads that can be used in parallel depends on the number of cores (parameter `-c`) within the Slurm request, e.g.
+
+```console
+marie@login$ srun -p haswell -c 4 --mem=2G --hint=nomultithread --pty --time=8:00:00 bash
+```
+
+This request from above will allow to use 4 parallel threads.
+
+If the pandarallel module is not installed already, check out the usage of [virtual environments](python_virtual_environments.md) for installing the module.
+
+??? example
+    ```python
+    import pandas as pd
+    import numpy as np
+    from pandarallel import pandarallel
+
+    pandarallel.initialize()
+    # unfortunately the initialize method gets the total number of physical cores without
+    # taking into account allocated cores by Slurm, but the choice of the -c parameter is of relevance here
+
+    N_rows = 10**5
+    N_cols = 5
+    df = pd.DataFrame(np.random.randn(N_rows, N_cols))
+
+    # here some function that needs to be executed in parallel
+    def transform(x):
+        return(np.mean(x))
+
+    print('calculate with normal apply...')
+    df.apply(func=transform, axis=1)
+
+    print('calculate with pandarallel...')
+    df.parallel_apply(func=transform, axis=1)
+    ```
+For more examples of using pandarellel check out [https://github.com/nalepae/pandarallel/blob/master/docs/examples.ipynb](https://github.com/nalepae/pandarallel/blob/master/docs/examples.ipynb){:target="_blank"}.
 
 ### Dask
 
@@ -47,20 +87,21 @@ Dask is composed of two parts:
 Dask supports several user interfaces:
 
 - High-Level
-    - Arrays: Parallel NumPy
-    - Bags: Parallel lists
-    - DataFrames: Parallel Pandas
-    - Machine Learning: Parallel Scikit-Learn
-    - Others from external projects, like XArray
+  - Arrays: Parallel NumPy
+  - Bags: Parallel lists
+  - DataFrames: Parallel Pandas
+  - Machine Learning: Parallel Scikit-Learn
+  - Others from external projects, like XArray
 - Low-Level
-    - Delayed: Parallel function evaluation
-    - Futures: Real-time parallel function evaluation
+  - Delayed: Parallel function evaluation
+  - Futures: Real-time parallel function evaluation
 
 #### Dask Installation
 
 !!! hint
     This step might be obsolete, since the library may be already available as a module.
     Check it with
+
     ```console
     marie@compute$ module spider dask
     ```
