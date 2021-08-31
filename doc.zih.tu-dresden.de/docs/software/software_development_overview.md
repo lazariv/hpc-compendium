@@ -14,14 +14,14 @@ It will tell you:
     - [Find caveats and hidden errors in MPI application codes](mpi_usage_error_detection.md)
     - [Debuggers](debuggers.md)
 - How to investigate the performance and efficiency of your code
-    - [Monitor batch jobs with Pika](pika.md)
-    - [Sampling-based performance analysis with Perf](perf_tools.md)
-    - [Event tracing for HPC applications with Score-P](scorep.md)
-    - [Trace visualization with Vampir](vampir.md)
+    - [Pika: monitoring of batch jobs](pika.md)
+    - [Perf: sampling-based performance analysis](perf_tools.md)
+    - [Score-P: event tracing of HPC applications](scorep.md)
+    - [Vampir: trace visualization](vampir.md)
 
 Some hints that are helpful:
 
-- Stick to standards wherever possible, e.g. use the **`-std`** flag
+- Stick to standards wherever possible, e.g. use the `-std` flag
   for GNU and Intel C/C++ compilers. Computers are short living
   creatures, migrating between platforms can be painful. In addition,
   running your code on different platforms greatly increases the
