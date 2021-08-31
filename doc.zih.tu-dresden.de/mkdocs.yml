@@ -63,8 +63,8 @@ nav:
       - Compilers: software/compilers.md
       - GPU Programming: software/gpu_programming.md
       - Libraries: software/libraries.md
-      - Debugging: software/debuggers.md
       - MPI Error Detection: software/mpi_usage_error_detection.md
+      - Debugging: software/debuggers.md
       - Pika: software/pika.md
       - Perf Tools: software/perf_tools.md 
       - Score-P: software/scorep.md
