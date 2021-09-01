@@ -44,7 +44,7 @@ To work as efficient as possible, consider the following points
 - Store checkpoints and other temporary data in `/scratch/ws/...`
 - Compilation in `/dev/shm` or `/tmp`
 
-Getting high I/O-bandwitdh
+Getting high I/O-bandwidth
 
 - Use many clients
 - Use many processes (writing in the same file at the same time is possible)
@@ -52,7 +52,7 @@ Getting high I/O-bandwitdh
 
 ## Cheat Sheet for Debugging File System Issues
 
-Every Taurus-User should normaly be able to perform the following commands to get some intel about
+Every Taurus-User should normally be able to perform the following commands to get some intel about
 their data.
 
 ### General
@@ -63,7 +63,7 @@ For the first view, you can easily use the "df-command".
 df
 ```
 
-Alternativly you can use the "findmnt"-command, which is also able to perform an `df` by adding the
+Alternatively, you can use the "findmnt"-command, which is also able to perform an `df` by adding the
 "-D"-parameter.
 
 ```Bash
@@ -122,7 +122,7 @@ This will set the stripe pattern for `/beegfs/global0/path/to/mydir/` to a chunk
 distributed over 16 storage targets.
 
 Find files located on certain server or targets. The following command searches all files that are
-stored on the storage targets with id 4 or 30 und my-workspace directory.
+stored on the storage targets with id 4 or 30 and my-workspace directory.
 
 ```Bash
 beegfs-ctl --find /beegfs/global0/my-workspace/ --targetid=4 --targetid=30 --mount=/beegfs/global0

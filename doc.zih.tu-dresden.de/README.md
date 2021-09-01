@@ -40,7 +40,7 @@ Now, create a local clone of your fork
 
 #### Install Dependencies
 
-**TODO:** Describtion
+**TODO:** Description
 
 ```Shell Session
 ~ cd hpc-compendium/doc.zih.tu-dresden.de
@@ -61,7 +61,7 @@ editor are invoked: Do your changes, add a meaningful commit message and commit 
 The more sophisticated integrated Web IDE is reached from the top level menu of the repository or
 by selecting any source file.
 
-Other git services might have an aquivivalent web interface to interact with the repository. Please
+Other git services might have an equivalent web interface to interact with the repository. Please
 refer to the corresponding documentation for further information.
 
 <!--This option of contributing is only available for users of-->
@@ -157,6 +157,22 @@ To check a single file, e. g. `doc.zih.tu-dresden.de/docs/software/big_data_fram
 docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium markdown-link-check docs/software/big_data_frameworks.md
 ```
 
+For spell-checking a single file, use:
+
+```Bash
+docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium ./util/check-spelling.sh <file>
+```
+
+For spell-checking all files, use:
+
+```Bash
+docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium ./util/check-spelling.sh
+```
+
+This outputs all words of all files that are unknown to the spell checker.
+To let the spell checker "know" a word, append it to
+`doc.zih.tu-dresden.de/wordlist.aspell`.
+
 #### Build Static Documentation
 
 To build the documentation, invoke `mkdocs build`. This will create a new directory named `public`
@@ -220,7 +236,7 @@ new branch (a so-called feature branch) basing on the `main` branch and commit y
 ```
 
 The last command pushes the changes to your remote at branch `FEATUREBRANCH`. Now, it is time to
-incoporate the changes and improvements into the HPC Compendium. For this, create a
+incorporate the changes and improvements into the HPC Compendium. For this, create a
 [merge request](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/merge_requests/new)
 to the `main` branch.
 
@@ -438,10 +454,8 @@ there is a list of conventions w.r.t. spelling and technical wording.
 * `Slurm` not `SLURM`
 * `Filesystem` not `file system`
 * `ZIH system` and `ZIH systems` not `Taurus`, `HRSKII`, `our HPC systems` etc.
-
-**TODO:** Put into file
-
-**TODO:** Implement checks [Issue #13](#13)
+* `Workspace` not `work space`
+* avoid term `HPC-DA`
 
 ### Code Blocks and Command Prompts
 
@@ -475,6 +489,11 @@ We follow this rules regarding prompts:
 *Remarks:*
 
 * **Always use a prompt**, even there is no output provided for the shown command.
+* All code blocks should use long parameter names (e.g. Slurm parameters), if available.
+* All code blocks which specify some general command templates, e.g. containing `<` and `>`
+  (see [Placeholders](#mark-placeholders)), should use `bash` for the code block. Additionally,
+  an example invocation, perhaps with output, should be given with the normal `console` code block.
+  See also [Code Block description below](#code-blocks-and-syntax-highlighting).
 * Using some magic, the prompt as well as the output is identified and will not be copied!
 * Stick to the [generic user name](#data-privacy-and-generic-user-name) `marie`.
 
@@ -487,7 +506,7 @@ highlighting.  There is a complete list of supported
 
 For consistency, use the following short codes within this project:
 
-`console` for shell session and console:
+With the exception of command templates, use `console` for shell session and console:
 
 ```` markdown
 ```console
@@ -497,20 +516,40 @@ bar
 ```
 ````
 
-`bash` for shell scripts such as jobfiles:
+Make sure that shell session and console code blocks are executable on the login nodes of HPC system.
+
+Command templates use [Placeholders](#mark-placeholders) to mark replaceable code parts. Command
+templates should give a general idea of invocation and thus, do not contain any output. Use a
+`bash` code block followed by an invocation example (with `console`):
+
+```` markdown
+```bash
+marie@local$ ssh -NL <local port>:<compute node>:<remote port> <zih login>@tauruslogin.hrsk.tu-dresden.de
+```
+
+```console
+marie@local$ ssh -NL 5901:172.24.146.46:5901 marie@tauruslogin.hrsk.tu-dresden.de
+```
+````
+
+Also use `bash` for shell scripts such as jobfiles:
 
 ```` markdown
 ```bash
 #!/bin/bash
-#SBATCH -N 1
-#SBATCH -t 01:00:00
-#SBATCH -o slurm-%j.out
+#SBATCH --nodes=1
+#SBATCH --time=01:00:00
+#SBATCH --output=slurm-%j.out
 
 module load foss
 
 srun a.out
 ```
 ````
+
+!!! important
+
+    Use long parameter names where possible to ease understanding.
 
 `python` for Python source code:
 
