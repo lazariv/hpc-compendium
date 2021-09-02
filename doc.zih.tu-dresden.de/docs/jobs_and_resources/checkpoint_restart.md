@@ -137,7 +137,7 @@ to be created automatically. With `--exit-after-ckpt` the application
 will be terminated after the first checkpoint has been created, which
 can be useful if you wish to implement some sort of job chaining on your
 own. 1 In front of your program call, you have to add the wrapper
-script: `dmtcp_launch` **TODO check**
+script: `dmtcp_launch`q
 
 ???+ example
 
