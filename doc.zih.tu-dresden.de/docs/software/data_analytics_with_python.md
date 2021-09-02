@@ -41,6 +41,7 @@ marie@login$ srun -p haswell -c 4 --mem=2G --hint=nomultithread --pty --time=8:0
 
 This request from above will allow to use 4 parallel threads.
 
+The following example shows how to parallelize the apply method for pandas dataframes with the pandarallel module.
 If the pandarallel module is not installed already, check out the usage of [virtual environments](python_virtual_environments.md) for installing the module.
 
 ??? example
