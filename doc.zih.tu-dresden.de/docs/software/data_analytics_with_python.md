@@ -29,10 +29,10 @@ a Jupyter notebook on a node, as well using a GPU when needed.
 
 ## Parallel Computing with Python
 
-### Pandas
+### Pandas with Pandarallel
 
 [Pandas](https://pandas.pydata.org/){:target="_blank"} is a widely used library for data analytics in Python.
-In many cases an existing source code using Pandas can be easily modified for parallel execution.
+In many cases an existing source code using Pandas can be easily modified for parallel execution by using the [pandarallel](https://github.com/nalepae/pandarallel/tree/v1.5.2){:target="_blank"} module.
 The number of threads that can be used in parallel depends on the number of cores (parameter `-c`) within the Slurm request, e.g.
 
 ```console
