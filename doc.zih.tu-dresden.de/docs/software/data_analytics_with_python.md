@@ -14,8 +14,13 @@ For more details see [here](python_virtual_environments.md).
 The interactive Python interpreter can also be used on ZIH systems via an interactive job:
 
 ```console
-marie@login$ srun -p alpha --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=8000 bash   #Job submission on alpha nodes with 1 gpu on 1 node with 8000 Mb per CPU
-marie@alpha$ python
+marie@login$ srun --partition=haswell --gres=gpu:1 --ntasks=1 --cpus-per-task=7 --pty --mem-per-cpu=8000 bash
+marie@compute$ module load Python
+marie@compute$ python
+Python 3.8.6 (default, Feb 17 2021, 11:48:51)
+[GCC 10.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
 ```
 
 ## Jupyter Notebooks
@@ -31,18 +36,22 @@ a Jupyter notebook on a node, as well using a GPU when needed.
 
 ### Pandas with Pandarallel
 
-[Pandas](https://pandas.pydata.org/){:target="_blank"} is a widely used library for data analytics in Python.
-In many cases an existing source code using Pandas can be easily modified for parallel execution by using the [pandarallel](https://github.com/nalepae/pandarallel/tree/v1.5.2){:target="_blank"} module.
-The number of threads that can be used in parallel depends on the number of cores (parameter `-c`) within the Slurm request, e.g.
+[Pandas](https://pandas.pydata.org/){:target="_blank"} is a widely used library for data
+analytics in Python.
+In many cases an existing source code using Pandas can be easily modified for parallel execution
+by using the [pandarallel](https://github.com/nalepae/pandarallel/tree/v1.5.2){:target="_blank"}
+module. The number of threads that can be used in parallel depends on the number of cores
+(parameter `--cpus-per-task`) within the Slurm request, e.g.
 
 ```console
-marie@login$ srun -p haswell -c 4 --mem=2G --hint=nomultithread --pty --time=8:00:00 bash
+marie@login$ srun --partition=haswell --cpus-per-task=4 --mem=2G --hint=nomultithread --pty --time=8:00:00 bash
 ```
 
-This request from above will allow to use 4 parallel threads.
+The request from above will allow to use 4 parallel threads.
 
-The following example shows how to parallelize the apply method for pandas dataframes with the pandarallel module.
-If the pandarallel module is not installed already, check out the usage of [virtual environments](python_virtual_environments.md) for installing the module.
+The following example shows how to parallelize the apply method for pandas dataframes with the
+pandarallel module. If the pandarallel module is not installed already, check out the usage of
+[virtual environments](python_virtual_environments.md) for installing the module.
 
 ??? example
     ```python
@@ -68,7 +77,8 @@ If the pandarallel module is not installed already, check out the usage of [virt
     print('calculate with pandarallel...')
     df.parallel_apply(func=transform, axis=1)
     ```
-For more examples of using pandarellel check out [https://github.com/nalepae/pandarallel/blob/master/docs/examples.ipynb](https://github.com/nalepae/pandarallel/blob/master/docs/examples.ipynb){:target="_blank"}.
+For more examples of using pandarallel check out
+[https://github.com/nalepae/pandarallel/blob/master/docs/examples.ipynb](https://github.com/nalepae/pandarallel/blob/master/docs/examples.ipynb){:target="_blank"}.
 
 ### Dask
 
@@ -88,14 +98,14 @@ Dask is composed of two parts:
 Dask supports several user interfaces:
 
 - High-Level
-  - Arrays: Parallel NumPy
-  - Bags: Parallel lists
-  - DataFrames: Parallel Pandas
-  - Machine Learning: Parallel Scikit-Learn
-  - Others from external projects, like XArray
+    - Arrays: Parallel NumPy
+    - Bags: Parallel lists
+    - DataFrames: Parallel Pandas
+    - Machine Learning: Parallel Scikit-Learn
+    - Others from external projects, like XArray
 - Low-Level
-  - Delayed: Parallel function evaluation
-  - Futures: Real-time parallel function evaluation
+    - Delayed: Parallel function evaluation
+    - Futures: Real-time parallel function evaluation
 
 #### Dask Installation
 
@@ -105,6 +115,14 @@ Dask supports several user interfaces:
 
     ```console
     marie@compute$ module spider dask
+    ------------------------------------------------------------------------------------------
+      dask:
+    ----------------------------------------------------------------------------------------------
+         Versions:
+            dask/2.8.0-fosscuda-2019b-Python-3.7.4
+            dask/2.8.0-Python-3.7.4
+            dask/2.8.0 (E)
+    [...]
     ```
 
 The installation of Dask is very easy and can be done by a user using a [virtual environment](python_virtual_environments.md)
