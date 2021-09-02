@@ -49,8 +49,8 @@ your batch script. In the case of MPI applications, you have to add the
 parameters `--ib --rm` and put it between srun and your application
 call, e.g.:
 
-```console
-marie@login$ srun dmtcp_launch --ib --rm ./my-mpi-application
+```bash
+srun dmtcp_launch --ib --rm ./my-mpi-application
 ```
 
 !!! note
