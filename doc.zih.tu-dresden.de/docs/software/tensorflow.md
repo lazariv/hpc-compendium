@@ -1,6 +1,6 @@
 # TensorFlow
 
-[TensorFlow](https://www.tensorflow.org) is a free end-to-end open-source software library for 
+[TensorFlow](https://www.tensorflow.org) is a free end-to-end open-source software library for
 data flow and differentiable
 programming across many tasks. It is a symbolic math library, used primarily for machine learning
 applications. It has a comprehensive, flexible ecosystem of tools, libraries and community
@@ -30,7 +30,7 @@ On the **Alpha** partition load the module environment:
 marie@alpha$ module load modenv/scs5
 ```
 
-Alternatively you can use `modenv/hiera` module environment, where the newest versions are 
+Alternatively you can use `modenv/hiera` module environment, where the newest versions are
 available
 
 ```console
@@ -127,9 +127,9 @@ For details on how to run TensorFlow with multiple GPUs and/or multiple nodes, s
 
 TensorFlow 2.0 includes many API changes, such as reordering arguments, renaming symbols, and
 changing default values for parameters. Thus in some cases, it makes code written for the TensorFlow
-1.X not compatible with TensorFlow 2.X. However, If you are using the high-level APIs (`tf.keras`) 
-there may be little or no action you need to take to make your code fully 
-[TensorFlow 2.0](https://www.tensorflow.org/guide/migrate) compatible. It is still possible to 
+1.X not compatible with TensorFlow 2.X. However, If you are using the high-level APIs (`tf.keras`)
+there may be little or no action you need to take to make your code fully
+[TensorFlow 2.0](https://www.tensorflow.org/guide/migrate) compatible. It is still possible to
 run 1.X code, unmodified (except for contrib), in TensorFlow 2.0:
 
 ```python
