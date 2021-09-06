@@ -2,7 +2,6 @@ nav:
   - Home: index.md
   - Application for Login and Resources:
     - Overview: application/overview.md
-    - Access: application/access.md
     - Terms: application/terms_of_use.md
     - Request for Resources: application/request_for_resources.md
     - Project Request Form: application/project_request_form.md
