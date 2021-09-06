@@ -118,7 +118,6 @@ interactions, but since GROMACS is extremely fast at calculating the nonbonded i
 usually dominate simulations), many groups are also using it for research on non-biological systems,
 e.g., polymers. For documentations see [Gromacs homepage](https://www.gromacs.org/).
 
-
 GROMACSS is available as [modules](modules.md). Available packages can be listed and loaded with the
 following commands:
 
