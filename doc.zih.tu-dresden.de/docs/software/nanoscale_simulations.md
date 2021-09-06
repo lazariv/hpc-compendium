@@ -77,7 +77,7 @@ Start gamess like this:
 Module gamess/2013 and 2 dependencies loaded.
 ```
 
-For runs with [Slurm](..jobs_and_resources/slurm.md), please use a script like this:
+For runs with [Slurm](../jobs_and_resources/slurm.md), please use a script like this:
 
 ```Bash
 #!/bin/bash
