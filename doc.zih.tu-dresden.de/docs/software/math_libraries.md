@@ -84,7 +84,7 @@ marie@login$ module avail imkl
 
 ### Linking
 
-For linker flag combinations, we highly recommand the
+For linker flag combinations, we highly recommend the
 [MKL Link Line Advisor](http://software.intel.com/en-us/articles/intel-mkl-link-line-advisor/)
 (please make sure that JavaScript is enabled for this page).
 
