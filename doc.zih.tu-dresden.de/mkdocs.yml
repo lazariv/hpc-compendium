@@ -60,14 +60,14 @@ nav:
     - Software Development and Tools:
       - Overview: software/software_development_overview.md
       - Building Software: software/building_software.md
-      - GPU Programming: software/gpu_programming.md
       - Compilers: software/compilers.md
-      - Debuggers: software/debuggers.md
+      - GPU Programming: software/gpu_programming.md
       - Libraries: software/libraries.md
       - MPI Error Detection: software/mpi_usage_error_detection.md
-      - Score-P: software/scorep.md
+      - Debugging: software/debuggers.md
+      - Pika: software/pika.md
       - Perf Tools: software/perf_tools.md 
-      - PIKA: software/pika.md
+      - Score-P: software/scorep.md
       - Vampir: software/vampir.md
   - Data Life Cycle Management:
     - Overview: data_lifecycle/overview.md
@@ -113,7 +113,7 @@ nav:
     - Overview: archive/overview.md
     - Bio Informatics: archive/bioinformatics.md
     - CXFS End of Support: archive/cxfs_end_of_support.md
-    - Debugging Tools: archive/debugging_tools.md
+    - KNL Nodes: archive/knl_nodes.md
     - Load Leveler: archive/load_leveler.md
     - Migrate to Atlas: archive/migrate_to_atlas.md
     - No IB Jobs: archive/no_ib_jobs.md
