@@ -11,7 +11,8 @@ matrices, Born effective charges, and dielectric tensors. Excited states can be 
 Time-Dependent Density Functional Theory (for molecules), or within Many-Body Perturbation Theory
 (the GW approximation).
 
-Available ABINIT packages can be listed and loaded with the following commands:  
+ABINIT is available as [modules](modules.md). Installed versions can be listed and loaded with the
+following commands
 
 ```console
 marie@login$ module avail ABINIT
@@ -19,7 +20,7 @@ marie@login$ module avail ABINIT
    ABINIT/8.6.3-intel-2018a         Wannier90/2.0.1.1-foss-2018b-abinit
    ABINIT/8.10.3-intel-2018b        Wannier90/2.0.1.1-intel-2018b-abinit
    ABINIT/9.2.1-intel-2020a  (D)
-
+[...]
 marie@login$ module load ABINIT
 Module ABINIT/9.2.1-intel-2020a and 16 dependencies loaded.
 ```
@@ -31,7 +32,8 @@ molecular and biological systems. It provides a general framework for different 
 density functional theory (DFT) using a mixed Gaussian and plane waves approach (GPW), and classical
 pair and many-body potentials.
 
-Available CP2K packages can be listed and loaded with the following commands:  
+CP2K is available as [modules](modules.md). Available packages can be listed and loaded with the
+following commands:
 
 ```console
 marie@login$ module avail CP2K
@@ -59,7 +61,8 @@ GAMESS is an ab-initio quantum mechanics program, which provides many methods fo
 properties of molecular systems using standard quantum chemical methods. For a detailed description,
 please look at the [GAMESS home page](https://www.msg.chem.iastate.edu/gamess/index.html).
 
-Available GAMESS packages can be listed and loaded with the following commands:  
+GAMESS is available as [modules](modules.md) within the classic environment. Available packages can be listed and loaded with the
+following commands:
 
 ```console
 marie@login$ module load modenv/classic
@@ -74,7 +77,7 @@ Start gamess like this:
 Module gamess/2013 and 2 dependencies loaded.
 ```
 
-For runs with Slurm, please use a script like this:
+For runs with [Slurm](..jobs_and_resources/slurm.md), please use a script like this:
 
 ```Bash
 #!/bin/bash
@@ -113,9 +116,11 @@ of motion for systems with hundreds to millions of particles. It is primarily de
 biochemical molecules like proteins, lipids and nucleic acids that have a lot of complicated bonded
 interactions, but since GROMACS is extremely fast at calculating the nonbonded interactions (that
 usually dominate simulations), many groups are also using it for research on non-biological systems,
-e.g. polymers. For documentations see [Gromacs homepage](https://www.gromacs.org/).
+e.g., polymers. For documentations see [Gromacs homepage](https://www.gromacs.org/).
 
-Available GROMACS packages can be listed and loaded with the following commands:  
+
+GROMACSS is available as [modules](modules.md). Available packages can be listed and loaded with the
+following commands:
 
 ```console
 marie@login$:~> module avail GROMACS
@@ -135,7 +140,8 @@ metallic, granular, and coarse-grained systems using a variety of force fields a
 conditions. For examples of LAMMPS simulations, documentations, and more visit
 [LAMMPS sites](https://www.lammps.org).
 
-Available LAMMPS packages can be listed and loaded with the following commands:  
+LAMMPS is available as [modules](modules.md). Available packages can be listed and loaded with the
+following commands:
 
 ```console
 marie@login$:~> module avail LAMMPS
@@ -161,7 +167,8 @@ the parallel performance strongly depends on the size of the given problem, one 
 advice for the optimum number of CPUs to use. (Please check this by running NAMD with your molecules
 and just a few time steps.)
 
-Available NAMD packages can be listed and loaded with the following commands:  
+NAND is available as [modules](modules.md). Available packages can be listed and loaded with the
+following commands:
 
 ```console
 marie@login$:~> module avail NAMD
@@ -196,9 +203,9 @@ for example 16 processes):
 %pal nprocs 16 end
 ```
 
-Note, that Orca spawns MPI processes itself, so you must not use "srun" to launch it in your
-batch file. Just set --ntasks to the same number as in your input file and call the "orca"
-executable directly.  For parallel runs, it must be called with the full path:
+Note, that Orca spawns MPI processes itself, so you must not use `srun` to launch it in your batch
+file. Just set `--ntasks` to the same number as in your input file and call the `orca` executable
+directly.  For parallel runs, it must be called with the full path:
 
 ```Bash
 #!/bin/bash
@@ -209,7 +216,8 @@ executable directly.  For parallel runs, it must be called with the full path:
 $ORCA_ROOT/orca example.inp
 ```
 
-Available ORCA packages can be listed and loaded with the following commands:  
+ORCA is available as [modules](modules.md). Available packages can be listed and loaded with the
+following commands:
 
 ```console
 marie@login$:~> module avail ORCA
@@ -228,7 +236,8 @@ Thousands of Atoms) is both a method and its computer program implementation,
 to perform electronic structure calculations and ab initio
 molecular dynamics simulations of molecules and solids.
 
-Available Siesta packages can be listed and loaded with the following commands:  
+Siesta is available as [modules](modules.md). Available packages can be listed and loaded with the
+following commands:
 
 ```console
 marie@login$:~> module avail Siesta
@@ -254,10 +263,11 @@ J. D. Gale, A. Garcia, J. Junquera, P. Ordejon, and D. Sanchez-Portal, J. Phys.:
 
 ## VASP
 
-"VAMP/VASP is a package for performing ab-initio quantum-mechanical molecular dynamics (MD) using
-pseudopotentials and a plane wave basis set.", see [VASP](https://www.vasp.at).
+> VAMP/VASP is a package for performing ab-initio quantum-mechanical molecular dynamics (MD) using
+> pseudopotentials and a plane wave basis set. (see [VASP](https://www.vasp.at)).
 
-Available VASP packages can be listed and loaded with the following commands:  
+VASP is available as [modules](modules.md). Available packages can be listed and loaded with the
+following commands:
 
 ```console
 marie@login$:~> module avail VASP
