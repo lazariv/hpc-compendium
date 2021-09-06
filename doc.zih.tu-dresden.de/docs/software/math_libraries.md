@@ -123,5 +123,5 @@ marie@login$ module spider magma
 FFTW is a C subroutine library for computing the discrete Fourier transform (DFT) in one or more
 dimensions, of arbitrary input size, and of both real and complex data (as well as of even/odd data,
 i.e. the discrete cosine/sine transforms or DCT/DST). Before using this library, please check out
-the functions of vendor-specific libraries suchs as [AOCL](#amd-optimizing-cpu-libraries-aocl)
+the functions of vendor-specific libraries such as [AOCL](#amd-optimizing-cpu-libraries-aocl)
 or [Intel MKL](#math-kernel-library-mkl)
