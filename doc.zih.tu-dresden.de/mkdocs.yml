@@ -128,6 +128,7 @@ nav:
       - System Titan: archive/system_titan.md
       - System Triton: archive/system_triton.md
       - System Venus: archive/system_venus.md
+      - KNL Nodes: archive/knl_nodes.md
     - UNICORE Rest API: archive/unicore_rest_api.md
     - Vampir Trace: archive/vampir_trace.md
     - Windows Batchjobs: archive/windows_batch.md
