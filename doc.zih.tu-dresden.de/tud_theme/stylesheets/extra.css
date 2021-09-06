@@ -13,7 +13,6 @@
 }
 :root {
     --md-text-font-family: 'Open Sans Regular', sans-serif;
-
     --md-primary-fg-color:        rgb(0, 37, 87);
     --md-primary-fg-color--light: rgb(39, 66, 117);
     --md-footer-bg-color:         rgb(0, 37, 87);
@@ -71,6 +70,11 @@ strong {
     word-break: normal;
 }
 
+.md-typeset .admonition,
+.md-typeset details,
+.md-typeset code {
+    font-size: 0.8rem;
+}
 
 /* header */
 .zih-logo img{
