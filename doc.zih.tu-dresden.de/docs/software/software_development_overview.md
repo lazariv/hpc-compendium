@@ -12,7 +12,7 @@ It will tell you:
     - [Using mathematical libraries](libraries.md)
 - How to deal with (or even prevent) bugs
     - [Find caveats and hidden errors in MPI application codes](mpi_usage_error_detection.md)
-    - [Debuggers](debuggers.md)
+    - [Using debuggers](debuggers.md)
 - How to investigate the performance and efficiency of your code
     - [Pika: monitoring of batch jobs](pika.md)
     - [Perf: sampling-based performance analysis](perf_tools.md)
