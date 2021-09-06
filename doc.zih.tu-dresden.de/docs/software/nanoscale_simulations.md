@@ -61,8 +61,8 @@ GAMESS is an ab-initio quantum mechanics program, which provides many methods fo
 properties of molecular systems using standard quantum chemical methods. For a detailed description,
 please look at the [GAMESS home page](https://www.msg.chem.iastate.edu/gamess/index.html).
 
-GAMESS is available as [modules](modules.md) within the classic environment. Available packages can be listed and loaded with the
-following commands:
+GAMESS is available as [modules](modules.md) within the classic environment. Available packages can
+be listed and loaded with the following commands:
 
 ```console
 marie@login$ module load modenv/classic
@@ -106,8 +106,8 @@ molecules and reactions under a wide range of conditions, including both stable 
 compounds which are difficult or impossible to observe experimentally such as short-lived
 intermediates and transition structures.
 
-Gaussian is currently not installed as a module.
-Please, contact [hpcsupport@zih.tu-dresden.de](mailto:hpcsupport@zih.tu-dresden.de) if you need assistance.
+Gaussian is currently not installed as a module. Please, contact
+[hpcsupport@zih.tu-dresden.de](mailto:hpcsupport@zih.tu-dresden.de) if you need assistance.
 
 ## GROMACS
 
