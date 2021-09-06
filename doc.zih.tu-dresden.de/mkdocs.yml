@@ -62,7 +62,7 @@ nav:
       - Building Software: software/building_software.md
       - Compilers: software/compilers.md
       - GPU Programming: software/gpu_programming.md
-      - Libraries: software/libraries.md
+      - Libraries: software/math_libraries.md
       - MPI Error Detection: software/mpi_usage_error_detection.md
       - Debugging: software/debuggers.md
       - Pika: software/pika.md

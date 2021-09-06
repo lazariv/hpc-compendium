@@ -43,7 +43,7 @@ continuously developed further.
 - [BLAS reference implementation](https://www.netlib.org/blas/) in Fortran
 - [LAPACK reference implementation](https://www.netlib.org/lapack/)
 - [ScaLAPACK reference implementation](https://www.netlib.org/scalapack/)
-- [OpenBlas](www.openblas.net)
+- [OpenBlas](http://www.openblas.net)
 - For GPU implementations, refer to the [GPU section](#libraries-for-gpus)
 
 ## AMD Optimizing CPU Libraries (AOCL)

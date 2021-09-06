@@ -9,7 +9,7 @@ It will tell you:
     - [Using compilers](compilers.md)
     - [GPU programming](gpu_programming.md)
 - How to use libraries
-    - [Using mathematical libraries](libraries.md)
+    - [Using mathematical libraries](math_libraries.md)
 - How to deal with (or even prevent) bugs
     - [Find caveats and hidden errors in MPI application codes](mpi_usage_error_detection.md)
     - [Using debuggers](debuggers.md)
