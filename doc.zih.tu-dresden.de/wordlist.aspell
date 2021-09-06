@@ -1,8 +1,10 @@
 personal_ws-1.1 en 1805 
 Altix
 analytics
+AOCL
 BeeGFS
 benchmarking
+BLAS
 bsub
 ccNUMA
 citable
@@ -13,7 +15,10 @@ CXFS
 DDR
 DFG
 EasyBuild
+EPYC
 fastfs
+FFT
+FFTW
 filesystem
 Filesystem
 Flink
@@ -40,6 +45,7 @@ jpg
 Jupyter
 Keras
 KNL
+LAPACK
 LINPACK
 LoadLeveler
 lsf
@@ -62,8 +68,10 @@ Neptun
 NFS
 NUMA
 NUMAlink
+Nvidia
 OPARI
 OpenACC
+OpenBLAS
 OpenCL
 OpenMP
 openmpi
@@ -82,6 +90,7 @@ salloc
 Saxonid
 sbatch
 ScaDS
+ScaLAPACK
 Scalasca
 scancel
 scontrol
