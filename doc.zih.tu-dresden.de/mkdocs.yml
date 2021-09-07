@@ -177,6 +177,7 @@ markdown_extensions:
 extra:
   homepage: https://tu-dresden.de
   zih_homepage: https://tu-dresden.de/zih
+  hpcsupport_mail: hpcsupport@zih.tu-dresden.de
   # links in footer
   footer:
     - link: /legal_notice
