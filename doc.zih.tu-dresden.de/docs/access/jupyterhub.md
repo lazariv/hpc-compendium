@@ -1,6 +1,6 @@
 # JupyterHub
 
-With our JupyterHub service we offer you now a quick and easy way to
+With our JupyterHub service we offer you a quick and easy way to
 work with jupyter notebooks on Taurus.
 
 Subpages:
@@ -18,24 +18,23 @@ support in every case.
 
 ## Access
 
-<span style="color:red">**NOTE**</span> This service is only available for users with
-an active HPC project. See [here](../access/overview.md) how to apply for an HPC
-project.
+!!! note 
+    This service is only available for users with an active HPC project.
+    See [here](../access/overview.md) how to apply for an HPC project.
 
-JupyterHub is available here:\
-<https://taurus.hrsk.tu-dresden.de/jupyter>
+JupyterHub is available here: [https://taurus.hrsk.tu-dresden.de/jupyter](https://taurus.hrsk.tu-dresden.de/jupyter)
 
-## Start a session
+## Start a Session
 
-Start a new session by clicking on the **TODO ADD IMAGE** \<img alt="" height="24"
-src="%ATTACHURL%/start_my_server.png" /> button.
+Start a new session by clicking on the 
+![Start my server](misc/start_my_server.png)
+ button.
 
 A form opens up where you can customize your session. Our simple form
 offers you the most important settings to start quickly.
 
-**TODO ADD IMAGE** \<a href="%ATTACHURL%/simple_form.png">\<img alt="session form"
-src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/simple_form.png>"
-style="border: 1px solid #888;" title="simple form" width="400" />\</a>
+![Simple form](misc/simple_form.png)
+{: align="center"}
 
 For advanced users we have an extended form where you can change many
 settings. You can:
@@ -48,20 +47,17 @@ settings. You can:
 -   choose a different standard environment (in preparation for future
     software updates or testing additional features)
 
-**TODO ADD IMAGE** \<a href="%ATTACHURL%/advanced_form_nov2019.png">\<img alt="session
-form"
-src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/advanced_form_nov2019.png>"
-style="border: 1px solid #888;" title="advanced form" width="400"
-/>\</a>
+![Advanced form](misc/advanced_form.png)
+{: align="center"}
 
 You can save your own configurations as additional presets. Those are
 saved in your browser and are lost if you delete your browsing data. Use
 the import/export feature (available through the button) to save your
 presets in text files.
 
-Note: the [<span style="color:blue">**alpha**</span>]
-(https://doc.zih.tu-dresden.de/hpc-wiki/bin/view/Compendium/AlphaCentauri)
-partition is available only in the extended form.
+!!! info 
+    The [alpha](https://doc.zih.tu-dresden.de/hpc-wiki/bin/view/Compendium/AlphaCentauri)
+    partition is available only in the extended form.
 
 ## Applications
 
@@ -69,10 +65,8 @@ You can choose between JupyterLab or the classic notebook app.
 
 ### JupyterLab
 
-**TODO ADD IMAGE** \<a href="%ATTACHURL%/jupyterlab_app.png">\<img alt="jupyterlab app"
-src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/jupyterlab_app.png>"
-style="border: 1px solid #888;" title="JupyterLab overview" width="400"
-/>\</a>
+![JupyterLab overview](misc/jupyterlab_overview.png)
+{: align="center"}
 
 The main workspace is used for multiple notebooks, consoles or
 terminals. Those documents are organized with tabs and a very versatile
@@ -85,19 +79,13 @@ several views:
 -   details about selected notebook cell
 -   list of open tabs
 
-### Classic notebook
+### Classic Notebook
 
-**TODO ADD IMAGE** \<a href="%ATTACHURL%/jupyter_notebook_app_filebrowser.png">\<img
-alt="filebrowser in jupyter notebook server" width="400"
-src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/jupyter_notebook_app_filebrowser.png>"
-style="border: 1px solid #888;" title="Classic notebook (file browser)"
-/>\</a>
+![Jupyter notebook file browser](misc/jupyter_notebook_file_browser.png)
+{: align="center"}
 
-**TODO ADD IMAGE** \<a href="%ATTACHURL%/jupyter_notebook_example_matplotlib.png">\<img
-alt="jupyter_notebook_example_matplotlib" width="400"
-src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/jupyter_notebook_example_matplotlib.png>"
-style="border: 1px solid #888;" title="Classic notebook (matplotlib
-demo)" />\</a>
+![Jupyter notebook example matplotlib](misc/jupyter_notebook_example_matplotlib.png)
+{: align="center"}
 
 Initially you will get a list of your home directory. You can open
 existing notebooks or files by clicking on them.
@@ -105,7 +93,7 @@ existing notebooks or files by clicking on them.
 Above the table on the right side is the "New ⏷" button which lets you
 create new notebooks, files, directories or terminals.
 
-## The notebook
+## The Notebook
 
 In JupyterHub you can create scripts in notebooks.
 Notebooks are programs which are split in multiple logical code blocks.
@@ -114,7 +102,7 @@ documentation and each block can be executed individually. Each notebook
 is paired with a kernel which runs the code. We currently offer one for
 Python, C++, MATLAB and R.
 
-## Stop a session
+## Stop a Session
 
 It's good practise to stop your session once your work is done. This
 releases resources for other users and your quota is less charged. If
@@ -124,24 +112,22 @@ hours).
 
 At first you have to open the JupyterHub control panel.
 
-**JupyterLab**: Open the file menu and then click on Logout. You can
-also click on "Hub Control Panel" which opens the control panel in a new
+**JupyterLab**: Open the file menu and then click on `Logout`. You can
+also click on `Hub Control Panel` which opens the control panel in a new
 tab instead.
 
-**TODO ADD IMAGE** \<a href="%ATTACHURL%/jupyterlab_logout.png">\<img alt="" height="400"
-src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/jupyterlab_logout.png>"
-style="border: 1px solid #888;" title="JupyterLab logout button"/>\</a>
+![JupyterLab logout](misc/jupyterlab_logout.png)
+{: align="center"}
 
 **Classic notebook**: Click on the control panel button on the top right
 of your screen.
 
-**TODO ADD IMAGE** \<img alt="" src="%ATTACHURL%/notebook_app_control_panel_btn.png"
-style="border: 1px solid #888;" title="Classic notebook (control panel
-button)" />
+![Jupyter notebook control panel button](misc/jupyter_notebook_control_panel_button.png)
+{: align="center"}
 
-Now you are back on the JupyterHub page and you can stop your server by
-clicking on **TODO ADD IMAGE** \<img alt="" height="24"
-src="%ATTACHURL%/stop_my_server.png" title="Stop button" />.
+Now you are back on the JupyterHub page and you can stop your server by clicking on
+![Stop my server](misc/stop_my_server.png)
+{: align="center"}
 
 ## Error handling
 
@@ -150,11 +136,8 @@ you need help open a ticket at HPC support.
 
 ### Error while starting a session
 
-**TODO ADD IMAGE** \<a href="%ATTACHURL%/error_batch_job_submission_failed.png">\<img
-alt="" width="400"
-src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/error_batch_job_submission_failed.png>"
-style="border: 1px solid #888;" title="Error message: Batch job
-submission failed."/>\</a>
+![Error batch job submission failed](misc/error_batch_job_submission_failed.png)
+{: align="center"}
 
 This message often appears instantly if your Slurm parameters are not
 valid. Please check those settings against the available hardware.
