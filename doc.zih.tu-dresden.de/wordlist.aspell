@@ -1,7 +1,9 @@
-personal_ws-1.1 en 1805 
+personal_ws-1.1 en 1805
 Altix
+Amdahl's
 analytics
-AOCL
+anonymized
+Anonymized
 BeeGFS
 benchmarking
 BLAS
@@ -15,7 +17,8 @@ CXFS
 DDR
 DFG
 EasyBuild
-EPYC
+engl
+english
 fastfs
 FFT
 FFTW
@@ -50,6 +53,7 @@ LINPACK
 LoadLeveler
 lsf
 LSF
+lustre
 MEGWARE
 MIMD
 MKL
@@ -68,7 +72,7 @@ Neptun
 NFS
 NUMA
 NUMAlink
-Nvidia
+Nutzungsbedingungen
 OPARI
 OpenACC
 OpenBLAS
@@ -78,6 +82,7 @@ openmpi
 OpenMPI
 Opteron
 PAPI
+parallelization
 pdf
 Perf
 Pika
@@ -95,8 +100,9 @@ Scalasca
 scancel
 scontrol
 scp
-SGI
+scs
 SGEMM
+SGI
 SHA
 SHMEM
 SLES
@@ -104,6 +110,7 @@ Slurm
 SMP
 squeue
 srun
+ssd
 SSD
 stderr
 stdout
