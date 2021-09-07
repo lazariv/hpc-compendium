@@ -1,4 +1,4 @@
-# Terms Of Use / Nutzungsbedingungen 
+# Terms Of Use / Nutzungsbedingungen
 
 **Attention:** Only the German version of the Terms of Use is binding.
 
