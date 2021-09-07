@@ -1,4 +1,7 @@
 personal_ws-1.1 en 1805 
+Amdahl's
+anonymized
+Anonymized
 Altix
 analytics
 BeeGFS
@@ -12,6 +15,8 @@ CUDA
 CXFS
 DDR
 DFG
+engl
+english
 EasyBuild
 fastfs
 filesystem
@@ -44,6 +49,7 @@ LINPACK
 LoadLeveler
 lsf
 LSF
+lustre
 MEGWARE
 MIMD
 MKL
@@ -62,6 +68,7 @@ Neptun
 NFS
 NUMA
 NUMAlink
+Nutzungsbedingungen
 OPARI
 OpenACC
 OpenCL
@@ -70,6 +77,7 @@ openmpi
 OpenMPI
 Opteron
 PAPI
+parallelization
 pdf
 Perf
 Pika
@@ -86,6 +94,7 @@ Scalasca
 scancel
 scontrol
 scp
+scs
 SGI
 SGEMM
 SHA
@@ -95,6 +104,7 @@ Slurm
 SMP
 squeue
 srun
+ssd
 SSD
 stderr
 stdout
