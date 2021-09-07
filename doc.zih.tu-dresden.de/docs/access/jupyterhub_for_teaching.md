@@ -9,7 +9,7 @@ want to use JupyterHub for teaching.
 
 Please be aware of the following notes:
 
-- ZIH HPC systems operate at a lower availability level than your usual Enterprise Cloud VM. There
+- ZIH systems operate at a lower availability level than your usual Enterprise Cloud VM. There
   can always be downtimes, e.g. of the filesystems or the batch system.
 - Scheduled downtimes are announced by email. Please plan your courses accordingly.
 - Access to HPC resources is handled through projects. See your course as a project. Projects need
