@@ -6,9 +6,9 @@ different tutorials on the internet, for example.
 
 ## How do I determine the required CPU / GPU hours?
 
-ZIH systems are focused on data-intensive computing. The cluster is oriented on the work with the 
+ZIH systems are focused on data-intensive computing. The cluster is oriented on the work with the
 high parallel code. Please keep it in mind for the transfer sequential code from a local machine.
-So far you will have execution time for the sequential program it is reasonable to use 
+So far you will have execution time for the sequential program it is reasonable to use
 [Amdahl's law][1] to roughly predict execution time in parallel. Think in advance about the
 parallelization strategy for your project.
 
