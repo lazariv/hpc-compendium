@@ -1,10 +1,11 @@
-# Migration to Atlas
+# Migration from Deimos to Atlas
 
 !!! warning
 
     **This page is deprecated! Atlas is a former system!**
 
-Atlas is a different machine than Deimos, please have a look at the table:
+[Atlas](system_atlas.md) is a different machine than [Deimos](system_deimos.md), please have a look
+at the table:
 
 |                                                   |            |           |
 |---------------------------------------------------|------------|-----------|

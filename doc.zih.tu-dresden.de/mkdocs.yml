@@ -114,12 +114,12 @@ nav:
     - CXFS End of Support: archive/cxfs_end_of_support.md
     - KNL Nodes: archive/knl_nodes.md
     - Load Leveler: archive/load_leveler.md
-    - Migrate to Atlas: archive/migrate_to_atlas.md
     - No IB Jobs: archive/no_ib_jobs.md
     - Phase2 Migration: archive/phase2_migration.md
     - Platform LSF: archive/platform_lsf.md
     - Switched-Off Systems:
       - Overview: archive/systems_switched_off.md
+      - From Deimos to Atlas: archive/migrate_to_atlas.md
       - System Altix: archive/system_altix.md
       - System Atlas: archive/system_atlas.md
       - System Deimos: archive/system_deimos.md
