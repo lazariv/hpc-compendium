@@ -13,7 +13,7 @@ Please be aware of the following notes:
   can always be downtimes, e.g. of the filesystems or the batch system.
 - Scheduled downtimes are announced by email. Please plan your courses accordingly.
 - Access to HPC resources is handled through projects. See your course as a project. Projects need
-  to be registered beforehand (more info on the page [Access](../application/access.md)).
+  to be registered beforehand (more info on the page [Access](../application/overview.md)).
 - Don't forget to **TODO ANCHOR**(add your users)
   (ProjectManagement#manage_project_members_40dis_45_47enable_41) (eg. students or tutors) to
 your project.
