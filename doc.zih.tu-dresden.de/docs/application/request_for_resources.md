@@ -17,8 +17,9 @@ your project.
 The good practice for the HPC clusters is use software and packages where parallelization is
 possible. The open-source software is more preferable than proprietary. However, the majority of
 popular programming languages, scientific applications, software, packages available or could be
-installed on Taurus in different ways. First of all, check the Software module list. There are two
+installed on the HPC cluster in different ways. First of all, check the [Software module list][2]. There are two
 different software environments: scs5 (the regular one) and ml (environment for the Machine Learning
 partition). Keep in mind that ZIH systems have a Linux based operating system.
 
 [1]: https://en.wikipedia.org/wiki/Amdahl%27s_law
+[2]: https://gauss-allianz.de/de/application?organizations%5B0%5D=1200

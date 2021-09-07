@@ -1,9 +1,9 @@
-personal_ws-1.1 en 1805 
+personal_ws-1.1 en 1805
+Altix
 Amdahl's
+analytics
 anonymized
 Anonymized
-Altix
-analytics
 BeeGFS
 benchmarking
 bsub
@@ -15,9 +15,9 @@ CUDA
 CXFS
 DDR
 DFG
+EasyBuild
 engl
 english
-EasyBuild
 fastfs
 filesystem
 Filesystem
@@ -95,8 +95,8 @@ scancel
 scontrol
 scp
 scs
-SGI
 SGEMM
+SGI
 SHA
 SHMEM
 SLES
