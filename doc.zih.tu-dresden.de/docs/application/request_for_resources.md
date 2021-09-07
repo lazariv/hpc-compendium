@@ -1,8 +1,8 @@
 # Request for resources
 
-Important note:  ZIH systems are based on the Linux system. Thus for the effective work, you should have to
-know how to work with Linux based systems and Linux Shell. Beginners can find a lot of different
-tutorials on the internet, for example.
+Important note:  ZIH systems are based on the Linux system. Thus for the effective work, you should
+have to know how to work with Linux based systems and Linux Shell. Beginners can find a lot of
+different tutorials on the internet, for example.
 
 ## How do I determine the required CPU / GPU hours?
 
