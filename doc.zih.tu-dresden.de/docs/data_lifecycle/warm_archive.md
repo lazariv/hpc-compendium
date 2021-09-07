@@ -22,7 +22,7 @@ deleted as soon as the user's login expires.
 
 !!! attention
 
-    These workspaces can be written to from login or export nodes.
+    These workspaces can **only** be written to from the login or export nodes.
     On all compute nodes, the warm archive is mounted read-only.
 
 ### S3
