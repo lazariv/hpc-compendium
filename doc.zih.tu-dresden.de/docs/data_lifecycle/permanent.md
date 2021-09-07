@@ -33,7 +33,7 @@ It can only be written to on the login and export nodes.
 
 !!! note
 
-   On compute nodes, /projects is mounted as read-only, because it must not be used as
+   On compute nodes, `/projects` is mounted as read-only, because it must not be used as
    work directory and heavy I/O.
 
 ## Snapshots
