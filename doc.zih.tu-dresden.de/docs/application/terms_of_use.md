@@ -1,10 +1,12 @@
 # Terms Of Use / Nutzungsbedingungen
 
-**Attention:** Only the German version of the Terms of Use is binding.
+!!! attention
+
+    Only the German version of the *Terms of Use* is binding.
 
 These new Terms of Use are valid from April 1, 2018: [HPC-Nutzungsbedingungen_20180305.pdf][1]
 
-**The key points are are:**
+The key points are are:
 
 - For support reasons, we store your contact data according to our [identity management system][5].
   (Will be anonymized at least 15 months after the cancellation of the HPC login.)
@@ -20,9 +22,9 @@ These new Terms of Use are valid from April 1, 2018: [HPC-Nutzungsbedingungen_20
     - Please work in the scratch filesystems.
     - Upon request, the project leader or the administrator can be given access
       to a user's directory.
-    - The scratch filesystems (/tmp, /scratch, /lustre/ssd) are for
+    - The scratch filesystems (`/tmp`, `/scratch`, `/lustre/ssd`) are for
       temporary use only. After a certain time, files may be removed
-      automatically (for /tmp after 7 days, parallel scratch: after 100 days).
+      automatically (for `/tmp` after 7 days, parallel `/scratch`: after 100 days).
     - Before a user leaves a project the leader/administrator has to store away
       worthy data. For this, the storage services of ZIH (long term storage,
       intermediate archive) can be used.
