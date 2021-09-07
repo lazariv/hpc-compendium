@@ -52,5 +52,5 @@ alter the output.
 
 !!! important
 
-    **Don't use** the `du`-command for this purpose. It is able to cause issues
+    Do **not** use the `du`-command for this purpose. It is able to cause issues
     for other users, while reading data from the filesystem.
