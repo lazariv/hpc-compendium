@@ -6,6 +6,7 @@ anonymized
 Anonymized
 BeeGFS
 benchmarking
+BLAS
 bsub
 ccNUMA
 citable
@@ -19,6 +20,8 @@ EasyBuild
 engl
 english
 fastfs
+FFT
+FFTW
 filesystem
 Filesystem
 Flink
@@ -45,6 +48,7 @@ jpg
 Jupyter
 Keras
 KNL
+LAPACK
 LINPACK
 LoadLeveler
 lsf
@@ -71,6 +75,7 @@ NUMAlink
 Nutzungsbedingungen
 OPARI
 OpenACC
+OpenBLAS
 OpenCL
 OpenMP
 openmpi
@@ -90,6 +95,7 @@ salloc
 Saxonid
 sbatch
 ScaDS
+ScaLAPACK
 Scalasca
 scancel
 scontrol
