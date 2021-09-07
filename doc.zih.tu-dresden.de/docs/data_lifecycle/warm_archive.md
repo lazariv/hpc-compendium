@@ -1,6 +1,6 @@
 # Warm Archive
 
-The warm archive is intended a storage space for the duration of a running HPC-DA project.
+The warm archive is intended as a storage space for the duration of a running HPC-DA project.
 It does **not** substitute a long-term archive, though.
 
 This storage is best suited for large files (like tgzs of input data data or intermediate results).
