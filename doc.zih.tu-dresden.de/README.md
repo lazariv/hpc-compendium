@@ -40,7 +40,7 @@ Now, create a local clone of your fork
 
 #### Install Dependencies
 
-**TODO:** Describtion
+**TODO:** Description
 
 ```Shell Session
 ~ cd hpc-compendium/doc.zih.tu-dresden.de
@@ -61,7 +61,7 @@ editor are invoked: Do your changes, add a meaningful commit message and commit 
 The more sophisticated integrated Web IDE is reached from the top level menu of the repository or
 by selecting any source file.
 
-Other git services might have an aquivivalent web interface to interact with the repository. Please
+Other git services might have an equivalent web interface to interact with the repository. Please
 refer to the corresponding documentation for further information.
 
 <!--This option of contributing is only available for users of-->
@@ -109,6 +109,70 @@ INFO    -  Start watching changes
 
 Open `http://127.0.0.1:8000` with a web browser to preview the local copy of the documentation.
 
+#### Preview Using mkdocs With Dockerfile
+
+You can also use `docker` to build a container from the `Dockerfile`, if you are familiar with it.
+This may take a while, as mkdocs and other necessary software needs to be downloaded.
+Building a container with the documentation inside could be done with the following steps:
+
+```Bash
+cd /PATH/TO/hpc-compendium
+docker build -t hpc-compendium .
+```
+
+If you want to see how it looks in your browser, you can use shell commands to serve
+the documentation:
+
+```Bash
+docker run --name=hpc-compendium -p 8000:8000 --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium bash -c "mkdocs build --verbose && mkdocs serve -a 0.0.0.0:8000"
+```
+
+You can view the documentation via [http://localhost:8000](http://localhost:8000) in your browser, now.
+
+If that does not work, check if you can get the URL for your browser's address
+bar from a different terminal window:
+
+```Bash
+echo http://$(docker inspect -f "{{.NetworkSettings.IPAddress}}" $(docker ps -qf "name=hpc-compendium")):8000
+```
+
+The running container automatically takes care of file changes and rebuilds the
+documentation.  If you want to check whether the markdown files are formatted
+properly, use the following command:
+
+```Bash
+docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium markdownlint docs
+```
+
+To check whether there are links that point to a wrong target, use
+(this may take a while and gives a lot of output because it runs over all files):
+
+```Bash
+docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium bash -c "find docs -type f -name '*.md' | xargs -L1 markdown-link-check"
+```
+
+To check a single file, e. g. `doc.zih.tu-dresden.de/docs/software/big_data_frameworks.md`, use:
+
+```Bash
+docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium markdown-link-check docs/software/big_data_frameworks.md
+```
+
+For spell-checking a single file, use:
+
+```Bash
+docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium ./util/check-spelling.sh <file>
+```
+
+For spell-checking all files, use:
+
+```Bash
+docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium ./util/check-spelling.sh
+```
+
+This outputs all words of all files that are unknown to the spell checker.
+To let the spell checker "know" a word, append it to
+`doc.zih.tu-dresden.de/wordlist.aspell`.
+
 #### Build Static Documentation
 
 To build the documentation, invoke `mkdocs build`. This will create a new directory named `public`
@@ -127,7 +191,7 @@ INFO    -  Documentation built in 0.09 seconds
 
 It is crucial to keep your branch synchronized with the upstream repository when you are working
 locally on the documentation. At first, you should add a remote pointing to the official
-documentation. 
+documentation.
 
 ```Shell Session
 ~ git remote add upstream-zih git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git
@@ -139,9 +203,9 @@ whereas *upstream-zih* points to the original documentation repository at GitLab
 ```Shell Session
 $ git remote -v
 origin  git@gitlab.hrz.tu-chemnitz.de:LOGIN/hpc-compendium.git (fetch)
-origin	git@gitlab.hrz.tu-chemnitz.de:LOGIN/hpc-compendium.git (push)
+origin  git@gitlab.hrz.tu-chemnitz.de:LOGIN/hpc-compendium.git (push)
 upstream-zih  git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git (fetch)
-upstream-zih	git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git (push)
+upstream-zih  git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git (push)
 ```
 
 Next, you should synchronize your `main` branch with the upstream.
@@ -172,7 +236,7 @@ new branch (a so-called feature branch) basing on the `main` branch and commit y
 ```
 
 The last command pushes the changes to your remote at branch `FEATUREBRANCH`. Now, it is time to
-incoporate the changes and improvements into the HPC Compendium. For this, create a
+incorporate the changes and improvements into the HPC Compendium. For this, create a
 [merge request](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/merge_requests/new)
 to the `main` branch.
 
@@ -303,7 +367,8 @@ changes to make sure your commit passes the CI/CD pipeline.
 
 ### Check Code and Commands
 
-1. All code blocks and commands should be runnable from a login node.
+The script `xyz.sh` checks if the code chunks are runnable on a login node.
+It is invoked as follows ...
 
 **TODO:** Implement [Issue #9](#9)
 
@@ -316,7 +381,7 @@ the second check tests if every markdown file is included in the navigation sect
 The script is invoked and reports as follows
 
 ```Shell Session
-~ sh doc.zih.tu-dresden.de/util/check-no-floating.sh doc.zih.tu-dresden.de 
+~ sh doc.zih.tu-dresden.de/util/check-no-floating.sh doc.zih.tu-dresden.de
 HardwareTaurus.md is not included in nav
 BigDataFrameworksApacheSparkApacheFlinkApacheHadoop.md is not included in nav
 pika.md is not included in nav
@@ -324,6 +389,8 @@ specific_software.md is not included in nav
 ```
 
 ## Content Rules
+
+**Remark:** Avoid using tabs both in markdown files and in `mkdocs.yaml`. Type spaces instead.
 
 ### New Page and Pages Structure
 
@@ -342,8 +409,10 @@ docs/
 
 To add a new page to the documentation follow these two steps:
 
-1. Create a new markdown file under `docs/SUBDIR/NEW.md` and put the documentation inside.
-1. Add `SUBDIR/NEW.md` to the configuration file `mkdocs.yml` by updating the navigation section.
+1. Create a new markdown file under `docs/subdir/file_name.md` and put the documentation inside. The
+   sub directory and file name should follow the pattern `fancy_title_and_more.md`.
+1. Add `subdir/file_name.md` to the configuration file `mkdocs.yml` by updating the navigation
+   section.
 
 Make sure that the new page **is not floating**, i.e., it can be reached directly from the documentation
 structure.
@@ -351,61 +420,199 @@ structure.
 ### Markdown
 
 1. Please keep things simple, i.e., avoid using fancy markdown dialects.
-
-  * [Cheat Sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
-  * [Style Guide](https://github.com/google/styleguide/blob/gh-pages/docguide/style.md)
+    * [Cheat Sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+    * [Style Guide](https://github.com/google/styleguide/blob/gh-pages/docguide/style.md)
 
 1. Do not add large binary files or high resolution images to the repository. See this valuable
    document for [image optimization](https://web.dev/fast/#optimize-your-images).
 
-### Code Blocks and Commands
+1. [Admonitions](https://squidfunk.github.io/mkdocs-material/reference/admonitions/) may be
+actively used, especially for longer code examples, warnings, tips, important information that
+should be highlighted, etc. Code examples, longer than half screen height should collapsed
+(and indented):
 
-* Use ticks to mark code blocks and commands, not italic font.
-* Specify language for code blocks, refer to [highlight.js](https://highlightjs.org/static/demo/)
-    for supported languages.
+??? example
+    ```Bash
+    [...]
+    # very long example here
+    [...]
+    ```
 
 ### Writing Style
 
 **TODO** Guide [Issue #14](#14)
 
-* Capitalize headings
+* Capitalize headings, e.g. *Exclusive Reservation of Hardware*
 
 ### Spelling and Technical Wording
 
 To provide a consistent and high quality documentation, and help users to find the right pages,
-there is a list of conventions w.r.t.  spelling and technical wording.
+there is a list of conventions w.r.t. spelling and technical wording.
 
 * Language settings: en_us
-* I/O not IO
-* Slurm not SLURM
-* Filesystem not file system
-
-**TODO:** Put into file
-
-**TODO:** Implement checks [Issue #13](#13)
+* `I/O` not `IO`
+* `Slurm` not `SLURM`
+* `Filesystem` not `file system`
+* `ZIH system` and `ZIH systems` not `Taurus`, `HRSKII`, `our HPC systems` etc.
+* `Workspace` not `work space`
+* avoid term `HPC-DA`
 
 ### Code Blocks and Command Prompts
 
-Showing commands and sample output is an important part of all technical documentation. Thus, some
-rules have to be followed.
+Showing commands and sample output is an important part of all technical documentation. To make
+things as clear for readers as possible and provide a consistent documentation, some rules have to
+be followed.
 
-1. Prompts: It should be clear from the prompt, where the command is run (e.g. Taurus, specific
-   partition or local machine).
+1. Use ticks to mark code blocks and commands, not italic font.
+1. Specify language for code blocks ([see below](#code-blocks-and-syntax-highlighting)).
+1. All code blocks and commands should be runnable from a login node or a node within a specific
+   partition (e.g., `ml`).
+1. It should be clear from the prompt, where the command is run (e.g. local machine, login node or
+   specific partition).
 
-  * Taurus / HPC systems of TUD in general: `taurus$`
-  * Specific kind of node or partition: `tauruslogin$`, `taurus-ml$` `taurus-rome$`etc.
-    * TODO: Remove prefix `taurus`?
-  * Local machine: `localhost$`
-  * No output: Omit prompt (copy-paste)
-  * With Output: Add prompt (make clear what is the command and what is the output)
+#### Prompts
+
+We follow this rules regarding prompts:
+
+| Host/Partition         | Prompt           |
+|------------------------|------------------|
+| Login nodes            | `marie@login$`   |
+| Arbitrary compute node | `marie@compute$` |
+| `haswell` partition    | `marie@haswell$` |
+| `ml` partition         | `marie@ml$`      |
+| `alpha` partition      | `marie@alpha$`   |
+| `alpha` partition      | `marie@alpha$`   |
+| `romeo` partition      | `marie@romeo$`   |
+| `julia` partition      | `marie@julia$`   |
+| Localhost              | `marie@local$`   |
+
+*Remarks:*
+
+* **Always use a prompt**, even there is no output provided for the shown command.
+* All code blocks should use long parameter names (e.g. Slurm parameters), if available.
+* All code blocks which specify some general command templates, e.g. containing `<` and `>`
+  (see [Placeholders](#mark-placeholders)), should use `bash` for the code block. Additionally,
+  an example invocation, perhaps with output, should be given with the normal `console` code block.
+  See also [Code Block description below](#code-blocks-and-syntax-highlighting).
+* Using some magic, the prompt as well as the output is identified and will not be copied!
+* Stick to the [generic user name](#data-privacy-and-generic-user-name) `marie`.
+
+#### Code Blocks and Syntax Highlighting
+
+This project makes use of the extension
+[pymdownx.highlight](https://squidfunk.github.io/mkdocs-material/reference/code-blocks/) for syntax
+highlighting.  There is a complete list of supported
+[language short codes](https://pygments.org/docs/lexers/).
+
+For consistency, use the following short codes within this project:
+
+With the exception of command templates, use `console` for shell session and console:
+
+```` markdown
+```console
+marie@login$ ls
+foo
+bar
+```
+````
+
+Make sure that shell session and console code blocks are executable on the login nodes of HPC system.
+
+Command templates use [Placeholders](#mark-placeholders) to mark replaceable code parts. Command
+templates should give a general idea of invocation and thus, do not contain any output. Use a
+`bash` code block followed by an invocation example (with `console`):
+
+```` markdown
+```bash
+marie@local$ ssh -NL <local port>:<compute node>:<remote port> <zih login>@tauruslogin.hrsk.tu-dresden.de
+```
+
+```console
+marie@local$ ssh -NL 5901:172.24.146.46:5901 marie@tauruslogin.hrsk.tu-dresden.de
+```
+````
+
+Also use `bash` for shell scripts such as jobfiles:
+
+```` markdown
+```bash
+#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --time=01:00:00
+#SBATCH --output=slurm-%j.out
+
+module load foss
+
+srun a.out
+```
+````
+
+!!! important
+
+    Use long parameter names where possible to ease understanding.
+
+`python` for Python source code:
+
+```` markdown
+```python
+from time import gmtime, strftime
+print(strftime("%Y-%m-%d %H:%M:%S", gmtime()))
+```
+````
+
+`pycon` for Python console:
+
+```` markdown
+```pycon
+>>> from time import gmtime, strftime
+>>> print(strftime("%Y-%m-%d %H:%M:%S", gmtime()))
+2021-08-03 07:20:33
+```
+````
+
+Line numbers can be added via
+
+```` markdown
+```bash linenums="1"
+#!/bin/bash
+
+#SBATCH -N 1
+#SBATCH -n 23
+#SBATCH -t 02:10:00
+
+srun a.out
+```
+````
+
+_Result_:
+
+![lines](misc/lines.png)
+
+Specific Lines can be highlighted by using
+
+```` markdown
+```bash hl_lines="2 3"
+#!/bin/bash
+
+#SBATCH -N 1
+#SBATCH -n 23
+#SBATCH -t 02:10:00
+
+srun a.out
+```
+````
+
+_Result_:
+
+![lines](misc/highlight_lines.png)
 
 ### Data Privacy and Generic User Name
 
 Where possible, replace login, project name and other private data with clearly arbitrary placeholders.
-E.g., use generic login `marie` and project name `p_marie`.
+E.g., use the generic login `marie` and the corresponding project name `p_marie`.
 
-```Shell Session
-taurus$ ls -l
+```console
+marie@login$ ls -l
 drwxr-xr-x   3 marie p_marie      4096 Jan 24  2020 code
 drwxr-xr-x   3 marie p_marie      4096 Feb 12  2020 data
 -rw-rw----   1 marie p_marie      4096 Jan 24  2020 readme.md
@@ -417,7 +624,7 @@ If showing only a snippet of a long output, omissions are marked with `[...]`.
 
 ### Mark Placeholders
 
-Stick to the Unix rules on optional and required arguments, and seclection of item sets.
+Stick to the Unix rules on optional and required arguments, and selection of item sets:
 
 * `<required argument or value>`
 * `[optional argument or value]`

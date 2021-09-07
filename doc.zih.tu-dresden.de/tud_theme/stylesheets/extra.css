@@ -13,7 +13,6 @@
 }
 :root {
     --md-text-font-family: 'Open Sans Regular', sans-serif;
-
     --md-primary-fg-color:        rgb(0, 37, 87);
     --md-primary-fg-color--light: rgb(39, 66, 117);
     --md-footer-bg-color:         rgb(0, 37, 87);
@@ -67,33 +66,42 @@ strong {
     max-width: 1600px;
 }
 
+.md-typeset code {
+    word-break: normal;
+}
+
+.md-typeset .admonition,
+.md-typeset details,
+.md-typeset code {
+    font-size: 0.8rem;
+}
+
 /* header */
+.zih-logo img{
+    display: none;
+}
+@media screen and (min-width: 76.25rem) {
+    .md-header,
+    .md-header__title, 
+    .md-header__button,
+    .md-header__topic {
+        height: 80px;
+    }  
 
-.md-header,
-.md-header__title, 
-.md-header__button,
-.md-header__topic {
-    height: 80px;
-}  
+    .md-header__button,
+    .md-header__button.md-logo,
+    .md-logo {
+        padding: 0 0.6rem;
+        margin: 0;
+    }
 
-.md-header__button,
-.md-header__button.md-logo,
-.md-logo {
-    padding: 0 0.6rem;
-    margin: 0;
+    .zih-logo img{
+        display: inline-block;
+        height: 100%;
+        margin: 0 auto;
+    }
 }
 
-.md-header__button.md-logo {
-    width: 12.1rem;
-}
-
-.zih-logo img {
-    display: inline-block;
-    width: 70%;
-    height: auto;
-    margin: auto;
-    padding: 0 .6rem 1rem;
-}
 
 .md-header__topic{
     padding: 0 30px;
@@ -179,4 +187,12 @@ p {
 
 .md-footer {
     background-color: var(--md-primary-fg-color);
+}
+
+.highlight .go {
+    user-select: none;
+}
+
+.highlight .gp {
+    user-select: none;
 }

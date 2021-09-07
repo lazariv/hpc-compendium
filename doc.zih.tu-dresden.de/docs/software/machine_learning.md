@@ -1,7 +1,7 @@
 # Machine Learning
 
 On the machine learning nodes, you can use the tools from [IBM Power
-AI](power_ai.md). 
+AI](power_ai.md).
 
 ## Interactive Session Examples
 

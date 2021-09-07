@@ -24,7 +24,8 @@ issues.
 
 ## Contributing
 
-Contributions from user-side are highly welcome. Please refer to [Contribution guide]() to get started.
+Contributions from user-side are highly welcome. Please refer to
+[Contribution guide](doc.zih.tu-dresden.de/README.md) to get started.
 
 ## Licenses
 

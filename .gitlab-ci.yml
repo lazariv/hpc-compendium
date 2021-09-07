@@ -1,6 +1,6 @@
 variables:
     GIT_STRATEGY: none
-    DOCKER_IMAGE: webpage:all
+    DOCKER_IMAGE: webpage:$CI_PIPELINE_ID
 
 workflow:
   rules:
@@ -21,52 +21,67 @@ Build Linter:
     variables:
         GIT_STRATEGY: clone
         GIT_DEPTH: 0
-    script: docker build -t ${DOCKER_IMAGE} .
+    script: docker build -t "${DOCKER_IMAGE}" .
 
 Test mkdocs:
     stage: test
     script: docker run ${DOCKER_IMAGE}
 
+Check wording of changed md-files:
+    stage: test
+    script:
+        - docker run --rm -w /src -e CI_MERGE_REQUEST_TARGET_BRANCH_NAME "${DOCKER_IMAGE}"
+          doc.zih.tu-dresden.de/util/grep-forbidden-words.sh
+    only: [ merge_requests ]
+
 Lint changed md-files:
     stage: test
     script:
-        - docker run --rm -w /src -e CI_MERGE_REQUEST_TARGET_BRANCH_NAME ${DOCKER_IMAGE}
+        - docker run --rm -w /src -e CI_MERGE_REQUEST_TARGET_BRANCH_NAME "${DOCKER_IMAGE}"
           doc.zih.tu-dresden.de/util/lint-changes.sh
+    only: [ merge_requests ]
+
+Check spelling for changed md-files:
+    stage: test
+    script:
+        - docker run --rm -w /src -e CI_MERGE_REQUEST_TARGET_BRANCH_NAME "${DOCKER_IMAGE}"
+          doc.zih.tu-dresden.de/util/check-spelling.sh
     only: [ merge_requests ]
 
 Check links for changed md-files:
     stage: test
     script:
-        - docker run --rm -w /src -e CI_MERGE_REQUEST_TARGET_BRANCH_NAME ${DOCKER_IMAGE}
+        - docker run --rm -w /src -e CI_MERGE_REQUEST_TARGET_BRANCH_NAME "${DOCKER_IMAGE}"
           doc.zih.tu-dresden.de/util/check-links.sh
     only: [ merge_requests ]
 
 Lint md-files:
     stage: test
-    script: docker run --rm ${DOCKER_IMAGE} markdownlint docs
+    script: docker run --rm "${DOCKER_IMAGE}" markdownlint docs
     only: [ main, preview ]
 
 Check links for md-files:
     stage: test
     script:
-        - docker run --rm ${DOCKER_IMAGE}
+        - docker run --rm "${DOCKER_IMAGE}"
           bash -c "find docs -type f -name '*.md' | xargs -L1 markdown-link-check --quiet"
     only: [ main, preview ]
 
 Release preview branch:
     stage: release
     script:
-        - docker run --rm -v /var/www/html/preview:/mnt ${DOCKER_IMAGE} mkdocs build --site-dir /mnt
+        - docker run --rm -v /var/www/html/preview:/mnt "${DOCKER_IMAGE}" mkdocs build --strict --site-dir /mnt
     only: [ preview ]
 
 Release:
     stage: release
     script:
-        - docker run --rm -v /var/www/html/hpc-wiki:/mnt ${DOCKER_IMAGE} mkdocs build --site-dir /mnt
+        - docker run --rm -v /var/www/html/hpc-wiki:/mnt "${DOCKER_IMAGE}" mkdocs build --strict --site-dir /mnt
     only: [ main ]
 
 Cleanup docker:
     stage: cleanup
     script:
+        - docker rmi -f "${DOCKER_IMAGE}"
         - docker system prune --force
     when: always

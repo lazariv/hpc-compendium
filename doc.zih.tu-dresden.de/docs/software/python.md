@@ -6,18 +6,18 @@ effective. Taurus allows working with a lot of available packages and
 libraries which give more useful functionalities and allow use all
 features of Python and to avoid minuses.
 
-**Prerequisites:** To work with PyTorch you obviously need [access](../access/login.md) for the 
+**Prerequisites:** To work with PyTorch you obviously need [access](../access/ssh_login.md) for the
 Taurus system and basic knowledge about Python, Numpy and SLURM system.
 
-**Aim** of this page is to introduce users on how to start working with Python on the 
+**Aim** of this page is to introduce users on how to start working with Python on the
 [HPC-DA](../jobs_and_resources/power9.md) system -  part of the TU Dresden HPC system.
 
 There are three main options on how to work with Keras and Tensorflow on the HPC-DA: 1. Modules; 2.
 [JupyterNotebook](../access/jupyterhub.md); 3.[Containers](containers.md). The main way is using
 the [Modules system](modules.md) and Python virtual environment.
 
-Note: You could work with simple examples in your home directory but according to 
-[HPCStorageConcept2019](../data_lifecycle/hpc_storage_concept2019.md) please use **workspaces** 
+Note: You could work with simple examples in your home directory but according to
+[HPCStorageConcept2019](../data_lifecycle/hpc_storage_concept2019.md) please use **workspaces**
 for your study and work projects.
 
 ## Virtual environment
@@ -26,7 +26,7 @@ There are two methods of how to work with virtual environments on
 Taurus:
 
 1. **Vitualenv** is a standard Python tool to create isolated Python environments.
-   It is the preferred interface for 
+   It is the preferred interface for
    managing installations and virtual environments on Taurus and part of the Python modules.
 
 2. **Conda** is an alternative method for managing installations and
@@ -80,15 +80,15 @@ environment (with using module system)
 ```Bash
 srun -p ml -N 1 -n 1 -c 7 --mem-per-cpu=5772 --gres=gpu:1 --time=04:00:00 --pty bash  # Job submission in ml nodes with 1 gpu on 1 node.
 
-module load modenv/ml 
+module load modenv/ml
 mkdir conda-virtual-environments            #create a folder
 cd conda-virtual-environments               #go to folder
 which python                                #check which python are you using
 module load PythonAnaconda/3.6              #load Anaconda module
 which python                                #check which python are you using now
 
-conda create -n conda-testenv python=3.6        #create virtual environment with the name conda-testenv and Python version 3.6 
-conda activate conda-testenv                    #activate conda-testenv virtual environment                                            
+conda create -n conda-testenv python=3.6        #create virtual environment with the name conda-testenv and Python version 3.6
+conda activate conda-testenv                    #activate conda-testenv virtual environment
 
 conda deactivate                                #Leave the virtual environment
 ```
@@ -126,7 +126,7 @@ the modules and packages you need. The manual server setup you can find [here](d
 With Jupyterhub you can work with general
 data analytics tools. This is the recommended way to start working with
 the Taurus. However, some special instruments could not be available on
-the Jupyterhub. 
+the Jupyterhub.
 
 **Keep in mind that the remote Jupyter server can offer more freedom with settings and approaches.**
 
@@ -142,7 +142,7 @@ parallel hardware for end-users, library writers and tool developers.
 ### Why use MPI?
 
 MPI provides a powerful, efficient and portable way to express parallel
-programs. 
+programs.
 Among many parallel computational models, message-passing has proven to be an effective one.
 
 ### Parallel Python with mpi4py
@@ -162,8 +162,8 @@ optimized communication of NumPy arrays.
 Mpi4py is included as an extension of the SciPy-bundle modules on
 taurus.
 
-Please check the SoftwareModulesList for the modules availability. The availability of the mpi4py 
-in the module you can check by 
+Please check the SoftwareModulesList for the modules availability. The availability of the mpi4py
+in the module you can check by
 the `module whatis <name_of_the module>` command. The `module whatis`
 command displays a short information and included extensions of the
 module.
@@ -223,14 +223,14 @@ install Horovod you need to create a virtual environment and load the
 dependencies (e.g. MPI). Installing PyTorch can take a few hours and is
 not recommended
 
-**Note:** You could work with simple examples in your home directory but **please use workspaces 
+**Note:** You could work with simple examples in your home directory but **please use workspaces
 for your study and work projects** (see the Storage concept).
 
 Setup:
 
 ```Bash
 srun -N 1 --ntasks-per-node=6 -p ml --time=08:00:00 --pty bash                    #allocate a Slurm job allocation, which is a set of resources (nodes)
-module load modenv/ml                                                             #Load dependencies by using modules 
+module load modenv/ml                                                             #Load dependencies by using modules
 module load OpenMPI/3.1.4-gcccuda-2018b
 module load Python/3.6.6-fosscuda-2018b
 module load cuDNN/7.1.4.18-fosscuda-2018b
@@ -272,7 +272,7 @@ TensorFlow. Adapt as required and refer to the horovod documentation for
 details.
 
 ```Bash
-HOROVOD_GPU_ALLREDUCE=MPI HOROVOD_WITHOUT_TENSORFLOW=1 HOROVOD_WITH_PYTORCH=1 HOROVOD_WITHOUT_MXNET=1 pip install --no-cache-dir horovod 
+HOROVOD_GPU_ALLREDUCE=MPI HOROVOD_WITHOUT_TENSORFLOW=1 HOROVOD_WITH_PYTORCH=1 HOROVOD_WITHOUT_MXNET=1 pip install --no-cache-dir horovod
 ```
 
 ##### Verify that Horovod works

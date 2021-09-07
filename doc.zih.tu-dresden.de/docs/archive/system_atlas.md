@@ -1,11 +1,62 @@
-# Atlas
+# MEGWARE PC-Farm Atlas
 
-**This page is deprecated! Atlas is a former system!**
+!!! warning
 
-Atlas is a general purpose HPC cluster for jobs using 1 to 128 cores in parallel
-([Information on the hardware](hardware_atlas.md)).
+    **This page is deprecated! Atlas is a former system!**
 
-## Compiling Parallel Applications
+## System
+
+The PC farm `Atlas` is a heterogeneous, general purpose cluster based on multicore chips AMD Opteron
+6274 ("Bulldozer"). The nodes are operated by the Linux operating system SUSE SLES 11 with a 2.6
+kernel. Currently, the following hardware is installed:
+
+| Component | Count |
+|-----------|--------|
+| CPUs |AMD Opteron 6274 |
+| number of cores | 5120 |
+|th. peak performance | 45 TFLOPS |
+|compute nodes | 4-way nodes *Saxonid* with 64 cores |
+|nodes with 64 GB RAM | 48 |
+|nodes with 128 GB RAM | 12 |
+|nodes with 512 GB RAM | 8 |
+
+Mars and Deimos users: Please read the [migration hints](migrate_to_atlas.md).
+
+All nodes share the `/home` and `/fastfs` file system with our other HPC systems. Each
+node has 180 GB local disk space for scratch mounted on `/tmp`. The jobs for the compute nodes are
+scheduled by the [Platform LSF](platform_lsf.md) batch system from the login nodes
+`atlas.hrsk.tu-dresden.de` .
+
+A QDR Infiniband interconnect provides the communication and I/O infrastructure for low latency /
+high throughput data traffic.
+
+Users with a login on the [SGI Altix](system_altix.md) can access their home directory via NFS
+below the mount point `/hpc_work`.
+
+### CPU AMD Opteron 6274
+
+| Component | Count |
+|-----------|--------|
+| Clock rate | 2.2 GHz |
+| cores | 16 |
+| L1 data cache | 16 KB per core |
+| L1 instruction cache | 64 KB shared in a *module* (i.e. 2 cores) |
+| L2 cache | 2 MB per module |
+| L3 cache | 12 MB total, 6 MB shared between 4 modules = 8 cores |
+| FP units | 1 per module (supports fused multiply-add) |
+| th. peak performance | 8.8 GFLOPS per core (w/o turbo) |
+
+The CPU belongs to the x86_64 family. Since it is fully capable of
+running x86-code, one should compare the performances of the 32 and 64
+bit versions of the same code.
+
+For more architectural details, see the
+[AMD Bulldozer block diagram](http://upload.wikimedia.org/wikipedia/commons/e/ec/AMD_Bulldozer_block_diagram_%288_core_CPU%29.PNG)
+and [topology of Atlas compute nodes](misc/Atlas_Knoten.pdf).
+
+## Usage
+
+### Compiling Parallel Applications
 
 When loading a compiler module on Atlas, the module for the MPI implementation OpenMPI is also
 loaded in most cases. If not, you should explicitly load the OpenMPI module with `module load
@@ -16,9 +67,9 @@ use the currently loaded compiler. To reveal the command lines behind the wrappe
 `-show`.
 
 For running your code, you have to load the same compiler and MPI module as for compiling the
-program. Please follow te following guiedlines to run your parallel program using the batch system.
+program. Please follow the outlined guidelines to run your parallel program using the batch system.
 
-## Batch System
+### Batch System
 
 Applications on an HPC system can not be run on the login node. They
 have to be submitted to compute nodes with dedicated resources for the
@@ -33,12 +84,12 @@ user's job. Normally a job can be submitted with these data:
 - files for redirection of output and error messages,
 - executable and command line parameters.
 
-### LSF
+#### LSF
 
-The batch sytem on Atlas is LSF. For general information on LSF, please follow
+The batch system on Atlas is LSF. For general information on LSF, please follow
 [this link](platform_lsf.md).
 
-### Submission of Parallel Jobs
+#### Submission of Parallel Jobs
 
 To run MPI jobs ensure that the same MPI module is loaded as during compile-time. In doubt, check
 you loaded modules with `module list`. If you code has been compiled with the standard OpenMPI
@@ -47,11 +98,11 @@ installation, you can load the OpenMPI module via `module load openmpi`.
 Please pay attention to the messages you get loading the module. They are more up-to-date than this
 manual. To submit a job the user has to use a script or a command-line like this:
 
-```Bash
+```console
 bsub -n <N> mpirun <program name>
 ```
 
-### Memory Limits
+#### Memory Limits
 
 **Memory limits are enforced.** This means that jobs which exceed their per-node memory limit **may
 be killed** automatically by the batch system.
@@ -79,7 +130,7 @@ or less** may be scheduled to smaller memory nodes.
 
 Have a look at the **examples below**.
 
-#### Monitoring memory usage
+#### Monitoring Memory Usage
 
 At the end of the job completion mail there will be a link to a website
 which shows the memory usage over time per node. This will only be
@@ -87,14 +138,14 @@ available for longer running jobs (>10 min).
 
 #### Examples
 
-| Job Spec.                                                                             | Nodes Allowed                                                                                     | Remark                                                                                                          |
-|:--------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------|
+| Job Spec. | Nodes Allowed | Remark |
+|:----------|:--------------|:-------|
 | `bsub -n 1 -M 500`     | All nodes      | <= 940 Fits everywhere                                                                                          |
 | `bsub -n 64 -M 700`    | All nodes      | <= 940 Fits everywhere                                                                                          |
 | `bsub -n 4 -M 1800`    | All nodes      | Is allowed to oversubscribe on small nodes n\[001-047\]                                                         |
 | `bsub -n 64 -M 1800`   | `n[049-092]`   | 64\*1800 will not fit onto a single small node and is therefore restricted to running on medium and large nodes |
 | `bsub -n 4 -M 2000`    | `-n[049-092]`  | Over limit for oversubscribing on small nodes `n[001-047]`, but may still go to medium nodes                    |
-| `bsub -n 32 -M 2000`   | `-n[049-092]`  | Same as above                                                                                     |              
+| `bsub -n 32 -M 2000`   | `-n[049-092]`  | Same as above                                                                                     |
 | `bsub -n 32 -M 1880`   | All nodes      | Using max. 1880 MB, the job is eligible for running on any node                                   |
 | `bsub -n 64 -M 2000`   | `-n[085-092]`  | Maximum for medium nodes is 1950 per slot - does the job **really** need **2000 MB** per process? |
 | `bsub -n 64 -M 1950`   | `n[049-092]`   | When using 1950 as maximum, it will fit to the medium nodes                                       |

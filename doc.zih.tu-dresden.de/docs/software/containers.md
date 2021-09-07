@@ -75,7 +75,7 @@ not possible for users to generate new custom containers on Taurus directly. You
 import an existing container from, e.g., Docker.
 
 In case you wish to create a new container, you can do so on your own local machine where you have
-the necessary privileges and then simply copy your container file to Taurus and use it there. 
+the necessary privileges and then simply copy your container file to Taurus and use it there.
 
 This does not work on our **ml** partition, as it uses Power9 as its architecture which is
 different to the x86 architecture in common computers/laptops. For that you can use the
@@ -159,7 +159,7 @@ $ docker push localhost:5000/alpine
 $ cat example.def
 Bootstrap: docker
 Registry: <a href="http://localhost:5000" rel="nofollow" target="_blank">http://localhost:5000</a>
-From: alpine 
+From: alpine
 
 # Build singularity container
 $ singularity build --nohttps alpine.sif example.def
@@ -182,7 +182,7 @@ Dockerfile in the current folder into a singularity definition file:
 
 `spython recipe Dockerfile myDefinition.def<br />`
 
-Now please **verify** your generated defintion and adjust where
+Now please **verify** your generated definition and adjust where
 required!
 
 There are some notable changes between singularity definitions and

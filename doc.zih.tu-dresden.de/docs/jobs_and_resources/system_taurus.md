@@ -23,7 +23,7 @@ Please note that if you store data on the local disk (e.g. under /tmp),
 it will be on only one of the three nodes. If you relogin and the data
 is not there, you are probably on another node.
 
-You can find an list of fingerprints [here](../access/login.md#SSH_access).
+You can find an list of fingerprints [here](../access/key_fingerprints.md).
 
 ## Transferring Data from/to Taurus
 
@@ -45,8 +45,6 @@ contact the Service Desk as well.
 
 **Phase 2:** The nodes taurusexport\[3,4\] provide access to the
 `/scratch` file system of the second phase.
-
-You can find an list of fingerprints [here](../access/login.md#SSH_access).
 
 ## Compiling Parallel Applications
 
