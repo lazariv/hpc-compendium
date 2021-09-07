@@ -1,5 +1,9 @@
 # Migration to Atlas
 
+!!! warning
+
+    **This page is deprecated! Atlas is a former system!**
+
 Atlas is a different machine than Deimos, please have a look at the table:
 
 |                                                   |            |           |
@@ -40,35 +44,35 @@ The most important changes are:
 | nodes with 256 GB RAM | 12     | 4000                                                 |
 | nodes with 512 GB RAM | 8      | 8050                                                 |
 
--   Jobs with a job runtime greater than 72 hours (jobs that will run in
-    the queue `long`) will be collected over the day and scheduled in a
-    time window in accordance with their priority.
--   Interactive Jobs with X11 tunneling need an additional option `-XF`
-    to work (`bsub -Is -XF -n <N> -W <hh:mm> -M <MEM> bash`).
--   The load of the system can be seen with `lsfview` and `lsfnodestat`.
+- Jobs with a job runtime greater than 72 hours (jobs that will run in
+  the queue `long`) will be collected over the day and scheduled in a
+  time window in accordance with their priority.
+- Interactive Jobs with X11 tunneling need an additional option `-XF`
+  to work (`bsub -Is -XF -n <N> -W <hh:mm> -M <MEM> bash`).
+- The load of the system can be seen with `lsfview` and `lsfnodestat`.
 
 Atlas is designed as a high-throughput machine. With the large compute
 nodes you have to be more precise in your resource requests.
 
--   In ninety nine percent of the cases it is enough when you specify
-    your processor requirements with `-n <n>` and your memory
-    requirements with `-M <memory per process in MByte>`.
--   Please use `-x` ("exclusive use of a hosts") only with care and when you really need it.
-    -   The option `-x` in combination with `-n 1` leads to an
-        "efficiency" of only 1.5% - in contrast with 50% on the single
-        socket nodes at Deimos.
-    -   You will be charged for the whole blocked host(s) within your
-        CPU hours budget.
-    -   Don't use `-x` for memory reasons, please use `-M` instead.
--   Please use `-M <memory per process in MByte>` to specify your memory
-    requirements per process.
--   Please don't use `-R "span[hosts=1]"` or `-R "span[ptile=<n>]"` or
-    any other `-R "..."` option, the batch system is smart enough to select the best hosts in accordance
-    with your processor and memory requirements.
-    -   Jobs with a processor requirement ≤ 64 will always be scheduled
-        on one node.
-    -   Larger jobs will use just as many hosts as needed, e.g. 160
-        processes will be scheduled on three hosts.
+- In ninety nine percent of the cases it is enough when you specify
+  your processor requirements with `-n <n>` and your memory
+  requirements with `-M <memory per process in MByte>`.
+- Please use `-x` ("exclusive use of a hosts") only with care and when you really need it.
+  - The option `-x` in combination with `-n 1` leads to an
+    "efficiency" of only 1.5% - in contrast with 50% on the single
+    socket nodes at Deimos.
+  - You will be charged for the whole blocked host(s) within your
+    CPU hours budget.
+  - Don't use `-x` for memory reasons, please use `-M` instead.
+- Please use `-M <memory per process in MByte>` to specify your memory
+  requirements per process.
+- Please don't use `-R "span[hosts=1]"` or `-R "span[ptile=<n>]"` or
+  any other `-R "..."` option, the batch system is smart enough to select the best hosts in accordance
+  with your processor and memory requirements.
+  - Jobs with a processor requirement ≤ 64 will always be scheduled
+    on one node.
+  - Larger jobs will use just as many hosts as needed, e.g. 160
+    processes will be scheduled on three hosts.
 
 For more details, please see the pages on [LSF](platform_lsf.md).
 
@@ -99,7 +103,7 @@ Please note the more convenient syntax on Atlas. Therefore, please use a
 command like
 
 ```Bash
-    bsub -W 2:00 -M 200 -n 8 mpirun a.out
+bsub -W 2:00 -M 200 -n 8 mpirun a.out
 ```
 
 to submit your MPI parallel applications.
