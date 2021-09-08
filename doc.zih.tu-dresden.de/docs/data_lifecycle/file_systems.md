@@ -36,14 +36,14 @@ their data.
 
 For the first view, you can use the command `df`.
 
-``` console
+```console
 marie@login$ df
 ```
 
 Alternatively, you can use the command `findmnt`, which is also able to report space usage
 by adding the parameter `-D`:
 
-``` console
+```console
 marie@login$ findmnt -D
 ```
 
