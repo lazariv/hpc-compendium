@@ -8,7 +8,7 @@ This storage is best suited for large files (like tgzs of input data data or int
 The hardware consists of 20 storage nodes with a net capacity of 10 PB on spinning disks.
 We have seen an total data rate of 50 GB/s under benchmark conditions.
 
-An HPC-DA project can apply for storage space in the warm archive.
+A project can apply for storage space in the warm archive.
 This is limited in capacity and
 duration.
 
