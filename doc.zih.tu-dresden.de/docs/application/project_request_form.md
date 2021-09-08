@@ -1,26 +1,19 @@
 # Project Request Form
 
-## first step (requester)
+## First Step: Requester
 
-<span class="twiki-macro IMAGE" type="frame" align="right"
-caption="picture 2: personal information" width="170" zoom="on
-">%ATTACHURL%/request_step1_b.png</span> <span class="twiki-macro IMAGE"
-type="frame" align="right" caption="picture 1: login screen" width="170"
-zoom="on
-">%ATTACHURL%/request_step1_b.png</span>
-
+![picture 1: Login Screen >](misc/request_step1_b.png "Login Screen"){loading=lazy width=170 style="float:right"}
 The first step is asking for the personal information of the requester.
-**That's you**, not the leader of this project! \<br />If you have an
-ZIH-Login, you can use it \<sup>\[Pic 1\]\</sup>. If not, you have to
-fill in the whole information \<sup>\[Pic.:2\]\</sup>. <span
-class="twiki-macro IMAGE">clear</span>
+**That's you**, not the leader of this project! If you have an
+ZIH-Login, you can use it [Pic 1]. If not, you have to
+fill in the whole information [Pic.:2].
 
-## second step (project details)
+## Second Step: Project Details
 
-<span class="twiki-macro IMAGE" type="frame" align="right"
-caption="picture 3: project details" width="170" zoom="on
-">%ATTACHURL%/request_step2_details.png</span> This Step is asking for
-general project Details.\<br />Any project have:
+![picture 3: Project Details >](misc/request_step2_details.png "Login Screen"){loading=lazy width=170 style="float:right"}
+This Step is asking for general project Details.
+
+Any project have:
 
 -   a title, at least 20 characters long
 -   a valid duration
@@ -38,41 +31,28 @@ general project Details.\<br />Any project have:
         (university) or is the head of the research group.
     -   If you are this Person, leave this fields free.
 
-<span class="twiki-macro IMAGE">clear</span>
+## Third step: Hardware
 
-## third step (hardware)
+![picture 4: Hardware >](misc/request_step3_machines.png "Login Screen"){loading=lazy width=170 style="float:right"}
+This step inquire the required hardware. You can find the specifications [here]**todo fix link**
 
-<span class="twiki-macro IMAGE" type="frame" align="right"
-caption="picture 4: hardware" width="170" zoom="on
-">%ATTACHURL%/request_step3_machines.png</span> This step inquire the
-required hardware. You can find the specifications [here]**todo fix link**
-\<br />For your guidance:
+For your guidance:
 
 -   gpu => taurus
 -   many main memory => venus
 -   other machines => you know it and don't need this guidance
 
-<span class="twiki-macro IMAGE">clear</span>
+## Fourth Step: Software
 
-## fourth step (software)
-
-<span class="twiki-macro IMAGE" type="frame" align="right"
-caption="picture 5: software" width="170" zoom="on
-">%ATTACHURL%/request_step4_software.png</span> Any information you will
-give us in this step, helps us to make a rough estimate, if you are able
+![Picture 5: Software >](misc/request_step4_software.png "Login Screen"){loading=lazy width=170 style="float:right"}
+Any information you will give us in this step, helps us to make a rough estimate, if you are able
 to realize your project. For Example: you need matlab. Matlab is only
-available on Taurus. <span class="twiki-macro IMAGE">clear</span>
+available on Taurus.
 
-## fifth step (project description)
+## Fifth Step: Project Description
 
-<span class="twiki-macro IMAGE" type="frame" align="right"
-caption="picture 6: project description" width="170" zoom="on
-">%ATTACHURL%/request_step5_description.png</span> <span
-class="twiki-macro IMAGE">clear</span>
+![picture 6: Project Description >](misc/request_step5_description.png "Login Screen"){loading=lazy width=170 style="float:right"}
 
-## sixth step (summary)
+## Sixth Step: Summary
 
-<span class="twiki-macro IMAGE" type="frame" align="right"
-caption="picture 8: summary" width="170" zoom="on
-">%ATTACHURL%/request_step6.png</span> <span
-class="twiki-macro IMAGE">clear</span>
+![picture 6: summary >](misc/request_step6.png "Login Screen"){loading=lazy width=170 style="float:right"}
