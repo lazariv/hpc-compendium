@@ -33,9 +33,9 @@ The following example application script was created from
 as a starting point.
 Therein, a neural network is trained on the MNIST Fashion data set.
 
-There are three script preparation steps for OmniOpt:
+There are the following script preparation steps for OmniOpt:
 
-  + Changing hard-coded hyperparameters (chosen here: batch size, epochs, size of layer 1 and 2)
+  1. Changing hard-coded hyperparameters (chosen here: batch size, epochs, size of layer 1 and 2)
   into command line parameters.
       Esp. for this example, the Python module `argparse` (see the docs at
       [https://docs.python.org/3/library/argparse.html](https://docs.python.org/3/library/argparse.html){:target="_blank"})
@@ -48,11 +48,11 @@ There are three script preparation steps for OmniOpt:
         which would be fully sufficient for usage with OmniOpt.
         Nevertheless, this basic approach has no consistency checks or error handling etc.
 
-  + Mark the output of the optimization target (chosen here: average loss) by prefixing it with
+  1. Mark the output of the optimization target (chosen here: average loss) by prefixing it with
   the RESULT string.
     OmniOpt takes the **last appearing value** prefixed with the RESULT string.
     In the example different epochs are performed and the average from the last epoch is caught
-    by OmniOpt. Additionally, the RESULT output has to be a **single line**.
+    by OmniOpt. Additionally, the `RESULT` output has to be a **single line**.
     After all these changes, the final script is as follows (with the lines containing relevant
     changes highlighted).
 
@@ -192,20 +192,86 @@ There are three script preparation steps for OmniOpt:
         print("Done!")
         ```
 
-  + Testing script functionality and determine software requirements.
+  1. Testing script functionality and determine software requirements for the chosen [partition](../jobs_and_resources/system_taurus.md#partitions).
+    In the following the alpha partition is used.
+    Please note the parameters `--out-layer1`, `--batchsize`, `--epochs` when calling the python script.
+	Additionally, note the `RESULT` string with the output for OmniOpt.
+
+	??? hint "Hint for installing Python modules"
+		Note that for this example the module `torchvision` is not available on the alpha partition and it is installed by creating a [virtual environment](python_virtual_environments.md). 
+		It is recommended to install such a virtual environment into a [workspace](../data_lifecycle/workspaces.md).
+		``` console
+		marie@login$ module load modenv/hiera  GCC/10.2.0  CUDA/11.1.1 OpenMPI/4.0.5 PyTorch/1.9.0
+		marie@login$ mkdir </path/to/workspace/python-environments>    #create folder 
+	  	marie@login$ virtualenv --system-site-packages </path/to/workspace/python-environments/torchvision_env>
+		marie@login$ source </path/to/workspace/python-environments/torchvision_env>/bin/activate #activate virtual environment
+  		marie@login$ pip install torchvision #install torchvision module
+		```	
+
+    ```console
+    marie@login$ srun -p alpha --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=800 bash #Job submission on alpha nodes with 1 gpu on 1 node with 800 Mb per CPU
+    marie@alpha$ module load modenv/hiera  GCC/10.2.0  CUDA/11.1.1 OpenMPI/4.0.5 PyTorch/1.9.0
+	marie@alpha$ source </path/to/workspace/python-environments/torchvision_env>/bin/activate #activate virtual environment
+    Die folgenden Module wurden in einer anderen Version erneut geladen:
+      1) modenv/scs5 => modenv/hiera
+
+    Module GCC/10.2.0, CUDA/11.1.1, OpenMPI/4.0.5, PyTorch/1.9.0 and 54 dependencies loaded.
+    marie@alpha$ python </path/to/your/script/mnistFashion.py> --out-layer1=200 --batchsize=10 --epochs=3
+    [...]
+    Epoch 3
+    -------------------------------
+    loss: 1.422406  [    0/60000]
+    loss: 0.852647  [10000/60000]
+    loss: 1.139685  [20000/60000]
+    loss: 0.572221  [30000/60000]
+    loss: 1.516888  [40000/60000]
+    loss: 0.445737  [50000/60000]
+    Test Error: 
+     Accuracy: 69.5%, Avg loss: 0.878329 
+
+    RESULT: 0.878329 
+
+    Done!
+    ```
+
+	Using the modified script within OmniOpt requires configuring and loading of the software environment. 
+	The recommended way is to wrap the necessary calls in a shell script.
+
+	??? example "Example for wrapping with shell script"
+		``` shell
+		#!/bin/bash -l
+		# ^ Shebang-Line, so that it is known that this is a bash file
+		# -l means 'load this as login shell', so that /etc/profile gets loaded and you can use 'module load' or 'ml' as usual
+
+		# If you use this script not via `./run.sh' or just `srun run.sh', but like `srun bash run.sh', please add the '-l' there too.
+		# Like this:
+		# srun bash -l run.sh
+
+		# Load modules your program needs, always specify versions!
+		module load modenv/hiera GCC/10.2.0 CUDA/11.1.1 OpenMPI/4.0.5 PyTorch/1.7.1
+		source </path/to/workspace/python-environments/torchvision_env>/bin/activate #activate virtual environment
+
+		# Load your script. $@ is all the parameters that are given to this shell file.
+		python </path/to/your/script/mnistFashion.py> $@ 
+		```
+
+	When the wrapped shell script is running properly the preparations are finished and the next step is configuring OmniOpt.
 
 ### Configure and Run OmniOpt
 
-As a starting point, configuring OmniOpt is done via a GUI at
-[https://imageseg.scads.ai/omnioptgui/](https://imageseg.scads.ai/omnioptgui/).
-This GUI guides through the configuration process and as result the configuration file is created
-automatically according to the GUI input. If you are more familiar with using OmniOpt later on,
-this configuration file can be modified directly without using the GUI.
+Configuring OmniOpt is done via the GUI at [https://imageseg.scads.ai/omnioptgui/](https://imageseg.scads.ai/omnioptgui/){:target="_blank"}..
+This GUI guides through the configuration process and as result a configuration file is created automatically according to the GUI input. 
+If you are more familiar with using OmniOpt later on, this configuration file can be modified directly without using the GUI.
 
 A screenshot of the GUI, including a properly configuration for the MNIST fashion example is shown below.
-The GUI, in which the displayed values are already entered, can be reached [here](https://imageseg.scads.ai/omnioptgui/?maxevalserror=5&mem_per_worker=1000&projectname=mnist-fashion-optimization-set-1&partition=alpha&searchtype=tpe.suggest&objective_program=bash%20%2Fscratch%2Fws%2Fpath%2Fto%2Fyou%2Fscript%2Frun-mnist-fashion.sh%20(%24x_0)%20(%24x_1)%20(%24x_2)&param_0_type=hp.randint&param_1_type=hp.randint&number_of_parameters=3){:target="_blank"}.
+The GUI, in which the displayed values are already entered, can be reached [here](https://imageseg.scads.ai/omnioptgui/?maxevalserror=5&mem_per_worker=1000&number_of_parameters=3&param_0_values=10%2C50%2C100&param_1_values=8%2C16%2C32&param_2_values=10%2C15%2C30&account=&partition=alpha&searchtype=tpe.suggest&objective_program=bash%20%3C%2Fpath%2Fto%2Fyour%2Fwrapper-script%2Frun-mnist-fashion.sh%3E%20--out-layer1%3D(%24x_0)%20--batchsize%3D(%24x_1)%20--epochs%3D(%24x_2)&param_0_type=hp.choice&param_1_type=hp.choice&param_2_type=hp.choice&param_0_name=out-layer1&param_1_name=batchsize&param_2_name=batchsize&projectname=mnist_fashion_optimization_set_1){:target="_blank"}.
 
-![GUI for configuring OmniOpt]**TODO**(misc/hyperparameter_optimization-OmniOpt-GUI.png)
+![GUI for configuring OmniOpt](misc/hyperparameter_optimization-OmniOpt-GUI.png)
+{: align="center"}
+
+After all parameters are entered into the GUI, the call for OmniOpt is generated and displayed on the right. This command contains all necessary instructions (including requesting resources with Slurm). Thus, this command can be executed directly on a login node on the ZIH system. 
+
+![GUI for configuring OmniOpt](misc/hyperparameter_optimization-OmniOpt-final-command.png)
 {: align="center"}
 
 ### Check and Evaluate OmniOpt Results
