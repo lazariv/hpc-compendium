@@ -1,19 +1,20 @@
 # Performance Analysis of HPC Applications with PIKA
 
-PIKA is a hardware performance monitoring stack to identify inefficient HPC jobs. Taurus users have
-the possibility to visualize and analyze the efficiency of their jobs via the [PIKA web
-interface](https://selfservice.zih.tu-dresden.de/l/index.php/hpcportal/jobmonitoring/z../jobs_and_resources).
+PIKA is a hardware performance monitoring stack to identify inefficient HPC jobs. Users of ZIH
+systems have the possibility to visualize and analyze the efficiency of their jobs via the
+[PIKA web interface](https://selfservice.zih.tu-dresden.de/l/index.php/hpcportal/jobmonitoring/z../jobs_and_resources).
 
-**Hint:** To understand this small guide, it is recommended to open the
-[web
-interface](https://selfservice.zih.tu-dresden.de/l/index.php/hpcportal/jobmonitoring/z../jobs_and_resources)
-in a separate window. Furthermore, at least one real HPC job should have been submitted on Taurus.
+!!! hint
+
+    To understand this small guide, it is recommended to open the
+    [web interface](https://selfservice.zih.tu-dresden.de/l/index.php/hpcportal/jobmonitoring/z../jobs_and_resources)
+    in a separate window. Furthermore, at least one real HPC job should have been submitted.
 
 ## Overview
 
-PIKA consists of several components and tools.  It uses the collection daemon collectd, InfluxDB to
-store time-series data and MariaDB to store job metadata.  Furthermore, it provides a powerful [web
-interface](https://selfservice.zih.tu-dresden.de/l/index.php/hpcportal/jobmonitoring/z../jobs_and_resources)
+PIKA consists of several components and tools. It uses the collection daemon collectd, InfluxDB to
+store time-series data and MariaDB to store job metadata. Furthermore, it provides a powerful
+[web interface](https://selfservice.zih.tu-dresden.de/l/index.php/hpcportal/jobmonitoring/z../jobs_and_resources)
 for the visualization and analysis of job performance data.
 
 ## Table View and Job Search
@@ -23,16 +24,16 @@ users can either analyze running or completed jobs. They can navigate from group
 same name to the metadata of an individual job and finally investigate the job’s runtime metrics in
 a timeline view.
 
-To find jobs with specific properties, the table can be sorted by any column, e.g. by consumed CPU
+To find jobs with specific properties, the table can be sorted by any column, e.g., by consumed CPU
 hours to find jobs where an optimization has a large impact on the system utilization. Additionally,
 there is a filter mask to find jobs that match several properties. When a job has been selected, the
 timeline view opens.
 
 ## Timeline Visualization
 
-PIKA provides timeline charts to visualize the resource utilization of a job over time.  After a job
-is completed, timeline charts can help to identify periods of inefficient resource usage.  However,
-they are also suitable for the live assessment of performance during the job’s runtime.  In case of
+PIKA provides timeline charts to visualize the resource utilization of a job over time. After a job
+is completed, timeline charts can help to identify periods of inefficient resource usage. However,
+they are also suitable for the live assessment of performance during the job’s runtime. In case of
 unexpected performance behavior, users can cancel the job, thus avoiding long execution with subpar
 performance.
 
@@ -46,25 +47,30 @@ PIKA provides the following runtime metrics:
 |Main Memory Bandwidth|CPU socket|
 |CPU Power|CPU socket|
 |Main Memory Utilization|node|
-|IO Bandwidth (local, Lustre) |node|
-|IO Metadata (local, Lustre) |node|
+|I/O Bandwidth (local, Lustre) |node|
+|I/O Metadata (local, Lustre) |node|
 |GPU Usage|GPU device|
 |GPU Memory Utilization|GPU device|
 |GPU Power Consumption|GPU device|
 |GPU Temperature|GPU device|
 
 Each monitored metric is represented by a timeline, whereby metrics with the same unit and data
-source are displayed in a common chart, e.g. different Lustre metadata operations.  Each metric is
+source are displayed in a common chart, e.g., different Lustre metadata operations.  Each metric is
 measured with a certain granularity concerning the hardware, e.g. per hardware thread, per CPU
 socket or per node.
 
-**Be aware that CPU socket or node metrics can share the resources of other jobs running on the same
-CPU socket or node. This can result e.g. in cache perturbation and thus a sub-optimal performance.
-To get valid performance data for those metrics, it is recommended to submit an exclusive job!**
+!!! hint
 
-**Note:** To reduce the amount of recorded data, PIKA summarizes per hardware thread metrics to the
-corresponding physical core. In terms of simultaneous multithreading (SMT), PIKA only provides
-performance data per physical core.
+    Be aware that CPU socket or node metrics can share the resources of other jobs running on the
+    same CPU socket or node. This can result e.g., in cache perturbation and thus a sub-optimal
+    performance.  To get valid performance data for those metrics, it is recommended to submit an
+    exclusive job!
+
+!!! note
+
+    To reduce the amount of recorded data, PIKA summarizes per hardware thread metrics to the
+    corresponding physical core. In terms of simultaneous multithreading (SMT), PIKA only provides
+    performance data per physical core.
 
 The following table explains different timeline visualization modes.
 By default, each timeline shows the average value over all hardware units (HUs) per measured interval.
