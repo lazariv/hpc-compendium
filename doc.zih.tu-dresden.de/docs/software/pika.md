@@ -1,7 +1,7 @@
-# Performance Analysis of HPC Applications with Pika
+# Performance Analysis of HPC Applications with PIKA
 
-Pika is a hardware performance monitoring stack to identify inefficient HPC jobs. Taurus users have
-the possibility to visualize and analyze the efficiency of their jobs via the [Pika web
+PIKA is a hardware performance monitoring stack to identify inefficient HPC jobs. Taurus users have
+the possibility to visualize and analyze the efficiency of their jobs via the [PIKA web
 interface](https://selfservice.zih.tu-dresden.de/l/index.php/hpcportal/jobmonitoring/z../jobs_and_resources).
 
 **Hint:** To understand this small guide, it is recommended to open the
@@ -11,14 +11,14 @@ in a separate window. Furthermore, at least one real HPC job should have been su
 
 ## Overview
 
-Pika consists of several components and tools.  It uses the collection daemon collectd, InfluxDB to
+PIKA consists of several components and tools.  It uses the collection daemon collectd, InfluxDB to
 store time-series data and MariaDB to store job metadata.  Furthermore, it provides a powerful [web
 interface](https://selfservice.zih.tu-dresden.de/l/index.php/hpcportal/jobmonitoring/z../jobs_and_resources)
 for the visualization and analysis of job performance data.
 
 ## Table View and Job Search
 
-The analysis of HPC jobs in Pika is designed as a top-down approach. Starting from the table view,
+The analysis of HPC jobs in PIKA is designed as a top-down approach. Starting from the table view,
 users can either analyze running or completed jobs. They can navigate from groups of jobs with the
 same name to the metadata of an individual job and finally investigate the job’s runtime metrics in
 a timeline view.
@@ -30,18 +30,18 @@ timeline view opens.
 
 ## Timeline Visualization
 
-Pika provides timeline charts to visualize the resource utilization of a job over time.  After a job
+PIKA provides timeline charts to visualize the resource utilization of a job over time.  After a job
 is completed, timeline charts can help to identify periods of inefficient resource usage.  However,
 they are also suitable for the live assessment of performance during the job’s runtime.  In case of
 unexpected performance behavior, users can cancel the job, thus avoiding long execution with subpar
 performance.
 
-Pika provides the following runtime metrics:
+PIKA provides the following runtime metrics:
 
 |Metric| Hardware Unit|
 |---|---|
 |CPU Usage|CPU core|
-|IPC|CPU core|
+|IPC (instructions per cycle)|CPU core|
 |FLOPS (normalized to single precision) |CPU core|
 |Main Memory Bandwidth|CPU socket|
 |CPU Power|CPU socket|
@@ -62,8 +62,8 @@ socket or per node.
 CPU socket or node. This can result e.g. in cache perturbation and thus a sub-optimal performance.
 To get valid performance data for those metrics, it is recommended to submit an exclusive job!**
 
-**Note:** To reduce the amount of recorded data, Pika summarizes per hardware thread metrics to the
-corresponding physical core. In terms of simultaneous multithreading (SMT), Pika only provides
+**Note:** To reduce the amount of recorded data, PIKA summarizes per hardware thread metrics to the
+corresponding physical core. In terms of simultaneous multithreading (SMT), PIKA only provides
 performance data per physical core.
 
 The following table explains different timeline visualization modes.
@@ -95,9 +95,9 @@ from the time series data for each job.  To limit the jobs displayed, a time per
 specified.
 
 To analyze the footprints of a larger number of jobs, a visualization with histograms and scatter
-plots can be used. Pika uses histograms to illustrate the number of jobs that fit into a category or
+plots can be used. PIKA uses histograms to illustrate the number of jobs that fit into a category or
 bin. For job states and job tags there is a fixed number of categories or values. For other
-footprint metrics Pika uses a binning with a user-configurable bin size, since the value range
+footprint metrics PIKA uses a binning with a user-configurable bin size, since the value range
 usually contains an unlimited number of values.  A scatter plot enables the combined view of two
 footprint metrics (except for job states and job tags), which is particularly useful for
 investigating their correlation.
@@ -105,7 +105,7 @@ investigating their correlation.
 ## Hints
 
 If users wish to perform their own measurement of performance counters using performance tools other
-than Pika, it is recommended to disable Pika monitoring. This can be done using the following slurm
+than PIKA, it is recommended to disable PIKA monitoring. This can be done using the following slurm
 flags in the job script:
 
 ```Bash
@@ -113,11 +113,11 @@ flags in the job script:
 #SBATCH --comment=no_monitoring
 ```
 
-**Note:** Disabling Pika monitoring is possible only for exclusive jobs!
+**Note:** Disabling PIKA monitoring is possible only for exclusive jobs!
 
 ## Known Issues
 
-The Pika metric FLOPS is not supported by the Intel Haswell cpu architecture.
-However, Pika provides this metric to show the computational intensity.
+The PIKA metric FLOPS is not supported by the Intel Haswell cpu architecture.
+However, PIKA provides this metric to show the computational intensity.
 **Do not rely on FLOPS on Haswell!** We use the event `AVX_INSTS_CALC` which counts the `insertf128`
 instruction.
