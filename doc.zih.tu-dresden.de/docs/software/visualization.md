@@ -235,7 +235,7 @@ it into thinking your provided GL rendering version is higher than what it actua
 ??? example
 
     ```console
-    # 1st, connect to Taurus using X forwarding (-X).
+    # 1st, connect to ZIH systems using X forwarding (-X).
     # It is a good idea to also enable compression for such connections (-C):
     marie@local$ ssh -XC taurus.hrsk.tu-dresden.de
 
