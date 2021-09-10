@@ -90,6 +90,7 @@ Perf
 Pika
 pipelining
 png
+Pthreads
 rome
 romeo
 RSA
@@ -122,7 +123,11 @@ TensorFlow
 TFLOPS
 Theano
 tmp
+tracefile
+tracefiles
 Trition
 Vampir
+VampirTrace
+VampirTrace's
 Xeon
 ZIH
