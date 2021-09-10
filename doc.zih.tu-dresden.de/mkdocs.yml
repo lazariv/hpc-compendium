@@ -128,7 +128,7 @@ nav:
       - System Venus: archive/system_venus.md
       - KNL Nodes: archive/knl_nodes.md
     - UNICORE Rest API: archive/unicore_rest_api.md
-    - Vampir Trace: archive/vampir_trace.md
+    - VampirTrace: archive/vampirtrace.md
     - Windows Batchjobs: archive/windows_batch.md
 
 
