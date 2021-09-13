@@ -31,7 +31,7 @@ separation of metadata and file contents.
 
 BeeGFS is fast, flexible, and easy to manage storage if for your issue
 filesystem plays an important role use BeeGFS. It addresses everyone,
-who needs large and/or fast file storage
+who needs large and/or fast file storage.
 
 ## Create BeeGFS Filesystem
 
