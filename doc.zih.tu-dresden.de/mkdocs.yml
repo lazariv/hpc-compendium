@@ -77,7 +77,7 @@ nav:
       - Permanent File Systems: data_lifecycle/permanent.md
       - Lustre: data_lifecycle/lustre.md
       - BeeGFS: data_lifecycle/beegfs.md
-      - WarmArchive: data_lifecycle/warm_archive.md
+      - Warm Archive: data_lifecycle/warm_archive.md
       - Intermediate Archive: data_lifecycle/intermediate_archive.md
     - Workspaces: data_lifecycle/workspaces.md
     - Preservation of Research Data: data_lifecycle/preservation_research_data.md
