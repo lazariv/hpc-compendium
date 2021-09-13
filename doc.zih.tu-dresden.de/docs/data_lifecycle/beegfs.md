@@ -2,7 +2,7 @@
 
 Commands to work with the BeeGFS filesystem.
 
-## Capacity and filesystem health
+## Capacity and Filesystem Health
 
 View storage and inode capacity and utilization for metadata and storage targets.
 
