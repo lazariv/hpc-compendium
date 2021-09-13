@@ -8,7 +8,7 @@ senselessly filling the disks,
 
 ## Global /home Filesystem
 
-Each user has 50 GB in a `/home` directory independent of the granted capacity for the project.
+Each user has 50 GiB in a `/home` directory independent of the granted capacity for the project.
 The home directory is mounted with read-write permissions on all nodes of the ZIH system.
 
 Hints for the usage of the global home directory:
