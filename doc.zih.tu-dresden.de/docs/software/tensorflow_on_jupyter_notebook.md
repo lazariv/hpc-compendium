@@ -168,7 +168,7 @@ into your previously created virtual environment in your working
 directory or use the kernel for your notebook.
 
 Note: You could work with simple examples in your home directory but according to
-[new storage concept](../data_lifecycle/hpc_storage_concept2019.md) please use
+[new storage concept](../data_lifecycle/overview.md) please use
 [workspaces](../data_lifecycle/workspaces.md) for your study and work projects**.
 For this reason, you have to use advanced options and put "/" in "Workspace scope" field.
 
