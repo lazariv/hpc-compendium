@@ -1,10 +1,12 @@
 # Permanent Filesystems
 
-Do not use permanent filesystems as work directories:
+!!! hint
 
-- Even temporary files are kept in the snapshots and in the backup tapes over a long time,
-senselessly filling the disks,
-- By the sheer number and volume of work files, they may keep the backup from working efficiently.
+    Do not use permanent filesystems as work directories:
+
+    - Even temporary files are kept in the snapshots and in the backup tapes over a long time,
+    senselessly filling the disks,
+    - By the sheer number and volume of work files, they may keep the backup from working efficiently.
 
 ## Global /home Filesystem
 
@@ -33,8 +35,8 @@ It can only be written to on the login and export nodes.
 
 !!! note
 
-   On compute nodes, `/projects` is mounted as read-only, because it must not be used as
-   work directory and heavy I/O.
+    On compute nodes, `/projects` is mounted as read-only, because it must not be used as
+    work directory and heavy I/O.
 
 ## Snapshots
 
@@ -57,8 +59,9 @@ To restore a previous version of a file:
 
 !!! note
 
-    The `.snapshot` directory is embedded in a different directory structure. An `ls ../..` will not show the directory
-    where you came from. Thus, for your `cp`, you should *use an absolute path* as destination.
+    The `.snapshot` directory is embedded in a different directory structure. An `ls ../..` will not
+    show the directory where you came from. Thus, for your `cp`, you should *use an absolute path*
+    as destination.
 
 ## Backup
 
@@ -73,8 +76,8 @@ main reason for performance degradation of the filesystem.
 
 !!! note
 
-    If a quota is exceeded - project or home - (total size OR total number of files) 
-    job submission is forbidden. Running jobs are not affected. 
+    If a quota is exceeded - project or home - (total size OR total number of files)
+    job submission is forbidden. Running jobs are not affected.
 
 The following commands can be used for monitoring:
 
@@ -83,10 +86,10 @@ The following commands can be used for monitoring:
 
 In case a quota is above its limits:
 
-  - Remove core dumps and temporary data
-  - Talk with your colleagues to identify unused or unnecessarily stored data
-  - Check your workflow and use `/tmp` or the scratch filesystems for temporary files
-  - *Systematically* handle your important data:
+- Remove core dumps and temporary data
+- Talk with your colleagues to identify unused or unnecessarily stored data
+- Check your workflow and use `/tmp` or the scratch filesystems for temporary files
+- *Systematically* handle your important data:
     - For later use (weeks...months) at the ZIH systems, build and zip tar
       archives with meaningful names or IDs and store them, e.g., in a workspace in the
       [warm archive](warm_archive.md) or an [archive](intermediate_archive.md)
