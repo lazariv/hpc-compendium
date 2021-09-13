@@ -214,7 +214,7 @@ for convenience: [SparkExample.ipynb](misc/SparkExample.ipynb)
 !!! note
 
     You could work with simple examples in your home directory but according to the
-    [storage concept](../data_lifecycle/hpc_storage_concept2019.md)
+    [storage concept](../data_lifecycle/overview.md)
     **please use [workspaces](../data_lifecycle/workspaces.md) for
     your study and work projects**. For this reason, you have to use
     advanced options of Jupyterhub and put "/" in "Workspace scope" field.
