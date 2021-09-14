@@ -4,9 +4,9 @@ Correct organization of the structure of an HPC project is a straightforward way
 work of the whole team. There have to be rules and regulations that every member should follow. The
 uniformity of the project can be achieved by taking into account and setting up correctly
 
-  * the same **set of software** (modules, compiler, packages, libraries, etc),
-  * a defined **data life cycle management** including the same **data storage** or set of them,
-  * and **access rights** to project data.
+* the same **set of software** (modules, compiler, packages, libraries, etc),
+* a defined **data life cycle management** including the same **data storage** or set of them,
+* and **access rights** to project data.
 
 The used set of software within an HPC project can be management with environments on different
 levels either defined by [modules](../software/modules.md), [containers](../software/containers.md)
@@ -19,28 +19,26 @@ The main concept of working with data on ZIH systems bases on [Workspaces](works
 properly:
 
   * use a `/home` directory for the limited amount of personal data, simple examples and the results
-    of calculations. The home directory is not a working directory! However, `/home` file system is
+    of calculations. The home directory is not a working directory! However, `/home` filesystem is
     [backed up](#backup) using snapshots;
   * use `workspaces` as a place for working data (i.e. datasets); Recommendations of choosing the
     correct storage system for workspace presented below.
 
-### Taxonomy of File Systems
+### Taxonomy of Filesystems
 
 It is important to design your data workflow according to characteristics, like I/O footprint
 (bandwidth/IOPS) of the application, size of the data, (number of files,) and duration of the
-storage to efficiently use the provided storage and file systems.
-The page [file systems](file_systems.md) holds a comprehensive documentation on the different file
-systems.
-<!--In general, the mechanisms of
-so-called--> <!--[Workspaces](workspaces.md) are compulsory for all HPC users to store data for a
-defined duration ---> <!--depending on the requirements and the storage system this time span might
-range from days to a few--> <!--years.-->
-<!--- [HPC file systems](file_systems.md)-->
-<!--- [Intermediate Archive](intermediate_archive.md)-->
-<!--- [Special data containers] **todo** Special data containers (was no valid link in old compendium)-->
-<!--- [Move data between file systems](../data_transfer/data_mover.md)-->
-<!--- [Move data to/from ZIH's file systems](../data_transfer/export_nodes.md)-->
-<!--- [Longterm Preservation for ResearchData](preservation_research_data.md)-->
+storage to efficiently use the provided storage and filesystems.
+The page [filesystems](file_systems.md) holds a comprehensive documentation on the different
+filesystems.  <!--In general, the mechanisms of so-called--> <!--[Workspaces](workspaces.md) are
+compulsory for all HPC users to store data for a defined duration ---> <!--depending on the
+requirements and the storage system this time span might range from days to a few--> <!--years.-->
+<!--- [HPC filesystems](file_systems.md)--> <!--- [Intermediate
+Archive](intermediate_archive.md)--> <!--- [Special data containers] **todo** Special data
+containers (was no valid link in old compendium)--> <!--- [Move data between filesystems]
+(../data_transfer/data_mover.md)--> <!--- [Move data to/from ZIH's filesystems]
+(../data_transfer/export_nodes.md)--> <!--- [Longterm Preservation for
+ResearchData](preservation_research_data.md)-->
 
 !!! hint "Recommendations to choose of storage system"
 
@@ -48,7 +46,7 @@ range from days to a few--> <!--years.-->
       [warm_archive](file_systems.md#warm_archive) can be used.
       (Note that this is mounted **read-only** on the compute nodes).
     * For a series of calculations that works on the same data please use a `scratch` based [workspace](workspaces.md).
-    * **SSD**, in its turn, is the fastest available file system made only for large parallel
+    * **SSD**, in its turn, is the fastest available filesystem made only for large parallel
       applications running with millions of small I/O (input, output operations).
     * If the batch job needs a directory for temporary data then **SSD** is a good choice as well.
       The data can be deleted afterwards.
@@ -60,17 +58,17 @@ otherwise it could vanish. The core data of your project should be [backed up](#
 ### Backup
 
 The backup is a crucial part of any project. Organize it at the beginning of the project. The
-backup mechanism on ZIH systems covers **only** the `/home` and `/projects` file systems. Backed up
+backup mechanism on ZIH systems covers **only** the `/home` and `/projects` filesystems. Backed up
 files can be restored directly by the users. Details can be found
 [here](file_systems.md#backup-and-snapshots-of-the-file-system).
 
 !!! warning
 
-    If you accidentally delete your data in the "no backup" file systems it **can not be restored**!
+    If you accidentally delete your data in the "no backup" filesystems it **can not be restored**!
 
 ### Folder Structure and Organizing Data
 
-Organizing of living data using the file system helps for consistency and structuredness of the
+Organizing of living data using the filesystem helps for consistency and structuredness of the
 project. We recommend following the rules for your work regarding:
 
   * Organizing the data: Never change the original data; Automatize the organizing the data; Clearly
@@ -130,7 +128,7 @@ you don’t need throughout its life cycle.
 
 <!--## Software Packages-->
 
-<!--As was written before the module concept is the basic concept for using software on Taurus.-->
+<!--As was written before the module concept is the basic concept for using software on ZIH systems.-->
 <!--Uniformity of the project has to be achieved by using the same set of software on different levels.-->
 <!--It could be done by using environments. There are two types of environments should be distinguished:-->
 <!--runtime environment (the project level, use scripts to load [modules]**todo link**), Python virtual-->
@@ -144,16 +142,16 @@ you don’t need throughout its life cycle.
 
 <!--### Python Virtual Environment-->
 
-<!--If you are working with the Python then it is crucial to use the virtual environment on Taurus. The-->
+<!--If you are working with the Python then it is crucial to use the virtual environment on ZIH Systems. The-->
 <!--main purpose of Python virtual environments (don't mess with the software environment for modules)-->
 <!--is to create an isolated environment for Python projects (self-contained directory tree that-->
 <!--contains a Python installation for a particular version of Python, plus a number of additional-->
 <!--packages).-->
 
 <!--**Vitualenv (venv)** is a standard Python tool to create isolated Python environments. We-->
-<!--recommend using venv to work with Tensorflow and Pytorch on Taurus. It has been integrated into the-->
+<!--recommend using venv to work with Tensorflow and Pytorch on ZIH systems. It has been integrated into the-->
 <!--standard library under the [venv module]**todo link**. **Conda** is the second way to use a virtual-->
-<!--environment on the Taurus. Conda is an open-source package management system and environment-->
+<!--environment on the ZIH systems. Conda is an open-source package management system and environment-->
 <!--management system from the Anaconda.-->
 
 <!--[Detailed information]**todo link** about using the virtual environment.-->
@@ -168,9 +166,9 @@ you don’t need throughout its life cycle.
 
 The concept of **permissions** and **ownership** is crucial in Linux. See the
 [HPC-introduction]**todo link** slides for the understanding of the main concept. Standard Linux
-changing permission command (i.e `chmod`) valid for Taurus as well. The **group** access level
+changing permission command (i.e `chmod`) valid for ZIH systems as well. The **group** access level
 contains members of your project group. Be careful with 'write' permission and never allow to change
 the original data.
 
-Useful links: [Data Management]**todo link**, [File Systems]**todo link**, [Get Started with
-HPC-DA]**todo link**, [Project Management]**todo link**, [Preservation research data[**todo link**
+Useful links: [Data Management]**todo link**, [Filesystems]**todo link**, [Get Started with
+HPC Data Analytics]**todo link**, [Project Management]**todo link**, [Preservation research data[**todo link**

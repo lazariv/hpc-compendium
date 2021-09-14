@@ -37,6 +37,7 @@ function usage () {
   echo ""
   echo "Options:"
   echo "  -a     Search in all markdown files (default: git-changed files)" 
+  echo "  -f     Search in a specific markdown file" 
   echo "  -s     Silent mode"
   echo "  -h     Show help message"
 }
@@ -44,10 +45,15 @@ function usage () {
 # Options
 all_files=false
 silent=false
-while getopts ":ahs" option; do
+file=""
+while getopts ":ahsf:" option; do
  case $option in
    a)
      all_files=true
+     ;;
+   f)
+     file=$2
+     shift
      ;;
    s)
      silent=true
@@ -67,11 +73,14 @@ branch="origin/${CI_MERGE_REQUEST_TARGET_BRANCH_NAME:-preview}"
 if [ $all_files = true ]; then
   echo "Search in all markdown files."
   files=$(git ls-tree --full-tree -r --name-only HEAD $basedir/docs/ | grep .md)
+elif [[ ! -z $file ]]; then
+  files=$file
 else
   echo "Search in git-changed files."
   files=`git diff --name-only "$(git merge-base HEAD "$branch")"`
 fi
 
+echo "... $files ..."
 cnt=0
 for f in $files; do
   if [ "$f" != doc.zih.tu-dresden.de/README.md -a "${f: -3}" == ".md" -a -f "$f" ]; then

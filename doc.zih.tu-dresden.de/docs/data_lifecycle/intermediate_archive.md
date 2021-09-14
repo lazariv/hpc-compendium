@@ -14,7 +14,7 @@ Some more information:
 - Maximum file size in the archive is 500 GB (split up your files, see
   [Datamover](../data_transfer/data_mover.md))
 - Data will be stored in two copies on tape.
-- The bandwidth to this data is very limited. Hence, this file system
+- The bandwidth to this data is very limited. Hence, this filesystem
   must not be used directly as input or output for HPC jobs.
 
 ## Access the Intermediate Archive
