@@ -5,8 +5,8 @@
     This documentation page is outdated.
     The up-to date documentation on BeeGFS can be found [here](../data_lifecycle/beegfs.md).
 
-**Prerequisites:** To work with Tensorflow you obviously need a [login](../application/overview.md) to
-the ZIH systems and basic knowledge about Linux, mounting, and batchsystem Slurm.
+**Prerequisites:** To work with TensorFlow you obviously need a [login](../application/overview.md) to
+the ZIH systems and basic knowledge about Linux, mounting, and batch system Slurm.
 
 **Aim** of this page is to introduce
 users how to start working with the BeeGFS filesystem - a high-performance parallel filesystem.
@@ -61,7 +61,7 @@ Check the status of the job with `squeue -u \<username>`.
 
 ## Mount BeeGFS Filesystem
 
-You can mount BeeGFS filesystem on the ML partition (ppc64 architecture) or on the Haswell
+You can mount BeeGFS filesystem on the ML partition (PowerPC architecture) or on the Haswell
 [partition](../jobs_and_resources/system_taurus.md) (x86_64 architecture)
 
 ### Mount BeeGFS Filesystem on the Partition `ml`

@@ -23,6 +23,7 @@ fastfs
 FFT
 FFTW
 filesystem
+filesystems
 Filesystem
 Flink
 Fortran
@@ -99,6 +100,7 @@ Saxonid
 sbatch
 ScaDS
 ScaLAPACK
+scalable
 Scalasca
 scancel
 scontrol
@@ -111,7 +113,7 @@ SHMEM
 SLES
 Slurm
 SMP
-squeue
+queue
 srun
 ssd
 SSD
