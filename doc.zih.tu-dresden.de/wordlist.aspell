@@ -90,6 +90,7 @@ PAPI
 parallelization
 pdf
 Perf
+PiB
 Pika
 pipelining
 png
@@ -134,5 +135,6 @@ Trition
 Vampir
 VampirTrace
 VampirTrace's
+workspaces
 Xeon
 ZIH

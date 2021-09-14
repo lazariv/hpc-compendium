@@ -3,7 +3,7 @@
 The warm archive is intended as a storage space for the duration of a running HPC project.
 It does **not** substitute a long-term archive, though.
 
-This storage is best suited for large files (like tgzs of input data data or intermediate results).
+This storage is best suited for large files (like `tgz`s of input data data or intermediate results).
 
 The hardware consists of 20 storage nodes with a net capacity of 10 PiB on spinning disks.
 We have seen an total data rate of 50 GiB/s under benchmark conditions.
