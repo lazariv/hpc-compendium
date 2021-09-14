@@ -15,7 +15,7 @@ users how to start working with the BeeGFS filesystem - a high-performance paral
 
 Understanding of mounting and the concept of the mount point is important for using filesystems and
 object storage. A mount point is a directory (typically an empty one) in the currently accessible
-file system on which an additional filesystem is mounted (i.e., logically attached).  The default
+filesystem on which an additional filesystem is mounted (i.e., logically attached).  The default
 mount points for a system are the directories in which filesystems will be automatically mounted
 unless told by the user to do otherwise.  All partitions are attached to the system via a mount
 point. The mount point defines the place of a particular data set in the filesystem. Usually, all
