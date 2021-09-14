@@ -132,6 +132,38 @@ strong {
     width: 125px;
 }
 
+.md-header__button.md-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (min-width: 76.25rem) {
+    .md-header__button.md-icon {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 60rem) {
+    .md-header__button.md-icon {
+        display: none;
+    }
+}
+/* toc */
+/* operation-status */
+.operation-status-logo {
+    width: 0.5rem;
+}
+    
+hr.solid {
+    border-top: 2px solid #bbb;
+}
+
+p {
+    padding: 0 0.6rem;
+}
+/* main */
+
 /* footer */
 .md-footer * {
     justify-content: flex-start;

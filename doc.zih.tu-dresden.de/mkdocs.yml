@@ -2,7 +2,6 @@ nav:
   - Home: index.md
   - Application for Login and Resources:
     - Overview: application/overview.md
-    - Access: application/access.md
     - Terms: application/terms_of_use.md
     - Request for Resources: application/request_for_resources.md
     - Project Request Form: application/project_request_form.md
@@ -60,15 +59,14 @@ nav:
     - Software Development and Tools:
       - Overview: software/software_development_overview.md
       - Building Software: software/building_software.md
-      - GPU Programming: software/gpu_programming.md
       - Compilers: software/compilers.md
-      - Debugging:
-        - Overview: software/debuggers.md
-        - MPI Error Detection: software/mpi_usage_error_detection.md
-      - Libraries: software/libraries.md
-      - Score-P: software/scorep.md
+      - GPU Programming: software/gpu_programming.md
+      - Libraries: software/math_libraries.md
+      - MPI Error Detection: software/mpi_usage_error_detection.md
+      - Debugging: software/debuggers.md
+      - Pika: software/pika.md
       - Perf Tools: software/perf_tools.md 
-      - PIKA: software/pika.md
+      - Score-P: software/scorep.md
       - Vampir: software/vampir.md
   - Data Life Cycle Management:
     - Overview: data_lifecycle/overview.md
@@ -114,15 +112,14 @@ nav:
     - Overview: archive/overview.md
     - Bio Informatics: archive/bioinformatics.md
     - CXFS End of Support: archive/cxfs_end_of_support.md
-    - KNL Nodes: archive/knl_nodes.md
     - Load Leveler: archive/load_leveler.md
-    - Migrate to Atlas: archive/migrate_to_atlas.md
     - No IB Jobs: archive/no_ib_jobs.md
     - Phase2 Migration: archive/phase2_migration.md
     - Platform LSF: archive/platform_lsf.md
     - BeeGFS on Demand: archive/beegfs_on_demand.md
     - Switched-Off Systems:
       - Overview: archive/systems_switched_off.md
+      - From Deimos to Atlas: archive/migrate_to_atlas.md
       - System Altix: archive/system_altix.md
       - System Atlas: archive/system_atlas.md
       - System Deimos: archive/system_deimos.md
@@ -130,9 +127,9 @@ nav:
       - System Titan: archive/system_titan.md
       - System Triton: archive/system_triton.md
       - System Venus: archive/system_venus.md
-    - Taurus II: archive/taurus_ii.md
+      - KNL Nodes: archive/knl_nodes.md
     - UNICORE Rest API: archive/unicore_rest_api.md
-    - Vampir Trace: archive/vampir_trace.md
+    - VampirTrace: archive/vampirtrace.md
     - Windows Batchjobs: archive/windows_batch.md
 
 
@@ -175,10 +172,12 @@ markdown_extensions:
     - toc:
         permalink: True
     - attr_list
+    - footnotes
 
 extra:
   homepage: https://tu-dresden.de
   zih_homepage: https://tu-dresden.de/zih
+  hpcsupport_mail: hpcsupport@zih.tu-dresden.de
   # links in footer
   footer:
     - link: /legal_notice
