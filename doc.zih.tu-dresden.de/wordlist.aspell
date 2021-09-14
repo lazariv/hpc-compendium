@@ -44,6 +44,7 @@ icpc
 ifort
 ImageNet
 Infiniband
+inode
 Itanium
 jpg
 Jupyter
@@ -58,6 +59,7 @@ lsf
 LSF
 lustre
 MEGWARE
+MiB
 MIMD
 MKL
 Montecito
@@ -92,6 +94,7 @@ Pika
 pipelining
 png
 Pthreads
+reachability
 rome
 romeo
 RSA

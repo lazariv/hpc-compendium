@@ -40,7 +40,7 @@ directory to its children.
 marie@login$ beegfs-ctl --setpattern --chunksize=1m --numtargets=16 /beegfs/global0/my-workspace/ --mount=/beegfs/global0
 ```
 
-This will set the stripe pattern for `/beegfs/global0/path/to/mydir/` to a chunksize of 1 MiB
+This will set the stripe pattern for `/beegfs/global0/path/to/mydir/` to a chunk size of 1 MiB
 distributed over 16 storage targets.
 
 Find files located on certain server or targets. The following command searches all files that are
