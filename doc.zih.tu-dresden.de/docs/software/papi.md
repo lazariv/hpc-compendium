@@ -87,7 +87,7 @@ measurements, especially for MPI applications via environment variable `PAPI_OUT
 This will generate a directory called `papi_hl_output` in `scratch/measurement` that contains one or
 more output files in JSON format.
 
-### Low Level API
+### Low-Level API
 
 The low-level API manages hardware events in user-defined groups
 called Event Sets. It is meant for experienced application programmers and tool developers wanting
