@@ -110,7 +110,7 @@ multiple events, please check which events can be measured concurrently using th
 !!! example "Example: Determine the events on the partition `romeo` from a login node"
 
     ```console
-    marie@login$	module load PAPI
+    marie@login$    module load PAPI
     marie@login$	salloc -A <project> --partition=romeo
     [...]
     marie@login$	srun papi_avail
@@ -120,15 +120,15 @@ multiple events, please check which events can be measured concurrently using th
     ```
 
 Instrument your application with either the high-level or low-level API. Load the PAPI module and
-compile your application against the  PAPI library.
+compile your application against the  PAPI library. 
 
 !!! example
 
     ```console
-    marie@login$ module load PAPI
-    marie@login$ salloc -A <project> --partition=romeo
-    marie@login$ gcc app.c -o app -lpapi
-    marie@login$ srun ./app
+    marie@login$    module load PAPI
+    marie@login$    gcc app.c -o app -lpapi
+    marie@login$    salloc -A <project> --partition=romeo
+    marie@login$    srun ./app
     [...]
     # Exit with	Ctrl+C
     ```
