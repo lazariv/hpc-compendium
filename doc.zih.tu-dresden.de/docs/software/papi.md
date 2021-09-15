@@ -116,7 +116,7 @@ multiple events, please check which events can be measured concurrently using th
     marie@login$	srun papi_avail
     marie@login$	srun papi_native_avail
     [...]
-    # Exit with	Ctrl+C
+    # Exit with	Ctrl+D
     ```
 
 Instrument your application with either the high-level or low-level API. Load the PAPI module and
@@ -130,7 +130,7 @@ compile your application against the  PAPI library.
     marie@login$    salloc -A <project> --partition=romeo
     marie@login$    srun ./app
     [...]
-    # Exit with	Ctrl+C
+    # Exit with	Ctrl+D
     ```
 
 !!! hint
