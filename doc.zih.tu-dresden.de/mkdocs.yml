@@ -81,10 +81,10 @@ nav:
     - HPC Storage Concept 2019: data_lifecycle/hpc_storage_concept2019.md
     - Preservation of Research Data: data_lifecycle/preservation_research_data.md
     - Structuring Experiments: data_lifecycle/experiments.md
-  - Jobs and Resources:
+  - HPC Resources and Jobs:
     - Overview: jobs_and_resources/overview.md
     - Batch Systems: jobs_and_resources/batch_systems.md
-    - Hardware Resources:
+    - HPC Resources:
       - Hardware Taurus: jobs_and_resources/hardware_taurus.md
       - AMD Rome Nodes: jobs_and_resources/rome_nodes.md
       - IBM Power9 Nodes: jobs_and_resources/power9.md
