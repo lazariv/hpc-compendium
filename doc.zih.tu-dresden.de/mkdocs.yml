@@ -9,13 +9,13 @@ nav:
   - Access to ZIH Systems:
     - Overview: access/overview.md
     - Connecting with SSH: access/ssh_login.md
-    - Key Fingerprints: access/key_fingerprints.md  
     - Desktop Visualization: access/desktop_cloud_visualization.md
     - Graphical Applications with WebVNC: access/graphical_applications_with_webvnc.md
-    - Security Restrictions: access/security_restrictions.md
     - JupyterHub:
       - JupyterHub: access/jupyterhub.md
       - JupyterHub for Teaching: access/jupyterhub_for_teaching.md
+    - Key Fingerprints: access/key_fingerprints.md  
+    - Security Restrictions: access/security_restrictions.md
   - Transfer of Data:
     - Overview: data_transfer/overview.md
     - Data Mover: data_transfer/data_mover.md

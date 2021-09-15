@@ -1,7 +1,9 @@
 # SSH Key Fingerprints
 
-The key fingerprints of login and export nodes can occasionally change. This page holds up-to-date
-fingerprints.
+!!! hint
+
+    The key fingerprints of login and export nodes can occasionally change. This page holds
+    up-to-date fingerprints.
 
 ## Login Nodes
 

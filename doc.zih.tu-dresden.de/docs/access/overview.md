@@ -1,21 +1,18 @@
-# Access to the Cluster
+# Access to ZIH Systems
 
-## SSH access
+There are several different ways to access ZIH systems depending on the intended usage:
 
-Important note: ssh to Taurus is only possible from inside TU Dresden Campus. Users from outside
-should use VPN
-([see here](https://tu-dresden.de/zih/dienste/service-katalog/arbeitsumgebung/zugang_datennetz/vpn)).
+* [SSH connection](ssh_login.md) is the classical way to connect to the login nodes and work from
+    the command line to set up experiments and manage batch jobs
+* [Desktop Cloud Visualization](desktop_cloud_visualization.md) provides a virtual Linux desktop
+  with access to GPU ressources for OpenGL 3D applications
+* [WebVNC service](graphical_applications_with_webvnc.md) allows better support for graphical
+   applications than SSH with X forwarding
+* [JupyterHub service](jupyterhub.md) offers a quick and easy way to work with Jupyter notebooks on
+   ZIH systems.
 
-The recommended way to connect to the HPC login servers directly via ssh:
+!!! hint
 
-```Bash
-ssh <zih-login>@taurus.hrsk.tu-dresden.de
-```
-
-Please put this command in the terminal and replace `zih-login` with your login that you received
-during the access procedure. Accept the host verifying and enter your password. You will be loaded
-by login nodes in your Taurus home directory.  This method requires two conditions: Linux OS,
-workstation within the campus network. For other options and details check the Login page.
-
-Useful links: [Access]**todo link**, [Project Request Form](../application/request_for_resources.md),
-[Terms Of Use]**todo link**
+    Prerequisite for accessing ZIH systems is a HPC project and a login. Please refer to the pages
+    within [Application for Login and Resources](../application/overview.md) for detailed
+    information.

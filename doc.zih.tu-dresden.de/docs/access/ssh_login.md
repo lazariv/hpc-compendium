@@ -4,9 +4,9 @@ For security reasons, ZIH systems are only accessible for hosts within the domai
 
 ## Virtual Private Network (VPN)
 
-To access HPC systems from outside the campus networks it's recommended to set up a VPN connection to
-enter the campus network. While active it allows the user to connect directly to the HPC login
-nodes.
+To access the ZIH systems from outside the campus networks it's recommended to set up a VPN
+connection to enter the campus network. While active, it allows the user to connect directly to the
+HPC login nodes.
 
 For more information on our VPN and how to set it up, please visit the corresponding
 [ZIH service catalogue page](https://tu-dresden.de/zih/dienste/service-katalog/arbeitsumgebung/zugang_datennetz/vpn).
@@ -58,7 +58,7 @@ marie@local$ ssh -XC <zih-login>@taurus.hrsk.tu-dresden.de
     Also consider to use a [DCV session](desktop_cloud_visualization.md) for remote desktop
     visualization at ZIH systems.
 
-### Password-less SSH
+### Password-Less SSH
 
 Of course, password-less SSH connecting is supported at ZIH. All public SSH keys for ZIH systems
 have to be generated following these rules:
@@ -79,9 +79,9 @@ Enter passphrase for key 'id-ed25519':
 
 We recommend one of the following applications:
 
-  * MobaXTerm: [homepage](https://mobaxterm.mobatek.net) | [ZIH Tutorial](misc/basic_usage_of_MobaXterm.pdf)
-  * PuTTY: [homepage](https://www.putty.org) | [ZIH Tutorial](misc/basic_usage_of_PuTTY.pdf)
-  * OpenSSH Server: [docs](https://docs.microsoft.com/de-de/windows-server/administration/openssh/openssh_install_firstuse)
+  * [MobaXTerm](https://mobaxterm.mobatek.net): [ZIH documentation](misc/basic_usage_of_MobaXterm.pdf)
+  * [PuTTY](https://www.putty.org): [ZIH documentation](misc/basic_usage_of_PuTTY.pdf)
+  * OpenSSH Server: [docs](https://docs.microso.com/de-de/windows-server/administration/openssh/openssh_install_firstuse)
 
 The page [key fingerprints](key_fingerprints.md) holds the up-to-date fingerprints for the login
 nodes. Make sure they match.
