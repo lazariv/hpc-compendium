@@ -79,6 +79,7 @@ OPARI
 OpenACC
 OpenBLAS
 OpenCL
+OpenGL
 OpenMP
 openmpi
 OpenMPI
@@ -129,5 +130,6 @@ Trition
 Vampir
 VampirTrace
 VampirTrace's
+WebVNC
 Xeon
 ZIH
