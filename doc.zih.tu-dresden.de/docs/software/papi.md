@@ -89,10 +89,10 @@ more output files in JSON format.
 
 ### Low Level API
 
-The low-level API (Application Programming Interface) manages hardware events in user-defined groups
+The low-level API manages hardware events in user-defined groups
 called Event Sets. It is meant for experienced application programmers and tool developers wanting
 fine-grained measurement and control of the PAPI interface. It provides access to both PAPI preset
-and native events, and supports all installed components. For more details on the Low Level API,
+and native events, and supports all installed components. For more details on the low-level API,
 click [here](https://bitbucket.org/icl/papi/wiki/PAPI-LL.md).
 
 ## Usage on ZIH Systems
