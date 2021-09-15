@@ -339,9 +339,10 @@ In order to look into the results, there are the following basic approaches.
         The interactivity of this plot is intended to make optimal combinations of the hyperparameters visible more easily.
         Get more information about this interactivity by clicking the "Help" button at the top of the graphic (see red arrow on the image above).
 
-    After creating the plot OmniOpt suggests to open the html file directly in a web browser on the ZIH system.
+    After creating a 2d scatter plot or a parallel plot OmniOpt will try to display the corresponding file (html, png) directly on the ZIH system.
     Therefore, it is neccessary to login via ssh with the option -X (X11 forwarding), e.g. ```ssh -X taurus.hrsk.tu-dresden.de```.
-    Nevertheless, because of latency using x11 forwarding it is recommended to download the html file and explore the parallel plot on the local machine.
+    Nevertheless, because of latency using x11 forwarding it is recommended to download the created files and explore them on the local machine (esp. for the parallel plot).
+	The created files are saved at ```projects/<name_of_optimization_run>/{2d-scatterplots,parallel-plot}```.
 
 1. **Getting the raw data:**
     As a second approach the raw data of the optimization process can be exported as a csv file.
