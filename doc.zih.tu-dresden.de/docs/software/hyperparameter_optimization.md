@@ -347,3 +347,54 @@ In order to look into the results, there are the following basic approaches.
 1. **Getting the raw data:**
     As a second approach the raw data of the optimization process can be exported as a csv file.
     The created output files are stored in the folder ```projects/<name_of_optimization_run>/csv```.
+
+### Advanced
+
+#### Using more than the default 1 GPU in workers
+
+Inside the workers, you usually only have 1 GPU at most. If you need more than one GPU to optimize your program, you can
+start additional `sbatch`-jobs inside the workers and wait for them to finish. Use this as example code of how you can achieve
+that. It starts an `sbatch`-job with all the parameters given to the file via the command line and waits until it is finished,
+and then prints out the results.
+
+```shell
+#!/bin/bash
+
+THISLOGPATH=${RANDOM}.out
+while [ -e $THISLOGPATH ]; do
+    THISLOGPATH=${RANDOM}.out
+done
+
+job_still_running () {
+        export SLURMID=$1
+        if [[ -z $SLURMID ]]; then
+            echo "job_still_running without valid Slurm-ID" >&2
+            echo "1"
+        else
+            if [[ $(squeue -u $USER | grep $SLURMID | wc -l) == 0 ]]; then
+                    echo "1"
+            else
+                    echo "0"
+            fi
+        fi
+}
+
+export SBATCH_RESULT=$(sbatch -J name_of_your_project --cpus-per-task=4 --gres=gpu:5 --ntasks=1 --time=1:00:00 --mem-per-cpu=2000 -o $THISLOGPATH python3 /your/program.py $@)
+
+export SBATCH_ID=$(echo $SBATCH_RESULT | sed -e 's/.* job //')
+
+if [[ -z $SBATCH_ID ]]; then
+    echo "ERROR starting sbatch"
+    exit 1
+fi
+
+while [[ $(job_still_running $SBATCH_ID) -eq "0" ]]; do
+    sleep 1
+done
+
+cat $THISLOGPATH
+```
+
+You can simply use this and print the `RESULT`-string inside `/your/program.py`. Of course, you may have to modify the sbatch call. 
+
+You can then run this on `haswell` without GPUs, since the GPUs are allocated in a job different from the original OmniOpt-job.
