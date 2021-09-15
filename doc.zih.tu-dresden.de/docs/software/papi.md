@@ -126,8 +126,11 @@ compile your application against the  PAPI library.
 
     ```console
     marie@login$ module load PAPI
+    marie@login$ salloc -A <project> --partition=romeo
     marie@login$ gcc app.c -o app -lpapi
-    marie@login$ ./app
+    marie@login$ srun ./app
+    [...]
+    # Exit with	Ctrl+C
     ```
 
 !!! hint
