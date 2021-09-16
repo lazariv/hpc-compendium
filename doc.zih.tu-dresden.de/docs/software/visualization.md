@@ -37,10 +37,10 @@ parallel, if it was built using MPI.
     /sw/installed/ParaView/5.7.0-osmesa/bin/mpiexec
     ```
 
-The resources for the MPI processes have to be allocated via the [batch system](../jobs_and_) option
-`-c NUM` (not `-n`, as it would be usually for MPI processes). It might be valuable in terms of
-runtime to bind/pin the MPI processes to hardware. A convenient option is `-bind-to core`. All other
-options can be obtained by
+The resources for the MPI processes have to be allocated via the
+[batch system](../jobs_and_resources/slurm.md) option `-c NUM` (not `-n`, as it would be usually for
+MPI processes). It might be valuable in terms of runtime to bind/pin the MPI processes to hardware.
+A convenient option is `-bind-to core`. All other options can be obtained by
 
 ```console
 marie@login$ mpiexec -bind-to -help`
