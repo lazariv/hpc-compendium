@@ -46,7 +46,6 @@ The following code example shows the use of the high-level API by marking a code
     }
     ```
 
-
 ??? example "Fortran"
 
     ```fortran
@@ -70,12 +69,10 @@ The following code example shows the use of the high-level API by marking a code
     end program main
     ```
 
-
 Events to be recorded are determined via the environment variable `PAPI_EVENTS` that lists comma
 separated events for any component (see example below). The output is generated in the current
 directory by default. However, it is recommended to specify an output directory for larger
 measurements, especially for MPI applications via environment variable `PAPI_OUTPUT_DIRECTORY`.
-
 
 !!! example "Setting performance events and output directory"
 
@@ -110,13 +107,13 @@ multiple events, please check which events can be measured concurrently using th
 !!! example "Example: Determine the events on the partition `romeo` from a login node"
 
     ```console
-    marie@login$	module load PAPI
-    marie@login$	salloc -A <project> --partition=romeo
+    marie@login$ module load PAPI
+    marie@login$ salloc -A <project> --partition=romeo
     [...]
-    marie@login$	srun papi_avail
-    marie@login$	srun papi_native_avail
+    marie@login$ srun papi_avail
+    marie@login$ srun papi_native_avail
     [...]
-    # Exit with	Ctrl+C
+    # Exit with Ctrl+C
     ```
 
 Instrument your application with either the high-level or low-level API. Load the PAPI module and
