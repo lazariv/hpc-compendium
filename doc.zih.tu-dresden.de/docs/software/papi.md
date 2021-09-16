@@ -84,12 +84,12 @@ measurements, especially for MPI applications via environment variable `PAPI_OUT
 This will generate a directory called `papi_hl_output` in `scratch/measurement` that contains one or
 more output files in JSON format.
 
-### Low Level API
+### Low-Level API
 
-The low-level API (Application Programming Interface) manages hardware events in user-defined groups
+The low-level API manages hardware events in user-defined groups
 called Event Sets. It is meant for experienced application programmers and tool developers wanting
 fine-grained measurement and control of the PAPI interface. It provides access to both PAPI preset
-and native events, and supports all installed components. For more details on the Low Level API,
+and native events, and supports all installed components. For more details on the low-level API,
 click [here](https://bitbucket.org/icl/papi/wiki/PAPI-LL.md).
 
 ## Usage on ZIH Systems
@@ -113,7 +113,7 @@ multiple events, please check which events can be measured concurrently using th
     marie@login$ srun papi_avail
     marie@login$ srun papi_native_avail
     [...]
-    # Exit with Ctrl+C
+    # Exit with Ctrl+D
     ```
 
 Instrument your application with either the high-level or low-level API. Load the PAPI module and
@@ -124,7 +124,10 @@ compile your application against the  PAPI library.
     ```console
     marie@login$ module load PAPI
     marie@login$ gcc app.c -o app -lpapi
-    marie@login$ ./app
+    marie@login$ salloc -A <project> --partition=romeo
+    marie@login$ srun ./app
+    [...]
+    # Exit with Ctrl+D
     ```
 
 !!! hint
