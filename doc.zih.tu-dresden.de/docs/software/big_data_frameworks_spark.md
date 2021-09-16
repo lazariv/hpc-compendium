@@ -10,7 +10,7 @@ Big Data. These frameworks are also offered as software [modules](modules.md) on
 `scs5` partition. You can check module versions and availability with the command
 
 ```console
-marie@login$ module av Spark
+marie@login$ module avail Spark
 ```
 
 The **aim** of this page is to introduce users on how to start working with
@@ -94,7 +94,7 @@ The Spark processes should now be set up and you can start your
 application, e. g.:
 
 ```console
-marie@compute$ spark-submit --class org.apache.spark.examples.SparkPi $SPARK_HOME/examples/jars/spark-examples_2.11-2.4.4.jar 1000
+marie@compute$ spark-submit --class org.apache.spark.examples.SparkPi $SPARK_HOME/examples/jars/spark-examples_2.12-3.0.1.jar 1000
 ```
 
 !!! warning
@@ -161,35 +161,29 @@ run your Jupyter notebook on HPC nodes (the preferable way).
 ### Preparation
 
 If you want to run Spark in Jupyter notebooks, you have to prepare it first. This is comparable
-to the [description for custom environments](../access/jupyterhub.md#conda-environment).
+to [normal python virtual environments](../software/python_virtual_environments.md#python-virtual-environment).
 You start with an allocation:
 
 ```console
 marie@login$ srun --pty -n 1 -c 2 --mem-per-cpu=2500 -t 01:00:00 bash -l
 ```
 
-When a node is allocated, install the required package with Anaconda:
+When a node is allocated, install he required packages:
 
 ```console
-marie@compute$ module load Anaconda3
 marie@compute$ cd
-marie@compute$ mkdir user-kernel
-marie@compute$ conda create --prefix $HOME/user-kernel/haswell-py3.6-spark python=3.6
-Collecting package metadata: done
-Solving environment: done [...]
+marie@compute$ mkdir jupyter-kernel
+marie@compute$ virtualenv --system-site-packages jupyter-kernel/env  #Create virtual environment
+[...]
+marie@compute$ source jupyter-kernel/env/bin/activate    #Activate virtual environment.
+marie@compute$ pip install ipykernel
+[...]
+marie@compute$ python -m ipykernel install --user --name haswell-py3.7-spark --display-name="haswell-py3.7-spark"
+Installed kernelspec haswell-py3.7-spark in [...]
 
-marie@compute$ conda activate $HOME/user-kernel/haswell-py3.6-spark
-marie@compute$ conda install ipykernel
-Collecting package metadata: done
-Solving environment: done [...]
+marie@compute$ pip install findspark
 
-marie@compute$ python -m ipykernel install --user --name haswell-py3.6-spark --display-name="haswell-py3.6-spark"
-Installed kernelspec haswell-py3.6-spark in [...]
-
-marie@compute$ conda install -c conda-forge findspark
-marie@compute$ conda install pyspark
-
-marie@compute$ conda deactivate
+marie@compute$ deactivate
 ```
 
 You are now ready to spawn a notebook with Spark.
@@ -203,7 +197,7 @@ to the field "Preload modules" and select one of the Spark modules.
 When your Jupyter instance is started, check whether the kernel that
 you created in the preparation phase (see above) is shown in the top
 right corner of the notebook. If it is not already selected, select the
-kernel `haswell-py3.6-spark`. Then, you can set up Spark. Since the setup
+kernel `haswell-py3.7-spark`. Then, you can set up Spark. Since the setup
 in the notebook requires more steps than in an interactive session, we
 have created an example notebook that you can use as a starting point
 for convenience: [SparkExample.ipynb](misc/SparkExample.ipynb)
