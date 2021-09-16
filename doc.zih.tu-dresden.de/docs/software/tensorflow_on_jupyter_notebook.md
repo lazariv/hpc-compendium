@@ -16,7 +16,7 @@ with HPC or Linux. \</span>
 
 **Prerequisites:** To work with Tensorflow and jupyter notebook you need
 \<a href="Login" target="\_blank">access\</a> for the Taurus system and
-basic knowledge about Python, SLURM system and the Jupyter notebook.
+basic knowledge about Python, Slurm system and the Jupyter notebook.
 
 \<span style="font-size: 1em;"> **This page aims** to introduce users on
 how to start working with TensorFlow on the [HPCDA](../jobs_and_resources/hpcda.md) system - part
@@ -168,7 +168,7 @@ into your previously created virtual environment in your working
 directory or use the kernel for your notebook.
 
 Note: You could work with simple examples in your home directory but according to
-[new storage concept](../data_lifecycle/hpc_storage_concept2019.md) please use
+[new storage concept](../data_lifecycle/overview.md) please use
 [workspaces](../data_lifecycle/workspaces.md) for your study and work projects**.
 For this reason, you have to use advanced options and put "/" in "Workspace scope" field.
 
