@@ -23,6 +23,7 @@ fastfs
 FFT
 FFTW
 filesystem
+filesystems
 Filesystem
 Flink
 Fortran
@@ -43,6 +44,7 @@ icpc
 ifort
 ImageNet
 Infiniband
+inode
 Itanium
 jpg
 Jupyter
@@ -57,6 +59,7 @@ lsf
 LSF
 lustre
 MEGWARE
+MiB
 MIMD
 MKL
 Montecito
@@ -88,10 +91,12 @@ PAPI
 parallelization
 pdf
 Perf
+PiB
 Pika
 pipelining
 png
 Pthreads
+reachability
 rome
 romeo
 RSA
@@ -100,6 +105,7 @@ Saxonid
 sbatch
 ScaDS
 ScaLAPACK
+scalable
 Scalasca
 scancel
 scontrol
@@ -112,7 +118,7 @@ SHMEM
 SLES
 Slurm
 SMP
-squeue
+queue
 srun
 ssd
 SSD
@@ -131,5 +137,6 @@ Vampir
 VampirTrace
 VampirTrace's
 WebVNC
+workspaces
 Xeon
 ZIH
