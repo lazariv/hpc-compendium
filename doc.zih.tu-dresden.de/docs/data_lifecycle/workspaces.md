@@ -1,7 +1,7 @@
 # Workspaces
 
 Storage systems differ in terms of capacity, streaming bandwidth, IOPS rate, etc. Price and
-efficiency don't allow to have it all in one. That is why fast parallel file systems at ZIH have
+efficiency don't allow to have it all in one. That is why fast parallel filesystems at ZIH have
 restrictions with regards to **age of files** and [quota](quotas.md). The mechanism of workspaces
 enables users to better manage their HPC data.
 <!--Workspaces are primarily login-related.-->
@@ -19,16 +19,16 @@ times.
 
 !!! tip
 
-    Use the faster file systems if you need to write temporary data in your computations, and use
-    the capacity oriented file systems if you only need to read data for your computations. Please
+    Use the faster filesystems if you need to write temporary data in your computations, and use
+    the capacity oriented filesystems if you only need to read data for your computations. Please
     keep track of your data and move it to a capacity oriented filesystem after the end of your
     computations.
 
 ## Workspace Management
 
-### List Available File Systems
+### List Available Filesystems
 
-To list all available file systems for using workspaces use:
+To list all available filesystems for using workspaces use:
 
 ```bash
 zih$ ws_find -l
@@ -87,7 +87,7 @@ Options:
     remaining time in days: 90
     ```
 
-This will create a workspace with the name `test-workspace` on the `/scratch` file system for 90
+This will create a workspace with the name `test-workspace` on the `/scratch` filesystem for 90
 days with an email reminder for 7 days before the expiration.
 
 !!! Note
@@ -97,15 +97,15 @@ days with an email reminder for 7 days before the expiration.
 
 ### Extention of a Workspace
 
-The lifetime of a workspace is finite. Different file systems (storage systems) have different
-maximum durations. A workspace can be extended multiple times, depending on the file system.
+The lifetime of a workspace is finite. Different filesystems (storage systems) have different
+maximum durations. A workspace can be extended multiple times, depending on the filesystem.
 
 | Storage system (use with parameter -F ) | Duration, days | Extensions | Remarks |
 |:------------------------------------------:|:----------:|:-------:|:---------------------------------------------------------------------------------------:|
-| `ssd`                                       | 30 | 10 | High-IOPS file system (`/lustre/ssd`) on SSDs.                                          |
-| `beegfs`                                     | 30 | 2 | High-IOPS file system (`/lustre/ssd`) onNVMes.                                          |
-| `scratch`                                    | 100 | 2 | Scratch file system (/scratch) with high streaming bandwidth, based on spinning disks |
-| `warm_archive`                               | 365 | 2 | Capacity file system based on spinning disks                                          |
+| `ssd`                                       | 30 | 10 | High-IOPS filesystem (`/lustre/ssd`) on SSDs.                                          |
+| `beegfs`                                     | 30 | 2 | High-IOPS filesystem (`/lustre/ssd`) onNVMes.                                          |
+| `scratch`                                    | 100 | 2 | Scratch filesystem (/scratch) with high streaming bandwidth, based on spinning disks |
+| `warm_archive`                               | 365 | 2 | Capacity filesystem based on spinning disks                                          |
 
 To extend your workspace use the following command:
 
@@ -128,9 +128,9 @@ my-workspace 40`, it will now expire in 40 days **not** 130 days.
 ### Deletion of a Workspace
 
 To delete a workspace use the `ws_release` command. It is mandatory to specify the name of the
-workspace and the file system in which it is located:
+workspace and the filesystem in which it is located:
 
-`ws_release -F <file system> <workspace name>`
+`ws_release -F <filesystem> <workspace name>`
 
 ### Restoring Expired Workspaces
 
@@ -141,7 +141,7 @@ warm_archive: 2 months), you can still restore your data into an existing worksp
 
     When you release a workspace **by hand**, it will not receive a grace period and be
     **permanently deleted** the **next day**. The advantage of this design is that you can create
-    and release workspaces inside jobs and not swamp the file system with data no one needs anymore
+    and release workspaces inside jobs and not swamp the filesystem with data no one needs anymore
     in the hidden directories (when workspaces are in the grace period).
 
 Use:
@@ -162,7 +162,7 @@ username prefix and timestamp suffix (otherwise, it cannot be uniquely identifie
 workspace, on the other hand, must be given with just its short name, as listed by `ws_list`,
 without the username prefix.
 
-Both workspaces must be on the same file system. The data from the old workspace will be moved into
+Both workspaces must be on the same filesystem. The data from the old workspace will be moved into
 a directory in the new workspace with the name of the old one. This means a fresh workspace works as
 well as a workspace that already contains data.
 
@@ -282,5 +282,5 @@ Avoid "iso" codepages!
 **Q**: I am getting the error `Error: target workspace does not exist!`  when trying to restore my
 workspace.
 
-**A**: The workspace you want to restore into is either not on the same file system or you used the
+**A**: The workspace you want to restore into is either not on the same filesystem or you used the
 wrong name. Use only the short name that is listed after `id:` when using `ws_list`

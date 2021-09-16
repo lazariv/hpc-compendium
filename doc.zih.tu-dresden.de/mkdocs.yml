@@ -74,17 +74,17 @@ nav:
       - Overview: data_lifecycle/file_systems.md
       - Permanent File Systems: data_lifecycle/permanent.md
       - Lustre: data_lifecycle/lustre.md
-      - BeeGFS: data_lifecycle/bee_gfs.md
+      - BeeGFS: data_lifecycle/beegfs.md
+      - Warm Archive: data_lifecycle/warm_archive.md
       - Intermediate Archive: data_lifecycle/intermediate_archive.md
       - Quotas: data_lifecycle/quotas.md
     - Workspaces: data_lifecycle/workspaces.md
-    - HPC Storage Concept 2019: data_lifecycle/hpc_storage_concept2019.md
     - Preservation of Research Data: data_lifecycle/preservation_research_data.md
     - Structuring Experiments: data_lifecycle/experiments.md
-  - Jobs and Resources:
+  - HPC Resources and Jobs:
     - Overview: jobs_and_resources/overview.md
     - Batch Systems: jobs_and_resources/batch_systems.md
-    - Hardware Resources:
+    - HPC Resources:
       - Hardware Taurus: jobs_and_resources/hardware_taurus.md
       - AMD Rome Nodes: jobs_and_resources/rome_nodes.md
       - IBM Power9 Nodes: jobs_and_resources/power9.md
@@ -116,6 +116,7 @@ nav:
     - No IB Jobs: archive/no_ib_jobs.md
     - Phase2 Migration: archive/phase2_migration.md
     - Platform LSF: archive/platform_lsf.md
+    - BeeGFS on Demand: archive/beegfs_on_demand.md
     - Switched-Off Systems:
       - Overview: archive/systems_switched_off.md
       - From Deimos to Atlas: archive/migrate_to_atlas.md

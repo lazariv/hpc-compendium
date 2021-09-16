@@ -118,7 +118,7 @@ Please put the file into your previously created virtual environment in your wor
 use the kernel for your notebook [see Jupyterhub page](../access/jupyterhub.md).
 
 Note: You could work with simple examples in your home directory but according to
-[HPCStorageConcept2019](../data_lifecycle/hpc_storage_concept2019.md) please use **workspaces**
+[HPCStorageConcept2019](../data_lifecycle/overview.md) please use **workspaces**
 for your study and work projects.
 For this reason, you have to use advanced options of Jupyterhub and put "/" in "Workspace scope" field.
 

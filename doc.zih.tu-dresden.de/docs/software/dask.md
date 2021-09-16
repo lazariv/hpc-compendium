@@ -49,7 +49,7 @@ Create a conda virtual environment. We would recommend using a workspace. See th
 
 **Note:** You could work with simple examples in your home directory (where you are loading by
 default). However, in accordance with the
-[HPC storage concept](../data_lifecycle/hpc_storage_concept2019.md) please use a
+[HPC storage concept](../data_lifecycle/overview.md) please use a
 [workspaces](../data_lifecycle/workspaces.md) for your study and work projects.
 
 ```Bash
