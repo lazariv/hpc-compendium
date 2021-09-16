@@ -34,7 +34,7 @@ You have to add additional Mathematica fonts at your local PC
 [download fonts archive](misc/Mathematica-Fonts.zip).
 
 If you use **Xming** as X-server at your PC (refer to
-[remote access from Windows](../access/ssh_mit_putty.md), follow these steps:
+[remote access from Windows](../access/ssh_login.md), follow these steps:
 
 1. Create a new folder `Mathematica` in the directory `fonts` of the installation directory of Xming
    (mostly: `C:\\Programme\\Xming\\fonts\\`)
