@@ -12,7 +12,7 @@ files.
 Some more information:
 
 - Maximum file size in the archive is 500 GB (split up your files, see
-  [Datamover](../data_transfer/data_mover.md))
+  [Datamover](../data_transfer/datamover.md))
 - Data will be stored in two copies on tape.
 - The bandwidth to this data is very limited. Hence, this filesystem
   must not be used directly as input or output for HPC jobs.
@@ -20,7 +20,7 @@ Some more information:
 ## Access the Intermediate Archive
 
 For storing and restoring your data in/from the "Intermediate Archive" you can use the tool
-[Datamover](../data_transfer/data_mover.md). To use the DataMover you have to login to ZIH systems.
+[Datamover](../data_transfer/datamover.md). To use the DataMover you have to login to ZIH systems.
 
 ### Store Data
 

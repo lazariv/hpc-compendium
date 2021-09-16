@@ -7,7 +7,7 @@ another filesystem, you have to use the following commands:
 
 - `dtcp`, `dtls`, `dtmv`, `dtrm`, `dtrsync`, `dttar`, and `dtwget`
 
-These commands submit a [batch job](jobs_and_resources/slurm.md) to the data transfer machines
+These commands submit a [batch job](../jobs_and_resources/slurm.md) to the data transfer machines
 performing the selected command. Except the following options their syntax is the very same as the
 wellknown shell commands without the prefix *dt*.
 

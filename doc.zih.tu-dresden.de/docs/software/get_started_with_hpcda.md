@@ -122,7 +122,7 @@ scp -r <zih-user>@taurusexport.hrsk.tu-dresden.de:<directory> <target-location> 
 
 #### Moving data inside the HPC machines. Datamover
 
-The best way to transfer data inside the Taurus is the [data mover](../data_transfer/data_mover.md).
+The best way to transfer data inside the Taurus is the [data mover](../data_transfer/datamover.md).
 It is the special data transfer machine providing the global file systems of each ZIH HPC system.
 Datamover provides the best data speed. To load, move, copy etc.  files from one file system to
 another file system, you have to use commands with **dt** prefix, such as:
