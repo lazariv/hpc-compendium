@@ -81,7 +81,7 @@ We recommend one of the following applications:
 
   * [MobaXTerm](https://mobaxterm.mobatek.net): [ZIH documentation](misc/basic_usage_of_MobaXterm.pdf)
   * [PuTTY](https://www.putty.org): [ZIH documentation](misc/basic_usage_of_PuTTY.pdf)
-  * OpenSSH Server: [docs](https://docs.microso.com/de-de/windows-server/administration/openssh/openssh_install_firstuse)
+  * OpenSSH Server: [docs](https://docs.microsoft.com/de-de/windows-server/administration/openssh/openssh_install_firstuse)
 
 The page [key fingerprints](key_fingerprints.md) holds the up-to-date fingerprints for the login
 nodes. Make sure they match.
