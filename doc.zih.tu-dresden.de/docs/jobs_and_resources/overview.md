@@ -1,4 +1,4 @@
-# Jobs and Resources
+# HPC Resources and Jobs
 
 When log in to ZIH systems, you are placed on a *login node* **TODO** link to login nodes section
 where you can [manage data life cycle](../data_lifecycle/overview.md),
