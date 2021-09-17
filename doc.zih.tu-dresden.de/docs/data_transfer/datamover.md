@@ -29,58 +29,39 @@ and jobs.
 To identify the mount points of the different filesystems on the data transfer machine, use
 `dtinfo`. It shows an output like this:
 
-| ZIH system         | Local directory    | Directory on data transfer machine |
-|:-------------------|:-------------------|:-----------------------------------|
-| Taurus             | `/scratch/ws`      | `/scratch/ws`                      |
-|                    | `/ssd/ws`          | `/ssd/ws`                          |
-|                    | `/warm_archive/ws` | `/warm_archive/ws`                 |
-|                    | `/home`            | `/home`                            |
-|                    | `/projects`        | `/projects`                        |
-| **Archive**        |                    | `/archiv`                          |
-| **Group Storages** |                    | `/grp/\<group storage>`            |
-
-## How to copy your data from an old scratch (Atlas, Triton, Venus) to our new scratch (Taurus)
-
-You can use our tool called Datamover to copy your data from A to B.
-
-    dtcp -r /scratch/<project or user>/<directory> /projects/<project or user>/<directory> # or
-    dtrsync -a /scratch/<project or user>/<directory> /lustre/ssd/<project or user>/<directory>
-
-Options for dtrsync:
-
-    -a, --archive               archive mode; equals -rlptgoD (no -H,-A,-X)
-
-    -r, --recursive             recurse into directories
-    -l, --links                 copy symlinks as symlinks
-    -p, --perms                 preserve permissions
-    -t, --times                 preserve modification times
-    -g, --group                 preserve group
-    -o, --owner                 preserve owner (super-user only)
-    -D                          same as --devices --specials
-
-Example:
-
-    dtcp -r /scratch/rotscher/results /luste/ssd/rotscher/ # or
-    new: dtrsync -a /scratch/rotscher/results /home/rotscher/results
+| ZIH system         | Local directory      | Directory on data transfer machine |
+|:-------------------|:---------------------|:-----------------------------------|
+| Taurus             | `/scratch/ws`        | `/scratch/ws`                      |
+|                    | `/ssd/ws`            | `/ssd/ws`                          |
+|                    | `/beegfs/global0/ws` | `/beegfs/global0/ws`               |
+|                    | `/warm_archive/ws`   | `/warm_archive/ws`                 |
+|                    | `/home`              | `/home`                            |
+|                    | `/projects`          | `/projects`                        |
+| **Archive**        |                      | `/archiv`                          |
+| **Group Storages** |                      | `/grp/<group storage>`            |
 
 ## Examples on how to use data transfer commands:
 
-Copying data from Taurus' /scratch to Taurus' /projects
+Copying data from /beegfs/global0 to /projects filesystem.
 
-    % dtcp -r /scratch/jurenz/results/ /home/jurenz/
+```console
+marie@login$ dtcp -r /beegfs/global0/ws/marie-workdata/results /projects/p_marie/.
+```
+Moving data from /beegfs/global0 to /warm_archive filesystem.
 
-Moving data from Venus' /sratch to Taurus' /luste/ssd
+```console
+marie@login$ dtmv /beegfs/global0/ws/marie-workdata/results /warm_archive/ws/marie-archive/.
+```
 
-    % dtmv /scratch/jurenz/results/ /lustre/ssd/jurenz/results
+TGZ data from /beegfs/global0 to /archiv filesystem.
 
-TGZ data from Taurus' /scratch to the Archive
+```console
+marie@login$ dttar -czf /archiv/p_marie/results.tgz /beegfs/global0/ws/marie-workdata/results
+```
 
-    % dttar -czf /archiv/jurenz/taurus_results_20140523.tgz /scratch/jurenz/results
+!!! note
+    Please do not generate files in the /archiv filesystem  much larger that 500 GB.
 
-**%RED%Note:<span class="twiki-macro ENDCOLOR"></span>**Please do not
-generate files in the archive much larger that 500 GB.
-
-!!! hint
-
-    The [warm archive](../data_lifecycle/warm_archive.md)) is not writable from within batch jobs.
+!!! note
+    The [warm archive](../data_lifecycle/warm_archive.md) and the projects filesystem are not writable from within batch jobs.
     However, you can store the data in the warm archive with the datamover.
