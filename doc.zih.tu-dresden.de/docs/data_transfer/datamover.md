@@ -44,18 +44,19 @@ To identify the mount points of the different filesystems on the data transfer m
 
 Copying data from /beegfs/global0 to /projects filesystem.
 
-```console
+``` console
 marie@login$ dtcp -r /beegfs/global0/ws/marie-workdata/results /projects/p_marie/.
 ```
+
 Moving data from /beegfs/global0 to /warm_archive filesystem.
 
-```console
+``` console
 marie@login$ dtmv /beegfs/global0/ws/marie-workdata/results /warm_archive/ws/marie-archive/.
 ```
 
 TGZ data from /beegfs/global0 to /archiv filesystem.
 
-```console
+``` console
 marie@login$ dttar -czf /archiv/p_marie/results.tgz /beegfs/global0/ws/marie-workdata/results
 ```
 
@@ -63,5 +64,6 @@ marie@login$ dttar -czf /archiv/p_marie/results.tgz /beegfs/global0/ws/marie-wor
     Please do not generate files in the /archiv filesystem  much larger that 500 GB.
 
 !!! note
-    The [warm archive](../data_lifecycle/warm_archive.md) and the projects filesystem are not writable from within batch jobs.
+    The [warm archive](../data_lifecycle/warm_archive.md) and the projects filesystem are not
+    writable from within batch jobs.
     However, you can store the data in the warm archive with the datamover.
