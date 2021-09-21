@@ -160,13 +160,21 @@ supports communication of pickleable Python objects. Mpi4py provides
 optimized communication of NumPy arrays.
 
 Mpi4py is included as an extension of the SciPy-bundle modules on
-taurus.
+taurus for all software environments (scs5, ml, hiera(alpha)). 
 
 Please check the SoftwareModulesList for the modules availability. The availability of the mpi4py
 in the module you can check by
 the `module whatis <name_of_the module>` command. The `module whatis`
 command displays a short information and included extensions of the
 module.
+
+The `module spider <name_of_the module>` command 
+will show you all available modules for 
+all software partitions with this name.
+For detailed information about a specific "mpi4py" package 
+(including how to load the modules) use 
+the module's full name, e.g: 
+`module spider mpi4py/3.0.3`
 
 Moreover, it is possible to install mpi4py in your local conda
 environment:
@@ -187,6 +195,23 @@ from mpi4py import MPI                                                          
 comm = MPI.COMM_WORLD
 print("%d of %d" % (comm.Get_rank(), comm.Get_size()))
 ```
+
+For the multi-node case use a script similar with this:
+
+```Bash
+#!/bin/bash
+#SBATCH --nodes=2
+#SBATCH -p ml
+#SBATCH --tasks-per-node=2
+#SBATCH --cpus-per-task=1
+
+module load modenv/ml
+module load PythonAnaconda/3.6
+
+eval "$(conda shell.bash hook)"
+conda activate /home/anpo879a/conda-virtual-environment/kernel2 && srun python mpi4py_test.py
+```
+For the verification of the multi-node case, you can use as a testfile the python-code from the previous part (with verification of the installation).
 
 ### Horovod
 
