@@ -34,9 +34,35 @@ Low-Level:
 
 ## Installation
 
-### Installation Using Conda
+Dask is available as module on
+taurus for all software environments (scs5, ml, hiera(alpha)).
+To load the module for the corresponding 
+software environment: `ml dask`
 
-Dask is installed by default in [Anaconda](https://www.anaconda.com/download/). To install/update
+Please check the SoftwareModulesList for the modules availability.
+
+The `module spider <name_of_the module>` command
+will show you all available modules for
+all software partitions with this name.
+For detailed information about a specific "dask" package
+(including how to load the modules) use
+the module's full name, e.g:
+`module spider dask/2.8.0-Python-3.7.4`
+
+
+The availability of the exact packages
+in the module can be checked by the 
+`module whatis <name_of_the_module> command`. 
+The `module whatis`
+command displays a short information and included extensions of the
+module.
+
+### Installation Using Conda
+Moreover, it is possible to install and use dask in your local conda
+environment:
+
+Dask is installed by default in [Anaconda](https://www.anaconda.com/download/). 
+To install/update
 Dask on a Taurus with using the [conda](https://www.anaconda.com/download/) follow the example:
 
 ```Bash
