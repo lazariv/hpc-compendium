@@ -45,9 +45,13 @@ space (`/tmp`) on an NVMe device. You can find more details of the partition [he
 On the **Alpha** partition load the module environment:
 
 ```console
-marie@alpha$ module load modenv/scs5
-The following have been reloaded with a version change:  1) modenv/ml => modenv/scs5
+marie@alpha$ module load modenv/hiera
+The following have been reloaded with a version change:  1) modenv/ml => modenv/hiera
 ```
+
+!!! note
+    On Alpha, the most recent modules are build in hiera. Alternative modules might be build in
+    scs5.
 
 ## Machine Learning via Console
 
