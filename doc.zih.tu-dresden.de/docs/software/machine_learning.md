@@ -56,10 +56,6 @@ The following have been reloaded with a version change:  1) modenv/ml => modenv/
 Python users should use a [virtual environment](python_virtual_environments.md) when conducting
 machine learning tasks via console.
 
-!!! hint
-    In case of using [sbatch files](../jobs_and_resources/batch_systems.md)
-    to send your job you usually don't need a virtual environment.
-
 For more details on machine learning or data science with Python see [here](data_analytics_with_python.md).
 
 ### R
