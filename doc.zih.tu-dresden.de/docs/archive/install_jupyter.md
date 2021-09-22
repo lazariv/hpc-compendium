@@ -67,7 +67,7 @@ conda create --name jnb
 
 ## Set environmental variables
 
-In shell activate previously created python environment (you can
+In the shell, activate previously created python environment (you can
 deactivate it also manually) and install Jupyter packages for this python environment:
 
 ```Bash
