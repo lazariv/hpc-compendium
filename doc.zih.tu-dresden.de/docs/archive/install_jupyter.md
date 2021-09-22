@@ -32,7 +32,8 @@ srun --pty -n 1 --cpus-per-task=2 --time=2:00:00 --mem-per-cpu=2500 --x11=first 
 Create a new directory in your home, e.g. Jupyter
 
 ```Bash
-mkdir Jupyter cd Jupyter
+mkdir Jupyter
+cd Jupyter
 ```
 
 There are two ways how to run Anaconda. The easiest way is to load the Anaconda module. The second
