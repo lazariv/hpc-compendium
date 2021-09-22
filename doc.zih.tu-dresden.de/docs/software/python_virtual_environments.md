@@ -28,7 +28,9 @@ This example shows how to start working with **virtualenv** and Python virtual e
 the module system).
 
 ??? hint
-    We recommend to use [workspaces](../../data_lifecycle/workspaces) for your virtual environments.
+
+    We recommend to use [workspaces](../../data_lifecycle/workspaces.md) for your virtual
+    environments.
 
 At first we check available Python modules and load the preferred version:
 
@@ -47,7 +49,7 @@ Then create the virtual environment and activate it.
 marie@compute$ ws_allocate -F scratch python_virtual_environment 1
 Info: creating workspace.
 /scratch/ws/1/python_virtual_environment
-[...] 
+[...]
 marie@compute$ virtualenv --system-site-packages /scratch/ws/1/python_virtual_environment/env  #Create virtual environment
 [...]
 marie@compute$ source /scratch/ws/1/python_virtual_environment/env/bin/activate    #Activate virtual environment. Example output: (envtest) bash-4.2$
@@ -93,6 +95,7 @@ the virtual environment. You can deactivate the conda environment as follows:
 TODO: Link to this page from other DA/ML topics. insert link in alpha centauri
 
 ??? example
+
     This is an example on alpha partition. The example creates a virtual environment, and installs
     the package `torchvision` with pip.
     ```console
