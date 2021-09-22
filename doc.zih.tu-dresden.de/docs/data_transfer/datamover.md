@@ -42,26 +42,26 @@ To identify the mount points of the different filesystems on the data transfer m
 
 ## Usage of Datamover
 
-Copying data from `/beegfs/global0` to `/projects` filesystem.
+!!! example "Copying data from `/beegfs/global0` to `/projects` filesystem."
 
-``` console
-marie@login$ dtcp -r /beegfs/global0/ws/marie-workdata/results /projects/p_marie/.
-```
+    ``` console
+    marie@login$ dtcp -r /beegfs/global0/ws/marie-workdata/results /projects/p_marie/.
+    ```
 
-Moving data from `/beegfs/global0` to `/warm_archive` filesystem.
+!!! example "Moving data from `/beegfs/global0` to `/warm_archive` filesystem."
 
-``` console
-marie@login$ dtmv /beegfs/global0/ws/marie-workdata/results /warm_archive/ws/marie-archive/.
-```
+    ``` console
+    marie@login$ dtmv /beegfs/global0/ws/marie-workdata/results /warm_archive/ws/marie-archive/.
+    ```
 
-Archive data from `/beegfs/global0` to `/archiv` filesystem.
+!!! example "Archive data from `/beegfs/global0` to `/archiv` filesystem."
 
-``` console
-marie@login$ dttar -czf /archiv/p_marie/results.tgz /beegfs/global0/ws/marie-workdata/results
-```
+    ``` console
+    marie@login$ dttar -czf /archiv/p_marie/results.tgz /beegfs/global0/ws/marie-workdata/results
+    ```
 
-!!! note
-    Please do not generate files in the `/archiv` filesystem much larger that 500 GB.
+!!! warning
+    Do not generate files in the `/archiv` filesystem much larger that 500 GB!
 
 !!! note
     The [warm archive](../data_lifecycle/warm_archive.md) and the `projects` filesystem are not
