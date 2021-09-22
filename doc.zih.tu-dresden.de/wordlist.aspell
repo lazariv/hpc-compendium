@@ -25,8 +25,8 @@ fastfs
 FFT
 FFTW
 filesystem
-filesystems
 Filesystem
+filesystems
 Flink
 Fortran
 GFLOPS
@@ -101,6 +101,7 @@ Pika
 pipelining
 png
 Pthreads
+queue
 reachability
 rome
 romeo
@@ -110,8 +111,8 @@ salloc
 Saxonid
 sbatch
 ScaDS
-ScaLAPACK
 scalable
+ScaLAPACK
 Scalasca
 scancel
 scontrol
@@ -125,7 +126,6 @@ SHMEM
 SLES
 Slurm
 SMP
-queue
 srun
 ssd
 SSD
