@@ -111,14 +111,17 @@ Fill in the form with decent values.
 Possible entries for your Jupyter configuration (`.jupyter/jupyter_notebook*config.py*`).
 
 ```Bash
-c.NotebookApp.certfile = u'<path-to-cert>/mycert.pem' c.NotebookApp.keyfile =
-u'<path-to-cert>/mykey.key'
+c.NotebookApp.certfile = u'<path-to-cert>/mycert.pem'
+c.NotebookApp.keyfile = u'<path-to-cert>/mykey.key'
 
-# set ip to '*' otherwise server is bound to localhost only c.NotebookApp.ip = '*'
+# set ip to '*' otherwise server is bound to localhost only
+c.NotebookApp.ip = '*'
 c.NotebookApp.open_browser = False
 
-# copy hashed password from the jupyter_notebook_config.json c.NotebookApp.password = u'<your
-hashed password here>' c.NotebookApp.port = 9999 c.NotebookApp.allow_remote_access = True
+# copy hashed password from the jupyter_notebook_config.json
+c.NotebookApp.password = u'<your hashed password here>'
+c.NotebookApp.port = 9999
+c.NotebookApp.allow_remote_access = True
 ```
 
 Note: `<path-to-cert>` - path to key and certificate files, for example:
