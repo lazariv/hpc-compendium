@@ -14,36 +14,36 @@ marie@compute$ module spider TensorFlow
 
 to find out, which TensorFlow modules are available on your partition.
 
-On ZIH systems, TensorFlow 2 is the default module version. For compatibility hints between TF2 and
-TF1, see the corresponding [section](#compatibility-tf2-and-tf1) below.
+On ZIH systems, TensorFlow 2 is the default module version. For compatibility hints between
+TensorFlow 2 and TensorFlow 1, see the corresponding [section below](#compatibility-tf2-and-tf1).
 
 We recommend using **Alpha** and/or **ML** partitions when working with machine learning workflows
-and the TensorFlow library. You can find detailed hardware specification
-[here](../jobs_and_resources/hardware_taurus.md).
+and the TensorFlow library. You can find detailed hardware specification in our
+[Hardware](../jobs_and_resources/hardware_taurus.md) documentation.
 
 ## TensorFlow Console
 
-On the **Alpha** partition load the module environment:
+On the **Alpha** partition, load the module environment:
 
 ```console
 marie@alpha$ module load modenv/scs5
 ```
 
-On the **ML** partition load the module environment:
+On the **ML** partition, load the module environment:
 
 ```console
 marie@ml$ module load modenv/ml
 The following have been reloaded with a version change:  1) modenv/scs5 => modenv/ml
 ```
 
-This example shows how to install and start working with TensorFlow (with using modules system)
+This example shows how to install and start working with TensorFlow using the modules system.
 
 ```console
 marie@ml$ module load TensorFlow  
 Module TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4 and 47 dependencies loaded.
 ```
 
-Now we can use TensorFlow. In the following example, we create a python virtual environment and
+Now, we can use TensorFlow. In the following example, we create a python virtual environment and
 import TensorFlow:
 
 !!! example
@@ -64,18 +64,18 @@ import TensorFlow:
 
 ## TensorFlow in JupyterHub
 
-In addition to using interactive and batch jobs, it is possible to work with TensorFlow using
+In addition to interactive and batch jobs, it is possible to work with TensorFlow using
 JupyterHub. The production and test environments of JupyterHub contain Python and R kernels, that
-both come with a TensorFlow support. However, you can specify the TensorFlow version when spawning
+both come with TensorFlow support. However, you can specify the TensorFlow version when spawning
 the notebook by pre-loading a specific TensorFlow module:
 
 ![TensorFlow module in JupyterHub](misc/tensorflow_jupyter_module.png)
 {: align="center"}
 
 ??? hint
-    You can also define your own Jupyter kernel for more specific tasks. Please read there
-    documentation about JupyterHub, Jupyter kernels and virtual environments
-    [here](../../access/jupyterhub/#creating-and-using-your-own-environment).
+    You can also define your own Jupyter kernel for more specific tasks. Please read about about
+    Jupyter kernels and virtual environments in our [JupyterHub](../../access/jupyterhub/#creating-and-using-your-own-environment)
+    documentation.
 
 ## TensorFlow in Containers
 
@@ -96,20 +96,20 @@ Basic test of tensorflow - A Hello World!!!...
 ## TensorFlow with Python or R
 
 For further information on TensorFlow in combination with Python see
-[here](data_analytics_with_python.md), for R see [here](data_analytics_with_r.md).
+[Data Analytics with Python](data_analytics_with_python.md), for R see [Data Analytics with R](data_analytics_with_r.md).
 
 ## Distributed TensorFlow
 
 For details on how to run TensorFlow with multiple GPUs and/or multiple nodes, see
-[distributed training](distributed_training.md).
+[Distributed Training](distributed_training.md).
 
 ## Compatibility TF2 and TF1
 
 TensorFlow 2.0 includes many API changes, such as reordering arguments, renaming symbols, and
-changing default values for parameters. Thus in some cases, it makes code written for the TensorFlow
-1 not compatible with TensorFlow 2. However, If you are using the high-level APIs (tf.keras) there
+changing default values for parameters. Thus in some cases, it makes code written for TensorFlow 1
+not compatible with TensorFlow 2. However, if you are using the high-level APIs (tf.keras), there
 may be little or no action you need to take to make your code fully [TensorFlow
-2.0](https://www.tensorflow.org/guide/migrate) compatible. It is still possible to run 1.X code,
+2.0 compatible](https://www.tensorflow.org/guide/migrate). It is still possible to run 1.X code,
 unmodified (except for contrib), in TensorFlow 2.0:
 
 ```python
@@ -117,8 +117,8 @@ import tensorflow.compat.v1 as tf
 tf.disable_v2_behavior()    #instead of "import tensorflow as tf"
 ```
 
-To make the transition to TF 2.0 as seamless as possible, the TensorFlow team has created the
-tf_upgrade_v2 utility to help transition legacy code to the new API.
+To make the transition to TensorFlow 2.0 as seamless as possible, the TensorFlow team has created
+the tf_upgrade_v2 utility to help transition legacy code to the new API.
 
 ## Keras
 
