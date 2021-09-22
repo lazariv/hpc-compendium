@@ -78,16 +78,16 @@ Then, we load Anaconda, create an environment in our directory and activate the 
 
 ```console
 marie@compute$ module load Anaconda3    #load Anaconda module
-marie@compute$ conda create --prefix /scratch/ws/1/conda_virtual_environment/conda-testenv python=3.6    #create virtual environment with Python version 3.6
-marie@compute$ conda activate /scratch/ws/1/conda_virtual_environment/conda-testenv    #activate conda-testenv virtual environment
+marie@compute$ conda create --prefix /scratch/ws/1/conda_virtual_environment/conda-env python=3.6    #create virtual environment with Python version 3.6
+marie@compute$ conda activate /scratch/ws/1/conda_virtual_environment/conda-env    #activate conda-env virtual environment
 ```
 
 Now you can work in this isolated environment, without interfering with other tasks running on the
-system. Note that the inscription (conda-testenv) at the beginning of each line represents that you
+system. Note that the inscription (conda-env) at the beginning of each line represents that you
 are in the virtual environment. You can deactivate the conda environment as follows:
 
 ```console
-(conda-testenv) marie@compute$ conda deactivate    #Leave the virtual environment
+(conda-env) marie@compute$ conda deactivate    #Leave the virtual environment
 ```
 
 TODO: Link to this page from other DA/ML topics. insert link in alpha centauri
