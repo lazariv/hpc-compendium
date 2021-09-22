@@ -274,7 +274,8 @@ this configuration file can be modified directly without using the GUI.
 A screenshot of the GUI, including a properly configuration for the MNIST fashion example is shown
 below.  The GUI, in which the below displayed values are already entered, can be reached
 [here](https://imageseg.scads.ai/omnioptgui/?maxevalserror=5&mem_per_worker=1000&number_of_parameters=3&param_0_values=10%2C50%2C100&param_1_values=8%2C16%2C32&param_2_values=10%2C15%2C30&param_0_name=out-layer1&param_1_name=batchsize&param_2_name=batchsize&account=&projectname=mnist_fashion_optimization_set_1&partition=alpha&searchtype=tpe.suggest&param_0_type=hp.choice&param_1_type=hp.choice&param_2_type=hp.choice&max_evals=1000&objective_program=bash%20%3C%2Fpath%2Fto%2Fwrapper-script%2Frun-mnist-fashion.sh%3E%20--out-layer1%3D(%24x_0)%20--batchsize%3D(%24x_1)%20--epochs%3D(%24x_2)&workdir=%3C%2Fscratch%2Fws%2Fomniopt-workdir%2F%3E).
-Please modify the paths for "objective programm" and "workdir" according to your needs.
+
+Please modify the paths for `objective program` and `workdir` according to your needs.
 
 ![GUI for configuring OmniOpt](misc/hyperparameter_optimization-OmniOpt-GUI.png)
 {: align="center"}
@@ -285,7 +286,7 @@ configuration parameters:
 1. **Optimization run name:** A name for a OmniOpt run given a belonging configuration.
 1. **Partition:** Choosing the partition on the ZIH system that fits the program needs.
 1. **Enable GPU:** Decide whether a program could benefit from GPU usage or not.
-1. **Workdir:** The directory where OmniOpt is saving its neccessary files and all results.  Derived
+1. **Workdir:** The directory where OmniOpt is saving its necessary files and all results.  Derived
    from the optimization run name, their is created a single directory for every such configuration.
    Make sure that this working directory is writeable from the compute nodes.  It is recommended to
    use a [workspace](../data_lifecycle/workspaces.md).
@@ -326,7 +327,7 @@ tool of OmniOpt is used.  Switch to the OmniOpt folder and run `evaluate-run.sh`
 marie@login$ bash </scratch/ws/omniopt-workdir/>evaluate-run.sh
 ```
 
-After initializing and checking for updates in the background Omniopt is asking to select the
+After initializing and checking for updates in the background OmniOpt is asking to select the
 optimization run of interest.  After selecting the optimization run, there will be a menu with the
 items as shown below.  If OmniOpt has still running jobs there appear some menu items that refer to
 these running jobs (image shown below to the right).
@@ -335,11 +336,11 @@ evaluation options (all jobs finished)                            |  evaluation 
 :--------------------------------------------------------------:|:-------------------------:
 ![GUI for configuring OmniOpt](misc/OmniOpt-evaluate-menu.png)  |  ![GUI for configuring OmniOpt](misc/OmniOpt-still-running-jobs.png)
 
-For now we assume that OmniOpt has finshed already.
+For now we assume that OmniOpt has finished already.
 In order to look into the results, there are the following basic approaches.
 
 1. **Graphical approach:**
-    There are basically two graphical approaches: two dimensional scatterplots and parallel plots.
+    There are basically two graphical approaches: two dimensional scatter plots and parallel plots.
 
     Below there is shown a parallel plot from the MNIST fashion example.
     ![GUI for configuring OmniOpt](misc/OmniOpt-parallel-plot.png){: align="center"}
@@ -354,14 +355,14 @@ In order to look into the results, there are the following basic approaches.
         top of the graphic (see red arrow on the image above).
 
     After creating a 2d scatter plot or a parallel plot OmniOpt will try to display the
-    corresponding file (html, png) directly on the ZIH system. Therefore, it is neccessary to login
+    corresponding file (html, png) directly on the ZIH system. Therefore, it is necessary to login
     via ssh with the option `-X` (X11 forwarding), e.g., `ssh -X taurus.hrsk.tu-dresden.de`.
     Nevertheless, because of latency using x11 forwarding it is recommended to download the created
     files and explore them on the local machine (esp. for the parallel plot). The created files are
     saved at `projects/<name_of_optimization_run>/{2d-scatterplots,parallel-plot}`.
 
 1. **Getting the raw data:**
-    As a second approach the raw data of the optimization process can be exported as a csv file.
+    As a second approach the raw data of the optimization process can be exported as a CSV file.
     The created output files are stored in the folder `projects/<name_of_optimization_run>/csv`.
 
 ### Advanced
