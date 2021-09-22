@@ -117,7 +117,7 @@ public datasets without downloading it (for example
 If you still need to download some datasets, first of all, be careful with the size of the datasets
 which you would like to download (some of them have a size of few Terabytes). Don't download what
 you really not need to use! Use login nodes only for downloading small files (hundreds of the
-megabytes). For downloading huge files use [DataMover](../data_transfer/data_mover.md).
+megabytes). For downloading huge files use [DataMover](../data_transfer/datamover.md).
 For example, you can use command `dtwget` (it is an analogue of the general wget
 command). This command submits a job to the data transfer machines.  If you need to download or
 allocate massive files (more than one terabyte) please contact the support before.
