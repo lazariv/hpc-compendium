@@ -1,7 +1,7 @@
-# Slurm
+# Batch System Slurm
 
-The HRSK-II systems are operated with the batch system Slurm. Just specify the resources you need
-in terms of cores, memory, and time and your job will be placed on the system.
+ZIH systems are operated with the batch system Slurm. Just specify the resources you need in terms
+of cores, memory, and time and your job will be placed on the system.
 
 ## Job Submission
 
@@ -12,28 +12,28 @@ short test runs, it is recommended to launch your jobs into the background by us
 that, you can conveniently put the parameters directly in a job file which you can submit using
 `sbatch [options] <job file>`
 
-Some options of `srun/sbatch` are:
+The following table holds the most important options of `srun/sbatch`.
 
-| slurm option                           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-|:---------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| -n \<N> or --ntasks \<N>               | set a number of tasks to N(default=1). This determines how many processes will be spawned by srun (for MPI jobs).                                                                                                                                                                                                                                                                                                                                          |
-| -N \<N> or --nodes \<N>                | set number of nodes that will be part of a job, on each node there will be --ntasks-per-node processes started, if the option --ntasks-per-node is not given, 1 process per node will be started                                                                                                                                                                                                                                                           |
-| --ntasks-per-node \<N>                 | how many tasks per allocated node to start, as stated in the line before                                                                                                                                                                                                                                                                                                                                                                                   |
-| -c \<N> or --cpus-per-task \<N>        | this option is needed for multithreaded (e.g. OpenMP) jobs, it tells Slurm to allocate N cores per task allocated; typically N should be equal to the number of threads you program spawns, e.g. it should be set to the same number as OMP_NUM_THREADS                                                                                                                                                                                                    |
-| -p \<name> or --partition \<name>      | select the type of nodes where you want to execute your job, on Taurus we currently have haswell, `smp`, `sandy`, `west`, ml and `gpu` available                                                                                                                                                                                                                                                                                                           |
-| --mem-per-cpu \<name>                  | specify the memory need per allocated CPU in MB                                                                                                                                                                                                                                                                                                                                                                                                            |
-| --time \<HH:MM:SS>                     | specify the maximum runtime of your job, if you just put a single number in, it will be interpreted as minutes                                                                                                                                                                                                                                                                                                                                             |
-| --mail-user \<your email>              | tell the batch system your email address to get updates about the status of the jobs                                                                                                                                                                                                                                                                                                                                                                       |
-| --mail-type ALL                        | specify for what type of events you want to get a mail; valid options beside ALL are: BEGIN, END, FAIL, REQUEUE                                                                                                                                                                                                                                                                                                                                            |
-| -J \<name> or --job-name \<name>       | give your job a name which is shown in the queue, the name will also be included in job emails (but cut after 24 chars within emails)                                                                                                                                                                                                                                                                                                                      |
-| --no-requeue                           | At node failure, jobs are requeued automatically per default. Use this flag to disable requeueing.                                                                                                                                                                                                                                                                                                                                                         |
-| --exclusive                            | tell Slurm that only your job is allowed on the nodes allocated to this job; please be aware that you will be charged for all CPUs/cores on the node                                                                                                                                                                                                                                                                                                       |
-| -A \<project>                          | Charge resources used by this job to the specified project, useful if a user belongs to multiple projects.                                                                                                                                                                                                                                                                                                                                                 |
-| -o \<filename> or --output \<filename> | \<p>specify a file name that will be used to store all normal output (stdout), you can use %j (job id) and %N (name of first node) to automatically adopt the file name to the job, per default stdout goes to "slurm-%j.out"\</p> \<p>%RED%NOTE:<span class="twiki-macro ENDCOLOR"></span> the target path of this parameter must be writeable on the compute nodes, i.e. it may not point to a read-only mounted file system like /projects.\</p>        |
-| -e \<filename> or --error \<filename>  | \<p>specify a file name that will be used to store all error output (stderr), you can use %j (job id) and %N (name of first node) to automatically adopt the file name to the job, per default stderr goes to "slurm-%j.out" as well\</p> \<p>%RED%NOTE:<span class="twiki-macro ENDCOLOR"></span> the target path of this parameter must be writeable on the compute nodes, i.e. it may not point to a read-only mounted file system like /projects.\</p> |
-| -a or --array                          | submit an array job, see the extra section below                                                                                                                                                                                                                                                                                                                                                                                                           |
-| -w \<node1>,\<node2>,...               | restrict job to run on specific nodes only                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| -x \<node1>,\<node2>,...               | exclude specific nodes from job                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Slurm option             | Description |
+|:-------------------------|:------------|
+| `-n, --ntasks=<N>`       | set a number of tasks to N (default=1). This determines how many processes will be spawned by srun (for MPI jobs). |
+| `-N, --nodes=<N>`          | set number of nodes that will be part of a job, on each node there will be --ntasks-per-node processes started, if the option --ntasks-per-node is not given, 1 process per node will be started |
+| `--ntasks-per-node=<N>`    | how many tasks per allocated node to start, as stated in the line before |
+| `-c, --cpus-per-task=<N>`  | this option is needed for multithreaded (e.g. OpenMP) jobs, it tells Slurm to allocate N cores per task allocated; typically N should be equal to the number of threads you program spawns, e.g. it should be set to the same number as OMP_NUM_THREADS |
+| `-p, --partition=<name>`   | select the type of nodes where you want to execute your job, on Taurus we currently have haswell, `smp`, `sandy`, `west`, ml and `gpu` available |
+| `--mem-per-cpu=<name>`     | specify the memory need per allocated CPU in MB |
+| `-t, --time=<HH:MM:SS>`    | specify the maximum runtime of your job, if you just put a single number in, it will be interpreted as minutes |
+| `--mail-user=<your email>` | tell the batch system your email address to get updates about the status of the jobs |
+| `--mail-type=ALL`          | specify for what type of events you want to get a mail; valid options beside `ALL` are: `BEGIN`, `END`, `FAIL`, `REQUEUE` |
+| `-J, --job-name=<name>`    | give your job a name which is shown in the queue, the name will also be included in job emails (but cut after 24 chars within emails) |
+| `--no-requeue`             | At node failure, jobs are requeued automatically per default. Use this flag to disable requeueing. |
+| `--exclusive`              | tell Slurm that only your job is allowed on the nodes allocated to this job; please be aware that you will be charged for all CPUs/cores on the node |
+| `-A, --account=<project>`  | Charge resources used by this job to the specified project, useful if a user belongs to multiple projects. |
+| `-o, --output=<filename>`  | specify a file name that will be used to store all normal output (stdout), you can use %j (job id) and %N (name of first node) to automatically adopt the file name to the job, per default stdout goes to "slurm-%j.out" **Note** the target path of this parameter must be writeable on the compute nodes, i.e. it may not point to a read-only mounted file system like /projects. |
+| `-e, --error=<filename>`   | specify a file name that will be used to store all error output (stderr), you can use %j (job id) and %N (name of first node) to automatically adopt the file name to the job, per default stderr goes to "slurm-%j.out" as well. **Note** the target path of this parameter must be writeable on the compute nodes, i.e. it may not point to a read-only mounted file system like /projects. |
+| `-a, --array=<arg>`        | submit an array job, see the extra section below |
+| `-w <node1>,<node2>,...`   | restrict job to run on specific nodes only |
+| `-x <node1>,<node2>,...`   | exclude specific nodes from job |
 
 The following example job file shows how you can make use of sbatch
 
@@ -45,17 +45,92 @@ The following example job file shows how you can make use of sbatch
 #SBATCH --ntasks=512
 #SBATCH -A myproject
 
-echo Starting Program
+echo "Starting Program"
 ```
 
-During runtime, the environment variable SLURM_JOB_ID will be set to the id of your job.
+During runtime, the environment variable `SLURM_JOB_ID` will be set to the id of your job.
 
-You can also use our [Slurm Batch File Generator]**todo** Slurmgenerator, which could help you create
-basic Slurm job scripts.
+<!--You can also use our [Slurm Batch File Generator]**todo** Slurmgenerator, which could help you create-->
+<!--basic Slurm job scripts.-->
 
-Detailed information on [memory limits on Taurus]**todo**
+## Partitions, Memory and Run Time Limits
 
-### Interactive Jobs
+There is no such thing as free lunch at ZIH systems. Since, compute nodes are operated in multi-user
+node by default, jobs of several users can run at the same time at the very same node sharing
+resources, like memory (but not CPU). On the other hand, a higher throughput can be achieved by
+smaller jobs. Thus, restrictions w.r.t. [memory](#memory-limits)
+and [runtime limits](#runtime-limits) have to be respected when submitting jobs.
+
+#### Memory Limits
+
+!!! note "Runtime limits are enforced."
+
+    This means, a job will be canceled as soon as it exceeds its requested limit. Currently, the
+    maximum run time is 7 days.
+
+Shorter jobs come with multiple advantages:
+
+- lower risk of loss of computing time,
+- shorter waiting time for reservations,
+- higher job fluctuation; thus, jobs with high priorities may start faster.
+
+To bring down the percentage of long running jobs we restrict the number of cores with jobs longer
+than 2 days to approximately 50% and with jobs longer than 24 to 75% of the total number of cores.
+(These numbers are subject to changes.) As best practice we advise a run time of about 8h.
+
+!!! hint "Please always try to make a good estimation of your needed time limit."
+
+    For this, you can use a command line like this to compare the requested timelimit with the
+    elapsed time for your completed jobs that started after a given date:
+
+    ```console
+    marie@login$ sacct -X -S 2021-01-01 -E now --format=start,JobID,jobname,elapsed,timelimit -s COMPLETED
+    ```
+
+Instead of running one long job, you should split it up into a chain job. Even applications that are
+not capable of checkpoint/restart can be adapted. Please refer to the section
+[Checkpoint/Restart](../jobs_and_resources/checkpoint_restart.md) for further documentation.
+
+![Partitions](misc/part.png)
+{: align="center"}
+
+### Memory Limits
+
+!!! note "Memory limits are enforced."
+
+    This means that jobs which exceed their per-node memory limit will be killed automatically by
+    the batch system.
+
+Memory requirements for your job can be specified via the `sbatch/srun` parameters:
+
+`--mem-per-cpu=<MB>` or `--mem=<MB>` (which is "memory per node"). The **default limit** is quite
+low at **300 MB** per CPU.
+
+ZIH systems comprises different sets of nodes with different amount of installed memory which affect
+where your job may be run. To achieve the shortest possible waiting time for your jobs, you should
+be aware of the limits shown in the following table.
+
+| Partition          | Nodes                                    | # Nodes | Cores per Node  | Avail. Memory per Core | Avail. Memory per Node | GPUs per Node     |
+|:-------------------|:-----------------------------------------|:--------|:----------------|:-----------------------|:-----------------------|:------------------|
+| `haswell64`        | `taurusi[4001-4104,5001-5612,6001-6612]` | `1328`  | `24`            | `2541 MB`              | `61000 MB`             | `-`               |
+| `haswell128`       | `taurusi[4105-4188]`                     | `84`    | `24`            | `5250 MB`              | `126000 MB`            | `-`               |
+| `haswell256`       | `taurusi[4189-4232]`                     | `44`    | `24`            | `10583 MB`             | `254000 MB`            | `-`               |
+| `broadwell`        | `taurusi[4233-4264]`                     | `32`    | `28`            | `2214 MB`              | `62000 MB`             | `-`               |
+| `smp2`             | `taurussmp[3-7]`                         | `5`     | `56`            | `36500 MB`             | `2044000 MB`           | `-`               |
+| `gpu2`             | `taurusi[2045-2106]`                     | `62`    | `24`            | `2583 MB`              | `62000 MB`             | `4 (2 dual GPUs)` |
+| `gpu2-interactive` | `taurusi[2045-2108]`                     | `64`    | `24`            | `2583 MB`              | `62000 MB`             | `4 (2 dual GPUs)` |
+| `hpdlf`            | `taurusa[3-16]`                          | `14`    | `12`            | `7916 MB`              | `95000 MB`             | `3`               |
+| `ml`               | `taurusml[1-32]`                         | `32`    | `44 (HT: 176)`  | `1443 MB*`             | `254000 MB`            | `6`               |
+| `romeo`            | `taurusi[7001-7192]`                     | `192`   | `128 (HT: 256)` | `1972 MB*`             | `505000 MB`            | `-`               |
+| `julia`            | `taurussmp8`                             | `1`     | `896`           | `27343 MB*`            | `49000000 MB`          | `-`               |
+
+!!! note
+
+    The ML nodes have 4way-SMT, so for every physical core allocated (,e.g., with
+    `SLURM_HINT=nomultithread`), you will always get 4*1443 MB because the memory of the other
+    threads is allocated implicitly, too.
+
+## Interactive Jobs
 
 Interactive activities like editing, compiling etc. are normally limited to the login nodes. For
 longer interactive sessions you can allocate cores on the compute node with the command "salloc". It
@@ -68,9 +143,9 @@ will run the command on each allocated task!
 
 An example of an interactive session looks like:
 
-```Shell Session
-tauruslogin3 /home/mark; srun --pty -n 1 -c 4 --time=1:00:00 --mem-per-cpu=1700 bash<br />srun: job 13598400 queued and waiting for resources<br />srun: job 13598400 has been allocated resources
-taurusi1262 /home/mark;   # start interactive work with e.g. 4 cores.
+```console
+marie@login$ /home/mark; srun --pty -n 1 -c 4 --time=1:00:00 --mem-per-cpu=1700 bash<br />srun: job 13598400 queued and waiting for resources<br />srun: job 13598400 has been allocated resources
+marie@login$ taurusi1262 /home/mark;   # start interactive work with e.g. 4 cores.
 ```
 
 **Note:** A dedicated partition `interactive` is reserved for short jobs (< 8h) with not more than
@@ -205,7 +280,7 @@ simultaneously in a **single** job.
 #SBATCH --cpus-per-task=1
 #SBATCH --mail-type=end
 #SBATCH --mail-user=your.name@tu-dresden.de
-#SBATCH --time=01:00:00 
+#SBATCH --time=01:00:00
 
 # The following sleep command was reported to fix warnings/errors with srun by users (feel free to uncomment).
 #sleep 5
