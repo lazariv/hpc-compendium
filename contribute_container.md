@@ -49,6 +49,21 @@ To make use of `mkdocs`, it is necessary to have two commands in mind
 
 #### Preview Using mkdocs With Dockerfile
 
+```
+cd /tmp
+git clone git@gitlab.hrz.tu-chemnitz.de:hpcsupport/hpc-compendium.git
+cd hpc-compendium
+docker build -t hpc-compendium .  # this takes a bit longer
+
+# local web server
+docker run --name=hpc-compendium -p 8000:8000 --rm -it -w /docs -v /tmp/hpc-compendium/doc.zih.tu-dresden.de:/docs:z hpc-compendium bash -c "mkdocs build  && mkdocs serve -a 0.0.0.0:8000"
+
+
+```
+
+
+
+
 You can also use `docker` to build a container from the `Dockerfile`, if you are familiar with it.
 This may take a while, as mkdocs and other necessary software needs to be downloaded.
 Building a container with the documentation inside could be done with the following steps:
