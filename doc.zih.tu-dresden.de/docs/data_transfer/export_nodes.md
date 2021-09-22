@@ -1,10 +1,10 @@
-# Export Nodes: Transfer data to/from ZIH's File Systems
+# Export Nodes: Transfer Data to/from ZIH's Filesystems
 
 To copy large data to/from ZIH systems, the so-called **export nodes** should be used. While it is
 possible to transfer small files directly via the login nodes, they are not intended to be used that
 way. Furthermore, longer transfers will hit the CPU time limit on the login nodes, i.e. the process
-get killed.  The export nodes have a better uplink (10 GBit/s) allowing higher bandwith.  Note that
-you cannot log in via SSH to the export nodes, but only use `scp`, `rsync` or `sftp` on them.
+get killed. The **export nodes** have a better uplink (10 GBit/s) allowing for higher bandwidth. Note
+that you cannot log in via SSH to the export nodes, but only use `scp`, `rsync` or `sftp` on them.
 
 The export nodes are reachable under the hostname `taurusexport.hrsk.tu-dresden.de` (or
 `taurusexport3.hrsk.tu-dresden.de` and `taurusexport4.hrsk.tu-dresden.de`).
@@ -80,7 +80,7 @@ from this virtual command line, then you have to prefix the command with the let
     sftp> get -r <directory>
     ```
 
-### RSYNC
+### Rsync
 
 [`Rsync`](https://man7.org/linux/man-pages/man1/rsync.1.html), is a fast and extraordinarily
 versatile file copying tool. It can copy locally, to/from another host over any remote shell, or

@@ -32,6 +32,7 @@ Fortran
 GFLOPS
 gfortran
 GiB
+GBit
 gnuplot
 Gnuplot
 GPU
@@ -39,6 +40,7 @@ hadoop
 Haswell
 HDFS
 Horovod
+hostname
 HPC
 HPL
 icc
@@ -88,6 +90,7 @@ OpenGL
 OpenMP
 openmpi
 OpenMPI
+OpenSSH
 Opteron
 PAPI
 parallelization
@@ -102,6 +105,7 @@ reachability
 rome
 romeo
 RSA
+Rsync
 salloc
 Saxonid
 sbatch
@@ -113,6 +117,7 @@ scancel
 scontrol
 scp
 scs
+SFTP
 SGEMM
 SGI
 SHA
@@ -135,10 +140,13 @@ tmp
 tracefile
 tracefiles
 Trition
+uplink
 Vampir
 VampirTrace
 VampirTrace's
 WebVNC
+WinSCP
 workspaces
 Xeon
 ZIH
+ZIH's
