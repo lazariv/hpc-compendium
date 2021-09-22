@@ -1,4 +1,6 @@
 # ZIH HPC Compendium
+<!--Pre-installed [software environments](../software/overview.md) allow for a quick start. To access-->
+<!--our HPC resources, a short [project application](../application/overview.md) is required.-->
 
 Dear HPC users,
 
