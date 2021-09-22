@@ -71,7 +71,8 @@ In the shell, activate previously created python environment (you can
 deactivate it also manually) and install Jupyter packages for this python environment:
 
 ```Bash
-source activate jnb conda install jupyter
+source activate jnb
+conda install jupyter
 ```
 
 If you need to adjust the configuration, you should create the template. Generate configuration
