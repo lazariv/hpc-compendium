@@ -6,14 +6,15 @@ For machine learning purposes, we recommend to use the [Alpha](#alpha-partition)
 
 ## ML Partition
 
-The compute nodes of the ML partition are built on the base of [Power9](https://www.ibm.com/it-infrastructure/power/power9)
-architecture from IBM. The system was created for AI challenges, analytics and working with
+The compute nodes of the ML partition are built on the base of [Power9 architecture](https://www.ibm.com/it-infrastructure/power/power9)
+from IBM. The system was created for AI challenges, analytics and working with
 data-intensive workloads and accelerated databases.
 
 The main feature of the nodes is the ability to work with the
 [NVIDIA Tesla V100](https://www.nvidia.com/en-gb/data-center/tesla-v100/) GPU with **NV-Link**
 support that allows a total bandwidth with up to 300 gigabytes per second (GB/sec). Each node on the
-ml partition has 6x Tesla V-100 GPUs. You can find a detailed specification of the partition [here](../jobs_and_resources/power9.md).
+ml partition has 6x Tesla V-100 GPUs. You can find a detailed specification of the partition in our
+[Power9 documentation](../jobs_and_resources/power9.md).
 
 !!! note
     The ML partition is based on the Power9 architecture, which means that the software built
@@ -32,13 +33,14 @@ The following have been reloaded with a version change:  1) modenv/scs5 => moden
 ### Power AI
 
 There are tools provided by IBM, that work on `ml` partition and are related to AI tasks.
-For more information see [here](power_ai.md).
+For more information see our [Power AI documentation](power_ai.md).
 
 ## Alpha partition
 
 Another partition for machine learning tasks is Alpha. It is mainly dedicated to [ScaDS.AI](https://scads.ai/)
 topics. Each node on Alpha has 2x AMD EPYC CPUs, 8x NVIDIA A100-SXM4 GPUs, 1TB RAM and 3.5TB local
-space (`/tmp`) on an NVMe device. You can find more details of the partition [here](../jobs_and_resources/alpha_centauri.md).
+space (`/tmp`) on an NVMe device. You can find more details of the partition in our [Alpha Centauri](../jobs_and_resources/alpha_centauri.md)
+documentation.
 
 ### Modules
 
@@ -60,14 +62,16 @@ The following have been reloaded with a version change:  1) modenv/ml => modenv/
 Python users should use a [virtual environment](python_virtual_environments.md) when conducting
 machine learning tasks via console.
 
-For more details on machine learning or data science with Python see [here](data_analytics_with_python.md).
+For more details on machine learning or data science with Python see the [Data Analytics with Python](data_analytics_with_python.md)
+section.
 
 ### R
 
 R also supports machine learning via console. It does not require a virtual environment due to a
 different package management.
 
-For more details on machine learning or data science with R see [here](data_analytics_with_r.md/#r-console).
+For more details on machine learning or data science with R see the [Data Analytics with R](data_analytics_with_r.md/#r-console)
+documentation.
 
 ## Machine Learning with Jupyter
 
@@ -86,7 +90,8 @@ or [RStudio](data_analytics_with_rstudio.md) for your machine learning and data 
 
 Some machine learning tasks require using containers. In the HPC domain, the [Singularity](https://singularity.hpcng.org/)
 container system is a widely used tool. Docker containers can also be used by Singularity. You can
-find further information on working with containers on ZIH systems [here](containers.md)
+find further information on working with containers on ZIH systems in our [Containers](containers.md)
+documentation.
 
 There are two sources for containers for Power9 architecture with
 TensorFlow and PyTorch on the board:
