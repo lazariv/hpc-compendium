@@ -96,12 +96,12 @@ Basic test of tensorflow - A Hello World!!!...
 ## TensorFlow with Python or R
 
 For further information on TensorFlow in combination with Python see
-[Data Analytics with Python](data_analytics_with_python.md), for R see [Data Analytics with R](data_analytics_with_r.md).
+[data analytics with Python](data_analytics_with_python.md), for R see [data analytics with R](data_analytics_with_r.md).
 
 ## Distributed TensorFlow
 
 For details on how to run TensorFlow with multiple GPUs and/or multiple nodes, see
-[Distributed Training](distributed_training.md).
+[distributed training](distributed_training.md).
 
 ## Compatibility TF2 and TF1
 
