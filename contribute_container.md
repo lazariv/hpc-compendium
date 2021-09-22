@@ -21,10 +21,10 @@ Now, create a local clone of your fork
 
 ```Shell Session
 # SSH based method
-~ git@gitlab.hrz.tu-chemnitz.de:LOGIN/hpc-compendium.git
+~ git@gitlab.hrz.tu-chemnitz.de:hpcsupport/hpc-compendium.git
 
 # HTTP based method
-~ https://gitlab.hrz.tu-chemnitz.de/LOGIN/hpc-compendium.git
+~ https://gitlab.hrz.tu-chemnitz.de/hpcsupport/hpc-compendium.git
 ```
 
 ### mkdocs Rocks
