@@ -1,17 +1,26 @@
-# Central Components
+# ZIH Systems
 
--   Login-Nodes (`tauruslogin[3-6].hrsk.tu-dresden.de`)
-    -   each with 2x Intel(R) Xeon(R) CPU E5-2680 v3 each with 12 cores
-        @ 2.50GHz, MultiThreading Disabled, 64 GB RAM, 128 GB SSD local
-        disk
-    -   IPs: 141.30.73.\[102-105\]
--   Transfer-Nodes (`taurusexport3/4.hrsk.tu-dresden.de`, DNS Alias
-    `taurusexport.hrsk.tu-dresden.de`)
-    -   2 Servers without interactive login, only available via file
-        transfer protocols (rsync, ftp)
-    -   IPs: 141.30.73.82/83
--   Direct access to these nodes is granted via IP whitelisting (contact
-    <hpcsupport@zih.tu-dresden.de>) - otherwise use TU Dresden VPN.
+The High Performance Computing and Storage Complex (HRSK-II) and its extension High Performance
+Computing – Data Analytics (HPC-DA) offers scientists about 60,000 CPU cores and a peak performance
+of more than 1.5 quadrillion floating point operations per second. The architecture specifically
+tailored to data-intensive computing, Big Data analytics, and artificial intelligence methods with
+extensive capabilities for energy measurement and performance monitoring provides ideal conditions
+to achieve the ambitious research goals of the users and the ZIH.
+
+## Login Nodes
+
+- Login-Nodes (`tauruslogin[3-6].hrsk.tu-dresden.de`)
+  - each with 2x Intel(R) Xeon(R) CPU E5-2680 v3 each with 12 cores
+    @ 2.50GHz, MultiThreading Disabled, 64 GB RAM, 128 GB SSD local
+    disk
+  - IPs: 141.30.73.\[102-105\]
+- Transfer-Nodes (`taurusexport3/4.hrsk.tu-dresden.de`, DNS Alias
+  `taurusexport.hrsk.tu-dresden.de`)
+  - 2 Servers without interactive login, only available via file
+    transfer protocols (rsync, ftp)
+  - IPs: 141.30.73.82/83
+- Direct access to these nodes is granted via IP whitelisting (contact
+  <hpcsupport@zih.tu-dresden.de>) - otherwise use TU Dresden VPN.
 
 ## AMD Rome CPUs + NVIDIA A100
 
