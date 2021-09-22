@@ -42,7 +42,8 @@ one is to download Anaconda in your home directory.
 1. Load Anaconda module (recommended):
 
 ```Bash
-module load modenv/scs5 module load Anaconda3
+module load modenv/scs5
+module load Anaconda3
 ```
 
 1. Download latest Anaconda release (see example below) and change the rights to make it an
