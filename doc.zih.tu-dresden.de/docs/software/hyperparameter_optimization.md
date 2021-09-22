@@ -43,7 +43,7 @@ There are three script preparation steps for OmniOpt:
 
     ??? note "Parsing arguments in Python"
         There are many ways for parsing arguments into Python scripts.
-        The most easiest approach is the `sys` module (see
+        The easiest approach is the `sys` module (see
         [https://www.geeksforgeeks.org/how-to-use-sys-argv-in-python/](https://www.geeksforgeeks.org/how-to-use-sys-argv-in-python/){:target="_blank"}),
         which would be fully sufficient for usage with OmniOpt.
         Nevertheless, this basic approach has no consistency checks or error handling etc.
@@ -51,7 +51,7 @@ There are three script preparation steps for OmniOpt:
   + Mark the output of the optimization target (chosen here: average loss) by prefixing it with
   the RESULT string.
     OmniOpt takes the **last appearing value** prefixed with the RESULT string.
-    In the example different epochs are performed and the average from the last epoch is caught
+    In the example, different epochs are performed and the average from the last epoch is caught
     by OmniOpt. Additionally, the RESULT output has to be a **single line**.
     After all these changes, the final script is as follows (with the lines containing relevant
     changes highlighted).

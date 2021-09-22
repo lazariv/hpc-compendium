@@ -1,15 +1,15 @@
 # Python for Data Analytics
 
 Python is a high-level interpreted language widely used in research and science. Using ZIH system
-allows you to work with python quicker and more effective. Here the general introduction to working
-with python on ZIH system is given. For specific machine learning frameworks see respective
-documentation in [machine learning](machine_learning.md) section.
+allows you to work with python quicker and more effective. Here, a general introduction to working
+with python on ZIH systems is given. Further documentation is available for specific
+[machine learning frameworks](machine_learning.md).
 
 ## Python Console and Virtual Environments
 
-Often it is useful to create an isolated development environment, which can be shared among
-a research group and/or teaching class. For this purpose python virtual environments can be used.
-For more details see [here](python_virtual_environments.md).
+Often, it is useful to create an isolated development environment, which can be shared among
+a research group and/or teaching class. For this purpose, [python virtual environments](python_virtual_environments.md)
+can be used.
 
 The interactive Python interpreter can also be used on ZIH systems via an interactive job:
 
@@ -25,12 +25,14 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 ## Jupyter Notebooks
 
-Jupyter notebooks are a great way for interactive computing in a web
-browser. They allow working with data cleaning and transformation,
-numerical simulation, statistical modeling, data visualization and machine learning.
+Jupyter notebooks allow to analyze data interactively using your web browser. One advantage of
+Jupyter is, that code, documentation and visualization can be included in a single notebook, so that
+it forms a unit. Jupyter notebooks can be used for many tasks, such as data cleaning and
+transformation, numerical simulation, statistical modeling, data visualization and also machine
+learning.
 
-On ZIH system a [JupyterHub](../access/jupyterhub.md) is available, which can be used to run
-a Jupyter notebook on a node, as well using a GPU when needed.
+On ZIH systems, a [JupyterHub](../access/jupyterhub.md) is available, which can be used to run a
+Jupyter notebook on a node, using a GPU when needed.
 
 ## Parallel Computing with Python
 
@@ -38,7 +40,7 @@ a Jupyter notebook on a node, as well using a GPU when needed.
 
 [Pandas](https://pandas.pydata.org/){:target="_blank"} is a widely used library for data
 analytics in Python.
-In many cases an existing source code using Pandas can be easily modified for parallel execution
+In many cases, an existing source code using Pandas can be easily modified for parallel execution
 by using the [pandarallel](https://github.com/nalepae/pandarallel/tree/v1.5.2){:target="_blank"}
 module. The number of threads that can be used in parallel depends on the number of cores
 (parameter `--cpus-per-task`) within the Slurm request, e.g.
@@ -47,11 +49,11 @@ module. The number of threads that can be used in parallel depends on the number
 marie@login$ srun --partition=haswell --cpus-per-task=4 --mem=2G --hint=nomultithread --pty --time=8:00:00 bash
 ```
 
-The request from above will allow to use 4 parallel threads.
+The above request allows to use 4 parallel threads.
 
 The following example shows how to parallelize the apply method for pandas dataframes with the
-pandarallel module. If the pandarallel module is not installed already, check out the usage of
-[virtual environments](python_virtual_environments.md) for installing the module.
+pandarallel module. If the pandarallel module is not installed already, use a
+[virtual environment](python_virtual_environments.md) to install the module.
 
 ??? example
     ```python
@@ -83,10 +85,10 @@ For more examples of using pandarallel check out
 ### Dask
 
 [Dask](https://dask.org/) is a flexible and open-source library for parallel computing in Python.
-It scales Python and provides advanced parallelism for analytics, enabling performance at
-scale for some of the popular tools. For instance: Dask arrays scale NumPy workflows, Dask
-dataframes scale Pandas workflows, Dask-ML scales machine learning APIs like Scikit-Learn and
-XGBoost.
+It replaces some Python data structures with parallel versions in order to provide advanced
+parallelism for analytics, enabling performance at scale for some of the popular tools. For
+instance: Dask arrays replace NumPy arrays, Dask dataframes replace Pandas dataframes.
+Furthermore, Dask-ML scales machine learning APIs like Scikit-Learn and XGBoost.
 
 Dask is composed of two parts:
 
@@ -107,37 +109,21 @@ Dask supports several user interfaces:
     - Delayed: Parallel function evaluation
     - Futures: Real-time parallel function evaluation
 
-#### Dask Installation
+#### Dask Usage
 
-!!! hint
-    This step might be obsolete, since the library may be already available as a module.
-    Check it with
-
-    ```console
-    marie@compute$ module spider dask
-    ------------------------------------------------------------------------------------------
-      dask:
-    ----------------------------------------------------------------------------------------------
-         Versions:
-            dask/2.8.0-fosscuda-2019b-Python-3.7.4
-            dask/2.8.0-Python-3.7.4
-            dask/2.8.0 (E)
-    [...]
-    ```
-
-The installation of Dask is very easy and can be done by a user using a [virtual environment](python_virtual_environments.md)
+On ZIH systems, Dask is available as a module. Check available versions and load your preferred one:
 
 ```console
-marie@compute$ module load SciPy-bundle/2020.11-fosscuda-2020b Pillow/8.0.1-GCCcore-10.2.0
-marie@compute$ virtualenv --system-site-packages dask-test
-created virtual environment CPython3.8.6.final.0-64 in 10325ms
-  creator CPython3Posix(dest=~/dask-test, clear=False, global=True)
-  seeder FromAppData(download=False, pip=bundle, setuptools=bundle, wheel=bundle, via=copy, app_data_dir=~/.local/share/virtualenv)
-    added seed packages: pip==21.1.3, setuptools==57.4.0, wheel==0.36.2
-  activators BashActivator,CShellActivator,FishActivator,PowerShellActivator,PythonActivator,XonshActivator
-marie@compute$ source dask-test/bin/activate
-(dask-test) marie@compute$ pip install dask dask-jobqueue
+marie@compute$ module spider dask
+------------------------------------------------------------------------------------------
+    dask:
+----------------------------------------------------------------------------------------------
+    Versions:
+        dask/2.8.0-fosscuda-2019b-Python-3.7.4
+        dask/2.8.0-Python-3.7.4
+        dask/2.8.0 (E)
 [...]
+marie@compute$ module load dask/2.8.0-fosscuda-2019b-Python-3.7.4
 marie@compute$ python -c "import dask; print(dask.__version__)"
 2021.08.1
 ```
@@ -155,24 +141,21 @@ client
 
 ### mpi4py -  MPI for Python
 
-Message Passing Interface (MPI) is a standardized and portable
-message-passing standard designed to function on a wide variety of
-parallel computing architectures. The Message Passing Interface (MPI) is
-a library specification that allows HPC to pass information between its
-various nodes and clusters. MPI is designed to provide access to advanced
-parallel hardware for end-users, library writers and tool developers.
+Message Passing Interface (MPI) is a standardized and portable message-passing standard, designed to
+function on a wide variety of parallel computing architectures. The Message Passing Interface (MPI)
+is a library specification that allows HPC to pass information between its various nodes and
+clusters. MPI is designed to provide access to advanced parallel hardware for end-users, library
+writers and tool developers.
 
-mpi4py(MPI for Python) package provides bindings of the MPI standard for
-the python programming language, allowing any Python program to exploit
-multiple processors.
+mpi4py (MPI for Python) provides bindings of the MPI standard for the python programming
+language, allowing any Python program to exploit multiple processors.
 
-mpi4py based on MPI-2 C++ bindings. It supports almost all MPI calls.
-This implementation is popular on Linux clusters and in the SciPy
-community. Operations are primarily methods of communicator objects. It
-supports communication of pickle-able Python objects. mpi4py provides
+mpi4py is based on MPI-2 C++ bindings. It supports almost all MPI calls. This implementation is
+popular on Linux clusters and in the SciPy community. Operations are primarily methods of
+communicator objects. It supports communication of pickle-able Python objects. mpi4py provides
 optimized communication of NumPy arrays.
 
-mpi4py is included as an extension of the SciPy-bundle modules on a ZIH system
+mpi4py is included in the SciPy-bundle modules on the ZIH system.
 
 ```console
 marie@compute$ module load SciPy-bundle/2020.11-foss-2020b

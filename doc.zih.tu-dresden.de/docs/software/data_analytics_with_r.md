@@ -6,17 +6,16 @@ classical statistical tests, time-series analysis, classification, etc) and grap
 is an integrated suite of software facilities for data manipulation, calculation and
 graphing.
 
-R possesses an extensive catalog of statistical and graphical methods.  It includes machine
-learning algorithms, linear regression, time series, statistical inference.
+R possesses an extensive catalog of statistical and graphical methods. It includes machine learning
+algorithms, linear regression, time series, statistical inference.
 
-We recommend using `haswell` and/or `rome` partitions to work with R. For more details
-see [here](../jobs_and_resources/hardware_taurus.md).
+We recommend using **Haswell** and/or **Romeo** partitions to work with R. For more details
+see our [hardware documentation](../jobs_and_resources/hardware_taurus.md).
 
 ## R Console
 
-In the following example the `srun` command is used to submit a real-time execution job
-designed for interactive use with monitoring the output. Please check
-[the Slurm page](../jobs_and_resources/slurm.md) for details.
+In the following example, the `srun` command is used to start an interactive job, so that the output
+is visible to the user. Please check the [Slurm page](../jobs_and_resources/slurm.md) for details.
 
 ```console
 marie@login$ srun --partition=haswell --ntasks=1 --nodes=1 --cpus-per-task=4 --mem-per-cpu=2541 --time=01:00:00 --pty bash
@@ -28,7 +27,7 @@ marie@compute$ R
 ```
 
 Using `srun` is recommended only for short test runs, while for larger runs batch jobs should be
-used. The examples can be found [here](../jobs_and_resources/slurm.md).
+used. Examples can be found on the [Slurm page](../jobs_and_resources/slurm.md).
 
 It is also possible to run `Rscript` command directly (after loading the module):
 
@@ -83,8 +82,8 @@ Module TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4 and 15 dependencies loaded.
 ```
 
 !!! warning
-    Be aware that for compatibility reasons it is important to choose modules with
-    the same toolchain version (in this case `fosscuda/2019b`). For reference see [here](modules.md)
+     Be aware that for compatibility reasons it is important to choose [modules](modules.md) with
+     the same toolchain version (in this case `fosscuda/2019b`).
 
 In order to interact with Python-based frameworks (like TensorFlow) `reticulate` R library is used.
 To configure it to point to the correct Python executable in your virtual environment, create
@@ -92,7 +91,7 @@ a file named `.Rprofile` in your project directory (e.g. R-TensorFlow) with the 
 contents:
 
 ```R
-Sys.setenv(RETICULATE_PYTHON = "/sw/installed/Python/3.7.4-GCCcore-8.3.0/bin/python")    #assign the output of the 'which python' from above to RETICULATE_PYTHON
+Sys.setenv(RETICULATE_PYTHON = "/sw/installed/Python/3.7.4-GCCcore-8.3.0/bin/python")    #assign RETICULATE_PYTHON to the python executable
 ```
 
 Let's start R, install some libraries and evaluate the result:
@@ -252,7 +251,7 @@ code to use `mclapply` function. Check out an example below.
 
 The disadvantages of using shared-memory parallelism approach are, that the number of parallel
 tasks is limited to the number of cores on a single node. The maximum number of cores on a single
-node can be found [here](../jobs_and_resources/hardware_taurus.md).
+node can be found in our [hardware documentation](../jobs_and_resources/hardware_taurus.md).
 
 Submitting a multicore R job to Slurm is very similar to submitting an
 [OpenMP Job](../jobs_and_resources/slurm.md#binding-and-distribution-of-tasks),
@@ -288,8 +287,8 @@ This way of the R parallelism uses the
 [MPI](https://en.wikipedia.org/wiki/Message_Passing_Interface) (Message Passing Interface) as a
 "back-end" for its parallel operations. The MPI-based job in R is very similar to submitting an
 [MPI Job](../jobs_and_resources/slurm.md#binding-and-distribution-of-tasks) since both are running
-multicore jobs on multiple nodes. Below is an example of running R script with the Rmpi on
-ZIH system:
+multicore jobs on multiple nodes. Below is an example of running R script with the Rmpi on the ZIH
+system:
 
 ```Bash
 #!/bin/bash
@@ -458,7 +457,8 @@ parallel process.
   expression via futures
 - [Poor-man's parallelism](https://www.glennklockwood.com/data-intensive/r/alternative-parallelism.html#6-1-poor-man-s-parallelism)
   (simple data parallelism). It is the simplest, but not an elegant way to parallelize R code.
-  It runs several copies of the same R script where's each read different sectors of the input data
+  It runs several copies of the same R script where each copy reads a different part of the input
+  data.
 - [Hands-off (OpenMP)](https://www.glennklockwood.com/data-intensive/r/alternative-parallelism.html#6-2-hands-off-parallelism)
   method. R has [OpenMP](https://www.openmp.org/resources/) support. Thus using OpenMP is a simple
   method where you don't need to know much about the parallelism options in your code. Please be
