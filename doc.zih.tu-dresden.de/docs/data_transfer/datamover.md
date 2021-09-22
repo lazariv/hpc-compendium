@@ -1,7 +1,7 @@
 # Transferring Files Between ZIH Systems
 
 With the **datamover**, we provide a special data transfer machine for transferring data with best
-trasnfer speed between the filesystems of ZIH systems. The datamover machine is not accessible
+transfer speed between the filesystems of ZIH systems. The datamover machine is not accessible
 through SSH as it is dedicated to data transfers. To move or copy files from one filesystem to
 another filesystem, you have to use the following commands:
 
@@ -9,7 +9,7 @@ another filesystem, you have to use the following commands:
 
 These commands submit a [batch job](../jobs_and_resources/slurm.md) to the data transfer machines
 performing the selected command. Except the following options their syntax is the very same as the
-wellknown shell commands without the prefix *dt*.
+well-known shell commands without the prefix *dt*.
 
 | Additional Option   | Description                                                                   |
 |---------------------|-------------------------------------------------------------------------------|
@@ -37,33 +37,33 @@ To identify the mount points of the different filesystems on the data transfer m
 |                    | `/warm_archive/ws`   | `/warm_archive/ws`                 |
 |                    | `/home`              | `/home`                            |
 |                    | `/projects`          | `/projects`                        |
-| **Archive**        |                      | `/archiv`                          |
-| **Group Storages** |                      | `/grp/<group storage>`            |
+| **Archive**        |                      | `/archive`                         |
+| **Group storage**  |                      | `/grp/<group storage>`             |
 
-## Examples on how to use data transfer commands:
+## Usage of Datamover
 
-Copying data from /beegfs/global0 to /projects filesystem.
+Copying data from `/beegfs/global0` to `/projects` filesystem.
 
 ``` console
 marie@login$ dtcp -r /beegfs/global0/ws/marie-workdata/results /projects/p_marie/.
 ```
 
-Moving data from /beegfs/global0 to /warm_archive filesystem.
+Moving data from `/beegfs/global0` to `/warm_archive` filesystem.
 
 ``` console
 marie@login$ dtmv /beegfs/global0/ws/marie-workdata/results /warm_archive/ws/marie-archive/.
 ```
 
-TGZ data from /beegfs/global0 to /archiv filesystem.
+Archive data from `/beegfs/global0` to `/archiv` filesystem.
 
 ``` console
 marie@login$ dttar -czf /archiv/p_marie/results.tgz /beegfs/global0/ws/marie-workdata/results
 ```
 
 !!! note
-    Please do not generate files in the /archiv filesystem  much larger that 500 GB.
+    Please do not generate files in the `/archiv` filesystem much larger that 500 GB.
 
 !!! note
-    The [warm archive](../data_lifecycle/warm_archive.md) and the projects filesystem are not
+    The [warm archive](../data_lifecycle/warm_archive.md) and the `projects` filesystem are not
     writable from within batch jobs.
-    However, you can store the data in the warm archive with the datamover.
+    However, you can store the data in the `warm_archive` using the datamover.
