@@ -124,8 +124,9 @@ c.NotebookApp.port = 9999
 c.NotebookApp.allow_remote_access = True
 ```
 
-Note: `<path-to-cert>` - path to key and certificate files, for example:
-(`/home/\<username>/mycert.pem`)
+!!! note
+    `<path-to-cert>` - path to key and certificate files, for example:
+    (`/home/<zih_user>/mycert.pem`)
 
 ## Slurm job file to run the Jupyter server on ZIH system with GPU (1x K80) (also works on K20)
 
