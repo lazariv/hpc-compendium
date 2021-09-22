@@ -28,7 +28,7 @@ The typical OmniOpt workflow comprises at least the following steps:
 ### Prepare Application Script and Software Environment
 
 The following example application script was created from
-[https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html){:target="_blank"}
+[https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html)
 as a starting point.
 Therein, a neural network is trained on the MNIST Fashion data set.
 
@@ -36,7 +36,7 @@ There are the following script preparation steps for OmniOpt:
 
 1. Changing hard-coded hyperparameters (chosen here: batch size, epochs, size of layer 1 and 2) into
    command line parameters.  Esp. for this example, the Python module `argparse` (see the docs at
-   [https://docs.python.org/3/library/argparse.html](https://docs.python.org/3/library/argparse.html){:target="_blank"})
+   [https://docs.python.org/3/library/argparse.html](https://docs.python.org/3/library/argparse.html)
    is used.
 
     ??? note "Parsing arguments in Python"
@@ -288,7 +288,7 @@ configuration parameters:
 1. **Enable GPU:** Decide whether a program could benefit from GPU usage or not.
 1. **Workdir:** The directory where OmniOpt is saving its necessary files and all results.  Derived
    from the optimization run name, their is created a single directory for every such configuration.
-   Make sure that this working directory is writeable from the compute nodes.  It is recommended to
+   Make sure that this working directory is writable from the compute nodes.  It is recommended to
    use a [workspace](../data_lifecycle/workspaces.md).
 1. **Objective program:** Provide all information for program execution. Typically, this will
    contain the command for executing a wrapper script.
@@ -347,11 +347,11 @@ In order to look into the results, there are the following basic approaches.
 
     ??? hint "Hints on parallel plots"
 
-        Parallel plots are suitable especially for dealing with multiple dimensions.  The parallel
-        plot created by OmniOpt is an interactive html file that is stored in the ominopt working
+        Parallel plots are suitable especially for dealing with multiple dimensions. The parallel
+        plot created by OmniOpt is an interactive `html` file that is stored in the OminOpt working
         directory under `projects/<name_of_optimization_run>/parallel-plot`. The interactivity
         of this plot is intended to make optimal combinations of the hyperparameters visible more
-        easily.  Get more information about this interactivity by clicking the "Help" button at the
+        easily. Get more information about this interactivity by clicking the "Help" button at the
         top of the graphic (see red arrow on the image above).
 
     After creating a 2d scatter plot or a parallel plot OmniOpt will try to display the
