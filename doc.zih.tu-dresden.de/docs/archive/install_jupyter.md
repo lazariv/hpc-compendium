@@ -6,8 +6,8 @@ it forms a unit. Jupyter notebooks can be used for many tasks, such as data clea
 transformation, numerical simulation, statistical modeling, data visualization and also machine
 learning. 
 
-There are two general options on how to work Jupyter notebooks using HPC: remote Jupyter server and
-JupyterHub.
+There are two general options on how to work with Jupyter notebooks on ZIH systems: remote Jupyter
+server and JupyterHub.
 
 These sections show how to run and set up a remote Jupyter server within a sbatch GPU job and which
 modules and packages you need for that.
