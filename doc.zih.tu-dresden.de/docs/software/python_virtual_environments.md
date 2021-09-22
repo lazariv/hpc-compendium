@@ -1,6 +1,6 @@
 # Python Virtual Environments
 
-Virtual environments allow users to install additional python packages and create an isolated
+Virtual environments allow users to install additional Python packages and create an isolated
 run-time environment. We recommend using `virtualenv` for this purpose. In your virtual environment,
 you can use packages from the [modules list](modules.md) or if you didn't find what you need you can
 install required packages with the command: `pip install`. With the command `pip freeze`, you can
@@ -18,6 +18,7 @@ management system and environment management system from Anaconda. The
 conda manager is included in all versions of Anaconda and Miniconda.
 
 !!! warning
+
     Keep in mind that you **cannot** use virtualenv for working
     with the virtual environments previously created with conda tool and
     vice versa! Prefer virtualenv whenever possible.
@@ -29,7 +30,7 @@ the module system).
 
 ??? hint
 
-    We recommend to use [workspaces](../../data_lifecycle/workspaces.md) for your virtual
+    We recommend to use [workspaces](../data_lifecycle/workspaces.md) for your virtual
     environments.
 
 At first we check available Python modules and load the preferred version:
