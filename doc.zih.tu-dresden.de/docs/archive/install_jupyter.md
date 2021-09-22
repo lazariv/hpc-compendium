@@ -4,7 +4,7 @@ Jupyter notebooks allow to analyze data interactively using your web browser. On
 Jupyter is, that code, documentation and visualization can be included in a single notebook, so that
 it forms a unit. Jupyter notebooks can be used for many tasks, such as data cleaning and
 transformation, numerical simulation, statistical modeling, data visualization and also machine
-learning. 
+learning.
 
 There are two general options on how to work with Jupyter notebooks on ZIH systems: remote Jupyter
 server and JupyterHub.
@@ -56,7 +56,6 @@ chmod u+x Anaconda3-2019.03-Linux-x86_64.sh
 ```
 
 (during installation you have to confirm the license agreement)
-
 
 Next step will install the anaconda environment into the home
 directory (`/home/userxx/anaconda3`). Create a new anaconda environment with the name `jnb`.
