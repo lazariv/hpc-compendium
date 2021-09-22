@@ -1,8 +1,10 @@
 # Jupyter Installation
 
-Jupyter notebooks are a great way for interactive computing in your web browser. Jupyter allows
-working with data cleaning and transformation, numerical simulation, statistical modeling, data
-visualization and of course with machine learning.
+Jupyter notebooks allow to analyze data interactively using your web browser. One advantage of
+Jupyter is, that code, documentation and visualization can be included in a single notebook, so that
+it forms a unit. Jupyter notebooks can be used for many tasks, such as data cleaning and
+transformation, numerical simulation, statistical modeling, data visualization and also machine
+learning. 
 
 There are two general options on how to work Jupyter notebooks using HPC: remote Jupyter server and
 JupyterHub.
