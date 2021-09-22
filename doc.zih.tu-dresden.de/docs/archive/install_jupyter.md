@@ -198,4 +198,3 @@ To login into the Jupyter notebook site, you have to enter the **token**.
     If you would like to use [JupyterHub](../access/jupyterhub.md) after using a remote manually
     configured Jupyter server (example above) you need to change the name of the configuration file
     (`/home//.jupyter/jupyter_notebook_config.py`) to any other.
-
