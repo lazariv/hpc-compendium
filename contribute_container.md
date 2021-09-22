@@ -1,29 +1,10 @@
-# Contributing Using Local Docker Container
+# Contributing Using a Local Clone and a Docker Container
 
 ## Prerequisites
 
 Assuming you have:
 * A system with running Docker installation
 * All necessary access/execution rights
-
-# Contribution Guide
-
-In the following, it is outlined how to contribute to the
-[HPC documentation](https://doc.zih.tu-dresden.de/) of
-[TU Dresden/ZIH](https://tu-dresden.de/zih/) and
-which rules should be followed when adding to this project. Although, this document might seem very
-long describing complex steps, contributing is quite easy - trust us.
-
-## Contribute via Issue
-
-Users can contribute to the documentation via the
-[issue tracking system](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/issues).
-For that, open an issue to report typos and missing documentation or request for more precise
-wording etc.  ZIH staff will get in touch with you to resolve the issue and improve the
-documentation.
-
-**Reminder:** Non-documentation issues and requests need to be send as ticket to
-[hpcsupport@zih.tu-dresden.de](mailto:hpcsupport@zih.tu-dresden.de).
 
 ## Preparation
 
@@ -46,37 +27,6 @@ Now, create a local clone of your fork
 ~ https://gitlab.hrz.tu-chemnitz.de/LOGIN/hpc-compendium.git
 ```
 
-#### Install Dependencies
-
-**TODO:** Description
-
-```Shell Session
-~ cd hpc-compendium/doc.zih.tu-dresden.de
-~ pip install -r requirements.txt
-```
-
-**TODO:** virtual environment
-**TODO:** What we need for markdownlinter and checks?
-
-<!--- All branches are protected, i.e., only ZIH staff can create branches and push to them --->
-
-## Contribute via Web IDE
-
-GitLab offers a rich and versatile web interface to work with repositories. To fix typos and edit
-source files, just select the file of interest and click the `Edit` button. A text and commit
-editor are invoked: Do your changes, add a meaningful commit message and commit the changes.
-
-The more sophisticated integrated Web IDE is reached from the top level menu of the repository or
-by selecting any source file.
-
-Other git services might have an equivalent web interface to interact with the repository. Please
-refer to the corresponding documentation for further information.
-
-<!--This option of contributing is only available for users of-->
-<!--[gitlab.hrz.tu-chemnitz.de](https://gitlab.hrz.tu-chemnitz.de). Furthermore, -->
-
-## Contribute via Local Clone
-
 ### mkdocs Rocks
 
 As mentioned, this documentation bases on markdown files which are translated into static html files
@@ -96,26 +46,6 @@ To make use of `mkdocs`, it is necessary to have two commands in mind
 ~ mkdocs serve - Start the live-reloading docs server.
 ~ mkdocs build - Build the documentation site.
 ```
-
-#### Preview Using mkdocs
-
-Invoke`mkdocs serve`to build and preview the documentation. The documentation is automatically
-rerendered and reloaded if the system detects updates (great!). By default, the builtin web server
-hosts the documentation at `http://127.0.0.1:8000`.
-
-```Shell Session
-~ cd /PATH/TO/hpc-compendium/doc.zih.tu-dresden.de
-~ mkdocs serve
-INFO    -  Building documentation...
-INFO    -  Cleaning site directory
-INFO    -  Documentation built in 0.08 seconds
-[I 210127 13:33:30 server:335] Serving on http://127.0.0.1:8000
-INFO    -  Serving on http://127.0.0.1:8000
-[I 210127 13:33:30 handlers:62] Start watching changes
-INFO    -  Start watching changes
-```
-
-Open `http://127.0.0.1:8000` with a web browser to preview the local copy of the documentation.
 
 #### Preview Using mkdocs With Dockerfile
 
