@@ -1,24 +1,23 @@
 # Hyperparameter Optimization (OmniOpt)
 
-Classical simulation methods as well as machine learning methods (e.g. neural networks) have
-a large number of hyperparameters that significantly determine the accuracy, efficiency, and
-transferability of the method. In classical simulations, the hyperparameters are usually
-determined by adaptation to measured values. Esp. in neural networks, the hyperparameters
-determine the network architecture: number and type of layers, number of neurons, activation
-functions, measures against overfitting etc. The most common methods to determine hyperparameters
-are intuitive testing, grid search or random search.
+Classical simulation methods as well as machine learning methods (e.g. neural networks) have a large
+number of hyperparameters that significantly determine the accuracy, efficiency, and transferability
+of the method. In classical simulations, the hyperparameters are usually determined by adaptation to
+measured values. Esp. in neural networks, the hyperparameters determine the network architecture:
+number and type of layers, number of neurons, activation functions, measures against overfitting
+etc. The most common methods to determine hyperparameters are intuitive testing, grid search or
+random search.
 
 The tool OmniOpt performs hyperparameter optimization within a broad range of applications as
-classical simulations or machine learning algorithms.
-OmniOpt is robust and it checks and installs all dependencies automatically and fixes many
-problems in the background. While OmniOpt optimizes, no further intervention is required.
-You can follow the ongoing output live in the console.
+classical simulations or machine learning algorithms.  OmniOpt is robust and it checks and installs
+all dependencies automatically and fixes many problems in the background. While OmniOpt optimizes,
+no further intervention is required.  You can follow the ongoing output live in the console.
 Overhead of OmniOpt is minimal and virtually imperceptible.
 
 ## Quick start with OmniOpt
 
-The following instructions demonstrate the basic usage of OmniOpt on the ZIH system, based
-on the hyperparameter optimization for a neural network.
+The following instructions demonstrate the basic usage of OmniOpt on the ZIH system, based on the
+hyperparameter optimization for a neural network.
 
 The typical OmniOpt workflow comprises at least the following steps:
 
@@ -35,28 +34,27 @@ Therein, a neural network is trained on the MNIST Fashion data set.
 
 There are the following script preparation steps for OmniOpt:
 
-  1. Changing hard-coded hyperparameters (chosen here: batch size, epochs, size of layer 1 and 2)
-  into command line parameters.
-      Esp. for this example, the Python module `argparse` (see the docs at
-      [https://docs.python.org/3/library/argparse.html](https://docs.python.org/3/library/argparse.html){:target="_blank"})
-      is used.
+1. Changing hard-coded hyperparameters (chosen here: batch size, epochs, size of layer 1 and 2) into
+   command line parameters.  Esp. for this example, the Python module `argparse` (see the docs at
+   [https://docs.python.org/3/library/argparse.html](https://docs.python.org/3/library/argparse.html){:target="_blank"})
+   is used.
 
     ??? note "Parsing arguments in Python"
-        There are many ways for parsing arguments into Python scripts.
-        The most easiest approach is the `sys` module (see
-        [https://www.geeksforgeeks.org/how-to-use-sys-argv-in-python/](https://www.geeksforgeeks.org/how-to-use-sys-argv-in-python/){:target="_blank"}),
-        which would be fully sufficient for usage with OmniOpt.
-        Nevertheless, this basic approach has no consistency checks or error handling etc.
 
-  1. Mark the output of the optimization target (chosen here: average loss) by prefixing it with
-  the RESULT string.
-    OmniOpt takes the **last appearing value** prefixed with the RESULT string.
-    In the example different epochs are performed and the average from the last epoch is caught
-    by OmniOpt. Additionally, the `RESULT` output has to be a **single line**.
-    After all these changes, the final script is as follows (with the lines containing relevant
-    changes highlighted).
+        There are many ways for parsing arguments into Python scripts. The most easiest approach is
+        the `sys` module (see
+        [www.geeksforgeeks.org/how-to-use-sys-argv-in-python](https://www.geeksforgeeks.org/how-to-use-sys-argv-in-python)),
+        which would be fully sufficient for usage with OmniOpt. Nevertheless, this basic approach
+        has no consistency checks or error handling etc.
+
+1. Mark the output of the optimization target (chosen here: average loss) by prefixing it with the
+   RESULT string. OmniOpt takes the **last appearing value** prefixed with the RESULT string.  In
+   the example different epochs are performed and the average from the last epoch is caught by
+   OmniOpt. Additionally, the `RESULT` output has to be a **single line**. After all these changes,
+   the final script is as follows (with the lines containing relevant changes highlighted).
 
     ??? example "Final modified Python script: MNIST Fashion "
+
         ```python linenums="1" hl_lines="18-33 52-53 66-68 72 74 76 85 125-126"
         #!/usr/bin/env python
         # coding: utf-8
@@ -181,7 +179,7 @@ There are the following script preparation steps for OmniOpt:
             correct /= size
             print(f"Test Error: \n Accuracy: {(100*correct):>0.1f}%, Avg loss: {test_loss:>8f} \n")
 
-           
+
             #print statement esp. for OmniOpt (single line!!)
             print(f"RESULT: {test_loss:>8f} \n")
 
@@ -192,28 +190,33 @@ There are the following script preparation steps for OmniOpt:
         print("Done!")
         ```
 
-  1. Testing script functionality and determine software requirements for the chosen [partition](../jobs_and_resources/system_taurus.md#partitions).
-    In the following the alpha partition is used.
-    Please note the parameters `--out-layer1`, `--batchsize`, `--epochs` when calling the python script.
-Additionally, note the `RESULT` string with the output for OmniOpt.
+1. Testing script functionality and determine software requirements for the chosen
+   [partition](../jobs_and_resources/system_taurus.md#partitions). In the following the alpha
+   partition is used. Please note the parameters `--out-layer1`, `--batchsize`, `--epochs` when
+   calling the Python script. Additionally, note the `RESULT` string with the output for OmniOpt.
 
-??? hint "Hint for installing Python modules"
-Note that for this example the module `torchvision` is not available on the alpha partition and it is installed by creating a [virtual environment](python_virtual_environments.md).
-It is recommended to install such a virtual environment into a [workspace](../data_lifecycle/workspaces.md).
+    ??? hint "Hint for installing Python modules"
 
-    ``` console
-    marie@login$ module load modenv/hiera  GCC/10.2.0  CUDA/11.1.1 OpenMPI/4.0.5 PyTorch/1.9.0
-    marie@login$ mkdir </path/to/workspace/python-environments>    #create folder
-      marie@login$ virtualenv --system-site-packages </path/to/workspace/python-environments/torchvision_env>
-    marie@login$ source </path/to/workspace/python-environments/torchvision_env>/bin/activate #activate virtual environment
-      marie@login$ pip install torchvision #install torchvision module
-    ```
+        Note that for this example the module `torchvision` is not available on the partition `alpha`
+        and it is installed by creating a [virtual environment](python_virtual_environments.md).  It is
+        recommended to install such a virtual environment into a
+        [workspace](../data_lifecycle/workspaces.md).
 
-    ``` console
-    marie@login$ srun -p alpha --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=800 bash #Job submission on alpha nodes with 1 gpu on 1 node with 800 Mb per CPU
+        ```console
+        marie@login$ module load modenv/hiera  GCC/10.2.0  CUDA/11.1.1 OpenMPI/4.0.5 PyTorch/1.9.0
+        marie@login$ mkdir </path/to/workspace/python-environments>    #create folder
+        marie@login$ virtualenv --system-site-packages </path/to/workspace/python-environments/torchvision_env>
+        marie@login$ source </path/to/workspace/python-environments/torchvision_env>/bin/activate #activate virtual environment
+        marie@login$ pip install torchvision #install torchvision module
+        ```
+
+    ```console
+    # Job submission on alpha nodes with 1 GPU on 1 node with 800 MB per CPU
+    marie@login$ srun -p alpha --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=800 bash
     marie@alpha$ module load modenv/hiera  GCC/10.2.0  CUDA/11.1.1 OpenMPI/4.0.5 PyTorch/1.9.0
-marie@alpha$ source </path/to/workspace/python-environments/torchvision_env>/bin/activate #activate virtual environment
-    Die folgenden Module wurden in einer anderen Version erneut geladen:
+    # Activate virtual environment
+    marie@alpha$ source </path/to/workspace/python-environments/torchvision_env>/bin/activate
+    The following have been reloaded with a version change:
       1) modenv/scs5 => modenv/hiera
 
     Module GCC/10.2.0, CUDA/11.1.1, OpenMPI/4.0.5, PyTorch/1.9.0 and 54 dependencies loaded.
@@ -235,11 +238,12 @@ marie@alpha$ source </path/to/workspace/python-environments/torchvision_env>/bin
     Done!
     ```
 
-Using the modified script within OmniOpt requires configuring and loading of the software environment.
-The recommended way is to wrap the necessary calls in a shell script.
+Using the modified script within OmniOpt requires configuring and loading of the software
+environment. The recommended way is to wrap the necessary calls in a shell script.
 
 ??? example "Example for wrapping with shell script"
-    ``` shell
+
+    ```bash
     #!/bin/bash -l
     # ^ Shebang-Line, so that it is known that this is a bash file
     # -l means 'load this as login shell', so that /etc/profile gets loaded and you can use 'module load' or 'ml' as usual
@@ -256,51 +260,57 @@ The recommended way is to wrap the necessary calls in a shell script.
     python </path/to/your/script/mnistFashion.py> $@
     ```
 
-When the wrapped shell script is running properly the preparations are finished and the next step is configuring OmniOpt.
+When the wrapped shell script is running properly the preparations are finished and the next step is
+configuring OmniOpt.
 
 ### Configure and Run OmniOpt
 
-Configuring OmniOpt is done via the GUI at [https://imageseg.scads.ai/omnioptgui/](https://imageseg.scads.ai/omnioptgui/){:target="_blank"}..
-This GUI guides through the configuration process and as result a configuration file is created automatically according to the GUI input.
-If you are more familiar with using OmniOpt later on, this configuration file can be modified directly without using the GUI.
+Configuring OmniOpt is done via the GUI at
+[https://imageseg.scads.ai/omnioptgui/](https://imageseg.scads.ai/omnioptgui/).
+This GUI guides through the configuration process and as result a configuration file is created
+automatically according to the GUI input.  If you are more familiar with using OmniOpt later on,
+this configuration file can be modified directly without using the GUI.
 
-A screenshot of the GUI, including a properly configuration for the MNIST fashion example is shown below.
-The GUI, in which the below displayed values are already entered, can be reached [here](https://imageseg.scads.ai/omnioptgui/?maxevalserror=5&mem_per_worker=1000&number_of_parameters=3&param_0_values=10%2C50%2C100&param_1_values=8%2C16%2C32&param_2_values=10%2C15%2C30&param_0_name=out-layer1&param_1_name=batchsize&param_2_name=batchsize&account=&projectname=mnist_fashion_optimization_set_1&partition=alpha&searchtype=tpe.suggest&param_0_type=hp.choice&param_1_type=hp.choice&param_2_type=hp.choice&max_evals=1000&objective_program=bash%20%3C%2Fpath%2Fto%2Fwrapper-script%2Frun-mnist-fashion.sh%3E%20--out-layer1%3D(%24x_0)%20--batchsize%3D(%24x_1)%20--epochs%3D(%24x_2)&workdir=%3C%2Fscratch%2Fws%2Fomniopt-workdir%2F%3E){:target="_blank"}.
+A screenshot of the GUI, including a properly configuration for the MNIST fashion example is shown
+below.  The GUI, in which the below displayed values are already entered, can be reached
+[here](https://imageseg.scads.ai/omnioptgui/?maxevalserror=5&mem_per_worker=1000&number_of_parameters=3&param_0_values=10%2C50%2C100&param_1_values=8%2C16%2C32&param_2_values=10%2C15%2C30&param_0_name=out-layer1&param_1_name=batchsize&param_2_name=batchsize&account=&projectname=mnist_fashion_optimization_set_1&partition=alpha&searchtype=tpe.suggest&param_0_type=hp.choice&param_1_type=hp.choice&param_2_type=hp.choice&max_evals=1000&objective_program=bash%20%3C%2Fpath%2Fto%2Fwrapper-script%2Frun-mnist-fashion.sh%3E%20--out-layer1%3D(%24x_0)%20--batchsize%3D(%24x_1)%20--epochs%3D(%24x_2)&workdir=%3C%2Fscratch%2Fws%2Fomniopt-workdir%2F%3E).
 Please modify the paths for "objective programm" and "workdir" according to your needs.
 
 ![GUI for configuring OmniOpt](misc/hyperparameter_optimization-OmniOpt-GUI.png)
 {: align="center"}
 
-Using OmniOpt for a first trial example, it is often sufficient to concentrate on the following configuration parameters:
+Using OmniOpt for a first trial example, it is often sufficient to concentrate on the following
+configuration parameters:
 
-1. **Optimization run name:**
-A name for a OmniOpt run given a belonging configuration.
-1. **Partition:**
-Choosing the partition on the ZIH system that fits the program needs.
-1. **Enable GPU:**
-Decide whether a program could benefit from GPU usage or not.
-1. **Workdir:**
-The directory where OmniOpt is saving its neccessary files and all results.
-Derived from the optimization run name, their is created a single directory for every such configuration.
-Make sure that this working directory is writeable from the compute nodes.
-It is recommended to use a [workspace](../data_lifecycle/workspaces.md).
-1. **Objective program:**
-Provide all information for program execution. Typically, this will contain the command for executing a wrapper script.
-1. **Parameters:**
-The hyperparameters to be optimized with the names OmniOpt should use.
-For the example here, the variable names are identical to the input parameters of the Python script.
-However, these names can be chosen differently, since the connection to OmniOpt is realized via the variables ($x_0), ($x_1), etc. from the GUI section "Objective program".
-Please note that it is not necessary to name the parameters explicitly in your script but only within the OmniOpt configuration.
+1. **Optimization run name:** A name for a OmniOpt run given a belonging configuration.
+1. **Partition:** Choosing the partition on the ZIH system that fits the program needs.
+1. **Enable GPU:** Decide whether a program could benefit from GPU usage or not.
+1. **Workdir:** The directory where OmniOpt is saving its neccessary files and all results.  Derived
+   from the optimization run name, their is created a single directory for every such configuration.
+   Make sure that this working directory is writeable from the compute nodes.  It is recommended to
+   use a [workspace](../data_lifecycle/workspaces.md).
+1. **Objective program:** Provide all information for program execution. Typically, this will
+   contain the command for executing a wrapper script.
+1. **Parameters:** The hyperparameters to be optimized with the names OmniOpt should use.  For the
+   example here, the variable names are identical to the input parameters of the Python script.
+   However, these names can be chosen differently, since the connection to OmniOpt is realized via
+   the variables (`$x_0`), (`$x_1`), etc. from the GUI section "Objective program". Please note that
+   it is not necessary to name the parameters explicitly in your script but only within the OmniOpt
+   configuration.
 
-After all parameters are entered into the GUI, the call for OmniOpt is generated automatically and displayed on the right. This command contains all necessary instructions (including requesting resources with Slurm).
-**Thus, this command can be executed directly on a login node on the ZIH system.**
+After all parameters are entered into the GUI, the call for OmniOpt is generated automatically and
+displayed on the right. This command contains all necessary instructions (including requesting
+resources with Slurm).  **Thus, this command can be executed directly on a login node on the ZIH
+system.**
 
 ![GUI for configuring OmniOpt](misc/hyperparameter_optimization-OmniOpt-final-command.png)
 {: align="center"}
 
-After executing this command OmniOpt is doing all the magic in the background and there are no further actions necessary.
+After executing this command OmniOpt is doing all the magic in the background and there are no
+further actions necessary.
 
 ??? hint "Hints on the working directory"
+
     1. Starting OmniOpt without providing a working directory will store OmniOpt into the present directory.
     1. Within the given working directory a new folder named "omniopt" as default, is created.
     1. Within one OmniOpt working directory there can be multiple optimization projects.
@@ -309,16 +319,17 @@ After executing this command OmniOpt is doing all the magic in the background an
 
 ### Check and Evaluate OmniOpt Results
 
-For getting informed about the current status of OmniOpt or for looking into results, the evaluation tool of OmniOpt is used.
-Switch to the OmniOpt folder and run ```evaluate-run.sh```.
+For getting informed about the current status of OmniOpt or for looking into results, the evaluation
+tool of OmniOpt is used.  Switch to the OmniOpt folder and run `evaluate-run.sh`.
 
-    ``` console
-        marie@login$ bash </scratch/ws/omniopt-workdir/>evaluate-run.sh
-    ```
+``` console
+marie@login$ bash </scratch/ws/omniopt-workdir/>evaluate-run.sh
+```
 
-After initializing and checking for updates in the background Omniopt is asking to select the optimization run of interest.
-After selecting the optimization run, there will be a menu with the items as shown below.
-If OmniOpt has still running jobs there appear some menu items that refer to these running jobs (image shown below to the right).
+After initializing and checking for updates in the background Omniopt is asking to select the
+optimization run of interest.  After selecting the optimization run, there will be a menu with the
+items as shown below.  If OmniOpt has still running jobs there appear some menu items that refer to
+these running jobs (image shown below to the right).
 
 evaluation options (all jobs finished)                            |  evaluation options (still running jobs)
 :--------------------------------------------------------------:|:-------------------------:
@@ -334,30 +345,36 @@ In order to look into the results, there are the following basic approaches.
     ![GUI for configuring OmniOpt](misc/OmniOpt-parallel-plot.png){: align="center"}
 
     ??? hint "Hints on parallel plots"
-        Parallel plots are suitable especially for dealing with multiple dimensions.
-        The parallel plot created by OmniOpt is an interactive html file that is stored in the ominopt working directory under ```projects/<name_of_optimization_run>/parallel-plot```.
-        The interactivity of this plot is intended to make optimal combinations of the hyperparameters visible more easily.
-        Get more information about this interactivity by clicking the "Help" button at the top of the graphic (see red arrow on the image above).
 
-    After creating a 2d scatter plot or a parallel plot OmniOpt will try to display the corresponding file (html, png) directly on the ZIH system.
-    Therefore, it is neccessary to login via ssh with the option -X (X11 forwarding), e.g. ```ssh -X taurus.hrsk.tu-dresden.de```.
-    Nevertheless, because of latency using x11 forwarding it is recommended to download the created files and explore them on the local machine (esp. for the parallel plot).
-    The created files are saved at ```projects/<name_of_optimization_run>/{2d-scatterplots,parallel-plot}```.
+        Parallel plots are suitable especially for dealing with multiple dimensions.  The parallel
+        plot created by OmniOpt is an interactive html file that is stored in the ominopt working
+        directory under `projects/<name_of_optimization_run>/parallel-plot`. The interactivity
+        of this plot is intended to make optimal combinations of the hyperparameters visible more
+        easily.  Get more information about this interactivity by clicking the "Help" button at the
+        top of the graphic (see red arrow on the image above).
+
+    After creating a 2d scatter plot or a parallel plot OmniOpt will try to display the
+    corresponding file (html, png) directly on the ZIH system. Therefore, it is neccessary to login
+    via ssh with the option `-X` (X11 forwarding), e.g., `ssh -X taurus.hrsk.tu-dresden.de`.
+    Nevertheless, because of latency using x11 forwarding it is recommended to download the created
+    files and explore them on the local machine (esp. for the parallel plot). The created files are
+    saved at `projects/<name_of_optimization_run>/{2d-scatterplots,parallel-plot}`.
 
 1. **Getting the raw data:**
     As a second approach the raw data of the optimization process can be exported as a csv file.
-    The created output files are stored in the folder ```projects/<name_of_optimization_run>/csv```.
+    The created output files are stored in the folder `projects/<name_of_optimization_run>/csv`.
 
 ### Advanced
 
-#### Using more than the default 1 GPU in workers
+#### Using More Multiple GPUs
 
-Inside the workers, you usually only have 1 GPU at most. If you need more than one GPU to optimize your program, you can
-start additional `sbatch`-jobs inside the workers and wait for them to finish. Use this as example code of how you can achieve
-that. It starts an `sbatch`-job with all the parameters given to the file via the command line and waits until it is finished,
-and then prints out the results.
+Inside the workers, you usually only have 1 GPU at most. If you need more than one GPU to optimize
+your program, you can start additional `sbatch`-jobs inside the workers and wait for them to finish.
+Use this as example code of how you can achieve that. It starts an `sbatch`-job with all the
+parameters given to the file via the command line and waits until it is finished, and then prints
+out the results.
 
-```shell
+```bash
 #!/bin/bash
 
 THISLOGPATH=${RANDOM}.out
@@ -366,17 +383,17 @@ while [ -e $THISLOGPATH ]; do
 done
 
 job_still_running () {
-        export SLURMID=$1
-        if [[ -z $SLURMID ]]; then
-            echo "job_still_running without valid Slurm-ID" >&2
+   export SLURMID=$1
+   if [[ -z $SLURMID ]]; then
+       echo "job_still_running without valid Slurm-ID" >&2
+       echo "1"
+   else
+       if [[ $(squeue -u $USER | grep $SLURMID | wc -l) == 0 ]]; then
             echo "1"
-        else
-            if [[ $(squeue -u $USER | grep $SLURMID | wc -l) == 0 ]]; then
-                    echo "1"
-            else
-                    echo "0"
-            fi
-        fi
+       else
+            echo "0"
+       fi
+   fi
 }
 
 export SBATCH_RESULT=$(sbatch -J name_of_your_project --cpus-per-task=4 --gres=gpu:5 --ntasks=1 --time=1:00:00 --mem-per-cpu=2000 -o $THISLOGPATH python3 /your/program.py $@)
@@ -395,6 +412,8 @@ done
 cat $THISLOGPATH
 ```
 
-You can simply use this and print the `RESULT`-string inside `/your/program.py`. Of course, you may have to modify the sbatch call. 
+You can simply use this and print the `RESULT`-string inside `/your/program.py`. Of course, you may
+have to modify the sbatch call.
 
-You can then run this on `haswell` without GPUs, since the GPUs are allocated in a job different from the original OmniOpt-job.
+You can then run this on `haswell` without GPUs, since the GPUs are allocated in a job different
+from the original OmniOpt-job.
