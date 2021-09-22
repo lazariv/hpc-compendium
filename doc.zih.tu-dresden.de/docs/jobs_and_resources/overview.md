@@ -1,14 +1,21 @@
 # HPC Resources and Jobs
 
-When log in to ZIH systems, you are placed on a *login node* **TODO** link to login nodes section
-where you can [manage data life cycle](../data_lifecycle/overview.md),
-[setup experiments](../data_lifecycle/experiments.md), execute short tests and compile moderate
-projects. The login nodes cannot be used for real experiments and computations. Long and extensive
-computational work and experiments have to be encapsulated into so called **jobs** and scheduled to
-the compute nodes.
+ZIH operates a high performance computing system with more than 60.000 cores, 720 GPUs, and a
+flexible storage hierarchy with about 16 PB total capacity. The HPC system provides an optimal
+research environment especially in the area of data analytics and machine learning as well as for
+processing extremely large data sets. Moreover it is also a perfect platform for highly scalable,
+data-intensive and compute-intensive applications.
 
-<!--Login nodes which are using for login can not be used for your computations.-->
-<!--To run software, do calculations and experiments, or compile your code compute nodes have to be used.-->
+With shared [login nodes](#login-nodes) and [file systems](../data_lifecycle/file_systems.md) our
+HPC system enables users to easily switch between [the components](hardware_overview.md), each
+specialized for different application scenarios.
+
+When log in to ZIH systems, you are placed on a login node where you can
+[manage data life cycle](../data_lifecycle/overview.md),
+[setup experiments](../data_lifecycle/experiments.md),
+execute short tests and compile moderate projects. The login nodes cannot be used for real
+experiments and computations. Long and extensive computational work and experiments have to be
+encapsulated into so called **jobs** and scheduled to the compute nodes.
 
 ZIH uses the batch system Slurm for resource management and job scheduling.
 <!--[HPC Introduction]**todo link** is a good resource to get started with it.-->
@@ -18,12 +25,12 @@ ZIH uses the batch system Slurm for resource management and job scheduling.
     In order to allow the batch scheduler an efficient job placement it needs these
     specifications:
 
-    * **requirements:** cores, memory per core, (nodes), additional resources (GPU),
-    * maximum run-time,
-    * HPC project (normally use primary group which gives id),
-    * who gets an email on which occasion,
+    * **requirements:** number of nodes and cores, memory per core, additional resources (GPU)
+    * maximum run-time
+    * HPC project for accounting
+    * who gets an email on which occasion
 
-    The runtime environment (see [here](../software/overview.md)) as well as the executable and
+    Moreover, the [runtime environment](../software/overview.md) as well as the executable and
     certain command-line arguments have to be specified to run the computational work.
 
 ??? note "Batch System"
@@ -51,7 +58,7 @@ a single GPU's core can handle is small), GPUs are not as versatile as CPUs.
 ZIH provides a broad variety of compute resources ranging from normal server CPUs of different
 manufactures, to large shared memory nodes, GPU-assisted nodes up to highly specialized resources for
 [Machine Learning](../software/machine_learning.md) and AI.
-The page [Hardware Taurus](hardware_taurus.md) holds a comprehensive overview.
+The page [ZIH Systems](hardware_overview.md) holds a comprehensive overview.
 
 The desired hardware can be specified by the partition `-p, --partition` flag in Slurm.
 The majority of the basic tasks can be executed on the conventional nodes like a Haswell. Slurm will
@@ -91,5 +98,32 @@ projects. The quality of this work influence on the computations. However, pre- 
 in many cases can be done completely or partially on a local system and then transferred to ZIH
 systems. Please use ZIH systems primarily for the computation-intensive tasks.
 
-<!--Useful links: [Batch Systems]**todo link**, [Hardware Taurus]**todo link**, [HPC-DA]**todo link**,-->
-<!--[Slurm]**todo link**-->
+## Exclusive Reservation of Hardware
+
+If you need for some special reasons, e.g., for benchmarking, a project or paper deadline, parts of
+our machines exclusively, we offer the opportunity to request and reserve these parts for your
+project.
+
+Please send your request **7 working days** before the reservation should start (as that's our
+maximum time limit for jobs and it is therefore not guaranteed that resources are available on
+shorter notice) with the following information to the
+[HPC support](mailto:hpcsupport@zih.tu-dresden.de?subject=Request%20for%20a%20exclusive%20reservation%20of%20hardware&body=Dear%20HPC%20support%2C%0A%0AI%20ha    ve%20the%20following%20request%20for%20a%20exclusive%20reservation%20of%20hardware%3A%0A%0AProject%3A%0AReservation%20owner%3A%0ASystem%3A%0AHardware%20r    equirements%3A%0ATime%20window%3A%20%3C%5Byear%5D%3Amonth%3Aday%3Ahour%3Aminute%20-%20%5Byear%5D%3Amonth%3Aday%3Ahour%3Aminute%3E%0AReason%3A):
+
+- `Project:` *Which project will be credited for the reservation?*
+- `Reservation owner:` *Who should be able to run jobs on the
+  reservation? I.e., name of an individual user or a group of users
+  within the specified project.*
+- `System:` *Which machine should be used?*
+- `Hardware requirements:` *How many nodes and cores do you need? Do
+  you have special requirements, e.g., minimum on main memory,
+  equipped with a graphic card, special placement within the network
+  topology?*
+- `Time window:` *Begin and end of the reservation in the form
+  year:month:dayThour:minute:second e.g.: 2020-05-21T09:00:00*
+- `Reason:` *Reason for the reservation.*
+
+!!! hint
+
+    Please note that your project CPU hour budget will be credited for the reserved hardware even if
+    you don't use it.
+
