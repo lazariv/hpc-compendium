@@ -131,12 +131,19 @@ c.NotebookApp.allow_remote_access = True
 ## Slurm job file to run the Jupyter server on ZIH system with GPU (1x K80) (also works on K20)
 
 ```Bash
-#!/bin/bash -l #SBATCH --gres=gpu:1 # request GPU #SBATCH --partition=gpu2 # use GPU partition
-SBATCH --output=notebook_output.txt #SBATCH --nodes=1 #SBATCH --ntasks=1 #SBATCH --time=02:30:00
-SBATCH --mem=4000M #SBATCH -J "jupyter-notebook" # job-name #SBATCH -A <name_of_your_project>
+#!/bin/bash -l
+#SBATCH --gres=gpu:1 # request GPU
+#SBATCH --partition=gpu2 # use GPU partition
+#SBATCH --output=notebook_output.txt
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --time=02:30:00
+#SBATCH --mem=4000M
+#SBATCH -J "jupyter-notebook" # job-name
+#SBATCH -A <name_of_your_project>
 
-unset XDG_RUNTIME_DIR   # might be required when interactive instead of sbatch to avoid
-'Permission denied error' srun jupyter notebook
+unset XDG_RUNTIME_DIR   # might be required when interactive instead of sbatch to avoid 'Permission denied error'
+srun jupyter notebook
 ```
 
 Start the script above (e.g. with the name `jnotebook`) with sbatch command:
