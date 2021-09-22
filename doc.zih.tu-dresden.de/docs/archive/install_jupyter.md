@@ -50,11 +50,13 @@ module load Anaconda3
 executable script and run the installation script:
 
 ```Bash
-wget https://repo.continuum.io/archive/Anaconda3-2019.03-Linux-x86_64.sh chmod 744
-Anaconda3-2019.03-Linux-x86_64.sh ./Anaconda3-2019.03-Linux-x86_64.sh
+wget https://repo.continuum.io/archive/Anaconda3-2019.03-Linux-x86_64.sh
+chmod u+x Anaconda3-2019.03-Linux-x86_64.sh
+./Anaconda3-2019.03-Linux-x86_64.sh
+```
 
 (during installation you have to confirm the license agreement)
-```
+
 
 Next step will install the anaconda environment into the home
 directory (`/home/userxx/anaconda3`). Create a new anaconda environment with the name `jnb`.
