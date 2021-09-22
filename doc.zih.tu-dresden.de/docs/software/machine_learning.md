@@ -12,11 +12,13 @@ data-intensive workloads and accelerated databases.
 The main feature of the nodes is the ability to work with the
 [NVIDIA Tesla V100](https://www.nvidia.com/en-gb/data-center/tesla-v100/) GPU with **NV-Link**
 support that allows a total bandwidth with up to 300 gigabytes per second (GB/sec). Each node on the
-ml partition has 6x Tesla V-100 GPUs. You can find a detailed specification of the partition [here](../jobs_and_resources/power9.md).
+ML partition has 6x Tesla V-100 GPUs. You can find a detailed specification of the partition in our
+[Power9 documentation](../jobs_and_resources/power9.md).
 
-**Note:** The ML partition is based on the Power9 architecture, which means that the software built
-for x86_64 will not work on this partition. Also, users need to use the modules which are
-specially made for the ml partition (from `modenv/ml`).
+!!! note
+    The ML partition is based on the Power9 architecture, which means that the software built
+    for x86_64 will not work on this partition. Also, users need to use the modules which are
+    specially made for the ml partition (from `modenv/ml`).
 
 ### Modules
 
@@ -53,33 +55,36 @@ machine learning tasks via console.
     In case of using [sbatch files](../jobs_and_resources/batch_systems.md)
     to send your job you usually don't need a virtual environment.
 
-For more details on machine learning or data science with Python see [here](data_analytics_with_python.md).
+For more details on machine learning or data science with Python see
+[data analytics with Python](data_analytics_with_python.md).
 
 ### R
 
 R also supports machine learning via console. It does not require a virtual environment due to a
 different package managment.
 
-For more details on machine learning or data science with R see [here](../data_analytics_with_r/#r-console).
+For more details on machine learning or data science with R see
+[data analytics with R](../data_analytics_with_r/#r-console).
 
 ## Machine Learning with Jupyter
 
 The [Jupyter Notebook](https://jupyter.org/) is an open-source web application that allows you to
 create documents containing live code, equations, visualizations, and narrative text. [JupyterHub](../access/jupyterhub.md)
-allows to work with machine learning frameworks (e.g. TensorFlow or PyTorch) on ZIH system and to run
-your Jupyter notebooks on HPC nodes.
+allows to work with machine learning frameworks (e.g. TensorFlow or PyTorch) on ZIH systems and to
+run your Jupyter notebooks on HPC nodes.
 
 After accessing JupyterHub, you can start a new session and configure it. For machine learning
 purposes, select either **Alpha** or **ML** partition and the resources, your application requires.
 
-In your session you can use [Python](../data_analytics_with_python/#jupyter-notebooks), [R](../data_analytics_with_r/#r-in-jupyterhub)
+In your session, you can use [Python](../data_analytics_with_python/#jupyter-notebooks), [R](../data_analytics_with_r/#r-in-jupyterhub)
 or [R studio](data_analytics_with_rstudio) for your machine learning and data science topics.
 
 ## Machine Learning with Containers
 
 Some machine learning tasks require using containers. In the HPC domain, the [Singularity](https://singularity.hpcng.org/)
 container system is a widely used tool. Docker containers can also be used by Singularity. You can
-find further information on working with containers on ZIH systems [here](containers.md)
+find further information on working with containers on ZIH systems in our
+[containers documentation](containers.md).
 
 There are two sources for containers for Power9 architecture with
 TensorFlow and PyTorch on the board:
@@ -89,8 +94,9 @@ TensorFlow and PyTorch on the board:
 * [PowerAI container](https://hub.docker.com/r/ibmcom/powerai/):
   Official Docker container with TensorFlow, PyTorch and many other packages.
 
-Note: You could find other versions of software in the container on the "tag" tab on the docker web
-page of the container.
+!!! note
+    You could find other versions of software in the container on the "tag" tab on the docker web
+    page of the container.
 
 In the following example, we build a Singularity container with TensorFlow from the DockerHub and
 start it:
@@ -111,9 +117,10 @@ The following NVIDIA libraries are available on all nodes:
 | NCCL  | `/usr/local/cuda/targets/ppc64le-linux` |
 | cuDNN | `/usr/local/cuda/targets/ppc64le-linux` |
 
-Note: For optimal NCCL performance it is recommended to set the
-**NCCL_MIN_NRINGS** environment variable during execution. You can try
-different values but 4 should be a pretty good starting point.
+!!! note
+    For optimal NCCL performance it is recommended to set the
+    **NCCL_MIN_NRINGS** environment variable during execution. You can try
+    different values but 4 should be a pretty good starting point.
 
 ```console
 marie@compute$ export NCCL_MIN_NRINGS=4
@@ -145,6 +152,7 @@ The ImageNet project is a large visual database designed for use in visual objec
 software research. In order to save space in the filesystem by avoiding to have multiple duplicates
 of this lying around, we have put a copy of the ImageNet database (ILSVRC2012 and ILSVR2017) under
 `/scratch/imagenet` which you can use without having to download it again. For the future,
-the ImageNet dataset will be available in warm_archive. ILSVR2017 also includes a dataset for
-recognition objects from a video. Please respect the corresponding
+the ImageNet dataset will be available in
+[Warm Archive](../data_lifecycle/workspaces.md#mid-term-storage). ILSVR2017 also includes a dataset
+for recognition objects from a video. Please respect the corresponding
 [Terms of Use](https://image-net.org/download.php).

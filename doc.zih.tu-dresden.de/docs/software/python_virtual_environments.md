@@ -30,7 +30,7 @@ the module system).
 !!! hint
     We recommend to use [workspaces](../../data_lifecycle/workspaces) for your virtual environments.
 
-At first we check available Python modules and load the preferred version:
+At first, we check available Python modules and load the preferred version:
 
 ```console
 marie@compute$ module avail Python    #Check the available modules with Python
@@ -64,7 +64,7 @@ the virtual environment. You can deactivate the environment as follows:
 ## Conda Virtual Environment
 
 This example shows how to start working with **conda** and virtual environment (with using module
-system). At first we use an interactive job and create a directory for the conda virtual
+system). At first, we use an interactive job and create a directory for the conda virtual
 environment:
 
 ```console
@@ -74,7 +74,7 @@ Info: creating workspace.
 [...]
 ```
 
-Then we load Anaconda, create an environment in our directory and activate the environment:
+Then, we load Anaconda, create an environment in our directory and activate the environment:
 
 ```console
 marie@compute$ module load Anaconda3    #load Anaconda module
@@ -83,8 +83,8 @@ marie@compute$ conda activate /scratch/ws/1/conda_virtual_environment/conda-test
 ```
 
 Now you can work in this isolated environment, without interfering with other tasks running on the
-system. Note that the inscription (env) at the beginning of each line represents that you are in
-the virtual environment. You can deactivate the conda environment as follows:
+system. Note that the inscription (conda-testenv) at the beginning of each line represents that you
+are in the virtual environment. You can deactivate the conda environment as follows:
 
 ```console
 (conda-testenv) marie@compute$ conda deactivate    #Leave the virtual environment
