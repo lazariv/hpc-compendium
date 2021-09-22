@@ -12,10 +12,11 @@ server and JupyterHub.
 These sections show how to set up and run a remote Jupyter server with GPUs within a Slurm job.
 Furthermore, the following sections explain which modules and packages you need for that.
 
-**Note:** On ZIH system, there is a [JupyterHub](../access/jupyterhub.md), where you do not need the
-manual server setup described below and can simply run your Jupyter notebook on HPC nodes. Keep in
-mind, that, with JupyterHub, you can't work with some special instruments. However, general data
-analytics tools are available.
+!!! note
+    On ZIH systems, there is a [JupyterHub](../access/jupyterhub.md), where you do not need the
+    manual server setup described below and can simply run your Jupyter notebook on HPC nodes. Keep
+    in mind, that, with JupyterHub, you can't work with some special instruments. However, general
+    data analytics tools are available.
 
 The remote Jupyter server is able to offer more freedom with settings and approaches.
 
