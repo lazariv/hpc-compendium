@@ -48,17 +48,15 @@ To make use of `mkdocs`, it is necessary to have two commands in mind
 ```
 
 #### Preview Using mkdocs With Dockerfile
-
 ```
 cd /tmp
 git clone git@gitlab.hrz.tu-chemnitz.de:hpcsupport/hpc-compendium.git
 cd hpc-compendium
 docker build -t hpc-compendium .  # this takes a bit longer
+```
 
-# local web server
-docker run --name=hpc-compendium -p 8000:8000 --rm -it -w /docs -v /tmp/hpc-compendium/doc.zih.tu-dresden.de:/docs:z hpc-compendium bash -c "mkdocs build  && mkdocs serve -a 0.0.0.0:8000"
-
-
+As a check you might want to start a local web server a check it with your browser via (http://localhost:8000)
+```docker run --name=hpc-compendium -p 8000:8000 --rm -it -w /docs -v /tmp/hpc-compendium/doc.zih.tu-dresden.de:/docs:z hpc-compendium bash -c "mkdocs build  && mkdocs serve -a 0.0.0.0:8000"
 ```
 
 
