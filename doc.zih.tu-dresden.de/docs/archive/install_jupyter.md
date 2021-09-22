@@ -9,8 +9,8 @@ learning.
 There are two general options on how to work with Jupyter notebooks on ZIH systems: remote Jupyter
 server and JupyterHub.
 
-These sections show how to run and set up a remote Jupyter server within a sbatch GPU job and which
-modules and packages you need for that.
+These sections show how to set up and run a remote Jupyter server with GPUs within a Slurm job.
+Furthermore, the following sections explain which modules and packages you need for that.
 
 **Note:** On ZIH system, there is a [JupyterHub](../access/jupyterhub.md), where you do not need the
 manual server setup described below and can simply run your Jupyter notebook on HPC nodes. Keep in
