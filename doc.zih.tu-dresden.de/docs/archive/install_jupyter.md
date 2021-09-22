@@ -156,7 +156,7 @@ https://(taurusi2092.taurus.hrsk.tu-dresden.de or 127.0.0.1):9999/
 
 You can see the **server node's hostname** by the command: `squeue -u <username>`.
 
-Remote connect to the server
+### Remote connect to the server
 
 There are two options on how to connect to the server:
 
