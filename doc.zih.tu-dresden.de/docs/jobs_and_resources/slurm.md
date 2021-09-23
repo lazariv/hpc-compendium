@@ -73,30 +73,90 @@ The following table holds the most important options for `srun/sbatch/salloc`.
 
 | Slurm Option               | Description |
 |:---------------------------|:------------|
-| `-n, --ntasks=<N>`         | number of (MPI) tasks (default=1) |
-| `-N, --nodes=<N>`          | number of nodes; on each node there will be `--ntasks-per-node` processes started |
-| `--ntasks-per-node=<N>`    | number of tasks per allocated node to start (default=1) |
-| `-c, --cpus-per-task=<N>`  | number of CPUs per task; needed for multithreaded (e.g. OpenMP) jobs; typically `N` should be equal to the number of threads you program spawns, e.g. it should be set to the same number as `OMP_NUM_THREADS` |
-| `-p, --partition=<name>`   | type of nodes where you want to execute your job (refer to [partitions](partitons_and_limits.md) |
+| `-n, --ntasks=<N>`         | number of (MPI) tasks (default: 1) |
+| `-N, --nodes=<N>`          | number of nodes; there will be `--ntasks-per-node` processes started on each node |
+| `--ntasks-per-node=<N>`    | number of tasks per allocated node to start (default: 1) |
+| `-c, --cpus-per-task=<N>`  | number of CPUs per task; needed for multithreaded (e.g. OpenMP) jobs; typically `N` should be equal to `OMP_NUM_THREADS` |
+| `-p, --partition=<name>`   | type of nodes where you want to execute your job (refer to [partitions](partitions_and_limits.md)) |
 | `--mem-per-cpu=<size>`     | memory need per allocated CPU in MB |
 | `-t, --time=<HH:MM:SS>`    | maximum runtime of the job |
 | `--mail-user=<your email>` | get updates about the status of the jobs |
 | `--mail-type=ALL`          | for what type of events you want to get a mail; valid options: `ALL`, `BEGIN`, `END`, `FAIL`, `REQUEUE` |
 | `-J, --job-name=<name>`    | name of the job shown in the queue and in mails (cut after 24 chars) |
-| `--no-requeue`             | At node failure, jobs are requeued automatically per default. Use this flag to disable requeueing. |
-| `--exclusive`              | tell Slurm that only your job is allowed on the nodes allocated to this job; please be aware that you will be charged for all CPUs/cores on the node |
-| `-A, --account=<project>`  | Charge resources used by this job to the specified project, useful if a user belongs to multiple projects. |
-| `-o, --output=<filename>`  | specify a file name that will be used to store all normal output (stdout), you can use %j (job id) and %N (name of first node) to automatically adopt the file name to the job, per default stdout goes to "slurm-%j.out" **Note** the target path of this parameter must be writeable on the compute nodes, i.e. it may not point to a read-only mounted file system like /projects. |
-| `-e, --error=<filename>`   | specify a file name that will be used to store all error output (stderr), you can use %j (job id) and %N (name of first node) to automatically adopt the file name to the job, per default stderr goes to "slurm-%j.out" as well. **Note** the target path of this parameter must be writeable on the compute nodes, i.e. it may not point to a read-only mounted file system like /projects. |
+| `--no-requeue`             | disable requeueing of the job in case of node failure (default: enabled) |
+| `--exclusive`              | exclusive usage of compute nodes; you will be charged for all CPUs/cores on the node |
+| `-A, --account=<project>`  | charge resources used by this job to the specified project |
+| `-o, --output=<filename>`  | file to save all normal output (stdout) (default: `slurm-%j.out`) |
+| `-e, --error=<filename>`   | file to save all error output (stderr)  (default: `slurm-%j.out`) |
 | `-a, --array=<arg>`        | submit an array job ([examples](slurm_examples.md#array-jobs)) |
 | `-w <node1>,<node2>,...`   | restrict job to run on specific nodes only |
 | `-x <node1>,<node2>,...`   | exclude specific nodes from job |
 
+!!! note "Output and Error Files"
 
-!!! note
+    When redirecting stderr and stderr into a file using `--output=<file>name` and
+    `--stderr=<filename>`, make sure the target path is writeable on the
+    compute nodes, i.e., it may not point to a read-only mounted file system like `/projects.`
+
+!!! note "No free lunch"
 
     Runtime and memory limits are enforced. Please refer to the section on [Partitions and
     Limits](partitions_and_limits.md) for a detailed overview.
+
+## Interactive Jobs
+
+Interactive activities like editing, compiling etc. are normally limited to the login nodes. For
+longer interactive sessions you can allocate cores on the compute node with the command `salloc`. It
+takes the same options like `sbatch` to specify the required resources.
+
+`salloc` returns a new shell on the node, where you submitted the job. You need to use the command
+`srun` in front of the following commands to have these commands executed on the allocated
+resources. If you allocate more than one task, please be aware that `srun` will run the command on
+each allocated task!
+
+The syntax for submitting a job is
+
+```
+marie@login$ srun [options] <command>
+```
+
+An example of an interactive session looks like:
+
+```console
+marie@login$ srun --pty -n 1 -c 4 --time=1:00:00 --mem-per-cpu=1700 bash
+marie@login$ srun: job 13598400 queued and waiting for resources
+marie@login$ srun: job 13598400 has been allocated resources
+marie@compute$ # Now, you can start interactive work with e.g. 4 cores
+```
+
+!!! note "Partition `interactive`"
+
+    A dedicated partition `interactive` is reserved for short jobs (< 8h) with not more than one job
+    per user. Please check the availability of nodes there with `sinfo -p interactive`.
+
+### Interactive X11/GUI Jobs
+
+Slurm will forward your X11 credentials to the first (or even all) node for a job with the
+(undocumented) `--x11` option. For example, an interactive session for one hour with Matlab using
+eight cores can be started with:
+
+```console
+marie@login$ module load matlab
+marie@login$ srun --ntasks=1 --cpus-per-task=8 --time=1:00:00 --pty --x11=first matlab
+```
+
+!!! hint "X11 error"
+
+    If you are getting the error:
+
+    ```Bash
+    srun: error: x11: unable to connect node taurusiXXXX
+    ```
+
+    that probably means you still have an old host key for the target node in your
+    `~.ssh/known_hosts` file (e.g. from pre-SCS5). This can be solved either by removing the entry
+    from your known_hosts or by simply deleting the `known_hosts` file altogether if you don't have
+    important other entries in it.
 
 ## Batch Jobs
 
@@ -181,61 +241,6 @@ provide a comprehensive collection of job examples.
     * Submisson: `marie@login$ sbatch batch_script.sh`
     * Run with fewer MPI tasks: `marie@login$ sbatch --ntasks 14 batch_script.sh`
 
-## Interactive Jobs
-
-Interactive activities like editing, compiling etc. are normally limited to the login nodes. For
-longer interactive sessions you can allocate cores on the compute node with the command `salloc`. It
-takes the same options like `sbatch` to specify the required resources.
-
-`salloc` returns a new shell on the node, where you submitted the job. You need to use the command
-`srun` in front of the following commands to have these commands executed on the allocated
-resources. If you allocate more than one task, please be aware that `srun` will run the command on
-each allocated task!
-
-The syntax for submitting a job is
-
-```
-marie@login$ srun [options] <command>
-```
-
-An example of an interactive session looks like:
-
-```console
-marie@login$ srun --pty -n 1 -c 4 --time=1:00:00 --mem-per-cpu=1700 bash
-marie@login$ srun: job 13598400 queued and waiting for resources
-marie@login$ srun: job 13598400 has been allocated resources
-marie@compute$ # Now, you can start interactive work with e.g. 4 cores
-```
-
-!!! note "Partition `interactive`"
-
-    A dedicated partition `interactive` is reserved for short jobs (< 8h) with not more than one job
-    per user. Please check the availability of nodes there with `sinfo -p interactive`.
-
-### Interactive X11/GUI Jobs
-
-Slurm will forward your X11 credentials to the first (or even all) node for a job with the
-(undocumented) `--x11` option. For example, an interactive session for one hour with Matlab using
-eight cores can be started with:
-
-```console
-marie@login$ module load matlab
-marie@login$ srun --ntasks=1 --cpus-per-task=8 --time=1:00:00 --pty --x11=first matlab
-```
-
-!!! hint "X11 error"
-
-    If you are getting the error:
-
-    ```Bash
-    srun: error: x11: unable to connect node taurusiXXXX
-    ```
-
-    that probably means you still have an old host key for the target node in your
-    `~.ssh/known_hosts` file (e.g. from pre-SCS5). This can be solved either by removing the entry
-    from your known_hosts or by simply deleting the `known_hosts` file altogether if you don't have
-    important other entries in it.
-
 ## Binding and Distribution of Tasks
 
 Slurm provides several binding strategies to place and bind the tasks and/or threads of your job
@@ -249,8 +254,8 @@ follows.
 
 ### OpenMP
 
-The illustration below shows the default binding of a pure OpenMP-job on 1 node with 16 cpus on
-which 16 threads are allocated.
+The illustration below shows the default binding of a pure OpenMP-job on a single node with 16 cpus
+on which 16 threads are allocated.
 
 ```Bash
 #!/bin/bash
@@ -268,9 +273,8 @@ srun --ntasks 1 --cpus-per-task $OMP_NUM_THREADS ./application
 
 #### MPI
 
-The illustration below shows the default binding of a pure MPI-job. In
-which 32 global ranks are distributed onto 2 nodes with 16 cores each.
-Each rank has 1 core assigned to it.
+The illustration below shows the default binding of a pure MPI-job in which 32 global ranks are
+distributed onto two nodes with 16 cores each. Each rank has one core assigned to it.
 
 ```Bash
 #!/bin/bash
@@ -286,9 +290,8 @@ srun --ntasks 32 ./application
 
 #### Hybrid (MPI and OpenMP)
 
-In the illustration below the default binding of a Hybrid-job is shown.
-In which 8 global ranks are distributed onto 2 nodes with 16 cores each.
-Each rank has 4 cores assigned to it.
+In the illustration below the default binding of a Hybrid-job is shown. In which eight global ranks
+are distributed onto two nodes with 16 cores each. Each rank has four cores assigned to it.
 
 ```Bash
 #!/bin/bash
@@ -316,8 +319,9 @@ A feature can be used with the Slurm option `--constrain` or `-C` like
 `--constraint="fs_beegfs_global0`are allowed. For a detailed description of the possible
 constraints, please refer to the Slurm documentation (<https://slurm.schedmd.com/srun.html>).
 
-**Remark:** A feature is checked only for scheduling. Running jobs are not affected by changing
-features.
+!!! hint
+
+      A feature is checked only for scheduling. Running jobs are not affected by changing features.
 
 ### Available Features
 
@@ -436,26 +440,25 @@ comprehensive documentation regarding available fields and formats.
 ### Canceling Jobs
 
 The command `scancel <jobid>` kills a single job and removes it from the queue. By using `scancel -u
-<username>` you are able to kill all of your jobs at once.
+<username>` you can send a canceling singal to all of your jobs at once.
 
 ### Host List
 
 If you want to place your job onto specific nodes, there are two options for doing this. Either use
-`-p` to specify a host group that fits your needs. Or, use `-w` or (`--nodelist`) with a name node
-nodes that will work for you.
+`-p, --partion=<name>` to specify a host group aka. [partition](partitions_and_limits.md) that fits
+your needs. Or, use `-w, --nodelist=<host1,host2,..>`) with a list of hosts that will work for you.
 
 ## Jobs at Reservations
 
-[Reservations](overview.md#exclusive-reservation-of-hardware)
-
+How to ask for a reservation is described in the section
+[Reservations](overview.md#exclusive-reservation-of-hardware).
 After we agreed with your requirements, we will send you an e-mail with your reservation name. Then
 you could see more information about your reservation with the following command:
 
 ```console
-scontrol show res=<reservation name>
+marie@login$ scontrol show res=<reservation name>
 # e.g. scontrol show res=hpcsupport_123
 ```
 
-If you want to use your reservation, you have to add the parameter `--reservation=<reservation
-name>` either in your sbatch script or to your `srun` or `salloc` command.
-
+If you want to use your reservation, you have to add the parameter
+`--reservation=<reservation name>` either in your sbatch script or to your `srun` or `salloc` command.
