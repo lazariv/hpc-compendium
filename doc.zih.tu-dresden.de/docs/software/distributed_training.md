@@ -4,7 +4,7 @@
 
 ### Distributed TensorFlow
 
-TODO
+TODO:
 
 ### Distributed PyTorch
 
