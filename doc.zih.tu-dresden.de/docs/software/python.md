@@ -156,16 +156,17 @@ multiple processors.
 Mpi4py based on MPI-2 C++ bindings. It supports almost all MPI calls.
 This implementation is popular on Linux clusters and in the SciPy
 community. Operations are primarily methods of communicator objects. It
-supports communication of pickleable Python objects. Mpi4py provides
+supports the communication of pickleable Python objects. Mpi4py provides
 optimized communication of NumPy arrays.
 
 Mpi4py is included as an extension of the SciPy-bundle modules on
-taurus for all software environments (scs5, ml, hiera(alpha)). 
+Taurus for all software environments (scs5, ml, hiera(alpha)). 
 
-Please check the SoftwareModulesList for the modules availability. The availability of the mpi4py
-in the module you can check by
+Please check the SoftwareModulesList for the modules availability. 
+The availability of the mpi4py
+in the module, you can check by
 the `module whatis <name_of_the module>` command. The `module whatis`
-command displays a short information and included extensions of the
+command displays short information and included extensions of the
 module.
 
 The `module spider <name_of_the module>` command 
@@ -185,7 +186,7 @@ module load modenv/ml
 module load PythonAnaconda/3.6                                                           #load module to use conda
 conda create --prefix=<location_for_your_environment> python=3.6 anaconda                #create conda virtual environment
 
-conda activate <location_for_your_environment>                                          #activate your virtual environment
+conda activate <location_for_your_environment>                                           #activate your virtual environment
 
 conda install -c conda-forge mpi4py                                                      #install mpi4py
 
@@ -209,9 +210,10 @@ module load modenv/ml
 module load PythonAnaconda/3.6
 
 eval "$(conda shell.bash hook)"
-conda activate /home/anpo879a/conda-virtual-environment/kernel2 && srun python mpi4py_test.py
+conda activate /home/abcd/conda-virtual-environment/kernel2 && srun python mpi4py_test.py    #specify name of your virtual environment
 ```
-For the verification of the multi-node case, you can use as a testfile the python-code from the previous part (with verification of the installation).
+For the verification of the multi-node case, you can use as a test 
+file the python-code from the previous part (with verification of the installation).
 
 ### Horovod
 
