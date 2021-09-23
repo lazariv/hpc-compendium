@@ -9,7 +9,7 @@ are valid for PowerAI version 1.5.4
 -   \<a
     href="<https://www.ibm.com/support/knowledgecenter/en/SS5SF7_1.5.3/welcome/welcome.htm>"
     target="\_blank" title="Landing Page">Landing Page\</a> (note that
-    you can select differnet PowerAI versions with the drop down menu
+    you can select different PowerAI versions with the drop down menu
     "Change Product or version")
 -   \<a
     href="<https://developer.ibm.com/linuxonpower/deep-learning-powerai/>"

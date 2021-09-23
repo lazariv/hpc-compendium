@@ -54,7 +54,7 @@ Options for dtrsync:
 
     -a, --archive               archive mode; equals -rlptgoD (no -H,-A,-X)
 
-    -r, --recursive             recurse into directorie
+    -r, --recursive             recurse into directories
     -l, --links                 copy symlinks as symlinks
     -p, --perms                 preserve permissions
     -t, --times                 preserve modification times

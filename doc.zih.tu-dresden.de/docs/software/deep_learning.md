@@ -1,7 +1,7 @@
 # Deep learning
 
 **Prerequisites**: To work with Deep Learning tools you obviously need [Login](../access/ssh_login.md)
-for the Taurus system and basic knowledge about Python, SLURM manager.
+for the Taurus system and basic knowledge about Python, Slurm manager.
 
 **Aim** of this page is to introduce users on how to start working with Deep learning software on
 both the ml environment and the scs5 environment of the Taurus system.
@@ -26,12 +26,12 @@ There are numerous different possibilities on how to work with [TensorFlow](tens
 Taurus. On this page, for all examples default, scs5 partition is used. Generally, the easiest way
 is using the [modules system](modules.md)
 and Python virtual environment (test case). However, in some cases, you may need directly installed
-Tensorflow stable or night releases. For this purpose use the
+TensorFlow stable or night releases. For this purpose use the
 [EasyBuild](custom_easy_build_environment.md), [Containers](tensorflow_container_on_hpcda.md) and see
 [the example](https://www.tensorflow.org/install/pip). For examples of using TensorFlow for ml partition
 with module system see [TensorFlow page for HPC-DA](tensorflow.md).
 
-Note: If you are going used manually installed Tensorflow release we recommend use only stable
+Note: If you are going used manually installed TensorFlow release we recommend use only stable
 versions.
 
 ## Keras
@@ -44,7 +44,7 @@ name "Keras".
 On this page for all examples default scs5 partition used. There are numerous different
 possibilities on how to work with [TensorFlow](tensorflow.md) and Keras
 on Taurus. Generally, the easiest way is using the [module system](modules.md) and Python
-virtual environment (test case) to see Tensorflow part above.
+virtual environment (test case) to see TensorFlow part above.
 For examples of using Keras for ml partition with the module system see the
 [Keras page for HPC-DA](keras.md).
 
@@ -71,7 +71,7 @@ Job-file (schedule job with sbatch, check the status with 'squeue -u \<Username>
 #!/bin/bash
 #SBATCH --gres=gpu:1                         # 1 - using one gpu, 2 - for using 2 gpus
 #SBATCH --mem=8000
-#SBATCH -p gpu2                              # select the type of nodes (opitions: haswell, smp, sandy, west,gpu, ml) K80 GPUs on Haswell node
+#SBATCH -p gpu2                              # select the type of nodes (options: haswell, smp, sandy, west, gpu, ml) K80 GPUs on Haswell node
 #SBATCH --time=00:30:00
 #SBATCH -o HLR_&lt;name_of_your_script&gt;.out     # save output under HLR_${SLURMJOBID}.out
 #SBATCH -e HLR_&lt;name_of_your_script&gt;.err     # save error messages under HLR_${SLURMJOBID}.err
@@ -128,7 +128,7 @@ The [ImageNet](http://www.image-net.org/) project is a large visual database des
 visual object recognition software research. In order to save space in the file system by avoiding
 to have multiple duplicates of this lying around, we have put a copy of the ImageNet database
 (ILSVRC2012 and ILSVR2017) under `/scratch/imagenet` which you can use without having to download it
-again. For the future, the Imagenet dataset will be available in `/warm_archive`. ILSVR2017 also
+again. For the future, the ImageNet dataset will be available in `/warm_archive`. ILSVR2017 also
 includes a dataset for recognition objects from a video. Please respect the corresponding
 [Terms of Use](https://image-net.org/download.php).
 
@@ -138,20 +138,18 @@ Jupyter notebooks are a great way for interactive computing in your web browser.
 working with data cleaning and transformation, numerical simulation, statistical modelling, data
 visualization and of course with machine learning.
 
-There are two general options on how to work Jupyter notebooks using HPC: remote jupyter server and
-jupyterhub.
+There are two general options on how to work Jupyter notebooks using HPC: remote Jupyter server and
+JupyterHub.
 
-These sections show how to run and set up a remote jupyter server within a sbatch GPU job and which
+These sections show how to run and set up a remote Jupyter server within a sbatch GPU job and which
 modules and packages you need for that.
 
 **Note:** On Taurus, there is a [JupyterHub](../access/jupyterhub.md), where you do not need the
 manual server setup described below and can simply run your Jupyter notebook on HPC nodes. Keep in
-mind that with Jupyterhub you can't work with some special instruments. However general data
+mind, that, with JupyterHub, you can't work with some special instruments. However, general data
 analytics tools are available.
 
 The remote Jupyter server is able to offer more freedom with settings and approaches.
-
-Note: Jupyterhub is could be under construction
 
 ### Preparation phase (optional)
 
@@ -184,7 +182,7 @@ executable script and run the installation script:
 wget https://repo.continuum.io/archive/Anaconda3-2019.03-Linux-x86_64.sh chmod 744
 Anaconda3-2019.03-Linux-x86_64.sh ./Anaconda3-2019.03-Linux-x86_64.sh
 
-(during installation you have to confirm the licence agreement)
+(during installation you have to confirm the license agreement)
 ```
 
 Next step will install the anaconda environment into the home
@@ -197,14 +195,14 @@ conda create --name jnb
 ### Set environmental variables on Taurus
 
 In shell activate previously created python environment (you can
-deactivate it also manually) and Install jupyter packages for this python environment:
+deactivate it also manually) and install Jupyter packages for this python environment:
 
 ```Bash
 source activate jnb conda install jupyter
 ```
 
-If you need to adjust the config, you should create the template.  Generate config files for jupyter
-notebook server:
+If you need to adjust the configuration, you should create the template. Generate config files for
+Jupyter notebook server:
 
 ```Bash
 jupyter notebook --generate-config
@@ -220,7 +218,7 @@ in browser session:
 jupyter notebook password Enter password: Verify password:
 ```
 
-you will get a message like that:
+You get a message like that:
 
 ```Bash
 [NotebookPasswordApp] Wrote *hashed password* to
@@ -234,9 +232,9 @@ certificate:
 openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mykey.key -out mycert.pem
 ```
 
-fill in the form with decent values.
+Fill in the form with decent values.
 
-Possible entries for your jupyter config (`.jupyter/jupyter_notebook*config.py*`). Uncomment below
+Possible entries for your Jupyter config (`.jupyter/jupyter_notebook*config.py*`). Uncomment below
 lines:
 
 ```Bash
@@ -253,11 +251,11 @@ hashed password here>' c.NotebookApp.port = 9999 c.NotebookApp.allow_remote_acce
 Note: `<path-to-cert>` - path to key and certificate files, for example:
 (`/home/\<username>/mycert.pem`)
 
-### SLURM job file to run the jupyter server on Taurus with GPU (1x K80) (also works on K20)
+### Slurm job file to run the Jupyter server on Taurus with GPU (1x K80) (also works on K20)
 
 ```Bash
 #!/bin/bash -l #SBATCH --gres=gpu:1 # request GPU #SBATCH --partition=gpu2 # use GPU partition
-SBATCH --output=notebok_output.txt #SBATCH --nodes=1 #SBATCH --ntasks=1 #SBATCH --time=02:30:00
+SBATCH --output=notebook_output.txt #SBATCH --nodes=1 #SBATCH --ntasks=1 #SBATCH --time=02:30:00
 SBATCH --mem=4000M #SBATCH -J "jupyter-notebook" # job-name #SBATCH -A <name_of_your_project>
 
 unset XDG_RUNTIME_DIR   # might be required when interactive instead of sbatch to avoid
@@ -287,7 +285,7 @@ There are two options on how to connect to the server:
 
 1. You can create an ssh tunnel if you have problems with the
 solution above. Open the other terminal and configure ssh
-tunnel: (look up connection values in the output file of slurm job, e.g.) (recommended):
+tunnel: (look up connection values in the output file of Slurm job, e.g.) (recommended):
 
 ```Bash
 node=taurusi2092                      #see the name of the node with squeue -u <your_login>
@@ -310,11 +308,11 @@ IP to your browser or call on local terminal e.g.  local$> firefox https://<IP>:
 important to use SSL cert
 ```
 
-To login into the jupyter notebook site, you have to enter the **token**.
+To login into the Jupyter notebook site, you have to enter the **token**.
 (`https://localhost:8887`). Now you can create and execute notebooks on Taurus with GPU support.
 
-If you would like to use [JupyterHub](../access/jupyterhub.md) after using a remote manually configurated
-jupyter server (example above) you need to change the name of the configuration file
+If you would like to use [JupyterHub](../access/jupyterhub.md) after using a remote manually configured
+Jupyter server (example above) you need to change the name of the configuration file
 (`/home//.jupyter/jupyter_notebook_config.py`) to any other.
 
 ### F.A.Q
@@ -322,7 +320,7 @@ jupyter server (example above) you need to change the name of the configuration 
 **Q:** - I have an error to connect to the Jupyter server (e.g. "open failed: administratively
 prohibited: open failed")
 
-**A:** - Check the settings of your jupyter config file. Is it all necessary lines uncommented, the
+**A:** - Check the settings of your Jupyter config file. Is it all necessary lines uncommented, the
 right path to cert and key files, right hashed password from .json file? Check is the used local
 port [available](https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers)
 Check local settings e.g. (`/etc/ssh/sshd_config`, `/etc/hosts`).

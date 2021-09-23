@@ -16,7 +16,7 @@ interface capabilities within a document-like user interface paradigm.
 
 ### Fonts
 
-To remotely use the graphical frontend you have to add the Mathematica fonts to the local
+To remotely use the graphical frontend, you have to add the Mathematica fonts to the local
 fontmanager.
 
 #### Linux Workstation
@@ -34,9 +34,9 @@ You have to add additional Mathematica fonts at your local PC
 [download fonts archive](misc/Mathematica-Fonts.zip).
 
 If you use **Xming** as X-server at your PC (refer to
-[remote access from Windows](../access/ssh_mit_putty.md), follow these steps:
+[remote access from Windows](../access/ssh_login.md), follow these steps:
 
-1. Create a new folder `Mathematica` in the diretory `fonts` of the installation directory of Xming
+1. Create a new folder `Mathematica` in the directory `fonts` of the installation directory of Xming
    (mostly: `C:\\Programme\\Xming\\fonts\\`)
 1. Extract the fonts archive into this new directory `Mathematica`.  In result you should have the
    two directories `DBF` and `Type1`.
@@ -56,7 +56,7 @@ C:\WINDOWS\Fonts
 
 ### Mathematica and Slurm
 
-Please use the batchsystem Slurm for running calculations. This is a small example for a batch
+Please use the batch system Slurm for running calculations. This is a small example for a batch
 script, that you should prepare and start with the command `sbatch <scriptname>`. The File
 `mathtest.m` is your input script that includes the calculation statements for Mathematica. The file
 `mathtest.output` will hold the results of your calculations.
@@ -154,7 +154,7 @@ srun --pty matlab -nodisplay -r basename_of_your_matlab_script #NOTE: you must o
     many instances of your calculation as you'd like, since it does not need a license during runtime
     when compiled to a binary.
 
-You can find detailled documentation on the Matlab compiler at
+You can find detailed documentation on the Matlab compiler at
 [Mathworks' help pages](https://de.mathworks.com/help/compiler/).
 
 ### Using the MATLAB Compiler (mcc)

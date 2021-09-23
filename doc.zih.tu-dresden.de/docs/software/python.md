@@ -17,7 +17,7 @@ There are three main options on how to work with Keras and Tensorflow on the HPC
 the [Modules system](modules.md) and Python virtual environment.
 
 Note: You could work with simple examples in your home directory but according to
-[HPCStorageConcept2019](../data_lifecycle/hpc_storage_concept2019.md) please use **workspaces**
+[HPCStorageConcept2019](../data_lifecycle/overview.md) please use **workspaces**
 for your study and work projects.
 
 ## Virtual environment
