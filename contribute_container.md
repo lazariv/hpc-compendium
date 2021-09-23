@@ -93,7 +93,7 @@ $DC "find docs -type f -name '*.md' | xargs -L1 markdown-link-check"
 For spell-checking a single file, , e.g.
 `doc.zih.tu-dresden.de/docs/software/big_data_frameworks.md`, use:
 
-```$DC "./util/check-spelling.sh docs/software/big_data_frameworks.md"
+```$DC './util/check-spelling.sh docs/software/big_data_frameworks.md'
 ```
 
 For spell-checking all files, use:
