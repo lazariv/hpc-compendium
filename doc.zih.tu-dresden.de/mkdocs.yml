@@ -179,7 +179,8 @@ markdown_extensions:
     - footnotes
 
 extra:
-  homepage: https://tu-dresden.de
+  tud_homepage: https://tu-dresden.de
+  tud_name: "TU Dresden"
   # second logo
   zih_homepage: https://tu-dresden.de/zih
   zih_name: "center for information services and high performance computing (ZIH)"

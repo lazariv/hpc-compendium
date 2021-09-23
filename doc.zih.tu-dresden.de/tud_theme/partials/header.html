@@ -26,10 +26,10 @@
     <!-- Link to home -->
     <!-- TUD Logo -->
     <a
-      href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}"
-      title="{{ config.site_name | e }}"
+      href="{{ config.extra.tud_homepage | d(nav.homepage.url, true) | url }}"
+      title="{{ config.extra.tud_name | e }}"
       class="md-header__button md-logo"
-      aria-label="{{ config.site_name }}"
+      aria-label="link to {{ config.extra.tud_name }}"
       data-md-component="logo"
     >
       <img src="{{ config.theme.logo | url }}" alt="tu dresden logo" />
@@ -39,7 +39,7 @@
     href="{{ config.extra.zih_homepage | url }}"
     title="{{ config.extra.zih_name | e }}"
     class="md-header__button zih-logo"
-    aria-label="{{ config.zih_name }}"
+    aria-label="link to{{ config.extra.zih_name }}"
     data-md-component="logo"
     >
       <img src="{{ config.theme.second_logo | url }}" alt="zih logo" />
