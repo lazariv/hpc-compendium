@@ -18,7 +18,10 @@ datamover
 Datamover
 DDR
 DFG
+Dockerfile
+dockerized
 EasyBuild
+ecryptfs
 engl
 english
 fastfs
@@ -29,10 +32,10 @@ Filesystem
 filesystems
 Flink
 Fortran
+GBit
 GFLOPS
 gfortran
 GiB
-GBit
 gnuplot
 Gnuplot
 GPU
@@ -58,6 +61,7 @@ Keras
 KNL
 LAPACK
 LINPACK
+Linter
 LoadLeveler
 lsf
 LSF
