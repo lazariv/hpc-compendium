@@ -2,22 +2,100 @@
 
 ## Internal Distribution
 
+Training a machine learning model can be a very time-consuming task. Distributed training allows scaling up deep learning tasks, so we can train very large models and speed up training time. 
+
+There are two paradigms for distributed training:
+1. data parallelism: each device has a replica of the model and computes over different parts of the data. 
+2. model parallelism: models are distributed over multiple devices.
+
+In the folowing we will stick to the concept of data parallelism because it is a widely-used technique. There are basically two strategies to train the scattered data throughout the devices:
+1. snchronous training: devices (workers) are trained over different slices of the data and at the end of each step gradients are aggregated.
+2. asynchronous training: all devices are independently training over the data and update variables asynchronously.
+
+
 ### Distributed TensorFlow
 
-TODO
+[TensorFlow](https://www.tensorflow.org/guide/distributed_training?hl=en) provides a high-end API to train your model and distribute the training on mutliple GPUs or machines with minimal code changes.
+
+The primary distributed training method in TensorFlow is `tf.distribute.Strategy`. There are multiple strategies that distribute the training depending on the specific use case, the data and the model.
+
+TensorFlow refers to the synchronous training as mirrored strategy. There are two mirrored strategies available whose principles are the same:
+- `tf.distribute.MirroredStrategy` supports the training on multiple GPUs on one machine.
+- `tf.distribute.MultiWorkerMirroredStrategy` multiple machines, each with multiple GPUs.
+
+The Central Storage Strategy applies to environments where the GPUs might not be able to store the entire model:
+- `tf.distribute.experimental.CentralStorageStrategy` supports the case of a single machine with multiple GPUs. The CPU holds the global state of the model and GPUs perform the training.
+
+In some cases asynchronous training might be the better choice for example if workers differ on capability, are down for maintenance, or have different priorities. The Parameter Server Strategy is capable of applying asynchronous training:
+- `tf.distribute.experimental.ParameterServerStrategy` requires several Parameter Server and Worker. The Parameter Server holds the parameters and is responsible for updating the global state of the model. Each worker runs the training loop independently.
+
+#### Example
+
+In this case, we will go through an example with Multi Worker Mirrored Strategy. Multi-node training requires a TF_CONFIG environment variable to be set which will be different on each node.
+
+```python
+TF_CONFIG='{"cluster": {"worker": ["10.1.10.58:12345", "10.1.10.250:12345"]},
+"task": {"index": 0, "type": "worker"}}' python main.py
+```
+
+The `cluster` field describes how the cluster is set up (same on each node). Here, the cluster has two nodes reffered to as workers. The `IP:port` information is listed in the `worker` array. The `task` field varies from node to node. It specifies the type and index of the node. In this case, the training job runs on worker 0, which is "10.1.10.58:12345". We need to adapt this snippet for each node. The second node will have 'task': {'type': 'worker', 'index': 1}.
+
+With two modifications we can parallelize the serial code: we need to initialize the distributed strategy:
+
+```python
+strategy = tf.distribute.experimental.MultiWorkerMirroredStrategy()
+```
+
+And define the model under the strategy scope:
+
+```python
+with strategy.scope():
+    model = resnet.resnet56(img_input=img_input, classes=NUM_CLASSES)
+    model.compile(
+        optimizer=opt,
+        loss='sparse_categorical_crossentropy',
+        metrics=['sparse_categorical_accuracy'])
+model.fit(train_dataset,
+    epochs=NUM_EPOCHS)
+```
+
+To run distributed training, the training script needs to be copied to all nodes, in this case on two nodes. TensorFlow is available as a module. Check for the version. The tf_config environment variable can be set as a prefix to the command. Now, run the script simultaneously on both nodes:
+
+```bash
+#!/bin/bash
+#SBATCH -J distr
+#SBATCH -p ml
+#SBATCH --mem=64000
+#SBATCH -N 2
+#SBATCH -n 2
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=14
+#SBATCH --gres=gpu:1
+#SBATCH --time=0:20:00
+
+function print_nodelist {
+        scontrol show hostname $SLURM_NODELIST
+}
+NODE_1=$(print_nodelist | awk '{print $1}' | sort -u | head -n 1)
+NODE_2=$(print_nodelist | awk '{print $1}' | sort -u | tail -n 1)
+IP_1=$(dig +short ${NODE_1}.taurus.hrsk.tu-dresden.de)
+IP_2=$(dig +short ${NODE_2}.taurus.hrsk.tu-dresden.de)
+
+module load modenv/ml
+module load TensorFlow
+
+# On the first node
+srun -w ${NODE_1} -N 1 --ntasks=1 --gres=gpu:0 TF_CONFIG='{"cluster": {"worker": ["${NODE_1}:33562", "${NODE_2}:33561"]}, "task": {"index": 0, "type": "worker"}}' python worker.py &
+
+# On the second node
+srun -w ${NODE_2} -N 1 --ntasks=1 --gres=gpu:0 TF_CONFIG='{"cluster": {"worker": ["${NODE_1}:33562", "${NODE_2}:33561"]}, "task": {"index": 1, "type": "worker"}}' python worker.py &
+```
+
 
 ### Distributed PyTorch
 
-Hint: just copied some old content as starting point
 
 #### Using Multiple GPUs with PyTorch
-
-Effective use of GPUs is essential, and it implies using parallelism in
-your code and model. Data Parallelism and model parallelism are effective instruments
-to improve the performance of your code in case of GPU using.
-
-The data parallelism is a widely-used technique. It replicates the same model to all GPUs,
-where each GPU consumes a different partition of the input data. You could see this method [here](https://pytorch.org/tutorials/beginner/blitz/data_parallel_tutorial.html).
 
 The example below shows how to solve that problem by using model
 parallel, which, in contrast to data parallelism, splits a single model
@@ -77,9 +155,10 @@ specified
 ### Horovod
 
 [Horovod](https://github.com/horovod/horovod) is the open source distributed training
-framework for TensorFlow, Keras, PyTorch. It is supposed to make it easy
-to develop distributed deep learning projects and speed them up with
-TensorFlow.
+framework for TensorFlow, Keras and PyTorch. It is supposed to make it easy
+to develop distributed deep learning projects and speed them up. Horovod
+scales well to a large number of nodes and has a strong focus on efficient training on GPUs.
+
 
 #### Why use Horovod?
 
@@ -182,3 +261,29 @@ install command after loading the NCCL module:
 module load NCCL/2.3.7-fosscuda-2018b
 HOROVOD_GPU_ALLREDUCE=NCCL HOROVOD_GPU_BROADCAST=NCCL HOROVOD_WITHOUT_TENSORFLOW=1 HOROVOD_WITH_PYTORCH=1 HOROVOD_WITHOUT_MXNET=1 pip install --no-cache-dir horovod
 ```
+#### Example
+
+Horovod is easy to use. Follow the steps in the examples described [here](https://github.com/horovod/horovod/tree/master/examples) to parallelize your code. In Horovod each GPU gets pinned to a process. You can easily start your job with the following bash script with four processes on two nodes:
+
+```bash
+#!/bin/bash
+#SBATCH -N 2
+#SBATCH -n 4
+#SBATCH --ntasks-per-node=2
+#SBATCH --gres=gpu:2
+#SBATCH -p ml
+#SBATCH --mem=64000
+#SBATCH --time=00:10:00
+#SBATCH -o run_horovod.out
+
+BASE=/home//horovod/ #change it to your directory
+
+module load modenv/ml
+module load Horovod/0.19.5-fosscuda-2019b-TensorFlow-2.2.0-Python-3.7.4
+
+cd ${BASE}
+
+srun python your_program.py
+```
+
+Do not forget to specify the total number of tasks `-n` and the number of tasks per node `--ntasks-per-node` which must match the number of GPUs per node. 
