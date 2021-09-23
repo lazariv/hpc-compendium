@@ -10,7 +10,7 @@ Assuming you understand in principle how to work with our git. Now you need:
 * all necessary access/execution rights
 * a local clone of the repository in the directory `./hpc-compendium`
 
-Remark: We have seen problems running the container an ecryptfs file system. So you might
+Remark: We have seen problems running the container an ecryptfs filesystem. So you might
 want to use `/tmp` as root directory.
 
 ## Preparation
