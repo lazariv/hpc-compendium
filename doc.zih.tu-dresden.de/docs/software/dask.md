@@ -292,7 +292,7 @@ interactive job) or batch jobs or [JupyterHub](../access/jupyterhub.md)
 a setup should be simple and light. 
 Please don't use a lot of resources for that.  
 
-[Here](misc/dask_test.py)you can find an example of using 
+[Here](misc/dask_test.py) you can find an example of using 
 Dask by `dask-jobqueue` with `SLURMCluster` and `dask.array` 
 for the Monte-Carlo estimation of Pi.
 
