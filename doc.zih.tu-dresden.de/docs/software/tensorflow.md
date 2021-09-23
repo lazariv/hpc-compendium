@@ -62,7 +62,6 @@ marie@ml$ module load TensorFlow
 Module TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4 and 47 dependencies loaded.
 ```
 
-
 Now we can use TensorFlow. Nevertheless when working with Python in an interactive job, we recommend
 to use a virtual environment. In the following example, we create a python virtual environment and
 import TensorFlow:
@@ -119,7 +118,6 @@ Basic test of tensorflow - A Hello World!!!...
 For further information on TensorFlow in combination with Python see
 [data analytics with Python](data_analytics_with_python.md), for R see [data analytics with R](data_analytics_with_r.md).
 
-
 ## Distributed TensorFlow
 
 For details on how to run TensorFlow with multiple GPUs and/or multiple nodes, see
@@ -141,7 +139,6 @@ tf.disable_v2_behavior()    #instead of "import tensorflow as tf"
 
 To make the transition to TensorFlow 2.0 as seamless as possible, the TensorFlow team has created
 the tf_upgrade_v2 utility to help transition legacy code to the new API.
-
 
 ## Keras
 

@@ -20,7 +20,6 @@ and the PyTorch library.
 You can find detailed hardware specification in our
 [hardware documentation](../jobs_and_resources/hardware_taurus.md).
 
-
 ## PyTorch Console
 
 On the **Alpha** partition, load the module environment:

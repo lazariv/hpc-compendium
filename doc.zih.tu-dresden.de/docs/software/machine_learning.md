@@ -62,7 +62,7 @@ The following have been reloaded with a version change:  1) modenv/ml => modenv/
 Python users should use a [virtual environment](python_virtual_environments.md) when conducting
 machine learning tasks via console.
 
-For more details on machine learning or data science with Python see 
+For more details on machine learning or data science with Python see
 [data analytics with Python](data_analytics_with_python.md).
 
 ### R
