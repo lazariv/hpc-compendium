@@ -22,6 +22,7 @@ Here is a suggestion of a workflow which might be suitable for you.
 
 ### Start the Local Web Server
 The command(s) to start the dockerized web server is this:
+
 ```
 docker run --name=hpc-compendium -p 8000:8000 --rm -it -w /docs -v /tmp/hpc-compendium/doc.zih.tu-dresden.de:/docs:z hpc-compendium bash -c 'mkdocs build  && mkdocs serve -a 0.0.0.0:8000'
 ```
@@ -40,7 +41,8 @@ With the details described below, it will then be easy to follow the guidelines 
 
 (Remember to keep the local web server running in the other shell.)
 First, change to the `hpc-compendium` directory and set the environment variable DC to save a lot of keystrokes :-)
-```
+
+```Bash
 DC='docker exec -it hpc-compendium bash -c '
 ```
 and use it like this...
@@ -56,6 +58,7 @@ $DC 'markdownlint docs'
 #### Link Checker
 
 To check a single file, e. g. `doc.zih.tu-dresden.de/docs/software/big_data_frameworks.md`, use:
+
 ```Bash
 $DC "markdown-link-check docs/software/big_data_frameworks.md"
 ```
