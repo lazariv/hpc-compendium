@@ -28,10 +28,10 @@
 
 1. Run checks locally and fix the issues. Otherwise the pipeline will fail.
 
-    * [Check links](README.md#check-links) (There might be broken links which can only be solved
+    * [Check links](contrib_guide.md#check-links) (There might be broken links which can only be solved
         with ongoing transfer of content.)
-    * [Check pages structure](README.md#check-pages-structure)
-    * [Markdown Linter](README.md#markdown-linter)
+    * [Check pages structure](contrib_guide.md#check-pages-structure)
+    * [Markdown Linter](contrib_guide.md#markdown-linter)
 
 1. Create
   [merge request](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/merge_requests)
