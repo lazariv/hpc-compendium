@@ -78,7 +78,7 @@ To check a single file, e.g.
 `doc.zih.tu-dresden.de/docs/software/big_data_frameworks.md`, use:
 
 ```Bash
-$DC "markdown-link-check docs/software/big_data_frameworks.md"
+$DC 'markdown-link-check docs/software/big_data_frameworks.md'
 ```
 
 To check whether there are links that point to a wrong target, use
