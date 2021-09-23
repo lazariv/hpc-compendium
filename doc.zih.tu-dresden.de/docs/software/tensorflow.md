@@ -1,10 +1,9 @@
 # TensorFlow
 
-[TensorFlow](https://www.tensorflow.org) is a free end-to-end open-source software library for
-data flow and differentiable
-programming across many tasks. It is a symbolic math library, used primarily for machine learning
-applications. It has a comprehensive, flexible ecosystem of tools, libraries and community
-resources.
+[TensorFlow](https://www.tensorflow.org) is a free end-to-end open-source software library for data
+flow and differentiable programming across many tasks. It is a symbolic math library, used primarily
+for machine learning applications. It has a comprehensive, flexible ecosystem of tools, libraries
+and community resources.
 
 Please check the software modules list via
 
@@ -18,13 +17,13 @@ to find out, which TensorFlow modules are available on your partition.
 On ZIH systems, TensorFlow 2 is the default module version. For compatibility hints between
 TensorFlow 2 and TensorFlow 1, see the corresponding [section below](#compatibility-tf2-and-tf1).
 
-We recommend using **Alpha** and/or **ML** partitions when working with machine learning workflows
+We recommend using partitions **Alpha** and/or **ML** when working with machine learning workflows
 and the TensorFlow library. You can find detailed hardware specification in our
 [Hardware](../jobs_and_resources/hardware_taurus.md) documentation.
 
 ## TensorFlow Console
 
-On the **Alpha** partition, load the module environment:
+On the partition Alpha, load the module environment:
 
 ```console
 marie@alpha$ module load modenv/scs5
@@ -48,7 +47,7 @@ marie@alpha$ module avail TensorFlow
 [...]
 ```
 
-On the **ML** partition load the module environment:
+On the partition ML load the module environment:
 
 ```console
 marie@ml$ module load modenv/ml
@@ -58,7 +57,7 @@ The following have been reloaded with a version change:  1) modenv/scs5 => moden
 This example shows how to install and start working with TensorFlow using the modules system.
 
 ```console
-marie@ml$ module load TensorFlow  
+marie@ml$ module load TensorFlow
 Module TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4 and 47 dependencies loaded.
 ```
 
@@ -67,6 +66,7 @@ to use a virtual environment. In the following example, we create a python virtu
 import TensorFlow:
 
 !!! example
+
     ```console
     marie@ml$ ws_allocate -F scratch python_virtual_environment 1
     Info: creating workspace.
@@ -93,9 +93,10 @@ the notebook by pre-loading a specific TensorFlow module:
 {: align="center"}
 
 !!! hint
-    You can also define your own Jupyter kernel for more specific tasks. Please read about
-    Jupyter kernels and virtual environments in our [JupyterHub](../../access/jupyterhub/#creating-and-using-your-own-environment)
-    documentation.
+
+    You can also define your own Jupyter kernel for more specific tasks. Please read about Jupyter
+    kernels and virtual environments in our
+    [JupyterHub](../../access/jupyterhub.md#creating-and-using-your-own-environment) documentation.
 
 ## TensorFlow in Containers
 
@@ -103,9 +104,9 @@ Another option to use TensorFlow are containers. In the HPC domain, the
 [Singularity](https://singularity.hpcng.org/) container system is a widely used tool. In the
 following example, we use the tensorflow-test in a Singularity container:
 
-```console  
+```console
 marie@ml$ singularity shell --nv /scratch/singularity/powerai-1.5.3-all-ubuntu16.04-py3.img
-Singularity>$ export PATH=/opt/anaconda3/bin:$PATH                                               
+Singularity>$ export PATH=/opt/anaconda3/bin:$PATH
 Singularity>$ source activate /opt/anaconda3    #activate conda environment
 (base) Singularity>$ . /opt/DL/tensorflow/bin/tensorflow-activate
 (base) Singularity>$ tensorflow-test
@@ -116,7 +117,8 @@ Basic test of tensorflow - A Hello World!!!...
 ## TensorFlow with Python or R
 
 For further information on TensorFlow in combination with Python see
-[data analytics with Python](data_analytics_with_python.md), for R see [data analytics with R](data_analytics_with_r.md).
+[data analytics with Python](data_analytics_with_python.md), for R see
+[data analytics with R](data_analytics_with_r.md).
 
 ## Distributed TensorFlow
 
