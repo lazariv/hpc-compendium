@@ -15,6 +15,7 @@ citable
 conda
 CPU
 CPUs
+CSV
 CUDA
 cuDNN
 CXFS
@@ -193,6 +194,7 @@ venv
 virtualenv
 WebVNC
 WinSCP
+Workdir
 workspace
 workspaces
 XArray

@@ -9,9 +9,9 @@ etc. The most common methods to determine hyperparameters are intuitive testing,
 random search.
 
 The tool OmniOpt performs hyperparameter optimization within a broad range of applications as
-classical simulations or machine learning algorithms.  OmniOpt is robust and it checks and installs
+classical simulations or machine learning algorithms. OmniOpt is robust and it checks and installs
 all dependencies automatically and fixes many problems in the background. While OmniOpt optimizes,
-no further intervention is required.  You can follow the ongoing output live in the console.
+no further intervention is required. You can follow the ongoing output live in the console.
 Overhead of OmniOpt is minimal and virtually imperceptible.
 
 ## Quick start with OmniOpt
@@ -48,7 +48,7 @@ There are the following script preparation steps for OmniOpt:
 
 1. Mark the output of the optimization target (chosen here: average loss) by prefixing it with the
    RESULT string. OmniOpt takes the **last appearing value** prefixed with the RESULT string. In
-   the example different epochs are performed and the average from the last epoch is caught by
+   the example, different epochs are performed and the average from the last epoch is caught by
    OmniOpt. Additionally, the `RESULT` output has to be a **single line**. After all these changes,
    the final script is as follows (with the lines containing relevant changes highlighted).
 
@@ -190,14 +190,14 @@ There are the following script preparation steps for OmniOpt:
         ```
 
 1. Testing script functionality and determine software requirements for the chosen
-   [partition](../jobs_and_resources/system_taurus.md#partitions). In the following the alpha
+   [partition](../jobs_and_resources/system_taurus.md#partitions). In the following, the alpha
    partition is used. Please note the parameters `--out-layer1`, `--batchsize`, `--epochs` when
    calling the Python script. Additionally, note the `RESULT` string with the output for OmniOpt.
 
     ??? hint "Hint for installing Python modules"
 
         Note that for this example the module `torchvision` is not available on the partition `alpha`
-        and it is installed by creating a [virtual environment](python_virtual_environments.md).  It is
+        and it is installed by creating a [virtual environment](python_virtual_environments.md). It is
         recommended to install such a virtual environment into a
         [workspace](../data_lifecycle/workspaces.md).
 
@@ -247,7 +247,7 @@ environment. The recommended way is to wrap the necessary calls in a shell scrip
     # ^ Shebang-Line, so that it is known that this is a bash file
     # -l means 'load this as login shell', so that /etc/profile gets loaded and you can use 'module load' or 'ml' as usual
 
-    # If you use this script not via `./run.sh' or just `srun run.sh', but like `srun bash run.sh', please add the '-l' there too.
+    # If you don't use this script via `./run.sh' or just `srun run.sh', but like `srun bash run.sh', please add the '-l' there too.
     # Like this:
     # srun bash -l run.sh
 
@@ -259,19 +259,19 @@ environment. The recommended way is to wrap the necessary calls in a shell scrip
     python </path/to/your/script/mnistFashion.py> $@
     ```
 
-When the wrapped shell script is running properly the preparations are finished and the next step is
-configuring OmniOpt.
+When the wrapped shell script is running properly, the preparations are finished and the next step
+is configuring OmniOpt.
 
 ### Configure and Run OmniOpt
 
 Configuring OmniOpt is done via the GUI at
 [https://imageseg.scads.ai/omnioptgui/](https://imageseg.scads.ai/omnioptgui/).
 This GUI guides through the configuration process and as result a configuration file is created
-automatically according to the GUI input.  If you are more familiar with using OmniOpt later on,
+automatically according to the GUI input. If you are more familiar with using OmniOpt later on,
 this configuration file can be modified directly without using the GUI.
 
 A screenshot of the GUI, including a properly configuration for the MNIST fashion example is shown
-below.  The GUI, in which the below displayed values are already entered, can be reached
+below. The GUI, in which the below displayed values are already entered, can be reached
 [here](https://imageseg.scads.ai/omnioptgui/?maxevalserror=5&mem_per_worker=1000&number_of_parameters=3&param_0_values=10%2C50%2C100&param_1_values=8%2C16%2C32&param_2_values=10%2C15%2C30&param_0_name=out-layer1&param_1_name=batchsize&param_2_name=batchsize&account=&projectname=mnist_fashion_optimization_set_1&partition=alpha&searchtype=tpe.suggest&param_0_type=hp.choice&param_1_type=hp.choice&param_2_type=hp.choice&max_evals=1000&objective_program=bash%20%3C%2Fpath%2Fto%2Fwrapper-script%2Frun-mnist-fashion.sh%3E%20--out-layer1%3D%28%24x_0%29%20--batchsize%3D%28%24x_1%29%20--epochs%3D%28%24x_2%29&workdir=%3C%2Fscratch%2Fws%2Fomniopt-workdir%2F%3E).
 
 Please modify the paths for `objective program` and `workdir` according to your needs.
@@ -282,16 +282,16 @@ Please modify the paths for `objective program` and `workdir` according to your 
 Using OmniOpt for a first trial example, it is often sufficient to concentrate on the following
 configuration parameters:
 
-1. **Optimization run name:** A name for a OmniOpt run given a belonging configuration.
-1. **Partition:** Choosing the partition on the ZIH system that fits the program needs.
+1. **Optimization run name:** A name for an OmniOpt run given a belonging configuration.
+1. **Partition:** Choose the partition on the ZIH system that fits the programs' needs.
 1. **Enable GPU:** Decide whether a program could benefit from GPU usage or not.
-1. **Workdir:** The directory where OmniOpt is saving its necessary files and all results.  Derived
-   from the optimization run name, their is created a single directory for every such configuration.
-   Make sure that this working directory is writable from the compute nodes.  It is recommended to
+1. **Workdir:** The directory where OmniOpt is saving its necessary files and all results. Derived
+   from the optimization run name, each configuration creates a single directory.
+   Make sure that this working directory is writable from the compute nodes. It is recommended to
    use a [workspace](../data_lifecycle/workspaces.md).
 1. **Objective program:** Provide all information for program execution. Typically, this will
    contain the command for executing a wrapper script.
-1. **Parameters:** The hyperparameters to be optimized with the names OmniOpt should use.  For the
+1. **Parameters:** The hyperparameters to be optimized with the names OmniOpt should use. For the
    example here, the variable names are identical to the input parameters of the Python script.
    However, these names can be chosen differently, since the connection to OmniOpt is realized via
    the variables (`$x_0`), (`$x_1`), etc. from the GUI section "Objective program". Please note that
@@ -300,7 +300,7 @@ configuration parameters:
 
 After all parameters are entered into the GUI, the call for OmniOpt is generated automatically and
 displayed on the right. This command contains all necessary instructions (including requesting
-resources with Slurm).  **Thus, this command can be executed directly on a login node on the ZIH
+resources with Slurm). **Thus, this command can be executed directly on a login node on the ZIH
 system.**
 
 ![GUI for configuring OmniOpt](misc/hyperparameter_optimization-OmniOpt-final-command.png)
@@ -312,21 +312,21 @@ further actions necessary.
 ??? hint "Hints on the working directory"
 
     1. Starting OmniOpt without providing a working directory will store OmniOpt into the present directory.
-    1. Within the given working directory a new folder named "omniopt" as default, is created.
-    1. Within one OmniOpt working directory there can be multiple optimization projects.
+    1. Within the given working directory, a new folder named "omniopt" as default, is created.
+    1. Within one OmniOpt working directory, there can be multiple optimization projects.
     1. It is possible to have as many working directories as you want (with multiple optimization runs).
     1. It is recommended to use a [workspace](../data_lifecycle/workspaces.md) as working directory, but not the home directory.
 
 ### Check and Evaluate OmniOpt Results
 
 For getting informed about the current status of OmniOpt or for looking into results, the evaluation
-tool of OmniOpt is used.  Switch to the OmniOpt folder and run `evaluate-run.sh`.
+tool of OmniOpt is used. Switch to the OmniOpt folder and run `evaluate-run.sh`.
 
 ``` console
 marie@login$ bash </scratch/ws/omniopt-workdir/>evaluate-run.sh
 ```
 
-After initializing and checking for updates in the background OmniOpt is asking to select the
+After initializing and checking for updates in the background, OmniOpt is asking to select the
 optimization run of interest.  After selecting the optimization run, there will be a menu with the
 items as shown below.  If OmniOpt has still running jobs there appear some menu items that refer to
 these running jobs (image shown below to the right).
@@ -335,7 +335,7 @@ evaluation options (all jobs finished)                            |  evaluation 
 :--------------------------------------------------------------:|:-------------------------:
 ![GUI for configuring OmniOpt](misc/OmniOpt-evaluate-menu.png)  |  ![GUI for configuring OmniOpt](misc/OmniOpt-still-running-jobs.png)
 
-For now we assume that OmniOpt has finished already.
+For now, we assume that OmniOpt has finished already.
 In order to look into the results, there are the following basic approaches.
 
 1. **Graphical approach:**
@@ -353,13 +353,13 @@ In order to look into the results, there are the following basic approaches.
         easily. Get more information about this interactivity by clicking the "Help" button at the
         top of the graphic (see red arrow on the image above).
 
-    After creating a 2d scatter plot or a parallel plot OmniOpt will try to display the
-    corresponding file (html, png) directly on the ZIH system. Therefore, it is necessary to login
-    via ssh with the option `-X` (X11 forwarding), e.g., `ssh -X taurus.hrsk.tu-dresden.de`.
-    Nevertheless, because of latency using x11 forwarding it is recommended to download the created
+    After creating a 2D scatter plot or a parallel plot, OmniOpt will try to display the
+    corresponding file (`html`, `png`) directly on the ZIH system. Therefore, it is necessary to
+    login via ssh with the option `-X` (X11 forwarding), e.g., `ssh -X taurus.hrsk.tu-dresden.de`.
+    Nevertheless, because of latency using x11 forwarding, it is recommended to download the created
     files and explore them on the local machine (esp. for the parallel plot). The created files are
     saved at `projects/<name_of_optimization_run>/{2d-scatterplots,parallel-plot}`.
 
 1. **Getting the raw data:**
-    As a second approach the raw data of the optimization process can be exported as a CSV file.
+    As a second approach, the raw data of the optimization process can be exported as a CSV file.
     The created output files are stored in the folder `projects/<name_of_optimization_run>/csv`.
