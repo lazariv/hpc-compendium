@@ -17,14 +17,9 @@ All contributing starts with forking the repository to either
 [gitlab.hrz.tu-chemnitz.de](https://gitlab.hrz.tu-chemnitz.de) or any other
 git service, e.g., [gitlab.com](https://www.gitlab.com), [github.com](https://www.github.com) or
 your personal preference.
-Now, create a local clone of your fork
-
+Now, create a local clone of your fork with
 ```Shell Session
-# SSH based method
-~ git@gitlab.hrz.tu-chemnitz.de:hpcsupport/hpc-compendium.git
-
-# HTTP based method
-~ https://gitlab.hrz.tu-chemnitz.de/hpcsupport/hpc-compendium.git
+git clone git@gitlab.hrz.tu-chemnitz.de:hpcsupport/hpc-compendium.git
 ```
 
 ### mkdocs Rocks
@@ -54,30 +49,15 @@ git clone git@gitlab.hrz.tu-chemnitz.de:hpcsupport/hpc-compendium.git
 cd hpc-compendium
 docker build -t hpc-compendium .  # this takes a bit longer
 ```
+Now, set the environment variable DC to save a lot of keystrokes :-)
+```
+DC='docker run --name=hpc-compendium -p 8000:8000 --rm -it -w /docs -v /tmp/hpc-compendium/doc.zih.tu-dresden.de:/docs:z hpc-compendium bash -c '
+```
+and use it lik this...
 
 As a check you might want to start a local web server a check it with your browser via (http://localhost:8000)
-```docker run --name=hpc-compendium -p 8000:8000 --rm -it -w /docs -v /tmp/hpc-compendium/doc.zih.tu-dresden.de:/docs:z hpc-compendium bash -c "mkdocs build  && mkdocs serve -a 0.0.0.0:8000"
+```$DC "mkdocs build  && mkdocs serve -a 0.0.0.0:8000"
 ```
-
-
-
-
-You can also use `docker` to build a container from the `Dockerfile`, if you are familiar with it.
-This may take a while, as mkdocs and other necessary software needs to be downloaded.
-Building a container with the documentation inside could be done with the following steps:
-
-```Bash
-cd /PATH/TO/hpc-compendium
-docker build -t hpc-compendium .
-```
-
-If you want to see how it looks in your browser, you can use shell commands to serve
-the documentation:
-
-```Bash
-docker run --name=hpc-compendium -p 8000:8000 --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium bash -c "mkdocs build --verbose && mkdocs serve -a 0.0.0.0:8000"
-```
-
 You can view the documentation via [http://localhost:8000](http://localhost:8000) in your browser, now.
 
 If that does not work, check if you can get the URL for your browser's address
@@ -92,7 +72,7 @@ documentation.  If you want to check whether the markdown files are formatted
 properly, use the following command:
 
 ```Bash
-docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium markdownlint docs
+$DC markdownlint docs
 ```
 
 To check whether there are links that point to a wrong target, use
