@@ -85,7 +85,7 @@ To check whether there are links that point to a wrong target, use
 (this may take a while and gives a lot of output because it runs over all files):
 
 ```Bash
-$DC "find docs -type f -name '*.md' | xargs -L1 markdown-link-check"
+$DC 'find docs -type f -name "*.md" | xargs -L1 markdown-link-check'
 ```
 
 #### Spell Checker
