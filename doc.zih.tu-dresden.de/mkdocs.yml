@@ -161,7 +161,9 @@ theme:
   # logo in header and footer
   logo: assets/images/TUD_Logo_weiss_57.png
   second_logo: assets/images/zih_weiss.png
-
+  features:
+    - navigation.instant
+    
 # extends base css
 extra_css:
   - stylesheets/extra.css
