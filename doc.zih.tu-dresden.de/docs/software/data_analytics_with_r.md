@@ -10,7 +10,7 @@ R possesses an extensive catalogue of statistical and graphical methods.  It inc
 learning algorithms, linear regression, time series, statistical inference.
 
 We recommend using **Haswell** and/or **Romeo** partitions to work with R. For more details
-see [here](../jobs_and_resources/hardware_taurus.md).
+see [here](../jobs_and_resources/hardware_overview.md).
 
 ## R Console
 
@@ -113,7 +113,7 @@ which R
 ```
 
 Please allocate the job with respect to
-[hardware specification](../jobs_and_resources/hardware_taurus.md)! Note that the nodes on `ml`
+[hardware specification](../jobs_and_resources/hardware_overview.md)! Note that the nodes on `ml`
 partition have 4way-SMT, so for every physical core allocated, you will always get 4\*1443Mb=5772mb.
 
 In order to interact with Python-based frameworks (like TensorFlow) `reticulate` R library is used.
@@ -271,7 +271,7 @@ code to use `mclapply` function. Check out an example below.
 
 The disadvantages of using shared-memory parallelism approach are, that the number of parallel
 tasks is limited to the number of cores on a single node. The maximum number of cores on a single
-node can be found [here](../jobs_and_resources/hardware_taurus.md).
+node can be found [here](../jobs_and_resources/hardware_overview.md).
 
 Submitting a multicore R job to Slurm is very similar to submitting an
 [OpenMP Job](../jobs_and_resources/slurm.md#binding-and-distribution-of-tasks),

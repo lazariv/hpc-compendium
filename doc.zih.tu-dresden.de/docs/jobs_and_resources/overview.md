@@ -17,30 +17,6 @@ execute short tests and compile moderate projects. The login nodes cannot be use
 experiments and computations. Long and extensive computational work and experiments have to be
 encapsulated into so called **jobs** and scheduled to the compute nodes.
 
-ZIH uses the batch system Slurm for resource management and job scheduling.
-<!--[HPC Introduction]**todo link** is a good resource to get started with it.-->
-
-??? note "Batch Job"
-
-    In order to allow the batch scheduler an efficient job placement it needs these
-    specifications:
-
-    * **requirements:** number of nodes and cores, memory per core, additional resources (GPU)
-    * maximum run-time
-    * HPC project for accounting
-    * who gets an email on which occasion
-
-    Moreover, the [runtime environment](../software/overview.md) as well as the executable and
-    certain command-line arguments have to be specified to run the computational work.
-
-??? note "Batch System"
-
-    The batch system is the central organ of every HPC system users interact with its compute
-    resources. The batch system finds an adequate compute system (partition/island) for your compute
-    jobs. It organizes the queueing and messaging, if all resources are in use. If resources are
-    available for your job, the batch system allocates and connects to these resources, transfers
-    run-time environment, and starts the job.
-
 Follow the page [Slurm](slurm.md) for comprehensive documentation using the batch system at
 ZIH systems. There is also a page with extensive set of [Slurm examples](slurm_examples.md).
 

@@ -92,10 +92,12 @@ nav:
       - NVMe Storage: jobs_and_resources/nvme_storage.md
       - Alpha Centauri: jobs_and_resources/alpha_centauri.md
       - HPE Superdome Flex: jobs_and_resources/sd_flex.md
-    - Jobs:
-      - Slurm: jobs_and_resources/slurm.md
+    - Running Jobs:
+      - Running Jobs: jobs_and_resources/slurm.md
+      - Job Examples: jobs_and_resources/slurm_examples.md
+      - Partitions and Limits : jobs_and_resources/partitions_and_limits.md
       - Checkpoint/Restart: jobs_and_resources/checkpoint_restart.md
-      - Slurm Examples: jobs_and_resources/slurm_examples.md
+      - Profiling: jobs_and_resources/slurm_profiling.md
       - Binding And Distribution Of Tasks: jobs_and_resources/binding_and_distribution_of_tasks.md
     - Taurus: jobs_and_resources/system_taurus.md
     - HPC-DA: jobs_and_resources/hpcda.md

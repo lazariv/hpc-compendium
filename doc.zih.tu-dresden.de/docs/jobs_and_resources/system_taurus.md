@@ -3,7 +3,7 @@
 ## Information about the Hardware
 
 Detailed information on the current HPC hardware can be found
-[here.](../jobs_and_resources/hardware_taurus.md)
+[here.](../jobs_and_resources/hardware_overview.md)
 
 ## Applying for Access to the System
 
