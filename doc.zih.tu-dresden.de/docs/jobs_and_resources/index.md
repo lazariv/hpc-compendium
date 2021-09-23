@@ -1,12 +1,5 @@
 # Batch System
 
-##
-
-
-
-Very long line Very long line Very long line Very long line Very long line Very long line Very long line Very long line Very long line Very long line
-
-
 Applications on an HPC system can not be run on the login node. They have to be submitted to compute
 nodes with dedicated resources for user jobs. Normally a job can be submitted with these data:
 
