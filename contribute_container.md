@@ -28,13 +28,18 @@ docker run --name=hpc-compendium -p 8000:8000 --rm -it -w /docs -v /tmp/hpc-comp
 To follow its progress let it run in a single shell (terminal window) and open another one for the other steps.
 
 You can view the documentation via [http://localhost:8000](http://localhost:8000) in your browser, now.
+
+
+You can now update the contents in you preferred editor. 
 The running container automatically takes care of file changes and rebuilds the
 documentation.  
+
+With the details described below, it will then be easy to follow the guidelines for local correctness checks before submitting your changes and requesting the merge. 
 
 ### Run the Proposed Checks Inside Container
 
 (Remember to keep the local web server running in the other shell.)
-Now, change to the `hpc-compendium` directory and set the environment variable DC to save a lot of keystrokes :-)
+First, change to the `hpc-compendium` directory and set the environment variable DC to save a lot of keystrokes :-)
 ```
 DC='docker exec -it hpc-compendium bash -c '
 ```
@@ -77,8 +82,3 @@ $DC ./util/check-spelling.sh
 This outputs all words of all files that are unknown to the spell checker.
 To let the spell checker "know" a word, append it to
 `doc.zih.tu-dresden.de/wordlist.aspell`.
-
-## Contribute
-
-Now you can update the contents in you preferred editor, instantaneously see the newly rendered page in your browser, check the correctness submit the changes like documented in the general "contribution section".
-
