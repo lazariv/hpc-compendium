@@ -20,7 +20,7 @@ the git-based workflow. Both ways are described in the following.
 
 All contributing starts with forking the repository to either
 [gitlab.hrz.tu-chemnitz.de](https://gitlab.hrz.tu-chemnitz.de) or any other
-git service, e.g., [gitlab.com](https://www.gitlab.com), [github.com](https://www.github.com) or
+git service, e.g., (https://www.gitlab.com), (https://www.github.com) or
 your personal preference.
 Now, create a local clone of your fork
 
@@ -31,20 +31,6 @@ Now, create a local clone of your fork
 # HTTP based method
 ~ https://gitlab.hrz.tu-chemnitz.de/LOGIN/hpc-compendium.git
 ```
-
-#### Install Dependencies
-
-**TODO:** Description
-
-```Bash
-~ cd hpc-compendium/doc.zih.tu-dresden.de
-~ pip install -r requirements.txt
-```
-
-**TODO:** virtual environment
-**TODO:** What we need for markdownlinter and checks?
-
-<!--- All branches are protected, i.e., only ZIH staff can create branches and push to them --->
 
 ## Contribute via Web IDE
 
@@ -67,7 +53,7 @@ refer to the corresponding documentation for further information.
 
 As mentioned, this documentation bases on markdown files which are translated into static html files
 using the tool [mkdocs](https://www.mkdocs.org/). All markdown source files are located in the
-`docs` subfolder. The file `mkdocs.yml` is the single configuration file for the project from layout
+`docs` sub-directory. The file `mkdocs.yml` is the single configuration file for the project from layout
 up to document structure and extensions.
 The navigation section `nav` in `mkdocs.yml` specifies the order, titles and nesting of the
 documentation pages.
@@ -86,7 +72,7 @@ To make use of `mkdocs`, it is necessary to have two commands in mind
 #### Preview Using mkdocs
 
 Invoke`mkdocs serve`to build and preview the documentation. The documentation is automatically
-rerendered and reloaded if the system detects updates (great!). By default, the builtin web server
+re-rendered and reloaded if the system detects updates (great!). By default, the builtin web server
 hosts the documentation at `http://127.0.0.1:8000`.
 
 ```Bash
@@ -216,7 +202,7 @@ At this point, your `main` branch is up-to-date with the original documentation 
 
 #### Making Changes and Merge Requests
 
-It is good git-practise to only use the `main` branch for synchronization with the upstream, not for
+It is good git-practice to only use the `main` branch for synchronization with the upstream, not for
 changes, as outlined in the previous subsection. In order to commit to this documentation, create a
 new branch (a so-called feature branch) basing on the `main` branch and commit your changes to it.
 
@@ -231,7 +217,7 @@ new branch (a so-called feature branch) basing on the `main` branch and commit y
 
 The last command pushes the changes to your remote at branch `FEATUREBRANCH`. Now, it is time to
 incorporate the changes and improvements into the HPC Compendium. For this, create a
-[mergerequest](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/merge_requests/new)
+[merge request](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/merge_requests/new)
 to the `main` branch.
 
 ### Important Branches
@@ -241,7 +227,6 @@ There are two important branches in this repository:
 - Preview:
   - Branch containing recent changes which will be soon merged to main branch (protected
     branch)
-  - Served at [todo url](todo url) from TUD VPN
 - Main: Branch which is deployed at doc.zih.tu-dresden.de holding the
     current documentation (protected branch)
 
@@ -307,7 +292,7 @@ source files. For that, the script `util/check-links.sh` and the tool
 
 The tool `markdown-link-check` checks links within a certain file (or using some shell magic for all
 markdown files, as depicted below). On the other hand, the script `util/check-links.sh` checks only
-links for files in the repository, which are gifferent (gifferent is a word composition from *git*
+links for files in the repository, which are "gifferent" ("gifferent" is a word composition from *git*
 and *different to main branch*).
 
 #### Markdown-link-check
@@ -364,8 +349,6 @@ your changes to make sure your commit passes the CI/CD pipeline.
 The script `xyz.sh` checks if the code chunks are runnable on a login node.
 It is invoked as follows ...
 
-**TODO:** Implement [Issue #9](#9)
-
 ### Check Pages Structure
 
 The script `util/check-no-floating.sh` first checks the hierarchy depth of the pages structure
@@ -404,7 +387,7 @@ docs/
 To add a new page to the documentation follow these two steps:
 
 1. Create a new markdown file under `docs/subdir/file_name.md` and put the documentation inside.
-The subdirectory and file name should follow the pattern `fancy_title_and_more.md`.
+The sub-directory and file name should follow the pattern `fancy_title_and_more.md`.
 1. Add `subdir/file_name.md` to the configuration file `mkdocs.yml` by updating the navigation
    section.
 
@@ -433,8 +416,6 @@ should be highlighted, etc. Code examples, longer than half screen height should
     ```
 
 ### Writing Style
-
-**TODO** Guide [Issue #14](#14)
 
 * Capitalize headings, e.g. *Exclusive Reservation of Hardware*
 
@@ -526,7 +507,7 @@ marie@local$ ssh -NL 5901:172.24.146.46:5901 marie@tauruslogin.hrsk.tu-dresden.d
 ```
 ````
 
-Also use `bash` for shell scripts such as jobfiles:
+Also use `bash` for shell scripts such as job files:
 
 ```` markdown
 ```bash
