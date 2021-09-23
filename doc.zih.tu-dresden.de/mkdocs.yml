@@ -180,7 +180,9 @@ markdown_extensions:
 
 extra:
   homepage: https://tu-dresden.de
+  # second logo
   zih_homepage: https://tu-dresden.de/zih
+  zih_name: "center for information services and high performance computing (ZIH)"
   hpcsupport_mail: hpcsupport@zih.tu-dresden.de
   # links in footer
   footer:
