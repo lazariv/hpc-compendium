@@ -1,4 +1,5 @@
 nav:
+
   - Home: index.md
   - Application for Login and Resources:
     - Overview: application/overview.md
@@ -67,7 +68,7 @@ nav:
       - Score-P: software/scorep.md
       - PAPI Library: software/papi.md
       - Pika: software/pika.md
-      - Perf Tools: software/perf_tools.md 
+      - Perf Tools: software/perf_tools.md
       - Score-P: software/scorep.md
       - Vampir: software/vampir.md
   - Data Life Cycle Management:
@@ -99,15 +100,25 @@ nav:
     - Slurm Examples: jobs_and_resources/slurm_examples.md
     - Slurm: jobs_and_resources/slurm.md
     - Binding And Distribution Of Tasks: jobs_and_resources/binding_and_distribution_of_tasks.md
+
       #    - Queue Policy: jobs/policy.md
+
       #    - Examples: jobs/examples/index.md
+
       #    - Affinity: jobs/affinity/index.md
+
       #    - Interactive: jobs/interactive.md
+
       #    - Best Practices: jobs/best-practices.md
+
       #    - Reservations: jobs/reservations.md
+
       #    - Monitoring: jobs/monitoring.md
+
       #    - FAQs: jobs/jobs-faq.md
+
   #- Tests: tests.md
+
   - Support: support.md
   - Archive:
     - Overview: archive/overview.md
@@ -133,36 +144,49 @@ nav:
     - VampirTrace: archive/vampirtrace.md
     - Windows Batchjobs: archive/windows_batch.md
 
-
 # Project Information
+
 site_name: ZIH HPC Compendium
 site_description: ZIH HPC Compendium
 site_author: ZIH Team
 site_dir: public
 site_url: https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium
+
 # uncomment next 3 lines if link to repo should not be displayed in the navbar
+
 repo_name: GitLab hpc-compendium
 repo_url: https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium
 edit_uri: blob/master/docs/
 
 # Configuration
-#strict: true
+
+# strict: true
 
 theme:
+
   # basetheme
+
   name: material
+
   # disable fonts being loaded from google fonts
+
   font: false
   language: en
+
   # dir containing all customizations
+
   custom_dir: tud_theme
   favicon: assets/images/Logo_klein.png
+
   # logo in header and footer
+
   logo: assets/images/TUD_Logo_weiss_57.png
   second_logo: assets/images/zih_weiss.png
 
 # extends base css
+
 extra_css:
+
   - stylesheets/extra.css
 
 markdown_extensions:
@@ -179,7 +203,9 @@ extra:
   homepage: https://tu-dresden.de
   zih_homepage: https://tu-dresden.de/zih
   hpcsupport_mail: hpcsupport@zih.tu-dresden.de
+
   # links in footer
+
   footer:
     - link: /legal_notice
       name: "Legal Notice / Impressum"
