@@ -10,7 +10,7 @@ Assuming you understand in principle how to work with our git. Now you need:
 * all necessary access/execution rights
 * a local clone of the repository in the directory `./hpc-compendium`
 
-Remark: This does not work in a ecryptfs file system. So you might
+Remark: We have seen problems running the container an ecryptfs file system. So you might
 want to use `/tmp` as root directory.
 
 ## Preparation
@@ -53,7 +53,8 @@ the merge.
 
 ### Run the Proposed Checks Inside Container
 
-(Remember to keep the local web server running in the other shell.)
+Remember to keep the local web server running in the other shell.
+
 First, change to the `hpc-compendium` directory and set the environment
 variable DC to save a lot of keystrokes :-)
 
