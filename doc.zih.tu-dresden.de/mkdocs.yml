@@ -2,7 +2,6 @@ nav:
   - Home: index.md
   - Application for Login and Resources:
     - Overview: application/overview.md
-    - Access: application/access.md
     - Terms: application/terms_of_use.md
     - Request for Resources: application/request_for_resources.md
     - Project Request Form: application/project_request_form.md
@@ -10,16 +9,16 @@ nav:
   - Access to ZIH Systems:
     - Overview: access/overview.md
     - Connecting with SSH: access/ssh_login.md
-    - Key Fingerprints: access/key_fingerprints.md  
     - Desktop Visualization: access/desktop_cloud_visualization.md
     - Graphical Applications with WebVNC: access/graphical_applications_with_webvnc.md
-    - Security Restrictions: access/security_restrictions.md
     - JupyterHub:
       - JupyterHub: access/jupyterhub.md
       - JupyterHub for Teaching: access/jupyterhub_for_teaching.md
+    - Key Fingerprints: access/key_fingerprints.md  
+    - Security Restrictions: access/security_restrictions.md
   - Transfer of Data:
     - Overview: data_transfer/overview.md
-    - Data Mover: data_transfer/data_mover.md
+    - Data Mover: data_transfer/datamover.md
     - Export Nodes: data_transfer/export_nodes.md
   - Environment and Software:
     - Overview: software/overview.md
@@ -59,15 +58,16 @@ nav:
     - Software Development and Tools:
       - Overview: software/software_development_overview.md
       - Building Software: software/building_software.md
-      - GPU Programming: software/gpu_programming.md
       - Compilers: software/compilers.md
-      - Debugging:
-        - Overview: software/debuggers.md
-        - MPI Error Detection: software/mpi_usage_error_detection.md
-      - Libraries: software/libraries.md
+      - GPU Programming: software/gpu_programming.md
+      - Libraries: software/math_libraries.md
+      - Debugging: software/debuggers.md
+      - MPI Error Detection: software/mpi_usage_error_detection.md
       - Score-P: software/scorep.md
+      - PAPI Library: software/papi.md
+      - Pika: software/pika.md
       - Perf Tools: software/perf_tools.md 
-      - PIKA: software/pika.md
+      - Score-P: software/scorep.md
       - Vampir: software/vampir.md
   - Data Life Cycle Management:
     - Overview: data_lifecycle/overview.md
@@ -75,17 +75,17 @@ nav:
       - Overview: data_lifecycle/file_systems.md
       - Permanent File Systems: data_lifecycle/permanent.md
       - Lustre: data_lifecycle/lustre.md
-      - BeeGFS: data_lifecycle/bee_gfs.md
+      - BeeGFS: data_lifecycle/beegfs.md
+      - Warm Archive: data_lifecycle/warm_archive.md
       - Intermediate Archive: data_lifecycle/intermediate_archive.md
       - Quotas: data_lifecycle/quotas.md
     - Workspaces: data_lifecycle/workspaces.md
-    - HPC Storage Concept 2019: data_lifecycle/hpc_storage_concept2019.md
     - Preservation of Research Data: data_lifecycle/preservation_research_data.md
     - Structuring Experiments: data_lifecycle/experiments.md
-  - Jobs and Resources:
+  - HPC Resources and Jobs:
     - Overview: jobs_and_resources/overview.md
     - Batch Systems: jobs_and_resources/batch_systems.md
-    - Hardware Resources:
+    - HPC Resources:
       - Hardware Taurus: jobs_and_resources/hardware_taurus.md
       - AMD Rome Nodes: jobs_and_resources/rome_nodes.md
       - IBM Power9 Nodes: jobs_and_resources/power9.md
@@ -112,15 +112,14 @@ nav:
     - Overview: archive/overview.md
     - Bio Informatics: archive/bioinformatics.md
     - CXFS End of Support: archive/cxfs_end_of_support.md
-    - KNL Nodes: archive/knl_nodes.md
-    - Manual Jupyter Installation: archive/install_jupyter.md
     - Load Leveler: archive/load_leveler.md
-    - Migrate to Atlas: archive/migrate_to_atlas.md
     - No IB Jobs: archive/no_ib_jobs.md
     - Phase2 Migration: archive/phase2_migration.md
     - Platform LSF: archive/platform_lsf.md
+    - BeeGFS on Demand: archive/beegfs_on_demand.md
     - Switched-Off Systems:
       - Overview: archive/systems_switched_off.md
+      - From Deimos to Atlas: archive/migrate_to_atlas.md
       - System Altix: archive/system_altix.md
       - System Atlas: archive/system_atlas.md
       - System Deimos: archive/system_deimos.md
@@ -128,9 +127,9 @@ nav:
       - System Titan: archive/system_titan.md
       - System Triton: archive/system_triton.md
       - System Venus: archive/system_venus.md
-    - Taurus II: archive/taurus_ii.md
+      - KNL Nodes: archive/knl_nodes.md
     - UNICORE Rest API: archive/unicore_rest_api.md
-    - Vampir Trace: archive/vampir_trace.md
+    - VampirTrace: archive/vampirtrace.md
     - Windows Batchjobs: archive/windows_batch.md
 
 
@@ -173,10 +172,12 @@ markdown_extensions:
     - toc:
         permalink: True
     - attr_list
+    - footnotes
 
 extra:
   homepage: https://tu-dresden.de
   zih_homepage: https://tu-dresden.de/zih
+  hpcsupport_mail: hpcsupport@zih.tu-dresden.de
   # links in footer
   footer:
     - link: /legal_notice

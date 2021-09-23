@@ -160,13 +160,13 @@ docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.
 For spell-checking a single file, use:
 
 ```Bash
-docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium ./util/check-spelling.sh <file>
+docker run --name=hpc-compendium --rm -it -w /docs/doc.zih.tu-dresden.de --mount src="$(pwd)",target=/docs,type=bind hpc-compendium ./util/check-spelling.sh <file>
 ```
 
 For spell-checking all files, use:
 
 ```Bash
-docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium ./util/check-spelling.sh
+docker run --name=hpc-compendium --rm -it -w /docs/doc.zih.tu-dresden.de --mount src="$(pwd)",target=/docs,type=bind hpc-compendium ./util/check-spelling.sh
 ```
 
 This outputs all words of all files that are unknown to the spell checker.

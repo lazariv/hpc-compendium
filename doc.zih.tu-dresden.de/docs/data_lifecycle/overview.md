@@ -4,9 +4,9 @@ Correct organization of the structure of an HPC project is a straightforward way
 work of the whole team. There have to be rules and regulations that every member should follow. The
 uniformity of the project can be achieved by taking into account and setting up correctly
 
-  * the same **set of software** (modules, compiler, packages, libraries, etc),
-  * a defined **data life cycle management** including the same **data storage** or set of them,
-  * and **access rights** to project data.
+* the same **set of software** (modules, compiler, packages, libraries, etc),
+* a defined **data life cycle management** including the same **data storage** or set of them,
+* and **access rights** to project data.
 
 The used set of software within an HPC project can be management with environments on different
 levels either defined by [modules](../software/modules.md), [containers](../software/containers.md)
@@ -130,7 +130,7 @@ you don’t need throughout its life cycle.
 
 <!--## Software Packages-->
 
-<!--As was written before the module concept is the basic concept for using software on ZIH system.-->
+<!--As was written before the module concept is the basic concept for using software on ZIH systems.-->
 <!--Uniformity of the project has to be achieved by using the same set of software on different levels.-->
 <!--It could be done by using environments. There are two types of environments should be distinguished:-->
 <!--runtime environment (the project level, use scripts to load [modules]**todo link**), Python virtual-->
@@ -144,16 +144,16 @@ you don’t need throughout its life cycle.
 
 <!--### Python Virtual Environment-->
 
-<!--If you are working with the Python then it is crucial to use the virtual environment on ZIH system. The-->
+<!--If you are working with the Python then it is crucial to use the virtual environment on ZIH systems. The-->
 <!--main purpose of Python virtual environments (don't mess with the software environment for modules)-->
 <!--is to create an isolated environment for Python projects (self-contained directory tree that-->
 <!--contains a Python installation for a particular version of Python, plus a number of additional-->
 <!--packages).-->
 
 <!--**Vitualenv (venv)** is a standard Python tool to create isolated Python environments. We-->
-<!--recommend using venv to work with Tensorflow and Pytorch on ZIH system. It has been integrated into the-->
+<!--recommend using venv to work with Tensorflow and Pytorch on ZIH systems. It has been integrated into the-->
 <!--standard library under the [venv module]**todo link**. **Conda** is the second way to use a virtual-->
-<!--environment on the ZIH system. Conda is an open-source package management system and environment-->
+<!--environment on the ZIH systems. Conda is an open-source package management system and environment-->
 <!--management system from the Anaconda.-->
 
 <!--[Detailed information]**todo link** about using the virtual environment.-->
@@ -168,7 +168,7 @@ you don’t need throughout its life cycle.
 
 The concept of **permissions** and **ownership** is crucial in Linux. See the
 [HPC-introduction]**todo link** slides for the understanding of the main concept. Standard Linux
-changing permission command (i.e `chmod`) valid for ZIH system as well. The **group** access level
+changing permission command (i.e `chmod`) valid for ZIH systems as well. The **group** access level
 contains members of your project group. Be careful with 'write' permission and never allow to change
 the original data.
 
