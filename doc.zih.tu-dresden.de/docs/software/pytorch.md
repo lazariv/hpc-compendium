@@ -20,6 +20,7 @@ and the PyTorch library.
 You can find detailed hardware specification in our
 [hardware documentation](../jobs_and_resources/hardware_taurus.md).
 
+
 ## PyTorch Console
 
 On the **Alpha** partition, load the module environment:
@@ -89,7 +90,7 @@ marie@ml$ python -c "import torch; print(torch.__version__)"
 In addition to using interactive and batch jobs, it is possible to work with PyTorch using JupyterHub.
 The production and test environments of JupyterHub contain Python kernels, that come with a PyTorch support.
 
-![PyTorch module in JupyterHub]**TODO**(misc/Pytorch_jupyter_module.png)
+![PyTorch module in JupyterHub](misc/Pytorch_jupyter_module.png)
 {: align="center"}
 
 ## Distributed PyTorch

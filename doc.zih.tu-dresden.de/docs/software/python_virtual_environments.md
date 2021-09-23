@@ -1,6 +1,6 @@
 # Python Virtual Environments
 
-Virtual environments allow users to install additional python packages and create an isolated
+Virtual environments allow users to install additional Python packages and create an isolated
 run-time environment. We recommend using `virtualenv` for this purpose. In your virtual environment,
 you can use packages from the [modules list](modules.md) or if you didn't find what you need you can
 install required packages with the command: `pip install`. With the command `pip freeze`, you can
@@ -18,6 +18,7 @@ management system and environment management system from Anaconda. The
 conda manager is included in all versions of Anaconda and Miniconda.
 
 !!! warning
+
     Keep in mind that you **cannot** use virtualenv for working
     with the virtual environments previously created with conda tool and
     vice versa! Prefer virtualenv whenever possible.
@@ -47,7 +48,7 @@ Then create the virtual environment and activate it.
 marie@compute$ ws_allocate -F scratch python_virtual_environment 1
 Info: creating workspace.
 /scratch/ws/1/python_virtual_environment
-[...] 
+[...]
 marie@compute$ virtualenv --system-site-packages /scratch/ws/1/python_virtual_environment/env  #Create virtual environment
 [...]
 marie@compute$ source /scratch/ws/1/python_virtual_environment/env/bin/activate    #Activate virtual environment. Example output: (envtest) bash-4.2$
@@ -93,6 +94,7 @@ are in the virtual environment. You can deactivate the conda environment as foll
 TODO: Link to this page from other DA/ML topics. insert link in alpha centauri
 
 ??? example
+
     This is an example on alpha partition. The example creates a virtual environment, and installs
     the package `torchvision` with pip.
     ```console

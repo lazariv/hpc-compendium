@@ -1,6 +1,7 @@
 # TensorFlow
 
-TensorFlow is a free end-to-end open-source software library for dataflow and differentiable
+[TensorFlow](https://www.tensorflow.org) is a free end-to-end open-source software library for
+data flow and differentiable
 programming across many tasks. It is a symbolic math library, used primarily for machine learning
 applications. It has a comprehensive, flexible ecosystem of tools, libraries and community
 resources.
@@ -29,7 +30,25 @@ On the **Alpha** partition, load the module environment:
 marie@alpha$ module load modenv/scs5
 ```
 
-On the **ML** partition, load the module environment:
+Alternatively you can use `modenv/hiera` module environment, where the newest versions are
+available
+
+```console
+marie@alpha$ module load modenv/hiera  GCC/10.2.0  CUDA/11.1.1  OpenMPI/4.0.5
+
+The following have been reloaded with a version change:
+  1) modenv/scs5 => modenv/hiera
+
+Module GCC/10.2.0, CUDA/11.1.1, OpenMPI/4.0.5 and 15 dependencies loaded.
+marie@alpha$ module avail TensorFlow
+
+-------------- /sw/modules/hiera/all/MPI/GCC-CUDA/10.2.0-11.1.1/OpenMPI/4.0.5 -------------------
+   Horovod/0.21.1-TensorFlow-2.4.1    TensorFlow/2.4.1
+
+[...]
+```
+
+On the **ML** partition load the module environment:
 
 ```console
 marie@ml$ module load modenv/ml
@@ -43,7 +62,9 @@ marie@ml$ module load TensorFlow
 Module TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4 and 47 dependencies loaded.
 ```
 
-Now, we can use TensorFlow. In the following example, we create a python virtual environment and
+
+Now we can use TensorFlow. Nevertheless when working with Python in an interactive job, we recommend
+to use a virtual environment. In the following example, we create a python virtual environment and
 import TensorFlow:
 
 !!! example
@@ -72,8 +93,8 @@ the notebook by pre-loading a specific TensorFlow module:
 ![TensorFlow module in JupyterHub](misc/tensorflow_jupyter_module.png)
 {: align="center"}
 
-??? hint
-    You can also define your own Jupyter kernel for more specific tasks. Please read about about
+!!! hint
+    You can also define your own Jupyter kernel for more specific tasks. Please read about
     Jupyter kernels and virtual environments in our [JupyterHub](../../access/jupyterhub/#creating-and-using-your-own-environment)
     documentation.
 
@@ -98,6 +119,7 @@ Basic test of tensorflow - A Hello World!!!...
 For further information on TensorFlow in combination with Python see
 [data analytics with Python](data_analytics_with_python.md), for R see [data analytics with R](data_analytics_with_r.md).
 
+
 ## Distributed TensorFlow
 
 For details on how to run TensorFlow with multiple GPUs and/or multiple nodes, see
@@ -106,11 +128,11 @@ For details on how to run TensorFlow with multiple GPUs and/or multiple nodes, s
 ## Compatibility TF2 and TF1
 
 TensorFlow 2.0 includes many API changes, such as reordering arguments, renaming symbols, and
-changing default values for parameters. Thus in some cases, it makes code written for TensorFlow 1
-not compatible with TensorFlow 2. However, if you are using the high-level APIs (tf.keras), there
-may be little or no action you need to take to make your code fully [TensorFlow
-2.0 compatible](https://www.tensorflow.org/guide/migrate). It is still possible to run 1.X code,
-unmodified (except for contrib), in TensorFlow 2.0:
+changing default values for parameters. Thus in some cases, it makes code written for the TensorFlow
+1.X not compatible with TensorFlow 2.X. However, If you are using the high-level APIs (`tf.keras`)
+there may be little or no action you need to take to make your code fully
+[TensorFlow 2.0](https://www.tensorflow.org/guide/migrate) compatible. It is still possible to
+run 1.X code, unmodified (except for contrib), in TensorFlow 2.0:
 
 ```python
 import tensorflow.compat.v1 as tf
@@ -119,6 +141,7 @@ tf.disable_v2_behavior()    #instead of "import tensorflow as tf"
 
 To make the transition to TensorFlow 2.0 as seamless as possible, the TensorFlow team has created
 the tf_upgrade_v2 utility to help transition legacy code to the new API.
+
 
 ## Keras
 

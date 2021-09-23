@@ -1,12 +1,13 @@
 # Machine Learning
 
 This is an introduction of how to run machine learning applications on ZIH systems.
-For machine learning purposes, we recommend to use the **Alpha** and/or **ML** partitions.
+For machine learning purposes, we recommend to use the [Alpha](#alpha-partition) and/or
+[ML](#ml-partition) partitions.
 
-## ML partition
+## ML Partition
 
-The compute nodes of the ML partition are built on the base of [Power9](https://www.ibm.com/it-infrastructure/power/power9)
-architecture from IBM. The system was created for AI challenges, analytics and working with
+The compute nodes of the ML partition are built on the base of [Power9 architecture](https://www.ibm.com/it-infrastructure/power/power9)
+from IBM. The system was created for AI challenges, analytics and working with
 data-intensive workloads and accelerated databases.
 
 The main feature of the nodes is the ability to work with the
@@ -22,27 +23,37 @@ ML partition has 6x Tesla V-100 GPUs. You can find a detailed specification of t
 
 ### Modules
 
-On the **ML** partition load the module environment:
+On the ML partition load the module environment:
 
 ```console
 marie@ml$ module load modenv/ml
 The following have been reloaded with a version change:  1) modenv/scs5 => modenv/ml
 ```
 
+### Power AI
+
+There are tools provided by IBM, that work on `ml` partition and are related to AI tasks.
+For more information see our [Power AI documentation](power_ai.md).
+
 ## Alpha partition
 
 Another partition for machine learning tasks is Alpha. It is mainly dedicated to [ScaDS.AI](https://scads.ai/)
 topics. Each node on Alpha has 2x AMD EPYC CPUs, 8x NVIDIA A100-SXM4 GPUs, 1TB RAM and 3.5TB local
-space (/tmp) on an NVMe device. You can find more details of the partition [here](../jobs_and_resources/alpha_centauri.md).
+space (`/tmp`) on an NVMe device. You can find more details of the partition in our [Alpha Centauri](../jobs_and_resources/alpha_centauri.md)
+documentation.
 
 ### Modules
 
 On the **Alpha** partition load the module environment:
 
 ```console
-marie@alpha$ module load modenv/scs5
-The following have been reloaded with a version change:  1) modenv/ml => modenv/scs5
+marie@alpha$ module load modenv/hiera
+The following have been reloaded with a version change:  1) modenv/ml => modenv/hiera
 ```
+
+!!! note
+    On Alpha, the most recent modules are build in hiera. Alternative modules might be build in
+    scs5.
 
 ## Machine Learning via Console
 
@@ -51,17 +62,13 @@ The following have been reloaded with a version change:  1) modenv/ml => modenv/
 Python users should use a [virtual environment](python_virtual_environments.md) when conducting
 machine learning tasks via console.
 
-??? hint
-    In case of using [sbatch files](../jobs_and_resources/batch_systems.md)
-    to send your job you usually don't need a virtual environment.
-
-For more details on machine learning or data science with Python see
+For more details on machine learning or data science with Python see 
 [data analytics with Python](data_analytics_with_python.md).
 
 ### R
 
 R also supports machine learning via console. It does not require a virtual environment due to a
-different package managment.
+different package management.
 
 For more details on machine learning or data science with R see
 [data analytics with R](../data_analytics_with_r/#r-console).
@@ -76,8 +83,8 @@ run your Jupyter notebooks on HPC nodes.
 After accessing JupyterHub, you can start a new session and configure it. For machine learning
 purposes, select either **Alpha** or **ML** partition and the resources, your application requires.
 
-In your session, you can use [Python](../data_analytics_with_python/#jupyter-notebooks), [R](../data_analytics_with_r/#r-in-jupyterhub)
-or [R studio](data_analytics_with_rstudio) for your machine learning and data science topics.
+In your session you can use [Python](data_analytics_with_python.md/#jupyter-notebooks), [R](data_analytics_with_r.md/#r-in-jupyterhub)
+or [RStudio](data_analytics_with_rstudio.md) for your machine learning and data science topics.
 
 ## Machine Learning with Containers
 
@@ -112,7 +119,7 @@ marie@ml$ singularity run --nv my-ML-container.sif    #run my-ML-container.sif c
 
 The following NVIDIA libraries are available on all nodes:
 
-|       |                                         |
+| Name  |  Path                                   |
 |-------|-----------------------------------------|
 | NCCL  | `/usr/local/cuda/targets/ppc64le-linux` |
 | cuDNN | `/usr/local/cuda/targets/ppc64le-linux` |
@@ -130,7 +137,7 @@ marie@compute$ export NCCL_MIN_NRINGS=4
 
 The following HPC related software is installed on all nodes:
 
-|                  |                          |
+| Name             |  Path                    |
 |------------------|--------------------------|
 | IBM Spectrum MPI | `/opt/ibm/spectrum_mpi/` |
 | PGI compiler     | `/opt/pgi/`              |
@@ -144,7 +151,7 @@ The following HPC related software is installed on all nodes:
 There are many different datasets designed for research purposes. If you would like to download some
 of them, keep in mind that many machine learning libraries have direct access to public datasets
 without downloading it, e.g. [TensorFlow Datasets](https://www.tensorflow.org/datasets). If you
-still need to download some datasets use [DataMover](../../data_transfer/data_mover).
+still need to download some datasets use [DataMover](../data_transfer/data_mover.md).
 
 ### The ImageNet dataset
 

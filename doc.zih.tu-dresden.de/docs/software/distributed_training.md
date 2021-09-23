@@ -8,7 +8,7 @@ TODO
 
 ### Distributed PyTorch
 
-just copied some old content as starting point
+Hint: just copied some old content as starting point
 
 #### Using Multiple GPUs with PyTorch
 
@@ -69,7 +69,8 @@ if you run larger models. Memory can be set up to:
 
 `--mem=60000` and `--cpus-per-task=6` for the `gpu2` partition.
 
-Keep in mind that only one memory parameter (`--mem-per-cpu` = <MB> or `--mem`=<MB>) can be specified
+Keep in mind that only one memory parameter (`--mem-per-cpu` = <MB> or `--mem`=<MB>) can be
+specified
 
 ## External Distribution
 
