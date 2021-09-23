@@ -1,22 +1,22 @@
 # Python for Data Analytics
 
 Python is a high-level interpreted language widely used in research and science. Using ZIH system
-allows you to work with python quicker and more effective. Here, a general introduction to working
-with python on ZIH systems is given. Further documentation is available for specific
+allows you to work with Python quicker and more effective. Here, a general introduction to working
+with Python on ZIH systems is given. Further documentation is available for specific
 [machine learning frameworks](machine_learning.md).
 
 ## Python Console and Virtual Environments
 
 Often, it is useful to create an isolated development environment, which can be shared among
-a research group and/or teaching class. For this purpose, [python virtual environments](python_virtual_environments.md)
-can be used.
+a research group and/or teaching class. For this purpose,
+[Python virtual environments](python_virtual_environments.md) can be used.
 
 The interactive Python interpreter can also be used on ZIH systems via an interactive job:
 
 ```console
 marie@login$ srun --partition=haswell --gres=gpu:1 --ntasks=1 --cpus-per-task=7 --pty --mem-per-cpu=8000 bash
-marie@compute$ module load Python
-marie@compute$ python
+marie@haswell$ module load Python
+marie@haswell$ python
 Python 3.8.6 (default, Feb 17 2021, 11:48:51)
 [GCC 10.2.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
@@ -40,10 +40,10 @@ Jupyter notebook on a node, using a GPU when needed.
 
 [Pandas](https://pandas.pydata.org/){:target="_blank"} is a widely used library for data
 analytics in Python.
-In many cases, an existing source code using Pandas can be easily modified for parallel execution
-by using the [pandarallel](https://github.com/nalepae/pandarallel/tree/v1.5.2){:target="_blank"}
-module. The number of threads that can be used in parallel depends on the number of cores
-(parameter `--cpus-per-task`) within the Slurm request, e.g.
+In many cases, an existing source code using Pandas can be easily modified for parallel execution by
+using the [pandarallel](https://github.com/nalepae/pandarallel/tree/v1.5.2) module. The number of
+threads that can be used in parallel depends on the number of cores (parameter `--cpus-per-task`)
+within the Slurm request, e.g.
 
 ```console
 marie@login$ srun --partition=haswell --cpus-per-task=4 --mem=2G --hint=nomultithread --pty --time=8:00:00 bash
@@ -56,6 +56,7 @@ pandarallel module. If the pandarallel module is not installed already, use a
 [virtual environment](python_virtual_environments.md) to install the module.
 
 ??? example
+
     ```python
     import pandas as pd
     import numpy as np
@@ -80,7 +81,7 @@ pandarallel module. If the pandarallel module is not installed already, use a
     df.parallel_apply(func=transform, axis=1)
     ```
 For more examples of using pandarallel check out
-[https://github.com/nalepae/pandarallel/blob/master/docs/examples.ipynb](https://github.com/nalepae/pandarallel/blob/master/docs/examples.ipynb){:target="_blank"}.
+[https://github.com/nalepae/pandarallel/blob/master/docs/examples.ipynb](https://github.com/nalepae/pandarallel/blob/master/docs/examples.ipynb).
 
 ### Dask
 
