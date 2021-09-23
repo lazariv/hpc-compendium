@@ -1,11 +1,5 @@
 # Contribution Guide
 
-In the following, it is outlined how to contribute to the
-[HPC documentation](https://doc.zih.tu-dresden.de/) of
-[TU Dresden/ZIH](https://tu-dresden.de/zih/) and
-which rules should be followed when adding to this project. Although, this document might seem very
-long describing complex steps, contributing is quite easy - trust us.
-
 ## Contribute via Issue
 
 Users can contribute to the documentation via the
@@ -30,7 +24,7 @@ git service, e.g., [gitlab.com](https://www.gitlab.com), [github.com](https://ww
 your personal preference.
 Now, create a local clone of your fork
 
-```Shell Session
+```Bash
 # SSH based method
 ~ git@gitlab.hrz.tu-chemnitz.de:LOGIN/hpc-compendium.git
 
@@ -42,7 +36,7 @@ Now, create a local clone of your fork
 
 **TODO:** Description
 
-```Shell Session
+```Bash
 ~ cd hpc-compendium/doc.zih.tu-dresden.de
 ~ pip install -r requirements.txt
 ```
@@ -84,7 +78,7 @@ preview the updated documentation locally before committing the changes to the r
 
 To make use of `mkdocs`, it is necessary to have two commands in mind
 
-```
+```Bash
 ~ mkdocs serve - Start the live-reloading docs server.
 ~ mkdocs build - Build the documentation site.
 ```
@@ -95,7 +89,7 @@ Invoke`mkdocs serve`to build and preview the documentation. The documentation is
 rerendered and reloaded if the system detects updates (great!). By default, the builtin web server
 hosts the documentation at `http://127.0.0.1:8000`.
 
-```Shell Session
+```Bash
 ~ cd /PATH/TO/hpc-compendium/doc.zih.tu-dresden.de
 ~ mkdocs serve
 INFO    -  Building documentation...
@@ -237,7 +231,7 @@ new branch (a so-called feature branch) basing on the `main` branch and commit y
 
 The last command pushes the changes to your remote at branch `FEATUREBRANCH`. Now, it is time to
 incorporate the changes and improvements into the HPC Compendium. For this, create a
-[merge request](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/merge_requests/new)
+[mergerequest](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/merge_requests/new)
 to the `main` branch.
 
 ### Important Branches
@@ -248,7 +242,7 @@ There are two important branches in this repository:
   - Branch containing recent changes which will be soon merged to main branch (protected
     branch)
   - Served at [todo url](todo url) from TUD VPN
-- Main: Branch which is deployed at [doc.zih.tu-dresden.de](doc.zih.tu-dresden.de) holding the
+- Main: Branch which is deployed at doc.zih.tu-dresden.de holding the
     current documentation (protected branch)
 
 If you are totally sure about your commit (e.g., fix a typo), it is only the following steps:
@@ -277,7 +271,7 @@ markdown source code clean and consistent.
 
 Installation
 
-```Shell Session
+```Bash
 ~ [sudo] npm [-g]  install markdownlint-cli
 ```
 
@@ -286,7 +280,7 @@ The tool `markdownlint` can be run in dry or fix mode.
 The *dry* mode (default) only outputs findings, whereas in *fix* mode it resolves basic
 errors directly in the markdown files.
 
-```Shell Session
+```BAsh
 ~ cd doc.zih.tu-dresden.de/
 ~ markdownlint [--fix] docs/index.md
 docs/index.md:8:131 MD013/line-length Line length [Expected: 130; Actual: 138]
@@ -354,7 +348,7 @@ fixed.
 
 To check the links within all markdown files in one sweep, some shell magic is necessary
 
-```Shell Session
+```Bash
 ~ cd doc.zih.tu-dresden.de/
 ~ find . -name \*.md -exec markdown-link-check {} \;
 ```
@@ -362,8 +356,8 @@ To check the links within all markdown files in one sweep, some shell magic is n
 #### Check-links.sh
 
 The script `util/check-links.sh` checks links for all gifferent files, i.e., markdown files which
-are part of the repository and different to the `main` branch. Use this script before committing your
-changes to make sure your commit passes the CI/CD pipeline.
+are part of the repository and different to the `main` branch. Use this script before committing
+your changes to make sure your commit passes the CI/CD pipeline.
 
 ### Check Code and Commands
 
@@ -374,13 +368,13 @@ It is invoked as follows ...
 
 ### Check Pages Structure
 
-The script `util/check-no-floating.sh` first checks the hierarchy depth of the pages structure and
-the second check tests if every markdown file is included in the navigation section of the
+The script `util/check-no-floating.sh` first checks the hierarchy depth of the pages structure
+and the second check tests if every markdown file is included in the navigation section of the
 `mkdocs.yaml` file.
 
 The script is invoked and reports as follows
 
-```Shell Session
+```Bash
 ~ sh doc.zih.tu-dresden.de/util/check-no-floating.sh doc.zih.tu-dresden.de
 HardwareTaurus.md is not included in nav
 BigDataFrameworksApacheSparkApacheFlinkApacheHadoop.md is not included in nav
@@ -394,9 +388,9 @@ specific_software.md is not included in nav
 
 ### New Page and Pages Structure
 
-The pages structure is defined in the configuration file [mkdocs.yaml](doc.zih.tu-dresden.de/mkdocs.yml).
+The pages structure is defined in the configuration file mkdocs.yaml:
 
-```Shell Session
+```Bash
 docs/
   - Home: index.md
   - Application for HPC Login: application.md
@@ -409,13 +403,13 @@ docs/
 
 To add a new page to the documentation follow these two steps:
 
-1. Create a new markdown file under `docs/subdir/file_name.md` and put the documentation inside. The
-   sub directory and file name should follow the pattern `fancy_title_and_more.md`.
+1. Create a new markdown file under `docs/subdir/file_name.md` and put the documentation inside.
+The subdirectory and file name should follow the pattern `fancy_title_and_more.md`.
 1. Add `subdir/file_name.md` to the configuration file `mkdocs.yml` by updating the navigation
    section.
 
-Make sure that the new page **is not floating**, i.e., it can be reached directly from the documentation
-structure.
+Make sure that the new page **is not floating**, i.e., it can be reached directly from
+the documentation structure.
 
 ### Markdown
 
@@ -584,10 +578,6 @@ srun a.out
 ```
 ````
 
-_Result_:
-
-![lines](misc/lines.png)
-
 Specific Lines can be highlighted by using
 
 ```` markdown
@@ -601,10 +591,6 @@ Specific Lines can be highlighted by using
 srun a.out
 ```
 ````
-
-_Result_:
-
-![lines](misc/highlight_lines.png)
 
 ### Data Privacy and Generic User Name
 
