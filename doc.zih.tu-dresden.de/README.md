@@ -388,6 +388,17 @@ pika.md is not included in nav
 specific_software.md is not included in nav
 ```
 
+### Pre-commit Git Hook
+
+You can automatically run checks whenever you try to commit a change. In this case, failing checks
+prevent commits (unless you use option `--no-verify`). This can be accomplished by adding a
+pre-commit hook to your local clone of the repository. The following code snippet shows how to do
+that:
+
+```bash
+cp doc.zih.tu-dresden.de/util/pre-commit .git/hooks/
+```
+
 ## Content Rules
 
 **Remark:** Avoid using tabs both in markdown files and in `mkdocs.yaml`. Type spaces instead.
