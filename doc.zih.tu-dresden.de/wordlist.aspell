@@ -14,6 +14,7 @@ CPU
 CPUs
 CUDA
 CXFS
+cgroups
 datamover
 Datamover
 DDR
@@ -36,6 +37,7 @@ GBit
 gnuplot
 Gnuplot
 GPU
+GPUs
 hadoop
 Haswell
 HDFS
