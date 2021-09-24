@@ -2,12 +2,12 @@
 
 Python is a high-level interpreted language widely used in research and
 science. Using HPC allows you to work with python quicker and more
-effective. Taurus allows working with a lot of available packages and
+effective. TU Dresden HPC system (ZIH system) allows working with a lot of available packages and
 libraries which give more useful functionalities and allow use all
 features of Python and to avoid minuses.
 
 **Prerequisites:** To work with PyTorch you obviously need [access](../access/ssh_login.md) for the
-Taurus system and basic knowledge about Python, Numpy and SLURM system.
+ZIH system and basic knowledge about Python, Numpy and SLURM system.
 
 **Aim** of this page is to introduce users on how to start working with Python on the
 [HPC-DA](../jobs_and_resources/power9.md) system -  part of the TU Dresden HPC system.
@@ -23,14 +23,14 @@ for your study and work projects.
 ## Virtual environment
 
 There are two methods of how to work with virtual environments on
-Taurus:
+on the ZIH system:
 
 1. **Vitualenv** is a standard Python tool to create isolated Python environments.
    It is the preferred interface for
-   managing installations and virtual environments on Taurus and part of the Python modules.
+   managing installations and virtual environments on the system and part of the Python modules.
 
 2. **Conda** is an alternative method for managing installations and
-virtual environments on Taurus. Conda is an open-source package
+virtual environments on the cluster. Conda is an open-source package
 management system and environment management system from Anaconda. The
 conda manager is included in all versions of Anaconda and Miniconda.
 
@@ -119,13 +119,13 @@ course with machine learning.
 There are two general options on how to work Jupyter notebooks using
 HPC.
 
-On Taurus, there is [JupyterHub](../access/jupyterhub.md) where you can simply run your Jupyter
+On the ZIH system, there is [JupyterHub](../access/jupyterhub.md) where you can simply run your Jupyter
 notebook on HPC nodes. Also, you can run a remote jupyter server within a sbatch GPU job and with
 the modules and packages you need. The manual server setup you can find [here](deep_learning.md).
 
 With Jupyterhub you can work with general
 data analytics tools. This is the recommended way to start working with
-the Taurus. However, some special instruments could not be available on
+the ZIH system. However, some special instruments could not be available on
 the Jupyterhub.
 
 **Keep in mind that the remote Jupyter server can offer more freedom with settings and approaches.**
@@ -160,21 +160,21 @@ supports the communication of pickleable Python objects. Mpi4py provides
 optimized communication of NumPy arrays.
 
 Mpi4py is included as an extension of the SciPy-bundle modules on
-Taurus for all software environments (scs5, ml, hiera(alpha)). 
+the ZIH system for all software environments (scs5, ml, hiera(alpha)).
 
-Please check the SoftwareModulesList for the modules availability. 
+Please check the SoftwareModulesList for the modules availability.
 The availability of the mpi4py
 in the module, you can check by
 the `module whatis <name_of_the module>` command. The `module whatis`
 command displays short information and included extensions of the
 module.
 
-The `module spider <name_of_the module>` command 
-will show you all available modules for 
-all software partitions with this name.
-For detailed information about a specific "mpi4py" package 
-(including how to load the modules) use 
-the module's full name, e.g: 
+The `module spider <name_of_the module>` command
+will show you all available modules for
+all software partitions with this name
+For detailed information about a specific "mpi4py" package
+(including how to load the modules) use
+the module's full name, e.g:
 `module spider mpi4py/3.0.3`
 
 Moreover, it is possible to install mpi4py in your local conda
@@ -212,7 +212,8 @@ module load PythonAnaconda/3.6
 eval "$(conda shell.bash hook)"
 conda activate /home/abcd/conda-virtual-environment/kernel2 && srun python mpi4py_test.py    #specify name of your virtual environment
 ```
-For the verification of the multi-node case, you can use as a test 
+
+For the verification of the multi-node case, you can use as a test
 file the python-code from the previous part (with verification of the installation).
 
 ### Horovod
@@ -235,7 +236,7 @@ in some cases better results than pure TensorFlow and PyTorch.
 
 Horovod is available as a module with **TensorFlow** or **PyTorch**for **all** module environments.
 Please check the [software module list](modules.md) for the current version of the software.
-Horovod can be loaded like other software on the Taurus:
+Horovod can be loaded like other software on the system:
 
 ```Bash
 ml av Horovod            #Check available modules with Python
