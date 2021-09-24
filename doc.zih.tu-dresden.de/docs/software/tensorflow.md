@@ -96,7 +96,7 @@ the notebook by pre-loading a specific TensorFlow module:
 
     You can also define your own Jupyter kernel for more specific tasks. Please read about Jupyter
     kernels and virtual environments in our
-    [JupyterHub](../../access/jupyterhub.md#creating-and-using-your-own-environment) documentation.
+    [JupyterHub](../access/jupyterhub.md#creating-and-using-your-own-environment) documentation.
 
 ## TensorFlow in Containers
 

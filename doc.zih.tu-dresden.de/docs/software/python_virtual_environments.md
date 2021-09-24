@@ -30,7 +30,7 @@ the module system).
 
 !!! hint
 
-    We recommend to use [workspaces](../../data_lifecycle/workspaces.md) for your virtual
+    We recommend to use [workspaces](../data_lifecycle/workspaces.md) for your virtual
     environments.
 
 At first, we check available Python modules and load the preferred version:
