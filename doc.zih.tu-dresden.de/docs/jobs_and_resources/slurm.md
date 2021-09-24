@@ -30,24 +30,23 @@ you can interact with the batch system, e.g., submit and monitor your jobs.
 
 ZIH uses the batch system Slurm for resource management and job scheduling.
 Just specify the resources you need in terms
-of cores, memory, and time and your job will be placed on the system.
-<!--[HPC Introduction]**todo link** is a good resource to get started with it.-->
+of cores, memory, and time and your Slurm will place your job on the system.
 
 This pages provides a brief overview on
 
-* how to [submit interactive and batch jobs](#job-submission),
-* [options](#options) for the batch system Slurm,
+* [Slurm options](#options) to specify resource requirements,
+* how to submit [interactive](#interactive-jobs) and [batch jobs](#batch-jobs),
 * how to [write job files](#job-files),
 * how to [manage and control your jobs](#manage-and-control-jobs).
 
 If you are are already familiar with Slurm, you might be more interessted in our collection of
 [job examples](slurm_examples.md).
+There is also a ton of external resources regarding Slurm. We recommand these links for detailed
+information:
 
-External resources regarding Slurm:
-
-- [slurm.schedmd.com](http://slurm.schedmd.com/) provides the official documentation comprising
+- [slurm.schedmd.com](https://slurm.schedmd.com/) provides the official documentation comprising
    manpages, tutorials, examples, etc.
-- [Comparison with other batch systems](http://www.schedmd.com/slurmdocs/rosetta.html)
+- [Comparison with other batch systems](https://www.schedmd.com/slurmdocs/rosetta.html)
 
 ## Job Submission
 
@@ -69,7 +68,8 @@ id is unique. The id allows you to [manage and control](#manage-and-control-jobs
 
 ## Options
 
-The following table holds the most important options for `srun/sbatch/salloc`.
+The following table holds the most important options for `srun/sbatch/salloc` to specify resource
+requirements and control communication.
 
 | Slurm Option               | Description |
 |:---------------------------|:------------|
@@ -94,20 +94,27 @@ The following table holds the most important options for `srun/sbatch/salloc`.
 
 !!! note "Output and Error Files"
 
-    When redirecting stderr and stderr into a file using `--output=<file>name` and
+    When redirecting stderr and stderr into a file using `--output=<filename>` and
     `--stderr=<filename>`, make sure the target path is writeable on the
-    compute nodes, i.e., it may not point to a read-only mounted file system like `/projects.`
+    compute nodes, i.e., it may not point to a read-only mounted
+    [filesystem](../data_lifecycle/overview.md) like `/projects.`
 
 !!! note "No free lunch"
 
-    Runtime and memory limits are enforced. Please refer to the section on [Partitions and
-    Limits](partitions_and_limits.md) for a detailed overview.
+    Runtime and memory limits are enforced. Please refer to the section on [partitions and
+    limits](partitions_and_limits.md) for a detailed overview.
+
+### Host List
+
+If you want to place your job onto specific nodes, there are two options for doing this. Either use
+`-p, --partion=<name>` to specify a host group aka. [partition](partitions_and_limits.md) that fits
+your needs. Or, use `-w, --nodelist=<host1,host2,..>`) with a list of hosts that will work for you.
 
 ## Interactive Jobs
 
-Interactive activities like editing, compiling etc. are normally limited to the login nodes. For
-longer interactive sessions you can allocate cores on the compute node with the command `salloc`. It
-takes the same options like `sbatch` to specify the required resources.
+Interactive activities like editing, compiling, preparing experiments etc. are normally limited to
+the login nodes. For longer interactive sessions you can allocate cores on the compute node with the
+command `salloc`. It takes the same options like `sbatch` to specify the required resources.
 
 `salloc` returns a new shell on the node, where you submitted the job. You need to use the command
 `srun` in front of the following commands to have these commands executed on the allocated
@@ -241,6 +248,120 @@ provide a comprehensive collection of job examples.
     * Submisson: `marie@login$ sbatch batch_script.sh`
     * Run with fewer MPI tasks: `marie@login$ sbatch --ntasks 14 batch_script.sh`
 
+
+## Manage and Control Jobs
+
+### Job and Slurm Monitoring
+
+On the command line, use `squeue` to watch the scheduling queue. This command will tell the reason,
+why a job is not running (job status in the last column of the output). More information about job
+parameters can also be determined with `scontrol -d show job <jobid>`. The following table holds
+detailed descriptions of the possible job states:
+
+| Reason             | Long Description  |
+|:-------------------|:------------------|
+| Dependency         | This job is waiting for a dependent job to complete. |
+| None               | No reason is set for this job. |
+| PartitionDown      | The partition required by this job is in a DOWN state. |
+| PartitionNodeLimit | The number of nodes required by this job is outside of its partitions current limits. Can also indicate that required nodes are DOWN or DRAINED. |
+| PartitionTimeLimit | The jobs time limit exceeds its partitions current time limit. |
+| Priority           | One or higher priority jobs exist for this partition. |
+| Resources          | The job is waiting for resources to become available. |
+| NodeDown           | A node required by the job is down. |
+| BadConstraints     | The jobs constraints can not be satisfied. |
+| SystemFailure      | Failure of the Slurm system, a filesystem, the network, etc. |
+| JobLaunchFailure   | The job could not be launched. This may be due to a filesystem problem, invalid program name, etc. |
+| NonZeroExitCode    | The job terminated with a non-zero exit code. |
+| TimeLimit          | The job exhausted its time limit. |
+| InactiveLimit      | The job reached the system InactiveLimit. |
+
+In addition, the `sinfo` command gives you a quick status overview.
+
+For detailed information on why your submitted job has not started yet, you can use the command
+
+```console
+marie@login$ whypending <jobid>
+```
+
+### Editing Jobs
+
+Jobs that have not yet started can be altered. Using `scontrol update timelimit=4:00:00
+jobid=<jobid>` it is for example possible to modify the maximum runtime. `scontrol` understands many
+different options, please take a look at the [man page](https://slurm.schedmd.com/scontrol.html) for
+more details.
+
+### Canceling Jobs
+
+The command `scancel <jobid>` kills a single job and removes it from the queue. By using `scancel -u
+<username>` you can send a canceling singal to all of your jobs at once.
+
+### Accounting
+
+The Slurm command `sacct` provides job statistics like memory usage, CPU time, energy usage etc.
+
+!!! hint "Learn from old jobs"
+
+    We highly encourage you to use `sacct` to learn from you previous jobs in order to better
+    estimate the requirements, e.g., runtime, for future jobs.
+
+`sacct` outputs the following fields by default.
+
+```console
+# show all own jobs contained in the accounting database
+marie@login$ sacct
+       JobID    JobName  Partition    Account  AllocCPUS      State ExitCode
+------------ ---------- ---------- ---------- ---------- ---------- --------
+[...]
+```
+
+We'd like to point your attention to the following options gain insight in your jobs.
+
+??? example "Show specific job"
+
+    ```console
+    marie@login$ sacct -j <JOBID>
+    ```
+??? example "Show all fields for a specific job"
+
+    ```console
+    marie@login$ sacct -j <JOBID> -o All
+    ```
+
+??? example "Show specific fields"
+
+    ```console
+    marie@login$ sacct -j <JOBID> -o JobName,MaxRSS,MaxVMSize,CPUTime,ConsumedEnergy
+    ```
+The manpage (`man sacct`) and the [online reference](https://slurm.schedmd.com/sacct.html) provide a
+comprehensive documentation regarding available fields and formats.
+
+!!! hint "Time span"
+
+    By default, `sacct` only shows data of the last day. If you want to look further into the past
+    without specifying an explicit job id, you need to provide a start date via the `-S` option.
+    A certain end date is also possible via `-E`.
+
+??? example "Show all jobs since the beginning of year 2021"
+
+    ```console
+    marie@login$ sacct -S 2021-01-01 [-E now]
+    ```
+
+## Jobs at Reservations
+
+How to ask for a reservation is described in the section
+[reservations](overview.md#exclusive-reservation-of-hardware).
+After we agreed with your requirements, we will send you an e-mail with your reservation name. Then
+you could see more information about your reservation with the following command:
+
+```console
+marie@login$ scontrol show res=<reservation name>
+# e.g. scontrol show res=hpcsupport_123
+```
+
+If you want to use your reservation, you have to add the parameter
+`--reservation=<reservation name>` either in your sbatch script or to your `srun` or `salloc` command.
+
 ## Binding and Distribution of Tasks
 
 Slurm provides several binding strategies to place and bind the tasks and/or threads of your job
@@ -306,18 +427,17 @@ srun --ntasks 8 --cpus-per-task $OMP_NUM_THREADS ./application
 
 ![Hybrid MPI and OpenMP](misc/hybrid.png)
 {: align=center}
-
 ## Node Features for Selective Job Submission
 
 The nodes in our HPC system are becoming more diverse in multiple aspects: hardware, mounted
 storage, software. The system administrators can describe the set of properties and it is up to the
 user to specify her/his requirements. These features should be thought of as changing over time
-(e.g. a file system get stuck on a certain node).
+(e.g., a filesystem get stuck on a certain node).
 
 A feature can be used with the Slurm option `--constrain` or `-C` like
 `srun -C fs_lustre_scratch2 ...` with `srun` or `sbatch`. Combinations like
 `--constraint="fs_beegfs_global0`are allowed. For a detailed description of the possible
-constraints, please refer to the Slurm documentation (<https://slurm.schedmd.com/srun.html>).
+constraints, please refer to the [Slurm documentation](https://slurm.schedmd.com/srun.html).
 
 !!! hint
 
@@ -331,134 +451,15 @@ constraints, please refer to the Slurm documentation (<https://slurm.schedmd.com
 
 #### Filesystem Features
 
-A feature `fs_*` is active if a certain file system is mounted and available on a node. Access to
-these file systems are tested every few minutes on each node and the Slurm features set accordingly.
+A feature `fs_*` is active if a certain filesystem is mounted and available on a node. Access to
+these filesystems are tested every few minutes on each node and the Slurm features set accordingly.
 
 | Feature            | Description                                                          |
 |:-------------------|:---------------------------------------------------------------------|
-| fs_lustre_scratch2 | `/scratch` mounted read-write (the OS mount point is `/lustre/scratch2)` |
-| fs_lustre_ssd      | `/lustre/ssd` mounted read-write                                       |
-| fs_warm_archive_ws | `/warm_archive/ws` mounted read-only                                   |
-| fs_beegfs_global0  | `/beegfs/global0` mounted read-write                                   |
+| fs_lustre_scratch2 | `/scratch` mounted read-write (the mount point is `/lustre/scratch2)`|
+| fs_lustre_ssd      | `/lustre/ssd` mounted read-write                                     |
+| fs_warm_archive_ws | `/warm_archive/ws` mounted read-only                                 |
+| fs_beegfs_global0  | `/beegfs/global0` mounted read-write                                 |
 
-For certain projects, specific file systems are provided. For those,
+For certain projects, specific filesystems are provided. For those,
 additional features are available, like `fs_beegfs_<projectname>`.
-
-## Manage and Control Jobs
-
-### Editing Jobs
-
-Jobs that have not yet started can be altered. Using `scontrol update timelimit=4:00:00
-jobid=<jobid>` it is for example possible to modify the maximum runtime. `scontrol` understands many
-different options, please take a look at the [man page](https://slurm.schedmd.com/scontrol.html) for
-more details.
-
-### Job and Slurm Monitoring
-
-On the command line, use `squeue` to watch the scheduling queue. This command will tell the reason,
-why a job is not running (job status in the last column of the output). More information about job
-parameters can also be determined with `scontrol -d show job <jobid>` Here are detailed descriptions
-of the possible job status:
-
-| Reason             | Long Description  |
-|:-------------------|:------------------|
-| Dependency         | This job is waiting for a dependent job to complete. |
-| None               | No reason is set for this job. |
-| PartitionDown      | The partition required by this job is in a DOWN state. |
-| PartitionNodeLimit | The number of nodes required by this job is outside of its partitions current limits. Can also indicate that required nodes are DOWN or DRAINED. |
-| PartitionTimeLimit | The jobs time limit exceeds its partitions current time limit. |
-| Priority           | One or higher priority jobs exist for this partition. |
-| Resources          | The job is waiting for resources to become available. |
-| NodeDown           | A node required by the job is down. |
-| BadConstraints     | The jobs constraints can not be satisfied. |
-| SystemFailure      | Failure of the Slurm system, a file system, the network, etc. |
-| JobLaunchFailure   | The job could not be launched. This may be due to a file system problem, invalid program name, etc. |
-| NonZeroExitCode    | The job terminated with a non-zero exit code. |
-| TimeLimit          | The job exhausted its time limit. |
-| InactiveLimit      | The job reached the system InactiveLimit. |
-
-In addition, the `sinfo` command gives you a quick status overview.
-
-For detailed information on why your submitted job has not started yet, you can use the command
-
-```console
-marie@login$ whypending <jobid>
-```
-
-## Accounting
-
-The Slurm command `sacct` provides job statistics like memory usage, CPU time, energy usage etc.
-
-!!! hint "Learn from old jobs"
-
-    We highly encourage you to use `sacct` to learn from you previous jobs in order to better
-    estimate the requirements, e.g., runtime, for future jobs.
-
-`sacct` outputs the following fields by default.
-
-```console
-# show all own jobs contained in the accounting database
-marie@login$ sacct
-       JobID    JobName  Partition    Account  AllocCPUS      State ExitCode
------------- ---------- ---------- ---------- ---------- ---------- --------
-[...]
-```
-
-We'd like to point your attention to the following options gain insight in your jobs.
-
-??? example "Show specific job"
-
-    ```console
-    marie@login$ sacct -j <JOBID>
-    ```
-??? example "Show all fields for a specific job"
-
-    ```console
-    marie@login$ sacct -j <JOBID> -o All
-    ```
-
-??? example "Show specific fields"
-
-    ```console
-    marie@login$ sacct -j <JOBID> -o JobName,MaxRSS,MaxVMSize,CPUTime,ConsumedEnergy
-    ```
-The manpage (`man sacct`) and the [online reference](https://slurm.schedmd.com/sacct.html) provide a
-comprehensive documentation regarding available fields and formats.
-
-!!! hint "Time span"
-
-    By default, `sacct` only shows data of the last day. If you want to look further into the past
-    without specifying an explicit job id, you need to provide a start date via the `-S` option.
-    A certain end date is also possible via `-E`.
-
-??? example "Show all jobs since the beginning of year 2021"
-
-    ```console
-    marie@login$ sacct -S 2021-01-01 [-E now]
-    ```
-
-### Canceling Jobs
-
-The command `scancel <jobid>` kills a single job and removes it from the queue. By using `scancel -u
-<username>` you can send a canceling singal to all of your jobs at once.
-
-### Host List
-
-If you want to place your job onto specific nodes, there are two options for doing this. Either use
-`-p, --partion=<name>` to specify a host group aka. [partition](partitions_and_limits.md) that fits
-your needs. Or, use `-w, --nodelist=<host1,host2,..>`) with a list of hosts that will work for you.
-
-## Jobs at Reservations
-
-How to ask for a reservation is described in the section
-[Reservations](overview.md#exclusive-reservation-of-hardware).
-After we agreed with your requirements, we will send you an e-mail with your reservation name. Then
-you could see more information about your reservation with the following command:
-
-```console
-marie@login$ scontrol show res=<reservation name>
-# e.g. scontrol show res=hpcsupport_123
-```
-
-If you want to use your reservation, you have to add the parameter
-`--reservation=<reservation name>` either in your sbatch script or to your `srun` or `salloc` command.
