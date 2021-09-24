@@ -64,7 +64,7 @@ marie@compute$ R -e 'install.packages("ggplot2")'
 
 The deep learning frameworks perform extremely fast when run on accelerators such as GPU.
 Therefore, using nodes with built-in GPUs, e.g., partitions [ml](../jobs_and_resources/power9.md)
-and [alpha](../jobs_and_resources/alpha_centauri.md, is beneficial for the examples here.
+and [alpha](../jobs_and_resources/alpha_centauri.md), is beneficial for the examples here.
 
 ### R Interface to TensorFlow
 
