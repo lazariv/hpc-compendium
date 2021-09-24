@@ -19,6 +19,7 @@ i	\<taurus\>	taurus\.hrsk	/taurus
 i	\<hrskii\>
 i	hpc \+system
 i	hpc[ -]\+da\>
+i	\(alpha\|ml\|haswell\|romeo\|gpu\|smp\|julia\|hpdlf\|scs5\)-\?\(interactive\)\?[^a-z]*partition
 i	work[ -]\+space"
 
 function grepExceptions () {

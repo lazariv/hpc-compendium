@@ -453,9 +453,11 @@ there is a list of conventions w.r.t. spelling and technical wording.
 * `I/O` not `IO`
 * `Slurm` not `SLURM`
 * `Filesystem` not `file system`
-* `ZIH system` and `ZIH systems` not `Taurus`, `HRSKII`, `our HPC systems` etc.
+* `ZIH system` and `ZIH systems` not `Taurus`, `HRSKII`, `our HPC systems`, etc.
 * `Workspace` not `work space`
 * avoid term `HPC-DA`
+* Partition names after the keyword *partition*: *partition `ml`* not *ML partition*, *ml
+  partition*, *`ml` partition*, *"ml" partition*, etc.
 
 ### Code Blocks and Command Prompts
 
