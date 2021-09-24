@@ -21,6 +21,10 @@ i	hpc \+system
 i	hpc[ -]\+da\>
 i	work[ -]\+space"
 
+# Whitelisted files will be ignored
+# Whitespace separated list with full path
+whitelist=(doc.zih.tu-dresden.de/docs/contrib/contrib_guide.md)
+
 function grepExceptions () {
   if [ $# -gt 0 ]; then
     firstPattern=$1
@@ -84,6 +88,10 @@ echo "... $files ..."
 cnt=0
 for f in $files; do
   if [ "$f" != doc.zih.tu-dresden.de/README.md -a "${f: -3}" == ".md" -a -f "$f" ]; then
+    if (printf '%s\n' "${whitelist[@]}" | grep -xq $f); then
+      echo "Skip whitelisted file $f"
+      continue
+    fi
     echo "Check wording in file $f"
     while IFS=$'\t' read -r flags pattern exceptionPatterns; do
       while IFS=$'\t' read -r -a exceptionPatternsArray; do
