@@ -82,6 +82,7 @@ NFS
 NUMA
 NUMAlink
 Nutzungsbedingungen
+NVMe
 OPARI
 OpenACC
 OpenBLAS
@@ -103,6 +104,7 @@ png
 Pthreads
 queue
 reachability
+requeueing
 rome
 romeo
 RSA

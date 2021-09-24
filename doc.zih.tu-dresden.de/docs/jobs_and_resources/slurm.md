@@ -39,13 +39,13 @@ This pages provides a brief overview on
 * how to [write job files](#job-files),
 * how to [manage and control your jobs](#manage-and-control-jobs).
 
-If you are are already familiar with Slurm, you might be more interessted in our collection of
+If you are are already familiar with Slurm, you might be more interested in our collection of
 [job examples](slurm_examples.md).
-There is also a ton of external resources regarding Slurm. We recommand these links for detailed
+There is also a ton of external resources regarding Slurm. We recommend these links for detailed
 information:
 
 - [slurm.schedmd.com](https://slurm.schedmd.com/) provides the official documentation comprising
-   manpages, tutorials, examples, etc.
+   manual pages, tutorials, examples, etc.
 - [Comparison with other batch systems](https://www.schedmd.com/slurmdocs/rosetta.html)
 
 ## Job Submission
@@ -168,7 +168,7 @@ marie@login$ srun --ntasks=1 --cpus-per-task=8 --time=1:00:00 --pty --x11=first 
 ## Batch Jobs
 
 Working interactively using `srun` and `salloc` is a good starting point for testing and compiling.
-But, as soon as you leave the testing stage, we highly recommand you to use batch jobs.
+But, as soon as you leave the testing stage, we highly recommend you to use batch jobs.
 Batch jobs are encapsulated within [job files](#job-files) and submitted to the batch system using
 `sbatch` for later execution. A job file is basically a script holding the resource requirements,
 environment settings and the commands for executing the application. Using batch jobs and job files
@@ -179,7 +179,7 @@ has multiple advantages:
 * Submit your job file to the scheduling system for later execution. In the meanwhile, you can grab
   a coffee and proceed with other work (,e.g., start writing a paper).
 
-The synatx for submitting a job file to Slurm is
+The syntax for submitting a job file to Slurm is
 
 ```console
 marie@login$ sbatch [options] <job_file>
@@ -260,20 +260,20 @@ detailed descriptions of the possible job states:
 
 | Reason             | Long Description  |
 |:-------------------|:------------------|
-| Dependency         | This job is waiting for a dependent job to complete. |
-| None               | No reason is set for this job. |
-| PartitionDown      | The partition required by this job is in a DOWN state. |
-| PartitionNodeLimit | The number of nodes required by this job is outside of its partitions current limits. Can also indicate that required nodes are DOWN or DRAINED. |
-| PartitionTimeLimit | The jobs time limit exceeds its partitions current time limit. |
-| Priority           | One or higher priority jobs exist for this partition. |
-| Resources          | The job is waiting for resources to become available. |
-| NodeDown           | A node required by the job is down. |
-| BadConstraints     | The jobs constraints can not be satisfied. |
-| SystemFailure      | Failure of the Slurm system, a filesystem, the network, etc. |
-| JobLaunchFailure   | The job could not be launched. This may be due to a filesystem problem, invalid program name, etc. |
-| NonZeroExitCode    | The job terminated with a non-zero exit code. |
-| TimeLimit          | The job exhausted its time limit. |
-| InactiveLimit      | The job reached the system InactiveLimit. |
+| `Dependency`         | This job is waiting for a dependent job to complete. |
+| `None`               | No reason is set for this job. |
+| `PartitionDown`      | The partition required by this job is in a down state. |
+| `PartitionNodeLimit` | The number of nodes required by this job is outside of its partitions current limits. Can also indicate that required nodes are down or drained. |
+| `PartitionTimeLimit` | The jobs time limit exceeds its partitions current time limit. |
+| `Priority`           | One or higher priority jobs exist for this partition. |
+| `Resources`          | The job is waiting for resources to become available. |
+| `NodeDown`           | A node required by the job is down. |
+| `BadConstraints`     | The jobs constraints can not be satisfied. |
+| `SystemFailure`      | Failure of the Slurm system, a filesystem, the network, etc. |
+| `JobLaunchFailure`   | The job could not be launched. This may be due to a filesystem problem, invalid program name, etc. |
+| `NonZeroExitCode`    | The job terminated with a non-zero exit code. |
+| `TimeLimit`          | The job exhausted its time limit. |
+| `InactiveLimit`      | The job reached the system inactive limit. |
 
 In addition, the `sinfo` command gives you a quick status overview.
 
@@ -293,7 +293,7 @@ more details.
 ### Canceling Jobs
 
 The command `scancel <jobid>` kills a single job and removes it from the queue. By using `scancel -u
-<username>` you can send a canceling singal to all of your jobs at once.
+<username>` you can send a canceling signal to all of your jobs at once.
 
 ### Accounting
 
@@ -332,7 +332,7 @@ We'd like to point your attention to the following options gain insight in your 
     ```console
     marie@login$ sacct -j <JOBID> -o JobName,MaxRSS,MaxVMSize,CPUTime,ConsumedEnergy
     ```
-The manpage (`man sacct`) and the [online reference](https://slurm.schedmd.com/sacct.html) provide a
+The manual page (`man sacct`) and the [online reference](https://slurm.schedmd.com/sacct.html) provide a
 comprehensive documentation regarding available fields and formats.
 
 !!! hint "Time span"
@@ -375,7 +375,7 @@ follows.
 
 ### OpenMP
 
-The illustration below shows the default binding of a pure OpenMP-job on a single node with 16 cpus
+The illustration below shows the default binding of a pure OpenMP-job on a single node with 16 CPUs
 on which 16 threads are allocated.
 
 ```Bash
@@ -456,10 +456,10 @@ these filesystems are tested every few minutes on each node and the Slurm featur
 
 | Feature            | Description                                                          |
 |:-------------------|:---------------------------------------------------------------------|
-| fs_lustre_scratch2 | `/scratch` mounted read-write (the mount point is `/lustre/scratch2)`|
-| fs_lustre_ssd      | `/lustre/ssd` mounted read-write                                     |
-| fs_warm_archive_ws | `/warm_archive/ws` mounted read-only                                 |
-| fs_beegfs_global0  | `/beegfs/global0` mounted read-write                                 |
+| `fs_lustre_scratch2` | `/scratch` mounted read-write (mount point is `/lustre/scratch2)`  |
+| `fs_lustre_ssd`      | `/lustre/ssd` mounted read-write                                   |
+| `fs_warm_archive_ws` | `/warm_archive/ws` mounted read-only                               |
+| `fs_beegfs_global0`  | `/beegfs/global0` mounted read-write                               |
 
 For certain projects, specific filesystems are provided. For those,
 additional features are available, like `fs_beegfs_<projectname>`.
