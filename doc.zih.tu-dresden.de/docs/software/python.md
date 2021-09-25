@@ -10,9 +10,11 @@ features of Python and to avoid minuses.
 ZIH system and basic knowledge about Python, Numpy and Slurm system.
 
 **Aim** of this page is to introduce users on how to start working with Python on the
-[High-Performance Computing and Data Analytics](../jobs_and_resources/power9.md) system -  part of the TU Dresden HPC system.
+[High-Performance Computing and Data Analytics](../jobs_and_resources/power9.md)
+system -  part of the TU Dresden HPC system.
 
-There are three main options on how to work with Keras and Tensorflow on the ZIH system: 1. Modules; 2.
+There are three main options on how to work with Keras and
+Tensorflow on the ZIH system: 1. Modules; 2.
 [JupyterNotebook](../access/jupyterhub.md); 3.[Containers](containers.md). The main way is using
 the [Modules system](modules.md) and Python virtual environment.
 
@@ -54,6 +56,7 @@ marie@compute$ virtualenv --system-site-packages python-environments/envtest  #C
 marie@compute$ source python-environments/envtest/bin/activate                #Activate virtual environment. Example output: (envtest) bash-4.2$
 marie@compute$ python                                                         #Start python
 ```
+
 ```python
 from time import gmtime, strftime
 print(strftime("%Y-%m-%d %H:%M:%S", gmtime()))                 #Example output: 2019-11-18 13:54:16
@@ -193,6 +196,7 @@ marie@compute$ conda install -c conda-forge mpi4py                              
 
 marie@compute$ python                                                                               #start python
 ```
+
 ```python
 from mpi4py import MPI                                                                   #verify your mpi4py
 comm = MPI.COMM_WORLD
@@ -313,6 +317,7 @@ marie@compute$ HOROVOD_GPU_ALLREDUCE=MPI HOROVOD_WITHOUT_TENSORFLOW=1 HOROVOD_WI
 ```console
 marie@compute$ python                                           #start python
 ```
+
 ```python
 import torch                                     #import pytorch
 import horovod.torch as hvd                      #import horovod
