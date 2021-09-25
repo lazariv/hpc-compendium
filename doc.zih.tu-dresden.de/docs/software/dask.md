@@ -39,7 +39,7 @@ Low-Level:
 ## Installation
 
 Dask is available as module on
-TU Dresden  HPC system for all software environments (scs5, ml, hiera(alpha)).
+ZIH system for all software environments (scs5, ml, hiera(alpha)).
 To load the module for the corresponding
 software environment: `ml dask`
 
@@ -173,7 +173,7 @@ There are different ways to do that
 (for a single machine or for distributed cluster).
 This page will be focus mainly on Dask for HPC.
 
-The preferred and simplest way to run Dask on HPC systems
+The preferred and simplest way to run Dask on ZIH systems
 today both for new or experienced users
 is to use **[dask-jobqueue](https://jobqueue.dask.org/)**.
 
@@ -239,7 +239,7 @@ marie@compute$ conda install dask-jobqueue -c conda-forge
 ###### Example of use Dask-jobqueue with SLURMCluster
 
 [Dask-jobqueue](https://jobqueue.dask.org/en/latest/howitworks.html#workers-vs-jobs)
-allows running jobs on HPC system
+allows running jobs on ZIH system
 inside the python code and scale computations over the jobs.
 [Dask-jobqueue](https://jobqueue.dask.org/en/latest/howitworks.html#workers-vs-jobs)
 creates a Dask Scheduler in the Python process
