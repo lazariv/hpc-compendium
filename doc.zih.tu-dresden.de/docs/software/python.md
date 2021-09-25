@@ -2,7 +2,7 @@
 
 Python is a high-level interpreted language widely used in research and
 science. Using HPC allows you to work with python quicker and more
-effective. TU Dresden HPC system (ZIH system) allows working with a lot of available packages and
+effective. ZIH system  allows working with a lot of available packages and
 libraries which give more useful functionalities and allow use all
 features of Python and to avoid minuses.
 
@@ -11,7 +11,7 @@ ZIH system and basic knowledge about Python, Numpy and Slurm system.
 
 **Aim** of this page is to introduce users on how to start working with Python on the
 [High-Performance Computing and Data Analytics](../jobs_and_resources/power9.md)
-system -  part of the TU Dresden HPC system.
+system -  part of the TU Dresden ZIH system.
 
 There are three main options on how to work with Keras and
 Tensorflow on the ZIH system: 1. Modules; 2.
