@@ -7,12 +7,12 @@ libraries which give more useful functionalities and allow use all
 features of Python and to avoid minuses.
 
 **Prerequisites:** To work with PyTorch you obviously need [access](../access/ssh_login.md) for the
-ZIH system and basic knowledge about Python, Numpy and SLURM system.
+ZIH system and basic knowledge about Python, Numpy and Slurm system.
 
 **Aim** of this page is to introduce users on how to start working with Python on the
-[HPC-DA](../jobs_and_resources/power9.md) system -  part of the TU Dresden HPC system.
+[High-Performance Computing and Data Analytics](../jobs_and_resources/power9.md) system -  part of the TU Dresden HPC system.
 
-There are three main options on how to work with Keras and Tensorflow on the HPC-DA: 1. Modules; 2.
+There are three main options on how to work with Keras and Tensorflow on the ZIH system: 1. Modules; 2.
 [JupyterNotebook](../access/jupyterhub.md); 3.[Containers](containers.md). The main way is using
 the [Modules system](modules.md) and Python virtual environment.
 
@@ -41,19 +41,20 @@ vice versa! Prefer virtualenv whenever possible.
 This example shows how to start working
 with **Virtualenv** and Python virtual environment (using the module system)
 
-```Bash
-srun -p ml -N 1 -n 1 -c 7 --mem-per-cpu=5772 --gres=gpu:1 --time=04:00:00 --pty bash   #Job submission in ml nodes with 1 gpu on 1 node.
+```console
+marie@login$ srun -p ml -N 1 -n 1 -c 7 --mem-per-cpu=5772 --gres=gpu:1 --time=04:00:00 --pty bash   #Job submission in ml nodes with 1 gpu on 1 node.
 
-mkdir python-environments        # Optional: Create folder. Please use Workspaces!
+marie@compute$ mkdir python-environments        # Optional: Create folder. Please use Workspaces!
 
-module load modenv/ml            # Changing the environment. Example output: The following have been reloaded with a version change: 1 modenv/scs5 => modenv/ml
-ml av Python                     #Check the available modules with Python
-module load Python               #Load default Python. Example output: Module Python/3.7 4-GCCcore-8.3.0 with 7 dependencies loaded
-which python                                                   #Check which python are you using
-virtualenv --system-site-packages python-environments/envtest  #Create virtual environment
-source python-environments/envtest/bin/activate                #Activate virtual environment. Example output: (envtest) bash-4.2$
-python                                                         #Start python
-
+marie@compute$ module load modenv/ml            # Changing the environment. Example output: The following have been reloaded with a version change: 1 modenv/scs5 => modenv/ml
+marie@compute$ ml av Python                     #Check the available modules with Python
+marie@compute$ module load Python               #Load default Python. Example output: Module Python/3.7 4-GCCcore-8.3.0 with 7 dependencies loaded
+marie@compute$ which python                                                   #Check which python are you using
+marie@compute$ virtualenv --system-site-packages python-environments/envtest  #Create virtual environment
+marie@compute$ source python-environments/envtest/bin/activate                #Activate virtual environment. Example output: (envtest) bash-4.2$
+marie@compute$ python                                                         #Start python
+```
+```python
 from time import gmtime, strftime
 print(strftime("%Y-%m-%d %H:%M:%S", gmtime()))                 #Example output: 2019-11-18 13:54:16
 deactivate                                                     #Leave the virtual environment
@@ -77,20 +78,20 @@ packages and their versions.
 This example shows how to start working with **Conda** and virtual
 environment (with using module system)
 
-```Bash
-srun -p ml -N 1 -n 1 -c 7 --mem-per-cpu=5772 --gres=gpu:1 --time=04:00:00 --pty bash  # Job submission in ml nodes with 1 gpu on 1 node.
+```console
+marie@login$ srun -p ml -N 1 -n 1 -c 7 --mem-per-cpu=5772 --gres=gpu:1 --time=04:00:00 --pty bash  # Job submission in ml nodes with 1 gpu on 1 node.
 
-module load modenv/ml
-mkdir conda-virtual-environments            #create a folder
-cd conda-virtual-environments               #go to folder
-which python                                #check which python are you using
-module load PythonAnaconda/3.6              #load Anaconda module
-which python                                #check which python are you using now
+marie@compute$ module load modenv/ml
+marie@compute$ mkdir conda-virtual-environments            #create a folder
+marie@compute$ cd conda-virtual-environments               #go to folder
+marie@compute$ which python                                #check which python are you using
+marie@compute$ module load PythonAnaconda/3.6              #load Anaconda module
+marie@compute$ which python                                #check which python are you using now
 
-conda create -n conda-testenv python=3.6        #create virtual environment with the name conda-testenv and Python version 3.6
-conda activate conda-testenv                    #activate conda-testenv virtual environment
+marie@compute$ conda create -n conda-testenv python=3.6        #create virtual environment with the name conda-testenv and Python version 3.6
+marie@compute$ conda activate conda-testenv                    #activate conda-testenv virtual environment
 
-conda deactivate                                #Leave the virtual environment
+marie@compute$ conda deactivate                                #Leave the virtual environment
 ```
 
 You can control where a conda environment
@@ -98,8 +99,8 @@ lives by providing a path to a target directory when creating the
 environment. For example, the following command will create a new
 environment in a workspace located in `scratch`
 
-```Bash
-conda create --prefix /scratch/ws/<name_of_your_workspace>/conda-virtual-environment/<name_of_your_environment>
+```console
+marie@login$ conda create --prefix /scratch/ws/<name_of_your_workspace>/conda-virtual-environment/<name_of_your_environment>
 ```
 
 Please pay attention,
@@ -180,18 +181,19 @@ the module's full name, e.g:
 Moreover, it is possible to install mpi4py in your local conda
 environment:
 
-```Bash
-srun -p ml --time=04:00:00 -n 1 --pty --mem-per-cpu=8000 bash                            #allocate recources
-module load modenv/ml
-module load PythonAnaconda/3.6                                                           #load module to use conda
-conda create --prefix=<location_for_your_environment> python=3.6 anaconda                #create conda virtual environment
+```console
+marie@login$ srun -p ml --time=04:00:00 -n 1 --pty --mem-per-cpu=8000 bash                            #allocate recources
+marie@compute$ module load modenv/ml
+marie@compute$ module load PythonAnaconda/3.6                                                         #load module to use conda
+marie@compute$ conda create --prefix=<location_for_your_environment> python=3.6 anaconda              #create conda virtual environment
 
-conda activate <location_for_your_environment>                                           #activate your virtual environment
+marie@compute$ conda activate <location_for_your_environment>                                       #activate your virtual environment
 
-conda install -c conda-forge mpi4py                                                      #install mpi4py
+marie@compute$ conda install -c conda-forge mpi4py                                                  #install mpi4py
 
-python                                                                                   #start python
-
+marie@compute$ python                                                                               #start python
+```
+```python
 from mpi4py import MPI                                                                   #verify your mpi4py
 comm = MPI.COMM_WORLD
 print("%d of %d" % (comm.Get_rank(), comm.Get_size()))
@@ -210,7 +212,7 @@ module load modenv/ml
 module load PythonAnaconda/3.6
 
 eval "$(conda shell.bash hook)"
-conda activate /home/abcd/conda-virtual-environment/kernel2 && srun python mpi4py_test.py    #specify name of your virtual environment
+conda activate /home/marie/conda-virtual-environment/kernel2 && srun python mpi4py_test.py    #specify name of your virtual environment
 ```
 
 For the verification of the multi-node case, you can use as a test
@@ -238,9 +240,9 @@ Horovod is available as a module with **TensorFlow** or **PyTorch**for **all** m
 Please check the [software module list](modules.md) for the current version of the software.
 Horovod can be loaded like other software on the system:
 
-```Bash
-ml av Horovod            #Check available modules with Python
-module load Horovod      #Loading of the module
+```console
+marie@compute$ ml av Horovod            #Check available modules with Python
+marie@compute$ module load Horovod      #Loading of the module
 ```
 
 #### Horovod installation
@@ -256,26 +258,26 @@ for your study and work projects** (see the Storage concept).
 
 Setup:
 
-```Bash
-srun -N 1 --ntasks-per-node=6 -p ml --time=08:00:00 --pty bash                    #allocate a Slurm job allocation, which is a set of resources (nodes)
-module load modenv/ml                                                             #Load dependencies by using modules
-module load OpenMPI/3.1.4-gcccuda-2018b
-module load Python/3.6.6-fosscuda-2018b
-module load cuDNN/7.1.4.18-fosscuda-2018b
-module load CMake/3.11.4-GCCcore-7.3.0
-virtualenv --system-site-packages <location_for_your_environment>                 #create virtual environment
-source <location_for_your_environment>/bin/activate                               #activate virtual environment
+```console
+marie@login$ srun -N 1 --ntasks-per-node=6 -p ml --time=08:00:00 --pty bash                    #allocate a Slurm job allocation, which is a set of resources (nodes)
+marie@compute$ module load modenv/ml                                                             #Load dependencies by using modules
+marie@compute$ module load OpenMPI/3.1.4-gcccuda-2018b
+marie@compute$ module load Python/3.6.6-fosscuda-2018b
+marie@compute$ module load cuDNN/7.1.4.18-fosscuda-2018b
+marie@compute$ module load CMake/3.11.4-GCCcore-7.3.0
+marie@compute$ virtualenv --system-site-packages <location_for_your_environment>                 #create virtual environment
+marie@compute$ source <location_for_your_environment>/bin/activate                               #activate virtual environment
 ```
 
 Or when you need to use conda:
 
-```Bash
-srun -N 1 --ntasks-per-node=6 -p ml --time=08:00:00 --pty bash                            #allocate a Slurm job allocation, which is a set of resources (nodes)
-module load modenv/ml                                                                     #Load dependencies by using modules
-module load OpenMPI/3.1.4-gcccuda-2018b
-module load PythonAnaconda/3.6
-module load cuDNN/7.1.4.18-fosscuda-2018b
-module load CMake/3.11.4-GCCcore-7.3.0
+```console
+marie@login$ srun -N 1 --ntasks-per-node=6 -p ml --time=08:00:00 --pty bash               #allocate a Slurm job allocation, which is a set of resources (nodes)
+marie@compute$ module load modenv/ml                                                      #Load dependencies by using modules
+marie@compute$ module load OpenMPI/3.1.4-gcccuda-2018b
+marie@compute$ module load PythonAnaconda/3.6
+marie@compute$ module load cuDNN/7.1.4.18-fosscuda-2018b
+marie@compute$ module load CMake/3.11.4-GCCcore-7.3.0
 
 conda create --prefix=<location_for_your_environment> python=3.6 anaconda                 #create virtual environment
 
@@ -284,13 +286,16 @@ conda activate  <location_for_your_environment>                                 
 
 Install Pytorch (not recommended)
 
-```Bash
-cd /tmp
-git clone https://github.com/pytorch/pytorch                                  #clone Pytorch from the source
-cd pytorch                                                                    #go to folder
-git checkout v1.7.1                                                           #Checkout version (example: 1.7.1)
-git submodule update --init                                                   #Update dependencies
-python setup.py install                                                       #install it with python
+```console
+marie@login$ cd /tmp
+marie@login$ git clone https://github.com/pytorch/pytorch                                  #clone Pytorch from the source
+marie@login$ cd pytorch                                                                    #go to folder
+marie@login$ git checkout v1.7.1                                                           #Checkout version (example: 1.7.1)
+marie@login$ git submodule update --init                                                   #Update dependencies
+
+#load your venv virtual environment
+
+marie@compute$ python setup.py install                                                       #install it with python
 ```
 
 ##### Install Horovod for Pytorch with python and pip
@@ -299,14 +304,16 @@ In the example presented installation for the Pytorch without
 TensorFlow. Adapt as required and refer to the horovod documentation for
 details.
 
-```Bash
-HOROVOD_GPU_ALLREDUCE=MPI HOROVOD_WITHOUT_TENSORFLOW=1 HOROVOD_WITH_PYTORCH=1 HOROVOD_WITHOUT_MXNET=1 pip install --no-cache-dir horovod
+```console
+marie@compute$ HOROVOD_GPU_ALLREDUCE=MPI HOROVOD_WITHOUT_TENSORFLOW=1 HOROVOD_WITH_PYTORCH=1 HOROVOD_WITHOUT_MXNET=1 pip install --no-cache-dir horovod
 ```
 
 ##### Verify that Horovod works
 
-```Bash
-python                                           #start python
+```console
+marie@compute$ python                                           #start python
+```
+```python
 import torch                                     #import pytorch
 import horovod.torch as hvd                      #import horovod
 hvd.init()                                       #initialize horovod
@@ -320,7 +327,7 @@ print('Hello from:', hvd.rank())
 If you want to use NCCL instead of MPI you can specify that in the
 install command after loading the NCCL module:
 
-```Bash
-module load NCCL/2.3.7-fosscuda-2018b
-HOROVOD_GPU_ALLREDUCE=NCCL HOROVOD_GPU_BROADCAST=NCCL HOROVOD_WITHOUT_TENSORFLOW=1 HOROVOD_WITH_PYTORCH=1 HOROVOD_WITHOUT_MXNET=1 pip install --no-cache-dir horovod
+```console
+marie@compute$ module load NCCL/2.3.7-fosscuda-2018b
+marie@compute$ HOROVOD_GPU_ALLREDUCE=NCCL HOROVOD_GPU_BROADCAST=NCCL HOROVOD_WITHOUT_TENSORFLOW=1 HOROVOD_WITH_PYTORCH=1 HOROVOD_WITHOUT_MXNET=1 pip install --no-cache-dir horovod
 ```
