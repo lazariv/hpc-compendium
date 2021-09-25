@@ -71,9 +71,8 @@ To install/update
 Dask on the system with using the
 [conda](https://www.anaconda.com/download/) follow the example:
 
-```bash
-srun -p ml -N 1 -n 1 --mem-per-cpu=5772 --gres=gpu:1 --time=04:00:00 --pty bash
-
+```console
+marie@login$ srun -p ml -N 1 -n 1 --mem-per-cpu=5772 --gres=gpu:1 --time=04:00:00 --pty bash
 ```
 
 Create a conda virtual environment. We would recommend
@@ -86,27 +85,29 @@ default). However, in accordance with the
 [HPC storage concept](../data_lifecycle/overview.md) please use a
 [workspaces](../data_lifecycle/workspaces.md) for your study and work projects.
 
-```bash
-conda create --prefix /scratch/ws/0/aabc1234-Workproject/conda-virtual-environment/dask-test python=3.6
+```console
+marie@compute$ conda create --prefix /scratch/ws/0/marie-Workproject/conda-virtual-environment/dask-test python=3.6
 ```
 
 By default, conda will locate the environment in your home directory:
 
-```bash
-conda create -n dask-test python=3.6
+```console
+marie@compute$ conda create -n dask-test python=3.6
 ```
 
 Activate the virtual environment, install Dask and verify the installation:
 
-```Bash
-ml modenv/ml
-ml PythonAnaconda/3.6
-conda activate /scratch/ws/0/aabc1234-Workproject/conda-virtual-environment/dask-test python=3.6
-which python
-which conda
-conda install dask
-python
+```console
+marie@compute$ ml modenv/ml
+marie@compute$ ml PythonAnaconda/3.6
+marie@compute$ conda activate /scratch/ws/0/marie-Workproject/conda-virtual-environment/dask-test python=3.6
+marie@compute$ which python
+marie@compute$ which conda
+marie@compute$ conda install dask
+marie@compute$ python                            #start python
+```
 
+```python
 from dask.distributed import Client, progress
 client = Client(n_workers=4, threads_per_worker=1)
 client
@@ -116,20 +117,21 @@ client
 
 You can install everything required for most common uses of Dask (arrays, dataframes, etc)
 
-```Bash
-srun -p ml -N 1 -n 1 --mem-per-cpu=5772 --gres=gpu:1 --time=04:00:00 --pty bash
+```console
+marie@login$ srun -p ml -N 1 -n 1 --mem-per-cpu=5772 --gres=gpu:1 --time=04:00:00 --pty bash
 
-cd /scratch/ws/0/aabc1234-Workproject/python-virtual-environment/dask-test
+marie@compute$ cd /scratch/ws/0/aabc1234-Workproject/python-virtual-environment/dask-test
 
-ml modenv/ml
-module load PythonAnaconda/3.6
-which python
+marie@compute$ ml modenv/ml
+marie@compute$ module load PythonAnaconda/3.6
+marie@compute$ which python
 
-python3 -m venv --system-site-packages dask-test
-source dask-test/bin/activate
-python -m pip install "dask[complete]"
+marie@compute$ python3 -m venv --system-site-packages dask-test
+marie@compute$ source dask-test/bin/activate
+marie@compute$ python -m pip install "dask[complete]"
+```
 
-python
+```python
 from dask.distributed import Client, progress
 client = Client(n_workers=4, threads_per_worker=1)
 client
@@ -153,13 +155,13 @@ nd does not scale. It's not interesting in the context of HPC.
 offers more features, but also requires a bit more effort to set up.
 It can run locally or distribute across a cluster
 
-### Distributed scheduler
+### Distributed Scheduler
 
 There are a variety of ways to set Distributed scheduler.
 However, dask.distributed scheduler will be used for many of them.
 To use the dask.distributed scheduler you must set up a Client:
 
-```Python
+```python
 from dask.distributed import Client
 client = Client(...)  # Connect to distributed cluster and override default
 df.x.sum().compute()  # This now runs on the distributed system
@@ -193,7 +195,7 @@ For more detailed information please check
 
 As was written before the preferred and simplest way to run Dask on HPC is
 to use [dask-jobqueue](https://jobqueue.dask.org/).
-It allows an easy deployment of Dask Distributed on HPC with SLURM
+It allows an easy deployment of Dask Distributed on HPC with Slurm
 or other job queuing systems.
 
 ##### Instalation of Dask-jobqueue
@@ -211,25 +213,27 @@ You can install dask-jobqueue with `pip` or `conda`
 
 ###### Installation with Pip
 
-```Bash
-srun -p haswell -N 1 -n 1 -c 4 --mem-per-cpu=2583 --time=01:00:00 --pty bash
-cd
-/scratch/ws/0/aabc1234-Workproject/python-virtual-environment/dask-test
-ml modenv/ml module load PythonAnaconda/3.6 which python
+```console
+marie@login$ srun -p haswell -N 1 -n 1 -c 4 --mem-per-cpu=2583 --time=01:00:00 --pty bash
+marie@compute$ cd /scratch/ws/0/marie-Workproject/python-virtual-environment/dask-test
+marie@compute$ ml modenv/ml 
+marie@compute$ module load PythonAnaconda/3.6 
+marie@compute$ which python
 
-source dask-test/bin/activate pip
-install dask-jobqueue --upgrade # Install everything from last released version
+marie@compute$ source dask-test/bin/activate              #Activate virtual environment
+marie@compute$ pip install dask-jobqueue --upgrade        #Install everything from last released version
 ```
 
 ###### Installation with Conda
 
-```Bash
-srun -p haswell -N 1 -n 1 -c 4 --mem-per-cpu=2583 --time=01:00:00 --pty bash
+```console
+marie@login$ srun -p haswell -N 1 -n 1 -c 4 --mem-per-cpu=2583 --time=01:00:00 --pty bash
 
-ml modenv/ml module load PythonAnaconda/3.6 source
-dask-test/bin/activate
+marie@compute$ ml modenv/ml 
+marie@compute$ module load PythonAnaconda/3.6 
+marie@compute$ source dask-test/bin/activate
 
-conda install dask-jobqueue -c conda-forge
+marie@compute$ conda install dask-jobqueue -c conda-forge
 ```
 
 ###### Example of use Dask-jobqueue with SLURMCluster
@@ -243,8 +247,7 @@ where the cluster object is instantiated.
 Please check the example of a definition of the cluster object
 for the alpha partition (queue at the dask terms) on ZIH system:
 
-```Python
-
+```python
 from dask_jobqueue import SLURMCluster
 
 cluster = SLURMCluster(queue='alpha', 
@@ -265,7 +268,7 @@ jobs using the scale command, e.g :`cluster.scale(2)`.
 Thus you have to specify a SLURMcluster by `dask-jobqueue`
 scale it and use it for your computations. There is an example:
 
-```Python
+```python
 from distributed import Client
 from dask_jobqueue import SLURMCluster
 from dask import delayed
@@ -280,7 +283,6 @@ cluster = SLURMCluster(queue='alpha',
 
 cluster.scale(2)             #scale it to 2 workers! 
 client = Client(cluster)     #command will show you number of workers (python objects corresponds to jobs)
-
 ```
 
 Please have a look at the `extra` parameter in the script above.
@@ -289,7 +291,7 @@ special hardware availability that the scheduler
 is not aware of, for example, GPUs.
 Please don't forget to specify the name of your project.
 
-The python code for setting up SLURM clusters
+The python code for setting up Slurm clusters
 and scaling clusters can be run by the `srun`
 (but remember that using `srun` directly on the shell
 blocks the shell and launches an
