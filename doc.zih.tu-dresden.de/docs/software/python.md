@@ -20,7 +20,7 @@ Note: You could work with simple examples in your home directory but according t
 [HPCStorageConcept2019](../data_lifecycle/overview.md) please use **workspaces**
 for your study and work projects.
 
-## Virtual environment
+## Virtual Environment
 
 There are two methods of how to work with virtual environments on
 on the ZIH system:
@@ -146,13 +146,13 @@ MPI provides a powerful, efficient and portable way to express parallel
 programs.
 Among many parallel computational models, message-passing has proven to be an effective one.
 
-### Parallel Python with mpi4py
+### Parallel Python with Mpi4py
 
 Mpi4py(MPI for Python) package provides bindings of the MPI standard for
 the python programming language, allowing any Python program to exploit
 multiple processors.
 
-#### Why use mpi4py?
+#### Why use Mpi4py?
 
 Mpi4py based on MPI-2 C++ bindings. It supports almost all MPI calls.
 This implementation is popular on Linux clusters and in the SciPy
@@ -234,7 +234,7 @@ less code changes than the distributed code from TensorFlow for
 instance, with parameter servers. Horovod uses MPI and NCCL which gives
 in some cases better results than pure TensorFlow and PyTorch.
 
-#### Horovod as a module
+#### Horovod as a Module
 
 Horovod is available as a module with **TensorFlow** or **PyTorch**for **all** module environments.
 Please check the [software module list](modules.md) for the current version of the software.
@@ -245,7 +245,7 @@ marie@compute$ ml av Horovod            #Check available modules with Python
 marie@compute$ module load Horovod      #Loading of the module
 ```
 
-#### Horovod installation
+#### Horovod Installation
 
 However, if it is necessary to use Horovod with **PyTorch** or use
 another version of Horovod it is possible to install it manually. To
@@ -298,7 +298,7 @@ marie@login$ git submodule update --init                                        
 marie@compute$ python setup.py install                                                       #install it with python
 ```
 
-##### Install Horovod for Pytorch with python and pip
+##### Install Horovod for Pytorch with Python and Pip
 
 In the example presented installation for the Pytorch without
 TensorFlow. Adapt as required and refer to the horovod documentation for
@@ -308,7 +308,7 @@ details.
 marie@compute$ HOROVOD_GPU_ALLREDUCE=MPI HOROVOD_WITHOUT_TENSORFLOW=1 HOROVOD_WITH_PYTORCH=1 HOROVOD_WITHOUT_MXNET=1 pip install --no-cache-dir horovod
 ```
 
-##### Verify that Horovod works
+##### Verify that Horovod Works
 
 ```console
 marie@compute$ python                                           #start python
@@ -322,7 +322,7 @@ hvd.rank()
 print('Hello from:', hvd.rank())
 ```
 
-##### Horovod with NCCL
+##### Horovod With NCCL
 
 If you want to use NCCL instead of MPI you can specify that in the
 install command after loading the NCCL module:
