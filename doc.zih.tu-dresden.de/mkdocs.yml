@@ -31,6 +31,7 @@ nav:
       - Singularity Recicpe Hints: software/singularity_recipe_hints.md
       - Singularity Example Definitions: software/singularity_example_definitions.md
       - VM tools: software/vm_tools.md
+      - NGC containers: software/ngc_containers.md
     - Applications:
       - Licenses: software/licenses.md
       - Computational Fluid Dynamics (CFD): software/cfd.md
