@@ -130,9 +130,3 @@ properly, use the following command:
 ```Bash
 $DC 'markdownlint docs'
 ```
-
-
-
-
-
-

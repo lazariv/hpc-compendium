@@ -222,13 +222,14 @@ drwxr-xr-x   3 marie p_marie      4096 Feb 12  2020 data
 If showing only a snippet of a long output, omissions are marked with `[...]`.
 
 ## Unix Rules
+
 Stick to the Unix rules on optional and required arguments, and selection of item sets:
 
 * `<required argument or value>`
 * `[optional argument or value]`
 * `{choice1|choice2|choice3}`
 
-# Graphics and Attachments
+## Graphics and Attachments
 
 All graphics and attachments are saved within `misc` directory of the respective sub directory in
 `docs`.
