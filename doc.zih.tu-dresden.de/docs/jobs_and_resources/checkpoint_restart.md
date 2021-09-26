@@ -15,11 +15,12 @@ queue.
 Here is an extreme example from literature for the waste of large computing resources due to missing
 checkpoints:
 
-*Earth was a supercomputer constructed to find the question to the answer to the Life, the Universe,
-and Everything by a race of hyper-intelligent pan-dimensional beings. Unfortunately 10 million years
-later, and five minutes before the program had run to completion, the Earth was destroyed by
-Vogons.* (Adams, D. The Hitchhikers Guide Through the Galaxy)
+!!! cite "Adams, D. The Hitchhikers Guide Through the Galaxy"
 
+    Earth was a supercomputer constructed to find the question to the answer to the Life, the Universe,
+    and Everything by a race of hyper-intelligent pan-dimensional beings. Unfortunately 10 million years
+    later, and five minutes before the program had run to completion, the Earth was destroyed by
+    Vogons.
 
 If you wish to do checkpointing, your first step should always be to check if your application
 already has such capabilities built-in, as that is the most stable and safe way of doing it.
