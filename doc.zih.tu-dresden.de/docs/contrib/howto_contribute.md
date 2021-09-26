@@ -30,4 +30,4 @@ refer to the corresponding documentation for further information.
 
 For experienced Git users, we provide a Docker containier that includes all checks of the CI engine
 used in the backend. Using them should ensure that mareg requests will not be blocked
-due to automatic checking. For details, see [Work Locally Using Containers](contrib/contribute_container) .
+due to automatic checking. For details, see [Work Locally Using Containers](contribute_container.md) .
