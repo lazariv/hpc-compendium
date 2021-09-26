@@ -4,7 +4,7 @@
 
 ## New Page and Pages Structure
 
-The pages structure is defined in the configuration file mkdocs.yaml:
+The pages structure is defined in the configuration file `mkdocs.yaml`:
 
 ```Bash
 docs/
@@ -14,7 +14,7 @@ docs/
   - Access to the Cluster: access.md
   - Available Software and Usage:
     - Overview: software/overview.md
-  ...
+  [...]
 ```
 
 To add a new page to the documentation follow these two steps:
