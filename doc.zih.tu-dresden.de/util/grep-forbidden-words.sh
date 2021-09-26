@@ -23,7 +23,7 @@ i	work[ -]\+space"
 
 # Whitelisted files will be ignored
 # Whitespace separated list with full path
-whitelist=(doc.zih.tu-dresden.de/docs/contrib/contrib_rules.md)
+whitelist=(doc.zih.tu-dresden.de/docs/contrib/content_rules.md)
 
 function grepExceptions () {
   if [ $# -gt 0 ]; then
