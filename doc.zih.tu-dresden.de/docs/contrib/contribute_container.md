@@ -7,8 +7,8 @@ Please follow this standard Git procedure for working with a local clone:
 1. Change to a local (unencrypted) filesystem. (We have seen problems running the container
 an ecryptfs filesystem. So you might
 want to use e.g. `/tmp` as root directory.)
-1. Get a clone of the Git: `git clone git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git`
-1. Change to the root of the Git colen: `cd hpc-compendium`
+1. Get a clone of the Git repository: `git clone git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git`
+1. Change to the root of the local clone: `cd hpc-compendium`
 1. Create a new feature branch for you to work in. Ideally name it like the file you want
 to modify. `git checkout -b <BRANCHNAME>`. (Navigation section can be found in `mkdocs.yaml`.)
 1. Add/correct the documentation with your preferred editor.
@@ -17,7 +17,7 @@ automatically by our CI pipeline.
 1. Commit the changes with `git commit -m "<DESCRIPTION>" <FILE LIST>`. Include a description
 of the change and a list of all changed files.
 1. Push the local changes to the global feature branch with `git push origin <BRANCHNAME>`.
-1. As an output you get a https link. Follow it to create the merge request against the preview branch.
+1. As an output you get a link to create a merge request against the preview branch.
 
 You can find the details and command in the next section.
 
@@ -34,7 +34,7 @@ run it only once in a while.
 
 ```Bash
 cd hpc-compendium
-docker build -t hpc-compendium . 
+docker build -t hpc-compendium .
 ```
 
 ## Working with the Docker Container
@@ -73,10 +73,11 @@ In our continuous integration (CI) pipeline, a merge request triggers the automa
 * correct spelling,
 * correct text format.
 
-If one of them fails the merge request will be recjected. To prevent this you can run these
+If one of them fails the merge request will be rejected. To prevent this you can run these
 checks locally and adapt your files accordingly.
 
 !!! note
+
     Remember to keep the local web server running in the other shell.
 
 First, change to the `hpc-compendium` directory and set the environment
@@ -124,8 +125,7 @@ To let the spell checker "know" a word, append it to
 
 #### Linter
 
-If you want to check whether the markdown files are formatted
-properly, use the following command:
+If you want to check whether the markdown files are formatted properly, use the following command:
 
 ```Bash
 $DC 'markdownlint docs'
