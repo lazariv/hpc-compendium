@@ -1,38 +1,33 @@
 # How To Contribute
 
-## Git Procedure
+## Contribute via Issue
 
-```Bash
-~ git clone git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git
-~ cd hpc-compendium
-~ git checkout preview
-```
+Users can contribute to the documentation via the
+[issue tracking system](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/issues).
+For that, open an issue to report typos and missing documentation or request for more precise
+wording etc.  ZIH staff will get in touch with you to resolve the issue and improve the
+documentation.
 
-## Transferring Content
+**Reminder:** Non-documentation issues and requests need to be send as ticket to
+[hpcsupport@zih.tu-dresden.de](mailto:hpcsupport@zih.tu-dresden.de).
 
-1. Grab a markdown source file from `twiki2md/root/` directory (a topic you are comfortable with)
-1. Find place in new structure according to
+## Contribute via Web IDE
 
-  * Create new feature branch holding your work `~ git checkout -b <BRANCHNAME>`, whereas
-  branch name can be `<FILENAME>` for simplicity
-  * Copy reviewed markdown source file to `docs/` directory via
-    `~ git mv twiki2md/root/<FILENAME>.md doc.zih.tu-dresden.de/docs/<SUBDIR>/<FILENAME>.md`
-  * Update navigation section in `mkdocs.yaml`
+GitLab offers a rich and versatile web interface to work with repositories. To fix typos and edit
+source files, just select the file of interest and click the `Edit` button. A text and commit
+editor are invoked: Do your changes, add a meaningful commit message and commit the changes.
 
-1. Commit and push to feature branch via
+The more sophisticated integrated Web IDE is reached from the top level menu of the repository or
+by selecting any source file.
 
-```Bash
-~ git commit docs/<SUBDIR>/<FILENAME>.md mkdocs.yaml -m "MESSAGE"
-~ git push origin <BRANCHNAME>
-```
+Other git services might have an equivalent web interface to interact with the repository. Please
+refer to the corresponding documentation for further information.
 
-1. Run checks locally and fix the issues. Otherwise the pipeline will fail.
+<!--This option of contributing is only available for users of-->
+<!--[gitlab.hrz.tu-chemnitz.de](https://gitlab.hrz.tu-chemnitz.de). Furthermore, -->
 
-    * [Check links](contrib_guide.md#check-links) (There might be broken links which can only be solved
-        with ongoing transfer of content.)
-    * [Check pages structure](contrib_guide.md#check-pages-structure)
-    * [Markdown Linter](contrib_guide.md#markdown-linter)
+## Contribute Using Git Locally
 
-1. Create
-  [merge request](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/merge_requests)
-   against `preview` branch
+For experienced Git users, we provide a Docker containier that includes all checks of the CI engine
+used in the backend. Using them should ensure that mareg requests will not be blocked
+due to automatic checking. For details, see [Work Locally Using Containers](contrib/contribute_container) .
