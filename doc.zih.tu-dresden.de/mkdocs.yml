@@ -134,7 +134,7 @@ nav:
     - VampirTrace: archive/vampirtrace.md
     - Windows Batchjobs: archive/windows_batch.md
   - Contribute:
-    - Howto: contrib/howto_contribute.md
+    - How-To: contrib/howto_contribute.md
     - Content Rules: contrib/content_rules.md
     - Work Locally Using Containers: contrib/contribute_container.md
     
