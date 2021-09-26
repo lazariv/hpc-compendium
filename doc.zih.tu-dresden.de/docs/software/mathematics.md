@@ -1,10 +1,8 @@
 # Mathematics Applications
 
-!!! cite
+!!! cite "Galileo Galilei
 
     Nature is written in mathematical language.
-
-    (Galileo Galilei)
 
 <!--*Please do not run expensive interactive sessions on the login nodes.  Instead, use* `srun --pty-->
 <!--...` *to let the batch system place it on a compute node.*-->
