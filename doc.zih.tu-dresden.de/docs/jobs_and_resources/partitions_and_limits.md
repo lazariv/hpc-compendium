@@ -6,7 +6,7 @@ resources, like memory (but not CPU). On the other hand, a higher throughput can
 smaller jobs. Thus, restrictions w.r.t. [memory](#memory-limits) and
 [runtime limits](#runtime-limits) have to be respected when submitting jobs.
 
-### Runtime Limits
+## Runtime Limits
 
 !!! note "Runtime limits are enforced."
 
