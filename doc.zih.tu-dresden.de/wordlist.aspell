@@ -9,8 +9,10 @@ benchmarking
 BLAS
 broadwell
 bsub
+bullx
 ccNUMA
 centauri
+CentOS
 citable
 conda
 CPU
@@ -30,6 +32,7 @@ DFG
 DistributedDataParallel
 DockerHub
 Dockerfile
+Dockerfiles
 dockerized
 EasyBuild
 ecryptfs
@@ -49,6 +52,8 @@ GBit
 GFLOPS
 gfortran
 GiB
+GitHub
+glibc
 gnuplot
 GPU
 GPUs
@@ -142,6 +147,7 @@ queue
 randint
 reachability
 README
+RHEL
 Rmpi
 rome
 romeo
@@ -196,6 +202,7 @@ VampirTrace's
 vectorization
 venv
 virtualenv
+VirtualGL
 WebVNC
 WinSCP
 Workdir
