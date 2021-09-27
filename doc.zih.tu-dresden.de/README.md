@@ -141,7 +141,7 @@ documentation.  If you want to check whether the markdown files are formatted
 properly, use the following command:
 
 ```Bash
-docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium markdownlint docs
+docker run --name=hpc-compendium --rm -it -w /docs/doc.zih.tu-dresden.de --mount src="$(pwd)",target=/docs,type=bind hpc-compendium markdownlint docs
 ```
 
 To check whether there are links that point to a wrong target, use
@@ -160,13 +160,13 @@ docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.
 For spell-checking a single file, use:
 
 ```Bash
-docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium ./util/check-spelling.sh <file>
+docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)",target=/docs,type=bind hpc-compendium ./doc.zih.tu-dresden.de/util/check-spelling.sh <file>
 ```
 
 For spell-checking all files, use:
 
 ```Bash
-docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium ./util/check-spelling.sh
+docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)",target=/docs,type=bind hpc-compendium ./doc.zih.tu-dresden.de/util/check-spelling.sh
 ```
 
 This outputs all words of all files that are unknown to the spell checker.
