@@ -111,7 +111,7 @@ You can create a new custom container on your workstation, if you have root righ
 
     You cannot create containers for the partition `ml`, as it bases on Power9 micro-architecture
     which is different to the x86 architecture in common computers/laptops. For that you can use
-    the [VM Tools](vm_tools.md).
+    the [VM Tools](virtual_machines_tools.md).
 
 Creating a container is done by writing a **definition file** and passing it to
 
