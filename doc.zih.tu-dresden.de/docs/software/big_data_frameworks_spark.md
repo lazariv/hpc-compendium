@@ -161,7 +161,7 @@ run your Jupyter notebook on HPC nodes (the preferable way).
 ### Preparation
 
 If you want to run Spark in Jupyter notebooks, you have to prepare it first. This is comparable
-to [normal python virtual environments](../software/python_virtual_environments.md#python-virtual-environment).
+to [normal Python virtual environments](../software/python_virtual_environments.md#python-virtual-environment).
 You start with an allocation:
 
 ```console

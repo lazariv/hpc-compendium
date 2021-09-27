@@ -148,7 +148,7 @@ is a library specification that allows HPC to pass information between its vario
 clusters. MPI is designed to provide access to advanced parallel hardware for end-users, library
 writers and tool developers.
 
-mpi4py (MPI for Python) provides bindings of the MPI standard for the python programming
+mpi4py (MPI for Python) provides bindings of the MPI standard for the Python programming
 language, allowing any Python program to exploit multiple processors.
 
 mpi4py is based on MPI-2 C++ bindings. It supports almost all MPI calls. This implementation is
