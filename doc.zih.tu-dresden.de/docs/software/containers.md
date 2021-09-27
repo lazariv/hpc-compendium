@@ -34,8 +34,8 @@ execution. Follow the instructions for [locally install Singularity](#local-inst
 [container creation](#container-creation).  Moreover, existing Docker container can easily be
 converted, which is documented [here](#importing-a-docker-container).
 
-If you are already familar with Singularity, you might be more intressted in our [singularity recipe
-hints](singularity_recipe_hints.md).
+If you are already familar with Singularity, you might be more intressted in our [singularity
+recipes and hints](singularity_recipe_hints.md).
 
 <!--ZIH wiki sites:-->
 

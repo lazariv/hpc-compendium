@@ -30,8 +30,7 @@ nav:
       - Python Virtual Environments: software/python_virtual_environments.md
     - Containers:
       - Singularity: software/containers.md
-      - Singularity Recipe Hints: software/singularity_recipe_hints.md
-      - Singularity Example Definitions: software/singularity_example_definitions.md
+      - Singularity Recipes and Hints: software/singularity_recipe_hints.md
       - VM tools: software/vm_tools.md
     - Applications:
       - Licenses: software/licenses.md
