@@ -38,18 +38,8 @@ converted, which is documented [here](#importing-a-docker-container).
 If you are already familar with Singularity, you might be more intressted in our [singularity
 recipes and hints](singularity_recipe_hints.md).
 
-<!--ZIH wiki sites:-->
-
-<!--- [Example Definitions](singularity_example_definitions.md)-->
-<!--- [Building Singularity images on Taurus](vm_tools.md)-->
-<!--- [Hints on Advanced usage](singularity_recipe_hints.md)-->
-
-<!--It is available on Taurus without loading any module.-->
-
 ### Local Installation
 
-<!--Containers can be created on your local workstation and moved to the HPC system for execution. This-->
-<!--requires a local installation of Singularity. The easiest way to do so is:-->
 The local installation of Singularity comprises two steps: Make `go` available and then follow the
 instructions from the official documentation to install Singularity.
 
@@ -172,7 +162,7 @@ https://github.com/singularityware/singularity/tree/master/examples.
 !!! hint
 
     As opposed to bootstrapping a container, importing from Docker does **not require root
-    privileges** and therefore works on Taurus directly.
+    privileges** and therefore works on ZIH systems directly.
 
 You can import an image directly from the Docker repository (Docker Hub):
 
@@ -286,7 +276,7 @@ Singularity.my-container.sif> yum install htop
 
 The `-w` parameter should only be used to make permanent changes to your container, not for your
 productive runs (it can only be used writable by one user at the same time). You should write your
-output to the usual Taurus file systems like `/scratch`. Launching applications in your container
+output to the usual ZIH filesystems like `/scratch`. Launching applications in your container
 
 #### Run a Command Inside the Container
 
