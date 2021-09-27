@@ -30,9 +30,9 @@ nav:
       - Python Virtual Environments: software/python_virtual_environments.md
     - Containers:
       - Singularity: software/containers.md
-      - Singularity Recicpe Hints: software/singularity_recipe_hints.md
-      - Singularity Example Definitions: software/singularity_example_definitions.md
-      - VM tools: software/vm_tools.md
+      - Singularity Recipes and Hints: software/singularity_recipe_hints.md
+      - Virtual Machines Tools: software/virtual_machines_tools.md
+      - Virtual Machines: software/virtual_machines.md
     - Applications:
       - Licenses: software/licenses.md
       - Computational Fluid Dynamics (CFD): software/cfd.md
@@ -55,7 +55,6 @@ nav:
       - Hyperparameter Optimization (OmniOpt): software/hyperparameter_optimization.md
       - PowerAI: software/power_ai.md
     - SCS5 Migration Hints: software/scs5_software.md
-    - Virtual Machines: software/virtual_machines.md
     - Virtual Desktops: software/virtual_desktops.md
     - Software Development and Tools:
       - Overview: software/software_development_overview.md
