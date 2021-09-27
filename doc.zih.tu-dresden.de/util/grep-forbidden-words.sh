@@ -17,7 +17,6 @@ s	\<SLURM\>
 i	file \+system	HDFS
 i	\<taurus\>	taurus\.hrsk	/taurus
 i	\<hrskii\>
-i	hpc \+system
 i	hpc[ -]\+da\>
 i	work[ -]\+space"
 
