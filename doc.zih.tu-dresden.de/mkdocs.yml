@@ -19,7 +19,7 @@ nav:
     - Security Restrictions: access/security_restrictions.md
   - Transfer of Data:
     - Overview: data_transfer/overview.md
-    - Data Mover: data_transfer/datamover.md
+    - Datamover: data_transfer/datamover.md
     - Export Nodes: data_transfer/export_nodes.md
   - Environment and Software:
     - Overview: software/overview.md
