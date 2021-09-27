@@ -1,8 +1,8 @@
 personal_ws-1.1 en 203 
 Altix
 Amdahl's
-Analytics
 analytics
+Analytics
 anonymized
 APIs
 BeeGFS
@@ -31,8 +31,8 @@ DDP
 DDR
 DFG
 DistributedDataParallel
-DockerHub
 Dockerfile
+DockerHub
 dockerized
 EasyBuild
 ecryptfs
@@ -139,8 +139,8 @@ Perf
 PESSL
 PGI
 PiB
-Pika
 pickleable
+Pika
 pipelining
 png
 PowerAI
@@ -204,8 +204,8 @@ VampirTrace
 VampirTrace's
 vectorization
 venv
-Virtualenv
 virtualenv
+Virtualenv
 WebVNC
 WinSCP
 Workdir
