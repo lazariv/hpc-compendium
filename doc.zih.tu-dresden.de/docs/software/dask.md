@@ -5,11 +5,11 @@ Dask is a flexible library for parallel
 computing in Python.
 
 Dask natively scales Python.
-It provides advanced parallelism for analytics, enabling performance at
+It provides advanced parallelism, enabling performance at
 scale for some of the popular tools.
-For instance: Dask arrays scale Numpy workflows, Dask
+For instance: Dask arrays scale NumPy workflows, Dask
 dataframes scale Pandas workflows,
-Dask-ML scales machine learning APIs like Scikit-Learn and
+Dask-ML scales machine learning programming interfaces like Scikit-Learn and
 XGBoost.
 
 Dask is composed of two parts:
@@ -43,12 +43,12 @@ ZIH system for all software environments (scs5, ml, hiera(alpha)).
 To load the module for the corresponding
 software environment: `ml dask`
 
-Please check the SoftwareModulesList for the modules availability.
+Please check the modules availability.
 
 The `module spider <name_of_the module>` command
 will show you all available modules for
 all software partitions with this name.
-For detailed information about a specific "dask" package
+For detailed information about a specific "Dask" package
 (including how to load the modules) use
 the module's full name, e.g:
 `module spider dask/2.8.0-Python-3.7.4`
@@ -62,7 +62,7 @@ module.
 
 ### Installation Using Conda
 
-Moreover, it is possible to install and use dask in your local conda
+Moreover, it is possible to install and use Dask in your local conda
 environment:
 
 Dask is installed by default in
@@ -76,14 +76,14 @@ marie@login$ srun -p ml -N 1 -n 1 --mem-per-cpu=5772 --gres=gpu:1 --time=04:00:0
 ```
 
 Create a conda virtual environment. We would recommend
-using a workspace. See the example (use
+using a Workspace. See the example (use
 `--prefix` flag to specify the directory).
 
 **Note:** You could work with simple examples
 in your home directory (where you are loading by
 default). However, in accordance with the
 [HPC storage concept](../data_lifecycle/overview.md) please use a
-[workspaces](../data_lifecycle/workspaces.md) for your study and work projects.
+[Workspace](../data_lifecycle/workspaces.md) for your study and work projects.
 
 ```console
 marie@compute$ conda create --prefix /scratch/ws/0/marie-Workproject/conda-virtual-environment/dask-test python=3.6
@@ -158,8 +158,8 @@ It can run locally or distribute across a cluster
 ### Distributed Scheduler
 
 There are a variety of ways to set Distributed scheduler.
-However, dask.distributed scheduler will be used for many of them.
-To use the dask.distributed scheduler you must set up a Client:
+However, `dask.distributed` scheduler will be used for many of them.
+To use the `dask.distributed` scheduler you must set up a Client:
 
 ```python
 from dask.distributed import Client
@@ -168,7 +168,7 @@ df.x.sum().compute()  # This now runs on the distributed system
 ```
 
 The idea behind the Dask is to scale Python and
-distribute it among the workers (multiple maschines, jobs).
+distribute it among the workers (multiple machines, jobs).
 There are different ways to do that
 (for a single machine or for distributed cluster).
 This page will be focus mainly on Dask for HPC.
@@ -177,10 +177,10 @@ The preferred and simplest way to run Dask on ZIH systems
 today both for new or experienced users
 is to use **[dask-jobqueue](https://jobqueue.dask.org/)**.
 
-However, dask-jobqueue is slightly oriented toward
+However, Dask-jobqueue is slightly oriented toward
 interactive analysis
 usage, and it might be better to use tools like
-**[dask-mpi](https://docs.dask.org/en/latest/setup/hpc.html#using-mpi)**
+**[Dask-mpi](https://docs.dask.org/en/latest/setup/hpc.html#using-mpi)**
 in some routine batch production workloads.
 
 #### Dask-mpi
@@ -194,22 +194,22 @@ For more detailed information please check
 #### Dask-jobqueue
 
 As was written before the preferred and simplest way to run Dask on HPC is
-to use [dask-jobqueue](https://jobqueue.dask.org/).
+to use [Dask-jobqueue](https://jobqueue.dask.org/).
 It allows an easy deployment of Dask Distributed on HPC with Slurm
 or other job queuing systems.
 
-##### Instalation of Dask-jobqueue
+##### Installation of Dask-jobqueue
 
-`Dask-jobqueue` is available as an extension
-for a dask module (which can be loaded by: `module load dask`)
+Dask-jobqueue is available as an extension
+for a Dask module (which can be loaded by: `module load dask`)
 
-The availability of the exact packages (such a dask-jobqueue)
+The availability of the exact packages (such a Dask-jobqueue)
 in the module can be checked by the
 `module whatis <name_of_the_module> command`.
 
 Moreover, it is possible to install and use `dask-jobqueue`
 in you local environments.
-You can install dask-jobqueue with `pip` or `conda`
+You can install Dask-jobqueue with `pip` or `conda`
 
 ###### Installation with Pip
 
@@ -265,7 +265,7 @@ rather than the characteristics of your computation as a whole.
 It hasn’t actually launched any jobs yet.
 For the full computation, you will then ask for a number of
 jobs using the scale command, e.g :`cluster.scale(2)`.
-Thus you have to specify a SLURMcluster by `dask-jobqueue`
+Thus you have to specify a SLURMCluster by `dask-jobqueue`
 scale it and use it for your computations. There is an example:
 
 ```python
