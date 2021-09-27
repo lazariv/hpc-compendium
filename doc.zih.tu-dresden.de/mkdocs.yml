@@ -133,6 +133,10 @@ nav:
     - UNICORE Rest API: archive/unicore_rest_api.md
     - VampirTrace: archive/vampirtrace.md
     - Windows Batchjobs: archive/windows_batch.md
+  - Contribute:
+    - How-To: contrib/howto_contribute.md
+    - Content Rules: contrib/content_rules.md
+    - Work Locally Using Containers: contrib/contribute_container.md
     
 # Project Information
 site_name: ZIH HPC Compendium
