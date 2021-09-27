@@ -35,11 +35,11 @@ bash-4.2$
 
 ## Access a Virtual Machine
 
-Since the a security issue on ZIH systems, we restricted the filesystem permissions. Now you have to wait
-until the file `/tmp/${SLURM_JOB_USER}\_${SLURM_JOB_ID}/activate` is created, then you can try to
-connect via `ssh` into the virtual machine, but it could be that the virtual machine needs some more
-seconds to boot and start the SSH daemon. So you may need to try the `ssh` command multiple times
-till it succeeds.
+Since the a security issue on ZIH systems, we restricted the filesystem permissions. Now you have to
+wait until the file `/tmp/${SLURM_JOB_USER}\_${SLURM_JOB_ID}/activate` is created, then you can try
+to connect via `ssh` into the virtual machine, but it could be that the virtual machine needs some
+more seconds to boot and start the SSH daemon. So you may need to try the `ssh` command multiple
+times till it succeeds.
 
 ```console
 bash-4.2$ cat /tmp/marie_2759627/activate
