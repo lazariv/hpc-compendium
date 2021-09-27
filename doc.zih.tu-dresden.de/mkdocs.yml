@@ -31,7 +31,8 @@ nav:
     - Containers:
       - Singularity: software/containers.md
       - Singularity Recipes and Hints: software/singularity_recipe_hints.md
-      - VM tools: software/vm_tools.md
+      - Virtual Machines Tools: software/virtual_machines_tools.md
+      - Virtual Machines: software/virtual_machines.md
     - Applications:
       - Licenses: software/licenses.md
       - Computational Fluid Dynamics (CFD): software/cfd.md
@@ -54,7 +55,6 @@ nav:
       - Hyperparameter Optimization (OmniOpt): software/hyperparameter_optimization.md
       - PowerAI: software/power_ai.md
     - SCS5 Migration Hints: software/scs5_software.md
-    - Virtual Machines: software/virtual_machines.md
     - Virtual Desktops: software/virtual_desktops.md
     - Software Development and Tools:
       - Overview: software/software_development_overview.md

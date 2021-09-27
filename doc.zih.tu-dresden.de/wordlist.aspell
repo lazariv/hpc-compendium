@@ -148,6 +148,7 @@ queue
 randint
 reachability
 README
+reproducibility
 RHEL
 Rmpi
 rome
@@ -180,6 +181,7 @@ SMT
 squeue
 srun
 ssd
+SSHFS
 stderr
 stdout
 SUSE
@@ -204,6 +206,7 @@ vectorization
 venv
 virtualenv
 VirtualGL
+VMs
 WebVNC
 WinSCP
 Workdir

@@ -12,11 +12,12 @@ Singularity. Information about the use of Singularity on ZIH systems can be foun
 In some cases using Singularity requires a Linux machine with root privileges (e.g. using the
 partition `ml`), the same architecture and a compatible kernel. For many reasons, users on ZIH
 systems cannot be granted root permissions. A solution is a Virtual Machine (VM) on the partition
-`ml` which allows users to gain root permissions in an isolated environment. The corresponding
-documentation can be found [here](virtual_machines.md).
+`ml` which allows users to gain root permissions in an isolated environment.  There are two main
+options on how to work with Virtual Machines on ZIH systems:
 
-<!--1. [VM tools](vm_tools.md): Automative algorithms for using virtual machines;-->
-<!--1. [Manual method](virtual_machines.md): It required more operations but gives you more flexibility and reliability.-->
+1. [VM tools](virtual_machines_tools.md): Automative algorithms for using virtual machines;
+1. [Manual method](virtual_machines.md): It requires more operations but gives you more flexibility
+   and reliability.
 
 ## Singularity
 
