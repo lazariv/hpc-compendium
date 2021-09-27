@@ -105,8 +105,6 @@ mpicxx
 mpif
 mpifort
 mpirun
-Mpi4py
-mpi4py
 multicore
 multithreaded
 natively
