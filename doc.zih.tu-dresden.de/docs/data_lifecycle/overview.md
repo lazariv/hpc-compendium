@@ -10,7 +10,7 @@ uniformity of the project can be achieved by taking into account and setting up 
 
 The used set of software within an HPC project can be management with environments on different
 levels either defined by [modules](../software/modules.md), [containers](../software/containers.md)
-or by [Python virtual environments](../software/python.md).
+or by [Python virtual environments](../software/python_virtual_environments.md).
 In the following, a brief overview on relevant topics w.r.t. data life cycle management is provided.
 
 ## Data Storage and Management
@@ -21,7 +21,7 @@ properly:
   * use a `/home` directory for the limited amount of personal data, simple examples and the results
     of calculations. The home directory is not a working directory! However, `/home` filesystem is
     [backed up](#backup) using snapshots;
-  * use `workspaces` as a place for working data (i.e. datasets); Recommendations of choosing the
+  * use `workspaces` as a place for working data (i.e. data sets); Recommendations of choosing the
     correct storage system for workspace presented below.
 
 ### Taxonomy of Filesystems
@@ -30,15 +30,17 @@ It is important to design your data workflow according to characteristics, like 
 (bandwidth/IOPS) of the application, size of the data, (number of files,) and duration of the
 storage to efficiently use the provided storage and filesystems.
 The page [filesystems](file_systems.md) holds a comprehensive documentation on the different
-filesystems.  <!--In general, the mechanisms of so-called--> <!--[Workspaces](workspaces.md) are
-compulsory for all HPC users to store data for a defined duration ---> <!--depending on the
-requirements and the storage system this time span might range from days to a few--> <!--years.-->
-<!--- [HPC filesystems](file_systems.md)--> <!--- [Intermediate
-Archive](intermediate_archive.md)--> <!--- [Special data containers] **todo** Special data
-containers (was no valid link in old compendium)--> <!--- [Move data between filesystems]
-(../data_transfer/data_mover.md)--> <!--- [Move data to/from ZIH's filesystems]
-(../data_transfer/export_nodes.md)--> <!--- [Longterm Preservation for
-ResearchData](preservation_research_data.md)-->
+filesystems.
+<!--In general, the mechanisms of
+so-called--> <!--[Workspaces](workspaces.md) are compulsory for all HPC users to store data for a
+defined duration ---> <!--depending on the requirements and the storage system this time span might
+range from days to a few--> <!--years.-->
+<!--- [HPC filesystems](file_systems.md)-->
+<!--- [Intermediate Archive](intermediate_archive.md)-->
+<!--- [Special data containers] **todo** Special data containers (was no valid link in old compendium)-->
+<!--- [Move data between filesystems](../data_transfer/data_mover.md)-->
+<!--- [Move data to/from ZIH's filesystems](../data_transfer/export_nodes.md)-->
+<!--- [Longterm Preservation for ResearchData](preservation_research_data.md)-->
 
 !!! hint "Recommendations to choose of storage system"
 
@@ -68,7 +70,7 @@ files can be restored directly by the users. Details can be found
 
 ### Folder Structure and Organizing Data
 
-Organizing of living data using the filesystem helps for consistency and structuredness of the
+Organizing of living data using the filesystem helps for consistency of the
 project. We recommend following the rules for your work regarding:
 
   * Organizing the data: Never change the original data; Automatize the organizing the data; Clearly
@@ -79,7 +81,7 @@ project. We recommend following the rules for your work regarding:
     don’t replace documentation and metadata; Use standards of your discipline; Make rules for your
     project, document and keep them (See the [README recommendations]**todo link** below)
 
-This is the example of an organisation (hierarchical) for the folder structure. Use it as a visual
+This is the example of an organization (hierarchical) for the folder structure. Use it as a visual
 illustration of the above:
 
 ![Organizing_Data-using_file_systems.png](misc/Organizing_Data-using_file_systems.png)
@@ -142,7 +144,7 @@ you don’t need throughout its life cycle.
 
 <!--### Python Virtual Environment-->
 
-<!--If you are working with the Python then it is crucial to use the virtual environment on ZIH Systems. The-->
+<!--If you are working with the Python then it is crucial to use the virtual environment on ZIH systems. The-->
 <!--main purpose of Python virtual environments (don't mess with the software environment for modules)-->
 <!--is to create an isolated environment for Python projects (self-contained directory tree that-->
 <!--contains a Python installation for a particular version of Python, plus a number of additional-->
@@ -170,6 +172,5 @@ changing permission command (i.e `chmod`) valid for ZIH systems as well. The **g
 contains members of your project group. Be careful with 'write' permission and never allow to change
 the original data.
 
-Useful links: [Data Management]**todo link**, [Filesystems]**todo link**, [Get Started with
-HPC Data Analytics]**todo link**, [Project Management]**todo link**, [Preservation research
-data[**todo link**
+Useful links: [Data Management]**todo link**, [Filesystems]**todo link**,
+[Project Management]**todo link**, [Preservation research data[**todo link**
