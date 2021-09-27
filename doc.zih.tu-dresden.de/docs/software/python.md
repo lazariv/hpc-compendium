@@ -7,19 +7,19 @@ libraries which give more useful functionalities and allow use all
 features of Python and to avoid minuses.
 
 **Prerequisites:** To work with PyTorch you obviously need [access](../access/ssh_login.md) for the
-ZIH system and basic knowledge about Python, Numpy and Slurm system.
+ZIH system and basic knowledge about Python, NumPy and Slurm system.
 
 **Aim** of this page is to introduce users on how to start working with Python on the
 [High-Performance Computing and Data Analytics](../jobs_and_resources/power9.md)
 system -  part of the TU Dresden ZIH system.
 
 There are three main options on how to work with Keras and
-Tensorflow on the ZIH system: 1. Modules; 2.
+TensorFlow on the ZIH system: 1. Modules; 2.
 [JupyterNotebook](../access/jupyterhub.md); 3.[Containers](containers.md). The main way is using
 the [Modules system](modules.md) and Python virtual environment.
 
 Note: You could work with simple examples in your home directory but according to
-[HPCStorageConcept2019](../data_lifecycle/overview.md) please use **workspaces**
+[data life cycle](../data_lifecycle/overview.md) please use **Workspace**
 for your study and work projects.
 
 ## Virtual Environment
@@ -41,12 +41,12 @@ with the virtual environments previously created with conda tool and
 vice versa! Prefer virtualenv whenever possible.
 
 This example shows how to start working
-with **Virtualenv** and Python virtual environment (using the module system)
+with **virtualenv** and Python virtual environment (using the module system)
 
 ```console
 marie@login$ srun -p ml -N 1 -n 1 -c 7 --mem-per-cpu=5772 --gres=gpu:1 --time=04:00:00 --pty bash   #Job submission in ml nodes with 1 gpu on 1 node.
 
-marie@compute$ mkdir python-environments        # Optional: Create folder. Please use Workspaces!
+marie@compute$ mkdir python-environments        # Optional: Create folder. Please use Workspace!
 
 marie@compute$ module load modenv/ml            # Changing the environment. Example output: The following have been reloaded with a version change: 1 modenv/scs5 => modenv/ml
 marie@compute$ ml av Python                     #Check the available modules with Python
@@ -64,7 +64,7 @@ deactivate                                                     #Leave the virtua
 ```
 
 The [virtualenv](https://virtualenv.pypa.io/en/latest/) Python module (Python 3) provides support
-for creating virtual environments with their own sitedirectories, optionally isolated from system
+for creating virtual environments with their own site directories, optionally isolated from system
 site directories. Each virtual environment has its own Python binary (which matches the version of
 the binary that was used to create this environment) and can have its own independent set of
 installed Python packages in its site directories. This allows you to manage separate package
@@ -74,7 +74,7 @@ simply create a new virtual environment and not have to worry about breaking the
 in other environments.
 
 In your virtual environment, you can use packages from the (Complete List of
-Modules)(SoftwareModulesList) or if you didn't find what you need you can install required packages
+Modules for the ZIH system) or if you didn't find what you need you can install required packages
 with the command: `pip install`. With the command `pip freeze`, you can see a list of all installed
 packages and their versions.
 
@@ -94,7 +94,7 @@ marie@compute$ which python                                #check which python a
 marie@compute$ conda create -n conda-testenv python=3.6        #create virtual environment with the name conda-testenv and Python version 3.6
 marie@compute$ conda activate conda-testenv                    #activate conda-testenv virtual environment
 
-marie@compute$ conda deactivate                                #Leave the virtual environment
+marie@compute$ conda deactivate                                #Leave the virtual environmentJ
 ```
 
 You can control where a conda environment
@@ -117,20 +117,20 @@ the parameters directly into the job file which you can submit using
 
 Jupyter notebooks are a great way for interactive computing in your web
 browser. Jupyter allows working with data cleaning and transformation,
-numerical simulation, statistical modelling, data visualization and of
+numerical simulation, statistical modeling, data visualization and of
 course with machine learning.
 
 There are two general options on how to work Jupyter notebooks using
 HPC.
 
 On the ZIH system, there is [JupyterHub](../access/jupyterhub.md) where you can simply run your Jupyter
-notebook on HPC nodes. Also, you can run a remote jupyter server within a sbatch GPU job and with
+notebook on HPC nodes. Also, you can run a remote Jupyter server within a sbatch GPU job and with
 the modules and packages you need. The manual server setup you can find [here](deep_learning.md).
 
-With Jupyterhub you can work with general
+With JupyterHub you can work with general
 data analytics tools. This is the recommended way to start working with
 the ZIH system. However, some special instruments could not be available on
-the Jupyterhub.
+the JupyterHub.
 
 **Keep in mind that the remote Jupyter server can offer more freedom with settings and approaches.**
 
@@ -166,8 +166,8 @@ optimized communication of NumPy arrays.
 Mpi4py is included as an extension of the SciPy-bundle modules on
 the ZIH system for all software environments (scs5, ml, hiera(alpha)).
 
-Please check the SoftwareModulesList for the modules availability.
-The availability of the mpi4py
+Please check the modules availability.
+The availability of the Mpi4py
 in the module, you can check by
 the `module whatis <name_of_the module>` command. The `module whatis`
 command displays short information and included extensions of the
@@ -181,7 +181,7 @@ For detailed information about a specific "mpi4py" package
 the module's full name, e.g:
 `module spider mpi4py/3.0.3`
 
-Moreover, it is possible to install mpi4py in your local conda
+Moreover, it is possible to install Mpi4py in your local conda
 environment:
 
 ```console
@@ -231,7 +231,7 @@ TensorFlow.
 
 #### Why use Horovod?
 
-Horovod allows you to easily take a single-GPU TensorFlow and Pytorch
+Horovod allows you to easily take a single-GPU TensorFlow and PyTorch
 program and successfully train it on many GPUs! In
 some cases, the MPI model is much more straightforward and requires far
 less code changes than the distributed code from TensorFlow for
@@ -257,7 +257,7 @@ install Horovod you need to create a virtual environment and load the
 dependencies (e.g. MPI). Installing PyTorch can take a few hours and is
 not recommended
 
-**Note:** You could work with simple examples in your home directory but **please use workspaces
+**Note:** You could work with simple examples in your home directory but **please use Workspace
 for your study and work projects** (see the Storage concept).
 
 Setup:
@@ -288,11 +288,11 @@ conda create --prefix=<location_for_your_environment> python=3.6 anaconda       
 conda activate  <location_for_your_environment>                                           #activate virtual environment
 ```
 
-Install Pytorch (not recommended)
+Install PyTorch (not recommended)
 
 ```console
 marie@login$ cd /tmp
-marie@login$ git clone https://github.com/pytorch/pytorch                                  #clone Pytorch from the source
+marie@login$ git clone https://github.com/pytorch/pytorch                                  #clone PyTorch from the source
 marie@login$ cd pytorch                                                                    #go to folder
 marie@login$ git checkout v1.7.1                                                           #Checkout version (example: 1.7.1)
 marie@login$ git submodule update --init                                                   #Update dependencies
@@ -302,10 +302,10 @@ marie@login$ git submodule update --init                                        
 marie@compute$ python setup.py install                                                       #install it with python
 ```
 
-##### Install Horovod for Pytorch with Python and Pip
+##### Install Horovod for PyTorch with Python and Pip
 
-In the example presented installation for the Pytorch without
-TensorFlow. Adapt as required and refer to the horovod documentation for
+In the example presented installation for the PyTorch without
+TensorFlow. Adapt as required and refer to the Horovod documentation for
 details.
 
 ```console
@@ -319,9 +319,9 @@ marie@compute$ python                                           #start python
 ```
 
 ```python
-import torch                                     #import pytorch
-import horovod.torch as hvd                      #import horovod
-hvd.init()                                       #initialize horovod
+import torch                                     #import PyTorch
+import horovod.torch as hvd                      #import Horovod
+hvd.init()                                       #initialize Horovod
 hvd.size()
 hvd.rank()
 print('Hello from:', hvd.rank())
