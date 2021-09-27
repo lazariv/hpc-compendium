@@ -13,10 +13,12 @@ bullx
 ccNUMA
 centauri
 CentOS
+Chemnitz
 citable
 conda
 CPU
 CPUs
+css
 CSV
 CUDA
 cuDNN
@@ -52,6 +54,9 @@ GBit
 GFLOPS
 gfortran
 GiB
+gifferent
+GitLab
+GitLab's
 GitHub
 glibc
 gnuplot
@@ -64,6 +69,7 @@ Horovod
 hostname
 HPC
 HPL
+html
 hyperparameter
 hyperparameters
 icc
@@ -75,6 +81,7 @@ inode
 Itanium
 jobqueue
 jpg
+jss
 Jupyter
 JupyterHub
 JupyterLab
@@ -83,15 +90,19 @@ KNL
 LAPACK
 lapply
 LINPACK
+linter
 Linter
 LoadLeveler
+localhost
 lsf
 lustre
+markdownlint
 Mathematica
 MEGWARE
 MiB
 MIMD
 Miniconda
+mkdocs
 MKL
 MNIST
 Montecito
@@ -144,6 +155,7 @@ PowerAI
 ppc
 PSOCK
 Pthreads
+pymdownx
 queue
 randint
 reachability
@@ -156,6 +168,7 @@ romeo
 RSA
 RStudio
 Rsync
+runnable
 salloc
 Saxonid
 sbatch
@@ -206,6 +219,7 @@ vectorization
 venv
 virtualenv
 VirtualGL
+VPN
 VMs
 WebVNC
 WinSCP
@@ -217,5 +231,7 @@ Xeon
 XGBoost
 XLC
 XLF
+yaml
+zih
 ZIH
 ZIH's
