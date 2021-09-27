@@ -14,7 +14,7 @@ basedir=`dirname "$basedir"`
 # The pattern \<io\> should not be present in any file (case-insensitive match), except when it appears as ".io".
 ruleset="i	\<io\>	\.io
 s	\<SLURM\>
-i	file \+system
+i	file \+system	HDFS
 i	\<taurus\>	taurus\.hrsk	/taurus
 i	\<hrskii\>
 i	hpc \+system
