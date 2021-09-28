@@ -1,10 +1,10 @@
 # ZIH HPC Documentation
 
-This repository contains the documentation of the HPC systems and services provided at
+This is the documentation of the HPC systems and services provided at
 [TU Dresden/ZIH](https://tu-dresden.de/zih/).
 
-This compendium is work in progress, since we try to incorporate more information
-with increasing experience and with every question you ask us. The HPC Team invites you to take
+This documentation is work in progress, since we try to incorporate more information
+with increasing experience and with every question you ask us. The HPC team invites you to take
 part in the improvement of these pages by correcting or adding useful information.
 
 ## Contribution
@@ -22,7 +22,7 @@ the detailed documentation to get started.
 
 ## Licenses
 
-The repository has two licenses:
+The documenation and the repository have two licenses:
 
 * All documentation is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 * All software components are licensed under MIT license.
