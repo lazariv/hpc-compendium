@@ -447,7 +447,7 @@ marie@compute$ module spider mpi4py
 Names marked by a trailing (E) are extensions provided by another module.
 
 -----------------------------------------------------------------------------------------------------------------------------------------
-  For detailed information about a specific "mpi4py" package (including how to load the modules) use the module's full name.
+  For detailed information about a specific "mpi4py" package (including how to load the modules), use the module's full name.
   Note that names that have a trailing (E) are extensions provided by other modules.
   For example:
 
