@@ -1,5 +1,14 @@
 # Binding and Distribution of Tasks
 
+Slurm provides several binding strategies to place and bind the tasks and/or threads of your job
+to cores, sockets and nodes.
+
+!!! note
+
+    Keep in mind that the distribution method might have a direct impact on the execution time of
+    your application. The manipulation of the distribution can either speed up or slow down your
+    application.
+
 ## General
 
 To specify a pattern the commands `--cpu_bind=<cores|sockets>` and `--distribution=<block|cyclic>`
@@ -20,6 +29,25 @@ mind that the allocation pattern also depends on your specification.
 
 In the following sections there are some selected examples of the combinations between `--cpu_bind`
 and `--distribution` for different job types.
+
+## OpenMP Strategies
+
+The illustration below shows the default binding of a pure OpenMP-job on a single node with 16 CPUs
+on which 16 threads are allocated.
+
+```Bash
+#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --tasks-per-node=1
+#SBATCH --cpus-per-task=16
+
+export OMP_NUM_THREADS=16
+
+srun --ntasks 1 --cpus-per-task $OMP_NUM_THREADS ./application
+```
+
+![OpenMP](misc/openmp.png)
+{: align=center}
 
 ## MPI Strategies
 

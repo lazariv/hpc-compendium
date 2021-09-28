@@ -181,11 +181,11 @@ has multiple advantages:
 * Submit your job file to the scheduling system for later execution. In the meanwhile, you can grab
   a coffee and proceed with other work (,e.g., start writing a paper).
 
-The syntax for submitting a job file to Slurm is
+!!! hint "The syntax for submitting a job file to Slurm is"
 
-```console
-marie@login$ sbatch [options] <job_file>
-```
+    ```console
+    marie@login$ sbatch [options] <job_file>
+    ```
 
 ### Job Files
 
@@ -366,72 +366,6 @@ marie@login$ scontrol show res=<reservation name>
 
 If you want to use your reservation, you have to add the parameter
 `--reservation=<reservation name>` either in your sbatch script or to your `srun` or `salloc` command.
-
-## Binding and Distribution of Tasks
-
-Slurm provides several binding strategies to place and bind the tasks and/or threads of your job
-to cores, sockets and nodes. Note: Keep in mind that the distribution method might have a direct
-impact on the execution time of your application. The manipulation of the distribution can either
-speed up or slow down your application. More detailed information about the binding can be found
-[here](binding_and_distribution_of_tasks.md).
-
-The default allocation of the tasks/threads for OpenMP, MPI and Hybrid (MPI and OpenMP) are as
-follows.
-
-### OpenMP
-
-The illustration below shows the default binding of a pure OpenMP-job on a single node with 16 CPUs
-on which 16 threads are allocated.
-
-```Bash
-#!/bin/bash
-#SBATCH --nodes=1
-#SBATCH --tasks-per-node=1
-#SBATCH --cpus-per-task=16
-
-export OMP_NUM_THREADS=16
-
-srun --ntasks 1 --cpus-per-task $OMP_NUM_THREADS ./application
-```
-
-![OpenMP](misc/openmp.png)
-{: align=center}
-
-#### MPI
-
-The illustration below shows the default binding of a pure MPI-job in which 32 global ranks are
-distributed onto two nodes with 16 cores each. Each rank has one core assigned to it.
-
-```Bash
-#!/bin/bash
-#SBATCH --nodes=2
-#SBATCH --tasks-per-node=16
-#SBATCH --cpus-per-task=1
-
-srun --ntasks 32 ./application
-```
-
-![MPI](misc/mpi.png)
-{: align=center}
-
-#### Hybrid (MPI and OpenMP)
-
-In the illustration below the default binding of a Hybrid-job is shown. In which eight global ranks
-are distributed onto two nodes with 16 cores each. Each rank has four cores assigned to it.
-
-```Bash
-#!/bin/bash
-#SBATCH --nodes=2
-#SBATCH --tasks-per-node=4
-#SBATCH --cpus-per-task=4
-
-export OMP_NUM_THREADS=4
-
-srun --ntasks 8 --cpus-per-task $OMP_NUM_THREADS ./application
-```
-
-![Hybrid MPI and OpenMP](misc/hybrid.png)
-{: align=center}
 
 ## Node Features for Selective Job Submission
 

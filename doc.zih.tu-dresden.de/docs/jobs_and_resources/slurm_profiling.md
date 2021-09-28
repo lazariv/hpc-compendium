@@ -1,8 +1,8 @@
 # Job Profiling
 
-Slurm offers the option to gather profiling data from every task/node of the job. Analysing this
-data allows for a better understanding of your jobs in terms of walltime, runtime and IO behaviour,
-and many more.
+Slurm offers the option to gather profiling data from every task/node of the job. Analyzing this
+data allows for a better understanding of your jobs in terms of elapsed time, runtime and IO
+behavior, and many more.
 
 The following data can be gathered:
 
@@ -17,7 +17,7 @@ The data is sampled at a fixed rate (i.e. every 5 seconds) and is stored in a HD
 
     Please be aware that the profiling data may be quiet large, depending on job size, runtime, and
     sampling rate. Always remove the local profiles from `/lustre/scratch2/profiling/${USER}`,
-    either by running sh5util as shown above or by simply removing those files.
+    either by running `sh5util` as shown above or by simply removing those files.
 
 ## Examples
 
@@ -59,4 +59,4 @@ line within your job file.
 More information about profiling with Slurm:
 
 - [Slurm Profiling](http://slurm.schedmd.com/hdf5_profile_user_guide.html)
-- [sh5util](http://slurm.schedmd.com/sh5util.html)
+- [`sh5util`](http://slurm.schedmd.com/sh5util.html)
