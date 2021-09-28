@@ -282,7 +282,7 @@ For more detailed information please check
 
 ###### Dask-jobqueue
 
-[Dask-jobqueue](https://jobqueue.dask.org/)can be used as the standard way 
+[Dask-jobqueue](https://jobqueue.dask.org/)can be used as the standard way
 to use dask for most users.
 It allows an easy deployment of Dask Distributed on HPC with Slurm
 or other job queuing systems.
