@@ -1,7 +1,7 @@
 # Project Management
 
 The HPC project leader has overall responsibility for the project and
-for all activities within his project on ZIH's HPC systems. In
+for all activities within his project on ZIH systems. In
 particular he shall:
 
 -   add and remove users from the project,
