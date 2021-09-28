@@ -116,6 +116,7 @@ mpifort
 mpirun
 multicore
 multithreaded
+nbsp
 NCCL
 Neptun
 NFS
