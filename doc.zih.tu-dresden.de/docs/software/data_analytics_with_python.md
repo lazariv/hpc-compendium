@@ -302,7 +302,7 @@ for a Dask module (which can be loaded by: `module load dask`)
 
 The availability of the exact packages (such a Dask-jobqueue)
 in the module can be checked by the
-`module whatis <name_of_the_module> command`.
+`module whatis <name_of_the_module>` command.
 
 Moreover, it is possible to install and use `dask-jobqueue`
 in you local environments.
