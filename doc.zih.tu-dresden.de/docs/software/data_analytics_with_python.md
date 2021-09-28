@@ -217,7 +217,7 @@ You can install everything required for most common uses of Dask (arrays, datafr
 ```console
 marie@login$ srun -p ml -N 1 -n 1 --mem-per-cpu=5772 --gres=gpu:1 --time=04:00:00 --pty bash
 
-marie@compute$ cd /scratch/ws/0/aabc1234-Workproject/python-virtual-environment/dask-test
+marie@compute$ cd /scratch/ws/0/marie-Workproject/python-virtual-environment/dask-test
 
 marie@compute$ ml modenv/ml
 marie@compute$ module load PythonAnaconda/3.6
