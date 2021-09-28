@@ -19,7 +19,7 @@ TensorFlow 2 and TensorFlow 1, see the corresponding [section below](#compatibil
 
 We recommend using partitions **Alpha** and/or **ML** when working with machine learning workflows
 and the TensorFlow library. You can find detailed hardware specification in our
-[Hardware](../jobs_and_resources/hardware_taurus.md) documentation.
+[Hardware](../jobs_and_resources/hardware_overview.md) documentation.
 
 ## TensorFlow Console
 

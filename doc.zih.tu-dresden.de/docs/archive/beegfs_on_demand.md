@@ -62,7 +62,7 @@ Check the status of the job with `squeue -u \<username>`.
 ## Mount BeeGFS Filesystem
 
 You can mount BeeGFS filesystem on the ML partition (PowerPC architecture) or on the Haswell
-[partition](../jobs_and_resources/system_taurus.md) (x86_64 architecture)
+[partition](../jobs_and_resources/partitions_and_limits.md) (x86_64 architecture)
 
 ### Mount BeeGFS Filesystem on the Partition `ml`
 

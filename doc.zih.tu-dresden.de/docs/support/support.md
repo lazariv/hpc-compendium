@@ -3,7 +3,6 @@
 ## Create a Ticket
 
 The best way to ask for help send a message to
-<a href="mailto:hpcsupport@zih.tu-dresden.de">hpcsupport@zih.tu-dresden.de</a> with a
 [hpcsupport@zih.tu-dresden.de](mailto:hpcsupport@zih.tu-dresden.de) with a
 detailed description of your problem.
 

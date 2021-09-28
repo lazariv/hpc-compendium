@@ -81,4 +81,4 @@ marie@local$ ssh -N -f -L 6006:taurusi8034.taurus.hrsk.tu-dresden.de:6006 <zih-l
 
 Now, you can see the TensorBoard in your browser at `http://localhost:6006/`.
 
-Note that you can also use TensorBoard in an [sbatch file](../jobs_and_resources/batch_systems.md).
+Note that you can also use TensorBoard in an [sbatch file](../jobs_and_resources/slurm.md).
