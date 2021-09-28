@@ -284,7 +284,7 @@ in some routine batch production workloads.
 
 You can launch a Dask network using
 `mpirun` or `mpiexec` and the `dask-mpi` command line executable.
-This depends on the mpi4py library (see the [python page](python.md)).
+This depends on the [mpi4py library](#mpi4py-mpi-for-python).
 For more detailed information please check
 [here](https://docs.dask.org/en/latest/setup/hpc.html#using-mpi).
 
