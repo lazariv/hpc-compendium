@@ -32,9 +32,9 @@ DDP
 DDR
 DFG
 DistributedDataParallel
-DockerHub
 Dockerfile
 Dockerfiles
+DockerHub
 dockerized
 EasyBuild
 ecryptfs
@@ -56,9 +56,9 @@ GFLOPS
 gfortran
 GiB
 gifferent
+GitHub
 GitLab
 GitLab's
-GitHub
 glibc
 gnuplot
 GPU
@@ -150,8 +150,8 @@ PGI
 PiB
 Pika
 pipelining
-png
 PMI
+png
 PowerAI
 ppc
 PSOCK
@@ -220,8 +220,8 @@ vectorization
 venv
 virtualenv
 VirtualGL
-VPN
 VMs
+VPN
 WebVNC
 WinSCP
 Workdir
