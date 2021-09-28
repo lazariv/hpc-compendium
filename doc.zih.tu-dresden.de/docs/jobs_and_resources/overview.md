@@ -6,7 +6,7 @@ research environment especially in the area of data analytics and machine learni
 processing extremely large data sets. Moreover it is also a perfect platform for highly scalable,
 data-intensive and compute-intensive applications.
 
-With shared [login nodes](#login-nodes) and [file systems](../data_lifecycle/file_systems.md) our
+With shared [login nodes](#login-nodes) and [filesystems](../data_lifecycle/file_systems.md) our
 HPC system enables users to easily switch between [the components](hardware_overview.md), each
 specialized for different application scenarios.
 
