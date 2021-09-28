@@ -43,19 +43,19 @@ automatically select a suitable partition depending on your memory and GPU requi
 ### Parallel Jobs
 
 **MPI jobs:** For MPI jobs typically allocates one core per task. Several nodes could be allocated
-if it is necessary. Slurm will automatically find suitable hardware. Normal compute nodes are
-perfect for this task.
+if it is necessary. The batch system [Slurm](slurm.md) will automatically find suitable hardware.
+Normal compute nodes are perfect for this task.
 
 **OpenMP jobs:** SMP-parallel applications can only run **within a node**, so it is necessary to
-include the options `-N 1` and `-n 1`. Using `--cpus-per-task N` Slurm will start one task and you
-will have N CPUs. The maximum number of processors for an SMP-parallel program is 896 on Taurus
-([SMP]**todo link** island).
+include the [batch system](slurm.md) options `-N 1` and `-n 1`. Using `--cpus-per-task N` Slurm will
+start one task and you will have `N` CPUs. The maximum number of processors for an SMP-parallel
+program is 896 on [partition `julia`](partitions_and_limits.md).
 
 **GPUs** partitions are best suited for **repetitive** and **highly-parallel** computing tasks. If
-you have a task with potential [data parallelism]**todo link** most likely that you need the GPUs.
-Beyond video rendering, GPUs excel in tasks such as machine learning, financial simulations and risk
-modeling. Use the gpu2 and ml partition only if you need GPUs! Otherwise using the x86 partitions
-(e.g Haswell) most likely would be more beneficial.
+you have a task with potential [data parallelism](../software/gpu_programming.md) most likely that
+you need the GPUs.  Beyond video rendering, GPUs excel in tasks such as machine learning, financial
+simulations and risk modeling. Use the partitions `gpu2` and `ml` only if you need GPUs! Otherwise
+using the x86-based partitions most likely would be more beneficial.
 
 **Interactive jobs:** Slurm can forward your X11 credentials to the first node (or even all) for a job
 with the `--x11` option. To use an interactive job you have to specify `-X` flag for the ssh login.
