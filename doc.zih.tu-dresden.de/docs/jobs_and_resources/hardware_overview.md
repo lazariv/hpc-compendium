@@ -41,7 +41,7 @@ users and the ZIH.
   - 200 GB /tmp on local SSD local disk
 - Hostnames: taurusi\[7001-7192\]
 - Slurm partition `romeo`
-- More information under [RomeNodes](rome_nodes.md)
+- More information under [Rome Nodes](rome_nodes.md)
 
 ## Large SMP System HPE Superdome Flex
 
