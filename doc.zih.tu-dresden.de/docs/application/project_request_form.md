@@ -13,7 +13,7 @@ If not, you have to fill in the whole information.
 
 ## Second Step: Project Details
 
-![picture 3: Project Details >](misc/request_step2_details.png "Login Screen"){loading=lazy width=300 style="float:right"}
+![picture 3: Project Details >][1]{loading=lazy width=300 style="float:right"}
 This Step is asking for general project Details.
 
 Any project have:
@@ -39,7 +39,7 @@ Any project have:
 
 ## Third step: Hardware
 
-![picture 4: Hardware >](misc/request_step3_machines.png "Login Screen"){loading=lazy width=300 style="float:right"}
+![picture 4: Hardware >](misc/request_step3_machines.png "Hardware"){loading=lazy width=300 style="float:right"}
 This step inquire the required hardware. You can find the specifications [here](../../jobs_and_resources/hardware_taurus/)
 
 Please fill in the total computing time you expect in the project runtime.
@@ -58,7 +58,7 @@ active calculations, for this the scratch is available.
 
 ## Fourth Step: Software
 
-![Picture 5: Software >](misc/request_step4_software.png "Login Screen"){loading=lazy width=300 style="float:right"}
+![Picture 5: Software >](misc/request_step4_software.png "Software"){loading=lazy width=300 style="float:right"}
 Any information you will give us in this step, helps us to make a rough estimate, if you are able
 to realize your project. For example, some software requires its own licenses.
 
@@ -67,7 +67,7 @@ to realize your project. For example, some software requires its own licenses.
 
 ## Fifth Step: Project Description
 
-![picture 6: Project Description >](misc/request_step5_description.png "Login Screen"){loading=lazy width=300 style="float:right"}
+![picture 6: Project Description >](misc/request_step5_description.png "Project Description"){loading=lazy width=300 style="float:right"}
 Please enter a short project description here. This is especially important
 for trial accounts and courses. For normal HPC projects a detailed
 project description is additionally required, which you can upload here.
@@ -77,8 +77,10 @@ project description is additionally required, which you can upload here.
 
 ## Sixth Step: Summary
 
-![picture 6: summary >](misc/request_step6.png "Login Screen"){loading=lazy width=300 style="float:right"}
+![picture 6: summary >](misc/request_step6.png "Summary"){loading=lazy width=300 style="float:right"}
 Check your entries and confirm the terms of use.
 
 &nbsp;
 {: style="clear:right;"}
+
+[1]: misc/request_step2_details.png "Project Details"
