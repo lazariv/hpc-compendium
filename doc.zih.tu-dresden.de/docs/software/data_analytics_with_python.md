@@ -108,18 +108,15 @@ Dask is composed of two parts:
 
 Dask supports several user interfaces:
 
-High-Level:
-
-- Arrays: Parallel NumPy
-- Bags: Parallel lists
-- DataFrames: Parallel Pandas
-- Machine Learning : Parallel Scikit-Learn
-- Others from external projects, like XArray
-
-Low-Level:
-
-- Delayed: Parallel function evaluation
-- Futures: Real-time parallel function evaluation
+- High-Level
+    - Arrays: Parallel NumPy
+    - Bags: Parallel lists
+    - DataFrames: Parallel Pandas
+    - Machine Learning: Parallel Scikit-Learn
+    - Others from external projects, like XArray
+- Low-Level
+    - Delayed: Parallel function evaluation
+    - Futures: Real-time parallel function evaluation
 
 #### Installation
 
