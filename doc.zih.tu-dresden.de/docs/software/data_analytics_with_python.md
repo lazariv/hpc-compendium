@@ -350,7 +350,7 @@ from dask_jobqueue import SLURMCluster
 cluster = SLURMCluster(queue='alpha', 
   cores=8,
   processes=2, 
-  project='p_scads', 
+  project='p_marie', 
   memory="8GB", 
   walltime="00:30:00")
 
