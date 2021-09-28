@@ -1,5 +1,4 @@
 nav:
-
   - Home: index.md
   - Application for Login and Resources:
     - Overview: application/overview.md
@@ -93,7 +92,7 @@ nav:
       - Alpha Centauri: jobs_and_resources/alpha_centauri.md
       - HPE Superdome Flex: jobs_and_resources/sd_flex.md
     - Running Jobs:
-      - Running Jobs: jobs_and_resources/slurm.md
+      - Batch System Slurm: jobs_and_resources/slurm.md
       - Job Examples: jobs_and_resources/slurm_examples.md
       - Partitions and Limits : jobs_and_resources/partitions_and_limits.md
       - Checkpoint/Restart: jobs_and_resources/checkpoint_restart.md
