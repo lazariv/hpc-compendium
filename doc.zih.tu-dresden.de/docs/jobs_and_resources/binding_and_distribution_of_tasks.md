@@ -33,7 +33,6 @@ node and odd on each second socket of each node.
 ![Default distribution](misc/mpi_default.png)
 {: align="center"}
 
-
 !!! example "Default binding and default distribution"
 
     ```bash
