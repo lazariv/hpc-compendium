@@ -85,17 +85,11 @@ For more examples of using pandarallel check out
 
 ### Dask
 
-**Dask** is an open-source library for parallel computing.
-Dask is a flexible library for parallel
-computing in Python.
-
-Dask natively scales Python.
-It provides advanced parallelism, enabling performance at
-scale for some of the popular tools.
-For instance: Dask arrays scale NumPy workflows, Dask
-dataframes scale Pandas workflows,
-Dask-ML scales machine learning programming interfaces like Scikit-Learn and
-XGBoost.
+[Dask](https://dask.org/) is a flexible and open-source library for parallel computing in Python.
+It replaces some Python data structures with parallel versions in order to provide advanced
+parallelism for analytics, enabling performance at scale for some of the popular tools. For
+instance: Dask arrays replace NumPy arrays, Dask dataframes replace Pandas dataframes.
+Furthermore, Dask-ML scales machine learning APIs like Scikit-Learn and XGBoost.
 
 Dask is composed of two parts:
 
