@@ -1,6 +1,5 @@
 # NVMe Storage
 
-**TODO image nvme.png**
 90 NVMe storage nodes, each with
 
 -   8x Intel NVMe Datacenter SSD P4610, 3.2 TB
@@ -11,3 +10,6 @@
 -   64 GB RAM
 
 NVMe cards can saturate the HCAs
+
+![Configuration](misc/nvme.png)
+{: align=center}
