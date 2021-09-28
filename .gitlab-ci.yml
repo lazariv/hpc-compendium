@@ -1,57 +1,87 @@
-# Datei: .gitlab-ci.yml
 variables:
-    GIT_STRATEGY: clone
-    BASE_IMAGE: webpage:base
-    LINTER_IMAGE: webpage:linter
-    LINKCHECKER_IMAGE: linkchecker
-    TEST_NETWORK: testnet
-    TEST_CONTAINER_NAME: webpage
+    GIT_STRATEGY: none
+    DOCKER_IMAGE: webpage:$CI_PIPELINE_ID
+
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS'
+      when: never
+    - if: '$CI_COMMIT_BRANCH'
 
 stages:
     - build
     - test
-    - cleanup
     - release
+    - cleanup
 
-build_base:
+
+Build Linter:
     stage: build
-    script:
-        - docker build -t ${BASE_IMAGE} .
+    variables:
+        GIT_STRATEGY: clone
+        GIT_DEPTH: 0
+    script: docker build -t "${DOCKER_IMAGE}" .
 
-build_linter:
-    stage: build
-    script:
-        - docker build -t ${LINTER_IMAGE} linter/
+Test mkdocs:
+    stage: test
+    script: docker run ${DOCKER_IMAGE}
 
-build_linkchecker:
-    stage: build
-    script:
-        - docker build -t ${LINKCHECKER_IMAGE} linkchecker/
-
-test_linter:
+Check wording of changed md-files:
     stage: test
     script:
-        - docker run --rm ${LINTER_IMAGE} --config /src/linter/config.json /src/doc.zih.tu-dresden.de/docs
+        - docker run --rm -w /src -e CI_MERGE_REQUEST_TARGET_BRANCH_NAME "${DOCKER_IMAGE}"
+          doc.zih.tu-dresden.de/util/grep-forbidden-words.sh
+    only: [ merge_requests ]
 
-test_linkchecker:
+Lint changed md-files:
     stage: test
     script:
-        - docker network create ${TEST_NETWORK}
-        - docker run -d --rm --name ${TEST_CONTAINER_NAME} --network ${TEST_NETWORK} ${BASE_IMAGE} mkdocs serve --dev-addr 0.0.0.0:8000
-        - sleep 5
-        - docker run --rm --network ${TEST_NETWORK} ${LINKCHECKER_IMAGE} --check-extern --ignore-url=http://0.0.0.0:8000 http://${TEST_CONTAINER_NAME}:8000
+        - docker run --rm -w /src -e CI_MERGE_REQUEST_TARGET_BRANCH_NAME "${DOCKER_IMAGE}"
+          doc.zih.tu-dresden.de/util/lint-changes.sh
+    only: [ merge_requests ]
 
-cleanup_test:
-    stage: cleanup
+Check spelling for changed md-files:
+    stage: test
     script:
-        - docker stop ${TEST_CONTAINER_NAME}
-        - docker network rm ${TEST_NETWORK}
-    when: always
+        - docker run --rm -w /src -e CI_MERGE_REQUEST_TARGET_BRANCH_NAME "${DOCKER_IMAGE}"
+          doc.zih.tu-dresden.de/util/check-spelling.sh
+    only: [ merge_requests ]
 
-release:
+Check links for changed md-files:
+    stage: test
+    script:
+        - docker run --rm -w /src -e CI_MERGE_REQUEST_TARGET_BRANCH_NAME "${DOCKER_IMAGE}"
+          doc.zih.tu-dresden.de/util/check-links.sh
+    only: [ merge_requests ]
+
+Lint md-files:
+    stage: test
+    script: docker run --rm "${DOCKER_IMAGE}" markdownlint docs
+    only: [ main, preview ]
+
+Check links for md-files:
+    stage: test
+    script:
+        - docker run --rm "${DOCKER_IMAGE}"
+          bash -c "find docs -type f -name '*.md' | xargs -L1 markdown-link-check --quiet"
+    only: [ main, preview ]
+
+Release preview branch:
     stage: release
     script:
-        - docker run --rm -v /var/www/html/hpc-wiki:/mnt ${BASE_IMAGE} mkdocs build --site-dir /mnt
-    only:
-        - main
+        - docker run --rm -v /var/www/html/preview:/mnt "${DOCKER_IMAGE}" mkdocs build --strict --site-dir /mnt
+    only: [ preview ]
 
+Release:
+    stage: release
+    script:
+        - docker run --rm -v /var/www/html/hpc-wiki:/mnt "${DOCKER_IMAGE}" mkdocs build --strict --site-dir /mnt
+    only: [ main ]
+
+Cleanup docker:
+    stage: cleanup
+    script:
+        - docker rmi -f "${DOCKER_IMAGE}"
+        - docker system prune --force
+    when: always
