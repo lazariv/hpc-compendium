@@ -67,7 +67,7 @@ to realize your project. For example, some software requires its own licenses.
 
 ## Fifth Step: Project Description
 
-![picture 6: Project Description >](misc/request_step5_description.png "Project Description"){loading=lazy width=300 style="float:right"}
+![picture 6: Project Description >][2]{loading=lazy width=300 style="float:right"}
 Please enter a short project description here. This is especially important
 for trial accounts and courses. For normal HPC projects a detailed
 project description is additionally required, which you can upload here.
@@ -84,3 +84,4 @@ Check your entries and confirm the terms of use.
 {: style="clear:right;"}
 
 [1]: misc/request_step2_details.png "Project Details"
+[2]: misc/request_step5_description.png "Project Description"
