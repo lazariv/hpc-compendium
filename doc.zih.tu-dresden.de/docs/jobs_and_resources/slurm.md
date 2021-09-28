@@ -71,26 +71,28 @@ id is unique. The id allows you to [manage and control](#manage-and-control-jobs
 The following table holds the most important options for `srun/sbatch/salloc` to specify resource
 requirements and control communication.
 
-| Slurm Option               | Description |
-|:---------------------------|:------------|
-| `-n, --ntasks=<N>`         | number of (MPI) tasks (default: 1) |
-| `-N, --nodes=<N>`          | number of nodes; there will be `--ntasks-per-node` processes started on each node |
-| `--ntasks-per-node=<N>`    | number of tasks per allocated node to start (default: 1) |
-| `-c, --cpus-per-task=<N>`  | number of CPUs per task; needed for multithreaded (e.g. OpenMP) jobs; typically `N` should be equal to `OMP_NUM_THREADS` |
-| `-p, --partition=<name>`   | type of nodes where you want to execute your job (refer to [partitions](partitions_and_limits.md)) |
-| `--mem-per-cpu=<size>`     | memory need per allocated CPU in MB |
-| `-t, --time=<HH:MM:SS>`    | maximum runtime of the job |
-| `--mail-user=<your email>` | get updates about the status of the jobs |
-| `--mail-type=ALL`          | for what type of events you want to get a mail; valid options: `ALL`, `BEGIN`, `END`, `FAIL`, `REQUEUE` |
-| `-J, --job-name=<name>`    | name of the job shown in the queue and in mails (cut after 24 chars) |
-| `--no-requeue`             | disable requeueing of the job in case of node failure (default: enabled) |
-| `--exclusive`              | exclusive usage of compute nodes; you will be charged for all CPUs/cores on the node |
-| `-A, --account=<project>`  | charge resources used by this job to the specified project |
-| `-o, --output=<filename>`  | file to save all normal output (stdout) (default: `slurm-%j.out`) |
-| `-e, --error=<filename>`   | file to save all error output (stderr)  (default: `slurm-%j.out`) |
-| `-a, --array=<arg>`        | submit an array job ([examples](slurm_examples.md#array-jobs)) |
-| `-w <node1>,<node2>,...`   | restrict job to run on specific nodes only |
-| `-x <node1>,<node2>,...`   | exclude specific nodes from job |
+??? tip "Options Table"
+
+    | Slurm Option               | Description |
+    |:---------------------------|:------------|
+    | `-n, --ntasks=<N>`         | number of (MPI) tasks (default: 1) |
+    | `-N, --nodes=<N>`          | number of nodes; there will be `--ntasks-per-node` processes started on each node |
+    | `--ntasks-per-node=<N>`    | number of tasks per allocated node to start (default: 1) |
+    | `-c, --cpus-per-task=<N>`  | number of CPUs per task; needed for multithreaded (e.g. OpenMP) jobs; typically `N` should be equal to `OMP_NUM_THREADS` |
+    | `-p, --partition=<name>`   | type of nodes where you want to execute your job (refer to [partitions](partitions_and_limits.md)) |
+    | `--mem-per-cpu=<size>`     | memory need per allocated CPU in MB |
+    | `-t, --time=<HH:MM:SS>`    | maximum runtime of the job |
+    | `--mail-user=<your email>` | get updates about the status of the jobs |
+    | `--mail-type=ALL`          | for what type of events you want to get a mail; valid options: `ALL`, `BEGIN`, `END`, `FAIL`, `REQUEUE` |
+    | `-J, --job-name=<name>`    | name of the job shown in the queue and in mails (cut after 24 chars) |
+    | `--no-requeue`             | disable requeueing of the job in case of node failure (default: enabled) |
+    | `--exclusive`              | exclusive usage of compute nodes; you will be charged for all CPUs/cores on the node |
+    | `-A, --account=<project>`  | charge resources used by this job to the specified project |
+    | `-o, --output=<filename>`  | file to save all normal output (stdout) (default: `slurm-%j.out`) |
+    | `-e, --error=<filename>`   | file to save all error output (stderr)  (default: `slurm-%j.out`) |
+    | `-a, --array=<arg>`        | submit an array job ([examples](slurm_examples.md#array-jobs)) |
+    | `-w <node1>,<node2>,...`   | restrict job to run on specific nodes only |
+    | `-x <node1>,<node2>,...`   | exclude specific nodes from job |
 
 !!! note "Output and Error Files"
 
@@ -257,22 +259,24 @@ why a job is not running (job status in the last column of the output). More inf
 parameters can also be determined with `scontrol -d show job <jobid>`. The following table holds
 detailed descriptions of the possible job states:
 
-| Reason             | Long Description  |
-|:-------------------|:------------------|
-| `Dependency`         | This job is waiting for a dependent job to complete. |
-| `None`               | No reason is set for this job. |
-| `PartitionDown`      | The partition required by this job is in a down state. |
-| `PartitionNodeLimit` | The number of nodes required by this job is outside of its partitions current limits. Can also indicate that required nodes are down or drained. |
-| `PartitionTimeLimit` | The jobs time limit exceeds its partitions current time limit. |
-| `Priority`           | One or higher priority jobs exist for this partition. |
-| `Resources`          | The job is waiting for resources to become available. |
-| `NodeDown`           | A node required by the job is down. |
-| `BadConstraints`     | The jobs constraints can not be satisfied. |
-| `SystemFailure`      | Failure of the Slurm system, a filesystem, the network, etc. |
-| `JobLaunchFailure`   | The job could not be launched. This may be due to a filesystem problem, invalid program name, etc. |
-| `NonZeroExitCode`    | The job terminated with a non-zero exit code. |
-| `TimeLimit`          | The job exhausted its time limit. |
-| `InactiveLimit`      | The job reached the system inactive limit. |
+??? tip "Reason Table"
+
+    | Reason             | Long Description  |
+    |:-------------------|:------------------|
+    | `Dependency`         | This job is waiting for a dependent job to complete. |
+    | `None`               | No reason is set for this job. |
+    | `PartitionDown`      | The partition required by this job is in a down state. |
+    | `PartitionNodeLimit` | The number of nodes required by this job is outside of its partitions current limits. Can also indicate that required nodes are down or drained. |
+    | `PartitionTimeLimit` | The jobs time limit exceeds its partitions current time limit. |
+    | `Priority`           | One or higher priority jobs exist for this partition. |
+    | `Resources`          | The job is waiting for resources to become available. |
+    | `NodeDown`           | A node required by the job is down. |
+    | `BadConstraints`     | The jobs constraints can not be satisfied. |
+    | `SystemFailure`      | Failure of the Slurm system, a filesystem, the network, etc. |
+    | `JobLaunchFailure`   | The job could not be launched. This may be due to a filesystem problem, invalid program name, etc. |
+    | `NonZeroExitCode`    | The job terminated with a non-zero exit code. |
+    | `TimeLimit`          | The job exhausted its time limit. |
+    | `InactiveLimit`      | The job reached the system inactive limit. |
 
 In addition, the `sinfo` command gives you a quick status overview.
 
