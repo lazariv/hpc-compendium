@@ -81,7 +81,6 @@ haswell
 HDF
 HDFS
 HDFView
-<<<<<<< HEAD
 Horovod
 hostname
 Hostnames
@@ -183,7 +182,6 @@ ppc
 Preload
 preloaded
 preloading
->>>>>>> preview
 PSOCK
 Pthreads
 pymdownx
