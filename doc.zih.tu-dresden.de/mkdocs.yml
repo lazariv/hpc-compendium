@@ -118,8 +118,10 @@ nav:
 
   #- Tests: tests.md
 
-  - Support: support.md
-  - Archive:
+  - Support:
+    - How to Ask for Support: support/support.md
+    - News Archive: support/news_archive.md
+  - Archive of the Old Wiki:
     - Overview: archive/overview.md
     - Bio Informatics: archive/bioinformatics.md
     - CXFS End of Support: archive/cxfs_end_of_support.md
