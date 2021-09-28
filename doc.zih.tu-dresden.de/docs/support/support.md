@@ -4,14 +4,17 @@
 
 The best way to ask for help send a message to
 <a href="mailto:hpcsupport@zih.tu-dresden.de">hpcsupport@zih.tu-dresden.de</a> with a
-detailed description of your problem. It should include:
+[hpcsupport@zih.tu-dresden.de](mailto:hpcsupport@zih.tu-dresden.de) with a
+detailed description of your problem.
+
+It should include:
 
 - Who is reporting? (login name)
 - Where have you seen the problem? (name of the HPC system and/or of the node)
 - When has the issue occurred? Maybe, when did it work last?
 - What exactly happened?
 
-If possible include 
+If possible include
 
 - job ID,
 - batch script,
@@ -26,5 +29,4 @@ on our communication.
 
 For a new request, please simply send a new email (without any ticket number).
 
-!!! hint Please try to find an answer in our wiki.
-
+!!! hint "Please try to find an answer in this documentation first."
