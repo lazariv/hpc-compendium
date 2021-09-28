@@ -136,7 +136,20 @@ all software partitions with this name.
 For detailed information about a specific "Dask" package
 (including how to load the modules) use
 the module's full name, e.g:
-`module spider dask/2.8.0-Python-3.7.4`
+```console
+marie@compute$ module spider dask
+------------------------------------------------------------------------------------------
+    dask:
+----------------------------------------------------------------------------------------------
+    Versions:
+        dask/2.8.0-fosscuda-2019b-Python-3.7.4
+        dask/2.8.0-Python-3.7.4
+        dask/2.8.0 (E)
+[...]
+marie@compute$ module load dask/2.8.0-fosscuda-2019b-Python-3.7.4
+marie@compute$ python -c "import dask; print(dask.__version__)"
+2021.08.1
+```
 
 The availability of the exact packages
 in the module can be checked by the
