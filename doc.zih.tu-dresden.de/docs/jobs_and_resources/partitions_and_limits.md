@@ -55,19 +55,21 @@ ZIH systems comprises different sets of nodes with different amount of installed
 where your job may be run. To achieve the shortest possible waiting time for your jobs, you should
 be aware of the limits shown in the following table.
 
-| Partition          | Nodes                                    | # Nodes | Cores per Node  | Mem. per Core | Mem. per Node | GPUs per Node     |
-|:-------------------|:-----------------------------------------|:--------|:----------------|:--------------|:--------------|:------------------|
-| `haswell64`        | `taurusi[4001-4104,5001-5612,6001-6612]` | `1328`  | `24`            | `2541 MB`     | `61000 MB`    | `-`               |
-| `haswell128`       | `taurusi[4105-4188]`                     | `84`    | `24`            | `5250 MB`     | `126000 MB`   | `-`               |
-| `haswell256`       | `taurusi[4189-4232]`                     | `44`    | `24`            | `10583 MB`    | `254000 MB`   | `-`               |
-| `broadwell`        | `taurusi[4233-4264]`                     | `32`    | `28`            | `2214 MB`     | `62000 MB`    | `-`               |
-| `smp2`             | `taurussmp[3-7]`                         | `5`     | `56`            | `36500 MB`    | `2044000 MB`  | `-`               |
-| `gpu2`             | `taurusi[2045-2106]`                     | `62`    | `24`            | `2583 MB`     | `62000 MB`    | `4 (2 dual GPUs)` |
-| `gpu2-interactive` | `taurusi[2045-2108]`                     | `64`    | `24`            | `2583 MB`     | `62000 MB`    | `4 (2 dual GPUs)` |
-| `hpdlf`            | `taurusa[3-16]`                          | `14`    | `12`            | `7916 MB`     | `95000 MB`    | `3`               |
-| `ml`               | `taurusml[1-32]`                         | `32`    | `44 (HT: 176)`  | `1443 MB*`    | `254000 MB`   | `6`               |
-| `romeo`            | `taurusi[7001-7192]`                     | `192`   | `128 (HT: 256)` | `1972 MB*`    | `505000 MB`   | `-`               |
-| `julia`            | `taurussmp8`                             | `1`     | `896`           | `27343 MB*`   | `49000000 MB` | `-`               |
+??? hint "Partitions and memory limits"
+
+    | Partition          | Nodes                                    | # Nodes | Cores per Node  | MB per Core | MB per Node | GPUs per Node     |
+    |:-------------------|:-----------------------------------------|:--------|:----------------|:------------|:------------|:------------------|
+    | `haswell64`        | `taurusi[4001-4104,5001-5612,6001-6612]` | `1328`  | `24`            | `2541`       | `61000`    | `-`               |
+    | `haswell128`       | `taurusi[4105-4188]`                     | `84`    | `24`            | `5250`       | `126000`   | `-`               |
+    | `haswell256`       | `taurusi[4189-4232]`                     | `44`    | `24`            | `10583`      | `254000`   | `-`               |
+    | `broadwell`        | `taurusi[4233-4264]`                     | `32`    | `28`            | `2214`       | `62000`    | `-`               |
+    | `smp2`             | `taurussmp[3-7]`                         | `5`     | `56`            | `36500`      | `2044000`  | `-`               |
+    | `gpu2`             | `taurusi[2045-2106]`                     | `62`    | `24`            | `2583`       | `62000`    | `4 (2 dual GPUs)` |
+    | `gpu2-interactive` | `taurusi[2045-2108]`                     | `64`    | `24`            | `2583`       | `62000`    | `4 (2 dual GPUs)` |
+    | `hpdlf`            | `taurusa[3-16]`                          | `14`    | `12`            | `7916`       | `95000`    | `3`               |
+    | `ml`               | `taurusml[1-32]`                         | `32`    | `44 (HT: 176)`  | `1443*`      | `254000`   | `6`               |
+    | `romeo`            | `taurusi[7001-7192]`                     | `192`   | `128 (HT: 256)` | `1972*`      | `505000`   | `-`               |
+    | `julia`            | `taurussmp8`                             | `1`     | `896`           | `27343*`     | `49000000` | `-`               |
 
 !!! note
 
