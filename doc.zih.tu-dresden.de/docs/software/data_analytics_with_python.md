@@ -127,6 +127,7 @@ all software partitions with this name.
 For detailed information about a specific "Dask" package
 (including how to load the modules) use
 the module's full name, e.g:
+
 ```console
 marie@compute$ module spider dask
 ------------------------------------------------------------------------------------------
@@ -281,8 +282,8 @@ For more detailed information please check
 
 ###### Dask-jobqueue
 
-As was written before the preferred and simplest way to run Dask on HPC is
-to use [Dask-jobqueue](https://jobqueue.dask.org/).
+[Dask-jobqueue](https://jobqueue.dask.org/)can be used as the standard way 
+to use dask for most users.
 It allows an easy deployment of Dask Distributed on HPC with Slurm
 or other job queuing systems.
 
