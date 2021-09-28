@@ -1,42 +1,60 @@
 # Job Profiling
 
-![HDFView Memory](misc/hdfview_memory.png)
-{: align="center"}
+Slurm offers the option to gather profiling data from every task/node of the job. Analysing this
+data allows for a better understanding of your jobs in terms of walltime, runtime and IO behaviour,
+and many more.
 
-Slurm offers the option to gather profiling data from every task/node of the job. Following data can
-be gathered:
+The following data can be gathered:
 
-- Task data, such as CPU frequency, CPU utilization, memory
-  consumption (RSS and VMSize), I/O
-- Energy consumption of the nodes
-- Infiniband data (currently deactivated)
-- Lustre filesystem data (currently deactivated)
+* Task data, such as CPU frequency, CPU utilization, memory consumption (RSS and VMSize), I/O
+* Energy consumption of the nodes
+* Infiniband data (currently deactivated)
+* Lustre filesystem data (currently deactivated)
 
 The data is sampled at a fixed rate (i.e. every 5 seconds) and is stored in a HDF5 file.
 
-**CAUTION**: Please be aware that the profiling data may be quiet large, depending on job size,
-runtime, and sampling rate. Always remove the local profiles from
-`/lustre/scratch2/profiling/${USER}`, either by running sh5util as shown above or by simply removing
-those files.
+!!! note "Data hygiene"
 
-Usage examples:
+    Please be aware that the profiling data may be quiet large, depending on job size, runtime, and
+    sampling rate. Always remove the local profiles from `/lustre/scratch2/profiling/${USER}`,
+    either by running sh5util as shown above or by simply removing those files.
 
-```console
-# create energy and task profiling data (--acctg-freq is the sampling rate in seconds)
-srun --profile=All --acctg-freq=5,energy=5 -n 32 ./a.out
-# create task profiling data only
-srun --profile=All --acctg-freq=5 -n 32 ./a.out
+## Examples
 
-# merge the node local files in /lustre/scratch2/profiling/${USER} to single file
-# (without -o option output file defaults to job_&lt;JOBID&gt;.h5)
-sh5util -j &lt;JOBID&gt; -o profile.h5
-# in jobscripts or in interactive sessions (via salloc):
-sh5util -j ${SLURM_JOBID} -o profile.h5
+The following examples of `srun` profiling command lines are meant to replace the current `srun`
+line within your job file.
 
-# view data:
-module load HDFView
-hdfview.sh profile.h5
-```
+??? example "Create profiling data"
+
+    (--acctg-freq is the sampling rate in seconds)
+
+    ```console
+    # Energy and task profiling
+    srun --profile=All --acctg-freq=5,energy=5 -n 32 ./a.out
+    # Task profiling data only
+    srun --profile=All --acctg-freq=5 -n 32 ./a.out
+    ```
+
+??? example "Merge the node local files"
+
+    ... in `/lustre/scratch2/profiling/${USER}` to single file.
+
+    ```console
+    # (without -o option output file defaults to job_$JOBID.h5)
+    sh5util -j <JOBID> -o profile.h5
+    # in jobscripts or in interactive sessions (via salloc):
+    sh5util -j ${SLURM_JOBID} -o profile.h5
+    ```
+
+??? example "View data"
+
+    ```console
+    marie@login$ module load HDFView
+    marie@login$ hdfview.sh profile.h5
+    ```
+
+![HDFView Memory](misc/hdfview_memory.png)
+{: align="center"}
 
 More information about profiling with Slurm:
 
