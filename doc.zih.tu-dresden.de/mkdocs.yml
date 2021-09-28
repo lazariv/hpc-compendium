@@ -98,8 +98,10 @@ nav:
       - Checkpoint/Restart: jobs_and_resources/checkpoint_restart.md
       - Job Profiling: jobs_and_resources/slurm_profiling.md
       - Binding And Distribution Of Tasks: jobs_and_resources/binding_and_distribution_of_tasks.md
-  - Support: support.md
-  - Archive:
+  - Support:
+    - How to Ask for Support: support/support.md
+    - News Archive: support/news_archive.md
+  - Archive of the Old Wiki:
     - Overview: archive/overview.md
     - Bio Informatics: archive/bioinformatics.md
     - CXFS End of Support: archive/cxfs_end_of_support.md
