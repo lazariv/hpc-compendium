@@ -248,7 +248,6 @@ provide a comprehensive collection of job examples.
     * Submisson: `marie@login$ sbatch batch_script.sh`
     * Run with fewer MPI tasks: `marie@login$ sbatch --ntasks 14 batch_script.sh`
 
-
 ## Manage and Control Jobs
 
 ### Job and Slurm Monitoring
@@ -321,6 +320,7 @@ We'd like to point your attention to the following options gain insight in your 
     ```console
     marie@login$ sacct -j <JOBID>
     ```
+
 ??? example "Show all fields for a specific job"
 
     ```console
@@ -332,8 +332,9 @@ We'd like to point your attention to the following options gain insight in your 
     ```console
     marie@login$ sacct -j <JOBID> -o JobName,MaxRSS,MaxVMSize,CPUTime,ConsumedEnergy
     ```
-The manual page (`man sacct`) and the [online reference](https://slurm.schedmd.com/sacct.html) provide a
-comprehensive documentation regarding available fields and formats.
+
+The manual page (`man sacct`) and the [online reference](https://slurm.schedmd.com/sacct.html)
+provide a comprehensive documentation regarding available fields and formats.
 
 !!! hint "Time span"
 
@@ -427,6 +428,7 @@ srun --ntasks 8 --cpus-per-task $OMP_NUM_THREADS ./application
 
 ![Hybrid MPI and OpenMP](misc/hybrid.png)
 {: align=center}
+
 ## Node Features for Selective Job Submission
 
 The nodes in our HPC system are becoming more diverse in multiple aspects: hardware, mounted

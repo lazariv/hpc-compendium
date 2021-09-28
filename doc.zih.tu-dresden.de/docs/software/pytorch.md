@@ -18,7 +18,7 @@ to find out, which PyTorch modules are available on your partition.
 We recommend using **Alpha** and/or **ML** partitions when working with machine learning workflows
 and the PyTorch library.
 You can find detailed hardware specification in our
-[hardware documentation](../jobs_and_resources/hardware_taurus.md).
+[hardware documentation](../jobs_and_resources/hardware_overview.md).
 
 ## PyTorch Console
 
@@ -44,7 +44,7 @@ Module GCC/10.2.0, CUDA/11.1.1, OpenMPI/4.0.5, PyTorch/1.9.0 and 54 dependencies
     marie@alpha$ pip install torchvision --no-deps
     ```
 
-    Using the **--no-deps** option for "pip install" is necessary here as otherwise the PyTorch 
+    Using the **--no-deps** option for "pip install" is necessary here as otherwise the PyTorch
     version might be replaced and you will run into trouble with the cuda drivers.
 
 On the **ML** partition:
