@@ -47,6 +47,7 @@ ecryptfs
 engl
 english
 env
+EPYC
 Espresso
 ESSL
 fastfs
@@ -78,6 +79,7 @@ HDFS
 HDFView
 Horovod
 hostname
+Hostnames
 HPC
 HPL
 html
@@ -133,11 +135,13 @@ natively
 NCCL
 Neptun
 NFS
+NGC
 NRINGS
 NUMA
 NUMAlink
 NumPy
 Nutzungsbedingungen
+Nvidia
 NVMe
 NWChem
 OME
@@ -169,6 +173,8 @@ PMI
 png
 PowerAI
 ppc
+Preload
+preloaded
 PSOCK
 Pthreads
 pymdownx
@@ -220,6 +226,7 @@ stdout
 subdirectories
 subdirectory
 SUSE
+SXM
 TBB
 TCP
 TensorBoard
