@@ -177,11 +177,10 @@ Create a conda virtual environment. We would recommend
 using a Workspace. See the example (use
 `--prefix` flag to specify the directory).
 
-**Note:** You could work with simple examples
-in your home directory (where you are loading by
-default). However, in accordance with the
-[HPC storage concept](../data_lifecycle/overview.md) please use a
-[Workspace](../data_lifecycle/workspaces.md) for your study and work projects.
+!!! note
+    You could work with simple examples in your home directory (where you are loading by default).
+    However, in accordance with the [HPC storage concept](../data_lifecycle/overview.md) please use
+    a [Workspace](../data_lifecycle/workspaces.md) for your study and work projects.
 
 ```console
 marie@compute$ conda create --prefix /scratch/ws/0/marie-Workproject/conda-virtual-environment/dask-test python=3.6
