@@ -32,12 +32,14 @@ GiB
 gnuplot
 Gnuplot
 GPU
+GPUs
 hadoop
 Haswell
 HDFS
 Horovod
 HPC
 HPL
+hyperthreading
 icc
 icpc
 ifort
@@ -72,6 +74,7 @@ multicore
 multithreaded
 Neptun
 NFS
+nbsp
 NUMA
 NUMAlink
 Nutzungsbedingungen
@@ -93,6 +96,7 @@ png
 rome
 romeo
 RSA
+runtime
 salloc
 Saxonid
 sbatch
@@ -123,6 +127,7 @@ TFLOPS
 Theano
 tmp
 Trition
+userspace
 Vampir
 Xeon
 ZIH
