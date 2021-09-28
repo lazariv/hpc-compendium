@@ -6,6 +6,7 @@ Amdahl's
 analytics
 anonymized
 APIs
+AVX
 BeeGFS
 benchmarking
 BLAS
@@ -22,6 +23,7 @@ Chemnitz
 citable
 conda
 CPU
+CPUID
 CPUs
 css
 CSV
@@ -56,6 +58,7 @@ FFTW
 filesystem
 filesystems
 Flink
+FMA
 foreach
 Fortran
 Gaussian
@@ -130,6 +133,7 @@ mpifort
 mpirun
 multicore
 multithreaded
+Multithreading
 NAMD
 natively
 NCCL
@@ -175,6 +179,7 @@ PowerAI
 ppc
 Preload
 preloaded
+preloading
 PSOCK
 Pthreads
 pymdownx
@@ -236,6 +241,8 @@ Theano
 tmp
 todo
 ToDo
+toolchain
+toolchains
 tracefile
 tracefiles
 transferability
