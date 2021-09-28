@@ -84,6 +84,7 @@ Horovod
 hostname
 Hostnames
 HPC
+HPE
 HPL
 html
 hyperparameter
@@ -230,6 +231,7 @@ stderr
 stdout
 subdirectories
 subdirectory
+Superdome
 SUSE
 SXM
 TBB
