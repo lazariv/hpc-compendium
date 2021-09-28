@@ -85,7 +85,11 @@ nav:
     - Structuring Experiments: data_lifecycle/experiments.md
   - HPC Resources and Jobs:
     - Overview: jobs_and_resources/overview.md
-    - Batch Systems: jobs_and_resources/batch_systems.md
+    - Batch Systems:
+      - General: jobs_and_resources/batch_systems.md
+      - Slurm: jobs_and_resources/slurm.md
+        # - Slurm Examples: jobs_and_resources/slurm_examples.md
+      - Checkpoint/Restart: jobs_and_resources/checkpoint_restart.md
     - HPC Resources:
       - Hardware Taurus: jobs_and_resources/hardware_taurus.md
       - AMD Rome Nodes: jobs_and_resources/rome_nodes.md
@@ -93,11 +97,8 @@ nav:
       - NVMe Storage: jobs_and_resources/nvme_storage.md
       - Alpha Centauri: jobs_and_resources/alpha_centauri.md
       - HPE Superdome Flex: jobs_and_resources/sd_flex.md
-    - Checkpoint/Restart: jobs_and_resources/checkpoint_restart.md
-    - Overview2: jobs_and_resources/index.md
+      # - Overview2: jobs_and_resources/index.md
     - Taurus: jobs_and_resources/system_taurus.md
-    - Slurm Examples: jobs_and_resources/slurm_examples.md
-    - Slurm: jobs_and_resources/slurm.md
     - Binding And Distribution Of Tasks: jobs_and_resources/binding_and_distribution_of_tasks.md
 
       #    - Queue Policy: jobs/policy.md

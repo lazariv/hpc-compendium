@@ -14,19 +14,21 @@ nodes with dedicated resources for user jobs. Normally a job can be submitted wi
 
 Depending on the batch system the syntax differs slightly:
 
-- [Slurm](../jobs_and_resources/slurm.md) (taurus, venus)
+- [Slurm](../jobs_and_resources/slurm.md) (Taurus)
 
-If you are confused by the different batch systems, you may want to enjoy this [batch system
+If you are familiar with another batch system, you may want to enjoy this [batch system
 commands translation table](http://slurm.schedmd.com/rosetta.pdf).
 
-**Comment:** Please keep in mind that for a large runtime a computation may not reach its end. Try
-to create shorter runs (4...8 hours) and use checkpointing.  Here is an extreme example from
-literature for the waste of large computing resources due to missing checkpoints:
+*Comment:* Please keep in mind that for a large run-time a computation may not reach its end. Try to
+create shorter runs (4...8 hours) and use [checkpointing](../jobs_and_resources/checkpoint_restart.md). Here is an extreme example from literature
+for the waste of large computing resources due to missing checkpoints:
 
-*Earth was a supercomputer constructed to find the question to the answer to the Life, the Universe,
-and Everything by a race of hyper-intelligent pan-dimensional beings. Unfortunately 10 million years
-later, and five minutes before the program had run to completion, the Earth was destroyed by
-Vogons.* (Adams, D. The Hitchhikers Guide Through the Galaxy)
+>Earth was a supercomputer constructed to find the question to the answer to the Life, the Universe,
+>and Everything by a race of hyper-intelligent pan-dimensional beings. Unfortunately 10 million years
+>later, and five minutes before the program had run to completion, the Earth was destroyed by
+>Vogons.
+>
+>(Adams, D. The Hitchhikers Guide Through the Galaxy)
 
 ## Exclusive Reservation of Hardware
 
@@ -49,7 +51,7 @@ support](mailto:hpcsupport@zih.tu-dresden.de?subject=Request%20for%20a%20exclusi
   equipped with a graphic card, special placement within the network
   topology?>*
 - `Time window:` *\<Begin and end of the reservation in the form
-  year:month:dayThour:minute:second e.g.: 2020-05-21T09:00:00>*
+  <year>:<month>:<day>T<hour>:<minute>:<second> e.g.: 2020-05-21T09:00:00>*
 - `Reason:` *\<Reason for the reservation.>*
 
 **Please note** that your project CPU hour budget will be credited for the reserved hardware even if

@@ -1,6 +1,6 @@
 # Slurm
 
-The HRSK-II systems are operated with the batch system Slurm. Just specify the resources you need
+All HPC systems at ZIH are operated with the batch system Slurm. Just specify the resources you need
 in terms of cores, memory, and time and your job will be placed on the system.
 
 ## Job Submission
