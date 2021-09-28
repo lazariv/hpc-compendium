@@ -34,6 +34,16 @@
       {% include "partials/logo.html" %}
     </a>
 
+    <a
+    href="{{ config.extra.zih_homepage | url }}"
+    title="{{ config.zih_name | e }}"
+    class="md-header__button zih-logo"
+    aria-label="{{ config.zih_name }}"
+    data-md-component="logo"
+    >
+      <img src="{{ config.theme.second_logo | url }}" alt="logo" />
+    </a>
+
     <!-- Button to open drawer -->
     <label class="md-header__button md-icon" for="__drawer">
       {% include ".icons/material/menu" ~ ".svg" %}
@@ -67,5 +77,11 @@
       {% include "partials/search.html" %}
     {% endif %}
 
+    <!-- Repository information -->
+    {% if config.repo_url %}
+      <div class="md-header__source">
+        {% include "partials/source.html" %}
+      </div>
+    {% endif %}
   </nav>
 </header>
