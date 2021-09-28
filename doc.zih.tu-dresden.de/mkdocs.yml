@@ -98,7 +98,6 @@ nav:
       - Checkpoint/Restart: jobs_and_resources/checkpoint_restart.md
       - Job Profiling: jobs_and_resources/slurm_profiling.md
       - Binding And Distribution Of Tasks: jobs_and_resources/binding_and_distribution_of_tasks.md
-    - Taurus: jobs_and_resources/system_taurus.md
   - Support: support.md
   - Archive:
     - Overview: archive/overview.md
