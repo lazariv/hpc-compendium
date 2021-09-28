@@ -24,5 +24,5 @@ the detailed documentation to get started.
 
 The documenation and the repository have two licenses:
 
-* All documentation is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+* All documentation is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 * All software components are licensed under MIT license.
