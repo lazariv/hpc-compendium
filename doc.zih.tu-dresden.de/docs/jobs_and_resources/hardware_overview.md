@@ -81,25 +81,28 @@ configuration:
     -   44 nodes with 10.67 GB RAM per core (256 GB total):
         taurusi\[4189-4232\]
 -   SLURM Partition `haswell`
--   [Node topology] **todo** %ATTACHURL%/i4000.png
+-   [Node topology]
+
+![Node topology](misc/i4000.png)
+{: align=center}
 
 ### Extension of Island 4 with Broadwell CPUs
 
--   32 nodes, eachs witch 2 x Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz
-    (**14 cores**) , MultiThreading disabled, 64 GB RAM, 256 GB SSD
-    local disk
--   from the users' perspective: Broadwell is like Haswell
--   Hostname: taurusi\[4233-4264\]
--   SLURM partition `broadwell`
+* 32 nodes, eachs witch 2 x Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz
+  (**14 cores**) , MultiThreading disabled, 64 GB RAM, 256 GB SSD
+  local disk
+* from the users' perspective: Broadwell is like Haswell
+* Hostname: `taurusi[4233-4264]`
+* Slurm partition `broadwell`
 
 ## Island 2 Phase 2 - Intel Haswell CPUs + NVIDIA K80 GPUs
 
--   64 nodes, each with 2x Intel(R) Xeon(R) CPU E5-E5-2680 v3 (12 cores)
-    @ 2.50GHz, MultiThreading Disabled, 64 GB RAM (2.67 GB per core),
-    128 GB SSD local disk, 4x NVIDIA Tesla K80 (12 GB GDDR RAM) GPUs
--   Hostname: taurusi2\[045-108\]
--   SLURM Partition `gpu`
--   [Node topology] **todo %ATTACHURL%/i4000.png** (without GPUs)
+* 64 nodes, each with 2x Intel(R) Xeon(R) CPU E5-E5-2680 v3 (12 cores)
+  @ 2.50GHz, MultiThreading Disabled, 64 GB RAM (2.67 GB per core),
+  128 GB SSD local disk, 4x NVIDIA Tesla K80 (12 GB GDDR RAM) GPUs
+* Hostname: `taurusi2[045-108]`
+* Slurm Partition `gpu`
+* Node topology, same as [island 4 - 6](#island-4-to-6-intel-haswell-cpus)
 
 ## SMP Nodes - up to 2 TB RAM
 
@@ -107,7 +110,9 @@ configuration:
     2.20GHz, MultiThreading Disabled, 2 TB RAM
     -   Hostname: `taurussmp[3-7]`
     -   SLURM Partition `smp2`
-    -   [Node topology] **todo** %ATTACHURL%/smp2.png
+
+![Node topology](misc/smp2.png)
+{: align=center}
 
 ## Island 2 Phase 1 - Intel Sandybridge CPUs + NVIDIA K20x GPUs
 
@@ -116,4 +121,6 @@ configuration:
     SSD local disk, 2x NVIDIA Tesla K20x (6 GB GDDR RAM) GPUs
 -   Hostname: `taurusi2[001-044]`
 -   SLURM Partition `gpu1`
--   [Node topology] **todo** %ATTACHURL%/i2000.png (without GPUs)
+
+![Node topology](misc/i2000.png)
+{: align=center}
