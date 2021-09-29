@@ -35,8 +35,8 @@ Data worth keeping shall be moved by the users to the directory
 `archive_migration`, which can be found in your project's and your
 personal `/fastfs` directories:
 
-    * `/fastfs/my_login/archive_migration`
-    * `/fastfs/my_project/archive_migration`
+* `/fastfs/my_login/archive_migration`
+* `/fastfs/my_project/archive_migration`
 
 **Attention:** Exclusively use the command `mv`. Do **not** use `cp` or `rsync`, for they will store
 a second version of your files in the system.
