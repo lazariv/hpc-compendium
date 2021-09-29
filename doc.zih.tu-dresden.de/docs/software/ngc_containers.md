@@ -131,7 +131,7 @@ The majority of the NGC containers allow you to use multiple GPUs from one node 
 
 However, PyTorch and TensorFlow containers support multi-GPU usage.
 
-The example of using PyTorch container for the training ResNet50 on the classification task on ImageNet dataset is presented below:
+The example of using PyTorch container for the training ResNet50 model on the classification task on ImageNet dataset is presented below:
 
 ```console
 marie@login$ srun -p alpha --nodes 1 --ntasks-per-node 8 --ntasks 8 --gres=gpu:8 --time=08:00:00 --pty --mem=500000 bash
