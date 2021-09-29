@@ -18,11 +18,11 @@ In the following, a brief overview on relevant topics w.r.t. data life cycle man
 The main concept of working with data on ZIH systems bases on [Workspaces](workspaces.md). Use it
 properly:
 
-  * use a `/home` directory for the limited amount of personal data, simple examples and the results
-    of calculations. The home directory is not a working directory! However, `/home` filesystem is
-    [backed up](#backup) using snapshots;
-  * use `workspaces` as a place for working data (i.e. data sets); Recommendations of choosing the
-    correct storage system for workspace presented below.
+* use a `/home` directory for the limited amount of personal data, simple examples and the results
+  of calculations. The home directory is not a working directory! However, `/home` filesystem is
+  [backed up](#backup) using snapshots;
+* use `workspaces` as a place for working data (i.e. data sets); Recommendations of choosing the
+  correct storage system for workspace presented below.
 
 ### Taxonomy of Filesystems
 
@@ -31,30 +31,21 @@ It is important to design your data workflow according to characteristics, like 
 storage to efficiently use the provided storage and filesystems.
 The page [filesystems](file_systems.md) holds a comprehensive documentation on the different
 filesystems.
-<!--In general, the mechanisms of
-so-called--> <!--[Workspaces](workspaces.md) are compulsory for all HPC users to store data for a
-defined duration ---> <!--depending on the requirements and the storage system this time span might
-range from days to a few--> <!--years.-->
-<!--- [HPC filesystems](file_systems.md)-->
-<!--- [Intermediate Archive](intermediate_archive.md)-->
-<!--- [Special data containers] **todo** Special data containers (was no valid link in old compendium)-->
-<!--- [Move data between filesystems](../data_transfer/data_mover.md)-->
-<!--- [Move data to/from ZIH's filesystems](../data_transfer/export_nodes.md)-->
-<!--- [Longterm Preservation for ResearchData](preservation_research_data.md)-->
 
 !!! hint "Recommendations to choose of storage system"
 
     * For data that seldom changes but consumes a lot of space, the
       [warm_archive](file_systems.md#warm_archive) can be used.
       (Note that this is mounted **read-only** on the compute nodes).
-    * For a series of calculations that works on the same data please use a `scratch` based [workspace](workspaces.md).
+    * For a series of calculations that works on the same data please use a `scratch` based
+      [workspace](workspaces.md).
     * **SSD**, in its turn, is the fastest available filesystem made only for large parallel
       applications running with millions of small I/O (input, output operations).
     * If the batch job needs a directory for temporary data then **SSD** is a good choice as well.
       The data can be deleted afterwards.
 
 Keep in mind that every workspace has a storage duration. Thus, be careful with the expire date
-otherwise it could vanish. The core data of your project should be [backed up](#backup) and
+otherwise it will vanish. The core data of your project should be [backed up](#backup) and
 [archived]**todo link** (for the most [important]**todo link** data).
 
 ### Backup
@@ -164,13 +155,10 @@ you don’t need throughout its life cycle.
 <!--The instruction of how to use the software: installation of packages, compilation etc should be-->
 <!--documented and gives the opportunity to comfort efficient and safe work.-->
 
-## Access rights
+## Access Right
 
 The concept of **permissions** and **ownership** is crucial in Linux. See the
-[HPC-introduction]**todo link** slides for the understanding of the main concept. Standard Linux
-changing permission command (i.e `chmod`) valid for ZIH systems as well. The **group** access level
-contains members of your project group. Be careful with 'write' permission and never allow to change
-the original data.
-
-Useful links: [Data Management]**todo link**, [Filesystems]**todo link**,
-[Project Management]**todo link**, [Preservation research data[**todo link**
+[HPC introduction slides](../misc/HPC-Introduction.pdf) for the understanding of the main concept.
+Standard Linux changing permission command (i.e `chmod`) valid for ZIH systems as well. The
+**group** access level contains members of your project group. Be careful with 'write' permission
+and never allow to change the original data.
