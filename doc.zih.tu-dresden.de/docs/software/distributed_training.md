@@ -99,19 +99,22 @@ in this case on two nodes.
 TensorFlow is available as a module.
 Check for the version.
 The tf_config environment variable can be set as a prefix to the command.
-Now, run the script simultaneously on both nodes:
+Now, run the script on the sub-cluster "Alpha Centauri" simultaneously on both nodes:
 
 ```bash
 #!/bin/bash
+
 #SBATCH -J distr
-#SBATCH -p ml
-#SBATCH --mem=250G
-#SBATCH --nodes=2
-#SBATCH --ntasks=2
+#SBATCH -p alpha
+#SBATCH --output=%j.out
+#SBATCH --error=%j.err
+#SBATCH --mem=64000
+#SBATCH -N 2
+#SBATCH -n 2
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=14
 #SBATCH --gres=gpu:1
-#SBATCH --time=0:20:00
+#SBATCH --time=01:00:00
 
 function print_nodelist {
         scontrol show hostname $SLURM_NODELIST
@@ -121,14 +124,16 @@ NODE_2=$(print_nodelist | awk '{print $1}' | sort -u | tail -n 1)
 IP_1=$(dig +short ${NODE_1}.taurus.hrsk.tu-dresden.de)
 IP_2=$(dig +short ${NODE_2}.taurus.hrsk.tu-dresden.de)
 
-module load modenv/ml
-module load TensorFlow
+module load modenv/hiera
+module load modenv/hiera GCC/10.2.0 CUDA/11.1.1 OpenMPI/4.0.5 TensorFlow/2.4.1
 
 # On the first node
-srun -w ${NODE_1} --nodes=1 --ntasks=1 --gres=gpu:1 TF_CONFIG='{"cluster": {"worker": ["${NODE_1}:33562", "${NODE_2}:33561"]}, "task": {"index": 0, "type": "worker"}}' python worker.py &
+TF_CONFIG='{"cluster": {"worker": ["'"${NODE_1}"':33562", "'"${NODE_2}"':33561"]}, "task": {"index": 0, "type": "worker"}}' srun -w ${NODE_1} -N 1 --ntasks=1 --gres=gpu:1 python main_ddl.py &
 
 # On the second node
-srun -w ${NODE_2} --nodes=1 --ntasks=1 --gres=gpu:1 TF_CONFIG='{"cluster": {"worker": ["${NODE_1}:33562", "${NODE_2}:33561"]}, "task": {"index": 1, "type": "worker"}}' python worker.py
+TF_CONFIG='{"cluster": {"worker": ["'"${NODE_1}"':33562", "'"${NODE_2}"':33561"]}, "task": {"index": 1, "type": "worker"}}' srun -w ${NODE_2} -N 1 --ntasks=1 --gres=gpu:1 python main_ddl.py &
+
+wait
 ```
 
 ### Distributed PyTorch
