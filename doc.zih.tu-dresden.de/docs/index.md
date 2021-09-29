@@ -1,11 +1,15 @@
 # ZIH HPC Documentation
 
 This is the documentation of the HPC systems and services provided at
-[TU Dresden/ZIH](https://tu-dresden.de/zih/).
+[TU Dresden/ZIH](https://tu-dresden.de/zih/).  This documentation is work in progress, since we try
+to incorporate more information with increasing experience and with every question you ask us. The
+HPC team invites you to take part in the improvement of these pages by correcting or adding useful
+information.
 
-This documentation is work in progress, since we try to incorporate more information
-with increasing experience and with every question you ask us. The HPC team invites you to take
-part in the improvement of these pages by correcting or adding useful information.
+## Starting Point
+
+Besids this documentation, the slides from the [HPC introduction](misc/HPC-Introduction.pdf) are
+a good starting point for new users of ZIH systems as well for HPC in general.
 
 ## Contribution
 
