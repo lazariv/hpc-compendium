@@ -127,7 +127,7 @@ marie@login$ srun -p alpha --nodes 1 --ntasks-per-node 1 --ntasks 1 --gres=gpu:1
 
 ### Multi-GPU Usage
 
-The majority of the NGC containers allow you to use multiple GPUs from one node to run the model inside the container. However, the NGC containers were made by Nvidia for the Nvidia clusters. Moreover, work of the NGC containers requires root privileges which can be done on the ZIH cluster only with [Virtual machines](virtual_machines_tools.md). Thus there is no guarantee that all NGC containers would work from out of the box.
+The majority of the NGC containers allow you to use multiple GPUs from one node to run the model inside the container. However, the NGC containers were made by Nvidia for the Nvidia clusters. Moreover, work of the NGC containers requires root privileges which can be done on the ZIH cluster only with [Virtual machines](containers.md). Thus there is no guarantee that all NGC containers would work from out of the box.
 
 However, PyTorch and TensorFlow containers support multi-GPU usage.
 
