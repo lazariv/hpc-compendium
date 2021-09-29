@@ -1,18 +1,18 @@
-# Changes in the CXFS File System
+# Changes in the CXFS Filesystem
 
 !!! warning
 
     This page is outdated!
 
-With the ending support from SGI, the CXFS file system will be separated from its tape library by
+With the ending support from SGI, the CXFS filesystem will be separated from its tape library by
 the end of March, 2013.
 
-This file system is currently mounted at
+This filesystem is currently mounted at
 
 * SGI Altix: `/fastfs/`
 * Atlas: `/hpc_fastfs/`
 
-We kindly ask our users to remove their large data from the file system.
+We kindly ask our users to remove their large data from the filesystem.
 Files worth keeping can be moved
 
 * to the new [Intermediate Archive](../data_lifecycle/intermediate_archive.md) (max storage
@@ -21,12 +21,12 @@ Files worth keeping can be moved
 * or to the [Log-term Archive](../data_lifecycle/preservation_research_data.md) (tagged with
     metadata).
 
-To run the file system without support comes with the risk of losing data. So, please store away
+To run the filesystem without support comes with the risk of losing data. So, please store away
 your results into the Intermediate Archive. `/fastfs` might on only be used for really temporary
 data, since we are not sure if we can fully guarantee the availability and the integrity of this
-file system, from then on.
+filesystem, from then on.
 
-With the new HRSK-II system comes a large scratch file system with approximately 800 TB disk space.
+With the new HRSK-II system comes a large scratch filesystem with approximately 800 TB disk space.
 It will be made available for all running HPC systems in due time.
 
 ## Migration from CXFS to the Intermediate Archive
