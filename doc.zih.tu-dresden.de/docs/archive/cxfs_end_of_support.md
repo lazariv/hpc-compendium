@@ -26,8 +26,8 @@ your results into the Intermediate Archive. `/fastfs` might on only be used for 
 data, since we are not sure if we can fully guarantee the availability and the integrity of this
 file system, from then on.
 
-With the new HRSK-II system comes a large scratch file system with approximately  800 TB disk space. It will
-be made available for all running HPC systems in due time.
+With the new HRSK-II system comes a large scratch file system with approximately 800 TB disk space.
+It will be made available for all running HPC systems in due time.
 
 ## Migration from CXFS to the Intermediate Archive
 
