@@ -327,7 +327,7 @@ for the Monte-Carlo estimation of Pi.
 
     cluster.scale(2)
 
-    #wait for SLURM to allocate a resources
+    #wait for Slurm to allocate a resources
 
     sleep(120)
 
