@@ -14,7 +14,7 @@ Please check for any already existing issue before submitting your issue in orde
 issues.
 
 Contributions from user-side are highly welcome. Please refer to
-the detailed documentation to get started.
+the detailed [documentation](contrib/howto_contribute.md) to get started.
 
 **Reminder:** Non-documentation issues and requests need to be send as ticket to
 [hpcsupport@zih.tu-dresden.de](mailto:hpcsupport@zih.tu-dresden.de).
