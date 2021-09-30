@@ -18,6 +18,7 @@ i	file \+system	HDFS
 i	\<taurus\>	taurus\.hrsk	/taurus
 i	\<hrskii\>
 i	hpc[ -]\+da\>
+i	\(alpha\|ml\|haswell\|romeo\|gpu\|smp\|julia\|hpdlf\|scs5\)-\?\(interactive\)\?[^a-z]*partition
 i	work[ -]\+space"
 
 # Whitelisted files will be ignored
