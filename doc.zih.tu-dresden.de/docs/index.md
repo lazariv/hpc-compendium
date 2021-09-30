@@ -6,11 +6,6 @@ to incorporate more information with increasing experience and with every questi
 HPC team invites you to take part in the improvement of these pages by correcting or adding useful
 information.
 
-## Starting Point
-
-Besids this documentation, the slides from the [HPC introduction](misc/HPC-Introduction.pdf) are
-a good starting point for new users of ZIH systems as well for HPC in general.
-
 ## Contribution
 
 Issues concerning this documentation can reported via the GitLab
@@ -24,9 +19,12 @@ the detailed documentation to get started.
 **Reminder:** Non-documentation issues and requests need to be send as ticket to
 [hpcsupport@zih.tu-dresden.de](mailto:hpcsupport@zih.tu-dresden.de).
 
-## Licenses
+---
 
-The documenation and the repository have two licenses:
+---
 
-* All documentation is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-* All software components are licensed under MIT license.
+## News
+
+**2021-10-05** Offline-maintenance (black building test)
+
+**2021-09-29** Introduction to HPC at ZIH ([slides](misc/HPC-Introduction.pdf))
