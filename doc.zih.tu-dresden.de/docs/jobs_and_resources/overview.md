@@ -22,12 +22,25 @@ ZIH systems. There is also a page with extensive set of [Slurm examples](slurm_e
 
 ## Selection of Suitable Hardware
 
-### What do I need a CPU or GPU?
+### What do I need, a CPU or GPU?
 
-The main difference between CPU and GPU architecture is that a CPU is designed to handle a wide
-range of tasks quickly, but are limited in the concurrency of tasks that can be running. While GPUs
-can process data much faster than a CPU due to massive parallelism (but the amount of data which
-a single GPU's core can handle is small), GPUs are not as versatile as CPUs.
+If an application is designed to run on GPUs this is normally announced unmistakable since the
+efforts of adapting an existing software to make use of a GPU can be overwhelming.
+And even if the software was listed in [NVIDIA's list of GPU-Accelerated Applications](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/gpu-applications-catalog.pdf)
+only certain parts of the computations may run on the GPU.
+
+To answer the question: The easiest way is to compare a typical computation
+on a normal node and on a GPU node. (Make sure to eliminate the influence of different
+CPU types and different number of cores.) If the execution time with GPU is better
+by a significant factor then this might be the obvious choice.
+
+??? note "Difference in Architecture"
+
+    The main difference between CPU and GPU architecture is that a CPU is designed to handle a wide
+    range of tasks quickly, but are limited in the concurrency of tasks that can be running.
+    While GPUs can process data much faster than a CPU due to massive parallelism
+    (but the amount of data which
+    a single GPU's core can handle is small), GPUs are not as versatile as CPUs.
 
 ### Available Hardware
 
