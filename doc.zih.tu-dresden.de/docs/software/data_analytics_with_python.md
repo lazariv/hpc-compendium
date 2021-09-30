@@ -319,7 +319,7 @@ for the Monte-Carlo estimation of Pi.
     uid = int( sp.check_output('id -u', shell=True).decode('utf-8').replace('\n','') )
     portdash = 10001 + uid
 
-    #create a slurm cluster, please specify your project 
+    #create a Slurm cluster, please specify your project 
 
     cluster = SLURMCluster(queue='alpha', cores=2, project='p_scads', memory="8GB", walltime="00:30:00", extra=['--resources gpu=1'], scheduler_options={"dashboard_address": f":{portdash}"})
 
