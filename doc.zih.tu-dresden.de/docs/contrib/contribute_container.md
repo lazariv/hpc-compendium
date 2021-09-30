@@ -33,7 +33,7 @@ above, a few more steps are necessary.
 
 * a working Docker installation
 * all necessary access/execution rights
-* a local clone of the repository in the directory `./hpc-compendium`
+* a local clone of the repository in the directory `./hpc-wiki`
 
 Build the docker image. This might take a bit longer, but you have to
 run it only once in a while.
