@@ -120,11 +120,17 @@ cd /PATH/TO/hpc-compendium
 docker build -t hpc-compendium .
 ```
 
+To avoid a lot of retyping, use the following in your shell:
+
+```bash
+alias wiki="docker run --name=hpc-compendium --rm -it -w /docs --mount src=$PWD/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium bash -c"
+```
+
 If you want to see how it looks in your browser, you can use shell commands to serve
 the documentation:
 
 ```Bash
-docker run --name=hpc-compendium -p 8000:8000 --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium bash -c "mkdocs build --verbose && mkdocs serve -a 0.0.0.0:8000"
+wiki "mkdocs build --verbose && mkdocs serve -a 0.0.0.0:8000"
 ```
 
 You can view the documentation via [http://localhost:8000](http://localhost:8000) in your browser, now.
@@ -141,26 +147,26 @@ documentation.  If you want to check whether the markdown files are formatted
 properly, use the following command:
 
 ```Bash
-docker run --name=hpc-compendium --rm -it -w /docs/doc.zih.tu-dresden.de --mount src="$(pwd)",target=/docs,type=bind hpc-compendium markdownlint docs
+wiki 'markdownlint docs'
 ```
 
 To check whether there are links that point to a wrong target, use
 (this may take a while and gives a lot of output because it runs over all files):
 
 ```Bash
-docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium bash -c "find docs -type f -name '*.md' | xargs -L1 markdown-link-check"
+wiki "find docs -type f -name '*.md' | xargs -L1 markdown-link-check"
 ```
 
-To check a single file, e. g. `doc.zih.tu-dresden.de/docs/software/big_data_frameworks.md`, use:
+To check a single file, e. g. `doc.zih.tu-dresden.de/docs/software/big_data_frameworks_spark.md`, use:
 
 ```Bash
-docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium markdown-link-check docs/software/big_data_frameworks.md
+wiki 'markdown-link-check docs/software/big_data_frameworks_spark.md'
 ```
 
 For spell-checking a single file, use:
 
 ```Bash
-docker run --name=hpc-compendium --rm -it -w /docs --mount src="$(pwd)",target=/docs,type=bind hpc-compendium ./doc.zih.tu-dresden.de/util/check-spelling.sh <file>
+wiki 'util/check-spelling.sh <file>'
 ```
 
 For spell-checking all files, use:
