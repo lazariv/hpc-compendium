@@ -399,6 +399,11 @@ that:
 cp doc.zih.tu-dresden.de/util/pre-commit .git/hooks/
 ```
 
+!!! note
+    The pre-commit hook only works, if you can use docker without using `sudo`. If this is not
+    already the case, use the command `adduser $USER docker` to enable docker commands without
+    `sudo` for the current user. Restart the docker daemons afterwards.
+
 ## Content Rules
 
 **Remark:** Avoid using tabs both in markdown files and in `mkdocs.yaml`. Type spaces instead.
