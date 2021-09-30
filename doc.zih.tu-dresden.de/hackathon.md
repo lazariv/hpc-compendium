@@ -10,21 +10,21 @@ The goals for the hackathon are:
 
 ## twiki2md
 
-The script `twiki2md` converts twiki source files into markdown source files using pandoc. It outputs the
-markdown source files according to the old pages tree into subdirectories. The output and **starting
-point for transferring** old content into the new system can be found at branch `preview` within
-directory `twiki2md/root/`.
+The script `twiki2md` converts twiki source files into markdown source files using pandoc. It
+outputs the markdown source files according to the old pages tree into subdirectories. The
+output and **starting point for transferring** old content into the new system can be found
+at branch `preview` within directory `twiki2md/root/`.
 
 ## Steps
 
 ### Familiarize with New Wiki System
 
-* Make sure your are member of the [repository](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium).
+* Make sure your are member of the [repository](https://gitlab.hrz.tu-chemnitz.de/zih/hpcsupport/hpc-compendium).
   If not, ask Danny Rotscher for adding you.
 * Clone repository and checkout branch `preview`
 
 ```Shell Session
-~ git clone git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git
+~ git clone git@gitlab.hrz.tu-chemnitz.de:zih/hpcsupport/hpc-compendium.git
 ~ cd hpc-compendium
 ~ git checkout preview
 ```
@@ -38,23 +38,27 @@ directory `twiki2md/root/`.
 1. Grab a markdown source file from `twiki2md/root/` directory (a topic you are comfortable with)
 1. Find place in new structure according to
 [Typical Project Schedule](https://doc.zih.tu-dresden.de/hpc-wiki/bin/view/Compendium/TypicalProjectSchedule)
-  * Create new feature branch holding your work `~ git checkout -b <BRANCHNAME>`, whereas branch name can
-      be `<FILENAME>` for simplicity
+
+  * Create new feature branch holding your work `~ git checkout -b <BRANCHNAME>`, whereas branch
+      name can be `<FILENAME>` for simplicity
   * Copy reviewed markdown source file to `docs/` directory via
     `~ git mv twiki2md/root/<FILENAME>.md doc.zih.tu-dresden.de/docs/<SUBDIR>/<FILENAME>.md`
   * Update navigation section in `mkdocs.yaml`
+
 1. Commit and push to feature branch via
+
 ```Shell Session
 ~ git commit docs/<SUBDIR>/<FILENAME>.md mkdocs.yaml -m "MESSAGE"
 ~ git push origin <BRANCHNAME>
 ```
+
 1. Run checks locally and fix the issues. Otherwise the pipeline will fail.
     * [Check links](README.md#check-links) (There might be broken links which can only be solved
         with ongoing transfer of content.)
     * [Check pages structure](README.md#check-pages-structure)
     * [Markdown Linter](README.md#markdown-linter)
 1. Create
-  [merge request](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/merge_requests)
+  [merge request](https://gitlab.hrz.tu-chemnitz.de/zih/hpcsupport/hpc-compendium/-/merge_requests)
    against `preview` branch
 
 ### Review Content

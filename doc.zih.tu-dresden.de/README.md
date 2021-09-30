@@ -9,7 +9,7 @@ long describing complex steps, contributing is quite easy - trust us.
 ## Contribute via Issue
 
 Users can contribute to the documentation via the
-[issue tracking system](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/issues).
+[issue tracking system](https://gitlab.hrz.tu-chemnitz.de/zih/hpcsupport/hpc-compendium/-/issues).
 For that, open an issue to report typos and missing documentation or request for more precise
 wording etc.  ZIH staff will get in touch with you to resolve the issue and improve the
 documentation.
@@ -133,7 +133,7 @@ the documentation:
 wiki "mkdocs build --verbose && mkdocs serve -a 0.0.0.0:8000"
 ```
 
-You can view the documentation via [http://localhost:8000](http://localhost:8000) in your browser, now.
+You can view the documentation via `http://localhost:8000` in your browser, now.
 
 If that does not work, check if you can get the URL for your browser's address
 bar from a different terminal window:
@@ -200,7 +200,7 @@ locally on the documentation. At first, you should add a remote pointing to the 
 documentation.
 
 ```Shell Session
-~ git remote add upstream-zih git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git
+~ git remote add upstream-zih git@gitlab.hrz.tu-chemnitz.de:zih/hpcsupport/hpc-compendium.git
 ```
 
 Now, you have two remotes, namely *origin* and *upstream-zih*. The remote *origin* points to your fork,
@@ -210,8 +210,8 @@ whereas *upstream-zih* points to the original documentation repository at GitLab
 $ git remote -v
 origin  git@gitlab.hrz.tu-chemnitz.de:LOGIN/hpc-compendium.git (fetch)
 origin  git@gitlab.hrz.tu-chemnitz.de:LOGIN/hpc-compendium.git (push)
-upstream-zih  git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git (fetch)
-upstream-zih  git@gitlab.hrz.tu-chemnitz.de:zih/hpc-compendium/hpc-compendium.git (push)
+upstream-zih  git@gitlab.hrz.tu-chemnitz.de:zih/hpcsupport/hpc-compendium.git (fetch)
+upstream-zih  git@gitlab.hrz.tu-chemnitz.de:zih/hpcsupport/hpc-compendium.git (push)
 ```
 
 Next, you should synchronize your `main` branch with the upstream.
@@ -243,7 +243,7 @@ new branch (a so-called feature branch) basing on the `main` branch and commit y
 
 The last command pushes the changes to your remote at branch `FEATUREBRANCH`. Now, it is time to
 incorporate the changes and improvements into the HPC Compendium. For this, create a
-[merge request](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/merge_requests/new)
+[merge request](https://gitlab.hrz.tu-chemnitz.de/zih/hpcsupport/hpc-compendium/-/merge_requests/new)
 to the `main` branch.
 
 ### Important Branches
@@ -254,8 +254,8 @@ There are two important branches in this repository:
   - Branch containing recent changes which will be soon merged to main branch (protected
     branch)
   - Served at [todo url](todo url) from TUD VPN
-- Main: Branch which is deployed at [doc.zih.tu-dresden.de](doc.zih.tu-dresden.de) holding the
-    current documentation (protected branch)
+- Main: Branch which is deployed at [https://doc.zih.tu-dresden.de](https://doc.zih.tu-dresden.de)
+    holding the current documentation (protected branch)
 
 If you are totally sure about your commit (e.g., fix a typo), it is only the following steps:
 
@@ -416,7 +416,7 @@ cp doc.zih.tu-dresden.de/util/pre-commit .git/hooks/
 
 ### New Page and Pages Structure
 
-The pages structure is defined in the configuration file [mkdocs.yaml](doc.zih.tu-dresden.de/mkdocs.yml).
+The pages structure is defined in the configuration file [mkdocs.yaml](mkdocs.yml).
 
 ```Shell Session
 docs/
