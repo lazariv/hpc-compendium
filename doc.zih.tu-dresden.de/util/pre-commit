@@ -30,6 +30,7 @@ do
     filepattern=${BASH_REMATCH[1]}
 
     #lint
+    echo "Checking linter"
     docker run --name=hpc-compendium --rm -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium markdownlint $filepattern
     if [ $? -ne 0 ]
     then
@@ -37,6 +38,7 @@ do
     fi
 
     #link-check
+    echo "Checking links..."
     docker run --name=hpc-compendium --rm -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium markdown-link-check $filepattern
     if [ $? -ne 0 ]
     then
@@ -46,6 +48,7 @@ do
 done
 
 #spell-check
+echo "Spell-checking..."
 docker run --name=hpc-compendium --rm -w /docs --mount src="$(pwd)",target=/docs,type=bind hpc-compendium ./doc.zih.tu-dresden.de/util/check-spelling.sh
 if [ $? -ne 0 ]
 then
@@ -53,6 +56,7 @@ then
 fi
 
 #forbidden words checking
+echo "Forbidden words checking..."
 docker run --name=hpc-compendium --rm -w /docs --mount src="$(pwd)",target=/docs,type=bind hpc-compendium ./doc.zih.tu-dresden.de/util/grep-forbidden-words.sh
 if [ $? -ne 0 ]
 then
