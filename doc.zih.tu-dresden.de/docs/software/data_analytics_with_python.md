@@ -114,7 +114,7 @@ Dask supports several user interfaces:
 
 #### Installation
 
-Dask is available as module on
+Dask is available as a module on
 ZIH system for all software environments (scs5, ml, hiera(alpha)).
 To load the module for the corresponding
 software environment: `ml dask`
@@ -147,84 +147,11 @@ The availability of the exact packages
 in the module can be checked by the
 `module whatis <name_of_the_module> command`.
 The `module whatis`
-command displays a short information and included extensions of the
+command displays short information and included extensions of the
 module.
 
-##### Installation Using Conda
-
-Moreover, it is possible to install and use Dask in your local conda
-environment:
-
 Dask is installed by default in
-[Anaconda](https://www.anaconda.com/download/).
-To install/update
-Dask on the system with using the
-[conda](https://www.anaconda.com/download/) follow the example:
-
-```console
-marie@login$ srun -p ml -N 1 -n 1 --mem-per-cpu=5772 --gres=gpu:1 --time=04:00:00 --pty bash
-```
-
-Create a conda virtual environment. We would recommend
-using a Workspace. See the example (use
-`--prefix` flag to specify the directory).
-
-!!! note
-    You could work with simple examples in your home directory (where you are loading by default).
-    However, in accordance with the [HPC storage concept](../data_lifecycle/overview.md) please use
-    a [Workspace](../data_lifecycle/workspaces.md) for your study and work projects.
-
-```console
-marie@compute$ conda create --prefix /scratch/ws/0/marie-Workproject/conda-virtual-environment/dask-test python=3.6
-```
-
-By default, conda will locate the environment in your home directory:
-
-```console
-marie@compute$ conda create -n dask-test python=3.6
-```
-
-Activate the virtual environment, install Dask and verify the installation:
-
-```console
-marie@compute$ ml modenv/ml
-marie@compute$ ml PythonAnaconda/3.6
-marie@compute$ conda activate /scratch/ws/0/marie-Workproject/conda-virtual-environment/dask-test python=3.6
-marie@compute$ which python
-marie@compute$ which conda
-marie@compute$ conda install dask
-marie@compute$ python                            #start python
-```
-
-```python
-from dask.distributed import Client, progress
-client = Client(n_workers=4, threads_per_worker=1)
-client
-```
-
-##### Installation Using Pip
-
-You can install everything required for most common uses of Dask (arrays, dataframes, etc)
-
-```console
-marie@login$ srun -p ml -N 1 -n 1 --mem-per-cpu=5772 --gres=gpu:1 --time=04:00:00 --pty bash
-
-marie@compute$ cd /scratch/ws/0/marie-Workproject/python-virtual-environment/dask-test
-
-marie@compute$ ml modenv/ml
-marie@compute$ module load PythonAnaconda/3.6
-marie@compute$ which python
-
-marie@compute$ python3 -m venv --system-site-packages dask-test
-marie@compute$ source dask-test/bin/activate
-marie@compute$ python -m pip install "dask[complete]"
-```
-
-```python
-from dask.distributed import Client, progress
-client = Client(n_workers=4, threads_per_worker=1)
-client
-```
+[Anaconda](https://www.anaconda.com/download/). Moreover, it is possible to install and use Dask in your local virtualenv (recommended) or [conda](https://www.anaconda.com/download/) virtual environment. More information you can find  in the [Python Virtual Environments page](python_virtual_environments.md).
 
 #### Scheduling by Dask
 
@@ -238,7 +165,7 @@ Dask has two families of task schedulers:
 
 - Single machine scheduler: This scheduler provides basic features
 on a local process or thread pool. It can only be used on a single machine
-nd does not scale. It's not interesting in the context of HPC.
+and does not scale. It's not interesting in the context of HPC.
 
 - Distributed scheduler: This scheduler is more sophisticated,
 offers more features, but also requires a bit more effort to set up.
@@ -272,7 +199,7 @@ usage, and it might be better to use tools like
 **[Dask-mpi](https://docs.dask.org/en/latest/setup/hpc.html#using-mpi)**
 in some routine batch production workloads.
 
-###### Dask-mpi
+##### Dask-mpi
 
 You can launch a Dask network using
 `mpirun` or `mpiexec` and the `dask-mpi` command line executable.
@@ -280,14 +207,12 @@ This depends on the [mpi4py library](#mpi4py-mpi-for-python).
 For more detailed information please check
 [the official documentation](https://docs.dask.org/en/latest/setup/hpc.html#using-mpi).
 
-###### Dask-jobqueue
+##### Dask-jobqueue
 
-[Dask-jobqueue](https://jobqueue.dask.org/)can be used as the standard way
+[Dask-jobqueue](https://jobqueue.dask.org/) can be used as the standard way
 to use dask for most users.
 It allows an easy deployment of Dask Distributed on HPC with Slurm
 or other job queuing systems.
-
-###### Installation of Dask-jobqueue
 
 Dask-jobqueue is available as an extension
 for a Dask module (which can be loaded by: `module load dask`)
@@ -297,33 +222,8 @@ in the module can be checked by the
 `module whatis <name_of_the_module>` command.
 
 Moreover, it is possible to install and use `dask-jobqueue`
-in you local environments.
-You can install Dask-jobqueue with `pip` or `conda`
-
-###### Installation with Pip
-
-```console
-marie@login$ srun -p haswell -N 1 -n 1 -c 4 --mem-per-cpu=2583 --time=01:00:00 --pty bash
-marie@compute$ cd /scratch/ws/0/marie-Workproject/python-virtual-environment/dask-test
-marie@compute$ ml modenv/ml 
-marie@compute$ module load PythonAnaconda/3.6 
-marie@compute$ which python
-
-marie@compute$ source dask-test/bin/activate              #Activate virtual environment
-marie@compute$ pip install dask-jobqueue --upgrade        #Install everything from last released version
-```
-
-###### Installation with Conda
-
-```console
-marie@login$ srun -p haswell -N 1 -n 1 -c 4 --mem-per-cpu=2583 --time=01:00:00 --pty bash
-
-marie@compute$ ml modenv/ml 
-marie@compute$ module load PythonAnaconda/3.6 
-marie@compute$ source dask-test/bin/activate
-
-marie@compute$ conda install dask-jobqueue -c conda-forge
-```
+in your local python environments.
+You can install Dask-jobqueue with `pip` or `conda`.
 
 ###### Example of use Dask-jobqueue with SLURMCluster
 
@@ -380,20 +280,115 @@ special hardware availability that the scheduler
 is not aware of, for example, GPUs.
 Please don't forget to specify the name of your project.
 
-The python code for setting up Slurm clusters
+The Python code for setting up Slurm clusters
 and scaling clusters can be run by the `srun`
 (but remember that using `srun` directly on the shell
 blocks the shell and launches an
-interactive job) or batch jobs or [JupyterHub](../access/jupyterhub.md)
+interactive job) or batch jobs or [JupyterHub](../access/jupyterhub.md) with loaded Dask (by module or by Python virtual environment).
+
 **Note**: The job to run original code (de facto an interface) with
 a setup should be simple and light.
 Please don't use a lot of resources for that.  
 
-[The dask_test.py script](misc/dask_test.py) gives an example of using
+The following example shows using
 Dask by `dask-jobqueue` with `SLURMCluster` and `dask.array`
 for the Monte-Carlo estimation of Pi.
 
-### mpi4py -  MPI for Python
+??? example "Example of using SLURMCluster"
+
+    ```python
+    #use of dask-jobqueue for the estimation of Pi by Monte-Carlo method
+
+    import time
+    from time import time, sleep
+    from dask.distributed import Client
+    from dask_jobqueue import SLURMCluster
+    import subprocess as sp
+
+    import dask.array as da
+    import numpy as np
+
+    #setting up the dashboard
+
+    uid = int( sp.check_output('id -u', shell=True).decode('utf-8').replace('\n','') )
+    portdash = 10001 + uid
+
+    #create a slurm cluster, please specify your project 
+
+    cluster = SLURMCluster(queue='alpha', cores=2, project='p_scads', memory="8GB", walltime="00:30:00", extra=['--resources gpu=1'], scheduler_options={"dashboard_address": f":{portdash}"})
+
+    #submit the job to the scheduler with the number of nodes (here 2) requested:
+
+    cluster.scale(2)
+
+    #wait for SLURM to allocate a resources
+
+    sleep(120)
+
+    #check resources
+
+    client = Client(cluster)
+    client
+
+    #real calculations with a Monte Carlo method
+
+    def calc_pi_mc(size_in_bytes, chunksize_in_bytes=200e6):
+      """Calculate PI using a Monte Carlo estimate."""
+    
+      size = int(size_in_bytes / 8)
+      chunksize = int(chunksize_in_bytes / 8)
+    
+      xy = da.random.uniform(0, 1, size=(size / 2, 2), chunks=(chunksize / 2, 2))
+    
+      in_circle = ((xy ** 2).sum(axis=-1) < 1)
+      pi = 4 * in_circle.mean()
+
+      return pi
+
+    def print_pi_stats(size, pi, time_delta, num_workers):
+      """Print pi, calculate offset from true value, and print some stats."""
+      print(f"{size / 1e9} GB\n"
+            f"\tMC pi: {pi : 13.11f}"
+            f"\tErr: {abs(pi - np.pi) : 10.3e}\n"
+            f"\tWorkers: {num_workers}"
+            f"\t\tTime: {time_delta : 7.3f}s")
+          
+    #let's loop over different volumes of double-precision random numbers and estimate it
+
+    for size in (1e9 * n for n in (1, 10, 100)):
+    
+      start = time()
+      pi = calc_pi_mc(size).compute()
+      elaps = time() - start
+
+      print_pi_stats(size, pi, time_delta=elaps, num_workers=len(cluster.scheduler.workers))
+
+    #Scaling the Cluster to twice its size and re-run the experiments
+                   
+    new_num_workers = 2 * len(cluster.scheduler.workers)
+
+    print(f"Scaling from {len(cluster.scheduler.workers)} to {new_num_workers} workers.")
+
+    cluster.scale(new_num_workers)
+
+    sleep(120)
+
+    client
+                   
+    #Re-run same experiments with doubled cluster
+
+    for size in (1e9 * n for n in (1, 10, 100)):    
+        
+      start = time()
+      pi = calc_pi_mc(size).compute()
+      elaps = time() - start
+
+      print_pi_stats(size, pi, time_delta=elaps, num_workers=len(cluster.scheduler.workers))
+    ```
+
+Please check the availability of resources that you want to allocate by the script for the example above. You can do it with `sinfo` command. The script doesn't work without available cluster resources.
+
+### Mpi4py -  MPI for Python
 
 Message Passing Interface (MPI) is a standardized and portable message-passing standard, designed to
 function on a wide variety of parallel computing architectures. The Message Passing Interface (MPI)
@@ -401,15 +396,15 @@ is a library specification that allows HPC to pass information between its vario
 clusters. MPI is designed to provide access to advanced parallel hardware for end-users, library
 writers and tool developers.
 
-mpi4py (MPI for Python) provides bindings of the MPI standard for the Python programming
+Mpi4py (MPI for Python) provides bindings of the MPI standard for the Python programming
 language, allowing any Python program to exploit multiple processors.
 
-mpi4py is based on MPI-2 C++ bindings. It supports almost all MPI calls. This implementation is
+Mpi4py is based on MPI-2 C++ bindings. It supports almost all MPI calls. This implementation is
 popular on Linux clusters and in the SciPy community. Operations are primarily methods of
 communicator objects. It supports communication of pickle-able Python objects. mpi4py provides
-optimized communication of NumPy arrays.
+optimized the communication of NumPy arrays.
 
-mpi4py is included in the SciPy-bundle modules on the ZIH system.
+Mpi4py is included in the SciPy-bundle modules on the ZIH system.
 
 ```console
 marie@compute$ module load SciPy-bundle/2020.11-foss-2020b
@@ -422,7 +417,7 @@ mpi4py                        3.0.3
 [...]
 ```
 
-Other versions of the package can be found with
+Other versions of the package can be found with:
 
 ```console
 marie@compute$ module spider mpi4py
@@ -448,22 +443,9 @@ Names marked by a trailing (E) are extensions provided by another module.
 ```
 
 Moreover, it is possible to install Mpi4py in your local conda
-environment:
+environment.
 
-```console
-marie@login$ srun -p ml --time=04:00:00 -n 1 --pty --mem-per-cpu=8000 bash                            #allocate recources
-marie@compute$ module load modenv/ml
-marie@compute$ module load PythonAnaconda/3.6                                                         #load module to use conda
-marie@compute$ conda create --prefix=<location_for_your_environment> python=3.6 anaconda              #create conda virtual environment
-
-marie@compute$ conda activate <location_for_your_environment>                                       #activate your virtual environment
-
-marie@compute$ conda install -c conda-forge mpi4py                                                  #install mpi4py
-
-marie@compute$ python                                                                               #start python
-```
-
-Check if mpi4py is running correctly
+The example of mpi4py usage for the verification that mpi4py is running correctly can be found below:
 
 ```python
 from mpi4py import MPI
@@ -488,4 +470,4 @@ conda activate /home/marie/conda-virtual-environment/kernel2 && srun python mpi4
 ```
 
 For the verification of the multi-node case, you can use as a test
-file the python-code from the previous part (with verification of the installation).
+file the Python code from the previous part (with verification of the installation).
