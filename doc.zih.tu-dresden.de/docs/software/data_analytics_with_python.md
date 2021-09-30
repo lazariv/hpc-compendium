@@ -160,7 +160,7 @@ in the [Python Virtual Environments page](python_virtual_environments.md).
 #### Scheduling by Dask
 
 One of the main features of Dask is large-scale Dask collections
-(Dask Array, Dask Bag, etc). All of them are using task graphs.
+(Dask Array, Dask Bag, etc) which are using task graphs.
 After Dask generates these task graphs,
 it needs to execute them on parallel hardware.
 This is the job of a task scheduler.
