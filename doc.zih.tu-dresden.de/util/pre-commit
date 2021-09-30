@@ -30,6 +30,7 @@ do
     filepattern=${BASH_REMATCH[1]}
 
     #lint
+    echo "Checking linter..."
     echo "Checking linter"
     docker run --name=hpc-compendium --rm -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium markdownlint $filepattern
     if [ $? -ne 0 ]
