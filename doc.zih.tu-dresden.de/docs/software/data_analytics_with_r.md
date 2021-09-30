@@ -7,7 +7,7 @@ algorithms and graphical techniques.  R is an integrated suite of software facil
 manipulation, calculation and graphing.
 
 We recommend using the partitions Haswell and/or Romeo to work with R. For more details
-see our [hardware documentation](../jobs_and_resources/hardware_taurus.md).
+see our [hardware documentation](../jobs_and_resources/hardware_overview.md).
 
 ## R Console
 
@@ -256,7 +256,7 @@ code to use `mclapply` function. Check out an example below.
 
 The disadvantages of using shared-memory parallelism approach are, that the number of parallel tasks
 is limited to the number of cores on a single node. The maximum number of cores on a single node can
-be found in our [hardware documentation](../jobs_and_resources/hardware_taurus.md).
+be found in our [hardware documentation](../jobs_and_resources/hardware_overview.md).
 
 Submitting a multicore R job to Slurm is very similar to submitting an
 [OpenMP Job](../jobs_and_resources/slurm.md#binding-and-distribution-of-tasks),

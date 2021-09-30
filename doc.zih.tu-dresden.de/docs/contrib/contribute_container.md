@@ -54,8 +54,7 @@ docker run --name=hpc-compendium -p 8000:8000 --rm -it -w /docs \
 To follow its progress let it run in a single shell (terminal window)
 and open another one for the other steps.
 
-You can view the documentation via
-[http://localhost:8000](http://localhost:8000) in your browser, now.
+You can view the documentation via `http://localhost:8000` in your browser, now.
 
 You can now update the contents in you preferred editor.
 The running container automatically takes care of file changes and rebuilds the
