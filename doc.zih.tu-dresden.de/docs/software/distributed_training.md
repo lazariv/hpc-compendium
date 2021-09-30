@@ -99,7 +99,7 @@ in this case on two nodes.
 TensorFlow is available as a module.
 Check for the version.
 The tf_config environment variable can be set as a prefix to the command.
-Now, run the script on the sub-cluster "Alpha Centauri" simultaneously on both nodes:
+Now, run the script on the Alpha partition simultaneously on both nodes:
 
 ```bash
 #!/bin/bash
@@ -219,9 +219,16 @@ Please check the [software module list](modules.md) for the current version of t
 Horovod can be loaded like other software on ZIH system:
 
 ```bash
-ml av Horovod                                                       #Check available modules with Python
-ml Horovod/0.19.5-fosscuda-2019b-TensorFlow-2.2.0-Python-3.7.4      #Loading one of them
+module avail Horovod                                                       #Check available modules with Python
+module load Horovod/0.19.5-fosscuda-2019b-TensorFlow-2.2.0-Python-3.7.4      #Loading one of them
 ```
+
+Or if you want to use Horovod on the Alpha partition you can load it with the dependencies:
+```bash
+module spider Horovod                                               #Check available modules and dependencies
+module load modenv/hiera  GCC/10.2.0  CUDA/11.1.1  OpenMPI/4.0.5 Horovod/0.21.1-TensorFlow-2.4.1
+```
+
 
 #### Horovod installation
 
@@ -232,7 +239,7 @@ Installing PyTorch can take a few hours and is not recommended.
 **Note:** You could work with simple examples in your home directory but **please use workspaces
 for your study and work projects** (see the storage concept).
 
-Setup:
+Setup on the ML partition:
 
 ```bash
 srun --nodes=1 --ntasks-per-node=1 -p ml --time=08:00:00 --pty bash     #allocate a Slurm job
@@ -242,6 +249,7 @@ module load OpenMPI/3.1.4-gcccuda-2018b
 module load Python/3.6.6-fosscuda-2018b
 module load cuDNN/7.1.4.18-fosscuda-2018b
 module load CMake/3.11.4-GCCcore-7.3.0
+module load NCCL/2.3.7-fosscuda-2018b
 
 virtualenv --system-site-packages <location_for_your_environment>        #create virtual environment
 source <location_for_your_environment>/bin/activate                      #activate virtual environment
@@ -257,6 +265,7 @@ module load OpenMPI/3.1.4-gcccuda-2018b
 module load PythonAnaconda/3.6
 module load cuDNN/7.1.4.18-fosscuda-2018b
 module load CMake/3.11.4-GCCcore-7.3.0
+module load NCCL/2.3.7-fosscuda-2018b
 
 conda create --prefix=<location_for_your_environment> python=3.6 anaconda #create virtual environment
 conda activate  <location_for_your_environment>                           #activate virtual environment
@@ -268,8 +277,10 @@ In the example presented installation for PyTorch without TensorFlow.
 Adapt as required and refer to the Horovod documentation for details.
 
 ```bash
-HOROVOD_GPU_ALLREDUCE=MPI HOROVOD_WITHOUT_TENSORFLOW=1 HOROVOD_WITH_PYTORCH=1 HOROVOD_WITHOUT_MXNET=1 pip install --no-cache-dir horovod
+HOROVOD_GPU_ALLREDUCE=NCCL HOROVOD_WITHOUT_TENSORFLOW=1 HOROVOD_WITH_PYTORCH=1 HOROVOD_WITHOUT_MXNET=1 pip install --no-cache-dir horovod
 ```
+
+If you want to use OpenMPI then specify `HOROVOD_GPU_ALLREDUCE=MPI`. To have better performance it is recommended to use NCCL instead of OpenMPI.  
 
 ##### Verify that Horovod works
 
@@ -283,16 +294,6 @@ hvd.rank()
 print('Hello from:', hvd.rank())
 ```
 
-##### Horovod with NCCL
-
-If you want to use NCCL instead of MPI you can specify that in the install command after loading
-the NCCL module:
-
-```bash
-module load NCCL/2.3.7-fosscuda-2018b
-
-HOROVOD_GPU_ALLREDUCE=NCCL HOROVOD_GPU_BROADCAST=NCCL HOROVOD_WITHOUT_TENSORFLOW=1 HOROVOD_WITH_PYTORCH=1 HOROVOD_WITHOUT_MXNET=1 pip install --no-cache-dir horovod
-```
 
 #### Example
 
