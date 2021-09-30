@@ -151,7 +151,11 @@ command displays short information and included extensions of the
 module.
 
 Dask is installed by default in
-[Anaconda](https://www.anaconda.com/download/). Moreover, it is possible to install and use Dask in your local virtualenv (recommended) or [conda](https://www.anaconda.com/download/) virtual environment. More information you can find  in the [Python Virtual Environments page](python_virtual_environments.md).
+[Anaconda](https://www.anaconda.com/download/). Moreover, 
+it is possible to install and use Dask in your local virtualenv 
+(recommended) or [conda](https://www.anaconda.com/download/) virtual environment. 
+More information you can find  
+in the [Python Virtual Environments page](python_virtual_environments.md).
 
 #### Scheduling by Dask
 
@@ -284,7 +288,9 @@ The Python code for setting up Slurm clusters
 and scaling clusters can be run by the `srun`
 (but remember that using `srun` directly on the shell
 blocks the shell and launches an
-interactive job) or batch jobs or [JupyterHub](../access/jupyterhub.md) with loaded Dask (by module or by Python virtual environment).
+interactive job) or batch jobs or 
+[JupyterHub](../access/jupyterhub.md) with loaded Dask 
+(by module or by Python virtual environment).
 
 **Note**: The job to run original code (de facto an interface) with
 a setup should be simple and light.
@@ -386,7 +392,10 @@ for the Monte-Carlo estimation of Pi.
       print_pi_stats(size, pi, time_delta=elaps, num_workers=len(cluster.scheduler.workers))
     ```
 
-Please check the availability of resources that you want to allocate by the script for the example above. You can do it with `sinfo` command. The script doesn't work without available cluster resources.
+Please check the availability of resources that you want to allocate 
+by the script for the example above. 
+You can do it with `sinfo` command. The script doesn't work 
+without available cluster resources.
 
 ### Mpi4py -  MPI for Python
 
