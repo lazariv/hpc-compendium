@@ -31,6 +31,8 @@ dataframes
 DataFrames
 datamover
 DataParallel
+dataset
+datasets
 DDP
 DDR
 DFG
@@ -113,6 +115,7 @@ MNIST
 Montecito
 mountpoint
 mpi
+Mpi
 MPI
 mpicc
 mpiCC
@@ -131,6 +134,7 @@ NUMA
 NUMAlink
 NumPy
 Nutzungsbedingungen
+Nvidia
 OME
 OmniOpt
 OPARI
@@ -168,6 +172,7 @@ queue
 randint
 reachability
 README
+ResNet
 reproducibility
 RHEL
 Rmpi
@@ -181,6 +186,7 @@ salloc
 Saxonid
 sbatch
 ScaDS
+scalability
 scalable
 ScaLAPACK
 Scalasca
