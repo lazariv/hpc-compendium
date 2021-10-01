@@ -131,13 +131,6 @@ marie@compute$ python -c "import dask; print(dask.__version__)"
 2021.08.1
 ```
 
-The availability of the exact packages
-in the module can be checked by the
-`module whatis <name_of_the_module> command`.
-The `module whatis`
-command displays short information and included extensions of the
-module.
-
 Dask is installed by default in
 [Anaconda](https://www.anaconda.com/download/). Moreover,
 it is possible to install and use Dask in your local virtualenv
