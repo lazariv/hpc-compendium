@@ -1,6 +1,6 @@
 # Mathematics Applications
 
-!!! cite "Galileo Galilei
+!!! cite "Galileo Galilei"
 
     Nature is written in mathematical language.
 
@@ -14,8 +14,8 @@ interface capabilities within a document-like user interface paradigm.
 
 ### Fonts
 
-To remotely use the graphical frontend, you have to add the Mathematica fonts to the local
-fontmanager.
+To remotely use the graphical front-end, you have to add the Mathematica fonts to the local
+font manager.
 
 #### Linux Workstation
 
@@ -147,15 +147,15 @@ srun --pty matlab -nodisplay -r basename_of_your_matlab_script #NOTE: you must o
     While running your calculations as a script this way is possible, it is generally frowned upon,
     because you are occupying Matlab licenses for the entire duration of your calculation when doing so.
     Since the available licenses are limited, it is highly recommended you first compile your script via
-    the Matlab Compiler (mcc) before running it for a longer period of time on our systems.  That way,
+    the Matlab Compiler (`mcc`) before running it for a longer period of time on our systems.  That way,
     you only need to check-out a license during compile time (which is relatively short) and can run as
     many instances of your calculation as you'd like, since it does not need a license during runtime
     when compiled to a binary.
 
 You can find detailed documentation on the Matlab compiler at
-[Mathworks' help pages](https://de.mathworks.com/help/compiler/).
+[MathWorks' help pages](https://de.mathworks.com/help/compiler/).
 
-### Using the MATLAB Compiler (mcc)
+### Using the MATLAB Compiler
 
 Compile your `.m` script into a binary:
 
@@ -182,12 +182,12 @@ zih$ srun ./run_compiled_executable.sh $EBROOTMATLAB
 -   If you want to run your code in parallel, please request as many
     cores as you need!
 -   start a batch job with the number N of processes
--   example for N= 4: \<pre> srun -c 4 --pty --x11=first bash\</pre>
+-   example for N= 4: `srun -c 4 --pty --x11=first bash`
 -   run Matlab with the GUI or the CLI or with a script
--   inside use \<pre>matlabpool open 4\</pre> to start parallel
+-   inside use `matlabpool open 4` to start parallel
     processing
 
--   example for 1000\*1000 matrixmutliplication
+-   example for 1000*1000 matrix multiplication
 
 !!! example
 
@@ -199,13 +199,13 @@ zih$ srun ./run_compiled_executable.sh $EBROOTMATLAB
 -   to close parallel task:
 `matlabpool close`
 
-#### With Parfor
+#### With parfor
 
 - start a batch job with the number N of processes (e.g. N=12)
 - inside use `matlabpool open N` or
   `matlabpool(N)` to start parallel processing. It will use
   the 'local' configuration by default.
-- Use 'parfor' for a parallel loop, where the **independent** loop
+- Use `parfor` for a parallel loop, where the **independent** loop
   iterations are processed by N threads
 
 !!! example

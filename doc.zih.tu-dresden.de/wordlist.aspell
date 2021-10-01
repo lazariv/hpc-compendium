@@ -21,6 +21,7 @@ cgroups
 checkpointing
 Chemnitz
 citable
+CLI
 conda
 CPU
 CPUID
@@ -40,6 +41,7 @@ DDR
 DFG
 DistributedDataParallel
 DMTCP
+DNS
 Dockerfile
 Dockerfiles
 DockerHub
@@ -61,9 +63,11 @@ Flink
 FMA
 foreach
 Fortran
+Galilei
 Gauss
 Gaussian
 GBit
+GDDR
 GFLOPS
 gfortran
 GiB
@@ -78,6 +82,7 @@ GPUs
 GROMACS
 hadoop
 haswell
+HBM
 HDF
 HDFS
 HDFView
@@ -96,6 +101,7 @@ ifort
 ImageNet
 Infiniband
 inode
+IPs
 Itanium
 jobqueue
 jpg
@@ -117,6 +123,9 @@ lsf
 lustre
 markdownlint
 Mathematica
+MathKernel
+MathWorks
+matlab
 MEGWARE
 MiB
 MIMD
@@ -135,6 +144,7 @@ mpifort
 mpirun
 multicore
 multithreaded
+MultiThreading
 Multithreading
 NAMD
 natively
@@ -149,6 +159,7 @@ NUMAlink
 NumPy
 Nutzungsbedingungen
 Nvidia
+NVLINK
 NVMe
 NWChem
 OME
@@ -169,6 +180,7 @@ Pandarallel
 PAPI
 parallelization
 parallelize
+parfor
 pdf
 Perf
 PESSL
@@ -204,7 +216,10 @@ RSS
 RStudio
 Rsync
 runnable
+Runtime
+runtime
 salloc
+Sandybridge
 Saxonid
 sbatch
 ScaDS
@@ -235,6 +250,7 @@ stderr
 stdout
 subdirectories
 subdirectory
+SubMathKernel
 Superdome
 SUSE
 SXM
@@ -253,6 +269,7 @@ tracefile
 tracefiles
 transferability
 Trition
+unencrypted
 uplink
 Vampir
 VampirTrace
@@ -275,6 +292,7 @@ Xeon
 XGBoost
 XLC
 XLF
+Xming
 yaml
 zih
 ZIH

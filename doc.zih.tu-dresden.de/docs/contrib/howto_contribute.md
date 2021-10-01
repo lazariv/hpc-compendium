@@ -35,6 +35,6 @@ refer to the corresponding documentation for further information.
 ## Contribute Using Git Locally
 
 For experienced Git users, we provide a Docker container that includes all checks of the CI engine
-used in the backend. Using them should ensure that merge requests will not be blocked
+used in the back-end. Using them should ensure that merge requests will not be blocked
 due to automatic checking.
 For details, see [Work Locally Using Containers](contribute_container.md).
