@@ -96,10 +96,7 @@ project.
 Please send your request **7 working days** before the reservation should start (as that's our
 maximum time limit for jobs and it is therefore not guaranteed that resources are available on
 shorter notice) with the following information to the
-[HPC
-support](mailto:hpcsupport@zih.tu-dresden.de?subject=Request%20for%20a%20exclusive%20reservation%20of%20hardware&body=Dear%20HPC%20support%2C%0A%0AI%20ha
-ve%20the%20following%20request%20for%20a%20exclusive%20reservation%20of%20hardware%3A%0A%0AProject%3A%0AReservation%20owner%3A%0ASystem%3A%0AHardware%20r
-equirements%3A%0ATime%20window%3A%20%3C%5Byear%5D%3Amonth%3Aday%3Ahour%3Aminute%20-%20%5Byear%5D%3Amonth%3Aday%3Ahour%3Aminute%3E%0AReason%3A):
+[HPC support](mailto:hpcsupport@zih.tu-dresden.de?subject=Request%20for%20a%20exclusive%20reservation%20of%20hardware&body=Dear%20HPC%20support%2C%0A%0AI%20have%20the%20following%20request%20for%20a%20exclusive%20reservation%20of%20hardware%3A%0A%0AProject%3A%0AReservation%20owner%3A%0ASystem%3A%0AHardware%20requirements%3A%0ATime%20window%3A%20%3C%5Byear%5D%3Amonth%3Aday%3Ahour%3Aminute%20-%20%5Byear%5D%3Amonth%3Aday%3Ahour%3Aminute%3E%0AReason%3A):
 
 - `Project:` *Which project will be credited for the reservation?*
 - `Reservation owner:` *Who should be able to run jobs on the
@@ -111,7 +108,7 @@ equirements%3A%0ATime%20window%3A%20%3C%5Byear%5D%3Amonth%3Aday%3Ahour%3Aminute%
   equipped with a graphic card, special placement within the network
   topology?*
 - `Time window:` *Begin and end of the reservation in the form
-  year:month:dayThour:minute:second e.g.: 2020-05-21T09:00:00*
+  `year:month:dayThour:minute:second` e.g.: 2020-05-21T09:00:00*
 - `Reason:` *Reason for the reservation.*
 
 !!! hint
