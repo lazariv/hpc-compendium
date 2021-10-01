@@ -1,18 +1,13 @@
 # EasyBuild
 
-Sometimes the \<a href="SoftwareModulesList" target="\_blank"
-title="List of Modules">modules installed in the cluster\</a> are not
-enough for your purposes and you need some other software or a different
-version of a software.
+Sometimes the [Software Modules List] todo add sw list modules installed in the cluster are not
+enough for your purposes and you need some other software or a different version of a software.
 
-\<br />For most commonly used software, chances are high that there is
-already a *recipe* that EasyBuild provides, which you can use. But what
-is Easybuild?
+For most commonly used software, chances are high that there is already a *recipe* that EasyBuild
+provides, which you can use. But what is Easybuild?
 
-\<a href="<https://easybuilders.github.io/easybuild/>"
-target="\_blank">EasyBuild\</a>\<span style="font-size: 1em;"> is the
-software used to build and install software on, and create modules for,
-Taurus.\</span>
+[EasyBuild](https://easybuilders.github.io/easybuild/) is the software used to build and install
+software on, and create modules for ZIH systems.
 
 \<span style="font-size: 1em;">The aim of this page is to introduce
 users to working with EasyBuild and to utilizing it to create
