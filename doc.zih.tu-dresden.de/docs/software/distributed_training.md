@@ -13,7 +13,7 @@ each device has a replica of the model and computes over different parts of the 
 2. model parallelism:
 models are distributed over multiple devices.
 
-In the folowing we will stick to the concept of data parallelism because it is a widely-used
+In the following we will stick to the concept of data parallelism because it is a widely-used
 technique.
 There are basically two strategies to train the scattered data throughout the devices:
 
@@ -183,7 +183,7 @@ synchronize gradients and buffers.
 The tutorial can be found [here](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html).
 
 To use distributed data parallelism on ZIH systems please make sure the `--ntasks-per-node`
-parameter is equal to the number of GPUs you useper node.
+parameter is equal to the number of GPUs you use per node.
 Also, it can be useful to increase `memory/cpu` parameters if you run larger models.
 Memory can be set up to:
 
@@ -277,13 +277,13 @@ In the example presented installation for TensorFlow.
 Adapt as required and refer to the Horovod documentation for details.
 
 ```bash
-HOROVOD_GPU_OPERATIONS=NCCL HOROVOD_WITH_TENSORFLOW=1 pip install --no-cache-dir horovod\[tensorflow\] 
+HOROVOD_GPU_OPERATIONS=NCCL HOROVOD_WITH_TENSORFLOW=1 pip install --no-cache-dir horovod\[tensorflow\]
 
 horovodrun --check-build
 ```
 
-If you want to use OpenMPI then specify `HOROVOD_GPU_ALLREDUCE=MPI`. 
-To have better performance it is recommended to use NCCL instead of OpenMPI.  
+If you want to use OpenMPI then specify `HOROVOD_GPU_ALLREDUCE=MPI`.
+To have better performance it is recommended to use NCCL instead of OpenMPI.
 
 ##### Verify that Horovod works
 
