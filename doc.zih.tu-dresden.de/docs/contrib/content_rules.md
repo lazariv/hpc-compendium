@@ -88,7 +88,6 @@ We follow this rules regarding prompts:
 | `haswell` partition    | `marie@haswell$` |
 | `ml` partition         | `marie@ml$`      |
 | `alpha` partition      | `marie@alpha$`   |
-| `alpha` partition      | `marie@alpha$`   |
 | `romeo` partition      | `marie@romeo$`   |
 | `julia` partition      | `marie@julia$`   |
 | Localhost              | `marie@local$`   |
