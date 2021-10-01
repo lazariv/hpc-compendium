@@ -65,9 +65,9 @@ parameters: `--ntasks-per-node` -parameter to the number of GPUs you use
 per node. Also, it could be useful to increase `memomy/cpu` parameters
 if you run larger models. Memory can be set up to:
 
-`--mem=250000` and `--cpus-per-task=7` for the `ml` partition.
+`--mem=250000` and `--cpus-per-task=7` for the partition `ml`.
 
-`--mem=60000` and `--cpus-per-task=6` for the `gpu2` partition.
+`--mem=60000` and `--cpus-per-task=6` for the partition `gpu2`.
 
 Keep in mind that only one memory parameter (`--mem-per-cpu` = <MB> or `--mem`=<MB>) can be
 specified

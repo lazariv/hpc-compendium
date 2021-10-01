@@ -5,7 +5,7 @@ the PowerAI Framework for Machine Learning. In the following the links
 are valid for PowerAI version 1.5.4.
 
 !!! warning
-    The information provided here is available from IBM and can be used on `ml` partition only!
+    The information provided here is available from IBM and can be used on partition ml only!
 
 ## General Overview
 
@@ -47,7 +47,7 @@ are valid for PowerAI version 1.5.4.
   (Open Neural Network Exchange) provides support for moving models
   between those frameworks.
 - [Distributed Deep Learning](https://www.ibm.com/support/knowledgecenter/SS5SF7_1.5.4/navigation/pai_getstarted_ddl.html?view=kc)
-  Distributed Deep Learning (DDL). Works on up to 4 nodes on `ml` partition.
+  Distributed Deep Learning (DDL). Works on up to 4 nodes on partition `ml`.
 
 ## PowerAI Container
 

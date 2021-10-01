@@ -56,8 +56,8 @@ checkpoint/restart bits transparently to your batch script. You just have to spe
 total runtime of your calculation and the interval in which you wish to do checkpoints. The latter
 (plus the time it takes to write the checkpoint) will then be the runtime of the individual jobs.
 This should be targeted at below 24 hours in order to be able to run on all
-[haswell64 partitions](../jobs_and_resources/partitions_and_limits.md#runtime-limits). For increased
-fault-tolerance, it can be chosen even shorter.
+[partitions haswell64](../jobs_and_resources/partitions_and_limits.md#runtime-limits). For
+increased fault-tolerance, it can be chosen even shorter.
 
 To use it, first add a `dmtcp_launch` before your application call in your batch script. In the case
 of MPI applications, you have to add the parameters `--ib --rm` and put it between `srun` and your

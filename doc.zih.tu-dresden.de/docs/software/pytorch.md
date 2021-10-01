@@ -15,14 +15,14 @@ marie@login$ module spider pytorch
 
 to find out, which PyTorch modules are available on your partition.
 
-We recommend using **Alpha** and/or **ML** partitions when working with machine learning workflows
+We recommend using partitions alpha and/or ml when working with machine learning workflows
 and the PyTorch library.
 You can find detailed hardware specification in our
 [hardware documentation](../jobs_and_resources/hardware_overview.md).
 
 ## PyTorch Console
 
-On the **Alpha** partition, load the module environment:
+On the partition `alpha`, load the module environment:
 
 ```console
 marie@login$ srun -p alpha --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=800 bash #Job submission on alpha nodes with 1 gpu on 1 node with 800 Mb per CPU
@@ -33,8 +33,8 @@ Die folgenden Module wurden in einer anderen Version erneut geladen:
 Module GCC/10.2.0, CUDA/11.1.1, OpenMPI/4.0.5, PyTorch/1.9.0 and 54 dependencies loaded.
 ```
 
-??? hint "Torchvision on alpha partition"
-    On the **Alpha** partition, the module torchvision is not yet available within the module
+??? hint "Torchvision on partition `alpha`"
+    On the partition `alpha`, the module torchvision is not yet available within the module
     system. (19.08.2021)
     Torchvision can be made available by using a virtual environment:
 
@@ -47,7 +47,7 @@ Module GCC/10.2.0, CUDA/11.1.1, OpenMPI/4.0.5, PyTorch/1.9.0 and 54 dependencies
     Using the **--no-deps** option for "pip install" is necessary here as otherwise the PyTorch
     version might be replaced and you will run into trouble with the cuda drivers.
 
-On the **ML** partition:
+On the partition `ml`:
 
 ```console
 marie@login$ srun -p ml --gres=gpu:1 -n 1 -c 7 --pty --mem-per-cpu=800 bash    #Job submission in ml nodes with 1 gpu on 1 node with 800 Mb per CPU

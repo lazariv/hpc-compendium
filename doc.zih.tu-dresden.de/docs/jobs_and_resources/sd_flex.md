@@ -1,7 +1,7 @@
 # Large Shared-Memory Node - HPE Superdome Flex
 
 - Hostname: `taurussmp8`
-- Access to all shared file systems
+- Access to all shared filesystems
 - Slurm partition `julia`
 - 32 x Intel(R) Xeon(R) Platinum 8276M CPU @ 2.20GHz (28 cores)
 - 48 TB RAM (usable: 47 TB - one TB is used for cache coherence protocols)

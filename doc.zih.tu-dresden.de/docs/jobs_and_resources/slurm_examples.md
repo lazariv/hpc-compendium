@@ -238,13 +238,13 @@ resources.
 Setting `--exclusive` **only** makes sure that there will be **no other jobs running on your nodes**.
 It does not, however, mean that you automatically get access to all the resources which the node
 might provide without explicitly requesting them, e.g. you still have to request a GPU via the
-generic resources parameter (`gres`) to run on the GPU partitions, or you still have to request all
-cores of a node if you need them. CPU cores can either to be used for a task (`--ntasks`) or for
-multi-threading within the same task (`--cpus-per-task`). Since those two options are semantically
-different (e.g., the former will influence how many MPI processes will be spawned by `srun` whereas
-the latter does not), Slurm cannot determine automatically which of the two you might want to use.
-Since we use cgroups for separation of jobs, your job is not allowed to use more resources than
-requested.*
+generic resources parameter (`gres`) to run on the partitions with GPU, or you still have to
+request all cores of a node if you need them. CPU cores can either to be used for a task
+(`--ntasks`) or for multi-threading within the same task (`--cpus-per-task`). Since those two
+options are semantically different (e.g., the former will influence how many MPI processes will be
+spawned by `srun` whereas the latter does not), Slurm cannot determine automatically which of the
+two you might want to use. Since we use cgroups for separation of jobs, your job is not allowed to
+use more resources than requested.*
 
 If you just want to use all available cores in a node, you have to specify how Slurm should organize
 them, like with `-p haswell -c 24` or `-p haswell --ntasks-per-node=24`.
