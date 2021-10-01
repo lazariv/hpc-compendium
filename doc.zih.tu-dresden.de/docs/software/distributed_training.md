@@ -224,11 +224,11 @@ module load Horovod/0.19.5-fosscuda-2019b-TensorFlow-2.2.0-Python-3.7.4      #Lo
 ```
 
 Or if you want to use Horovod on the Alpha partition you can load it with the dependencies:
+
 ```bash
 module spider Horovod                                               #Check available modules and dependencies
 module load modenv/hiera  GCC/10.2.0  CUDA/11.1.1  OpenMPI/4.0.5 Horovod/0.21.1-TensorFlow-2.4.1
 ```
-
 
 #### Horovod installation
 
@@ -282,7 +282,8 @@ HOROVOD_GPU_OPERATIONS=NCCL HOROVOD_WITH_TENSORFLOW=1 pip install --no-cache-dir
 horovodrun --check-build
 ```
 
-If you want to use OpenMPI then specify `HOROVOD_GPU_ALLREDUCE=MPI`. To have better performance it is recommended to use NCCL instead of OpenMPI.  
+If you want to use OpenMPI then specify `HOROVOD_GPU_ALLREDUCE=MPI`. 
+To have better performance it is recommended to use NCCL instead of OpenMPI.  
 
 ##### Verify that Horovod works
 
@@ -295,7 +296,6 @@ hvd.size()
 hvd.rank()
 print('Hello from:', hvd.rank())
 ```
-
 
 #### Example
 
