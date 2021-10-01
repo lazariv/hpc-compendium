@@ -114,19 +114,7 @@ Dask supports several user interfaces:
 
 #### Installation
 
-Dask is available as a module on
-ZIH system for all software environments (scs5, ml, hiera(alpha)).
-To load the module for the corresponding
-software environment: `ml dask`
-
-Please check the modules availability.
-
-The `module spider <name_of_the module>` command
-will show you all available modules for
-all software partitions with this name.
-For detailed information about a specific "Dask" package
-(including how to load the modules) use
-the module's full name, e.g:
+On ZIH systems, Dask is available as a module. Check available versions and load your preferred one:
 
 ```console
 marie@compute$ module spider dask
