@@ -1,11 +1,11 @@
 # ZIH Systems
 
-ZIH systems comprises the *High Performance Computing and Storage Complex* (HRSK-II) and its
-extension *High Performance Computing – Data Analytics* (HPC-DA). In totoal it offers scientists
-about 60,000 CPU cores and a peak performance of more than 1.5 quadrillion floating point operations
-per second. The architecture specifically tailored to data-intensive computing, Big Data analytics,
-and artificial intelligence methods with extensive capabilities for energy measurement and
-performance monitoring provides ideal conditions to achieve the ambitious research goals of the
+ZIH systems comprises the *High Performance Computing and Storage Complex* and its
+extension *High Performance Computing – Data Analytics*. In total it offers scientists
+about 60,000 CPU cores and a peak performance of more than 1.5 quadrillion floating point
+operations per second. The architecture specifically tailored to data-intensive computing, Big Data
+analytics, and artificial intelligence methods with extensive capabilities for energy measurement
+and performance monitoring provides ideal conditions to achieve the ambitious research goals of the
 users and the ZIH.
 
 ## Login Nodes

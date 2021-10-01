@@ -1,10 +1,9 @@
 # Machine Learning
 
 This is an introduction of how to run machine learning applications on ZIH systems.
-For machine learning purposes, we recommend to use the partitions [Alpha](#alpha-partition) and/or
-[ML](#ml-partition).
+For machine learning purposes, we recommend to use the partitions `alpha` and/or `ml`.
 
-## ML Partition
+## Partition `ml`
 
 The compute nodes of the partition ML are built on the base of
 [Power9 architecture](https://www.ibm.com/it-infrastructure/power/power9) from IBM. The system was created
@@ -36,7 +35,7 @@ The following have been reloaded with a version change:  1) modenv/scs5 => moden
 There are tools provided by IBM, that work on partition ML and are related to AI tasks.
 For more information see our [Power AI documentation](power_ai.md).
 
-## Alpha Partition
+## Partition `alpha`
 
 Another partition for machine learning tasks is Alpha. It is mainly dedicated to
 [ScaDS.AI](https://scads.ai/) topics. Each node on Alpha has 2x AMD EPYC CPUs, 8x NVIDIA A100-SXM4
@@ -45,7 +44,7 @@ partition in our [Alpha Centauri](../jobs_and_resources/alpha_centauri.md) docum
 
 ### Modules
 
-On the partition **Alpha** load the module environment:
+On the partition alpha load the module environment:
 
 ```console
 marie@alpha$ module load modenv/hiera
