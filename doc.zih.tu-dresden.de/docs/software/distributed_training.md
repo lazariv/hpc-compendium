@@ -219,7 +219,7 @@ Please check the [software module list](modules.md) for the current version of t
 Horovod can be loaded like other software on ZIH system:
 
 ```bash
-module avail Horovod                                                       #Check available modules with Python
+module avail | grep Horovod                                                       #Check available modules with Python
 module load Horovod/0.19.5-fosscuda-2019b-TensorFlow-2.2.0-Python-3.7.4      #Loading one of them
 ```
 
@@ -234,7 +234,7 @@ module load modenv/hiera  GCC/10.2.0  CUDA/11.1.1  OpenMPI/4.0.5 Horovod/0.21.1-
 
 However if it is necessary to use another version of Horovod it is possible to install it manually.
 For that you need to create a virtual environment and load the dependencies (e.g. MPI).
-Installing PyTorch can take a few hours and is not recommended.
+Installing TensorFlow can take a few hours and is not recommended.
 
 **Note:** You could work with simple examples in your home directory but **please use workspaces
 for your study and work projects** (see the storage concept).
@@ -249,7 +249,7 @@ module load OpenMPI/3.1.4-gcccuda-2018b
 module load Python/3.6.6-fosscuda-2018b
 module load cuDNN/7.1.4.18-fosscuda-2018b
 module load CMake/3.11.4-GCCcore-7.3.0
-module load NCCL/2.3.7-fosscuda-2018b
+module load TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4
 
 virtualenv --system-site-packages <location_for_your_environment>        #create virtual environment
 source <location_for_your_environment>/bin/activate                      #activate virtual environment
@@ -265,19 +265,21 @@ module load OpenMPI/3.1.4-gcccuda-2018b
 module load PythonAnaconda/3.6
 module load cuDNN/7.1.4.18-fosscuda-2018b
 module load CMake/3.11.4-GCCcore-7.3.0
-module load NCCL/2.3.7-fosscuda-2018b
+module load TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4
 
 conda create --prefix=<location_for_your_environment> python=3.6 anaconda #create virtual environment
 conda activate  <location_for_your_environment>                           #activate virtual environment
 ```
 
-##### Install Horovod for PyTorch with python and pip
+##### Install Horovod for TensorFlow with python and pip
 
-In the example presented installation for PyTorch without TensorFlow.
+In the example presented installation for TensorFlow.
 Adapt as required and refer to the Horovod documentation for details.
 
 ```bash
-HOROVOD_GPU_ALLREDUCE=NCCL HOROVOD_WITHOUT_TENSORFLOW=1 HOROVOD_WITH_PYTORCH=1 HOROVOD_WITHOUT_MXNET=1 pip install --no-cache-dir horovod
+HOROVOD_GPU_OPERATIONS=NCCL HOROVOD_WITH_TENSORFLOW=1 pip install --no-cache-dir horovod\[tensorflow\] 
+
+horovodrun --check-build
 ```
 
 If you want to use OpenMPI then specify `HOROVOD_GPU_ALLREDUCE=MPI`. To have better performance it is recommended to use NCCL instead of OpenMPI.  
@@ -314,7 +316,7 @@ Horovod is easy to use
 #SBATCH --time=00:10:00
 #SBATCH -o run_horovod.out
 
-BASE=/home/horovod/ #change it to your directory
+BASE=<your_directory> #change it to your directory
 
 module load modenv/ml
 module load Horovod/0.19.5-fosscuda-2019b-TensorFlow-2.2.0-Python-3.7.4
