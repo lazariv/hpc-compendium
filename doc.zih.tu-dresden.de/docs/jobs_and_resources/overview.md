@@ -62,9 +62,9 @@ Normal compute nodes are perfect for this task.
 **OpenMP jobs:** SMP-parallel applications can only run **within a node**, so it is necessary to
 include the [batch system](slurm.md) options `-N 1` and `-n 1`. Using `--cpus-per-task N` Slurm will
 start one task and you will have `N` CPUs. The maximum number of processors for an SMP-parallel
-program is 896 on partition `julia`, see [here](partitions_and_limits.md).
+program is 896 on partition `julia`, see [partitions](partitions_and_limits.md).
 
-**GPUs** partitions are best suited for **repetitive** and **highly-parallel** computing tasks. If
+Partitions with GPUs are best suited for **repetitive** and **highly-parallel** computing tasks. If
 you have a task with potential [data parallelism](../software/gpu_programming.md) most likely that
 you need the GPUs.  Beyond video rendering, GPUs excel in tasks such as machine learning, financial
 simulations and risk modeling. Use the partitions `gpu2` and `ml` only if you need GPUs! Otherwise

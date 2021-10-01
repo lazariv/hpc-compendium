@@ -6,7 +6,7 @@
 
 [Apache Spark](https://spark.apache.org/), [Apache Flink](https://flink.apache.org/)
 and [Apache Hadoop](https://hadoop.apache.org/) are frameworks for processing and integrating
-Big Data. These frameworks are also offered as software [modules](modules.md) on both `ml` and
+Big Data. These frameworks are also offered as software [modules](modules.md) in both `ml` and
 `scs5` software environments. You can check module versions and availability with the command
 
 ```console

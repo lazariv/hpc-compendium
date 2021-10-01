@@ -35,7 +35,7 @@ The following have been reloaded with a version change:  1) modenv/scs5 => moden
 There are tools provided by IBM, that work on partition ML and are related to AI tasks.
 For more information see our [Power AI documentation](power_ai.md).
 
-## Partition `alpha`
+## Partition: Alpha
 
 Another partition for machine learning tasks is Alpha. It is mainly dedicated to
 [ScaDS.AI](https://scads.ai/) topics. Each node on Alpha has 2x AMD EPYC CPUs, 8x NVIDIA A100-SXM4
