@@ -24,4 +24,4 @@ Data transfer is possible via the [export nodes](../data_transfer/export_nodes.m
 on a bandwidth-friendly solution.
 
 We understand that all this will change convenient workflows. If the measurements would render your
-work on ZIH systems completely impossible, please [contact the HPC support](../support.md).
+work on ZIH systems completely impossible, please [contact the HPC support](../support/support.md).

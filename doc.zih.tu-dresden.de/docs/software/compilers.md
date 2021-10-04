@@ -55,10 +55,10 @@ pages or use the option `--help` to list all options of the compiler.
 | `-fprofile-use`      | `-prof-use`  | `-Mpfo`     | use profile data for optimization      |
 
 !!! note
-    We can not generally give advice as to which option should be used.
-    To gain maximum performance please test the compilers and a few combinations of
-    optimization flags.
-    In case of doubt, you can also contact [HPC support](../support.md) and ask the staff for help.
+
+    We can not generally give advice as to which option should be used. To gain maximum performance
+    please test the compilers and a few combinations of optimization flags. In case of doubt, you
+    can also contact [HPC support](../support/support.md) and ask the staff for help.
 
 ### Architecture-specific Optimizations
 
