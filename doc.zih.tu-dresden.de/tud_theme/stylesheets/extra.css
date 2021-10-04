@@ -28,19 +28,24 @@
 .md-typeset h5 {
     font-family: 'Open Sans Semibold';
     line-height: 130%;
+	margin: 0.2em;
 }
 
 .md-typeset h1 {
     font-family: 'Open Sans Regular';
-    font-size: 1.6rem;   
+    font-size: 1.6rem;
+	margin-bottom: 0.5em;
 }
 
 .md-typeset h2 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+	margin: 0.5em;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
 }
 
 .md-typeset h3 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 .md-typeset h4 {
@@ -48,8 +53,8 @@
 }
 
 .md-typeset h5 {
-    font-size: 0.9rem;
-    line-height: 120%;
+    font-size: 0.8rem;
+    text-transform: initial;
 }
 
 strong {
@@ -161,6 +166,7 @@ hr.solid {
 
 p {
     padding: 0 0.6rem;
+	margin: 0.2em;	
 }
 /* main */
 

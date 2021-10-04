@@ -1,218 +1,183 @@
 # JupyterHub
 
-With our JupyterHub service we offer you now a quick and easy way to
-work with jupyter notebooks on Taurus.
+With our JupyterHub service we offer you a quick and easy way to work with Jupyter notebooks on ZIH
+systems. This page covers starting and stopping JuperterHub sessions, error handling and customizing
+the environment.
 
-Subpages:
-
--   [JupyterHub for Teaching (git-pull feature, quickstart links, direct
-    links to notebook files)](jupyterhub_for_teaching.md)
+We also provide a comprehensive documentation on how to use
+[JupyterHub for Teaching (git-pull feature, quickstart links, direct links to notebook files)](jupyterhub_for_teaching.md).
 
 ## Disclaimer
 
-This service is provided "as-is", use at your own discretion. Please
-understand that JupyterHub is a complex software system of which we are
-not the developers and don't have any downstream support contracts for,
-so we merely offer an installation of it but cannot give extensive
-support in every case.
+!!! warning
+
+    The JupyterHub service is provided *as-is*, use at your own discretion.
+
+Please understand that JupyterHub is a complex software system of which we are not the developers
+and don't have any downstream support contracts for, so we merely offer an installation of it but
+cannot give extensive support in every case.
 
 ## Access
 
-<span style="color:red">**NOTE**</span> This service is only available for users with
-an active HPC project. See [here](../access/overview.md) how to apply for an HPC
-project.
+!!! note
+    This service is only available for users with an active HPC project.
+    See [here](../access/overview.md) how to apply for an HPC project.
 
-JupyterHub is available here:\
-<https://taurus.hrsk.tu-dresden.de/jupyter>
+JupyterHub is available at
+[https://taurus.hrsk.tu-dresden.de/jupyter](https://taurus.hrsk.tu-dresden.de/jupyter).
 
-## Start a session
+## Start a Session
 
-Start a new session by clicking on the **TODO ADD IMAGE** \<img alt="" height="24"
-src="%ATTACHURL%/start_my_server.png" /> button.
+Start a new session by clicking on the `Start my server` button.
 
 A form opens up where you can customize your session. Our simple form
 offers you the most important settings to start quickly.
 
-**TODO ADD IMAGE** \<a href="%ATTACHURL%/simple_form.png">\<img alt="session form"
-src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/simple_form.png>"
-style="border: 1px solid #888;" title="simple form" width="400" />\</a>
+![Simple form](misc/simple_form.png)
+{: align="center"}
 
 For advanced users we have an extended form where you can change many
 settings. You can:
 
--   modify Slurm parameters to your needs ( [more about
-    Slurm](../jobs_and_resources/slurm.md))
--   assign your session to a project or reservation
--   load modules from the [LMOD module
-    system](../software/runtime_environment.md)
--   choose a different standard environment (in preparation for future
-    software updates or testing additional features)
+- modify batch system parameters to your needs ([more about batch system Slurm](../jobs_and_resources/slurm.md))
+- assign your session to a project or reservation
+- load modules from the [module system](../software/runtime_environment.md)
+- choose a different standard environment (in preparation for future
+  software updates or testing additional features)
 
-**TODO ADD IMAGE** \<a href="%ATTACHURL%/advanced_form_nov2019.png">\<img alt="session
-form"
-src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/advanced_form_nov2019.png>"
-style="border: 1px solid #888;" title="advanced form" width="400"
-/>\</a>
+![Advanced form](misc/advanced_form.png)
+{: align="center"}
 
 You can save your own configurations as additional presets. Those are
 saved in your browser and are lost if you delete your browsing data. Use
 the import/export feature (available through the button) to save your
 presets in text files.
 
-Note: the [<span style="color:blue">**alpha**</span>]
-(https://doc.zih.tu-dresden.de/hpc-wiki/bin/view/Compendium/AlphaCentauri)
-partition is available only in the extended form.
+!!! info
+    The partition [alpha](https://doc.zih.tu-dresden.de/hpc-wiki/bin/view/Compendium/AlphaCentauri)
+    is available only in the extended form.
 
 ## Applications
 
-You can choose between JupyterLab or the classic notebook app.
+You can choose between JupyterLab or classic Jupyter notebooks as outlined in the following.
 
 ### JupyterLab
 
-**TODO ADD IMAGE** \<a href="%ATTACHURL%/jupyterlab_app.png">\<img alt="jupyterlab app"
-src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/jupyterlab_app.png>"
-style="border: 1px solid #888;" title="JupyterLab overview" width="400"
-/>\</a>
+![JupyterLab overview](misc/jupyterlab_overview.png)
+{: align="center"}
 
 The main workspace is used for multiple notebooks, consoles or
 terminals. Those documents are organized with tabs and a very versatile
 split screen feature. On the left side of the screen you can open
 several views:
 
--   file manager
--   controller for running kernels and terminals
--   overview of commands and settings
--   details about selected notebook cell
--   list of open tabs
+- file manager
+- controller for running kernels and terminals
+- overview of commands and settings
+- details about selected notebook cell
+- list of open tabs
 
-### Classic notebook
+### Classic Jupyter Notebook
 
-**TODO ADD IMAGE** \<a href="%ATTACHURL%/jupyter_notebook_app_filebrowser.png">\<img
-alt="filebrowser in jupyter notebook server" width="400"
-src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/jupyter_notebook_app_filebrowser.png>"
-style="border: 1px solid #888;" title="Classic notebook (file browser)"
-/>\</a>
+Initially your `home` directory is listed. You can open existing notebooks or files by navigating to
+the corresponding path and clicking on them.
 
-**TODO ADD IMAGE** \<a href="%ATTACHURL%/jupyter_notebook_example_matplotlib.png">\<img
-alt="jupyter_notebook_example_matplotlib" width="400"
-src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/jupyter_notebook_example_matplotlib.png>"
-style="border: 1px solid #888;" title="Classic notebook (matplotlib
-demo)" />\</a>
+![Jupyter notebook file browser](misc/jupyter_notebook_file_browser.png)
+{: align="center"}
 
-Initially you will get a list of your home directory. You can open
-existing notebooks or files by clicking on them.
+Above the table on the right side is the button `New` which lets you create new notebooks, files,
+directories or terminals.
 
-Above the table on the right side is the "New ⏷" button which lets you
-create new notebooks, files, directories or terminals.
+![Jupyter notebook example matplotlib](misc/jupyter_notebook_example_matplotlib.png)
+{: align="center"}
 
-## The notebook
+## Jupyter Notebooks in General
 
-In JupyterHub you can create scripts in notebooks.
-Notebooks are programs which are split in multiple logical code blocks.
-In between those code blocks you can insert text blocks for
-documentation and each block can be executed individually. Each notebook
-is paired with a kernel which runs the code. We currently offer one for
-Python, C++, MATLAB and R.
+In JupyterHub you can create scripts in notebooks. Notebooks are programs which are split into
+multiple logical code blocks.  In between those code blocks you can insert text blocks for
+documentation and each block can be executed individually. Each notebook is paired with a kernel
+running the code. We currently offer one for Python, C++, MATLAB and R.
 
-## Stop a session
+## Stop a Session
 
-It's good practise to stop your session once your work is done. This
-releases resources for other users and your quota is less charged. If
-you just log out or close the window your server continues running and
-will not stop until the Slurm job runtime hits the limit (usually 8
-hours).
+It is good practise to stop your session once your work is done. This releases resources for other
+users and your quota is less charged. If you just log out or close the window, your server continues
+running and **will not stop** until the Slurm job runtime hits the limit (usually 8 hours).
 
 At first you have to open the JupyterHub control panel.
 
-**JupyterLab**: Open the file menu and then click on Logout. You can
-also click on "Hub Control Panel" which opens the control panel in a new
+**JupyterLab**: Open the file menu and then click on `Logout`. You can
+also click on `Hub Control Panel` which opens the control panel in a new
 tab instead.
 
-**TODO ADD IMAGE** \<a href="%ATTACHURL%/jupyterlab_logout.png">\<img alt="" height="400"
-src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/jupyterlab_logout.png>"
-style="border: 1px solid #888;" title="JupyterLab logout button"/>\</a>
+![JupyterLab logout](misc/jupyterlab_logout.png)
+{: align="center"}
 
-**Classic notebook**: Click on the control panel button on the top right
+**Classic Jupyter notebook**: Click on the control panel button on the top right
 of your screen.
 
-**TODO ADD IMAGE** \<img alt="" src="%ATTACHURL%/notebook_app_control_panel_btn.png"
-style="border: 1px solid #888;" title="Classic notebook (control panel
-button)" />
+![Jupyter notebook control panel button](misc/jupyter_notebook_control_panel_button.png)
+{: align="center"}
 
-Now you are back on the JupyterHub page and you can stop your server by
-clicking on **TODO ADD IMAGE** \<img alt="" height="24"
-src="%ATTACHURL%/stop_my_server.png" title="Stop button" />.
+Now you are back on the JupyterHub page and you can stop your server by clicking on
+![Stop my server](misc/stop_my_server.png)
+{: align="center"}
 
-## Error handling
+## Error Handling
 
-We want to explain some errors that you might face sooner or later. If
-you need help open a ticket at HPC support.
+We want to explain some errors that you might face sooner or later.
+If you need help open a ticket at [HPC support](mailto:hpcsupport@zih.tu-dresden.de).
 
-### Error while starting a session
+### Error at Session Start
 
-**TODO ADD IMAGE** \<a href="%ATTACHURL%/error_batch_job_submission_failed.png">\<img
-alt="" width="400"
-src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/error_batch_job_submission_failed.png>"
-style="border: 1px solid #888;" title="Error message: Batch job
-submission failed."/>\</a>
+![Error batch job submission failed](misc/error_batch_job_submission_failed.png)
+{: align="center"}
 
-This message often appears instantly if your Slurm parameters are not
-valid. Please check those settings against the available hardware.
-Useful pages for valid Slurm parameters:
+This message appears instantly if your batch system parameters are not valid.
+Please check those settings against the available hardware.
+Useful pages for valid batch system parameters:
 
--   [Slurm batch system (Taurus)] **TODO LINK** (../jobs_and_resources/SystemTaurus#Batch_System)
--   [General information how to use Slurm](../jobs_and_resources/slurm.md)
+- [General information how to use Slurm](../jobs_and_resources/slurm.md)
+- [Partitions and limits](../jobs_and_resources/partitions_and_limits.md)
 
-### Error message in JupyterLab
+### Error Message in JupyterLab
 
-**TODO ADD IMAGE** \<a href="%ATTACHURL%/jupyterlab_error_directory_not_found.png">\<img
-alt="" width="400"
-src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/jupyterlab_error_directory_not_found.png>"
-style="border: 1px solid #888;" title="Error message: Directory not
-found"/>\</a>
+![JupyterLab error directory not found](misc/jupyterlab_error_directory_not_found.png)
+{: align="center"}
 
-If the connection to your notebook server unexpectedly breaks you maybe
-will get this error message.
-Sometimes your notebook server might hit a Slurm or hardware limit and
-gets killed. Then usually the logfile of the corresponding Slurm job
-might contain useful information. These logfiles are located in your
-home directory and have the name "jupyter-session-\<jobid>.log".
+If the connection to your notebook server unexpectedly breaks, you will get this error message.
+Sometimes your notebook server might hit a batch system or hardware limit and gets killed. Then
+usually the logfile of the corresponding batch job might contain useful information. These logfiles
+are located in your `home` directory and have the name `jupyter-session-<jobid>.log`.
 
-------------------------------------------------------------------------
+## Advanced Tips
 
-## Advanced tips
+### Standard Environments
 
-### Standard environments
-
-The default python kernel uses conda environments based on the [Watson
-Machine Learning Community Edition (formerly
-PowerAI)](https://developer.ibm.com/linuxonpower/deep-learning-powerai/)
+The default Python kernel uses conda environments based on the
+[Watson Machine Learning Community Edition (formerly PowerAI)](https://developer.ibm.com/linuxonpower/deep-learning-powerai/)
 package suite. You can open a list with all included packages of the
 exact standard environment through the spawner form:
 
-**TODO ADD IMAGE** \<img alt="environment_package_list.png"
-src="%ATTACHURL%/environment_package_list.png" style="border: 1px solid
-\#888;" title="JupyterHub environment package list" />
+![Environment package list](misc/environment_package_list.png)
+{: align="center"}
 
-This list shows all packages of the currently selected conda
-environment. This depends on your settings for partition (cpu
-architecture) and standard environment.
+This list shows all packages of the currently selected conda environment. This depends on your
+settings for partition (CPU architecture) and standard environment.
 
 There are three standard environments:
 
--   production,
--   test,
--   python-env-python3.8.6.
+- production
+- test
+- python-env-python3.8.6
 
-**Python-env-python3.8.6**virtual environment can be used for all x86
-partitions(gpu2, alpha, etc). It gives the opportunity to create a user
-kernel with the help of a python environment.
+**Python-env-python3.8.6** virtual environment can be used for all x86 partitions(`gpu2`, `alpha`,
+etc). It gives the opportunity to create a user kernel with the help of a Python environment.
 
-Here's a short list of some included software:
+Here is a short list of some included software:
 
-|            |           |        |
-|------------|-----------|--------|
 |            | generic\* | ml     |
+|------------|-----------|--------|
 | Python     | 3.6.10    | 3.6.10 |
 | R\*\*      | 3.6.2     | 3.6.0  |
 | WML CE     | 1.7.0     | 1.7.0  |
@@ -226,155 +191,122 @@ Here's a short list of some included software:
 
 \*\* R is loaded from the [module system](../software/runtime_environment.md)
 
-### Creating and using your own environment
+### Creating and Using a Custom Environment
 
-Interactive code interpreters which are used by Jupyter Notebooks are
-called kernels.
-Creating and using your own kernel has the benefit that you can install
-your own preferred python packages and use them in your notebooks.
+!!! info
 
-We currently have two different architectures at Taurus. Build your
-kernel environment on the **same architecture** that you want to use
+    Interactive code interpreters which are used by Jupyter notebooks are called *kernels*. Creating
+    and using your own kernel has the benefit that you can install your own preferred Python
+    packages and use them in your notebooks.
+
+We currently have two different architectures at ZIH systems.
+Build your kernel environment on the **same architecture** that you want to use
 later on with the kernel. In the examples below we use the name
 "my-kernel" for our user kernel. We recommend to prefix your kernels
-with keywords like "intel", "ibm", "ml", "venv", "conda". This way you
-can later recognize easier how you built the kernel and on which
-hardware it will work.
+with keywords like `haswell`, `ml`, `romeo`, `venv`, `conda`. This way you
+can later recognize easier how you built the kernel and on which hardware it will work.
 
-**Intel nodes** (e.g. haswell, gpu2):
+**Intel nodes** (e.g. partition `haswell`, `gpu2`):
 
-    srun --pty -n 1 -c 2 --mem-per-cpu 2583 -t 08:00:00 bash -l
+```console
+maria@login$ srun --pty --ntasks=1 --cpus-per-task=2 --mem-per-cpu=2541 --time=08:00:00 bash -l
+```
 
-If you don't need Sandy Bridge support for your kernel you can create
-your kernel on partition 'haswell'.
+**Power nodes** (partition `ml`):
 
-**Power nodes** (ml partition):
+```console
+maria@login$ srun --pty --partition=ml --ntasks=1 --cpus-per-task=2 --mem-per-cpu=1443 --time=08:00:00 bash -l
+```
 
-    srun --pty -p ml -n 1 -c 2 --mem-per-cpu 5772 -t 08:00:00 bash -l
+Create a virtual environment in your `home` directory. You can decide between Python virtualenvs or
+conda environments.
 
-Create a virtual environment in your home directory. You can decide
-between python virtualenvs or conda environments.
+!!! note
+    Please take in mind that Python venv is the preferred way to create a Python virtual environment.
 
-<span class="twiki-macro RED"></span> **Note** <span
-class="twiki-macro ENDCOLOR"></span>: Please take in mind that Python
-venv is the preferred way to create a Python virtual environment.
+#### Python Virtualenv
 
-#### Python virtualenv
-
-```bash
-$ module load Python/3.8.6-GCCcore-10.2.0
-
-$ mkdir user-kernel         #please use Workspaces!
-
-$ cd user-kernel
-
-$ virtualenv --system-site-packages my-kernel
+```console
+marie@compute$ module load Python/3.8.6-GCCcore-10.2.0
+marie@compute$ mkdir user-kernel # please use workspaces!
+marie@compute$ cd user-kernel
+marie@compute$ virtualenv --system-site-packages my-kernel
 Using base prefix '/sw/installed/Python/3.6.6-fosscuda-2018b'
 New python executable in .../user-kernel/my-kernel/bin/python
 Installing setuptools, pip, wheel...done.
-
-$ source my-kernel/bin/activate
-
-(my-kernel) $ pip install ipykernel
+marie@compute$ source my-kernel/bin/activate
+marie@compute$ pip install ipykernel
 Collecting ipykernel
-...
+[...]
 Successfully installed ... ipykernel-5.1.0 ipython-7.5.0 ...
-
-(my-kernel) $ pip install --upgrade pip
-
-(my-kernel) $ python -m ipykernel install --user --name my-kernel --display-name="my kernel"
+marie@compute$ pip install --upgrade pip
+marie@compute$ python -m ipykernel install --user --name my-kernel --display-name="my kernel"
 Installed kernelspec my-kernel in .../.local/share/jupyter/kernels/my-kernel
-
-[now install additional packages for your notebooks]
-
-(my-kernel) $ deactivate
+marie@compute$ pip install [...] # now install additional packages for your notebooks
+marie@compute$ deactivate
 ```
 
-#### Conda environment
+#### Conda Environment
 
 Load the needed module for Intel nodes
 
-```
-module load Anaconda3
-```
-
-... or for IBM nodes (ml partition):
-
-```
-module load PythonAnaconda
+```console
+marie@compute$ module load Anaconda3
 ```
 
-Continue with environment creation, package installation and kernel
-registration:
+... or for IBM nodes (partition `ml`):
 
+```console
+marie@ml$ module load PythonAnaconda
 ```
-$ mkdir user-kernel         #please use Workspaces!
 
-$ conda create --prefix /home/<USER>/user-kernel/my-kernel python=3.6
+Continue with environment creation, package installation and kernel registration:
+
+```console
+marie@compute$ mkdir user-kernel # please use workspaces!
+marie@compute$ conda create --prefix /home/<USER>/user-kernel/my-kernel python=3.6
 Collecting package metadata: done
 Solving environment: done
 [...]
-
-$ conda activate /home/<USER>/user-kernel/my-kernel
-
-$ conda install ipykernel
+marie@compute$ conda activate /home/<USER>/user-kernel/my-kernel
+marie@compute$ conda install ipykernel
 Collecting package metadata: done
 Solving environment: done
 [...]
-
-$ python -m ipykernel install --user --name my-kernel --display-name="my kernel"
+marie@compute$ python -m ipykernel install --user --name my-kernel --display-name="my kernel"
 Installed kernelspec my-kernel in [...]
-
-[now install additional packages for your notebooks]
-
-$ conda deactivate
+marie@compute$ conda install [..] # now install additional packages for your notebooks
+marie@compute$ conda deactivate
 ```
 
 Now you can start a new session and your kernel should be available.
 
-**In JupyterLab**:
+**JupyterLab**: Your kernels are listed on the launcher page:
 
-Your kernels are listed on the launcher page:
-
-**TODO ADD IMAGE**\<a href="%ATTACHURL%/user-kernel_in_jupyterlab_launcher.png">\<img
-alt="jupyterlab_app.png" height="410"
-src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/user-kernel_in_jupyterlab_launcher.png>"
-style="border: 1px solid #888;" title="JupyterLab kernel launcher
-list"/>\</a>
+![JupyterLab user kernel launcher](misc/jupyterlab_user_kernel_launcher.png)
+{: align="center"}
 
 You can switch kernels of existing notebooks in the menu:
 
-**TODO ADD IMAGE** \<a href="%ATTACHURL%/jupyterlab_change_kernel.png">\<img
-alt="jupyterlab_app.png"
-src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/jupyterlab_change_kernel.png>"
-style="border: 1px solid #888;" title="JupyterLab kernel switch"/>\</a>
+![JupyterLab change kernel](misc/jupyterlab_change_kernel.png)
+{: align="center"}
 
-**In classic notebook app**:
+**Classic Jupyter notebook**: Your kernel is listed in the New menu:
 
-Your kernel is listed in the New menu:
-
-**TODO ADD IMAGE** \<a href="%ATTACHURL%/user-kernel_in_jupyter_notebook.png">\<img
-alt="jupyterlab_app.png"
-src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/user-kernel_in_jupyter_notebook.png>"
-style="border: 1px solid #888;" title="Classic notebook (create notebook
-with new kernel)"/>\</a>
+![Jupyter notebook user kernel launcher](misc/jupyter_notebook_user_kernel_launcher.png)
+{: align="center"}
 
 You can switch kernels of existing notebooks in the kernel menu:
 
-**TODO ADD IMAGE** \<a href="%ATTACHURL%/switch_kernel_in_jupyter_notebook.png">\<img
-alt="jupyterlab_app.png"
-src="<https://doc.zih.tu-dresden.de/hpc-wiki/pub/Compendium/JupyterHub/switch_kernel_in_jupyter_notebook.png>"
-style="border: 1px solid #888;" title="Classic notebook (kernel
-switch)"/>\</a>
+![Jupyter notebook change kernel](misc/jupyter_notebook_change_kernel.png)
+{: align="center"}
 
-**Note**: Both python venv and conda virtual environments will be
-mention in the same list.
+!!! note
+    Both python venv and conda virtual environments will be mention in the same list.
 
-### Loading modules
+### Loading Modules
 
-You have now the option to preload modules from the LMOD module
-system.
-Select multiple modules that will be preloaded before your notebook
-server starts. The list of available modules depends on the module
-environment you want to start the session in (scs5 or ml). The right
-module environment will be chosen by your selected partition.
+You have now the option to preload modules from the [module system](../software/modules.md).
+Select multiple modules that will be preloaded before your notebook server starts. The list of
+available modules depends on the module environment you want to start the session in (`scs5` or
+`ml`).  The right module environment will be chosen by your selected partition.

@@ -14,12 +14,16 @@ basedir=`dirname "$basedir"`
 # The pattern \<io\> should not be present in any file (case-insensitive match), except when it appears as ".io".
 ruleset="i	\<io\>	\.io
 s	\<SLURM\>
-i	file \+system
-i	\<taurus\>	taurus\.hrsk	/taurus
+i	file \+system	HDFS
+i	\<taurus\>	taurus\.hrsk	/taurus	/TAURUS
 i	\<hrskii\>
-i	hpc \+system
 i	hpc[ -]\+da\>
+i	\(alpha\|ml\|haswell\|romeo\|gpu\|smp\|julia\|hpdlf\|scs5\)-\?\(interactive\)\?[^a-z]*partition
 i	work[ -]\+space"
+
+# Whitelisted files will be ignored
+# Whitespace separated list with full path
+whitelist=(doc.zih.tu-dresden.de/docs/contrib/content_rules.md)
 
 function grepExceptions () {
   if [ $# -gt 0 ]; then
@@ -37,6 +41,7 @@ function usage () {
   echo ""
   echo "Options:"
   echo "  -a     Search in all markdown files (default: git-changed files)" 
+  echo "  -f     Search in a specific markdown file" 
   echo "  -s     Silent mode"
   echo "  -h     Show help message"
 }
@@ -44,10 +49,15 @@ function usage () {
 # Options
 all_files=false
 silent=false
-while getopts ":ahs" option; do
+file=""
+while getopts ":ahsf:" option; do
  case $option in
    a)
      all_files=true
+     ;;
+   f)
+     file=$2
+     shift
      ;;
    s)
      silent=true
@@ -67,14 +77,21 @@ branch="origin/${CI_MERGE_REQUEST_TARGET_BRANCH_NAME:-preview}"
 if [ $all_files = true ]; then
   echo "Search in all markdown files."
   files=$(git ls-tree --full-tree -r --name-only HEAD $basedir/docs/ | grep .md)
+elif [[ ! -z $file ]]; then
+  files=$file
 else
   echo "Search in git-changed files."
   files=`git diff --name-only "$(git merge-base HEAD "$branch")"`
 fi
 
+echo "... $files ..."
 cnt=0
 for f in $files; do
   if [ "$f" != doc.zih.tu-dresden.de/README.md -a "${f: -3}" == ".md" -a -f "$f" ]; then
+    if (printf '%s\n' "${whitelist[@]}" | grep -xq $f); then
+      echo "Skip whitelisted file $f"
+      continue
+    fi
     echo "Check wording in file $f"
     while IFS=$'\t' read -r flags pattern exceptionPatterns; do
       while IFS=$'\t' read -r -a exceptionPatternsArray; do

@@ -14,11 +14,10 @@ Please be aware of the following notes:
 - Scheduled downtimes are announced by email. Please plan your courses accordingly.
 - Access to HPC resources is handled through projects. See your course as a project. Projects need
   to be registered beforehand (more info on the page [Access](../application/overview.md)).
-- Don't forget to **TODO ANCHOR**(add your users)
-  (ProjectManagement#manage_project_members_40dis_45_47enable_41) (eg. students or tutors) to
-your project.
-- It might be a good idea to **TODO ANCHOR**(request a
-  reservation)(Slurm#Reservations) of part of the compute resources for your project/course to
+- Don't forget to [add your users](../application/project_management.md#manage-project-members-dis-enable)
+  (eg. students or tutors) to your project.
+- It might be a good idea to [request a reservation](../jobs_and_resources/overview.md#exclusive-reservation-of-hardware)
+  of part of the compute resources for your project/course to
   avoid unnecessary waiting times in the batch system queue.
 
 ## Clone a Repository With a Link

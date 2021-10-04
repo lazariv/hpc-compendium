@@ -9,16 +9,16 @@ nav:
   - Access to ZIH Systems:
     - Overview: access/overview.md
     - Connecting with SSH: access/ssh_login.md
-    - Key Fingerprints: access/key_fingerprints.md  
     - Desktop Visualization: access/desktop_cloud_visualization.md
     - Graphical Applications with WebVNC: access/graphical_applications_with_webvnc.md
-    - Security Restrictions: access/security_restrictions.md
     - JupyterHub:
       - JupyterHub: access/jupyterhub.md
       - JupyterHub for Teaching: access/jupyterhub_for_teaching.md
+    - Key Fingerprints: access/key_fingerprints.md  
+    - Security Restrictions: access/security_restrictions.md
   - Transfer of Data:
     - Overview: data_transfer/overview.md
-    - Data Mover: data_transfer/data_mover.md
+    - Datamover: data_transfer/datamover.md
     - Export Nodes: data_transfer/export_nodes.md
   - Environment and Software:
     - Overview: software/overview.md
@@ -26,11 +26,12 @@ nav:
       - Modules: software/modules.md
       - Runtime Environment: software/runtime_environment.md
       - Custom EasyBuild Modules: software/custom_easy_build_environment.md
+      - Python Virtual Environments: software/python_virtual_environments.md
     - Containers:
       - Singularity: software/containers.md
-      - Singularity Recicpe Hints: software/singularity_recipe_hints.md
-      - Singularity Example Definitions: software/singularity_example_definitions.md
-      - VM tools: software/vm_tools.md
+      - Singularity Recipes and Hints: software/singularity_recipe_hints.md
+      - Virtual Machines Tools: software/virtual_machines_tools.md
+      - Virtual Machines: software/virtual_machines.md
     - Applications:
       - Licenses: software/licenses.md
       - Computational Fluid Dynamics (CFD): software/cfd.md
@@ -38,23 +39,21 @@ nav:
       - Nanoscale Simulations: software/nanoscale_simulations.md
       - FEM Software: software/fem_software.md
     - Visualization: software/visualization.md
-    - HPC-DA:
-      - Get started with HPC-DA: software/get_started_with_hpcda.md
-      - Machine Learning: software/machine_learning.md
-      - Deep Learning: software/deep_learning.md
+    - Data Analytics:
+      - Overview: software/data_analytics.md
       - Data Analytics with R: software/data_analytics_with_r.md
-      - Data Analytics with Python: software/python.md
-      - TensorFlow: 
-        - TensorFlow Overview: software/tensorflow.md
-        - TensorFlow in Container: software/tensorflow_container_on_hpcda.md
-        - TensorFlow in JupyterHub: software/tensorflow_on_jupyter_notebook.md 
-      - Keras: software/keras.md
-      - Dask: software/dask.md
-      - Power AI: software/power_ai.md
+      - Data Analytics with RStudio: software/data_analytics_with_rstudio.md
+      - Data Analytics with Python: software/data_analytics_with_python.md
+      - Apache Spark: software/big_data_frameworks_spark.md
+    - Machine Learning:
+      - Overview: software/machine_learning.md
+      - TensorFlow: software/tensorflow.md
+      - TensorBoard: software/tensorboard.md
       - PyTorch: software/pytorch.md
-      - Apache Spark, Apache Flink, Apache Hadoop: software/big_data_frameworks.md
+      - Distributed Training: software/distributed_training.md
+      - Hyperparameter Optimization (OmniOpt): software/hyperparameter_optimization.md
+      - PowerAI: software/power_ai.md
     - SCS5 Migration Hints: software/scs5_software.md
-    - Virtual Machines: software/virtual_machines.md
     - Virtual Desktops: software/virtual_desktops.md
     - Software Development and Tools:
       - Overview: software/software_development_overview.md
@@ -62,10 +61,12 @@ nav:
       - Compilers: software/compilers.md
       - GPU Programming: software/gpu_programming.md
       - Libraries: software/math_libraries.md
-      - MPI Error Detection: software/mpi_usage_error_detection.md
       - Debugging: software/debuggers.md
+      - MPI Error Detection: software/mpi_usage_error_detection.md
+      - Score-P: software/scorep.md
+      - PAPI Library: software/papi.md
       - Pika: software/pika.md
-      - Perf Tools: software/perf_tools.md 
+      - Perf Tools: software/perf_tools.md
       - Score-P: software/scorep.md
       - Vampir: software/vampir.md
   - Data Life Cycle Management:
@@ -74,41 +75,33 @@ nav:
       - Overview: data_lifecycle/file_systems.md
       - Permanent File Systems: data_lifecycle/permanent.md
       - Lustre: data_lifecycle/lustre.md
-      - BeeGFS: data_lifecycle/bee_gfs.md
+      - BeeGFS: data_lifecycle/beegfs.md
+      - Warm Archive: data_lifecycle/warm_archive.md
       - Intermediate Archive: data_lifecycle/intermediate_archive.md
       - Quotas: data_lifecycle/quotas.md
     - Workspaces: data_lifecycle/workspaces.md
-    - HPC Storage Concept 2019: data_lifecycle/hpc_storage_concept2019.md
     - Preservation of Research Data: data_lifecycle/preservation_research_data.md
     - Structuring Experiments: data_lifecycle/experiments.md
-  - Jobs and Resources:
+  - HPC Resources and Jobs:
     - Overview: jobs_and_resources/overview.md
-    - Batch Systems: jobs_and_resources/batch_systems.md
-    - Hardware Resources:
-      - Hardware Taurus: jobs_and_resources/hardware_taurus.md
+    - HPC Resources:
+      - Overview: jobs_and_resources/hardware_overview.md
       - AMD Rome Nodes: jobs_and_resources/rome_nodes.md
       - IBM Power9 Nodes: jobs_and_resources/power9.md
       - NVMe Storage: jobs_and_resources/nvme_storage.md
       - Alpha Centauri: jobs_and_resources/alpha_centauri.md
       - HPE Superdome Flex: jobs_and_resources/sd_flex.md
-    - Checkpoint/Restart: jobs_and_resources/checkpoint_restart.md
-    - Overview2: jobs_and_resources/index.md
-    - Taurus: jobs_and_resources/system_taurus.md
-    - Slurm Examples: jobs_and_resources/slurm_examples.md
-    - Slurm: jobs_and_resources/slurm.md
-    - HPC-DA: jobs_and_resources/hpcda.md
-    - Binding And Distribution Of Tasks: jobs_and_resources/binding_and_distribution_of_tasks.md
-      #    - Queue Policy: jobs/policy.md
-      #    - Examples: jobs/examples/index.md
-      #    - Affinity: jobs/affinity/index.md
-      #    - Interactive: jobs/interactive.md
-      #    - Best Practices: jobs/best-practices.md
-      #    - Reservations: jobs/reservations.md
-      #    - Monitoring: jobs/monitoring.md
-      #    - FAQs: jobs/jobs-faq.md
-  #- Tests: tests.md
-  - Support: support.md
-  - Archive:
+    - Running Jobs:
+      - Batch System Slurm: jobs_and_resources/slurm.md
+      - Job Examples: jobs_and_resources/slurm_examples.md
+      - Partitions and Limits : jobs_and_resources/partitions_and_limits.md
+      - Checkpoint/Restart: jobs_and_resources/checkpoint_restart.md
+      - Job Profiling: jobs_and_resources/slurm_profiling.md
+      - Binding And Distribution Of Tasks: jobs_and_resources/binding_and_distribution_of_tasks.md
+  - Support:
+    - How to Ask for Support: support/support.md
+    - News Archive: support/news_archive.md
+  - Archive of the Old Wiki:
     - Overview: archive/overview.md
     - Bio Informatics: archive/bioinformatics.md
     - CXFS End of Support: archive/cxfs_end_of_support.md
@@ -116,6 +109,7 @@ nav:
     - No IB Jobs: archive/no_ib_jobs.md
     - Phase2 Migration: archive/phase2_migration.md
     - Platform LSF: archive/platform_lsf.md
+    - BeeGFS on Demand: archive/beegfs_on_demand.md
     - Switched-Off Systems:
       - Overview: archive/systems_switched_off.md
       - From Deimos to Atlas: archive/migrate_to_atlas.md
@@ -128,39 +122,56 @@ nav:
       - System Venus: archive/system_venus.md
       - KNL Nodes: archive/knl_nodes.md
     - UNICORE Rest API: archive/unicore_rest_api.md
-    - Vampir Trace: archive/vampir_trace.md
+    - VampirTrace: archive/vampirtrace.md
     - Windows Batchjobs: archive/windows_batch.md
-
-
+  - Contribute:
+    - How-To: contrib/howto_contribute.md
+    - Content Rules: contrib/content_rules.md
+    - Work Locally Using Containers: contrib/contribute_container.md
+    
 # Project Information
+
 site_name: ZIH HPC Compendium
 site_description: ZIH HPC Compendium
 site_author: ZIH Team
 site_dir: public
-site_url: https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium
+site_url: https://gitlab.hrz.tu-chemnitz.de/zih/hpcsupport/hpc-compendium
+
 # uncomment next 3 lines if link to repo should not be displayed in the navbar
+
 repo_name: GitLab hpc-compendium
-repo_url: https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium
-edit_uri: blob/master/docs/
+repo_url: https://gitlab.hrz.tu-chemnitz.de/zih/hpcsupport/hpc-compendium
+edit_uri: blob/main/doc.zih.tu-dresden.de/docs/
 
 # Configuration
-#strict: true
+
+# strict: true
 
 theme:
+
   # basetheme
+
   name: material
+
   # disable fonts being loaded from google fonts
+
   font: false
   language: en
+
   # dir containing all customizations
+
   custom_dir: tud_theme
   favicon: assets/images/Logo_klein.png
+
   # logo in header and footer
+
   logo: assets/images/TUD_Logo_weiss_57.png
   second_logo: assets/images/zih_weiss.png
 
 # extends base css
+
 extra_css:
+
   - stylesheets/extra.css
 
 markdown_extensions:
@@ -177,7 +188,9 @@ extra:
   homepage: https://tu-dresden.de
   zih_homepage: https://tu-dresden.de/zih
   hpcsupport_mail: hpcsupport@zih.tu-dresden.de
+
   # links in footer
+
   footer:
     - link: /legal_notice
       name: "Legal Notice / Impressum"
