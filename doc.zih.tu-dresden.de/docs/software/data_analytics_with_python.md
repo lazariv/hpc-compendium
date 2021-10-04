@@ -85,10 +85,14 @@ For more examples of using pandarallel check out
 
 ### Dask
 
-[Dask](https://dask.org/) is a flexible and open-source library for parallel computing in Python.
-It replaces some Python data structures with parallel versions in order to provide advanced
-parallelism for analytics, enabling performance at scale for some of the popular tools. For
-instance: Dask arrays replace NumPy arrays, Dask dataframes replace Pandas dataframes.
+[Dask](https://dask.org/) is a flexible and open-source library
+for parallel computing in Python.
+It replaces some Python data structures with parallel versions
+in order to provide advanced
+parallelism for analytics, enabling performance at scale
+for some of the popular tools.
+For instance: Dask arrays replace NumPy arrays,
+Dask dataframes replace Pandas dataframes.
 Furthermore, Dask-ML scales machine learning APIs like Scikit-Learn and XGBoost.
 
 Dask is composed of two parts:
@@ -114,7 +118,8 @@ Dask supports several user interfaces:
 
 #### Installation
 
-On ZIH systems, Dask is available as a module. Check available versions and load your preferred one:
+On ZIH systems, Dask is available as a module.
+Check available versions and load your preferred one:
 
 ```console
 marie@compute$ module spider dask
@@ -131,12 +136,8 @@ marie@compute$ python -c "import dask; print(dask.__version__)"
 2021.08.1
 ```
 
-Dask is installed by default in
-[Anaconda](https://www.anaconda.com/download/). Moreover,
-it is possible to install and use Dask in your local virtualenv
-(recommended) or [conda](https://www.anaconda.com/download/) virtual environment.
-More information you can find  
-in the [Python Virtual Environments page](python_virtual_environments.md).
+The preferred way is to use Dask as a separate module as was described above.
+However, you can use it as part of the Anaconda module, e.g: `ml Anaconda3`.
 
 #### Scheduling by Dask
 
@@ -145,16 +146,8 @@ One of the main features of Dask is large-scale Dask collections
 After Dask generates these task graphs,
 it needs to execute them on parallel hardware.
 This is the job of a task scheduler.
-
-Dask has two families of task schedulers:
-
-- Single machine scheduler: This scheduler provides basic features
-on a local process or thread pool. It can only be used on a single machine
-and does not scale. It's not interesting in the context of HPC.
-
-- Distributed scheduler: This scheduler is more sophisticated,
-offers more features, but also requires a bit more effort to set up.
-It can run locally or distribute across a cluster
+Please use Distributed scheduler for your
+Dask computations on the cluster and avoid using a Single machine scheduler.
 
 ##### Distributed Scheduler
 
@@ -200,7 +193,7 @@ It allows an easy deployment of Dask Distributed on HPC with Slurm
 or other job queuing systems.
 
 Dask-jobqueue is available as an extension
-for a Dask module (which can be loaded by: `module load dask`)
+for a Dask module (which can be loaded by: `module load dask`).
 
 The availability of the exact packages (such a Dask-jobqueue)
 in the module can be checked by the
@@ -213,13 +206,13 @@ You can install Dask-jobqueue with `pip` or `conda`.
 ###### Example of use Dask-jobqueue with SLURMCluster
 
 [Dask-jobqueue](https://jobqueue.dask.org/en/latest/howitworks.html#workers-vs-jobs)
-allows running jobs on ZIH system
+allows running jobs on the ZIH system
 inside the python code and scale computations over the jobs.
 [Dask-jobqueue](https://jobqueue.dask.org/en/latest/howitworks.html#workers-vs-jobs)
 creates a Dask Scheduler in the Python process
 where the cluster object is instantiated.
 Please check the example of a definition of the cluster object
-for the alpha partition (queue at the dask terms) on ZIH system:
+for the alpha partition (queue at the dask terms) on the ZIH system:
 
 ```python
 from dask_jobqueue import SLURMCluster
@@ -238,7 +231,7 @@ single job or a single compute node,
 rather than the characteristics of your computation as a whole.
 It hasn’t actually launched any jobs yet.
 For the full computation, you will then ask for a number of
-jobs using the scale command, e.g :`cluster.scale(2)`.
+jobs using the scale command, e.g : `cluster.scale(2)`.
 Thus, you have to specify a SLURMCluster by `dask-jobqueue`
 scale it and use it for your computations. There is an example:
 
@@ -380,19 +373,21 @@ without available cluster resources.
 
 ### Mpi4py -  MPI for Python
 
-Message Passing Interface (MPI) is a standardized and portable message-passing standard, designed to
-function on a wide variety of parallel computing architectures. The Message Passing Interface (MPI)
-is a library specification that allows HPC to pass information between its various nodes and
-clusters. MPI is designed to provide access to advanced parallel hardware for end-users, library
-writers and tool developers.
+Message Passing Interface (MPI) is a standardized and
+portable message-passing standard, designed to
+function on a wide variety of parallel computing architectures.
+The MPI is a library specification that allows HPC to pass information
+hardware for end-users, library writers and tool developers.
 
-Mpi4py (MPI for Python) provides bindings of the MPI standard for the Python programming
-language, allowing any Python program to exploit multiple processors.
+Mpi4py (MPI for Python) provides bindings of the MPI standard for
+the Python programming language,
+allowing any Python program to exploit multiple processors.
 
-Mpi4py is based on MPI-2 C++ bindings. It supports almost all MPI calls. This implementation is
-popular on Linux clusters and in the SciPy community. Operations are primarily methods of
-communicator objects. It supports communication of pickle-able Python objects. mpi4py provides
-optimized the communication of NumPy arrays.
+Mpi4py is based on MPI-2 C++ bindings. It supports almost all MPI calls.
+This implementation is
+popular on Linux clusters and in the SciPy community.
+It supports communication of pickle-able Python objects.
+Mpi4py provides optimized the communication of NumPy arrays.
 
 Mpi4py is included in the SciPy-bundle modules on the ZIH system.
 
@@ -432,10 +427,11 @@ Names marked by a trailing (E) are extensions provided by another module.
 -----------------------------------------------------------------------------------------------------------------------------------------
 ```
 
-Moreover, it is possible to install Mpi4py in your local conda
+Moreover, it is possible to install mpi4py in your local conda
 environment.
 
-The example of mpi4py usage for the verification that mpi4py is running correctly can be found below:
+The example of mpi4py usage for the verification that
+mpi4py is running correctly can be found below:
 
 ```python
 from mpi4py import MPI
@@ -459,5 +455,6 @@ eval "$(conda shell.bash hook)"
 conda activate /home/marie/conda-virtual-environment/kernel2 && srun python mpi4py_test.py    #specify name of your virtual environment
 ```
 
-For the verification of the multi-node case, you can use as a test
-file the Python code from the previous part (with verification of the installation).
+For the verification of the multi-node case,
+you can use the Python code from the previous part
+(with verification of the installation) as a test file.
