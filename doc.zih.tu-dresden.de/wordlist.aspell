@@ -95,6 +95,7 @@ HPL
 html
 hyperparameter
 hyperparameters
+hyperthreading
 icc
 icpc
 ifort
@@ -144,10 +145,11 @@ mpifort
 mpirun
 multicore
 multithreaded
-MultiThreading
 Multithreading
+MultiThreading
 NAMD
 natively
+nbsp
 nbsp
 NCCL
 Neptun
@@ -192,8 +194,8 @@ PMI
 png
 PowerAI
 ppc
-Pre
 pre
+Pre
 Preload
 preloaded
 preloading
@@ -216,8 +218,8 @@ RSS
 RStudio
 Rsync
 runnable
-Runtime
 runtime
+Runtime
 salloc
 Sandybridge
 Saxonid
@@ -271,6 +273,7 @@ transferability
 Trition
 unencrypted
 uplink
+userspace
 Vampir
 VampirTrace
 VampirTrace's
