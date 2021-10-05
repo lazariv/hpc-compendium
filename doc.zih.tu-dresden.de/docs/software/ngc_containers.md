@@ -15,7 +15,7 @@ down to the math and communication libraries that are necessary for performance,
 a single bundle. Since workloads inside a container
 always use the same environment, the performance is reproducible and portable.
 
-On ZIH system [Singularity](https://sylabs.io/) used as a standard container solution.
+On ZIH system [Singularity](https://sylabs.io/) is used as a standard container solution.
 
 ## NGC Containers in General
 
