@@ -5,13 +5,14 @@ Usage of software on HPC systems is managed by a **modules system**.
 !!! note "Module"
 
     A module is a user interface that provides utilities for the dynamic modification of a user's
-    environment (e.g., *PATH*, *LD_LIBRARY_PATH* etc.) to access the compilers, loader, libraries,
+    environment (e.g., `PATH`, `LD_LIBRARY_PATH` etc.) to access the compilers, loader, libraries,
     and utilities. With the help of modules, users can smoothly switch between different versions of
     installed software packages and libraries.
 
-For all applications, tools, libraries etc. the correct environment can be easily set by e.g.
-`module load Mathematica`. If several versions are installed they can be chosen like `module load
-MATLAB/2019b`. A list of all modules shows `module avail`. Other important commands are:
+For all applications, tools, libraries etc. the correct environment can be easily set loading and/or
+unloading modules.
+
+## Module Commands
 
 | Command                       | Description                                                      |
 |:------------------------------|:-----------------------------------------------------------------|
