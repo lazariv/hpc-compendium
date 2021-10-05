@@ -141,7 +141,7 @@ marie@login$ srun -p alpha --nodes 1 --ntasks-per-node 8 --ntasks 8 --gres=gpu:8
 marie@compute$ singularity exec --nv -B /scratch/ws/0/marie-ImgNet/imagenet:/data/imagenet /beegfs/global0/ws/marie-beegfs_container_storage/container_storage/pytorch:21.06-py3 python /workspace/examples/resnet50v1.5/multiproc.py --nnodes=1 --nproc_per_node 8 --node_rank=0 /workspace/examples/resnet50v1.5/main.py --data-backend dali-cpu --raport-file raport.json -j16 -p 100 --lr 2.048 --optimizer-batch-size 2048 --warmup 8 --arch resnet50 -c fanin --label-smoothing 0.1 --lr-schedule cosine --mom 0.875 --wd 3.0517578125e-05 -b 256 --epochs 90 /data/imagenet
 ```
 
-Please put your attention on the parameter `--nproc_per_node`. The value is equal to 8 because 8 GPUs per node was allocated by srun.
+Please pay attention to the parameter `--nproc_per_node`. The value is equal to 8 because 8 GPUs per node were allocated by srun.
 
 ### Multi-node Usage
 
