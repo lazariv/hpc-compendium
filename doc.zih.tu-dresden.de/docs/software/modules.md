@@ -1,47 +1,51 @@
 # Modules
 
-Usage of software on HPC systems is managed by a **modules system**. A module is a user interface
-that provides utilities for the dynamic modification of a user's environment (e.g., *PATH*,
-*LD_LIBRARY_PATH* etc.) to access the compilers, loader, libraries, and utilities. With the help
-of modules, users can smoothly switch between different versions of installed software packages
-and libraries.
+Usage of software on HPC systems is managed by a **modules system**.
 
-For all applications, tools, libraries etc. the correct environment can be easily set by the command
+!!! note "Module"
 
-```
-module load
-```
+    A module is a user interface that provides utilities for the dynamic modification of a user's
+    environment (e.g., *PATH*, *LD_LIBRARY_PATH* etc.) to access the compilers, loader, libraries,
+    and utilities. With the help of modules, users can smoothly switch between different versions of
+    installed software packages and libraries.
 
-e.g: `module load MATLAB`. If several versions are installed they can be chosen like: `module load
-MATLAB/2019b`.
+For all applications, tools, libraries etc. the correct environment can be easily set by e.g.
+`module load Mathematica`. If several versions are installed they can be chosen like `module load
+MATLAB/2019b`. A list of all modules shows `module avail`. Other important commands are:
 
-A list of all modules shows by command
+| Command                       | Description                                                      |
+|:------------------------------|:-----------------------------------------------------------------|
+| `module help`                 | show all module options                                          |
+| `module list`                 | list all user-installed modules                                  |
+| `module purge`                | remove all user-installed modules                                |
+| `module avail`                | list all available modules                                       |
+| `module spider`               | search for modules across all environments, can take a parameter |
+| `module load <modname>`       | load module `modname`                                            |
+| `module unload <modname>`     | unloads module `modname`                                         |
+| `module switch <mod1> <mod2>` | unload module `mod1` ; load module `mod2`                        |
 
-```
-module available
-#or
-module avail
-#or
-ml av
+Module files are ordered by their topic on our HPC systems. By default, with `module av` you will
+see all available module files and topics. If you just wish to see the installed versions of a
+certain module, you can use `module av softwarename` and it will display the available versions of
+`softwarename` only.
 
-```
+## Lmod: An Alternative Module Implementation
 
-Other important commands are:
+Historically, the module command on our HPC systems has been provided by the rather dated
+*Environment Modules* software which was first introduced in 1991. As of late 2016, we also offer
+the new and improved [LMOD](https://www.tacc.utexas.edu/research-development/tacc-projects/lmod) as
+an alternative. It has a handful of advantages over the old Modules implementation:
 
-```Bash
-module help             #show all module options
-module list             #list all user-installed modules
-module purge            #remove all user-installed modules
-module spider           #search for modules across all environments, can take a parameter
-module load <modname>   #load module modname
-module rm <modname>     #unload module modname
-module switch <mod> <mod2>  #unload module mod1; load module mod2
-```
-
-Module files are ordered by their topic on Taurus. By default, with `module available` you will see
-all available module files and topics. If you just wish to see the installed versions of a certain
-module, you can use `module av <softwarename>` and all available versions of the exact software will
-be displayed.
+- all modulefiles are cached, which especially speeds up tab
+  completion with bash
+- sane version ordering (9.0 \< 10.0)
+- advanced version requirement functions (atleast, between, latest)
+- auto-swapping of modules (if a different version was already loaded)
+- save/auto-restore of loaded module sets (module save)
+- multiple language support
+- properties, hooks, ...
+- depends_on() function for automatic dependency resolution with
+  reference counting
 
 ## Module environments
 

@@ -23,8 +23,8 @@ nav:
   - Environment and Software:
     - Overview: software/overview.md
     - Environment:
+      - Overview: software/environment_overview.md
       - Modules: software/modules.md
-      - Runtime Environment: software/runtime_environment.md
       - Custom EasyBuild Modules: software/custom_easy_build_environment.md
       - Python Virtual Environments: software/python_virtual_environments.md
     - Containers:
