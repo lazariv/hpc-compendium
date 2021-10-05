@@ -70,7 +70,7 @@ Run NGC container on one GPU
 
 Note: Almost all NGC containers can work with one GPU.
 
-To use NGC containers it is necessary to understand main Singularity commands.
+To use NGC containers it is necessary to understand the main Singularity commands.
 
 If you are not familiar with singularity syntax please find the information on the [official page](https://sylabs.io/guides/3.0/user-guide/quick_start.html#interact-with-images). However, some main commands will be explained.
 
