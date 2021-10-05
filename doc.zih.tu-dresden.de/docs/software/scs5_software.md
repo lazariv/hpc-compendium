@@ -21,7 +21,7 @@ remove it and accept the new one after comparing its fingerprint with those list
 ## Using Software Modules
 
 Starting with SCS5, we only provide
-[Lmod](../software/runtime_environment.md#lmod-an-alternative-module-implementation) as the
+[Lmod](../software/modules.md#lmod-an-alternative-module-implementation) as the
 environment module tool of choice.
 
 As usual, you can get a list of the available software modules via:
