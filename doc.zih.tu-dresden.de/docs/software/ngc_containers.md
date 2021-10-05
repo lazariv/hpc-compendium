@@ -74,7 +74,7 @@ To use NGC containers it is necessary to understand the main Singularity command
 
 If you are not familiar with singularity syntax please find the information on the [official page](https://sylabs.io/guides/3.0/user-guide/quick_start.html#interact-with-images). However, some main commands will be explained.
 
-Create a container from the image from the NGC catalog. For example, the alpha partition was used.
+Create a container from the image from the NGC catalog. For this example, the alpha partition is used.
 
 ```console
 marie@login$ srun -p alpha --nodes 1 --ntasks-per-node 1 --ntasks 1 --gres=gpu:1 --time=08:00:00 --pty --mem=50000 bash    #allocate alpha partition with one GPU
