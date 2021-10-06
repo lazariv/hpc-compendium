@@ -268,9 +268,9 @@ interactive job) or batch jobs or
 [JupyterHub](../access/jupyterhub.md) with loaded Dask
 (by module or by Python virtual environment).
 
-**Note**: The job to run original code (de facto an interface) with
-a setup should be simple and light.
-Please don't use a lot of resources for that.  
+!!! note
+    The job to run original code (de facto an interface) with a setup should be simple and light.
+    Please don't use a lot of resources for that.
 
 The following example shows using
 Dask by `dask-jobqueue` with `SLURMCluster` and `dask.array`
