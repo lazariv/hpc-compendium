@@ -32,6 +32,7 @@ nav:
       - Singularity Recipes and Hints: software/singularity_recipe_hints.md
       - Virtual Machines Tools: software/virtual_machines_tools.md
       - Virtual Machines: software/virtual_machines.md
+      - NGC Containers: software/ngc_containers.md
     - Applications:
       - Licenses: software/licenses.md
       - Computational Fluid Dynamics (CFD): software/cfd.md
