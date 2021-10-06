@@ -81,7 +81,7 @@ Create a container from the image from the NGC catalog.
 (For this example, the alpha partition is used):
 
 ```console
-marie@login$ srun -p alpha --nodes 1 --ntasks-per-node 1 --ntasks 1 --gres=gpu:1 --time=08:00:00 --pty --mem=50000 bash    #allocate alpha partition with one GPU
+marie@login$ srun -p alpha --nodes 1 --ntasks-per-node 1 --ntasks 1 --gres=gpu:1 --time=08:00:00 --pty --mem=50000 bash    #allocate one GPU
 
 marie@compute$ cd /scratch/ws/<name_of_your_workspace>/containers   #please create a Workspace
 
@@ -108,7 +108,7 @@ It is recommended to run the container with a single command,
 however, for the educational purpose the separate commands will be presented below:
 
 ```console
-marie@login$ srun -p alpha --nodes 1 --ntasks-per-node 1 --ntasks 1 --gres=gpu:1 --time=08:00:00 --pty --mem=50000 bash    #allocate alpha partition with one GPU
+marie@login$ srun -p alpha --nodes 1 --ntasks-per-node 1 --ntasks 1 --gres=gpu:1 --time=08:00:00 --pty --mem=50000 bash    #allocate  one GPU
 ```
 
 Run a shell within a container with a `singularity shell` command:
