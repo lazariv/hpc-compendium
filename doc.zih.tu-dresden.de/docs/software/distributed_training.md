@@ -46,7 +46,7 @@ with multiple GPUs.
 The CPU holds the global state of the model and GPUs perform the training.
 
 In some cases asynchronous training might be the better choice for example if workers differ on
-capability, are down for maintenance, or have different priorities
+capability, are down for maintenance, or have different priorities.
 The Parameter Server Strategy is capable of applying asynchronous training:
 
 - `tf.distribute.experimental.ParameterServerStrategy` requires several Parameter Server and Worker.
@@ -58,7 +58,7 @@ Each worker runs the training loop independently.
 #### Example
 
 In this case, we will go through an example with Multi Worker Mirrored Strategy.
-Multi-node training requires a TF_CONFIG environment variable to be set which will
+Multi-node training requires a `TF_CONFIG` environment variable to be set which will
 be different on each node.
 
 ```bash
@@ -70,7 +70,7 @@ Here, the cluster has two nodes referred to as workers.
 The `IP:port` information is listed in the `worker` array.
 The `task` field varies from node to node.
 It specifies the type and index of the node.
-In this case, the training job runs on worker 0, which is "10.1.10.58:12345".
+In this case, the training job runs on worker 0, which is `10.1.10.58:12345`.
 We need to adapt this snippet for each node.
 The second node will have `'task': {'index': 1, 'type': 'worker'}`.
 
@@ -98,19 +98,19 @@ To run distributed training, the training script needs to be copied to all nodes
 in this case on two nodes.
 TensorFlow is available as a module.
 Check for the version.
-The tf_config environment variable can be set as a prefix to the command.
+The `TF_CONFIG` environment variable can be set as a prefix to the command.
 Now, run the script on the Alpha partition simultaneously on both nodes:
 
 ```bash
 #!/bin/bash
 
-#SBATCH -J distr
-#SBATCH -p alpha
+#SBATCH --job-name=distr
+#SBATCH --partition=alpha
 #SBATCH --output=%j.out
 #SBATCH --error=%j.err
 #SBATCH --mem=64000
-#SBATCH -N 2
-#SBATCH -n 2
+#SBATCH --nodes=2
+#SBATCH --ntasks=2
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=14
 #SBATCH --gres=gpu:1
@@ -137,6 +137,9 @@ wait
 ```
 
 ### Distributed PyTorch
+
+!!! note
+    This section is under construction
 
 #### Using Multiple GPUs with PyTorch
 
@@ -190,7 +193,7 @@ Memory can be set up to:
 - `--mem=250G` and `--cpus-per-task=7` for the `ml` partition.
 - `--mem=60G` and `--cpus-per-task=6` for the `gpu2` partition.
 
-Keep in mind that only one memory parameter (`--mem-per-cpu`=<MB> or `--mem`=<MB>) can be specified
+Keep in mind that only one memory parameter (`--mem-per-cpu=<MB>` or `--mem=<MB>`) can be specified
 
 ## External Distribution
 
@@ -218,68 +221,46 @@ Horovod is available as a module with **TensorFlow** or **PyTorch** for
 Please check the [software module list](modules.md) for the current version of the software.
 Horovod can be loaded like other software on ZIH system:
 
-```bash
-module avail | grep Horovod                                                       #Check available modules with Python
-module load Horovod/0.19.5-fosscuda-2019b-TensorFlow-2.2.0-Python-3.7.4      #Loading one of them
+```console
+marie@compute$ module spider Horovod           # Check available modules
+------------------------------------------------------------------------------------------------
+  Horovod:
+------------------------------------------------------------------------------------------------
+    Description:
+      Horovod is a distributed training framework for TensorFlow.
+
+     Versions:
+        Horovod/0.18.2-fosscuda-2019b-TensorFlow-2.0.0-Python-3.7.4
+        Horovod/0.19.5-fosscuda-2019b-TensorFlow-2.2.0-Python-3.7.4
+        Horovod/0.21.1-TensorFlow-2.4.1
+[...]
+marie@compute$ module load Horovod/0.19.5-fosscuda-2019b-TensorFlow-2.2.0-Python-3.7.4  
 ```
 
-Or if you want to use Horovod on the Alpha partition you can load it with the dependencies:
+Or if you want to use Horovod on the partition `alpha` you can load it with the dependencies:
 
 ```bash
-module spider Horovod                                               #Check available modules and dependencies
-module load modenv/hiera  GCC/10.2.0  CUDA/11.1.1  OpenMPI/4.0.5 Horovod/0.21.1-TensorFlow-2.4.1
+marie@alpha$ module spider Horovod                         #Check available modules
+marie@alpha$ module load modenv/hiera  GCC/10.2.0  CUDA/11.1.1  OpenMPI/4.0.5 Horovod/0.21.1-TensorFlow-2.4.1
 ```
 
 #### Horovod installation
 
 However if it is necessary to use another version of Horovod it is possible to install it manually.
-For that you need to create a virtual environment and load the dependencies (e.g. MPI).
+For that you need to create a [virtual environment](python_virtual_environments.md) and load the
+dependencies (e.g. MPI).
 Installing TensorFlow can take a few hours and is not recommended.
-
-**Note:** You could work with simple examples in your home directory but **please use workspaces
-for your study and work projects** (see the storage concept).
-
-Setup on the ML partition:
-
-```bash
-srun --nodes=1 --ntasks-per-node=1 -p ml --time=08:00:00 --pty bash     #allocate a Slurm job
-
-module load modenv/ml                                                   #Load dependencies by using modules
-module load OpenMPI/3.1.4-gcccuda-2018b
-module load Python/3.6.6-fosscuda-2018b
-module load cuDNN/7.1.4.18-fosscuda-2018b
-module load CMake/3.11.4-GCCcore-7.3.0
-module load TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4
-
-virtualenv --system-site-packages <location_for_your_environment>        #create virtual environment
-source <location_for_your_environment>/bin/activate                      #activate virtual environment
-```
-
-Or when you need to use conda (not recommended):
-
-```bash
-srun --nodes=1 --ntasks-per-node=1 -p ml --time=08:00:00 --pty bash       #allocate a Slurm job
-
-module load modenv/ml                                                     #Load dependencies by using modules
-module load OpenMPI/3.1.4-gcccuda-2018b
-module load PythonAnaconda/3.6
-module load cuDNN/7.1.4.18-fosscuda-2018b
-module load CMake/3.11.4-GCCcore-7.3.0
-module load TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4
-
-conda create --prefix=<location_for_your_environment> python=3.6 anaconda #create virtual environment
-conda activate  <location_for_your_environment>                           #activate virtual environment
-```
 
 ##### Install Horovod for TensorFlow with python and pip
 
-In the example presented installation for TensorFlow.
-Adapt as required and refer to the Horovod documentation for details.
+This example shows the installation of Horovod for TensorFlow.
+Adapt as required and refer to the [Horovod documentation](https://horovod.readthedocs.io/en/stable/install_include.html)
+for details.
 
-```bash
-HOROVOD_GPU_OPERATIONS=NCCL HOROVOD_WITH_TENSORFLOW=1 pip install --no-cache-dir horovod\[tensorflow\]
-
-horovodrun --check-build
+```console
+marie@alpha$ HOROVOD_GPU_OPERATIONS=NCCL HOROVOD_WITH_TENSORFLOW=1 pip install --no-cache-dir horovod\[tensorflow\]
+[...]
+marie@alpha$ horovodrun --check-build
 ```
 
 If you want to use OpenMPI then specify `HOROVOD_GPU_ALLREDUCE=MPI`.
@@ -287,8 +268,7 @@ To have better performance it is recommended to use NCCL instead of OpenMPI.
 
 ##### Verify that Horovod works
 
-```bash
-python                                           #start python
+```python
 import torch                                     #import pytorch
 import horovod.torch as hvd                      #import horovod
 hvd.init()                                       #initialize horovod
@@ -299,11 +279,10 @@ print('Hello from:', hvd.rank())
 
 #### Example
 
-Horovod is easy to use
- Follow the steps in the examples described
- [here](https://github.com/horovod/horovod/tree/master/examples) to parallelize your code.
- In Horovod each GPU gets pinned to a process.
- You can easily start your job with the following bash script with four processes on two nodes:
+Follow the steps in the examples described
+[here](https://github.com/horovod/horovod/tree/master/examples) to parallelize your code.
+In Horovod each GPU gets pinned to a process.
+You can easily start your job with the following bash script with four processes on two nodes:
 
 ```bash
 #!/bin/bash
@@ -311,19 +290,15 @@ Horovod is easy to use
 #SBATCH --ntasks=4
 #SBATCH --ntasks-per-node=2
 #SBATCH --gres=gpu:2
-#SBATCH -p ml
+#SBATCH --partition=ml
 #SBATCH --mem=250G
-#SBATCH --time=00:10:00
-#SBATCH -o run_horovod.out
-
-BASE=<your_directory> #change it to your directory
+#SBATCH --time=01:00:00
+#SBATCH --output=run_horovod.out
 
 module load modenv/ml
 module load Horovod/0.19.5-fosscuda-2019b-TensorFlow-2.2.0-Python-3.7.4
 
-cd ${BASE}
-
-srun python your_program.py
+srun python <your_program.py>
 ```
 
 Do not forget to specify the total number of tasks `--ntasks` and the number of tasks per node
