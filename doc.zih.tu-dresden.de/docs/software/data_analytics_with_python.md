@@ -297,7 +297,7 @@ for the Monte-Carlo estimation of Pi.
 
     #create a Slurm cluster, please specify your project 
 
-    cluster = SLURMCluster(queue='alpha', cores=2, project='p_scads', memory="8GB", walltime="00:30:00", extra=['--resources gpu=1'], scheduler_options={"dashboard_address": f":{portdash}"})
+    cluster = SLURMCluster(queue='alpha', cores=2, project='p_marie', memory="8GB", walltime="00:30:00", extra=['--resources gpu=1'], scheduler_options={"dashboard_address": f":{portdash}"})
 
     #submit the job to the scheduler with the number of nodes (here 2) requested:
 
