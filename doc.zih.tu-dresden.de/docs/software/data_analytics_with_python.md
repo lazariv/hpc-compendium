@@ -102,7 +102,9 @@ Dask is composed of two parts:
 - Big Data collections like parallel arrays, data frames, and lists
   that extend common interfaces like NumPy, Pandas, or Python
   iterators to larger-than-memory or distributed environments. These
-  parallel collections run on top of dynamic task schedulers.
+- Big Data collections like parallel arrays, data frames, and lists that extend common interfaces
+  like NumPy, Pandas, or Python iterators to larger-than-memory or distributed environments.
+  These parallel collections run on top of dynamic task schedulers.
 
 Dask supports several user interfaces:
 
