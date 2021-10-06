@@ -439,7 +439,7 @@ print("%d of %d" % (comm.Get_rank(), comm.Get_size()))
 
 For the multi-node case, use a script similar to this:
 
-```Bash
+```bash
 #!/bin/bash
 #SBATCH --nodes=2
 #SBATCH -p ml
