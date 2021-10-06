@@ -99,7 +99,7 @@ in this case on two nodes.
 TensorFlow is available as a module.
 Check for the version.
 The `TF_CONFIG` environment variable can be set as a prefix to the command.
-Now, run the script on the Alpha partition simultaneously on both nodes:
+Now, run the script on the partition `alpha` simultaneously on both nodes:
 
 ```bash
 #!/bin/bash
@@ -190,8 +190,8 @@ parameter is equal to the number of GPUs you use per node.
 Also, it can be useful to increase `memory/cpu` parameters if you run larger models.
 Memory can be set up to:
 
-- `--mem=250G` and `--cpus-per-task=7` for the `ml` partition.
-- `--mem=60G` and `--cpus-per-task=6` for the `gpu2` partition.
+- `--mem=250G` and `--cpus-per-task=7` for the partition `ml`.
+- `--mem=60G` and `--cpus-per-task=6` for the partition `gpu2`.
 
 Keep in mind that only one memory parameter (`--mem-per-cpu=<MB>` or `--mem=<MB>`) can be specified
 
