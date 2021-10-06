@@ -70,7 +70,8 @@ function isMistakeCountIncreasedByChanges(){
         fi
         if [ $current_count -gt $previous_count ]; then
           echo "-- File $newfile"
-          echo "Change increases spelling mistake count (from $previous_count to $current_count)"
+          echo "Change increases spelling mistake count (from $previous_count to $current_count), misspelled/unknown words:"
+          cat "$newfile" | getAspellOutput
           any_fails=true
         fi
       fi
