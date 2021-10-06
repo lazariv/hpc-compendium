@@ -270,5 +270,5 @@ You need a job file (aka. batch script) to run the MPI version.
     marie@login$ sbatch <filename>
     ```
 
-    Please refer to the section [Slurm](../jobs_and_resources.md/slurm.md) for further details and
+    Please refer to the section [Slurm](../jobs_and_resources/slurm.md) for further details and
     options on the batch system as well as monitoring commands.
