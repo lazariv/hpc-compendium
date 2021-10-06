@@ -378,8 +378,6 @@ without available cluster resources.
 Message Passing Interface (MPI) is a standardized and
 portable message-passing standard, designed to
 function on a wide variety of parallel computing architectures.
-The MPI is a library specification that allows HPC to pass information
-hardware for end-users, library writers and tool developers.
 
 Mpi4py (MPI for Python) provides bindings of the MPI standard for
 the Python programming language,
