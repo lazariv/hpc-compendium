@@ -48,7 +48,7 @@ NGC containers are a quick and efficient way to apply the best models
 on your dataset on a ZIH system;
 - NGC containers allow using an exact version of the software
 without installing it with all prerequisites manually.
-This can result in poor performance (e.g. using conda to install software).
+This can result in poor performance (e.g. using conda to install a software).
 
 ## Run NGC Containers on the ZIH System
 
