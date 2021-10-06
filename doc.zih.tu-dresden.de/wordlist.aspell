@@ -4,7 +4,6 @@ Altix
 Amber
 Amdahl's
 analytics
-Analytics
 anonymized
 APIs
 AVX
@@ -33,12 +32,10 @@ CUDA
 cuDNN
 CXFS
 dask
-Dask
 dataframes
 DataFrames
 datamover
 DataParallel
-dataset
 DDP
 DDR
 DFG
@@ -57,7 +54,6 @@ env
 EPYC
 Espresso
 ESSL
-facto
 fastfs
 FFT
 FFTW
@@ -99,6 +95,7 @@ HPL
 html
 hyperparameter
 hyperparameters
+hyperthreading
 icc
 icpc
 ifort
@@ -140,7 +137,6 @@ MNIST
 Montecito
 mountpoint
 mpi
-Mpi
 mpicc
 mpiCC
 mpicxx
@@ -149,10 +145,11 @@ mpifort
 mpirun
 multicore
 multithreaded
-MultiThreading
 Multithreading
+MultiThreading
 NAMD
 natively
+nbsp
 nbsp
 NCCL
 Neptun
@@ -188,7 +185,6 @@ parallelize
 parfor
 pdf
 Perf
-performant
 PESSL
 PGI
 PiB
@@ -198,8 +194,8 @@ PMI
 png
 PowerAI
 ppc
-Pre
 pre
+Pre
 Preload
 preloaded
 preloading
@@ -222,14 +218,13 @@ RSS
 RStudio
 Rsync
 runnable
-Runtime
 runtime
+Runtime
 salloc
 Sandybridge
 Saxonid
 sbatch
 ScaDS
-scalability
 scalable
 ScaLAPACK
 Scalasca
@@ -278,6 +273,7 @@ transferability
 Trition
 unencrypted
 uplink
+userspace
 Vampir
 VampirTrace
 VampirTrace's
