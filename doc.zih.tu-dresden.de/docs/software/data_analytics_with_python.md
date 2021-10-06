@@ -234,7 +234,7 @@ rather than the characteristics of your computation as a whole.
 It hasn’t actually launched any jobs yet.
 For the full computation, you will then ask for a number of
 jobs using the scale command, e.g : `cluster.scale(2)`.
-Thus, you have to specify a SLURMCluster by `dask-jobqueue`
+Thus, you have to specify a `SLURMCluster` by `dask_jobqueue`,
 scale it and use it for your computations. There is an example:
 
 ```python
