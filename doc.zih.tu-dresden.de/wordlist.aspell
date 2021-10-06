@@ -36,6 +36,7 @@ dataframes
 DataFrames
 datamover
 DataParallel
+dataset
 DDP
 DDR
 DFG
@@ -185,6 +186,7 @@ parallelize
 parfor
 pdf
 Perf
+performant
 PESSL
 PGI
 PiB
@@ -209,6 +211,7 @@ reachability
 README
 reproducibility
 requeueing
+ResNet
 RHEL
 Rmpi
 rome
@@ -225,6 +228,7 @@ Sandybridge
 Saxonid
 sbatch
 ScaDS
+scalability
 scalable
 ScaLAPACK
 Scalasca
