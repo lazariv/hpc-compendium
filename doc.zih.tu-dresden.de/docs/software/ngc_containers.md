@@ -78,7 +78,7 @@ If you are not familiar with singularity syntax please find the information on t
 However, some main commands will be explained.
 
 Create a container from the image from the NGC catalog.
-(For this example, the alpha partition is used):
+(For this example, the alpha is used):
 
 ```console
 marie@login$ srun -p alpha --nodes 1 --ntasks-per-node 1 --ntasks 1 --gres=gpu:1 --time=08:00:00 --pty --mem=50000 bash    #allocate one GPU
