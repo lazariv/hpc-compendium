@@ -384,8 +384,6 @@ the Python programming language,
 allowing any Python program to exploit multiple processors.
 
 Mpi4py is based on MPI-2 C++ bindings. It supports almost all MPI calls.
-This implementation is
-popular on Linux clusters and in the SciPy community.
 It supports communication of pickle-able Python objects.
 Mpi4py provides optimized the communication of NumPy arrays.
 
