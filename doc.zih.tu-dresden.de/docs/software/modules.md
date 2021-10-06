@@ -9,8 +9,7 @@ Usage of software on HPC systems is managed by a **modules system**.
     and utilities. With the help of modules, users can smoothly switch between different versions of
     installed software packages and libraries.
 
-For all applications, tools, libraries etc. the correct environment can be easily set loading and/or
-unloading modules.
+For all applications, tools, libraries etc. the correct environment can be easily set by calling "module load" or "module unload".
 
 ## Module Commands
 
@@ -25,28 +24,10 @@ unloading modules.
 | `module unload <modname>`     | unloads module `modname`                                         |
 | `module switch <mod1> <mod2>` | unload module `mod1` ; load module `mod2`                        |
 
-Module files are ordered by their topic on our HPC systems. By default, with `module av` you will
-see all available module files and topics. If you just wish to see the installed versions of a
-certain module, you can use `module av softwarename` and it will display the available versions of
+Module files are ordered by their topic on our HPC systems. By default, with `module avail` you will
+see all topics and their available module files. If you just wish to see the installed versions of a
+certain module, you can use `module avail softwarename` and it will display the available versions of
 `softwarename` only.
-
-## Lmod: An Alternative Module Implementation
-
-Historically, the module command on our HPC systems has been provided by the rather dated
-*Environment Modules* software which was first introduced in 1991. As of late 2016, we also offer
-the new and improved [LMOD](https://www.tacc.utexas.edu/research-development/tacc-projects/lmod) as
-an alternative. It has a handful of advantages over the old Modules implementation:
-
-- all modulefiles are cached, which especially speeds up tab
-  completion with bash
-- sane version ordering (9.0 \< 10.0)
-- advanced version requirement functions (atleast, between, latest)
-- auto-swapping of modules (if a different version was already loaded)
-- save/auto-restore of loaded module sets (module save)
-- multiple language support
-- properties, hooks, ...
-- depends_on() function for automatic dependency resolution with
-  reference counting
 
 ## Module environments
 
@@ -55,21 +36,27 @@ They are activated via the meta module modenv which has different versions, one 
 by default. You can switch between them by simply loading the desired modenv-version, e.g.:
 
 ```
-module load modenv/ml
+marie@compute$ module load modenv/ml
 ```
 
-| modenv/scs5    | SCS5 software                                   | default |
-|                |                                                 |         |
-| modenv/ml      | HPC-DA software (for use on the "ml" partition) |         |
-| modenv/hiera   | WIP hierarchical module tree                    |         |
-| modenv/classic | Manually built pre-SCS5 (AE4.0) software        | default |
-|                |                                                 |         |
+### modenv/scs5 (default)
+* SCS5 software
+* usually optimized for Intel processors (Partitions: haswell, broadwell, gpu2, julia)
 
-The old modules (pre-SCS5) are still available after loading the corresponding `modenv` version
-(classic), however, due to changes in the libraries of the operating system, it is not guaranteed
-that they still work under SCS5. Please don't use modenv/classic if you do not absolutely have to.
-Most software is available under modenv/scs5, too, just be aware of the possibly different spelling
-(case-sensitivity).
+### modenv/ml
+* HPC-DA software (for use on the "ml" partition)
+* necessary to run most software on the "ml" partition (The instruction set [Power ISA](https://en.wikipedia.org/wiki/Power_ISA#Power_ISA_v.3.0) is different from the usual x86 instruction set. Thus the 'machine code' of other modenvs breaks).
+
+### modenv/hiera
+* uses a hierarchical module load scheme
+* optimized software for AMD processors (Partitions: romeo, alpha)
+
+### modenv/classic
+* deprecated, old software. Is not being curated.
+* may break due to library inconsistencies with the operating system.
+* please don't use software from that modenv
+
+### Searching for Software
 
 The command `module spider <modname>` allows searching for specific software in all modenv
 environments. It will also display information on how to load a found module when giving a precise
@@ -87,8 +74,10 @@ introducing new hardware to the cluster, we do not want to rebuild all of the ol
 and in some cases cannot fall-back to a more generic build either. That's why we provide the script:
 `ml_arch_avail` that displays the availability of modules for the different node architectures.
 
+### Example Invocation of ml_arch_avail
+
 ```
-ml_arch_avail CP2K
+marie@compute$ ml_arch_avail CP2K
 
 Example output:
 
@@ -111,36 +100,33 @@ single user as well as all users of project group. The workflow and settings for
 files is described in the following. The [settings for project private
 modules](#project-private-modules) differ only in details.
 
-The command
+In order to use your own module files please use the command 
+`module use <path_to_module_files>`. It will add the path to the list of module directories
+that are searched by lmod (i.e. the `module` command). You may use a directory `privatemodules` 
+within your home or project directory to setup your own module files.
+
+Please see the [Environment Modules open source project's webpage](http://modules.sourceforge.net/) for futher information on writing module files.
+
+### 1. Create Directories
 
 ```
-module use <path_to_module_files>
+marie@compute$ cd $HOME
+marie@compute$ mkdir --verbose --parents privatemodules/testsoftware
+marie@compute$ cd privatemodules/testsoftware
 ```
+(create a directory in your home directory)
 
-adds directory by user choice to the list of module directories that are searched by the `module`
-command. Within directory `../privatemodules` user can add directories for every software user wish
-to install and add also in this directory a module file for every version user have installed.
-Further information about modules can be found [here](http://modules.sourceforge.net/).
-
-This is an example of work a private module file:
-
-- create a directory in your home directory:
+### 2. Notify lmod
 
 ```
-cd
-mkdir privatemodules && cd privatemodules
-mkdir testsoftware && cd testsoftware
+marie@compute$ module use $HOME/privatemodules
 ```
+(add the directory in the list of module directories)
 
-- add the directory in the list of module directories:
+### 3. Create Modulefile
 
-```
-module use $HOME/privatemodules
-```
-
-- create a file with the name `1.0` with a test software in the `testsoftware` directory (use e.g.
-echo, emacs, etc):
-
+Create a file with the name `1.0` with a test software in the `testsoftware` directory you created earlier (use e.g.
+echo, emacs, etc)
 ```
 #%Module######################################################################
 ##
@@ -162,14 +148,18 @@ if [ module-info mode load ] {
 }
 ```
 
-- check the availability of the module with `ml av`, the output should look like this:
+### 4. Check lmod
+
+Check the availability of the module with `ml av`, the output should look like this:
 
 ```
 --------------------- /home/masterman/privatemodules ---------------------
    testsoftware/1.0
 ```
 
-- load the test module with `module load testsoftware`, the output:
+### 5. Load Module
+
+Load the test module with `module load testsoftware`, the output:
 
 ```
 Load testsoftware version 1.0
@@ -187,7 +177,7 @@ above. To use a project-wide module file you have to add the path to the module 
 environment with the command
 
 ```
-module use /projects/p_projectname/privatemodules
+marie@compute$ module use /projects/p_projectname/privatemodules
 ```
 
 After that, the modules are available in your module environment and you can load the modules with
