@@ -12,6 +12,15 @@ from the very beginning, you should be familiar with the concept of checkpointin
 Another motivation is to use checkpoint/restart to split long running jobs into several shorter
 ones. This might improve the overall job throughput, since shorter jobs can "fill holes" in the job
 queue.
+Here is an extreme example from literature for the waste of large computing resources due to missing
+checkpoints:
+
+!!! cite "Adams, D. The Hitchhikers Guide Through the Galaxy"
+
+    Earth was a supercomputer constructed to find the question to the answer to the Life, the Universe,
+    and Everything by a race of hyper-intelligent pan-dimensional beings. Unfortunately 10 million years
+    later, and five minutes before the program had run to completion, the Earth was destroyed by
+    Vogons.
 
 If you wish to do checkpointing, your first step should always be to check if your application
 already has such capabilities built-in, as that is the most stable and safe way of doing it.
@@ -21,7 +30,7 @@ Abaqus, Amber, Gaussian, GROMACS, LAMMPS, NAMD, NWChem, Quantum Espresso, STAR-C
 
 In case your program does not natively support checkpointing, there are attempts at creating generic
 checkpoint/restart solutions that should work application-agnostic. One such project which we
-recommend is [Distributed MultiThreaded CheckPointing](http://dmtcp.sourceforge.net) (DMTCP).
+recommend is [Distributed Multi-Threaded Check-Pointing](http://dmtcp.sourceforge.net) (DMTCP).
 
 DMTCP is available on ZIH systems after having loaded the `dmtcp` module
 
@@ -47,8 +56,8 @@ checkpoint/restart bits transparently to your batch script. You just have to spe
 total runtime of your calculation and the interval in which you wish to do checkpoints. The latter
 (plus the time it takes to write the checkpoint) will then be the runtime of the individual jobs.
 This should be targeted at below 24 hours in order to be able to run on all
-[haswell64 partitions](../jobs_and_resources/system_taurus.md#run-time-limits). For increased
-fault-tolerance, it can be chosen even shorter.
+[partitions haswell64](../jobs_and_resources/partitions_and_limits.md#runtime-limits). For
+increased fault-tolerance, it can be chosen even shorter.
 
 To use it, first add a `dmtcp_launch` before your application call in your batch script. In the case
 of MPI applications, you have to add the parameters `--ib --rm` and put it between `srun` and your
@@ -85,7 +94,7 @@ about 2 days in total.
 
 !!! Hints
 
-    - If you see your first job running into the timelimit, that probably
+    - If you see your first job running into the time limit, that probably
     means the timeout for writing out checkpoint files does not suffice
     and should be increased. Our tests have shown that it takes
     approximately 5 minutes to write out the memory content of a fully
@@ -95,7 +104,7 @@ about 2 days in total.
     content is rather incompressible, it might be a good idea to disable
     the checkpoint file compression by setting: `export DMTCP_GZIP=0`
     - Note that all jobs the script deems necessary for your chosen
-    timelimit/interval values are submitted right when first calling the
+    time limit/interval values are submitted right when first calling the
     script. If your applications take considerably less time than what
     you specified, some of the individual jobs will be unnecessary. As
     soon as one job does not find a checkpoint to resume from, it will
@@ -115,7 +124,7 @@ What happens in your work directory?
 
 If you wish to restart manually from one of your checkpoints (e.g., if something went wrong in your
 later jobs or the jobs vanished from the queue for some reason), you have to call `dmtcp_sbatch`
-with the `-r, --resume` parameter, specifying a cpkt\_\* directory to resume from.  Then it will use
+with the `-r, --resume` parameter, specifying a `cpkt_` directory to resume from.  Then it will use
 the same parameters as in the initial run of this job chain. If you wish to adjust the time limit,
 for instance, because you realized that your original limit was too short, just use the `-t, --time`
 parameter again on resume.
@@ -126,7 +135,7 @@ If for some reason our automatic chain job script is not suitable for your use c
 just use DMTCP on its own. In the following we will give you step-by-step instructions on how to
 checkpoint your job manually:
 
-* Load the dmtcp module: `module load dmtcp`
+* Load the DMTCP module: `module load dmtcp`
 * DMTCP usually runs an additional process that
 manages the creation of checkpoints and such, the so-called `coordinator`. It must be started in
 your batch script before the actual start of your application. To help you with this process, we
@@ -138,9 +147,9 @@ first checkpoint has been created, which can be useful if you wish to implement 
 chaining on your own.
 * In front of your program call, you have to add the wrapper
 script `dmtcp_launch`.  This will create a checkpoint automatically after 40 seconds and then
-terminate your application and with it the job. If the job runs into its timelimit (here: 60
+terminate your application and with it the job. If the job runs into its time limit (here: 60
 seconds), the time to write out the checkpoint was probably not long enough. If all went well, you
-should find cpkt\* files in your work directory together with a script called
+should find `cpkt` files in your work directory together with a script called
 `./dmtcp_restart_script.sh` that can be used to resume from the checkpoint.
 
 ???+ example

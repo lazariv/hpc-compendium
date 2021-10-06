@@ -1,53 +1,41 @@
 # R for Data Analytics
 
 [R](https://www.r-project.org/about.html) is a programming language and environment for statistical
-computing and graphics. R provides a wide variety of statistical (linear and nonlinear modelling,
-classical statistical tests, time-series analysis, classification, etc) and graphical techniques. R
-is an integrated suite of software facilities for data manipulation, calculation and
-graphing.
+computing and graphics. It provides a wide variety of statistical (linear and nonlinear modeling,
+classical statistical tests, time-series analysis, classification, etc.), machine learning
+algorithms and graphical techniques.  R is an integrated suite of software facilities for data
+manipulation, calculation and graphing.
 
-R possesses an extensive catalogue of statistical and graphical methods.  It includes machine
-learning algorithms, linear regression, time series, statistical inference.
-
-We recommend using **Haswell** and/or **Romeo** partitions to work with R. For more details
-see [here](../jobs_and_resources/hardware_taurus.md).
+We recommend using the partitions Haswell and/or Romeo to work with R. For more details
+see our [hardware documentation](../jobs_and_resources/hardware_overview.md).
 
 ## R Console
 
-This is a quickstart example. The `srun` command is used to submit a real-time execution job
-designed for interactive use with monitoring the output. Please check
-[the Slurm page](../jobs_and_resources/slurm.md) for details.
+In the following example, the `srun` command is used to start an interactive job, so that the output
+is visible to the user. Please check the [Slurm page](../jobs_and_resources/slurm.md) for details.
 
-```Bash
-# job submission on haswell nodes with allocating: 1 task, 1 node, 4 CPUs per task with 2541 mb per CPU(core) for 1 hour
-tauruslogin$ srun --partition=haswell --ntasks=1 --nodes=1 --cpus-per-task=4 --mem-per-cpu=2541 --time=01:00:00 --pty bash
-
-# Ensure that you are using the scs5 environment
-module load modenv/scs5
-# Check all available modules for R with version 3.6
-module available R/3.6
-# Load default R module
-module load R
-# Checking the current R version
-which R
-# Start R console
-R
+```console
+marie@login$ srun --partition=haswell --ntasks=1 --nodes=1 --cpus-per-task=4 --mem-per-cpu=2541 --time=01:00:00 --pty bash
+marie@haswell$ module load modenv/scs5
+marie@haswell$ module load R/3.6
+[...]
+Module R/3.6.0-foss-2019a and 56 dependencies loaded.
+marie@haswell$ which R
+marie@haswell$ /sw/installed/R/3.6.0-foss-2019a/bin/R
 ```
 
-Using `srun` is recommended only for short test runs, while for larger runs batch jobs should be
-used. The examples can be found [here](get_started_with_hpcda.md) or
-[here](../jobs_and_resources/slurm.md).
+Using interactive sessions is recommended only for short test runs, while for larger runs batch jobs
+should be used. Examples can be found on the [Slurm page](../jobs_and_resources/slurm.md).
 
 It is also possible to run `Rscript` command directly (after loading the module):
 
-```Bash
-# Run Rscript directly. For instance: Rscript /scratch/ws/0/marie-study_project/my_r_script.R
-Rscript /path/to/script/your_script.R param1 param2
+```console
+marie@haswell$ Rscript </path/to/script/your_script.R> <param1> <param2>
 ```
 
 ## R in JupyterHub
 
-In addition to using interactive and batch jobs, it is possible to work with **R** using
+In addition to using interactive and batch jobs, it is possible to work with R using
 [JupyterHub](../access/jupyterhub.md).
 
 The production and test [environments](../access/jupyterhub.md#standard-environments) of
@@ -55,66 +43,49 @@ JupyterHub contain R kernel. It can be started either in the notebook or in the 
 
 ## RStudio
 
-[RStudio](<https://rstudio.com/) is an integrated development environment (IDE) for R. It includes
-a console, syntax-highlighting editor that supports direct code execution, as well as tools for
-plotting, history, debugging and workspace management. RStudio is also available on Taurus.
-
-The easiest option is to run RStudio in JupyterHub directly in the browser. It can be started
-similarly to a new kernel from [JupyterLab](../access/jupyterhub.md#jupyterlab) launcher.
-
-![RStudio launcher in JupyterHub](misc/data_analytics_with_r_RStudio_launcher.png)
-{: align="center"}
-
-Please keep in mind that it is currently not recommended to use the interactive x11 job with the
-desktop version of RStudio, as described, for example, in introduction HPC-DA slides.
+For using R with RStudio please refer to the documentation on
+[Data Analytics with RStudio](data_analytics_with_rstudio.md).
 
 ## Install Packages in R
 
-By default, user-installed packages are saved in the users home in a subfolder depending on
-the architecture (x86 or PowerPC). Therefore the packages should be installed using interactive
+By default, user-installed packages are saved in the users home in a folder depending on
+the architecture (`x86` or `PowerPC`). Therefore the packages should be installed using interactive
 jobs on the compute node:
 
-```Bash
-srun -p haswell --ntasks=1 --nodes=1 --cpus-per-task=4 --mem-per-cpu=2541 --time=01:00:00 --pty bash
-
-module purge
-module load modenv/scs5
-module load R
-R -e 'install.packages("package_name")'  #For instance: 'install.packages("ggplot2")'
+```console
+marie@compute$ module load R
+[...]
+Module R/3.6.0-foss-2019a and 56 dependencies loaded.
+marie@compute$ R -e 'install.packages("ggplot2")'
+[...]
 ```
 
 ## Deep Learning with R
 
 The deep learning frameworks perform extremely fast when run on accelerators such as GPU.
-Therefore, using nodes with built-in GPUs ([ml](../jobs_and_resources/power9.md) or
-[alpha](../jobs_and_resources/alpha_centauri.md) partitions) is beneficial for the examples here.
+Therefore, using nodes with built-in GPUs, e.g., partitions [ml](../jobs_and_resources/power9.md)
+and [alpha](../jobs_and_resources/alpha_centauri.md), is beneficial for the examples here.
 
 ### R Interface to TensorFlow
 
 The ["TensorFlow" R package](https://tensorflow.rstudio.com/) provides R users access to the
-Tensorflow toolset. [TensorFlow](https://www.tensorflow.org/) is an open-source software library
+TensorFlow framework. [TensorFlow](https://www.tensorflow.org/) is an open-source software library
 for numerical computation using data flow graphs.
 
-```Bash
-srun --partition=ml --ntasks=1 --nodes=1 --cpus-per-task=7 --mem-per-cpu=5772 --gres=gpu:1 --time=04:00:00 --pty bash
+The respective modules can be loaded with the following
 
-module purge
-ml modenv/ml
-ml TensorFlow
-ml R
-
-which python
-mkdir python-virtual-environments  # Create a folder for virtual environments
-cd python-virtual-environments
-python3 -m venv --system-site-packages R-TensorFlow        #create python virtual environment
-source R-TensorFlow/bin/activate                           #activate environment
-module list
-which R
+```console
+marie@compute$ module load R/3.6.2-fosscuda-2019b
+[...]
+Module R/3.6.2-fosscuda-2019b and 63 dependencies loaded.
+marie@compute$ module load TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4
+Module TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4 and 15 dependencies loaded.
 ```
 
-Please allocate the job with respect to
-[hardware specification](../jobs_and_resources/hardware_taurus.md)! Note that the nodes on `ml`
-partition have 4way-SMT, so for every physical core allocated, you will always get 4\*1443Mb=5772mb.
+!!! warning
+
+     Be aware that for compatibility reasons it is important to choose [modules](modules.md) with
+     the same toolchain version (in this case `fosscuda/2019b`).
 
 In order to interact with Python-based frameworks (like TensorFlow) `reticulate` R library is used.
 To configure it to point to the correct Python executable in your virtual environment, create
@@ -122,23 +93,40 @@ a file named `.Rprofile` in your project directory (e.g. R-TensorFlow) with the 
 contents:
 
 ```R
-Sys.setenv(RETICULATE_PYTHON = "/sw/installed/Anaconda3/2019.03/bin/python")    #assign the output of the 'which python' from above to RETICULATE_PYTHON
+Sys.setenv(RETICULATE_PYTHON = "/sw/installed/Python/3.7.4-GCCcore-8.3.0/bin/python")    #assign RETICULATE_PYTHON to the python executable
 ```
 
 Let's start R, install some libraries and evaluate the result:
 
-```R
-install.packages("reticulate")
-library(reticulate)
-reticulate::py_config()
-install.packages("tensorflow")
-library(tensorflow)
-tf$constant("Hello Tensorflow")         #In the output 'Tesla V100-SXM2-32GB' should be mentioned
+```rconsole
+> install.packages(c("reticulate", "tensorflow"))
+Installing packages into ‘~/R/x86_64-pc-linux-gnu-library/3.6’
+(as ‘lib’ is unspecified)
+> reticulate::py_config()
+python:         /software/rome/Python/3.7.4-GCCcore-8.3.0/bin/python
+libpython:      /sw/installed/Python/3.7.4-GCCcore-8.3.0/lib/libpython3.7m.so
+pythonhome:     /software/rome/Python/3.7.4-GCCcore-8.3.0:/software/rome/Python/3.7.4-GCCcore-8.3.0
+version:        3.7.4 (default, Mar 25 2020, 13:46:43)  [GCC 8.3.0]
+numpy:          /software/rome/SciPy-bundle/2019.10-fosscuda-2019b-Python-3.7.4/lib/python3.7/site-packages/numpy
+numpy_version:  1.17.3
+
+NOTE: Python version was forced by RETICULATE_PYTHON
+
+> library(tensorflow)
+2021-08-26 16:11:47.110548: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+> tf$constant("Hello TensorFlow")
+2021-08-26 16:14:00.269248: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcuda.so.1
+2021-08-26 16:14:00.674878: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties:
+pciBusID: 0000:0b:00.0 name: A100-SXM4-40GB computeCapability: 8.0
+coreClock: 1.41GHz coreCount: 108 deviceMemorySize: 39.59GiB deviceMemoryBandwidth: 1.41TiB/s
+[...]
+tf.Tensor(b'Hello TensorFlow', shape=(), dtype=string)
 ```
 
 ??? example
+
     The example shows the use of the TensorFlow package with the R for the classification problem
-    related to the MNIST dataset.
+    related to the MNIST data set.
     ```R
     library(tensorflow)
     library(keras)
@@ -214,20 +202,16 @@ tf$constant("Hello Tensorflow")         #In the output 'Tesla V100-SXM2-32GB' sh
 ## Parallel Computing with R
 
 Generally, the R code is serial. However, many computations in R can be made faster by the use of
-parallel computations. Taurus allows a vast number of options for parallel computations. Large
-amounts of data and/or use of complex models are indications to use parallelization.
-
-### General Information about the R Parallelism
-
-There are various techniques and packages in R that allow parallelization. This section
-concentrates on most general methods and examples. The Information here is Taurus-specific.
+parallel computations. This section concentrates on most general methods and examples.
 The [parallel](https://www.rdocumentation.org/packages/parallel/versions/3.6.2) library
 will be used below.
 
-**Warning:** Please do not install or update R packages related to parallelism as it could lead to
-conflicts with other pre-installed packages.
+!!! warning
 
-### Basic Lapply-Based Parallelism
+    Please do not install or update R packages related to parallelism as it could lead to
+    conflicts with other preinstalled packages.
+
+### Basic lapply-Based Parallelism
 
 `lapply()` function is a part of base R. lapply is useful for performing operations on list-objects.
 Roughly speaking, lapply is a vectorization of the source code and it is the first step before
@@ -243,6 +227,7 @@ This is a simple option for parallelization. It doesn't require much effort to r
 code to use `mclapply` function. Check out an example below.
 
 ??? example
+
     ```R
     library(parallel)
 
@@ -269,9 +254,9 @@ code to use `mclapply` function. Check out an example below.
     list_of_averages <- mclapply(X=sample_sizes, FUN=average, mc.cores=threads)  # apply function "average" 100 times
     ```
 
-The disadvantages of using shared-memory parallelism approach are, that the number of parallel
-tasks is limited to the number of cores on a single node. The maximum number of cores on a single
-node can be found [here](../jobs_and_resources/hardware_taurus.md).
+The disadvantages of using shared-memory parallelism approach are, that the number of parallel tasks
+is limited to the number of cores on a single node. The maximum number of cores on a single node can
+be found in our [hardware documentation](../jobs_and_resources/hardware_overview.md).
 
 Submitting a multicore R job to Slurm is very similar to submitting an
 [OpenMP Job](../jobs_and_resources/slurm.md#binding-and-distribution-of-tasks),
@@ -305,9 +290,10 @@ running in parallel. The desired type of the cluster can be specified with a par
 This way of the R parallelism uses the
 [Rmpi](http://cran.r-project.org/web/packages/Rmpi/index.html) package and the
 [MPI](https://en.wikipedia.org/wiki/Message_Passing_Interface) (Message Passing Interface) as a
-"backend" for its parallel operations. The MPI-based job in R is very similar to submitting an
+"back-end" for its parallel operations. The MPI-based job in R is very similar to submitting an
 [MPI Job](../jobs_and_resources/slurm.md#binding-and-distribution-of-tasks) since both are running
-multicore jobs on multiple nodes. Below is an example of running R script with the Rmpi on Taurus:
+multicore jobs on multiple nodes. Below is an example of running R script with the Rmpi on the ZIH
+system:
 
 ```Bash
 #!/bin/bash
@@ -315,8 +301,8 @@ multicore jobs on multiple nodes. Below is an example of running R script with t
 #SBATCH --ntasks=32              # this parameter determines how many processes will be spawned, please use >=8
 #SBATCH --cpus-per-task=1
 #SBATCH --time=01:00:00
-#SBATCH -o test_Rmpi.out
-#SBATCH -e test_Rmpi.err
+#SBATCH --output=test_Rmpi.out
+#SBATCH --error=test_Rmpi.err
 
 module purge
 module load modenv/scs5
@@ -333,10 +319,10 @@ However, in some specific cases, you can specify the number of nodes and the num
 tasks per node explicitly:
 
 ```Bash
-#!/bin/bash
 #SBATCH --nodes=2
 #SBATCH --tasks-per-node=16
 #SBATCH --cpus-per-task=1
+
 module purge
 module load modenv/scs5
 module load R
@@ -348,6 +334,7 @@ Use an example below, where 32 global ranks are distributed over 2 nodes with 16
 Each MPI rank has 1 core assigned to it.
 
 ??? example
+
     ```R
     library(Rmpi)
 
@@ -371,6 +358,7 @@ Each MPI rank has 1 core assigned to it.
 Another example:
 
 ??? example
+
     ```R
     library(Rmpi)
     library(parallel)
@@ -405,7 +393,7 @@ Another example:
     #snow::stopCluster(cl)  # usually it hangs over here with OpenMPI > 2.0. In this case this command may be avoided, Slurm will clean up after the job finishes
     ```
 
-To use Rmpi and MPI please use one of these partitions: **haswell**, **broadwell** or **rome**.
+To use Rmpi and MPI please use one of these partitions: `haswell`, `broadwell` or `rome`.
 
 Use `mpirun` command to start the R script. It is a wrapper that enables the communication
 between processes running on different nodes. It is important to use `-np 1` (the number of spawned
@@ -422,6 +410,7 @@ parallel workers, you have to manually specify the number of nodes according to 
 hardware specification and parameters of your job.
 
 ??? example
+
     ```R
     library(parallel)
 
@@ -456,7 +445,7 @@ hardware specification and parameters of your job.
     print(paste("Program finished"))
     ```
 
-#### FORK cluster
+#### FORK Cluster
 
 The `type="FORK"` method behaves exactly like the `mclapply` function discussed in the previous
 section. Like `mclapply`, it can only use the cores available on a single node. However this method
@@ -464,7 +453,7 @@ requires exporting the workspace data to other processes. The FORK method in a c
 `parLapply` function might be used in situations, where different source code should run on each
 parallel process.
 
-### Other parallel options
+### Other Parallel Options
 
 - [foreach](https://cran.r-project.org/web/packages/foreach/index.html) library.
   It is functionally equivalent to the
@@ -476,7 +465,8 @@ parallel process.
   expression via futures
 - [Poor-man's parallelism](https://www.glennklockwood.com/data-intensive/r/alternative-parallelism.html#6-1-poor-man-s-parallelism)
   (simple data parallelism). It is the simplest, but not an elegant way to parallelize R code.
-  It runs several copies of the same R script where's each read different sectors of the input data
+  It runs several copies of the same R script where each copy reads a different part of the input
+  data.
 - [Hands-off (OpenMP)](https://www.glennklockwood.com/data-intensive/r/alternative-parallelism.html#6-2-hands-off-parallelism)
   method. R has [OpenMP](https://www.openmp.org/resources/) support. Thus using OpenMP is a simple
   method where you don't need to know much about the parallelism options in your code. Please be
