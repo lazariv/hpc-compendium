@@ -6,8 +6,8 @@
 
 [Apache Spark](https://spark.apache.org/), [Apache Flink](https://flink.apache.org/)
 and [Apache Hadoop](https://hadoop.apache.org/) are frameworks for processing and integrating
-Big Data. These frameworks are also offered as software [modules](modules.md) on both `ml` and
-`scs5` partition. You can check module versions and availability with the command
+Big Data. These frameworks are also offered as software [modules](modules.md) in both `ml` and
+`scs5` software environments. You can check module versions and availability with the command
 
 ```console
 marie@login$ module avail Spark
@@ -46,20 +46,20 @@ as via [Jupyter notebook](#jupyter-notebook). All three ways are outlined in the
 
 ### Default Configuration
 
-The Spark module is available for both `scs5` and `ml` partitions.
+The Spark module is available in both `scs5` and `ml` environments.
 Thus, Spark can be executed using different CPU architectures, e.g., Haswell and Power9.
 
 Let us assume that two nodes should be used for the computation. Use a
 `srun` command similar to the following to start an interactive session
-using the Haswell partition. The following code snippet shows a job submission
-to Haswell nodes with an allocation of two nodes with 60 GB main memory
+using the partition haswell. The following code snippet shows a job submission
+to haswell nodes with an allocation of two nodes with 60 GB main memory
 exclusively for one hour:
 
 ```console
 marie@login$ srun --partition=haswell -N 2 --mem=60g --exclusive --time=01:00:00 --pty bash -l
 ```
 
-The command for different resource allocation on the `ml` partition is
+The command for different resource allocation on the partition `ml` is
 similar, e. g. for a job submission to `ml` nodes with an allocation of one
 node, one task per node, two CPUs per task, one GPU per node, with 10000 MB for one hour:
 
@@ -161,7 +161,7 @@ run your Jupyter notebook on HPC nodes (the preferable way).
 ### Preparation
 
 If you want to run Spark in Jupyter notebooks, you have to prepare it first. This is comparable
-to [normal python virtual environments](../software/python_virtual_environments.md#python-virtual-environment).
+to [normal Python virtual environments](../software/python_virtual_environments.md#python-virtual-environment).
 You start with an allocation:
 
 ```console

@@ -29,7 +29,9 @@ This example shows how to start working with **virtualenv** and Python virtual e
 the module system).
 
 !!! hint
-    We recommend to use [workspaces](../../data_lifecycle/workspaces) for your virtual environments.
+
+    We recommend to use [workspaces](../data_lifecycle/workspaces.md) for your virtual
+    environments.
 
 At first, we check available Python modules and load the preferred version:
 
@@ -95,7 +97,7 @@ TODO: Link to this page from other DA/ML topics. insert link in alpha centauri
 
 ??? example
 
-    This is an example on alpha partition. The example creates a virtual environment, and installs
+    This is an example on partition Alpha. The example creates a virtual environment, and installs
     the package `torchvision` with pip.
     ```console
     marie@login$ srun --partition=alpha-interactive -N=1 --gres=gpu:1 --time=01:00:00 --pty bash

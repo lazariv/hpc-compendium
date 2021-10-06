@@ -1,16 +1,13 @@
 # R for Data Analytics
 
 [R](https://www.r-project.org/about.html) is a programming language and environment for statistical
-computing and graphics. R provides a wide variety of statistical (linear and nonlinear modeling,
-classical statistical tests, time-series analysis, classification, etc) and graphical techniques. R
-is an integrated suite of software facilities for data manipulation, calculation and
-graphing.
+computing and graphics. It provides a wide variety of statistical (linear and nonlinear modeling,
+classical statistical tests, time-series analysis, classification, etc.), machine learning
+algorithms and graphical techniques.  R is an integrated suite of software facilities for data
+manipulation, calculation and graphing.
 
-R possesses an extensive catalog of statistical and graphical methods. It includes machine learning
-algorithms, linear regression, time series, statistical inference.
-
-We recommend using **Haswell** and/or **Romeo** partitions to work with R. For more details
-see our [hardware documentation](../jobs_and_resources/hardware_taurus.md).
+We recommend using the partitions Haswell and/or Romeo to work with R. For more details
+see our [hardware documentation](../jobs_and_resources/hardware_overview.md).
 
 ## R Console
 
@@ -19,20 +16,21 @@ is visible to the user. Please check the [Slurm page](../jobs_and_resources/slur
 
 ```console
 marie@login$ srun --partition=haswell --ntasks=1 --nodes=1 --cpus-per-task=4 --mem-per-cpu=2541 --time=01:00:00 --pty bash
-marie@compute$ module load modenv/scs5
-marie@compute$ module available R/3.6
-marie@compute$ module load R
-marie@compute$ which R
-marie@compute$ R
+marie@haswell$ module load modenv/scs5
+marie@haswell$ module load R/3.6
+[...]
+Module R/3.6.0-foss-2019a and 56 dependencies loaded.
+marie@haswell$ which R
+marie@haswell$ /sw/installed/R/3.6.0-foss-2019a/bin/R
 ```
 
-Using `srun` is recommended only for short test runs, while for larger runs batch jobs should be
-used. Examples can be found on the [Slurm page](../jobs_and_resources/slurm.md).
+Using interactive sessions is recommended only for short test runs, while for larger runs batch jobs
+should be used. Examples can be found on the [Slurm page](../jobs_and_resources/slurm.md).
 
 It is also possible to run `Rscript` command directly (after loading the module):
 
-```Bash
-Rscript /path/to/script/your_script.R <param1> <param2>
+```console
+marie@haswell$ Rscript </path/to/script/your_script.R> <param1> <param2>
 ```
 
 ## R in JupyterHub
@@ -45,7 +43,8 @@ JupyterHub contain R kernel. It can be started either in the notebook or in the 
 
 ## RStudio
 
-For using R with RStudio please refer to [Data Analytics with RStudio](data_analytics_with_rstudio.md).
+For using R with RStudio please refer to the documentation on
+[Data Analytics with RStudio](data_analytics_with_rstudio.md).
 
 ## Install Packages in R
 
@@ -55,6 +54,7 @@ jobs on the compute node:
 
 ```console
 marie@compute$ module load R
+[...]
 Module R/3.6.0-foss-2019a and 56 dependencies loaded.
 marie@compute$ R -e 'install.packages("ggplot2")'
 [...]
@@ -63,8 +63,8 @@ marie@compute$ R -e 'install.packages("ggplot2")'
 ## Deep Learning with R
 
 The deep learning frameworks perform extremely fast when run on accelerators such as GPU.
-Therefore, using nodes with built-in GPUs ([ml](../jobs_and_resources/power9.md) or
-[alpha](../jobs_and_resources/alpha_centauri.md) partitions) is beneficial for the examples here.
+Therefore, using nodes with built-in GPUs, e.g., partitions [ml](../jobs_and_resources/power9.md)
+and [alpha](../jobs_and_resources/alpha_centauri.md), is beneficial for the examples here.
 
 ### R Interface to TensorFlow
 
@@ -76,12 +76,14 @@ The respective modules can be loaded with the following
 
 ```console
 marie@compute$ module load R/3.6.2-fosscuda-2019b
+[...]
 Module R/3.6.2-fosscuda-2019b and 63 dependencies loaded.
 marie@compute$ module load TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4
 Module TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4 and 15 dependencies loaded.
 ```
 
 !!! warning
+
      Be aware that for compatibility reasons it is important to choose [modules](modules.md) with
      the same toolchain version (in this case `fosscuda/2019b`).
 
@@ -122,6 +124,7 @@ tf.Tensor(b'Hello TensorFlow', shape=(), dtype=string)
 ```
 
 ??? example
+
     The example shows the use of the TensorFlow package with the R for the classification problem
     related to the MNIST data set.
     ```R
@@ -204,6 +207,7 @@ The [parallel](https://www.rdocumentation.org/packages/parallel/versions/3.6.2) 
 will be used below.
 
 !!! warning
+
     Please do not install or update R packages related to parallelism as it could lead to
     conflicts with other preinstalled packages.
 
@@ -223,6 +227,7 @@ This is a simple option for parallelization. It doesn't require much effort to r
 code to use `mclapply` function. Check out an example below.
 
 ??? example
+
     ```R
     library(parallel)
 
@@ -249,9 +254,9 @@ code to use `mclapply` function. Check out an example below.
     list_of_averages <- mclapply(X=sample_sizes, FUN=average, mc.cores=threads)  # apply function "average" 100 times
     ```
 
-The disadvantages of using shared-memory parallelism approach are, that the number of parallel
-tasks is limited to the number of cores on a single node. The maximum number of cores on a single
-node can be found in our [hardware documentation](../jobs_and_resources/hardware_taurus.md).
+The disadvantages of using shared-memory parallelism approach are, that the number of parallel tasks
+is limited to the number of cores on a single node. The maximum number of cores on a single node can
+be found in our [hardware documentation](../jobs_and_resources/hardware_overview.md).
 
 Submitting a multicore R job to Slurm is very similar to submitting an
 [OpenMP Job](../jobs_and_resources/slurm.md#binding-and-distribution-of-tasks),
@@ -329,6 +334,7 @@ Use an example below, where 32 global ranks are distributed over 2 nodes with 16
 Each MPI rank has 1 core assigned to it.
 
 ??? example
+
     ```R
     library(Rmpi)
 
@@ -352,6 +358,7 @@ Each MPI rank has 1 core assigned to it.
 Another example:
 
 ??? example
+
     ```R
     library(Rmpi)
     library(parallel)
@@ -403,6 +410,7 @@ parallel workers, you have to manually specify the number of nodes according to 
 hardware specification and parameters of your job.
 
 ??? example
+
     ```R
     library(parallel)
 
@@ -437,7 +445,7 @@ hardware specification and parameters of your job.
     print(paste("Program finished"))
     ```
 
-#### FORK cluster
+#### FORK Cluster
 
 The `type="FORK"` method behaves exactly like the `mclapply` function discussed in the previous
 section. Like `mclapply`, it can only use the cores available on a single node. However this method
@@ -445,7 +453,7 @@ requires exporting the workspace data to other processes. The FORK method in a c
 `parLapply` function might be used in situations, where different source code should run on each
 parallel process.
 
-### Other parallel options
+### Other Parallel Options
 
 - [foreach](https://cran.r-project.org/web/packages/foreach/index.html) library.
   It is functionally equivalent to the

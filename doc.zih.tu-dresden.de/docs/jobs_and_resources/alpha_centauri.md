@@ -1,13 +1,13 @@
-# Alpha Centauri - Multi-GPU sub-cluster
+# Alpha Centauri - Multi-GPU Sub-Cluster
 
-The sub-cluster "AlphaCentauri" had been installed for AI-related computations (ScaDS.AI).
+The sub-cluster "Alpha Centauri" had been installed for AI-related computations (ScaDS.AI).
 It has 34 nodes, each with:
 
-- 8 x NVIDIA A100-SXM4 (40 GB RAM)
-- 2 x AMD EPYC CPU 7352 (24 cores) @ 2.3 GHz with multithreading enabled
-- 1 TB RAM 3.5 TB `/tmp` local NVMe device
-- Hostnames: `taurusi[8001-8034]`
-- Slurm partition `alpha` for batch jobs and `alpha-interactive` for interactive jobs
+* 8 x NVIDIA A100-SXM4 (40 GB RAM)
+* 2 x AMD EPYC CPU 7352 (24 cores) @ 2.3 GHz with multi-threading enabled
+* 1 TB RAM 3.5 TB `/tmp` local NVMe device
+* Hostnames: `taurusi[8001-8034]`
+* Slurm partition `alpha` for batch jobs and `alpha-interactive` for interactive jobs
 
 !!! note
 
@@ -19,12 +19,12 @@ It has 34 nodes, each with:
 ### Modules
 
 The easiest way is using the [module system](../software/modules.md).
-The software for the `alpha` partition is available in `modenv/hiera` module environment.
+The software for the partition alpha is available in `modenv/hiera` module environment.
 
 To check the available modules for `modenv/hiera`, use the command
 
-```bash
-module spider <module_name>
+```console
+marie@alpha$ module spider <module_name>
 ```
 
 For example, to check whether PyTorch is available in version 1.7.1:
@@ -95,11 +95,11 @@ Successfully installed torchvision-0.10.0
 
 ### JupyterHub
 
-[JupyterHub](../access/jupyterhub.md) can be used to run Jupyter notebooks on AlphaCentauri
+[JupyterHub](../access/jupyterhub.md) can be used to run Jupyter notebooks on Alpha Centauri
 sub-cluster. As a starting configuration, a "GPU (NVIDIA Ampere A100)" preset can be used
 in the advanced form. In order to use latest software, it is recommended to choose
 `fosscuda-2020b` as a standard environment. Already installed modules from `modenv/hiera`
-can be pre-loaded in "Preload modules (modules load):" field.
+can be preloaded in "Preload modules (modules load):" field.
 
 ### Containers
 
@@ -109,6 +109,6 @@ Detailed information about containers can be found [here](../software/containers
 Nvidia
 [NGC](https://developer.nvidia.com/blog/how-to-run-ngc-deep-learning-containers-with-singularity/)
 containers can be used as an effective solution for machine learning related tasks. (Downloading
-containers requires registration).  Nvidia-prepared containers with software solutions for specific
+containers requires registration). Nvidia-prepared containers with software solutions for specific
 scientific problems can simplify the deployment of deep learning workloads on HPC. NGC containers
 have shown consistent performance compared to directly run code.

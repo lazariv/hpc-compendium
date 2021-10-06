@@ -131,7 +131,7 @@ c.NotebookApp.allow_remote_access = True
 ```console
 #!/bin/bash -l
 #SBATCH --gres=gpu:1 # request GPU
-#SBATCH --partition=gpu2 # use GPU partition
+#SBATCH --partition=gpu2 # use partition GPU 2
 #SBATCH --output=notebook_output.txt
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
