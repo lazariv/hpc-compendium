@@ -245,7 +245,7 @@ from dask import delayed
 cluster = SLURMCluster(queue='alpha', 
   cores=8,
   processes=2, 
-  project='p_scads', 
+  project='p_marie', 
   memory="80GB", 
   walltime="00:30:00",
   extra=['--resources gpu=1'])
