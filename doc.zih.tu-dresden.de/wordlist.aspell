@@ -6,6 +6,7 @@ Amber
 Amdahl's
 analytics
 anonymized
+Ansys
 APIs
 AVX
 awk
@@ -19,11 +20,13 @@ CCM
 ccNUMA
 centauri
 CentOS
+CFX
 cgroups
 checkpointing
 Chemnitz
 citable
 CLI
+COMSOL
 conda
 config
 CONFIG
@@ -44,6 +47,7 @@ DataFrames
 datamover
 DataParallel
 dataset
+DCV
 ddl
 DDP
 DDR
@@ -93,6 +97,7 @@ GPU
 GPUs
 gres
 GROMACS
+GUIs
 hadoop
 haswell
 HBM
@@ -131,9 +136,11 @@ JupyterHub
 JupyterLab
 Keras
 KNL
+Kunststofftechnik
 LAMMPS
 LAPACK
 lapply
+Leichtbau
 LINPACK
 linter
 Linter
@@ -165,6 +172,8 @@ mpif
 mpifort
 mpirun
 multicore
+multiphysics
+Multiphysics
 multithreaded
 Multithreading
 MultiThreading
@@ -223,6 +232,7 @@ Pre
 Preload
 preloaded
 preloading
+preprocessing
 PSOCK
 Pthreads
 pty
@@ -301,6 +311,7 @@ tracefile
 tracefiles
 transferability
 Trition
+undistinguishable
 unencrypted
 uplink
 userspace
