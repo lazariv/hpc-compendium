@@ -261,6 +261,24 @@ for details.
 marie@alpha$ HOROVOD_GPU_OPERATIONS=NCCL HOROVOD_WITH_TENSORFLOW=1 pip install --no-cache-dir horovod\[tensorflow\]
 [...]
 marie@alpha$ horovodrun --check-build
+Horovod v0.19.5:
+
+Available Frameworks:
+    [X] TensorFlow
+    [ ] PyTorch
+    [ ] MXNet
+
+Available Controllers:
+    [X] MPI
+    [ ] Gloo
+
+Available Tensor Operations:
+    [X] NCCL
+    [ ] DDL
+    [ ] CCL
+    [X] MPI
+    [ ] Gloo
+
 ```
 
 If you want to use OpenMPI then specify `HOROVOD_GPU_ALLREDUCE=MPI`.
@@ -268,13 +286,17 @@ To have better performance it is recommended to use NCCL instead of OpenMPI.
 
 ##### Verify that Horovod works
 
-```python
-import tensorflow
-import horovod.tensorflow as hvd                      #import horovod
-hvd.init()                                       #initialize horovod
-hvd.size()
-hvd.rank()
-print('Hello from:', hvd.rank())
+```pycon
+>>> import tensorflow
+2021-10-07 16:38:55.694445: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+>>> import horovod.tensorflow as hvd                      #import horovod
+>>> hvd.init()                                       #initialize horovod
+>>> hvd.size()
+1
+>>> hvd.rank()
+0
+>>> print('Hello from:', hvd.rank())
+Hello from: 0
 ```
 
 #### Example
