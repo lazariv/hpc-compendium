@@ -3,6 +3,7 @@
 ## Test Section
 
 [broken link](../access/jupyterhub/#creating-and-using-your-own-environment)
+[broken link2](../access/jupyterhub/#creating-and-using-your-own-environment)
 
 ## Normal
 
