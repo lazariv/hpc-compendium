@@ -13,7 +13,7 @@ each device has a replica of the model and computes over different parts of the 
 2. model parallelism:
 models are distributed over multiple devices.
 
-In the following we will stick to the concept of data parallelism because it is a widely-used
+In the following, we will stick to the concept of data parallelism because it is a widely-used
 technique.
 There are basically two strategies to train the scattered data throughout the devices:
 
@@ -45,11 +45,11 @@ with multiple GPUs.
 
 The CPU holds the global state of the model and GPUs perform the training.
 
-In some cases asynchronous training might be the better choice for example if workers differ on
+In some cases asynchronous training might be the better choice, for example, if workers differ on
 capability, are down for maintenance, or have different priorities.
 The Parameter Server Strategy is capable of applying asynchronous training:
 
-- `tf.distribute.experimental.ParameterServerStrategy` requires several Parameter Server and Worker.
+- `tf.distribute.experimental.ParameterServerStrategy` requires several Parameter Servers and workers.
 
 The Parameter Server holds the parameters and is responsible for updating
 the global state of the models.
@@ -61,8 +61,8 @@ In this case, we will go through an example with Multi Worker Mirrored Strategy.
 Multi-node training requires a `TF_CONFIG` environment variable to be set which will
 be different on each node.
 
-```bash
-TF_CONFIG='{"cluster": {"worker": ["10.1.10.58:12345", "10.1.10.250:12345"]}, "task": {"index": 0, "type": "worker"}}' python main.py
+```console
+marie@compute$ TF_CONFIG='{"cluster": {"worker": ["10.1.10.58:12345", "10.1.10.250:12345"]}, "task": {"index": 0, "type": "worker"}}' python main.py
 ```
 
 The `cluster` field describes how the cluster is set up (same on each node).
@@ -74,7 +74,7 @@ In this case, the training job runs on worker 0, which is `10.1.10.58:12345`.
 We need to adapt this snippet for each node.
 The second node will have `'task': {'index': 1, 'type': 'worker'}`.
 
-With two modifications we can parallelize the serial code:
+With two modifications, we can parallelize the serial code:
 We need to initialize the distributed strategy:
 
 ```python
@@ -154,7 +154,7 @@ serve a larger model.
 It is recommended to use
 [DistributedDataParallel](https://pytorch.org/docs/stable/generated/torch.nn.parallel.DistributedDataParallel.html),
 instead of this class, to do multi-GPU training, even if there is only a single node.
-See: Use nn.parallel.DistributedDataParallel instead of multiprocessing or nn.DataParallel.
+See: Use `nn.parallel.DistributedDataParallel` instead of multiprocessing or `nn.DataParallel`.
 Check the [page](https://pytorch.org/docs/stable/notes/cuda.html#cuda-nn-ddp-instead) and
 [Distributed Data Parallel](https://pytorch.org/docs/stable/notes/ddp.html#ddp).
 
@@ -185,7 +185,7 @@ synchronize gradients and buffers.
 
 The tutorial can be found [here](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html).
 
-To use distributed data parallelism on ZIH systems please make sure the `--ntasks-per-node`
+To use distributed data parallelism on ZIH systems, please make sure the `--ntasks-per-node`
 parameter is equal to the number of GPUs you use per node.
 Also, it can be useful to increase `memory/cpu` parameters if you run larger models.
 Memory can be set up to:
@@ -201,13 +201,13 @@ Keep in mind that only one memory parameter (`--mem-per-cpu=<MB>` or `--mem=<MB>
 
 [Horovod](https://github.com/horovod/horovod) is the open source distributed training framework
 for TensorFlow, Keras and PyTorch.
-It is supposed to make it easy to develop distributed deep learning projects and speed them up.
+It makes it easier to develop distributed deep learning projects and speeds them up.
 Horovod scales well to a large number of nodes and has a strong focus on efficient training on
 GPUs.
 
 #### Why use Horovod?
 
-Horovod allows you to easily take a single-GPU TensorFlow and PyTorch program and successfully
+Horovod allows you to easily take a single-GPU TensorFlow and PyTorch program and
 train it on many GPUs!
 In some cases, the MPI model is much more straightforward and requires far less code changes than
 the distributed code from TensorFlow for instance, with parameter servers.
@@ -237,7 +237,7 @@ marie@compute$ module spider Horovod           # Check available modules
 marie@compute$ module load Horovod/0.19.5-fosscuda-2019b-TensorFlow-2.2.0-Python-3.7.4  
 ```
 
-Or if you want to use Horovod on the partition `alpha` you can load it with the dependencies:
+Or if you want to use Horovod on the partition `alpha`, you can load it with the dependencies:
 
 ```bash
 marie@alpha$ module spider Horovod                         #Check available modules
@@ -246,9 +246,9 @@ marie@alpha$ module load modenv/hiera  GCC/10.2.0  CUDA/11.1.1  OpenMPI/4.0.5 Ho
 
 #### Horovod installation
 
-However if it is necessary to use another version of Horovod it is possible to install it manually.
-For that you need to create a [virtual environment](python_virtual_environments.md) and load the
-dependencies (e.g. MPI).
+However, if it is necessary to use another version of Horovod, it is possible to install it
+manually. For that, you need to create a [virtual environment](python_virtual_environments.md) and
+load the dependencies (e.g. MPI).
 Installing TensorFlow can take a few hours and is not recommended.
 
 ##### Install Horovod for TensorFlow with python and pip
@@ -279,9 +279,9 @@ print('Hello from:', hvd.rank())
 
 #### Example
 
-Follow the steps in the examples described
-[here](https://github.com/horovod/horovod/tree/master/examples) to parallelize your code.
-In Horovod each GPU gets pinned to a process.
+Follow the steps in the [official examples](https://github.com/horovod/horovod/tree/master/examples)
+to parallelize your code.
+In Horovod, each GPU gets pinned to a process.
 You can easily start your job with the following bash script with four processes on two nodes:
 
 ```bash
