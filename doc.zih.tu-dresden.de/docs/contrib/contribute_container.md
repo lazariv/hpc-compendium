@@ -55,7 +55,7 @@ The command(s) to start the dockerized web server is this:
 docker run --name=hpc-compendium -p 8000:8000 --rm -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium bash -c "mkdocs build && mkdocs serve -a 0.0.0.0:8000"
 ```
 
-You can view the documentation via [http://localhost:8000](http://localhost:8000) in your browser, now.
+You can view the documentation via `http://localhost:8000` in your browser, now.
 
 !!! note
 
