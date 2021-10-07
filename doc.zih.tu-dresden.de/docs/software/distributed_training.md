@@ -269,8 +269,8 @@ To have better performance it is recommended to use NCCL instead of OpenMPI.
 ##### Verify that Horovod works
 
 ```python
-import torch                                     #import pytorch
-import horovod.torch as hvd                      #import horovod
+import tensorflow                                     #import pytorch
+import horovod.tensorflow as hvd                      #import horovod
 hvd.init()                                       #initialize horovod
 hvd.size()
 hvd.rank()
