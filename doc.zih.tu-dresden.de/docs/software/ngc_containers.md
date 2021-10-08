@@ -30,9 +30,6 @@ for **deep learning,** **machine learning**, visualization:
 - Built-in libraries and dependencies;
 - Faster training with Automatic Mixed Precision (AMP);
 - Opportunity to scaling up from single-node to multi-node systems;
-- Allowing you to develop on the cloud or at the edge;
-- Highly versatile with support for various container solutions such as Docker,
-Singularity, etc;
 - Performance optimized.
 
 ### Why NGC Containers?
