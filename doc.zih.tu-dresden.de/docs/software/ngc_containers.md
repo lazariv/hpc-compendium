@@ -69,7 +69,7 @@ with the list of main containers with their features and peculiarities.
 
 To use NGC containers, it is necessary to understand the main Singularity commands.
 
-If you are not familiar with singularity syntax please find the information on the
+If you are not familiar with Singularity's syntax, please find the information on the
 [official page](https://sylabs.io/guides/3.0/user-guide/quick_start.html#interact-with-images).
 However, some main commands will be explained.
 
