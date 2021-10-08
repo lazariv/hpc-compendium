@@ -84,7 +84,7 @@ marie@compute$ cd /scratch/ws/<name_of_your_workspace>/containers   #please crea
 marie@compute$ singularity pull pytorch:21.08-py3.sif docker://nvcr.io/nvidia/pytorch:21.08-py3
 ```
 
-Now you have a fully functional PyTorch container.
+Now, you have a fully functional PyTorch container.
 
 Please pay attention, using srun directly on the shell will lead to
 background by using batch jobs.
