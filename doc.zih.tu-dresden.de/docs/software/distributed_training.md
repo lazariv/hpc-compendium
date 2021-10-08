@@ -2,50 +2,175 @@
 
 ## Internal Distribution
 
+Training a machine learning model can be a very time-consuming task.
+Distributed training allows scaling up deep learning tasks,
+so we can train very large models and speed up training time.
+
+There are two paradigms for distributed training:
+
+1. data parallelism:
+each device has a replica of the model and computes over different parts of the data.
+2. model parallelism:
+models are distributed over multiple devices.
+
+In the following, we will stick to the concept of data parallelism because it is a widely-used
+technique.
+There are basically two strategies to train the scattered data throughout the devices:
+
+1. synchronous training: devices (workers) are trained over different slices of the data and at the
+end of each step gradients are aggregated.
+2. asynchronous training:
+all devices are independently trained over the data and update variables asynchronously.
+
 ### Distributed TensorFlow
 
-TODO
+[TensorFlow](https://www.tensorflow.org/guide/distributed_training) provides a high-end API to
+train your model and distribute the training on multiple GPUs or machines with minimal code changes.
+
+The primary distributed training method in TensorFlow is `tf.distribute.Strategy`.
+There are multiple strategies that distribute the training depending on the specific use case,
+the data and the model.
+
+TensorFlow refers to the synchronous training as mirrored strategy.
+There are two mirrored strategies available whose principles are the same:
+
+- `tf.distribute.MirroredStrategy` supports the training on multiple GPUs on one machine.
+- `tf.distribute.MultiWorkerMirroredStrategy` for multiple machines, each with multiple GPUs.
+
+The Central Storage Strategy applies to environments where the GPUs might not be able to store
+the entire model:
+
+- `tf.distribute.experimental.CentralStorageStrategy` supports the case of a single machine
+with multiple GPUs.
+
+The CPU holds the global state of the model and GPUs perform the training.
+
+In some cases asynchronous training might be the better choice, for example, if workers differ on
+capability, are down for maintenance, or have different priorities.
+The Parameter Server Strategy is capable of applying asynchronous training:
+
+- `tf.distribute.experimental.ParameterServerStrategy` requires several Parameter Servers and workers.
+
+The Parameter Server holds the parameters and is responsible for updating
+the global state of the models.
+Each worker runs the training loop independently.
+
+#### Example
+
+In this case, we will go through an example with Multi Worker Mirrored Strategy.
+Multi-node training requires a `TF_CONFIG` environment variable to be set which will
+be different on each node.
+
+```console
+marie@compute$ TF_CONFIG='{"cluster": {"worker": ["10.1.10.58:12345", "10.1.10.250:12345"]}, "task": {"index": 0, "type": "worker"}}' python main.py
+```
+
+The `cluster` field describes how the cluster is set up (same on each node).
+Here, the cluster has two nodes referred to as workers.
+The `IP:port` information is listed in the `worker` array.
+The `task` field varies from node to node.
+It specifies the type and index of the node.
+In this case, the training job runs on worker 0, which is `10.1.10.58:12345`.
+We need to adapt this snippet for each node.
+The second node will have `'task': {'index': 1, 'type': 'worker'}`.
+
+With two modifications, we can parallelize the serial code:
+We need to initialize the distributed strategy:
+
+```python
+strategy = tf.distribute.experimental.MultiWorkerMirroredStrategy()
+```
+
+And define the model under the strategy scope:
+
+```python
+with strategy.scope():
+    model = resnet.resnet56(img_input=img_input, classes=NUM_CLASSES)
+    model.compile(
+        optimizer=opt,
+        loss='sparse_categorical_crossentropy',
+        metrics=['sparse_categorical_accuracy'])
+model.fit(train_dataset,
+    epochs=NUM_EPOCHS)
+```
+
+To run distributed training, the training script needs to be copied to all nodes,
+in this case on two nodes.
+TensorFlow is available as a module.
+Check for the version.
+The `TF_CONFIG` environment variable can be set as a prefix to the command.
+Now, run the script on the partition `alpha` simultaneously on both nodes:
+
+```bash
+#!/bin/bash
+
+#SBATCH --job-name=distr
+#SBATCH --partition=alpha
+#SBATCH --output=%j.out
+#SBATCH --error=%j.err
+#SBATCH --mem=64000
+#SBATCH --nodes=2
+#SBATCH --ntasks=2
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=14
+#SBATCH --gres=gpu:1
+#SBATCH --time=01:00:00
+
+function print_nodelist {
+        scontrol show hostname $SLURM_NODELIST
+}
+NODE_1=$(print_nodelist | awk '{print $1}' | sort -u | head -n 1)
+NODE_2=$(print_nodelist | awk '{print $1}' | sort -u | tail -n 1)
+IP_1=$(dig +short ${NODE_1}.taurus.hrsk.tu-dresden.de)
+IP_2=$(dig +short ${NODE_2}.taurus.hrsk.tu-dresden.de)
+
+module load modenv/hiera
+module load modenv/hiera GCC/10.2.0 CUDA/11.1.1 OpenMPI/4.0.5 TensorFlow/2.4.1
+
+# On the first node
+TF_CONFIG='{"cluster": {"worker": ["'"${NODE_1}"':33562", "'"${NODE_2}"':33561"]}, "task": {"index": 0, "type": "worker"}}' srun -w ${NODE_1} -N 1 --ntasks=1 --gres=gpu:1 python main_ddl.py &
+
+# On the second node
+TF_CONFIG='{"cluster": {"worker": ["'"${NODE_1}"':33562", "'"${NODE_2}"':33561"]}, "task": {"index": 1, "type": "worker"}}' srun -w ${NODE_2} -N 1 --ntasks=1 --gres=gpu:1 python main_ddl.py &
+
+wait
+```
 
 ### Distributed PyTorch
 
-Hint: just copied some old content as starting point
+!!! note
+    This section is under construction
 
 #### Using Multiple GPUs with PyTorch
 
-Effective use of GPUs is essential, and it implies using parallelism in
-your code and model. Data Parallelism and model parallelism are effective instruments
-to improve the performance of your code in case of GPU using.
+The example below shows how to solve that problem by using model parallelism, which in contrast to
+data parallelism splits a single model onto different GPUs, rather than replicating the entire
+model on each GPU.
+The high-level idea of model parallelism is to place different sub-networks of a model onto
+different devices.
+As only part of a model operates on any individual device a set of devices can collectively
+serve a larger model.
 
-The data parallelism is a widely-used technique. It replicates the same model to all GPUs,
-where each GPU consumes a different partition of the input data. You could see this method [here](https://pytorch.org/tutorials/beginner/blitz/data_parallel_tutorial.html).
-
-The example below shows how to solve that problem by using model
-parallel, which, in contrast to data parallelism, splits a single model
-onto different GPUs, rather than replicating the entire model on each
-GPU. The high-level idea of model parallel is to place different sub-networks of a model onto different
-devices. As the only part of a model operates on any individual device, a set of devices can
-collectively serve a larger model.
-
-It is recommended to use [DistributedDataParallel]
-(https://pytorch.org/docs/stable/generated/torch.nn.parallel.DistributedDataParallel.html),
+It is recommended to use
+[DistributedDataParallel](https://pytorch.org/docs/stable/generated/torch.nn.parallel.DistributedDataParallel.html),
 instead of this class, to do multi-GPU training, even if there is only a single node.
-See: Use nn.parallel.DistributedDataParallel instead of multiprocessing or nn.DataParallel.
+See: Use `nn.parallel.DistributedDataParallel` instead of multiprocessing or `nn.DataParallel`.
 Check the [page](https://pytorch.org/docs/stable/notes/cuda.html#cuda-nn-ddp-instead) and
 [Distributed Data Parallel](https://pytorch.org/docs/stable/notes/ddp.html#ddp).
 
 Examples:
 
-1\. The parallel model. The main aim of this model to show the way how
-to effectively implement your neural network on several GPUs. It
-includes a comparison of different kinds of models and tips to improve
-the performance of your model. **Necessary** parameters for running this
-model are **2 GPU** and 14 cores (56 thread).
+1. The parallel model.
+The main aim of this model to show the way how to effectively implement your
+neural network on several GPUs.
+It includes a comparison of different kinds of models and tips to improve the performance
+of your model.
+**Necessary** parameters for running this model are **2 GPU** and 14 cores.
 
 (example_PyTorch_parallel.zip)
 
-Remember that for using [JupyterHub service](../access/jupyterhub.md)
-for PyTorch you need to create and activate
-a virtual environment (kernel) with loaded essential modules.
+Remember that for using [JupyterHub service](../access/jupyterhub.md) for PyTorch you need to
+create and activate a virtual environment (kernel) with loaded essential modules.
 
 Run the example in the same way as the previous examples.
 
@@ -54,131 +179,149 @@ Run the example in the same way as the previous examples.
 [DistributedDataParallel](https://pytorch.org/docs/stable/nn.html#torch.nn.parallel.DistributedDataParallel)
 (DDP) implements data parallelism at the module level which can run across multiple machines.
 Applications using DDP should spawn multiple processes and create a single DDP instance per process.
-DDP uses collective communications in the [torch.distributed]
-(https://pytorch.org/tutorials/intermediate/dist_tuto.html)
-package to synchronize gradients and buffers.
+DDP uses collective communications in the
+[torch.distributed](https://pytorch.org/tutorials/intermediate/dist_tuto.html) package to
+synchronize gradients and buffers.
 
-The tutorial could be found [here](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html).
+The tutorial can be found [here](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html).
 
-To use distributed data parallelization on ZIH system please use following
-parameters: `--ntasks-per-node` -parameter to the number of GPUs you use
-per node. Also, it could be useful to increase `memomy/cpu` parameters
-if you run larger models. Memory can be set up to:
+To use distributed data parallelism on ZIH systems, please make sure the `--ntasks-per-node`
+parameter is equal to the number of GPUs you use per node.
+Also, it can be useful to increase `memory/cpu` parameters if you run larger models.
+Memory can be set up to:
 
-`--mem=250000` and `--cpus-per-task=7` for the `ml` partition.
+- `--mem=250G` and `--cpus-per-task=7` for the partition `ml`.
+- `--mem=60G` and `--cpus-per-task=6` for the partition `gpu2`.
 
-`--mem=60000` and `--cpus-per-task=6` for the `gpu2` partition.
-
-Keep in mind that only one memory parameter (`--mem-per-cpu` = <MB> or `--mem`=<MB>) can be
-specified
+Keep in mind that only one memory parameter (`--mem-per-cpu=<MB>` or `--mem=<MB>`) can be specified
 
 ## External Distribution
 
 ### Horovod
 
-[Horovod](https://github.com/horovod/horovod) is the open source distributed training
-framework for TensorFlow, Keras, PyTorch. It is supposed to make it easy
-to develop distributed deep learning projects and speed them up with
-TensorFlow.
+[Horovod](https://github.com/horovod/horovod) is the open source distributed training framework
+for TensorFlow, Keras and PyTorch.
+It makes it easier to develop distributed deep learning projects and speeds them up.
+Horovod scales well to a large number of nodes and has a strong focus on efficient training on
+GPUs.
 
 #### Why use Horovod?
 
-Horovod allows you to easily take a single-GPU TensorFlow and PyTorch
-program and successfully train it on many GPUs! In
-some cases, the MPI model is much more straightforward and requires far
-less code changes than the distributed code from TensorFlow for
-instance, with parameter servers. Horovod uses MPI and NCCL which gives
-in some cases better results than pure TensorFlow and PyTorch.
+Horovod allows you to easily take a single-GPU TensorFlow and PyTorch program and
+train it on many GPUs!
+In some cases, the MPI model is much more straightforward and requires far less code changes than
+the distributed code from TensorFlow for instance, with parameter servers.
+Horovod uses MPI and NCCL which gives in some cases better results than
+pure TensorFlow and PyTorch.
 
 #### Horovod as a module
 
-Horovod is available as a module with **TensorFlow** or **PyTorch**for **all** module environments.
+Horovod is available as a module with **TensorFlow** or **PyTorch** for
+**all** module environments.
 Please check the [software module list](modules.md) for the current version of the software.
 Horovod can be loaded like other software on ZIH system:
 
-```Bash
-ml av Horovod            #Check available modules with Python
-module load Horovod      #Loading of the module
+```console
+marie@compute$ module spider Horovod           # Check available modules
+------------------------------------------------------------------------------------------------
+  Horovod:
+------------------------------------------------------------------------------------------------
+    Description:
+      Horovod is a distributed training framework for TensorFlow.
+
+     Versions:
+        Horovod/0.18.2-fosscuda-2019b-TensorFlow-2.0.0-Python-3.7.4
+        Horovod/0.19.5-fosscuda-2019b-TensorFlow-2.2.0-Python-3.7.4
+        Horovod/0.21.1-TensorFlow-2.4.1
+[...]
+marie@compute$ module load Horovod/0.19.5-fosscuda-2019b-TensorFlow-2.2.0-Python-3.7.4  
+```
+
+Or if you want to use Horovod on the partition `alpha`, you can load it with the dependencies:
+
+```bash
+marie@alpha$ module spider Horovod                         #Check available modules
+marie@alpha$ module load modenv/hiera  GCC/10.2.0  CUDA/11.1.1  OpenMPI/4.0.5 Horovod/0.21.1-TensorFlow-2.4.1
 ```
 
 #### Horovod installation
 
-However, if it is necessary to use Horovod with **PyTorch** or use
-another version of Horovod it is possible to install it manually. To
-install Horovod you need to create a virtual environment and load the
-dependencies (e.g. MPI). Installing PyTorch can take a few hours and is
-not recommended
+However, if it is necessary to use another version of Horovod, it is possible to install it
+manually. For that, you need to create a [virtual environment](python_virtual_environments.md) and
+load the dependencies (e.g. MPI).
+Installing TensorFlow can take a few hours and is not recommended.
 
-**Note:** You could work with simple examples in your home directory but **please use workspaces
-for your study and work projects** (see the Storage concept).
+##### Install Horovod for TensorFlow with python and pip
 
-Setup:
+This example shows the installation of Horovod for TensorFlow.
+Adapt as required and refer to the [Horovod documentation](https://horovod.readthedocs.io/en/stable/install_include.html)
+for details.
 
-```Bash
-srun -N 1 --ntasks-per-node=6 -p ml --time=08:00:00 --pty bash                    #allocate a Slurm job allocation, which is a set of resources (nodes)
-module load modenv/ml                                                             #Load dependencies by using modules
-module load OpenMPI/3.1.4-gcccuda-2018b
-module load Python/3.6.6-fosscuda-2018b
-module load cuDNN/7.1.4.18-fosscuda-2018b
-module load CMake/3.11.4-GCCcore-7.3.0
-virtualenv --system-site-packages <location_for_your_environment>                 #create virtual environment
-source <location_for_your_environment>/bin/activate                               #activate virtual environment
+```console
+marie@alpha$ HOROVOD_GPU_OPERATIONS=NCCL HOROVOD_WITH_TENSORFLOW=1 pip install --no-cache-dir horovod\[tensorflow\]
+[...]
+marie@alpha$ horovodrun --check-build
+Horovod v0.19.5:
+
+Available Frameworks:
+    [X] TensorFlow
+    [ ] PyTorch
+    [ ] MXNet
+
+Available Controllers:
+    [X] MPI
+    [ ] Gloo
+
+Available Tensor Operations:
+    [X] NCCL
+    [ ] DDL
+    [ ] CCL
+    [X] MPI
+    [ ] Gloo
+
 ```
 
-Or when you need to use conda:
-
-```Bash
-srun -N 1 --ntasks-per-node=6 -p ml --time=08:00:00 --pty bash                            #allocate a Slurm job allocation, which is a set of resources (nodes)
-module load modenv/ml                                                                     #Load dependencies by using modules
-module load OpenMPI/3.1.4-gcccuda-2018b
-module load PythonAnaconda/3.6
-module load cuDNN/7.1.4.18-fosscuda-2018b
-module load CMake/3.11.4-GCCcore-7.3.0
-
-conda create --prefix=<location_for_your_environment> python=3.6 anaconda                 #create virtual environment
-
-conda activate  <location_for_your_environment>                                           #activate virtual environment
-```
-
-Install PyTorch (not recommended)
-
-```Bash
-cd /tmp
-git clone https://github.com/pytorch/pytorch                                  #clone PyTorch from the source
-cd pytorch                                                                    #go to folder
-git checkout v1.7.1                                                           #Checkout version (example: 1.7.1)
-git submodule update --init                                                   #Update dependencies
-python setup.py install                                                       #install it with python
-```
-
-##### Install Horovod for PyTorch with python and pip
-
-In the example presented installation for the PyTorch without
-TensorFlow. Adapt as required and refer to the Horovod documentation for
-details.
-
-```Bash
-HOROVOD_GPU_ALLREDUCE=MPI HOROVOD_WITHOUT_TENSORFLOW=1 HOROVOD_WITH_PYTORCH=1 HOROVOD_WITHOUT_MXNET=1 pip install --no-cache-dir horovod
-```
+If you want to use OpenMPI then specify `HOROVOD_GPU_ALLREDUCE=MPI`.
+To have better performance it is recommended to use NCCL instead of OpenMPI.
 
 ##### Verify that Horovod works
 
-```Bash
-python                                           #start python
-import torch                                     #import pytorch
-import horovod.torch as hvd                      #import horovod
-hvd.init()                                       #initialize horovod
-hvd.size()
-hvd.rank()
-print('Hello from:', hvd.rank())
+```pycon
+>>> import tensorflow
+2021-10-07 16:38:55.694445: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+>>> import horovod.tensorflow as hvd                      #import horovod
+>>> hvd.init()                                       #initialize horovod
+>>> hvd.size()
+1
+>>> hvd.rank()
+0
+>>> print('Hello from:', hvd.rank())
+Hello from: 0
 ```
 
-##### Horovod with NCCL
+#### Example
 
-If you want to use NCCL instead of MPI you can specify that in the
-install command after loading the NCCL module:
+Follow the steps in the [official examples](https://github.com/horovod/horovod/tree/master/examples)
+to parallelize your code.
+In Horovod, each GPU gets pinned to a process.
+You can easily start your job with the following bash script with four processes on two nodes:
 
-```Bash
-module load NCCL/2.3.7-fosscuda-2018b
-HOROVOD_GPU_ALLREDUCE=NCCL HOROVOD_GPU_BROADCAST=NCCL HOROVOD_WITHOUT_TENSORFLOW=1 HOROVOD_WITH_PYTORCH=1 HOROVOD_WITHOUT_MXNET=1 pip install --no-cache-dir horovod
+```bash
+#!/bin/bash
+#SBATCH --nodes=2
+#SBATCH --ntasks=4
+#SBATCH --ntasks-per-node=2
+#SBATCH --gres=gpu:2
+#SBATCH --partition=ml
+#SBATCH --mem=250G
+#SBATCH --time=01:00:00
+#SBATCH --output=run_horovod.out
+
+module load modenv/ml
+module load Horovod/0.19.5-fosscuda-2019b-TensorFlow-2.2.0-Python-3.7.4
+
+srun python <your_program.py>
 ```
+
+Do not forget to specify the total number of tasks `--ntasks` and the number of tasks per node
+`--ntasks-per-node` which must match the number of GPUs per node.

@@ -1,11 +1,11 @@
 # ZIH Systems
 
-ZIH systems comprises the *High Performance Computing and Storage Complex* (HRSK-II) and its
-extension *High Performance Computing – Data Analytics* (HPC-DA). In totoal it offers scientists
-about 60,000 CPU cores and a peak performance of more than 1.5 quadrillion floating point operations
-per second. The architecture specifically tailored to data-intensive computing, Big Data analytics,
-and artificial intelligence methods with extensive capabilities for energy measurement and
-performance monitoring provides ideal conditions to achieve the ambitious research goals of the
+ZIH systems comprises the *High Performance Computing and Storage Complex* and its
+extension *High Performance Computing – Data Analytics*. In total it offers scientists
+about 60,000 CPU cores and a peak performance of more than 1.5 quadrillion floating point
+operations per second. The architecture specifically tailored to data-intensive computing, Big Data
+analytics, and artificial intelligence methods with extensive capabilities for energy measurement
+and performance monitoring provides ideal conditions to achieve the ambitious research goals of the
 users and the ZIH.
 
 ## Login Nodes
@@ -39,7 +39,7 @@ users and the ZIH.
     enabled,
   - 512 GB RAM
   - 200 GB /tmp on local SSD local disk
-- Hostnames: taurusi\[7001-7192\]
+- Hostnames: `taurusi[7001-7192]`
 - Slurm partition `romeo`
 - More information under [Rome Nodes](rome_nodes.md)
 
@@ -86,7 +86,7 @@ For machine learning, we have 32 IBM AC922 nodes installed with this configurati
 
 ### Extension of Island 4 with Broadwell CPUs
 
-* 32 nodes, eachs witch 2 x Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz
+* 32 nodes, each witch 2 x Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz
   (**14 cores**), MultiThreading disabled, 64 GB RAM, 256 GB SSD local disk
 * from the users' perspective: Broadwell is like Haswell
 * Hostname: `taurusi[4233-4264]`

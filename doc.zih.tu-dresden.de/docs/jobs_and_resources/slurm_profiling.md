@@ -1,7 +1,7 @@
 # Job Profiling
 
 Slurm offers the option to gather profiling data from every task/node of the job. Analyzing this
-data allows for a better understanding of your jobs in terms of elapsed time, runtime and IO
+data allows for a better understanding of your jobs in terms of elapsed time, runtime and I/O
 behavior, and many more.
 
 The following data can be gathered:
