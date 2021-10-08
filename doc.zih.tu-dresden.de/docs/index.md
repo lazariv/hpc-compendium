@@ -1,48 +1,30 @@
-# ZIH HPC Compendium
+# ZIH HPC Documentation
 
-Dear HPC users,
+This is the documentation of the HPC systems and services provided at
+[TU Dresden/ZIH](https://tu-dresden.de/zih/).  This documentation is work in progress, since we try
+to incorporate more information with increasing experience and with every question you ask us. The
+HPC team invites you to take part in the improvement of these pages by correcting or adding useful
+information.
 
-due to restrictions coming from data security and software incompatibilities the old
-"HPC Compendium" is now reachable only from inside TU Dresden campus (or via VPN).
+## Contribution
 
-Internal users should be redirected automatically.
+Issues concerning this documentation can reported via the GitLab
+[issue tracking system](https://gitlab.hrz.tu-chemnitz.de/zih/hpcsupport/hpc-compendium/-/issues).
+Please check for any already existing issue before submitting your issue in order to avoid duplicate
+issues.
 
-We apologize for this severe action, but we are in the middle of the preparation for a wiki
-relaunch, so we do not want to redirect resources to fix technical/security issues for a system
-that will last only a few weeks.
+Contributions from user-side are highly welcome. Please refer to
+the detailed [documentation](contrib/howto_contribute.md) to get started.
 
-Thank you for your understanding,
+**Reminder:** Non-documentation issues and requests need to be send as ticket to
+[hpcsupport@zih.tu-dresden.de](mailto:hpcsupport@zih.tu-dresden.de).
 
-your HPC Support Team ZIH
+---
 
-## What is new?
+---
 
-The desire for a new technical documentation is driven by two major aspects:
+## News
 
-1. Clear and user-oriented structure of the content
-1. Usage of modern tools for technical documentation
+**2021-10-05** Offline-maintenance (black building test)
 
-The HPC Compendium provided knowledge and help for many years. It grew with every new hardware
-installation and ZIH stuff tried its best to keep it up to date. But, to be honest, it has become
-quite messy, and housekeeping it was a nightmare.
-
-The new structure is designed with the schedule for an HPC project in mind. This will ease the start
-for new HPC users, as well speedup searching information w.r.t. a specific topic for advanced users.
-
-We decided against a classical wiki software. Instead, we write the documentation in markdown and
-make use of the static site generator [mkdocs](https://www.mkdocs.org/) to create static html files
-from this markdown files. All configuration, layout and content files are managed within a git
-repository. The generated static html files, i.e, the documentation you are now reading, is deployed
-to a web server.
-
-The workflow is flexible, allows a high level of automation, and is quite easy to maintain.
-
-From a technical point, our new documentation system is highly inspired by
-[OLFC User Documentation](https://docs.olcf.ornl.gov/) as well as
-[NERSC Technical Documentation](https://nersc.gitlab.io/).
-
-## Contribute
-
-Contributions are highly welcome. Please refere to
-[README.md](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/blob/main/doc.zih.tu-dresden.de/README.md)
-file of this project.
+**2021-09-29** Introduction to HPC at ZIH ([slides](misc/HPC-Introduction.pdf))
