@@ -151,7 +151,7 @@ An example of using the PyTorch container for the training of the ResNet50 model
 on the classification task on the ImageNet dataset is presented below:
 
 ```console
-marie@login$ srun -p alpha --nodes 1 --ntasks-per-node 8 --ntasks 8 --gres=gpu:8 --time=08:00:00 --pty --mem=500000 bash
+marie@login$ srun --partition=alpha --nodes=1 --ntasks-per-node=8 --ntasks=8 --gres=gpu:8 --time=08:00:00 --pty --mem=500000 bash
 ```
 
 ```console
