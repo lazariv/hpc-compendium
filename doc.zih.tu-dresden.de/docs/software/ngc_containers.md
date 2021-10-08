@@ -92,7 +92,7 @@ For that, you can conveniently put the parameters directly into the job file,
 which you can submit using `sbatch` command.
 
 In the majority of cases, the container doesn't contain the dataset for training models.
-To download the dataset please follow the
+To download the dataset, please follow the
 [instructions](https://github.com/NVIDIA/DeepLearningExamples) for the exact container.
 Also, you can find the instructions in a README file which you can find inside the container:
 
