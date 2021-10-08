@@ -214,7 +214,7 @@ inside the python code and scale computations over the jobs.
 creates a Dask Scheduler in the Python process
 where the cluster object is instantiated.
 Please check the example of a definition of the cluster object
-for the alpha partition (queue at the dask terms) on the ZIH system:
+for the partition `alpha` (queue at the dask terms) on the ZIH system:
 
 ```python
 from dask_jobqueue import SLURMCluster
