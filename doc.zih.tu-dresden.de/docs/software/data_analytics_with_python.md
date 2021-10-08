@@ -435,7 +435,7 @@ For the multi-node case, use a script similar to this:
 ```bash
 #!/bin/bash
 #SBATCH --nodes=2
-#SBATCH -p ml
+#SBATCH --partition=ml
 #SBATCH --tasks-per-node=2
 #SBATCH --cpus-per-task=1
 
