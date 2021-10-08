@@ -12,7 +12,7 @@ The entire software environment, from the deep learning framework itself,
 down to the math and communication libraries that are necessary for performance,
 is packaged into a single bundle.
 
-On ZIH system [Singularity](https://sylabs.io/) is used as a standard container solution.
+On ZIH systems, [Singularity](https://sylabs.io/) is used as a standard container solution.
 
 ## NGC Containers in General
 
