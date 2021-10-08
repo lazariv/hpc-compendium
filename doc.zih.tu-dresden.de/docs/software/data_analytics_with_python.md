@@ -140,8 +140,8 @@ However, you can use it as part of the **Anaconda** module, e.g: `module load An
 
 #### Scheduling by Dask
 
-One of the main features of Dask is large-scale Dask collections
-(Dask Array, Dask Bag, etc) which are using task graphs.
+Whenever you use functions on Dask collections (Dask Array, Dask Bag, etc.), Dask models these as
+single tasks forming larger task graphs in the background without you noticing.
 After Dask generates these task graphs,
 it needs to execute them on parallel hardware.
 This is the job of a task scheduler.
