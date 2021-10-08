@@ -128,7 +128,7 @@ marie@compute$ python /workspace/examples/resnet50v1.5/multiproc.py --nnodes=1 -
     can do it with flags such as `--nproc_per_node`. You can find more information in the README
     file inside the container.
 
-As an example please find the full command to run the ResNet50 model
+As an example, please find the full command to run the ResNet50 model
 on the ImageNet dataset inside the PyTorch container:
 
 ```console
