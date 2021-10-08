@@ -284,6 +284,7 @@ SHA
 SHMEM
 SLES
 Slurm
+SLURMCluster
 SMP
 SMT
 squeue
