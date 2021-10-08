@@ -88,7 +88,7 @@ Now, you have a fully functional PyTorch container.
 
 Please pay attention, using srun directly on the shell will lead to
 background by using batch jobs.
-For that, you can conveniently put the parameters directly into the job file
+For that, you can conveniently put the parameters directly into the job file,
 which you can submit using `sbatch` command.
 
 In the majority of cases, the container doesn't contain the dataset for training models.
