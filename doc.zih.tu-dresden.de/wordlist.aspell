@@ -222,6 +222,7 @@ parallelize
 parfor
 pdf
 Perf
+performant
 PESSL
 PGI
 PiB
@@ -252,6 +253,7 @@ README
 reproducibility
 requeueing
 resnet
+ResNet
 RHEL
 Rmpi
 rome
@@ -268,6 +270,7 @@ Sandybridge
 Saxonid
 sbatch
 ScaDS
+scalability
 scalable
 ScaLAPACK
 Scalasca
