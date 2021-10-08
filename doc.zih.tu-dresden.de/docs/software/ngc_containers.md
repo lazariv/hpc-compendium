@@ -86,7 +86,7 @@ marie@compute$ singularity pull pytorch:21.08-py3.sif docker://nvcr.io/nvidia/py
 
 Now, you have a fully functional PyTorch container.
 
-Please pay attention, using srun directly on the shell will lead to
+Please pay attention, using `srun` directly on the shell will lead to
 background by using batch jobs.
 For that, you can conveniently put the parameters directly into the job file,
 which you can submit using `sbatch` command.
