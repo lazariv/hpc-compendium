@@ -48,10 +48,12 @@ echo ""
 for f in $files; do
   if [ "${f: -3}" == ".md" ]; then
     # do not check links for deleted files
-    if [ -e $f ]; then
-      echo "Checking links for $f"
-      if ! $mlc -q -p "$f"; then
-        any_fails=true
+    if [ "$f" != "doc.zih.tu-dresden.de/README.md" ]; then
+      if [ -e $f ]; then
+        echo "Checking links for $f"
+        if ! $mlc -q -p "$f"; then
+          any_fails=true
+        fi
       fi
     fi
   fi
