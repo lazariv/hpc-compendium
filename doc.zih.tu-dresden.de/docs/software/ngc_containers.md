@@ -3,7 +3,7 @@
 ## Containers
 
 A container is an executable and portable unit of software.
-[Containerization](https://www.ibm.com/cloud/learn/containerization)
+[Containerization](https://www.ibm.com/cloud/learn/containerization) means
 encapsulating or packaging up software code and all its dependencies
 to run uniformly and consistently on any infrastructure in other words,
 it is agnostic to host specific environment like OS, etc.
