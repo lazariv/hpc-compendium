@@ -167,5 +167,5 @@ There are few NGC containers with Multi-node support
 [available](https://github.com/NVIDIA/DeepLearningExamples).
 Moreover, the realization of the multi-node usage depends on the authors
 of the exact container.
-Thus right now it is not possible to run NGC containers with multi-node support
+Thus, right now, it is not possible to run NGC containers with multi-node support
 on the ZIH system without a change of the source code inside the container.
