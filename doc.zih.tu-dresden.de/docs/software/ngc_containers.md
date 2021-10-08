@@ -122,11 +122,11 @@ Run the training inside the container:
 marie@compute$ python /workspace/examples/resnet50v1.5/multiproc.py --nnodes=1 --nproc_per_node 1 --node_rank=0 /workspace/examples/resnet50v1.5/main.py --data-backend dali-cpu --raport-file raport.json -j16 -p 100 --lr 2.048 --optimizer-batch-size 2048 --warmup 8 --arch resnet50 -c fanin --label-smoothing 0.1 --lr-schedule cosine --mom 0.875 --wd 3.0517578125e-05 -b 256 --epochs 90 /data/imagenet
 ```
 
-Please keep in mind that it is necessary to specify the amount of resources
-that you use inside the container, especially if you have allocated more resources
-in the cluster.
-Regularly you can do it with flags such as `--nproc_per_node`.
-You can find more information in the README file inside the container.
+!!! warning
+    Please keep in mind that it is necessary to specify the amount of resources that you use inside
+    the container, especially if you have allocated more resources in the cluster. Regularly, you
+    can do it with flags such as `--nproc_per_node`. You can find more information in the README
+    file inside the container.
 
 As an example please find the full command to run the ResNet50 model
 on the ImageNet dataset inside the PyTorch container:
