@@ -34,7 +34,7 @@ for **deep learning,** **machine learning**, visualization:
 
 ### Why NGC Containers?
 
-Advantages of use NGC containers:
+Advantages of NGC containers:
 
 - NGC containers were highly optimized for cluster usage.
 The performance provided by NGC containers is comparable to the performance
