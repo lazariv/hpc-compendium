@@ -141,9 +141,9 @@ The majority of the NGC containers allow you to use multiple GPUs from one node
 to run the model inside the container.
 However, the NGC containers were made by Nvidia for the Nvidia cluster,
 which is not ZIH system.
-Moreover, work of the NGC containers requires root privileges
-which can be done on the ZIH cluster only with [virtual machines](containers.md).
-Thus there is no guarantee that all NGC containers will work from out of the box.
+Moreover, working with the NGC containers requires root privileges,
+which can be done only with [containers](containers.md) on ZIH systems.
+Thus, there is no guarantee that all NGC containers work right out of the box.
 
 However, PyTorch and TensorFlow containers support multi-GPU usage.
 
