@@ -64,7 +64,8 @@ with the list of main containers with their features and peculiarities.
 
 #### Run NGC container on a Single GPU
 
-Note: Almost all NGC containers can work with a single GPU.
+!!! note
+    Almost all NGC containers can work with a single GPU.
 
 To use NGC containers it is necessary to understand the main Singularity commands.
 
