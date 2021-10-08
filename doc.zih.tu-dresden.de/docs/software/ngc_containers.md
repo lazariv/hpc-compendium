@@ -104,7 +104,7 @@ It is recommended to run the container with a single command.
 However, for the educational purpose, the separate commands will be presented below:
 
 ```console
-marie@login$ srun -p alpha --nodes 1 --ntasks-per-node 1 --ntasks 1 --gres=gpu:1 --time=08:00:00 --pty --mem=50000 bash    #allocate  one GPU
+marie@login$ srun --partition=alpha --nodes=1 --ntasks-per-node=1 --ntasks=1 --gres=gpu:1 --time=08:00:00 --pty --mem=50000 bash    #allocate one GPU
 ```
 
 Run a shell within a container with a `singularity shell` command:
