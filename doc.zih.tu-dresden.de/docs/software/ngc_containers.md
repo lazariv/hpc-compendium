@@ -77,7 +77,7 @@ Create a container from the image from the NGC catalog.
 (For this example, the alpha is used):
 
 ```console
-marie@login$ srun -p alpha --nodes 1 --ntasks-per-node 1 --ntasks 1 --gres=gpu:1 --time=08:00:00 --pty --mem=50000 bash    #allocate one GPU
+marie@login$ srun --partition=alpha --nodes=1 --ntasks-per-node=1 --ntasks=1 --gres=gpu:1 --time=08:00:00 --pty --mem=50000 bash    #allocate one GPU
 
 marie@compute$ cd /scratch/ws/<name_of_your_workspace>/containers   #please create a Workspace
 
