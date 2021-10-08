@@ -26,7 +26,7 @@ etc.
 Eike Dohmen (from Inst. f. Leichtbau und Kunststofftechnik) sent us the description of his
 Abaqus calculations. Please try to adapt your calculations in that way. Eike is normally a
 Windows user and his description contains also some hints for basic Unix commands:
-[Abaqus-Slurm.pdf (only in German)](misc/ABAQUS-SLURM.pdf).
+[Abaqus-Slurm.pdf (only in German)](misc/abaqus-slurm.pdf).
 
 ### General
 
