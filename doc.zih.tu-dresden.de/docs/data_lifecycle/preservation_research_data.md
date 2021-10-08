@@ -47,42 +47,38 @@ stored in XML-format but free text is also possible. There are some meta-data st
 Below are some examples:
 
 - possible meta-data for a book would be:
-  - Title
-  - Author
-  - Publisher
-  - Publication
-  - year
-  - ISBN
+    - Title
+    - Author
+    - Publisher
+    - Publication
+    - year
+    - ISBN
 - possible meta-data for an electronically saved image would be:
-  - resolution of the image
-  - information about the colour depth of the picture
-  - file format (jpg or tiff or ...)
-  - file size how was this image created (digital camera, scanner, ...)
-  - description of what the image shows
-  - creation date of the picture
-  - name of the person who made the picture
+    - resolution of the image
+    - information about the colour depth of the picture
+    - file format (jpg or tiff or ...)
+    - file size how was this image created (digital camera, scanner, ...)
+    - description of what the image shows
+    - creation date of the picture
+    - name of the person who made the picture
 - meta-data for the result of a calculation/simulation could be:
-  - file format
-  - file size
-  - input data
-  - which software in which version was used to calculate the result/to do the simulation
-  - configuration of the software
-  - date of the calculation/simulation (start/end or start/duration)
-  - computer on which the calculation/simulation was done
-  - name of the person who submitted the calculation/simulation
-  - description of what was calculated/simulated
+    - file format
+    - file size
+    - input data
+    - which software in which version was used to calculate the result/to do the simulation
+    - configuration of the software
+    - date of the calculation/simulation (start/end or start/duration)
+    - computer on which the calculation/simulation was done
+    - name of the person who submitted the calculation/simulation
+    - description of what was calculated/simulated
 
 ## Where can I get more information about management of research data?
 
-Got to
-
--   <http://www.forschungsdaten.org/> (german version) or <http://www.forschungsdaten.org/en/>
--   (english version)
-
-to find more information about managing research data.
+Go to [http://www.forschungsdaten.org/en/](http://www.forschungsdaten.org/en/) to find more
+information about managing research data.
 
 ## I want to store my research data at ZIH. How can I do that?
 
 Longterm preservation of research data is under construction at ZIH and in a testing phase.
 Nevertheless you can already use the archiving service. If you would like to become a test
-user, please write an E-Mail to Dr. Klaus Köhler (klaus.koehler \[at\] tu-dresden.de).
+user, please write an E-Mail to [Dr. Klaus Köhler](mailto:klaus.koehler@tu-dresden.de).

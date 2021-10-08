@@ -7,7 +7,7 @@
 ## Contribute via Issue
 
 Users can contribute to the documentation via the
-[GitLab issue tracking system](https://gitlab.hrz.tu-chemnitz.de/zih/hpc-compendium/hpc-compendium/-/issues).
+[GitLab issue tracking system](https://gitlab.hrz.tu-chemnitz.de/zih/hpcsupport/hpc-compendium/-/issues).
 For that, open an issue to report typos and missing documentation or request for more precise
 wording etc.  ZIH staff will get in touch with you to resolve the issue and improve the
 documentation.
@@ -35,6 +35,6 @@ refer to the corresponding documentation for further information.
 ## Contribute Using Git Locally
 
 For experienced Git users, we provide a Docker container that includes all checks of the CI engine
-used in the backend. Using them should ensure that merge requests will not be blocked
+used in the back-end. Using them should ensure that merge requests will not be blocked
 due to automatic checking.
 For details, see [Work Locally Using Containers](contribute_container.md).
