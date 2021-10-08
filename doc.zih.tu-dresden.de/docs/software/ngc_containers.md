@@ -8,8 +8,6 @@ encapsulating or packaging up software code and all its dependencies
 to run uniformly and consistently on any infrastructure in other words,
 it is agnostic to host specific environment like OS, etc.
 
-Containers are a widely adopted method of taming the complexity
-of deploying software.
 The entire software environment, from the deep learning framework itself,
 down to the math and communication libraries that are necessary for performance,
 is packaged into a single bundle.
