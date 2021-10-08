@@ -132,7 +132,7 @@ As an example, please find the full command to run the ResNet50 model
 on the ImageNet dataset inside the PyTorch container:
 
 ```console
-marie@login$ srun -p alpha --nodes 1 --ntasks-per-node 1 --ntasks 1 --gres=gpu:1 --time=08:00:00 --pty --mem=50000 singularity exec --nv -B /scratch/ws/0/anpo879a-ImgNet/imagenet:/data/imagenet pytorch:21.06-py3 python /workspace/examples/resnet50v1.5/multiproc.py --nnodes=1 --nproc_per_node 1 --node_rank=0 /workspace/examples/resnet50v1.5/main.py --data-backend dali-cpu --raport-file raport.json -j16 -p 100 --lr 2.048 --optimizer-batch-size 2048 --warmup 8 --arch resnet50 -c fanin --label-smoothing 0.1 --lr-schedule cosine --mom 0.875 --wd 3.0517578125e-05 -b 256 --epochs 90 /data/imagenet
+marie@login$ srun --partition=alpha --nodes=1 --ntasks-per-node=1 --ntasks=1 --gres=gpu:1 --time=08:00:00 --pty --mem=50000 singularity exec --nv -B /scratch/ws/0/anpo879a-ImgNet/imagenet:/data/imagenet pytorch:21.06-py3 python /workspace/examples/resnet50v1.5/multiproc.py --nnodes=1 --nproc_per_node 1 --node_rank=0 /workspace/examples/resnet50v1.5/main.py --data-backend dali-cpu --raport-file raport.json -j16 -p 100 --lr 2.048 --optimizer-batch-size 2048 --warmup 8 --arch resnet50 -c fanin --label-smoothing 0.1 --lr-schedule cosine --mom 0.875 --wd 3.0517578125e-05 -b 256 --epochs 90 /data/imagenet
 ```
 
 #### Multi-GPU Usage
