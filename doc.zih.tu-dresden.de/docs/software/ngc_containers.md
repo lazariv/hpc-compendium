@@ -159,7 +159,7 @@ marie@compute$ singularity exec --nv -B /scratch/ws/0/marie-ImgNet/imagenet:/dat
 ```
 
 Please pay attention to the parameter `--nproc_per_node`.
-The value is equal to 8 because 8 GPUs per node were allocated by srun.
+The value is equal to 8 because 8 GPUs per node were allocated by `srun`.
 
 #### Multi-node Usage
 
