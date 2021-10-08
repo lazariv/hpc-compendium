@@ -5,6 +5,7 @@ Altix
 Amber
 Amdahl's
 analytics
+Analytics
 anonymized
 Ansys
 APIs
@@ -42,6 +43,7 @@ CUDA
 cuDNN
 CXFS
 dask
+Dask
 dataframes
 DataFrames
 datamover
@@ -69,6 +71,7 @@ env
 EPYC
 Espresso
 ESSL
+facto
 fastfs
 FFT
 FFTW
@@ -165,6 +168,7 @@ modenv
 Montecito
 mountpoint
 mpi
+Mpi
 mpicc
 mpiCC
 mpicxx
@@ -280,6 +284,7 @@ SHA
 SHMEM
 SLES
 Slurm
+SLURMCluster
 SMP
 SMT
 squeue
