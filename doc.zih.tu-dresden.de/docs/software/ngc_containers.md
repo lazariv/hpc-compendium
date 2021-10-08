@@ -100,8 +100,8 @@ Also, you can find the instructions in a README file which you can find inside t
 marie@compute$ singularity exec pytorch:21.06-py3_beegfs vim /workspace/examples/resnet50v1.5/README.md
 ```
 
-It is recommended to run the container with a single command,
-however, for the educational purpose the separate commands will be presented below:
+It is recommended to run the container with a single command.
+However, for the educational purpose, the separate commands will be presented below:
 
 ```console
 marie@login$ srun -p alpha --nodes 1 --ntasks-per-node 1 --ntasks 1 --gres=gpu:1 --time=08:00:00 --pty --mem=50000 bash    #allocate  one GPU
