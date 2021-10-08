@@ -56,8 +56,8 @@ machine learning, visualization, and HPC applications that are tested
 for performance, security, and scalability.
 It is necessary to register to have full access to the catalog.
 
-To find a container that fits the requirements of your task please check
-the [resource](https://github.com/NVIDIA/DeepLearningExamples)
+To find a container that fits the requirements of your task, please check
+the [official examples page](https://github.com/NVIDIA/DeepLearningExamples)
 with the list of main containers with their features and peculiarities.
 
 ### Building and Running a Container
