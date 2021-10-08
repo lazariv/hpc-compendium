@@ -115,7 +115,7 @@ Dask supports several user interfaces:
     - Delayed: Parallel function evaluation
     - Futures: Real-time parallel function evaluation
 
-#### Installation
+#### Dask Modules on ZIH Systems
 
 On ZIH systems, Dask is available as a module.
 Check available versions and load your preferred one:
@@ -136,7 +136,7 @@ marie@compute$ python -c "import dask; print(dask.__version__)"
 ```
 
 The preferred way is to use Dask as a separate module as was described above.
-However, you can use it as part of the Anaconda module, e.g: `ml Anaconda3`.
+However, you can use it as part of the **Anaconda** module, e.g: `module load Anaconda3`.
 
 #### Scheduling by Dask
 
@@ -160,12 +160,8 @@ client = Client(...)  # Connect to distributed cluster and override default
 df.x.sum().compute()  # This now runs on the distributed system
 ```
 
-The idea behind the Dask is to scale Python and
-distribute it among the workers (multiple machines, jobs).
-There are different ways to do that
-(for a single machine or for distributed cluster).
-This page will be focus mainly on Dask for HPC.
-
+The idea behind Dask is to scale Python and distribute computation among the workers (multiple
+machines, jobs).
 The preferred and simplest way to run Dask on ZIH systems
 today both for new or experienced users
 is to use **[dask-jobqueue](https://jobqueue.dask.org/)**.
@@ -181,7 +177,7 @@ in some routine batch production workloads.
 You can launch a Dask network using
 `mpirun` or `mpiexec` and the `dask-mpi` command line executable.
 This depends on the [mpi4py library](#mpi4py-mpi-for-python).
-For more detailed information please check
+For more detailed information, please check
 [the official documentation](https://docs.dask.org/en/latest/setup/hpc.html#using-mpi).
 
 ##### Dask-jobqueue
@@ -196,13 +192,13 @@ for a Dask module (which can be loaded by: `module load dask`).
 
 The availability of the exact packages (such a Dask-jobqueue)
 in the module can be checked by the
-`module whatis <name_of_the_module>` command.
+`module whatis <name_of_the_module>` command, e.g. `module whatis dask`.
 
 Moreover, it is possible to install and use `dask-jobqueue`
 in your local python environments.
 You can install Dask-jobqueue with `pip` or `conda`.
 
-###### Example of use Dask-jobqueue with SLURMCluster
+###### Example of Using Dask-Jobqueue with SLURMCluster
 
 [Dask-jobqueue](https://jobqueue.dask.org/en/latest/howitworks.html#workers-vs-jobs)
 allows running jobs on the ZIH system
@@ -382,7 +378,7 @@ allowing any Python program to exploit multiple processors.
 
 Mpi4py is based on MPI-2 C++ bindings. It supports almost all MPI calls.
 It supports communication of pickle-able Python objects.
-Mpi4py provides optimized the communication of NumPy arrays.
+Mpi4py provides optimized communication of NumPy arrays.
 
 Mpi4py is included in the SciPy-bundle modules on the ZIH system.
 
