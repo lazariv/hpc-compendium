@@ -21,7 +21,7 @@ a registry of highly GPU-optimized software,
 has been enabling scientists and researchers by providing regularly updated
 and validated containers of HPC and AI applications.
 
-NGC containers support Singularity.
+Singularity supports NGC containers.
 
 NGC containers are optimized for HPC applications.
 NGC containers are **GPU-optimized** containers
