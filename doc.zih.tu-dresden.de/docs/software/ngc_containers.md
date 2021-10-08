@@ -107,7 +107,7 @@ However, for the educational purpose, the separate commands will be presented be
 marie@login$ srun --partition=alpha --nodes=1 --ntasks-per-node=1 --ntasks=1 --gres=gpu:1 --time=08:00:00 --pty --mem=50000 bash    #allocate one GPU
 ```
 
-Run a shell within a container with a `singularity shell` command:
+Run a shell within a container with the `singularity shell` command:
 
 ```console
 marie@compute$ singularity shell --nv -B /scratch/ws/0/anpo879a-ImgNet/imagenet:/data/imagenet pytorch:21.06-py3
