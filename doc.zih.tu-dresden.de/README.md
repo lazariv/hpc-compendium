@@ -465,6 +465,8 @@ should be highlighted, etc. Code examples, longer than half screen height should
 **TODO** Guide [Issue #14](#14)
 
 * Capitalize headings, e.g. *Exclusive Reservation of Hardware*
+* Give keywords in link texts, e.g. [Code Blocks](#code-blocks-and-syntax-highlighting) is more
+  descriptive than [this subsection](#code-blocks-and-syntax-highlighting)
 
 ### Spelling and Technical Wording
 
