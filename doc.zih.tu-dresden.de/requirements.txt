@@ -4,3 +4,11 @@ mkdocs>=1.1.2
 # Add custom theme if not inside a theme_dir
 # (https://github.com/mkdocs/mkdocs/wiki/MkDocs-Themes)
 mkdocs-material>=7.1.0
+
+# Python-based markdownlinter:
+# https://github.com/jorisroovers/pymarkdownlint
+pymarkdownlint
+
+# Link checker in python:
+# https://linkchecker.github.io/linkchecker/
+git+https://github.com/linkchecker/linkchecker.git
