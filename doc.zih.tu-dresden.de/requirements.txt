@@ -9,6 +9,6 @@ mkdocs-material>=7.1.0
 # https://github.com/jorisroovers/pymarkdownlint
 pymarkdownlint
 
-# Link checker in python:
-# https://linkchecker.github.io/linkchecker/
-git+https://github.com/linkchecker/linkchecker.git
+# # Link checker in python:
+# https://github.com/scivision/linkchecker-markdown
+linkcheckmd
