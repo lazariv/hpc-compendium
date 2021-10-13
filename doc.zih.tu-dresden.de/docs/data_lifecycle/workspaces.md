@@ -153,8 +153,8 @@ marie@login$ ws_restore -l -F scratch
 to get a list of your expired workspaces, and then restore them like that into an existing, active
 workspace 'new_ws':
 
-```
-ws_restore -F scratch marie-test-workspace-1234567 new_ws
+```console
+marie@login$ ws_restore -F scratch marie-test-workspace-1234567 new_ws
 ```
 
 The expired workspace has to be specified by its full name as listed by `ws_restore -l`, including
