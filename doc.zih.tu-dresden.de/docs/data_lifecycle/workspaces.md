@@ -110,7 +110,7 @@ maximum durations. A workspace can be extended multiple times, depending on the 
 To extend your workspace use the following command:
 
 ```
-zih$ ws_extend -F scratch test-workspace 100      #extend the workspace for 100 days
+marie@login$ ws_extend -F scratch test-workspace 100      #extend the workspace for 100 days
 Info: extending workspace.
 /scratch/ws/marie-test-workspace
 remaining extensions  : 1
