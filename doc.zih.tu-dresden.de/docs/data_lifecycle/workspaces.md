@@ -261,8 +261,8 @@ remaining time in days: 365
 
 To see your active quota use:
 
-```
-qinfo quota /warm_archive/ws/
+```console
+marie@login$ qinfo quota /warm_archive/ws/
 ```
 
 Note that the workspaces reside under the mountpoint `/warm_archive/ws/` and not `/warm_archive`
