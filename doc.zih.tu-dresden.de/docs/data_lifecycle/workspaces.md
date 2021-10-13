@@ -146,8 +146,8 @@ warm_archive: 2 months), you can still restore your data into an existing worksp
 
 Use:
 
-```
-ws_restore -l -F scratch
+```console
+marie@login$ ws_restore -l -F scratch
 ```
 
 to get a list of your expired workspaces, and then restore them like that into an existing, active
