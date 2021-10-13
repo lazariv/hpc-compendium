@@ -234,8 +234,8 @@ chmod g+wrx /scratch/ws/marie-my_scratchdata
 
 And verify it with:
 
-```
-zih $ ls -la /scratch/ws/marie-my_scratchdata
+```console
+marie@login$ ls -la /scratch/ws/marie-my_scratchdata
 total 8
 drwxrwx--- 2 marie    hpcsupport 4096 Jul 10 09:03 .
 drwxr-xr-x 5 operator adm        4096 Jul 10 09:01 ..
