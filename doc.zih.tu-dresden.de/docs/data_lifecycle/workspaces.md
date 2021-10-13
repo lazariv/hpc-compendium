@@ -247,8 +247,8 @@ For data that seldom changes but consumes a lot of space, the warm archive can b
 this is mounted read-only on the compute nodes, so you cannot use it as a work directory for your
 jobs!
 
-```
-zih$ ws_allocate -F warm_archive my_inputdata 365
+```console
+marie@login$ ws_allocate -F warm_archive my_inputdata 365
 /warm_archive/ws/marie-my_inputdata
 remaining extensions  : 2
 remaining time in days: 365
