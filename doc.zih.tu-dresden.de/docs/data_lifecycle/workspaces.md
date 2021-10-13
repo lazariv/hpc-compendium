@@ -218,8 +218,8 @@ Likewise, other jobs can use temporary workspaces.
 For a series of jobs or calculations that work on the same data, you should allocate a workspace
 once, e.g., in `scratch` for 100 days:
 
-```
-zih$ ws_allocate -F scratch my_scratchdata 100
+```console
+marie@login$ ws_allocate -F scratch my_scratchdata 100
 Info: creating workspace.
 /scratch/ws/marie-my_scratchdata
 remaining extensions  : 2
