@@ -102,9 +102,9 @@ maximum durations. A workspace can be extended multiple times, depending on the 
 
 | Storage system (use with parameter -F ) | Duration, days | Extensions | Remarks |
 |:------------------------------------------:|:----------:|:-------:|:---------------------------------------------------------------------------------------:|
-| `ssd`                                       | 30 | 10 | High-IOPS filesystem (`/lustre/ssd`) on SSDs.                                          |
+| `ssd`                                       | 30 | 2 | High-IOPS filesystem (`/lustre/ssd`) on SSDs.                                          |
 | `beegfs`                                     | 30 | 2 | High-IOPS filesystem (`/lustre/ssd`) onNVMes.                                          |
-| `scratch`                                    | 100 | 2 | Scratch filesystem (/scratch) with high streaming bandwidth, based on spinning disks |
+| `scratch`                                    | 100 | 10 | Scratch filesystem (/scratch) with high streaming bandwidth, based on spinning disks |
 | `warm_archive`                               | 365 | 2 | Capacity filesystem based on spinning disks                                          |
 
 To extend your workspace use the following command:
