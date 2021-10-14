@@ -126,6 +126,7 @@ This means when you extend a workspace that expires in 90 days with the command
 ```console
 marie@login$ ws_extend -F scratch my-workspace 40
 ```
+
 it will now expire in 40 days **not** 130 days.
 
 ### Deletion of a Workspace
