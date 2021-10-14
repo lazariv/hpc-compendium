@@ -68,11 +68,31 @@ have to be generated following these rules:
 
 The generated public key is usually saved at `~/.ssh/id_ed25519` at your local system. To allow for
 password-less SSH connection to ZIH systems, it has to be added to the file `.ssh/authorized_keys` within
-your home directory `/home/<zih-login>/` at ZIH systems.
+your home directory `/home/<zih-login>/` at ZIH systems. The public key can be transferred using
+tools like `scp`, `rsync`, or `ssh-copy-id`. Please refer to the corresponding man page. After the
+public key is in place, you can connect to ZIH systems via
 
 ```console
 marie@local$ ssh -i id-ed25519 <zih-login>@taurus.hrsk.tu-dresden.de
 Enter passphrase for key 'id-ed25519':
+```
+
+### SSH Config
+
+You can make the SSH login process more comfortable by creating an entry in your SSH config file. For
+that, you just add en entry like this
+
+```bash
+ Host <any_name>
+   HostName taurus.hrsk.tu-dresden.de
+   User <zih-login>
+   IdentityFile <path_to_public_key>
+```
+
+to your `~/.ssh/config` and afterwards the ssh connection call is shortened to
+
+```console
+marie@local$ ssh <any_name>
 ```
 
 ## Connecting from Windows
