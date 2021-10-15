@@ -8,7 +8,7 @@ basedir=`dirname "$basedir"`
 
 function usage () {
   echo "$0 [options]"
-  echo "Search for bash-files that have an invalid syntax."
+  echo "Search for bash files that have an invalid syntax."
   echo ""
   echo "Options:"
   echo "  -a           Search in all bash files (default: git-changed files)" 
