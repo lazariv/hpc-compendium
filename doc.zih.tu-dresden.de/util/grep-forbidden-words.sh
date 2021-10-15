@@ -18,6 +18,7 @@ i	file \+system	HDFS
 i	\<taurus\>	taurus\.hrsk	/taurus	/TAURUS
 i	\<hrskii\>
 i	hpc[ -]\+da\>
+i	ATTACHURL
 i	\(alpha\|ml\|haswell\|romeo\|gpu\|smp\|julia\|hpdlf\|scs5\)-\?\(interactive\)\?[^a-z]*partition
 i	\[\s\?\(documentation\|here\|this \(link\|page\|subsection\)\|slides\?\|manpage\)\s\?\]
 i	work[ -]\+space"
