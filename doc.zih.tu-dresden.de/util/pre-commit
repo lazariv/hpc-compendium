@@ -1,7 +1,4 @@
 #!/bin/bash
-exit_ok=yes
-files=$(git diff-index --cached --name-only HEAD)
-
 function testPath(){
 path_to_test=doc.zih.tu-dresden.de/docs/$1
 test -f "$path_to_test" || echo $path_to_test does not exist
@@ -15,29 +12,39 @@ fi
 
 export -f testPath
 
-for file in $files
-do
-  if [ $file == doc.zih.tu-dresden.de/mkdocs.yml ]
+exit_ok=yes
+branch="origin/${CI_MERGE_REQUEST_TARGET_BRANCH_NAME:-preview}"
+if [ -f "$GIT_DIR/MERGE_HEAD" ]
+then
+  source_hash=`git merge-base HEAD "$branch"`
+else
+  source_hash=`git rev-parse HEAD`
+fi
+#Remove everything except lines beginning with --- or +++
+files=`git diff $source_hash | sed -E -n 's#^(---|\+\+\+) ((/|./)[^[:space:]]+)$#\2#p'`
+#Assume that we have pairs of lines (starting with --- and +++).
+while read oldfile; do
+  read newfile
+  
+  if [ "$newfile" == doc.zih.tu-dresden.de/mkdocs.yml ]
   then
-    echo Testing $file
+    echo Testing "$newfile"
     sed -n '/^ *- /s#.*: \([A-Za-z_/]*.md\).*#\1#p' doc.zih.tu-dresden.de/mkdocs.yml | xargs -L1 -I {} bash -c "testPath '{}'"
     if [ $? -ne 0 ]
     then
       exit_ok=no
     fi
-  elif [[ $file =~ ^doc.zih.tu-dresden.de/(.*.md)$ ]]
+  elif [[ "$newfile" =~ ^b/doc.zih.tu-dresden.de/(.*.md)$ ]]
   then
     filepattern=${BASH_REMATCH[1]}
 
-    #lint
-    echo "Checking linter..."
+    echo "Linting..."
     docker run --name=hpc-compendium --rm -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium markdownlint $filepattern
     if [ $? -ne 0 ]
     then
       exit_ok=no
     fi
 
-    #link-check
     echo "Checking links..."
     docker run --name=hpc-compendium --rm -w /docs --mount src="$(pwd)"/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium markdown-link-check $filepattern
     if [ $? -ne 0 ]
@@ -45,9 +52,15 @@ do
       exit_ok=no
     fi
   fi
-done
+done <<< "$files"
 
-#spell-check
+echo "Testing syntax of bash files..."
+docker run --name=hpc-compendium --rm -w /docs --mount src="$(pwd)",target=/docs,type=bind hpc-compendium ./doc.zih.tu-dresden.de/util/check-bash-syntax.sh
+if [ $? -ne 0 ]
+then
+  exit_ok=no
+fi
+
 echo "Spell-checking..."
 docker run --name=hpc-compendium --rm -w /docs --mount src="$(pwd)",target=/docs,type=bind hpc-compendium ./doc.zih.tu-dresden.de/util/check-spelling.sh
 if [ $? -ne 0 ]
@@ -55,7 +68,6 @@ then
   exit_ok=no
 fi
 
-#forbidden words checking
 echo "Forbidden words checking..."
 docker run --name=hpc-compendium --rm -w /docs --mount src="$(pwd)",target=/docs,type=bind hpc-compendium ./doc.zih.tu-dresden.de/util/grep-forbidden-words.sh
 if [ $? -ne 0 ]
