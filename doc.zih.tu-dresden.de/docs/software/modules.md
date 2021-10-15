@@ -32,7 +32,7 @@ certain module, you can use `module avail softwarename` and it will display the 
 
 ## Module environments
 
-On Taurus, there exist different module environments, each containing a set of software modules.
+On taurus, there exist different module environments, each containing a set of software modules.
 They are activated via the meta module modenv which has different versions, one of which is loaded
 by default. You can switch between them by simply loading the desired modenv-version, e.g.:
 
@@ -47,8 +47,8 @@ marie@compute$ module load modenv/ml
 
 ### modenv/ml
 
-* HPC-DA software (for use on the "ml" partition)
-* necessary to run most software on the "ml" partition
+* hpc-da software (for use on the ml-partition)
+* necessary to run most software on the ml-partition
 (The instruction set [Power ISA](https://en.wikipedia.org/wiki/Power_ISA#Power_ISA_v.3.0)
 is different from the usual x86 instruction set.
 Thus the 'machine code' of other modenvs breaks).
