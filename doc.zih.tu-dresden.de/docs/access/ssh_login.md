@@ -81,10 +81,10 @@ marie@local$ ssh marie@taurus.hrsk.tu-dresden.de
 marie@login$ exit
 ```
 
-However, you can make this more comfortable if you prepare a configuration on your local computer.
-Navigate to the subdirectory `.ssh` in your home directory and open the file `config` in your
-favorite editor. If it does not exist, create it. Put the following lines in it (you can omit lines
-starting with `#`):
+However, you can make this more comfortable if you prepare an SSH configuration on your local
+workstation. Navigate to the subdirectory `.ssh` in your home directory and open the file `config`
+(`~/.ssh/config`) in your favorite editor. If it does not exist, create it. Put the following lines
+in it (you can omit lines starting with `#`):
 
 ```bash
 Host taurus
@@ -95,8 +95,9 @@ Host taurus
   IdentityFile ~/.ssh/id_ed25519
   #Don't try other keys if you have more:
   IdentitiesOnly yes
-  #Enable X11 forwarding for graphical applications. You don't need parameter -X when invoking ssh then.
+  #Enable X11 forwarding for graphical applications and compression. You don't need parameter -X and -C when invoking ssh then.
   ForwardX11 yes
+  Compression yes
 ```
 
 Afterwards, you can connect to the ZIH system using:
@@ -108,8 +109,16 @@ marie@local$ ssh taurus
 ### X11-Forwarding
 
 If you plan to use an application with graphical user interface (GUI), you need to enable
-X11-forwarding for the connection. Add the option `-X` or `-XC` to your SSH command. The `-C` enables
-compression which usually improves usability in this case).
+X11-forwarding for the connection. If you use the SSH configuration described above, everything is
+already prepared and you can simply use:
+
+```console
+marie@local$ ssh taurus
+```
+
+If you have omitted the last two lines in the default configuration above, you need to add the
+option `-X` or `-XC` to your SSH command. The `-C` enables compression which usually improves
+usability in this case:
 
 ```console
 marie@local$ ssh -XC taurus
