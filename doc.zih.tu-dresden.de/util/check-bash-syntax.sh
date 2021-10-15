@@ -56,7 +56,6 @@ else
 fi
 
 
-echo "... $files ..."
 cnt=0
 for f in $files; do
   if ! bash -n $f; then
