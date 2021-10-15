@@ -66,7 +66,6 @@ for f in $files; do
   fi
 done
 
-echo "" 
 case $cnt in
   1)
     echo "Bash-files with invalid syntax: 1 match found"
