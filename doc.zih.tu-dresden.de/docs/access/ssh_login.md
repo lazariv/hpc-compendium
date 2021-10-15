@@ -49,7 +49,7 @@ Are you sure you want to continue connecting (yes/no)?
 ```
 
 Compare the shown fingerprint with the [documented fingerprints](key_fingerprints.md). Make sure
-they match. Than you can accept by typing `yes`.
+they match. Then you can accept by typing `yes`.
 
 !!! info
     If `ssh-copy-id` is not available, you need to do additional steps:
