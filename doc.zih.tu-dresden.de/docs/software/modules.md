@@ -9,7 +9,8 @@ Usage of software on HPC systems is managed by a **modules system**.
     and utilities. With the help of modules, users can smoothly switch between different versions of
     installed software packages and libraries.
 
-For all applications, tools, libraries etc. the correct environment can be easily set by calling "module load" or "module unload".
+For all applications, tools, libraries etc. the correct environment can be easily set by
+calling "module load" or "module unload".
 
 ## Module Commands
 
@@ -40,18 +41,25 @@ marie@compute$ module load modenv/ml
 ```
 
 ### modenv/scs5 (default)
+
 * SCS5 software
 * usually optimized for Intel processors (Partitions: haswell, broadwell, gpu2, julia)
 
 ### modenv/ml
+
 * HPC-DA software (for use on the "ml" partition)
-* necessary to run most software on the "ml" partition (The instruction set [Power ISA](https://en.wikipedia.org/wiki/Power_ISA#Power_ISA_v.3.0) is different from the usual x86 instruction set. Thus the 'machine code' of other modenvs breaks).
+* necessary to run most software on the "ml" partition
+(The instruction set [Power ISA](https://en.wikipedia.org/wiki/Power_ISA#Power_ISA_v.3.0)
+is different from the usual x86 instruction set.
+Thus the 'machine code' of other modenvs breaks).
 
 ### modenv/hiera
+
 * uses a hierarchical module load scheme
 * optimized software for AMD processors (Partitions: romeo, alpha)
 
 ### modenv/classic
+
 * deprecated, old software. Is not being curated.
 * may break due to library inconsistencies with the operating system.
 * please don't use software from that modenv
@@ -77,7 +85,7 @@ and in some cases cannot fall-back to a more generic build either. That's why we
 ### Example Invocation of ml_arch_avail
 
 ```
-marie@compute$ ml_arch_avail CP2K
+marie@compute$ ml_ar:qLch_avail CP2K
 
 Example output:
 
@@ -100,12 +108,13 @@ single user as well as all users of project group. The workflow and settings for
 files is described in the following. The [settings for project private
 modules](#project-private-modules) differ only in details.
 
-In order to use your own module files please use the command 
+In order to use your own module files please use the command
 `module use <path_to_module_files>`. It will add the path to the list of module directories
-that are searched by lmod (i.e. the `module` command). You may use a directory `privatemodules` 
+that are searched by lmod (i.e. the `module` command). You may use a directory `privatemodules`
 within your home or project directory to setup your own module files.
 
-Please see the [Environment Modules open source project's webpage](http://modules.sourceforge.net/) for futher information on writing module files.
+Please see the [Environment Modules open source project's webpage](http://modules.sourceforge.net/)
+for futher information on writing module files.
 
 ### 1. Create Directories
 
@@ -114,6 +123,7 @@ marie@compute$ cd $HOME
 marie@compute$ mkdir --verbose --parents privatemodules/testsoftware
 marie@compute$ cd privatemodules/testsoftware
 ```
+
 (create a directory in your home directory)
 
 ### 2. Notify lmod
@@ -121,12 +131,15 @@ marie@compute$ cd privatemodules/testsoftware
 ```
 marie@compute$ module use $HOME/privatemodules
 ```
+
 (add the directory in the list of module directories)
 
 ### 3. Create Modulefile
 
-Create a file with the name `1.0` with a test software in the `testsoftware` directory you created earlier (use e.g.
-echo, emacs, etc)
+Create a file with the name `1.0` with a
+test software in the `testsoftware` directory you created earlier
+(use e.g. echo, emacs, etc)
+
 ```
 #%Module######################################################################
 ##
@@ -187,7 +200,7 @@ the `module load` command.
 
 An automated backup system provides security for the HOME-directories on the cluster on a daily
 basis. This is the reason why we urge users to store (large) temporary data (like checkpoint files)
-on the /scratch -Filesystem or at local scratch disks.
+on the /scratch filesystem or at local scratch disks.
 
 **Please note**: We have set `ulimit -c 0` as a default to prevent users from filling the disk with
 the dump of a crashed program. bash -users can use `ulimit -Sc unlimited` to enable the debugging
