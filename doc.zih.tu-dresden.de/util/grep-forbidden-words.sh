@@ -18,12 +18,14 @@ i	file \+system	HDFS
 i	\<taurus\>	taurus\.hrsk	/taurus	/TAURUS
 i	\<hrskii\>
 i	hpc[ -]\+da\>
+i	ATTACHURL
 i	\(alpha\|ml\|haswell\|romeo\|gpu\|smp\|julia\|hpdlf\|scs5\)-\?\(interactive\)\?[^a-z]*partition
+i	\[\s\?\(documentation\|here\|this \(link\|page\|subsection\)\|slides\?\|manpage\)\s\?\]
 i	work[ -]\+space"
 
 # Whitelisted files will be ignored
 # Whitespace separated list with full path
-whitelist=(doc.zih.tu-dresden.de/docs/contrib/content_rules.md)
+whitelist=(doc.zih.tu-dresden.de/README.md doc.zih.tu-dresden.de/docs/contrib/content_rules.md doc.zih.tu-dresden.de/docs/access/ssh_login.md)
 
 function grepExceptions () {
   if [ $# -gt 0 ]; then
@@ -87,7 +89,7 @@ fi
 echo "... $files ..."
 cnt=0
 for f in $files; do
-  if [ "$f" != doc.zih.tu-dresden.de/README.md -a "${f: -3}" == ".md" -a -f "$f" ]; then
+  if [ "${f: -3}" == ".md" -a -f "$f" ]; then
     if (printf '%s\n' "${whitelist[@]}" | grep -xq $f); then
       echo "Skip whitelisted file $f"
       continue

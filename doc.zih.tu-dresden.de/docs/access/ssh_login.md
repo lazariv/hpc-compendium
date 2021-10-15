@@ -13,7 +13,8 @@ For more information on our VPN and how to set it up, please visit the correspon
 
 ## Connecting from Linux
 
-Please use an up-to-date SSH client. The login nodes accept the following encryption algorithms:
+SSH establishes secure connections using authentication and encryption. Thus, please use an
+up-to-date SSH client. The login nodes accept the following encryption algorithms:
 
 * `aes128-ctr`
 * `aes192-ctr`
@@ -23,57 +24,110 @@ Please use an up-to-date SSH client. The login nodes accept the following encryp
 * `chacha20-poly1305@openssh.com`
 * `chacha20-poly1305@openssh.com`
 
-### SSH Session
+### Before Your First Connection
 
-If your workstation is within the campus network, you can connect to the HPC login nodes directly.
+We suggest to create an SSH key pair before you work with the ZIH systems. This ensures high
+connection security.
 
 ```console
-marie@local$ ssh <zih-login>@taurus.hrsk.tu-dresden.de
+marie@local$ mkdir -p ~/.ssh
+marie@local$ ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519
+Generating public/private ed25519 key pair.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+[...]
 ```
 
-If you connect for the fist time, the client will ask you to verify the host by its fingerprint:
+Type in a passphrase for the protection of your key. The passphrase should be **non-empty**.
+Copy the public key to the ZIH system (Replace placeholder `marie` with your ZIH login):
 
 ```console
-marie@local$: ssh <zih-login>@taurus.hrsk.tu-dresden.de
+marie@local$ ssh-copy-id -i ~/.ssh/id_ed25519.pub marie@taurus.hrsk.tu-dresden.de
 The authenticity of host 'taurus.hrsk.tu-dresden.de (141.30.73.104)' can't be established.
 RSA key fingerprint is SHA256:HjpVeymTpk0rqoc8Yvyc8d9KXQ/p2K0R8TJ27aFnIL8.
 Are you sure you want to continue connecting (yes/no)?
 ```
 
 Compare the shown fingerprint with the [documented fingerprints](key_fingerprints.md). Make sure
-they match. Than you can accept by typing `y` or `yes`.
+they match. Then you can accept by typing `yes`.
+
+!!! info
+    If `ssh-copy-id` is not available, you need to do additional steps:
+
+    ```console
+    marie@local$ scp ~/.ssh/id_ed25519.pub marie@taurus.hrsk.tu-dresden.de:
+    The authenticity of host 'taurus.hrsk.tu-dresden.de (141.30.73.104)' can't be established.
+    RSA key fingerprint is SHA256:HjpVeymTpk0rqoc8Yvyc8d9KXQ/p2K0R8TJ27aFnIL8.
+    Are you sure you want to continue connecting (yes/no)?
+    ```
+
+    After that, you need to manually copy the key to the right place:
+
+    ```console
+    marie@local$ ssh marie@taurus.hrsk.tu-dresden.de
+    [...]
+    marie@login$ mkdir -p ~/.ssh
+    marie@login$ touch ~/.ssh/authorized_keys
+    marie@login$ cat id_ed25519.pub >> ~/.ssh/authorized_keys
+    ```
+
+#### Configuring Default Parameters for SSH
+
+After you have copied your key to the ZIH system, you should be able to connect using:
+
+```console
+marie@local$ ssh marie@taurus.hrsk.tu-dresden.de
+[...]
+marie@login$ exit
+```
+
+However, you can make this more comfortable if you prepare an SSH configuration on your local
+workstation. Navigate to the subdirectory `.ssh` in your home directory and open the file `config`
+(`~/.ssh/config`) in your favorite editor. If it does not exist, create it. Put the following lines
+in it (you can omit lines starting with `#`):
+
+```bash
+Host taurus
+  HostName taurus.hrsk.tu-dresden.de
+  #Put your ZIH-Login after keyword "User":
+  User marie
+  #Path to private key:
+  IdentityFile ~/.ssh/id_ed25519
+  #Don't try other keys if you have more:
+  IdentitiesOnly yes
+  #Enable X11 forwarding for graphical applications and compression. You don't need parameter -X and -C when invoking ssh then.
+  ForwardX11 yes
+  Compression yes
+```
+
+Afterwards, you can connect to the ZIH system using:
+
+```console
+marie@local$ ssh taurus
+```
 
 ### X11-Forwarding
 
 If you plan to use an application with graphical user interface (GUI), you need to enable
-X11-forwarding for the connection. Add the option `-X` or `-XC` to your SSH command. The `-C` enables
-compression which usually improves usability in this case).
+X11-forwarding for the connection. If you use the SSH configuration described above, everything is
+already prepared and you can simply use:
 
 ```console
-marie@local$ ssh -XC <zih-login>@taurus.hrsk.tu-dresden.de
+marie@local$ ssh taurus
+```
+
+If you have omitted the last two lines in the default configuration above, you need to add the
+option `-X` or `-XC` to your SSH command. The `-C` enables compression which usually improves
+usability in this case:
+
+```console
+marie@local$ ssh -XC taurus
 ```
 
 !!! info
 
     Also consider to use a [DCV session](desktop_cloud_visualization.md) for remote desktop
     visualization at ZIH systems.
-
-### Password-Less SSH
-
-Of course, password-less SSH connecting is supported at ZIH. All public SSH keys for ZIH systems
-have to be generated following these rules:
-
-  * The **ED25519** algorithm has to be used, e.g., `ssh-keygen -t ed25519`
-  * A **non-empty** passphrase for the private key must be set.
-
-The generated public key is usually saved at `~/.ssh/id_ed25519` at your local system. To allow for
-password-less SSH connection to ZIH systems, it has to be added to the file `.ssh/authorized_keys` within
-your home directory `/home/<zih-login>/` at ZIH systems.
-
-```console
-marie@local$ ssh -i id-ed25519 <zih-login>@taurus.hrsk.tu-dresden.de
-Enter passphrase for key 'id-ed25519':
-```
 
 ## Connecting from Windows
 
