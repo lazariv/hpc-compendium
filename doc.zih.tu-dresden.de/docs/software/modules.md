@@ -97,8 +97,7 @@ Example output:
 ```
 
 The command shows all modules that match on CP2K, and their respective availability. Note that this
-will not work for meta-modules that do not have an installation directory (like some toolchain
-modules).
+will not work for meta-modules that do not have an installation directory (like some tool chain modules).
 
 ## Project and User Private Modules
 
