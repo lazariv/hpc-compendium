@@ -68,7 +68,7 @@ done
 
 case $cnt in
   1)
-    echo "Bash-files with invalid syntax: 1 match found"
+    echo "Bash files with invalid syntax: 1 match found"
   ;;
   *)
     echo "Bash-files with invalid syntax: $cnt matches found"
