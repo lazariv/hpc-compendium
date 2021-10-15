@@ -71,7 +71,7 @@ case $cnt in
     echo "Bash files with invalid syntax: 1 match found"
   ;;
   *)
-    echo "Bash-files with invalid syntax: $cnt matches found"
+    echo "Bash files with invalid syntax: $cnt matches found"
   ;;
 esac
 if [ $cnt -gt 0 ]; then
