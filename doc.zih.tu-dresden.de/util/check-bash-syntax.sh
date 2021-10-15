@@ -60,7 +60,7 @@ cnt=0
 for f in $files; do
   if ! bash -n $f; then
     if [ $silent = false ]; then
-      echo "Bash-file $f has invalid syntax"
+      echo "Bash file $f has invalid syntax"
     fi
     ((cnt=cnt+1))
   fi
