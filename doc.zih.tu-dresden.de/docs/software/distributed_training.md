@@ -141,6 +141,9 @@ wait
 !!! note
     This section is under construction
 
+Pytorch provides mutliple ways to acheieve data parallelism to train the deep learning models effieciently. These models are part of the `torch.distributed` sub-package that ships 
+with the main deep learning package.
+
 #### Using Multiple GPUs with PyTorch
 
 The example below shows how to solve that problem by using model parallelism, which in contrast to
