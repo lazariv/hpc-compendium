@@ -38,7 +38,7 @@ There is a special module that is always loaded (sticky) called
 |                |                                                 |         |
 |----------------|-------------------------------------------------|---------|
 | modenv/scs5    | SCS5 software                                   | default |
-| modenv/ml      | HPC-DA software (for use on the "ml" partition) |         |
+| modenv/ml      | HPC-DA software (for use on the partition ml)   |         |
 | modenv/classic | Manually built pre-SCS5 (AE4.0) software        | hidden  |
 
 The old modules (pre-SCS5) are still available after loading the
