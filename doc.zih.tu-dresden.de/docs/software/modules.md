@@ -30,20 +30,20 @@ see all topics and their available module files. If you just wish to see the ins
 certain module, you can use `module avail softwarename` and it will display the available versions of
 `softwarename` only.
 
-## Module environments
+## Module Environments
 
 On the ZIH systems, there exist different module environments, each containing a set of software modules.
-They are activated via the meta module modenv which has different versions, one of which is loaded
+They are activated via the meta module `modenv` which has different versions, one of which is loaded
 by default. You can switch between them by simply loading the desired modenv-version, e.g.:
 
-```
+```console
 marie@compute$ module load modenv/ml
 ```
 
 ### modenv/scs5 (default)
 
 * SCS5 software
-* usually optimized for Intel processors (Partitions: haswell, broadwell, gpu2, julia)
+* usually optimized for Intel processors (Partitions: `haswell`, `broadwell`, `gpu2`, `julia`)
 
 ### modenv/ml
 
@@ -70,12 +70,11 @@ The command `module spider <modname>` allows searching for specific software in 
 environments. It will also display information on how to load a found module when giving a precise
 module (with version) as the parameter.
 
-## Per-architecture builds
+## Per-architecture Builds
 
 Since we have a heterogeneous cluster, we do individual builds of some of the software for each
 architecture present. This ensures that, no matter what partition the software runs on, a build
-optimized for the host architecture is used automatically. This is achieved by having
-'/sw/installed' symlinked to different directories on the compute nodes.
+optimized for the host architecture is used automatically. For that purpose we have created symbolic links at the system path '/sw/installed' on the compute nodes.
 
 However, not every module will be available for each node type or partition. Especially when
 introducing new hardware to the cluster, we do not want to rebuild all of the older module versions
@@ -84,7 +83,7 @@ and in some cases cannot fall-back to a more generic build either. That's why we
 
 ### Example Invocation of ml_arch_avail
 
-```
+```console
 marie@compute$ ml_ar:qLch_avail CP2K
 
 Example output:
@@ -112,12 +111,12 @@ In order to use your own module files please use the command
 that are searched by lmod (i.e. the `module` command). You may use a directory `privatemodules`
 within your home or project directory to setup your own module files.
 
-Please see the [Environment Modules open source project's webpage](http://modules.sourceforge.net/)
-for futher information on writing module files.
+Please see the [Environment Modules open source project's web page](http://modules.sourceforge.net/)
+for further information on writing module files.
 
 ### 1. Create Directories
 
-```
+```console
 marie@compute$ cd $HOME
 marie@compute$ mkdir --verbose --parents privatemodules/testsoftware
 marie@compute$ cd privatemodules/testsoftware
@@ -127,7 +126,7 @@ marie@compute$ cd privatemodules/testsoftware
 
 ### 2. Notify lmod
 
-```
+```console
 marie@compute$ module use $HOME/privatemodules
 ```
 
@@ -137,7 +136,7 @@ marie@compute$ module use $HOME/privatemodules
 
 Create a file with the name `1.0` with a
 test software in the `testsoftware` directory you created earlier
-(use e.g. echo, emacs, etc)
+(using your favorite editor) and paste the following text into it:
 
 ```
 #%Module######################################################################
@@ -171,9 +170,9 @@ Check the availability of the module with `ml av`, the output should look like t
 
 ### 5. Load Module
 
-Load the test module with `module load testsoftware`, the output:
+Load the test module with `module load testsoftware`, the output should look like this:
 
-```
+```console
 Load testsoftware version 1.0
 Module testsoftware/1.0 loaded.
 ```
@@ -188,7 +187,7 @@ The module files have to be stored in your global projects directory
 above. To use a project-wide module file you have to add the path to the module file to the module
 environment with the command
 
-```
+```console
 marie@compute$ module use /projects/p_projectname/privatemodules
 ```
 
@@ -202,5 +201,5 @@ basis. This is the reason why we urge users to store (large) temporary data (lik
 on the /scratch filesystem or at local scratch disks.
 
 **Please note**: We have set `ulimit -c 0` as a default to prevent users from filling the disk with
-the dump of a crashed program. bash -users can use `ulimit -Sc unlimited` to enable the debugging
-via analyzing the core file (limit coredumpsize unlimited for tcsh).
+the dump of crashed programs. `bash` users can use `ulimit -Sc unlimited` to enable the debugging
+via analyzing the core file.
