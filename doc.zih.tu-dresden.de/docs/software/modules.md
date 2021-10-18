@@ -74,7 +74,9 @@ module (with version) as the parameter.
 
 Since we have a heterogeneous cluster, we do individual builds of some of the software for each
 architecture present. This ensures that, no matter what partition the software runs on, a build
-optimized for the host architecture is used automatically. For that purpose we have created symbolic links at the system path '/sw/installed' on the compute nodes.
+optimized for the host architecture is used automatically.
+For that purpose we have created symbolic links on the compute nodes,
+at the system path '/sw/installed'.
 
 However, not every module will be available for each node type or partition. Especially when
 introducing new hardware to the cluster, we do not want to rebuild all of the older module versions
