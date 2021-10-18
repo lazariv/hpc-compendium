@@ -32,7 +32,7 @@ certain module, you can use `module avail softwarename` and it will display the 
 
 ## Module environments
 
-On Taurus, there exist different module environments, each containing a set of software modules.
+On the ZIH systems, there exist different module environments, each containing a set of software modules.
 They are activated via the meta module modenv which has different versions, one of which is loaded
 by default. You can switch between them by simply loading the desired modenv-version, e.g.:
 
@@ -47,8 +47,8 @@ marie@compute$ module load modenv/ml
 
 ### modenv/ml
 
-* HPC-DA software (for use on the "ml" partition)
-* necessary to run most software on the "ml" partition
+* data analytics software (for use on the partition ml)
+* necessary to run most software on the partition ml
 (The instruction set [Power ISA](https://en.wikipedia.org/wiki/Power_ISA#Power_ISA_v.3.0)
 is different from the usual x86 instruction set.
 Thus the 'machine code' of other modenvs breaks).
@@ -97,8 +97,7 @@ Example output:
 ```
 
 The command shows all modules that match on CP2K, and their respective availability. Note that this
-will not work for meta-modules that do not have an installation directory (like some toolchain
-modules).
+will not work for meta-modules that do not have an installation directory (like some tool chain modules).
 
 ## Project and User Private Modules
 
