@@ -63,6 +63,8 @@ Dockerfile
 Dockerfiles
 DockerHub
 dockerized
+dotfile
+dotfiles
 EasyBuild
 ecryptfs
 engl
