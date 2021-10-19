@@ -45,7 +45,7 @@ times till it succeeds.
 bash-4.2$ cat /tmp/marie_2759627/activate
 #!/bin/bash
 
-if ! grep -q -- "Key for the VM on the partition ml" "/home/rotscher/.ssh/authorized_keys" > /dev/null; then
+if ! grep -q -- "Key for the VM on the partition ml" "/home/marie/.ssh/authorized_keys" > /dev/null; then
   cat "/tmp/marie_2759627/kvm.pub" >> "/home/marie/.ssh/authorized_keys"
 else
   sed -i "s|.*Key for the VM on the partition ml.*|ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3siZfQ6vQ6PtXPG0RPZwtJXYYFY73TwGYgM6mhKoWHvg+ZzclbBWVU0OoU42B3Ddofld7TFE8sqkHM6M+9jh8u+pYH4rPZte0irw5/27yM73M93q1FyQLQ8Rbi2hurYl5gihCEqomda7NQVQUjdUNVc6fDAvF72giaoOxNYfvqAkw8lFyStpqTHSpcOIL7pm6f76Jx+DJg98sXAXkuf9QK8MurezYVj1qFMho570tY+83ukA04qQSMEY5QeZ+MJDhF0gh8NXjX/6+YQrdh8TklPgOCmcIOI8lwnPTUUieK109ndLsUFB5H0vKL27dA2LZ3ZK+XRCENdUbpdoG2Czz Key for the VM on the partition ml|" "/home/marie/.ssh/authorized_keys"
