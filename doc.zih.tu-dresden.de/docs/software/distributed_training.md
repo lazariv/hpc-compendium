@@ -145,7 +145,8 @@ PyTorch provides multiple ways to achieve data parallelism to train the deep lea
 efficiently. These models are part of the `torch.distributed` sub-package that ships with the main
 deep learning package.
 
-Easiest method to quickly prototype if the model is trainable in a multi-GPU setting is to wrap the exisiting model with the `torch.nn.DataParallel` class as shown below,
+The easiest method to quickly prototype if the model is trainable in a multi-GPU setting is to wrap
+the existing model with the `torch.nn.DataParallel` class as shown below,
 
 ```python
 model = torch.nn.DataParalell(model)
