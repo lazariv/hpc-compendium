@@ -158,7 +158,7 @@ achieve true parallelism due to the well known issue of Global Interpreter Lock 
 Python. To work around this issue and gain performance benefits of parallelism, the use of
 `torch.nn.DistributedDataParallel` is recommended. This involves little more code changes to set up,
 but further increases the performance of model training. The starting step is to initialize the
-process group by calling the `torch.distributed.init_process_group()` using the appropriate backend
+process group by calling the `torch.distributed.init_process_group()` using the appropriate back end
 such as NCCL, MPI or Gloo. The use of NCCL as back end is recommended as it is currently the fastest
 back end when using GPUs.
 
