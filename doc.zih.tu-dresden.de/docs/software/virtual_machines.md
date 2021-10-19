@@ -71,7 +71,7 @@ We provide [tools](virtual_machines_tools.md) to automate these steps. You may j
 The available space inside the VM can be queried with `df -h`. Currently the whole VM has 8 GB and
 with the installed operating system, 6.6 GB of available space.
 
-Sometimes the Singularity build might fail because of a disk out-of-memory error. In this case it
+Sometimes, the Singularity build might fail because of a disk out-of-memory error. In this case, it
 might be enough to delete leftover temporary files from Singularity:
 
 ```console
