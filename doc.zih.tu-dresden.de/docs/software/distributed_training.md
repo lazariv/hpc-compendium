@@ -152,10 +152,15 @@ the existing model with the `torch.nn.DataParallel` class as shown below,
 model = torch.nn.DataParalell(model)
 ```
 
-Implementing this single line of code to the exisitng application will let Pytorch know that the model needs to be parallelised. But since this method uses threading to achieve
-paralellism, it fails to achieve true parallelism due to the well known issue of Global Interpretor Lock that exists in Python. To work around this issue and gain performance
-benefits of parallelism, the use of `torch.nn.DistributedDataParallel` is recommended. This invloves little more code changes to set up, but further increases the performance of
-model training. The starting step is to initialize the process group by calling the `torch.distributed.init_process_group()` using the appropriate backend such as 'nccl', 'mpi' or 'gloo'. The use of 'nccl' as backend is recommended as it is currently the fastest backend when using GPUs.
+Adding this single line of code to the existing application will let PyTorch know that the model
+needs to be parallelized. But since this method uses threading to achieve parallelism, it fails to
+achieve true parallelism due to the well known issue of Global Interpreter Lock that exists in
+Python. To work around this issue and gain performance benefits of parallelism, the use of
+`torch.nn.DistributedDataParallel` is recommended. This involves little more code changes to set up,
+but further increases the performance of model training. The starting step is to initialize the
+process group by calling the `torch.distributed.init_process_group()` using the appropriate backend
+such as 'nccl', 'mpi' or 'gloo'. The use of 'nccl' as backend is recommended as it is currently the
+fastest backend when using GPUs.
 
 #### Using Multiple GPUs with PyTorch
 
