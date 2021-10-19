@@ -159,8 +159,8 @@ Python. To work around this issue and gain performance benefits of parallelism, 
 `torch.nn.DistributedDataParallel` is recommended. This involves little more code changes to set up,
 but further increases the performance of model training. The starting step is to initialize the
 process group by calling the `torch.distributed.init_process_group()` using the appropriate backend
-such as 'nccl', 'mpi' or 'gloo'. The use of 'nccl' as backend is recommended as it is currently the
-fastest backend when using GPUs.
+such as NCCL, MPI or Gloo. The use of NCCL as back end is recommended as it is currently the fastest
+back end when using GPUs.
 
 #### Using Multiple GPUs with PyTorch
 
