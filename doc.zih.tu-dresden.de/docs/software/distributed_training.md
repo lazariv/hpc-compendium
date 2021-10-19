@@ -183,7 +183,7 @@ DDP uses collective communications in the
 [torch.distributed](https://pytorch.org/tutorials/intermediate/dist_tuto.html) package to
 synchronize gradients and buffers.
 
-The tutorial can be found [here](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html).
+Please also look at the [official tutorial](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html).
 
 To use distributed data parallelism on ZIH systems, please make sure the `--ntasks-per-node`
 parameter is equal to the number of GPUs you use per node.
@@ -234,7 +234,7 @@ marie@compute$ module spider Horovod           # Check available modules
         Horovod/0.19.5-fosscuda-2019b-TensorFlow-2.2.0-Python-3.7.4
         Horovod/0.21.1-TensorFlow-2.4.1
 [...]
-marie@compute$ module load Horovod/0.19.5-fosscuda-2019b-TensorFlow-2.2.0-Python-3.7.4  
+marie@compute$ module load Horovod/0.19.5-fosscuda-2019b-TensorFlow-2.2.0-Python-3.7.4
 ```
 
 Or if you want to use Horovod on the partition `alpha`, you can load it with the dependencies:

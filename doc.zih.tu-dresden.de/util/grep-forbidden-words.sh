@@ -18,7 +18,9 @@ i	file \+system	HDFS
 i	\<taurus\>	taurus\.hrsk	/taurus	/TAURUS
 i	\<hrskii\>
 i	hpc[ -]\+da\>
-i	ATTACHURL
+i	attachurl
+i	\<todo\>	<!--.*todo.*-->
+i	[[:space:]]$
 i	\(alpha\|ml\|haswell\|romeo\|gpu\|smp\|julia\|hpdlf\|scs5\)-\?\(interactive\)\?[^a-z]*partition
 i	\[\s\?\(documentation\|here\|this \(link\|page\|subsection\)\|slides\?\|manpage\)\s\?\]
 i	work[ -]\+space"
@@ -46,13 +48,15 @@ function usage () {
   echo "  -f     Search in a specific markdown file" 
   echo "  -s     Silent mode"
   echo "  -h     Show help message"
+  echo "  -c     Show git matches in color"
 }
 
 # Options
 all_files=false
 silent=false
 file=""
-while getopts ":ahsf:" option; do
+color=""
+while getopts ":ahsf:c" option; do
  case $option in
    a)
      all_files=true
@@ -63,6 +67,9 @@ while getopts ":ahsf:" option; do
      ;;
    s)
      silent=true
+     ;;
+   c)
+     color=" --color=always "
      ;;
    h)
      usage
@@ -106,7 +113,7 @@ for f in $files; do
             grepflag=-i
           ;;
         esac
-        if grep -n $grepflag "$pattern" "$f" | grepExceptions "${exceptionPatternsArray[@]}" ; then
+        if grep -n $grepflag $color "$pattern" "$f" | grepExceptions "${exceptionPatternsArray[@]}" ; then
           ((cnt=cnt+1))
         fi
       done <<< $exceptionPatterns
