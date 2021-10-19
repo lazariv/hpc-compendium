@@ -9,32 +9,34 @@ Usage of software on HPC systems is managed by a **modules system**.
     and utilities. With the help of modules, users can smoothly switch between different versions of
     installed software packages and libraries.
 
-For all applications, tools, libraries etc. the correct environment can be easily set by
+For software managed by modules, the correct environment can be easily set by
 calling "module load" or "module unload".
 
 ## Module Commands
 
+Using modules is quite straightforward and the following table lists the basic commands.
+
 | Command                       | Description                                                      |
 |:------------------------------|:-----------------------------------------------------------------|
-| `module help`                 | show all module options                                          |
-| `module list`                 | list all user-installed modules                                  |
-| `module purge`                | remove all user-installed modules                                |
-| `module avail`                | list all available modules                                       |
-| `module spider`               | search for modules across all environments, can take a parameter |
-| `module load <modname>`       | load module `modname`                                            |
-| `module unload <modname>`     | unloads module `modname`                                         |
-| `module switch <mod1> <mod2>` | unload module `mod1` ; load module `mod2`                        |
+| `module help`                 | Show all module options                                          |
+| `module list`                 | List active modules in the user environment                      |
+| `module purge`                | Remove modules from the user environemnt                         |
+| `module avail`                | List all available modules                                       |
+| `module spider`               | Search for modules across all environments, can take a parameter |
+| `module load <modname>`       | Load module `modname` in the user environment                    |
+| `module unload <modname>`     | Remove module `modname` from the user environment                |
+| `module switch <mod1> <mod2>` | Replace module `mod1` with module `mod2`                         |
 
-Module files are ordered by their topic on our HPC systems. By default, with `module avail` you will
+Module files are ordered by their topic on ZIH systems. By default, with `module avail` you will
 see all topics and their available module files. If you just wish to see the installed versions of a
 certain module, you can use `module avail softwarename` and it will display the available versions of
 `softwarename` only.
 
 ## Module Environments
 
-On the ZIH systems, there exist different module environments, each containing a set of software modules.
+On ZIH systems, there exist different **module environments**, each containing a set of software modules.
 They are activated via the meta module `modenv` which has different versions, one of which is loaded
-by default. You can switch between them by simply loading the desired modenv-version, e.g.:
+by default. You can switch between them by simply loading the desired modenv-version, e.g.
 
 ```console
 marie@compute$ module load modenv/ml
@@ -66,11 +68,17 @@ Thus the 'machine code' of other modenvs breaks).
 
 ### Searching for Software
 
-The command `module spider <modname>` allows searching for specific software in all modenv
-environments. It will also display information on how to load a found module when giving a precise
+The command `module spider <modname>` allows searching for a specific software across all modenv
+environments. It will also display information on how to load a particular module when giving a precise
 module (with version) as the parameter.
 
-## Per-architecture Builds
+??? example
+
+    ```console
+    marie@login$ echo "TODO for Lars"
+    ```
+
+## Per-Architecture Builds
 
 Since we have a heterogeneous cluster, we do individual builds of some of the software for each
 architecture present. This ensures that, no matter what partition the software runs on, a build
