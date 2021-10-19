@@ -84,7 +84,6 @@ FMA
 foreach
 Fortran
 Galilei
-IOPS
 Gauss
 Gaussian
 GBit
@@ -132,6 +131,7 @@ img
 Infiniband
 init
 inode
+IOPS
 IPs
 Itanium
 jobqueue
