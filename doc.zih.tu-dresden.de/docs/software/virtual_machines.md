@@ -13,7 +13,7 @@ Singularity containers for the x86 architecture.
 
 ## Create a Virtual Machine
 
-The `--cloud=kvm` Slurm parameter specifies that a virtual machine should be started.
+The Slurm parameter `--cloud=kvm` specifies that a virtual machine should be started.
 
 ### On Power9 Architecture
 
