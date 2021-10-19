@@ -52,8 +52,7 @@ important data should be [archived](preservation_research_data.md).
 
 The backup is a crucial part of any project. Organize it at the beginning of the project. The
 backup mechanism on ZIH systems covers **only** the `/home` and `/projects` filesystems. Backed up
-files can be restored directly by the users. Details can be found
-[here](file_systems.md#backup-and-snapshots-of-the-file-system).
+files can be restored directly by users, see [Snapshots](permanent.md#snapshots).
 
 !!! warning
 
