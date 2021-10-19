@@ -1,8 +1,8 @@
 # Introduction
 
 `perf` consists of two parts: the kernel space implementation and the userland tools. This wiki
-entry focusses on the latter. These tools are installed on taurus, and others and provides support
-for sampling applications and reading performance counters.
+entry focusses on the latter. These tools are installed on ZIH systems, and others and provides
+support for sampling applications and reading performance counters.
 
 ## Configuration
 
@@ -34,18 +34,18 @@ Run `perf stat <Your application>`. This will provide you with a general
 overview on some counters.
 
 ```Bash
-Performance counter stats for 'ls':= 
-          2,524235 task-clock                #    0,352 CPUs utilized           
-                15 context-switches          #    0,006 M/sec                   
-                 0 CPU-migrations            #    0,000 M/sec                   
-               292 page-faults               #    0,116 M/sec                   
-         6.431.241 cycles                    #    2,548 GHz                     
-         3.537.620 stalled-cycles-frontend   #   55,01% frontend cycles idle    
-         2.634.293 stalled-cycles-backend    #   40,96% backend  cycles idle    
-         6.157.440 instructions              #    0,96  insns per cycle         
-                                             #    0,57  stalled cycles per insn 
-         1.248.527 branches                  #  494,616 M/sec                   
-            34.044 branch-misses             #    2,73% of all branches         
+Performance counter stats for 'ls':=
+          2,524235 task-clock                #    0,352 CPUs utilized
+                15 context-switches          #    0,006 M/sec
+                 0 CPU-migrations            #    0,000 M/sec
+               292 page-faults               #    0,116 M/sec
+         6.431.241 cycles                    #    2,548 GHz
+         3.537.620 stalled-cycles-frontend   #   55,01% frontend cycles idle
+         2.634.293 stalled-cycles-backend    #   40,96% backend  cycles idle
+         6.157.440 instructions              #    0,96  insns per cycle
+                                             #    0,57  stalled cycles per insn
+         1.248.527 branches                  #  494,616 M/sec
+            34.044 branch-misses             #    2,73% of all branches
        0,007167707 seconds time elapsed
 ```
 
@@ -142,10 +142,10 @@ If you added a callchain, it also gives you a callchain profile.\<br /> \*Discla
 not an appropriate way to gain exact numbers. So this is merely a rough overview and not guaranteed
 to be absolutely correct.\*\<span style="font-size: 1em;"> \</span>
 
-### On Taurus
+### On ZIH systems
 
-On Taurus, users are not allowed to see the kernel functions. If you have multiple events defined,
-then the first thing you select in `perf report` is the type of event. Press right
+On ZIH systems, users are not allowed to see the kernel functions. If you have multiple events
+defined, then the first thing you select in `perf report` is the type of event. Press right
 
 ```Bash
 Available samples
@@ -165,7 +165,7 @@ If you'd select cycles, you would get such a screen:
 ```Bash
 Events: 96  cycles
 +  49,13%  test_gcc_perf  test_gcc_perf      [.] main.omp_fn.0
-+  34,48%  test_gcc_perf  test_gcc_perf      [.] 
++  34,48%  test_gcc_perf  test_gcc_perf      [.]
 +   6,92%  test_gcc_perf  test_gcc_perf      [.] omp_get_thread_num@plt
 +   5,20%  test_gcc_perf  libgomp.so.1.0.0   [.] omp_get_thread_num
 +   2,25%  test_gcc_perf  test_gcc_perf      [.] main.omp_fn.1
