@@ -18,7 +18,7 @@ The Slurm parameter `--cloud=kvm` specifies that a virtual machine should be sta
 ### On Power9 Architecture
 
 ```console
-marie@login$ srun -p ml -N 1 -c 4 --hint=nomultithread --cloud=kvm --pty /bin/bash
+marie@login$ srun --partition=ml --nodes=1 --cpus-per-task=4 --hint=nomultithread --cloud=kvm --pty /bin/bash
 srun: job 6969616 queued and waiting for resources
 srun: job 6969616 has been allocated resources
 bash-4.2$
