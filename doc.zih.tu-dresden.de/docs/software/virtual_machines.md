@@ -4,8 +4,8 @@ The following instructions are primarily aimed at users who want to build their 
 [Singularity](containers.md) containers on ZIH systems.
 
 The Singularity container setup requires a Linux machine with root privileges, the same architecture
-and a compatible kernel. If some of these requirements can not be fulfilled, then there is
-also the option of using the provided virtual machines (VM) on ZIH systems.
+and a compatible kernel. If some of these requirements cannot be fulfilled, then there is also the
+option of using the provided virtual machines (VM) on ZIH systems.
 
 Currently, starting VMs is only possible on partitions `ml` and `hpdlf`. The VMs on the ML nodes are
 used to build singularity containers for the Power9 architecture and the HPDLF nodes to build
