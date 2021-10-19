@@ -101,10 +101,10 @@ maximum durations. A workspace can be extended multiple times, depending on the 
 
 | Filesystem (use with parameter `-F`) | Duration, days | Extensions | Remarks |
 |:------------------------------------:|:----------:|:-------:|:-----------------------------------:|
-| `ssd`                                | 30         | 2       | High-IOPS filesystem (`/lustre/ssd`, symlink: `/ssd`) on SSDs. |
+| `ssd`                                | 30         | 2       | High-IOPS filesystem (`/lustre/ssd`, symbolic link: `/ssd`) on SSDs. |
 | `beegfs_global0` (deprecated)        | 30         | 2       | High-IOPS filesystem (`/beegfs/global0`) on NVMes. |
 | `beegfs`                             | 30         | 2       | High-IOPS filesystem (`/beegfs`) on NVMes. |
-| `scratch`                            | 100        | 10      | Scratch filesystem (`/lustre/ssd`, symlink: `/scratch`) with high streaming bandwidth, based on spinning disks |
+| `scratch`                            | 100        | 10      | Scratch filesystem (`/lustre/ssd`, symbolic link: `/scratch`) with high streaming bandwidth, based on spinning disks |
 | `warm_archive`                       | 365        | 2       | Capacity filesystem based on spinning disks   |
 
 To extent your workspace use the following command:
