@@ -396,10 +396,11 @@ these filesystems are tested every few minutes on each node and the Slurm featur
 
 | Feature            | Description                                                          |
 |:-------------------|:---------------------------------------------------------------------|
-| `fs_lustre_scratch2` | `/scratch` mounted read-write (mount point is `/lustre/scratch2)`  |
-| `fs_lustre_ssd`      | `/lustre/ssd` mounted read-write                                   |
+| `fs_lustre_scratch2` | `/scratch` mounted read-write (mount point is `/lustre/scratch2`)  |
+| `fs_lustre_ssd`      | `/ssd` mounted read-write (mount point is `/lustre/ssd`)           |
 | `fs_warm_archive_ws` | `/warm_archive/ws` mounted read-only                               |
 | `fs_beegfs_global0`  | `/beegfs/global0` mounted read-write                               |
+| `fs_beegfs`          | `/beegfs` mounted read-write                                       |
 
 For certain projects, specific filesystems are provided. For those,
 additional features are available, like `fs_beegfs_<projectname>`.
