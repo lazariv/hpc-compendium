@@ -63,6 +63,8 @@ Dockerfile
 Dockerfiles
 DockerHub
 dockerized
+dotfile
+dotfiles
 EasyBuild
 ecryptfs
 engl
@@ -129,6 +131,7 @@ img
 Infiniband
 init
 inode
+IOPS
 IPs
 Itanium
 jobqueue
