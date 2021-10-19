@@ -27,7 +27,7 @@ bash-4.2$
 ### On x86 Architecture
 
 ```console
-marie@login$ srun -p hpdlf -N 1 -c 4 --hint=nomultithread --cloud=kvm --pty /bin/bash
+marie@login$ srun --partition=hpdlf --nodes=1 --cpus-per-task=4 --hint=nomultithread --cloud=kvm --pty /bin/bash
 srun: job 2969732 queued and waiting for resources
 srun: job 2969732 has been allocated resources
 bash-4.2$
