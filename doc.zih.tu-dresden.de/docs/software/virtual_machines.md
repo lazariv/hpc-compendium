@@ -111,4 +111,4 @@ Bootstraps **shub** and **library** should be avoided.
 ### Transport Endpoint is not Connected
 
 This happens when the SSHFS mount gets unmounted because it is not very stable. It is sufficient to
-run `\~/mount_host_data.sh` again or just the SSHFS command inside that script.
+run `~/mount_host_data.sh` again or just the SSHFS command inside that script.
