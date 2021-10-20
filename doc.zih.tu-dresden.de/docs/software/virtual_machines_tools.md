@@ -12,7 +12,7 @@ it to ZIH systems for execution.
 **This does not work on the partition `ml`** as it uses the Power9 architecture which your
 workstation likely doesn't.
 
-For this we provide a Virtual Machine (VM) on the partition `ml` which allows users to gain root
+For this, we provide a Virtual Machine (VM) on the partition `ml` which allows users to gain root
 permissions in an isolated environment. The workflow to use this manually is described at
 [this page](virtual_machines.md) but is quite cumbersome.
 
