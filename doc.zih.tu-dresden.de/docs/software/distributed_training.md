@@ -55,90 +55,91 @@ The Parameter Server holds the parameters and is responsible for updating
 the global state of the models.
 Each worker runs the training loop independently.
 
-#### Example
+??? example "Multi Worker Mirrored Strategy"
 
-In this case, we will go through an example with Multi Worker Mirrored Strategy.
-Multi-node training requires a `TF_CONFIG` environment variable to be set which will
-be different on each node.
+    In this case, we will go through an example with Multi Worker Mirrored Strategy.
+    Multi-node training requires a `TF_CONFIG` environment variable to be set which will
+    be different on each node.
 
-```console
-marie@compute$ TF_CONFIG='{"cluster": {"worker": ["10.1.10.58:12345", "10.1.10.250:12345"]}, "task": {"index": 0, "type": "worker"}}' python main.py
-```
+    ```console
+    marie@compute$ TF_CONFIG='{"cluster": {"worker": ["10.1.10.58:12345", "10.1.10.250:12345"]}, "task": {"index": 0, "type": "worker"}}' python main.py
+    ```
 
-The `cluster` field describes how the cluster is set up (same on each node).
-Here, the cluster has two nodes referred to as workers.
-The `IP:port` information is listed in the `worker` array.
-The `task` field varies from node to node.
-It specifies the type and index of the node.
-In this case, the training job runs on worker 0, which is `10.1.10.58:12345`.
-We need to adapt this snippet for each node.
-The second node will have `'task': {'index': 1, 'type': 'worker'}`.
+    The `cluster` field describes how the cluster is set up (same on each node).
+    Here, the cluster has two nodes referred to as workers.
+    The `IP:port` information is listed in the `worker` array.
+    The `task` field varies from node to node.
+    It specifies the type and index of the node.
+    In this case, the training job runs on worker 0, which is `10.1.10.58:12345`.
+    We need to adapt this snippet for each node.
+    The second node will have `'task': {'index': 1, 'type': 'worker'}`.
 
-With two modifications, we can parallelize the serial code:
-We need to initialize the distributed strategy:
+    With two modifications, we can parallelize the serial code:
+    We need to initialize the distributed strategy:
 
-```python
-strategy = tf.distribute.experimental.MultiWorkerMirroredStrategy()
-```
+    ```python
+    strategy = tf.distribute.experimental.MultiWorkerMirroredStrategy()
+    ```
 
-And define the model under the strategy scope:
+    And define the model under the strategy scope:
 
-```python
-with strategy.scope():
-    model = resnet.resnet56(img_input=img_input, classes=NUM_CLASSES)
-    model.compile(
-        optimizer=opt,
-        loss='sparse_categorical_crossentropy',
-        metrics=['sparse_categorical_accuracy'])
-model.fit(train_dataset,
-    epochs=NUM_EPOCHS)
-```
+    ```python
+    with strategy.scope():
+        model = resnet.resnet56(img_input=img_input, classes=NUM_CLASSES)
+        model.compile(
+            optimizer=opt,
+            loss='sparse_categorical_crossentropy',
+            metrics=['sparse_categorical_accuracy'])
+    model.fit(train_dataset,
+        epochs=NUM_EPOCHS)
+    ```
 
-To run distributed training, the training script needs to be copied to all nodes,
-in this case on two nodes.
-TensorFlow is available as a module.
-Check for the version.
-The `TF_CONFIG` environment variable can be set as a prefix to the command.
-Now, run the script on the partition `alpha` simultaneously on both nodes:
+    To run distributed training, the training script needs to be copied to all nodes,
+    in this case on two nodes.
+    TensorFlow is available as a module.
+    Check for the version.
+    The `TF_CONFIG` environment variable can be set as a prefix to the command.
+    Now, run the script on the partition `alpha` simultaneously on both nodes:
 
-```bash
-#!/bin/bash
+    ```bash
+    #!/bin/bash
 
-#SBATCH --job-name=distr
-#SBATCH --partition=alpha
-#SBATCH --output=%j.out
-#SBATCH --error=%j.err
-#SBATCH --mem=64000
-#SBATCH --nodes=2
-#SBATCH --ntasks=2
-#SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=14
-#SBATCH --gres=gpu:1
-#SBATCH --time=01:00:00
+    #SBATCH --job-name=distr
+    #SBATCH --partition=alpha
+    #SBATCH --output=%j.out
+    #SBATCH --error=%j.err
+    #SBATCH --mem=64000
+    #SBATCH --nodes=2
+    #SBATCH --ntasks=2
+    #SBATCH --ntasks-per-node=1
+    #SBATCH --cpus-per-task=14
+    #SBATCH --gres=gpu:1
+    #SBATCH --time=01:00:00
 
-function print_nodelist {
+    function print_nodelist {
         scontrol show hostname $SLURM_NODELIST
-}
-NODE_1=$(print_nodelist | awk '{print $1}' | sort -u | head -n 1)
-NODE_2=$(print_nodelist | awk '{print $1}' | sort -u | tail -n 1)
-IP_1=$(dig +short ${NODE_1}.taurus.hrsk.tu-dresden.de)
-IP_2=$(dig +short ${NODE_2}.taurus.hrsk.tu-dresden.de)
+    }
+    NODE_1=$(print_nodelist | awk '{print $1}' | sort -u | head -n 1)
+    NODE_2=$(print_nodelist | awk '{print $1}' | sort -u | tail -n 1)
+    IP_1=$(dig +short ${NODE_1}.taurus.hrsk.tu-dresden.de)
+    IP_2=$(dig +short ${NODE_2}.taurus.hrsk.tu-dresden.de)
 
-module load modenv/hiera
-module load modenv/hiera GCC/10.2.0 CUDA/11.1.1 OpenMPI/4.0.5 TensorFlow/2.4.1
+    module load modenv/hiera
+    module load modenv/hiera GCC/10.2.0 CUDA/11.1.1 OpenMPI/4.0.5 TensorFlow/2.4.1
 
-# On the first node
-TF_CONFIG='{"cluster": {"worker": ["'"${NODE_1}"':33562", "'"${NODE_2}"':33561"]}, "task": {"index": 0, "type": "worker"}}' srun -w ${NODE_1} -N 1 --ntasks=1 --gres=gpu:1 python main_ddl.py &
+    # On the first node
+    TF_CONFIG='{"cluster": {"worker": ["'"${NODE_1}"':33562", "'"${NODE_2}"':33561"]}, "task": {"index": 0, "type": "worker"}}' srun -w ${NODE_1} -N 1 --ntasks=1 --gres=gpu:1 python main_ddl.py &
 
-# On the second node
-TF_CONFIG='{"cluster": {"worker": ["'"${NODE_1}"':33562", "'"${NODE_2}"':33561"]}, "task": {"index": 1, "type": "worker"}}' srun -w ${NODE_2} -N 1 --ntasks=1 --gres=gpu:1 python main_ddl.py &
+    # On the second node
+    TF_CONFIG='{"cluster": {"worker": ["'"${NODE_1}"':33562", "'"${NODE_2}"':33561"]}, "task": {"index": 1, "type": "worker"}}' srun -w ${NODE_2} -N 1 --ntasks=1 --gres=gpu:1 python main_ddl.py &
 
-wait
-```
+    wait
+    ```
 
 ### Distributed PyTorch
 
 !!! note
+
     This section is under construction
 
 PyTorch provides multiple ways to achieve data parallelism to train the deep learning models
@@ -179,23 +180,21 @@ See: Use `nn.parallel.DistributedDataParallel` instead of multiprocessing or `nn
 Check the [page](https://pytorch.org/docs/stable/notes/cuda.html#cuda-nn-ddp-instead) and
 [Distributed Data Parallel](https://pytorch.org/docs/stable/notes/ddp.html#ddp).
 
-Examples:
+??? example "Parallel Model"
 
-1. The parallel model.
-The main aim of this model to show the way how to effectively implement your
-neural network on several GPUs.
-It includes a comparison of different kinds of models and tips to improve the performance
-of your model.
-**Necessary** parameters for running this model are **2 GPU** and 14 cores.
+    The main aim of this model to show the way how to effectively implement your neural network on
+    multiple GPUs. It includes a comparison of different kinds of models and tips to improve the
+    performance of your model.
+    **Necessary** parameters for running this model are **2 GPU** and 14 cores.
 
-(example_PyTorch_parallel.zip)
+    Download: [example_PyTorch_parallel.zip (4.2 KB)](misc/example_PyTorch_parallel.zip)
 
-Remember that for using [JupyterHub service](../access/jupyterhub.md) for PyTorch you need to
-create and activate a virtual environment (kernel) with loaded essential modules.
+    Remember that for using [JupyterHub service](../access/jupyterhub.md) for PyTorch you need to
+    create and activate a virtual environment (kernel) with loaded essential modules.
 
-Run the example in the same way as the previous examples.
+    Run the example in the same way as the previous examples.
 
-#### Distributed data-parallel
+#### Distributed Data-Parallel
 
 [DistributedDataParallel](https://pytorch.org/docs/stable/nn.html#torch.nn.parallel.DistributedDataParallel)
 (DDP) implements data parallelism at the module level which can run across multiple machines.
@@ -206,21 +205,21 @@ synchronize gradients and buffers.
 
 Please also look at the [official tutorial](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html).
 
-To use distributed data parallelism on ZIH systems, please make sure the `--ntasks-per-node`
-parameter is equal to the number of GPUs you use per node.
+To use distributed data parallelism on ZIH systems, please make sure the value of
+parameter `--ntasks-per-node=<N>` equals the number of GPUs you use per node.
 Also, it can be useful to increase `memory/cpu` parameters if you run larger models.
 Memory can be set up to:
 
 - `--mem=250G` and `--cpus-per-task=7` for the partition `ml`.
 - `--mem=60G` and `--cpus-per-task=6` for the partition `gpu2`.
 
-Keep in mind that only one memory parameter (`--mem-per-cpu=<MB>` or `--mem=<MB>`) can be specified
+Keep in mind that only one memory parameter (`--mem-per-cpu=<MB>` or `--mem=<MB>`) can be specified.
 
 ## External Distribution
 
 ### Horovod
 
-[Horovod](https://github.com/horovod/horovod) is the open source distributed training framework
+[Horovod](https://github.com/horovod/horovod) is the open-source distributed training framework
 for TensorFlow, Keras and PyTorch.
 It makes it easier to develop distributed deep learning projects and speeds them up.
 Horovod scales well to a large number of nodes and has a strong focus on efficient training on
@@ -235,7 +234,7 @@ the distributed code from TensorFlow for instance, with parameter servers.
 Horovod uses MPI and NCCL which gives in some cases better results than
 pure TensorFlow and PyTorch.
 
-#### Horovod as a module
+#### Horovod as Module
 
 Horovod is available as a module with **TensorFlow** or **PyTorch** for
 **all** module environments.
@@ -260,19 +259,19 @@ marie@compute$ module load Horovod/0.19.5-fosscuda-2019b-TensorFlow-2.2.0-Python
 
 Or if you want to use Horovod on the partition `alpha`, you can load it with the dependencies:
 
-```bash
+```console
 marie@alpha$ module spider Horovod                         #Check available modules
 marie@alpha$ module load modenv/hiera  GCC/10.2.0  CUDA/11.1.1  OpenMPI/4.0.5 Horovod/0.21.1-TensorFlow-2.4.1
 ```
 
-#### Horovod installation
+#### Horovod Installation
 
 However, if it is necessary to use another version of Horovod, it is possible to install it
 manually. For that, you need to create a [virtual environment](python_virtual_environments.md) and
 load the dependencies (e.g. MPI).
 Installing TensorFlow can take a few hours and is not recommended.
 
-##### Install Horovod for TensorFlow with python and pip
+##### Install Horovod for TensorFlow with Python and Pip
 
 This example shows the installation of Horovod for TensorFlow.
 Adapt as required and refer to the [Horovod documentation](https://horovod.readthedocs.io/en/stable/install_include.html)
@@ -299,13 +298,12 @@ Available Tensor Operations:
     [ ] CCL
     [X] MPI
     [ ] Gloo
-
 ```
 
 If you want to use OpenMPI then specify `HOROVOD_GPU_ALLREDUCE=MPI`.
 To have better performance it is recommended to use NCCL instead of OpenMPI.
 
-##### Verify that Horovod works
+##### Verify Horovod Works
 
 ```pycon
 >>> import tensorflow
@@ -320,29 +318,30 @@ To have better performance it is recommended to use NCCL instead of OpenMPI.
 Hello from: 0
 ```
 
-#### Example
+??? example
 
-Follow the steps in the [official examples](https://github.com/horovod/horovod/tree/master/examples)
-to parallelize your code.
-In Horovod, each GPU gets pinned to a process.
-You can easily start your job with the following bash script with four processes on two nodes:
+    Follow the steps in the
+    [official examples](https://github.com/horovod/horovod/tree/master/examples)
+    to parallelize your code.
+    In Horovod, each GPU gets pinned to a process.
+    You can easily start your job with the following bash script with four processes on two nodes:
 
-```bash
-#!/bin/bash
-#SBATCH --nodes=2
-#SBATCH --ntasks=4
-#SBATCH --ntasks-per-node=2
-#SBATCH --gres=gpu:2
-#SBATCH --partition=ml
-#SBATCH --mem=250G
-#SBATCH --time=01:00:00
-#SBATCH --output=run_horovod.out
+    ```bash
+    #!/bin/bash
+    #SBATCH --nodes=2
+    #SBATCH --ntasks=4
+    #SBATCH --ntasks-per-node=2
+    #SBATCH --gres=gpu:2
+    #SBATCH --partition=ml
+    #SBATCH --mem=250G
+    #SBATCH --time=01:00:00
+    #SBATCH --output=run_horovod.out
 
-module load modenv/ml
-module load Horovod/0.19.5-fosscuda-2019b-TensorFlow-2.2.0-Python-3.7.4
+    module load modenv/ml
+    module load Horovod/0.19.5-fosscuda-2019b-TensorFlow-2.2.0-Python-3.7.4
 
-srun python <your_program.py>
-```
+    srun python <your_program.py>
+    ```
 
-Do not forget to specify the total number of tasks `--ntasks` and the number of tasks per node
-`--ntasks-per-node` which must match the number of GPUs per node.
+    Do not forget to specify the total number of tasks `--ntasks` and the number of tasks per node
+    `--ntasks-per-node` which must match the number of GPUs per node.
