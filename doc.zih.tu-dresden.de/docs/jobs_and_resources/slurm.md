@@ -132,9 +132,9 @@ marie@login$ srun [options] <command>
 An example of an interactive session looks like:
 
 ```console
-marie@login$ srun --pty -n 1 -c 4 --time=1:00:00 --mem-per-cpu=1700 bash
-marie@login$ srun: job 13598400 queued and waiting for resources
-marie@login$ srun: job 13598400 has been allocated resources
+marie@login$ srun --pty --ntasks=1 --cpus-per-task=4 --time=1:00:00 --mem-per-cpu=1700 bash -l
+srun: job 13598400 queued and waiting for resources
+srun: job 13598400 has been allocated resources
 marie@compute$ # Now, you can start interactive work with e.g. 4 cores
 ```
 
