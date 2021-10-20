@@ -346,7 +346,7 @@ We'd like to point your attention to the following options to gain insight in yo
 ??? example "Show specific fields"
 
     ```console
-    marie@login$ sacct -j <JOBID> -o JobName,MaxRSS,MaxVMSize,CPUTime,ConsumedEnergy
+    marie@login$ sacct --jobs=<JOBID> --format=JobName,MaxRSS,MaxVMSize,CPUTime,ConsumedEnergy
     ```
 
 The manual page (`man sacct`) and the [online reference](https://slurm.schedmd.com/sacct.html)
