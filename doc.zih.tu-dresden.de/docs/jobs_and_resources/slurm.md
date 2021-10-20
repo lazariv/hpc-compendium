@@ -140,8 +140,8 @@ marie@compute$ # Now, you can start interactive work with e.g. 4 cores
 
 !!! note "Using `ml` and `module` inside your job"
 
-    If you want to use `ml` or `module` from within your interactive job, you need to start your shell,
-    e.g. `bash` with the parameter `-l`, like this:
+    If you want to use `module` (or short: `ml`) from within your interactive job, you need to start
+    your shell, e.g. `bash` with the parameter `-l`, like this:
 
     ```console
     marie@login$ srun --pty -n 1 -c 4 --time=1:00:00 --mem-per-cpu=1700 bash -l
