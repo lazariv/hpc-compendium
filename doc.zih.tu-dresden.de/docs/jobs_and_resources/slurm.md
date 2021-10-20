@@ -138,6 +138,18 @@ marie@login$ srun: job 13598400 has been allocated resources
 marie@compute$ # Now, you can start interactive work with e.g. 4 cores
 ```
 
+!!! note "Using `ml` and `module` inside your job"
+
+    If you want to use `ml` or `module` from within your interactive job, you need to start your shell,
+    e.g. `bash` with the parameter `-l`, like this:
+
+    ```console
+    marie@login$ srun --pty -n 1 -c 4 --time=1:00:00 --mem-per-cpu=1700 bash -l
+    ```
+
+    This way, `~/.bashrc` and `/etc/profile` get loaded and the commands `ml` and `module load` are 
+    available inside the interactive shell.
+
 !!! note "Partition `interactive`"
 
     A dedicated partition `interactive` is reserved for short jobs (< 8h) with not more than one job
