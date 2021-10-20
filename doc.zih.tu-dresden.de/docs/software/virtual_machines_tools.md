@@ -78,7 +78,7 @@ the VM controlled by the `--tmp-size` parameter.
 
 **Read here if you have problems like "File not found".**
 
-As the build starts in a VM you may not have access to all your files.  It is usually bad practice
+As the build starts in a VM, you may not have access to all your files. It is usually bad practice
 to refer to local files from inside a definition file anyway as this reduces reproducibility.
 However common directories are available by default. For others, care must be taken. In short:
 
