@@ -355,8 +355,8 @@ provide a comprehensive documentation regarding available fields and formats.
 !!! hint "Time span"
 
     By default, `sacct` only shows data of the last day. If you want to look further into the past
-    without specifying an explicit job id, you need to provide a start date via the `-S` option.
-    A certain end date is also possible via `-E`.
+    without specifying an explicit job id, you need to provide a start date via the option
+    `--starttime` (or short: `-S`). A certain end date is also possible via `--endtime` (or `-E`).
 
 ??? example "Show all jobs since the beginning of year 2021"
 
