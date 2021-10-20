@@ -308,7 +308,7 @@ many different options, please take a look at the
 ### Canceling Jobs
 
 The command `scancel <jobid>` kills a single job and removes it from the queue. By using `scancel -u
-<username>` you can send a canceling signal to all of your jobs at once.
+<username>`, you can send a canceling signal to all of your jobs at once.
 
 ### Accounting
 
