@@ -80,7 +80,7 @@ the VM controlled by the `--tmp-size` parameter.
 
 As the build starts in a VM, you may not have access to all your files. It is usually bad practice
 to refer to local files from inside a definition file anyway as this reduces reproducibility.
-However common directories are available by default. For others, care must be taken. In short:
+However, common directories are available by default. For others, care must be taken. In short:
 
 * `/home/$USER`, `/scratch/$USER` are available and should be used `/scratch/\<group>` also works for
 * all groups the users is in `/projects/\<group>` similar, but is read-only! So don't use this to
