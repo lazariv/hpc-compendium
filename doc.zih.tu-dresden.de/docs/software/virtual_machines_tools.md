@@ -92,8 +92,8 @@ If the current directory is inside (or equal to) one of the above (except `/tmp`
 for container and definition work as the script changes to the VM equivalent of the current
 directory.  Otherwise, you need to use absolute paths. Using `~` in place of `$HOME` does work too.
 
-Under the hood, the filesystem of ZIH systems is mounted via SSHFS at `/host_data`, so if you need any
-other files they can be found there.
+Under the hood, the filesystem of ZIH systems is mounted via SSHFS at `/host_data`. So if you need any
+other files, they can be found there.
 
 There is also a new SSH key named `kvm` which is created by the scripts and authorized inside the VM
 to allow for password-less access to SSHFS. This is stored at `~/.ssh/kvm` and regenerated if it
