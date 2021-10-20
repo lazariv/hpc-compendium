@@ -190,8 +190,8 @@ has multiple advantages:
 
 * You can reproduce your experiments and work, because all steps are saved in a file.
 * You can easily share your settings and experimental setup with colleagues.
-* Submit your job file to the scheduling system for later execution. In the meanwhile, you can grab
-  a coffee and proceed with other work (,e.g., start writing a paper).
+* You can submit your job file to the scheduling system for later execution. In the meanwhile, you can
+  grab a coffee and proceed with other work (e.g., start writing a paper).
 
 !!! hint "The syntax for submitting a job file to Slurm is"
 
