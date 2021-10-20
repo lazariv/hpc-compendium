@@ -63,7 +63,7 @@ jobs to Slurm for later execution by using [batch jobs](#batch-jobs). For that, 
 put the parameters directly in a [job file](#job-files), which you can submit using `sbatch
 [options] <job file>`.
 
-During runtime, the environment variable `SLURM_JOB_ID` will be set to the id of your job. The job
+At runtime, the environment variable `SLURM_JOB_ID` is set to the id of your job. The job
 id is unique. The id allows you to [manage and control](#manage-and-control-jobs) your jobs.
 
 ## Options
