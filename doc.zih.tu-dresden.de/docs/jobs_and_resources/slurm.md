@@ -301,9 +301,9 @@ marie@login$ whypending <jobid>
 ### Editing Jobs
 
 Jobs that have not yet started can be altered. Using `scontrol update timelimit=4:00:00
-jobid=<jobid>` it is for example possible to modify the maximum runtime. `scontrol` understands many
-different options, please take a look at the [man page](https://slurm.schedmd.com/scontrol.html) for
-more details.
+jobid=<jobid>`, it is for example possible to modify the maximum runtime. `scontrol` understands
+many different options, please take a look at the
+[scontrol documentation](https://slurm.schedmd.com/scontrol.html) for more details.
 
 ### Canceling Jobs
 
