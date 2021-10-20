@@ -28,7 +28,7 @@ what they say. The latter is for more advanced use cases, so you should be fine 
 **The recommended workflow** is to create and test a definition file locally. You usually start from
 a base Docker container. Those typically exist for different architectures but with a common name
 (e.g.  `ubuntu:18.04`). Singularity automatically uses the correct Docker container for your current
-architecture when building. So in most cases you can write your definition file, build it and test
+architecture when building. So, in most cases, you can write your definition file, build it and test
 it locally, then move it to ZIH systems and build it on Power9 (partition `ml`) without any further
 changes. However, sometimes Docker containers for different architectures have different suffixes,
 in which case you'd need to change that when moving to ZIH systems.
