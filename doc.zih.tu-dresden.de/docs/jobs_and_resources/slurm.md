@@ -153,7 +153,7 @@ marie@compute$ # Now, you can start interactive work with e.g. 4 cores
 !!! note "Partition `interactive`"
 
     A dedicated partition `interactive` is reserved for short jobs (< 8h) with not more than one job
-    per user. Please check the availability of nodes there with `sinfo -p interactive`.
+    per user. Please check the availability of nodes there with `sinfo --partition=interactive`.
 
 ### Interactive X11/GUI Jobs
 
