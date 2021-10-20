@@ -32,7 +32,7 @@ ZIH uses the batch system Slurm for resource management and job scheduling.
 Just specify the resources you need in terms
 of cores, memory, and time and your Slurm will place your job on the system.
 
-This pages provides a brief overview on
+This page provides a brief overview on
 
 * [Slurm options](#options) to specify resource requirements,
 * how to submit [interactive](#interactive-jobs) and [batch jobs](#batch-jobs),
