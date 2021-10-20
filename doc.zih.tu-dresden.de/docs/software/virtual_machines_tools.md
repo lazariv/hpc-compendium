@@ -16,8 +16,8 @@ For this, we provide a Virtual Machine (VM) on the partition `ml` which allows u
 permissions in an isolated environment. The workflow to use this manually is described for
 [virtual machines](virtual_machines.md) but is quite cumbersome.
 
-To make this easier two programs are provided: `buildSingularityImage` and `startInVM` which do what
-they say. The latter is for more advanced use cases so you should be fine using
+To make this easier, two programs are provided: `buildSingularityImage` and `startInVM`, which do
+what they say. The latter is for more advanced use cases, so you should be fine using
 `buildSingularityImage`, see the following section.
 
 !!! note "SSH key without password"
