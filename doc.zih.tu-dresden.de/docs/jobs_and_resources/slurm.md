@@ -340,7 +340,7 @@ We'd like to point your attention to the following options to gain insight in yo
 ??? example "Show all fields for a specific job"
 
     ```console
-    marie@login$ sacct -j <JOBID> -o All
+    marie@login$ sacct --jobs=<JOBID> --format=All
     ```
 
 ??? example "Show specific fields"
