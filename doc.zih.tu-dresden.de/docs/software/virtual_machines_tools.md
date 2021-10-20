@@ -69,7 +69,7 @@ have reasonable defaults. The most important ones are:
 
 For **advanced users**, it is also possible to manually request a job with a VM (`srun -p ml
 --cloud=kvm ...`) and then use this script to build a Singularity container from within the job. In
-this case the `--arch` and other Slurm related parameters are not required. The advantage of using
+this case, the `--arch` and other Slurm related parameters are not required. The advantage of using
 this script is that it automates the waiting for the VM and mounting of host directories into it
 (can also be done with `startInVM`) and creates a temporary directory usable with Singularity inside
 the VM controlled by the `--tmp-size` parameter.
