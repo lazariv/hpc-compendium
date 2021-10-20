@@ -54,8 +54,8 @@ image is built and see live output, add the option `--interactive`:
 marie@login$ buildSingularityImage --arch=power9 --interactive myContainer.sif myDefinition.def
 ```
 
-There are more options available which can be shown by running `buildSingularityImage --help`. All
-have reasonable defaults.The most important ones are:
+There are more options available, which can be shown by running `buildSingularityImage --help`. All
+have reasonable defaults. The most important ones are:
 
 * `--time <time>`: Set a higher job time if the default time is not
   enough to build your image and your job is canceled before completing. The format is the same as
