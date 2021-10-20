@@ -60,8 +60,8 @@ There are three basic Slurm commands for job submission and execution:
 Using `srun` directly on the shell will be blocking and launch an
 [interactive job](#interactive-jobs). Apart from short test runs, it is recommended to submit your
 jobs to Slurm for later execution by using [batch jobs](#batch-jobs). For that, you can conveniently
-put the parameters directly in a [job file](#job-files) which you can submit using `sbatch [options]
-<job file>`.
+put the parameters directly in a [job file](#job-files), which you can submit using `sbatch
+[options] <job file>`.
 
 During runtime, the environment variable `SLURM_JOB_ID` will be set to the id of your job. The job
 id is unique. The id allows you to [manage and control](#manage-and-control-jobs) your jobs.
