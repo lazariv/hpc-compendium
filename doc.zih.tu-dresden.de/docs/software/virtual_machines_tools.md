@@ -67,7 +67,7 @@ have reasonable defaults. The most important ones are:
 * Various Singularity options are passed through. E.g.
   `--notest, --force, --update`. See, e.g., `singularity --help` for details.
 
-For **advanced users** it is also possible to manually request a job with a VM (`srun -p ml
+For **advanced users**, it is also possible to manually request a job with a VM (`srun -p ml
 --cloud=kvm ...`) and then use this script to build a Singularity container from within the job. In
 this case the `--arch` and other Slurm related parameters are not required. The advantage of using
 this script is that it automates the waiting for the VM and mounting of host directories into it
