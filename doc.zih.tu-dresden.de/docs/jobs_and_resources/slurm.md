@@ -220,7 +220,7 @@ srun ./application [options]          # Execute parallel application with srun
 ```
 
 The following two examples show the basic resource specifications for a pure OpenMP application and
-a pure MPI application, respectively. Within the section [Job Examples](slurm_examples.md) we
+a pure MPI application, respectively. Within the section [Job Examples](slurm_examples.md), we
 provide a comprehensive collection of job examples.
 
 ??? example "Job file OpenMP"
