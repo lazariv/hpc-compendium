@@ -188,7 +188,7 @@ Batch jobs are encapsulated within [job files](#job-files) and submitted to the 
 environment settings and the commands for executing the application. Using batch jobs and job files
 has multiple advantages:
 
-* You can reproduce your experiments and work, because it's all steps are saved in a file.
+* You can reproduce your experiments and work, because all steps are saved in a file.
 * You can easily share your settings and experimental setup with colleagues.
 * Submit your job file to the scheduling system for later execution. In the meanwhile, you can grab
   a coffee and proceed with other work (,e.g., start writing a paper).
