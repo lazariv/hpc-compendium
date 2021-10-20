@@ -61,7 +61,7 @@ have reasonable defaults. The most important ones are:
   enough to build your image and your job is canceled before completing. The format is the same as
   for Slurm.
 * `--tmp-size=<size in GB>`: Set a size used for the temporary
-  location of the Singularity container. Basically the size of the extracted container.
+  location of the Singularity container, basically the size of the extracted container.
 * `--output=<file>`: Path to a file used for (log) output generated
   while building your container.
 * Various Singularity options are passed through. E.g.
