@@ -104,7 +104,7 @@ needs to be re-generated on every script run.
 
 ## Start a Job in a VM
 
-Especially when developing a Singularity definition file it might be useful to get a shell directly
+Especially when developing a Singularity definition file, it might be useful to get a shell directly
 on a VM. To do so on the power9-architecture, simply run:
 
 ```console
