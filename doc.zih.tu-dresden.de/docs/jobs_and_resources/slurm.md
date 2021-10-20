@@ -68,7 +68,7 @@ id is unique. The id allows you to [manage and control](#manage-and-control-jobs
 
 ## Options
 
-The following table holds the most important options for `srun/sbatch/salloc` to specify resource
+The following table contains the most important options for `srun/sbatch/salloc` to specify resource
 requirements and control communication.
 
 ??? tip "Options Table"
