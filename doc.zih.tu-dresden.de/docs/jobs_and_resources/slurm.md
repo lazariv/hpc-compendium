@@ -1,6 +1,6 @@
 # Batch System Slurm
 
-When log in to ZIH systems, you are placed on a login node. There you can manage your
+When logging in to ZIH systems, you are placed on a login node. There, you can manage your
 [data life cycle](../data_lifecycle/overview.md),
 [setup experiments](../data_lifecycle/experiments.md), and
 edit and prepare jobs. The login nodes are not suited for computational work!  From the login nodes,
