@@ -368,7 +368,7 @@ provide a comprehensive documentation regarding available fields and formats.
 
 How to ask for a reservation is described in the section
 [reservations](overview.md#exclusive-reservation-of-hardware).
-After we agreed with your requirements, we will send you an e-mail with your reservation name. Then
+After we agreed with your requirements, we will send you an e-mail with your reservation name. Then,
 you could see more information about your reservation with the following command:
 
 ```console
