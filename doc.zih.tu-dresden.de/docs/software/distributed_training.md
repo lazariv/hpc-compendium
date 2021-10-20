@@ -141,6 +141,27 @@ wait
 !!! note
     This section is under construction
 
+PyTorch provides multiple ways to achieve data parallelism to train the deep learning models
+efficiently. These models are part of the `torch.distributed` sub-package that ships with the main
+deep learning package.
+
+The easiest method to quickly prototype if the model is trainable in a multi-GPU setting is to wrap
+the existing model with the `torch.nn.DataParallel` class as shown below,
+
+```python
+model = torch.nn.DataParalell(model)
+```
+
+Adding this single line of code to the existing application will let PyTorch know that the model
+needs to be parallelized. But since this method uses threading to achieve parallelism, it fails to
+achieve true parallelism due to the well known issue of Global Interpreter Lock that exists in
+Python. To work around this issue and gain performance benefits of parallelism, the use of
+`torch.nn.DistributedDataParallel` is recommended. This involves little more code changes to set up,
+but further increases the performance of model training. The starting step is to initialize the
+process group by calling the `torch.distributed.init_process_group()` using the appropriate back end
+such as NCCL, MPI or Gloo. The use of NCCL as back end is recommended as it is currently the fastest
+back end when using GPUs.
+
 #### Using Multiple GPUs with PyTorch
 
 The example below shows how to solve that problem by using model parallelism, which in contrast to
