@@ -122,7 +122,7 @@ mount all folders (just like `buildSingularityImage`, see the Filesystem section
 back with a bash inside the VM. Inside that you are root, so you can directly execute `singularity
 build` commands.
 
-As usual more options can be shown by running `startInVM --help`, the most important one being
+As usual, more options can be shown by running `startInVM --help`, the most important one being
 `--time`.
 
 There are two special use cases for this script:
