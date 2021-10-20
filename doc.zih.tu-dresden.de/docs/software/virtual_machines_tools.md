@@ -82,10 +82,11 @@ As the build starts in a VM, you may not have access to all your files. It is us
 to refer to local files from inside a definition file anyway as this reduces reproducibility.
 However, common directories are available by default. For others, care must be taken. In short:
 
-* `/home/$USER`, `/scratch/$USER` are available and should be used `/scratch/\<group>` also works for
-* all groups the users is in `/projects/\<group>` similar, but is read-only! So don't use this to
-  store your generated container directly, but rather move it here afterwards
-* /tmp is the VM local temporary directory. All files put here will be lost!
+* `/home/$USER`, `/scratch/$USER` are available and should be used `/scratch/<group>` also works for
+  all groups the users is in
+* `/projects/<group>` similar, but is read-only! So don't use this to store your generated
+  container directly, but rather move it here afterwards
+* `/tmp` is the VM local temporary directory. All files put here will be lost!
 
 If the current directory is inside (or equal to) one of the above (except `/tmp`), then relative paths
 for container and definition work as the script changes to the VM equivalent of the current
