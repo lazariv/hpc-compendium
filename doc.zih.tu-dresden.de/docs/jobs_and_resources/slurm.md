@@ -334,7 +334,7 @@ We'd like to point your attention to the following options gain insight in your 
 ??? example "Show specific job"
 
     ```console
-    marie@login$ sacct -j <JOBID>
+    marie@login$ sacct --jobs=<JOBID>
     ```
 
 ??? example "Show all fields for a specific job"
