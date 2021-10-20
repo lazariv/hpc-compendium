@@ -35,14 +35,19 @@ in which case you'd need to change that when moving to ZIH systems.
 
 ## Build a Singularity Container in a Job
 
-To build a Singularity container on ZIH systems simply run:
+To build a Singularity container for the power9-architecture on ZIH systems simply run:
 
 ```console
 marie@login$ buildSingularityImage --arch=power9 myContainer.sif myDefinition.def
 ```
 
-This command will submit a batch job and immediately return. Note that while Power9 is currently
-the only supported architecture, the parameter is still required. If you want it to block while the
+To build a singularity image on the x86-architecture, run:
+
+```console
+marie@login$ buildSingularityImage --arch=x86 myContainer.sif myDefinition.def
+```
+
+These commands will submit a batch job and immediately return. If you want it to block while the
 image is built and see live output, add the option `--interactive`:
 
 ```console
@@ -99,10 +104,16 @@ needs to be re-generated on every script run.
 ## Start a Job in a VM
 
 Especially when developing a Singularity definition file it might be useful to get a shell directly
-on a VM. To do so simply run:
+on a VM. To do so on the power9-architecture, simply run:
 
 ```console
 startInVM --arch=power9
+```
+
+To do so on the x86-architecture, run:
+
+```console
+startInVM --arch=x86
 ```
 
 This will execute an `srun` command with the `--cloud=kvm` parameter, wait till the VM is ready,
