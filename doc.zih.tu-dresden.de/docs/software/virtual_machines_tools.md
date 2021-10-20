@@ -90,7 +90,7 @@ However, common directories are available by default. For others, care must be t
 
 If the current directory is inside (or equal to) one of the above (except `/tmp`), then relative paths
 for container and definition work as the script changes to the VM equivalent of the current
-directory.  Otherwise you need to use absolute paths. Using `~` in place of `$HOME` does work too.
+directory.  Otherwise, you need to use absolute paths. Using `~` in place of `$HOME` does work too.
 
 Under the hood, the filesystem of ZIH systems is mounted via SSHFS at `/host_data`, so if you need any
 other files they can be found there.
