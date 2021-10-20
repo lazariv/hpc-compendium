@@ -329,7 +329,7 @@ marie@login$ sacct
 [...]
 ```
 
-We'd like to point your attention to the following options gain insight in your jobs.
+We'd like to point your attention to the following options to gain insight in your jobs.
 
 ??? example "Show specific job"
 
