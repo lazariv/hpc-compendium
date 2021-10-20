@@ -349,7 +349,7 @@ We'd like to point your attention to the following options to gain insight in yo
     marie@login$ sacct --jobs=<JOBID> --format=JobName,MaxRSS,MaxVMSize,CPUTime,ConsumedEnergy
     ```
 
-The manual page (`man sacct`) and the [online reference](https://slurm.schedmd.com/sacct.html)
+The manual page (`man sacct`) and the [sacct online reference](https://slurm.schedmd.com/sacct.html)
 provide a comprehensive documentation regarding available fields and formats.
 
 !!! hint "Time span"
