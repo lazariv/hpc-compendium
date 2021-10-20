@@ -260,7 +260,7 @@ provide a comprehensive collection of job examples.
     ```
 
     * Submisson: `marie@login$ sbatch batch_script.sh`
-    * Run with fewer MPI tasks: `marie@login$ sbatch --ntasks 14 batch_script.sh`
+    * Run with fewer MPI tasks: `marie@login$ sbatch --ntasks=14 batch_script.sh`
 
 ## Manage and Control Jobs
 
