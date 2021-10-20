@@ -242,7 +242,7 @@ provide a comprehensive collection of job examples.
     ```
 
     * Submisson: `marie@login$ sbatch batch_script.sh`
-    * Run with fewer CPUs: `marie@login$ sbatch -c 14 batch_script.sh`
+    * Run with fewer CPUs: `marie@login$ sbatch --cpus-per-task=14 batch_script.sh`
 
 ??? example "Job file MPI"
 
