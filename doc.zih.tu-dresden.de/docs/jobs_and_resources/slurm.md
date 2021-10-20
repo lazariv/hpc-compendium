@@ -110,7 +110,7 @@ requirements and control communication.
 
 If you want to place your job onto specific nodes, there are two options for doing this. Either use
 `-p, --partion=<name>` to specify a host group aka. [partition](partitions_and_limits.md) that fits
-your needs. Or, use `-w, --nodelist=<host1,host2,..>`) with a list of hosts that will work for you.
+your needs. Or, use `-w, --nodelist=<host1,host2,..>` with a list of hosts that will work for you.
 
 ## Interactive Jobs
 
