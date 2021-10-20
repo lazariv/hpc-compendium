@@ -115,8 +115,8 @@ your needs. Or, use `-w, --nodelist=<host1,host2,..>` with a list of hosts that 
 ## Interactive Jobs
 
 Interactive activities like editing, compiling, preparing experiments etc. are normally limited to
-the login nodes. For longer interactive sessions you can allocate cores on the compute node with the
-command `salloc`. It takes the same options like `sbatch` to specify the required resources.
+the login nodes. For longer interactive sessions, you can allocate cores on the compute node with
+the command `salloc`. It takes the same options as `sbatch` to specify the required resources.
 
 `salloc` returns a new shell on the node, where you submitted the job. You need to use the command
 `srun` in front of the following commands to have these commands executed on the allocated
