@@ -114,7 +114,8 @@ for f in $files; do
           ;;
         esac
         if grep -n $grepflag $color "$pattern" "$f" | grepExceptions "${exceptionPatternsArray[@]}" ; then
-          ((cnt=cnt+1))
+	  number_of_matches=`grep -n $grepflag $color "$pattern" "$f" | grepExceptions "${exceptionPatternsArray[@]}" | wc -l`
+          ((cnt=cnt+$number_of_matches))
         fi
       done <<< $exceptionPatterns
     done <<< $ruleset
