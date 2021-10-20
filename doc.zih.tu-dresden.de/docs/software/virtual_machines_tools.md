@@ -128,7 +128,7 @@ As usual, more options can be shown by running `startInVM --help`, the most impo
 There are two special use cases for this script:
 
 1. Execute an arbitrary command inside the VM instead of getting a bash by appending the command to
-   the script. Example: `startInVM --arch=power9 singularity build \~/myContainer.sif  \~/myDefinition.de`
+   the script. Example: `startInVM --arch=power9 singularity build ~/myContainer.sif  ~/myDefinition.de`
 1. Use the script in a job manually allocated via srun/sbatch. This will work the same as when
    running outside a job but will **not** start a new job. This is useful for using it inside batch
    scripts, when you already have an allocation or need special arguments for the job system. Again
