@@ -182,8 +182,8 @@ Check the [page](https://pytorch.org/docs/stable/notes/cuda.html#cuda-nn-ddp-ins
 
 ??? example "Parallel Model"
 
-    The main aim of this model to show the way how to effectively implement your neural network on
-    multiple GPUs. It includes a comparison of different kinds of models and tips to improve the
+    The main aim of this model is to show the way how to effectively implement your neural network
+    on multiple GPUs. It includes a comparison of different kinds of models and tips to improve the
     performance of your model.
     **Necessary** parameters for running this model are **2 GPU** and 14 cores.
 
