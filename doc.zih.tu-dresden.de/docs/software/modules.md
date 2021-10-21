@@ -5,14 +5,80 @@ Usage of software on HPC systems is managed by a **modules system**.
 !!! note "Module"
 
     A module is a user interface that provides utilities for the dynamic modification of a user's
-    environment (e.g., `PATH`, `LD_LIBRARY_PATH` etc.) to access the compilers, loader, libraries,
-    and utilities. With the help of modules, users can smoothly switch between different versions of
+    environment, e.g. prepending paths to:
+
+    * `PATH`
+    * `LD_LIBRARY_PATH`
+    * `MANPATH`
+    * and more
+
+    to help you to access compilers, loader, libraries and utilities.
+
+    By using modules, you can smoothly switch between different versions of
     installed software packages and libraries.
 
-For software managed by modules, the correct environment can be easily set by
-calling "module load" or "module unload".
+## Examples
 
-## Module Commands
+### Finding available software
+
+    `module avail <modname>`
+
+!!! example "Example usage"
+
+    ```console
+    marie@compute$ module avail matlab
+
+    ------------------------------ /sw/modules/scs5/math ------------------------------
+       MATLAB/2017a    MATLAB/2018b    MATLAB/2020a
+       MATLAB/2018a    MATLAB/2019b    MATLAB/2021a (D)
+
+      Wo:
+       D:  Standard Modul. 
+
+    Verwenden Sie "module spider" um alle verfügbaren Module anzuzeigen.
+    Verwenden Sie "module keyword key1 key2 ...", um alle verfügbaren Module
+    anzuzeigen, die mindestens eines der Schlüsselworte enthält.
+    ```
+
+### Loading software
+
+    `module load <software/version>`
+
+!!! example "Example usage"
+
+    ```console
+    marie@compute$ module load Python/3.8.6
+    Module Python/3.8.6-GCCcore-10.2.0 and 11 dependencies loaded.
+    ```
+
+??? hint "Being lazy in typing"
+
+    `ml` \
+    `ml +<software/version>` \
+    `ml -<software/version>`
+
+    ```console
+    marie@compute$ ml +Python/3.8.6
+    Module Python/3.8.6-GCCcore-10.2.0 and 11 dependencies loaded.
+    marie@compute$ ml
+
+    Derzeit geladene Module:
+      1) modenv/scs5                  (S)   5) bzip2/1.0.8-GCCcore-10.2.0       9) SQLite/3.33.0-GCCcore-10.2.0  13) Python/3.8.6-GCCcore-10.2.0
+      2) GCCcore/10.2.0                     6) ncurses/6.2-GCCcore-10.2.0      10) XZ/5.2.5-GCCcore-10.2.0
+      3) zlib/1.2.11-GCCcore-10.2.0         7) libreadline/8.0-GCCcore-10.2.0  11) GMP/6.2.0-GCCcore-10.2.0
+      4) binutils/2.35-GCCcore-10.2.0       8) Tcl/8.6.10-GCCcore-10.2.0       12) libffi/3.3-GCCcore-10.2.0
+
+      Wo:
+       S:  Das Modul ist angeheftet. Verwenden Sie "--force", um das Modul zu entladen.
+
+ 
+
+    marie@compute$ ml -Python/3.8.6 +ANSYS/2020R2
+    Module Python/3.8.6-GCCcore-10.2.0 and 11 dependencies unloaded.
+    Module ANSYS/2020R2 loaded.
+    ```
+
+## List of Module Commands
 
 Using modules is quite straightforward and the following table lists the basic commands.
 
@@ -75,7 +141,24 @@ module (with version) as the parameter.
 ??? example
 
     ```console
-    marie@login$ echo "TODO for Lars"
+    marie@login$ module spider p7zip
+
+    ----------------------------------------------------------------------------------------------------------------------------------------------------------
+      p7zip:
+    ----------------------------------------------------------------------------------------------------------------------------------------------------------
+        Beschreibung:
+          p7zip is a quick port of 7z.exe and 7za.exe (command line version of 7zip) for Unix. 7-Zip is a file archiver with highest compression ratio.
+
+         Versionen:
+            p7zip/9.38.1
+            p7zip/17.03-GCCcore-10.2.0
+            p7zip/17.03
+
+    ----------------------------------------------------------------------------------------------------------------------------------------------------------
+      Um detaillierte Informationen über ein bestimmtes "p7zip"-Modul zu erhalten (auch wie das Modul zu laden ist), verwenden sie den vollständigen Namen des Moduls.
+      Zum Beispiel:
+        $ module spider p7zip/17.03
+    ----------------------------------------------------------------------------------------------------------------------------------------------------------
     ```
 
 ## Per-Architecture Builds
@@ -94,122 +177,15 @@ and in some cases cannot fall-back to a more generic build either. That's why we
 ### Example Invocation of ml_arch_avail
 
 ```console
-marie@compute$ ml_ar:qLch_avail CP2K
-
-Example output:
-
-#CP2K/6.1-foss-2019a: haswell, rome
-#CP2K/5.1-intel-2018a: haswell
-#CP2K/6.1-foss-2019a-spglib: haswell, rome
-#CP2K/6.1-intel-2018a: haswell
-#CP2K/6.1-intel-2018a-spglib: haswell
+marie@compute$ ml_arch_avail TensorFlow/2.4.1
+TensorFlow/2.4.1: haswell, rome
+TensorFlow/2.4.1: haswell, rome
 ```
 
-The command shows all modules that match on CP2K, and their respective availability. Note that this
-will not work for meta-modules that do not have an installation directory (like some tool chain modules).
+The command shows all modules that match on `TensorFlow/2.4.1`, and their respective availability. 
+Note that this will not work for meta-modules that do not have an installation directory
+(like some tool chain modules).
 
-## Project and User Private Modules
+### Advanced Usage
 
-Private module files allow you to load your own installed software packages into your environment
-and to handle different versions without getting into conflicts. Private modules can be setup for a
-single user as well as all users of project group. The workflow and settings for user private module
-files is described in the following. The [settings for project private
-modules](#project-private-modules) differ only in details.
-
-In order to use your own module files please use the command
-`module use <path_to_module_files>`. It will add the path to the list of module directories
-that are searched by lmod (i.e. the `module` command). You may use a directory `privatemodules`
-within your home or project directory to setup your own module files.
-
-Please see the [Environment Modules open source project's web page](http://modules.sourceforge.net/)
-for further information on writing module files.
-
-### 1. Create Directories
-
-```console
-marie@compute$ cd $HOME
-marie@compute$ mkdir --verbose --parents privatemodules/testsoftware
-marie@compute$ cd privatemodules/testsoftware
-```
-
-(create a directory in your home directory)
-
-### 2. Notify lmod
-
-```console
-marie@compute$ module use $HOME/privatemodules
-```
-
-(add the directory in the list of module directories)
-
-### 3. Create Modulefile
-
-Create a file with the name `1.0` with a
-test software in the `testsoftware` directory you created earlier
-(using your favorite editor) and paste the following text into it:
-
-```
-#%Module######################################################################
-##
-##     testsoftware modulefile
-##
-proc ModulesHelp { } {
-        puts stderr "Loads testsoftware"
-}
-
-set version 1.0
-set arch    x86_64
-set path    /home/<user>/opt/testsoftware/$version/$arch/
-
-prepend-path PATH            $path/bin
-prepend-path LD_LIBRARY_PATH $path/lib
-
-if [ module-info mode load ] {
-        puts stderr "Load testsoftware version $version"
-}
-```
-
-### 4. Check lmod
-
-Check the availability of the module with `ml av`, the output should look like this:
-
-```
---------------------- /home/masterman/privatemodules ---------------------
-   testsoftware/1.0
-```
-
-### 5. Load Module
-
-Load the test module with `module load testsoftware`, the output should look like this:
-
-```console
-Load testsoftware version 1.0
-Module testsoftware/1.0 loaded.
-```
-
-### Project Private Modules
-
-Private module files allow you to load project- or group-wide installed software into your
-environment and to handle different versions without getting into conflicts.
-
-The module files have to be stored in your global projects directory
-`/projects/p_projectname/privatemodules`. An example of a module file can be found in the section
-above. To use a project-wide module file you have to add the path to the module file to the module
-environment with the command
-
-```console
-marie@compute$ module use /projects/p_projectname/privatemodules
-```
-
-After that, the modules are available in your module environment and you can load the modules with
-the `module load` command.
-
-## Using Private Modules and Programs in the $HOME Directory
-
-An automated backup system provides security for the HOME-directories on the cluster on a daily
-basis. This is the reason why we urge users to store (large) temporary data (like checkpoint files)
-on the /scratch filesystem or at local scratch disks.
-
-**Please note**: We have set `ulimit -c 0` as a default to prevent users from filling the disk with
-the dump of crashed programs. `bash` users can use `ulimit -Sc unlimited` to enable the debugging
-via analyzing the core file.
+For writing your own Modulefiles please have a look at the [Guide for writing project and private Modulefiles](private_modules.md).

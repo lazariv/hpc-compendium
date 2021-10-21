@@ -24,6 +24,7 @@ nav:
     - Overview: software/overview.md
     - Environment:
       - Modules: software/modules.md
+      - Private Modulefiles: software/private_modules.md
       - Custom EasyBuild Modules: software/custom_easy_build_environment.md
       - Python Virtual Environments: software/python_virtual_environments.md
     - Containers:
