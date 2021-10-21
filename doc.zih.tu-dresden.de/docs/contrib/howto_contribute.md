@@ -30,7 +30,8 @@ GitLab offers a rich and versatile web interface to work with repositories. To f
 source files, follow these steps:
 
 1. Navigate to the repository at
-[https://gitlab.hrz.tu-chemnitz.de/zih/hpcsupport/hpc-compendium](https://gitlab.hrz.tu-chemnitz.de/zih/hpcsupport/hpc-compendium) and log in.
+[https://gitlab.hrz.tu-chemnitz.de/zih/hpcsupport/hpc-compendium](https://gitlab.hrz.tu-chemnitz.de/zih/hpcsupport/hpc-compendium)
+and log in.
 1. Select the right branch.
 1. Select the file of interest in `doc.zih.tu-dresden.de/docs/...` and click the `Edit` button.
 1. A text and commit editor are invoked: Do your changes, add a meaningful commit message and commit
