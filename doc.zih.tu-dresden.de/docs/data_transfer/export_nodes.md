@@ -108,6 +108,24 @@ the local machine.
     # Copy directory
     marie@local$ rsync -r <zih-user>@taurusexport.hrsk.tu-dresden.de:<directory> <target-location>
     ```
+!!!info
+    User can also use SSH configuration file to transfer the data from/to the ZIH systems. Please refer to 'Connecting from Linux' section on [Connecting with SSH](../access/ssh_login.md) page for more information on how to create and use the SSH configuration file. In the newly created profile, simply replace values in front of `HostName` with name of the export node as shown below.
+
+    ```bash
+    Host <configuration_profile_name>
+      # Use name of the export node after HostName
+      HostName taurusexport.hrsk.tu-dresden.de
+    [...]
+    ```
+    Once the configuration is created, user can initiate transfer simply using any of the tools mentioned above. 
+    
+    ```console
+    # Transfer from ZIH system to local machine
+    marie@local$ rsync -r <configuration_profile_name>:<directory_or_file> <target-location>
+
+    # Transfer from local machine to ZIH system
+    marie@local$ rsync -r <configuration_profile_name>:<directory_or_file> <target-location>
+    ```
 
 ## Access From Windows
 

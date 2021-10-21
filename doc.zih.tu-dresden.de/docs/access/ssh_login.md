@@ -88,6 +88,7 @@ in it (you can omit lines starting with `#`):
 
 ```bash
 Host taurus
+  #Use either login node for shell access or export nodes for data transfer
   HostName taurus.hrsk.tu-dresden.de
   #Put your ZIH-Login after keyword "User":
   User marie
@@ -105,6 +106,8 @@ Afterwards, you can connect to the ZIH system using:
 ```console
 marie@local$ ssh taurus
 ```
+!!!info
+    Please note that in above example login node `taurus.hrsk.tu-dresden.de` is used in configuration file to access shell in ZIH systems. SSH configuration file can also be used to perform data transfer from/to ZIH systems. An additional profile with same settings can be created. Simply replace login node in front of `HostName` with export node (eg. `taurusexport.hrsk.tu-dresden.de`) in the SSH configuration profile. Please refer to [Export Nodes: Transfer Data to/from ZIH's Filesystems](../data_transfer/export_nodes.md) for more information on export nodes.
 
 ### X11-Forwarding
 
