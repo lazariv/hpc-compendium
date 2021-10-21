@@ -70,7 +70,7 @@ there is a list of conventions w.r.t. spelling and technical wording.
 
 ### Long Options
 
-* Use long over short options, e.g. `srun --nodes=2 --ntasks-per-node=4 ...` is prefered over
+* Use long over short options, e.g. `srun --nodes=2 --ntasks-per-node=4 ...` is preferred over
   `srun -N 2 -n 4 ...`
 * Use `module` over the short front-end `ml` in documentation and examples
 
