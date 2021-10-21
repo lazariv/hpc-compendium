@@ -14,7 +14,7 @@ For that, open an issue to report typos and missing documentation or request for
 wording etc. ZIH staff will get in touch with you to resolve the issue and improve the
 documentation.
 
-??? tip "GIF: Create GitLab Issue"
+??? tip "Create A GitLab Issue"
 
     ![Something](misc/create_gitlab_issue.gif)
     {: align=center}
