@@ -147,7 +147,7 @@ marie@compute$ # Now, you can start interactive work with e.g. 4 cores
     marie@login$ srun --pty --ntasks=1 --cpus-per-task=4 --time=1:00:00 --mem-per-cpu=1700 bash -l
     ```
 
-    This way, `~/.bashrc` and `/etc/profile` get loaded and the commands `ml` and `module load` are 
+    This way, `~/.bashrc` and `/etc/profile` get loaded and the commands `ml` and `module load` are
     available inside the interactive shell.
 
 !!! note "Partition `interactive`"
