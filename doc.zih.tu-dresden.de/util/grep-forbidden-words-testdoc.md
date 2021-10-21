@@ -1,6 +1,6 @@
 # Diese Datei versucht alles falsch zu machen, worauf grep-forbidden-words.sh checkt.
 
-i	\[\s\?\(documentation\|here\|this \(link\|page\|subsection\)\|slides\?\|manpage\)\s\?\]
+`i	\[\s\?\(documentation\|here\|this \(link\|page\|subsection\)\|slides\?\|manpage\)\s\?\]`
 
 Man kann Workspace schreiben oder aber auch
 work-Space, beides sollte auffallen.
