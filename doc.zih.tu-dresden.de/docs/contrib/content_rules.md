@@ -51,6 +51,10 @@ should be highlighted, etc. Code examples, longer than half screen height should
 ## Writing Style
 
 * Capitalize headings, e.g. *Exclusive Reservation of Hardware*
+* Use active over passive voice
+    * Write with confidence. This confidence should be reflected in the documentation, so that
+      the readers trust and follow it.
+    * Example: `We recommend something` instead of `Something is recommended.`
 
 ## Spelling and Technical Wording
 
@@ -63,6 +67,12 @@ there is a list of conventions w.r.t. spelling and technical wording.
 * `Filesystem` not `file system`
 * `ZIH system` and `ZIH systems` not `Taurus` etc. if possible
 * `Workspace` not `work space`
+
+### Long Options
+
+* Use long over short options, e.g. `srun --nodes=2 --ntasks-per-node=4 ...` is prefered over
+  `srun -N 2 -n 4 ...`
+* Use `module` over the short front-end `ml` in documentation and examples
 
 ## Code Blocks and Command Prompts
 
