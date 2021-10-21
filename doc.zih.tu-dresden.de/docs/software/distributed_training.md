@@ -189,7 +189,7 @@ Check the [page](https://pytorch.org/docs/stable/notes/cuda.html#cuda-nn-ddp-ins
 
     Download: [example_PyTorch_parallel.zip (4.2 KB)](misc/example_PyTorch_parallel.zip)
 
-    Remember that for using [JupyterHub service](../access/jupyterhub.md) for PyTorch you need to
+    Remember that for using [JupyterHub service](../access/jupyterhub.md) for PyTorch, you need to
     create and activate a virtual environment (kernel) with loaded essential modules.
 
     Run the example in the same way as the previous examples.
