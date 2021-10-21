@@ -20,7 +20,7 @@ Using modules is quite straightforward and the following table lists the basic c
 |:------------------------------|:-----------------------------------------------------------------|
 | `module help`                 | Show all module options                                          |
 | `module list`                 | List active modules in the user environment                      |
-| `module purge`                | Remove modules from the user environemnt                         |
+| `module purge`                | Remove modules from the user environment                         |
 | `module avail`                | List all available modules                                       |
 | `module spider`               | Search for modules across all environments, can take a parameter |
 | `module load <modname>`       | Load module `modname` in the user environment                    |
