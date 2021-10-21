@@ -1,4 +1,4 @@
-Diese Datei versucht alles falsch zu machen, worauf grep-forbidden-words.sh checkt.
+# Diese Datei versucht alles falsch zu machen, worauf grep-forbidden-words.sh checkt.
 
 i	\[\s\?\(documentation\|here\|this \(link\|page\|subsection\)\|slides\?\|manpage\)\s\?\]
 
