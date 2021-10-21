@@ -117,14 +117,15 @@ the local machine.
       HostName taurusexport.hrsk.tu-dresden.de
     [...]
     ```
+
     Once the configuration is created, user can initiate transfer simply using any of the tools mentioned above. 
     
     ```console
-    # Transfer from ZIH system to local machine
+    # Transfer from ZIH system
     marie@local$ rsync -r <configuration_profile_name>:<directory_or_file> <target-location>
 
-    # Transfer from local machine to ZIH system
-    marie@local$ rsync -r <configuration_profile_name>:<directory_or_file> <target-location>
+    # Transfer to ZIH system
+    marie@local$ rsync -r <file_or_folder_on_local_machine> <configuration_profile_name>:<target-location>
     ```
 
 ## Access From Windows

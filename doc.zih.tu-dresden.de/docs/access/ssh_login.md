@@ -107,7 +107,7 @@ Afterwards, you can connect to the ZIH system using:
 marie@local$ ssh taurus
 ```
 !!!info
-    Please note that in above example login node `taurus.hrsk.tu-dresden.de` is used in configuration file to access shell in ZIH systems. SSH configuration file can also be used to perform data transfer from/to ZIH systems. An additional profile with same settings can be created. Simply replace login node in front of `HostName` with export node (eg. `taurusexport.hrsk.tu-dresden.de`) in the SSH configuration profile. Please refer to [Export Nodes: Transfer Data to/from ZIH's Filesystems](../data_transfer/export_nodes.md) for more information on export nodes.
+    Please note that in above example, login node `taurus.hrsk.tu-dresden.de` is used in configuration file in order to access shell in ZIH systems. SSH configuration file can also be used to perform data transfer from/to ZIH systems. An additional profile with same settings can be created. Simply replace login node in front of `HostName` with export node (eg. `taurusexport.hrsk.tu-dresden.de`) in the SSH configuration profile. Please refer to [Export Nodes: Transfer Data to/from ZIH's Filesystems](../data_transfer/export_nodes.md) for more information on export nodes.
 
 ### X11-Forwarding
 
