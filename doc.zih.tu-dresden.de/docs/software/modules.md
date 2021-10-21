@@ -51,6 +51,22 @@ Usage of software on HPC systems is managed by a **modules system**.
     Module Python/3.8.6-GCCcore-10.2.0 and 11 dependencies loaded.
     ```
 
+### Unloading all modules
+
+    `module purge`
+
+!!! example "Example usage"
+
+    ```console
+    marie@compute$ module purge
+    Die folgenden Module wurden nicht entladen:
+      (Benutzen Sie "module --force purge" um alle Module zu entladen):
+
+      1) modenv/scs5
+    Module Python/3.8.6-GCCcore-10.2.0 and 11 dependencies unloaded.
+    ```
+
+
 ??? hint "Being lazy in typing"
 
     `ml` \
@@ -186,6 +202,118 @@ The command shows all modules that match on `TensorFlow/2.4.1`, and their respec
 Note that this will not work for meta-modules that do not have an installation directory
 (like some tool chain modules).
 
-### Advanced Usage
+## Advanced Usage
 
 For writing your own Modulefiles please have a look at the [Guide for writing project and private Modulefiles](private_modules.md).
+
+## Troubleshooting
+
+### When I log in, the wrong modules are loaded by default
+
+Reset your currently loaded modules with `module purge` (or `module purge --force` if you also want to unload your basic `modenv` module). Then run `module save` to overwrite the list of modules you load by default when logging in.
+
+### I can't load module TensorFlow
+
+Check the dependencies by e.g. calling `module spider TensorFlow/2.4.1` it will list a number of modules that need to be loaded before the TensorFlow module can be loaded.
+
+??? example "Loading the dependencies"
+
+    ```console
+    marie@compute$ module load TensorFlow/2.4.1
+    Lmod hat den folgenden Fehler erkannt:  Diese Module existieren, aber
+    können nicht wie gewünscht geladen werden: "TensorFlow/2.4.1"
+       Versuchen Sie: "module spider TensorFlow/2.4.1" um anzuzeigen, wie die Module
+    geladen werden.
+
+
+    marie@compute$ module spider TensorFlow/2.4.1
+
+    ----------------------------------------------------------------------------------
+      TensorFlow: TensorFlow/2.4.1
+    ----------------------------------------------------------------------------------
+        Beschreibung:
+          An open-source software library for Machine Intelligence
+
+
+        Sie müssen alle Module in einer der nachfolgenden Zeilen laden bevor Sie das Modul "TensorFlow/2.4.1" laden können.
+
+          modenv/hiera  GCC/10.2.0  CUDA/11.1.1  OpenMPI/4.0.5
+         This extension is provided by the following modules. To access the extension you must load one of the following modules. Note that any module names in parentheses show the module location in the software hierarchy.
+
+
+           TensorFlow/2.4.1 (modenv/hiera GCC/10.2.0 CUDA/11.1.1 OpenMPI/4.0.5)
+
+
+        This module provides the following extensions:
+
+           absl-py/0.10.0 (E), astunparse/1.6.3 (E), cachetools/4.2.0 (E), dill/0.3.3 (E), gast/0.3.3 (E), google-auth-oauthlib/0.4.2 (E), google-auth/1.24.0 (E), google-pasta/0.2.0 (E), grpcio/1.32.0 (E), gviz-api/1.9.0 (E), h5py/2.10.0 (E), Keras-Preprocessing/1.1.2 (E), Markdown/3.3.3 (E), oauthlib/3.1.0 (E), opt-einsum/3.3.0 (E), portpicker/1.3.1 (E), pyasn1-modules/0.2.8 (E), requests-oauthlib/1.3.0 (E), rsa/4.7 (E), tblib/1.7.0 (E), tensorboard-plugin-profile/2.4.0 (E), tensorboard-plugin-wit/1.8.0 (E), tensorboard/2.4.1 (E), tensorflow-estimator/2.4.0 (E), TensorFlow/2.4.1 (E), termcolor/1.1.0 (E), Werkzeug/1.0.1 (E), wrapt/1.12.1 (E)
+
+        Help:
+          Description
+          ===========
+          An open-source software library for Machine Intelligence
+      
+      
+          More information
+          ================
+           - Homepage: https://www.tensorflow.org/
+      
+      
+          Included extensions
+          ===================
+          absl-py-0.10.0, astunparse-1.6.3, cachetools-4.2.0, dill-0.3.3, gast-0.3.3,
+          google-auth-1.24.0, google-auth-oauthlib-0.4.2, google-pasta-0.2.0,
+          grpcio-1.32.0, gviz-api-1.9.0, h5py-2.10.0, Keras-Preprocessing-1.1.2,
+          Markdown-3.3.3, oauthlib-3.1.0, opt-einsum-3.3.0, portpicker-1.3.1,
+          pyasn1-modules-0.2.8, requests-oauthlib-1.3.0, rsa-4.7, tblib-1.7.0,
+          tensorboard-2.4.1, tensorboard-plugin-profile-2.4.0, tensorboard-plugin-
+          wit-1.8.0, TensorFlow-2.4.1, tensorflow-estimator-2.4.0, termcolor-1.1.0,
+          Werkzeug-1.0.1, wrapt-1.12.1
+      
+
+    Names marked by a trailing (E) are extensions provided by another module.
+
+ 
+
+    marie@compute$ ml +modenv/hiera  +GCC/10.2.0  +CUDA/11.1.1 +OpenMPI/4.0.5 +TensorFlow/2.4.1
+
+    Die folgenden Module wurden in einer anderen Version erneut geladen:
+      1) GCC/7.3.0-2.30 => GCC/10.2.0        3) binutils/2.30-GCCcore-7.3.0 => binutils/2.35
+      2) GCCcore/7.3.0 => GCCcore/10.2.0     4) modenv/scs5 => modenv/hiera
+
+    Module GCCcore/7.3.0, binutils/2.30-GCCcore-7.3.0, GCC/7.3.0-2.30, GCC/7.3.0-2.30 and 3 dependencies unloaded.
+    Module GCCcore/7.3.0, GCC/7.3.0-2.30, GCC/10.2.0, CUDA/11.1.1, OpenMPI/4.0.5, TensorFlow/2.4.1 and 50 dependencies loaded.
+    marie@compute$ module list
+
+    Derzeit geladene Module:
+      1) modenv/hiera               (S)  28) Tcl/8.6.10
+      2) GCCcore/10.2.0                  29) SQLite/3.33.0
+      3) zlib/1.2.11                     30) GMP/6.2.0
+      4) binutils/2.35                   31) libffi/3.3
+      5) GCC/10.2.0                      32) Python/3.8.6
+      6) CUDAcore/11.1.1                 33) pybind11/2.6.0
+      7) CUDA/11.1.1                     34) SciPy-bundle/2020.11
+      8) numactl/2.0.13                  35) Szip/2.1.1
+      9) XZ/5.2.5                        36) HDF5/1.10.7
+     10) libxml2/2.9.10                  37) cURL/7.72.0
+     11) libpciaccess/0.16               38) double-conversion/3.1.5
+     12) hwloc/2.2.0                     39) flatbuffers/1.12.0
+     13) libevent/2.1.12                 40) giflib/5.2.1
+     14) Check/0.15.2                    41) ICU/67.1
+     15) GDRCopy/2.1-CUDA-11.1.1         42) JsonCpp/1.9.4
+     16) UCX/1.9.0-CUDA-11.1.1           43) NASM/2.15.05
+     17) libfabric/1.11.0                44) libjpeg-turbo/2.0.5
+     18) PMIx/3.1.5                      45) LMDB/0.9.24
+     19) OpenMPI/4.0.5                   46) nsync/1.24.0
+     20) OpenBLAS/0.3.12                 47) PCRE/8.44
+     21) FFTW/3.3.8                      48) protobuf/3.14.0
+     22) ScaLAPACK/2.1.0                 49) protobuf-python/3.14.0
+     23) cuDNN/8.0.4.30-CUDA-11.1.1      50) flatbuffers-python/1.12
+     24) NCCL/2.8.3-CUDA-11.1.1          51) typing-extensions/3.7.4.3
+     25) bzip2/1.0.8                     52) libpng/1.6.37
+     26) ncurses/6.2                     53) snappy/1.1.8
+     27) libreadline/8.0                 54) TensorFlow/2.4.1
+
+      Wo:
+       S:  Das Modul ist angeheftet. Verwenden Sie "--force", um das Modul zu entladen.
+    ```
