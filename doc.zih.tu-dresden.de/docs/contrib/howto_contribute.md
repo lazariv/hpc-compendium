@@ -14,9 +14,9 @@ For that, open an issue to report typos and missing documentation or request for
 wording etc. ZIH staff will get in touch with you to resolve the issue and improve the
 documentation.
 
-??? tip "Create a GitLab issue"
+??? tip "Create an issue in GitLab"
 
-    ![Something](misc/create_gitlab_issue.gif)
+    ![GIF showing how to create an issue in GitLab](misc/create_gitlab_issue.gif)
     {: align=center}
 
 !!! warning "HPC support"
