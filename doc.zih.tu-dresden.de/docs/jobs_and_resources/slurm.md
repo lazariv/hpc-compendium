@@ -75,24 +75,24 @@ requirements and control communication.
 
     | Slurm Option               | Description |
     |:---------------------------|:------------|
-    | `-n, --ntasks=<N>`         | number of (MPI) tasks (default: 1) |
-    | `-N, --nodes=<N>`          | number of nodes; there will be `--ntasks-per-node` processes started on each node |
-    | `--ntasks-per-node=<N>`    | number of tasks per allocated node to start (default: 1) |
-    | `-c, --cpus-per-task=<N>`  | number of CPUs per task; needed for multithreaded (e.g. OpenMP) jobs; typically `N` should be equal to `OMP_NUM_THREADS` |
-    | `-p, --partition=<name>`   | type of nodes where you want to execute your job (refer to [partitions](partitions_and_limits.md)) |
-    | `--mem-per-cpu=<size>`     | memory need per allocated CPU in MB |
-    | `-t, --time=<HH:MM:SS>`    | maximum runtime of the job |
-    | `--mail-user=<your email>` | get updates about the status of the jobs |
-    | `--mail-type=ALL`          | for what type of events you want to get a mail; valid options: `ALL`, `BEGIN`, `END`, `FAIL`, `REQUEUE` |
-    | `-J, --job-name=<name>`    | name of the job shown in the queue and in mails (cut after 24 chars) |
-    | `--no-requeue`             | disable requeueing of the job in case of node failure (default: enabled) |
-    | `--exclusive`              | exclusive usage of compute nodes; you will be charged for all CPUs/cores on the node |
-    | `-A, --account=<project>`  | charge resources used by this job to the specified project |
-    | `-o, --output=<filename>`  | file to save all normal output (stdout) (default: `slurm-%j.out`) |
-    | `-e, --error=<filename>`   | file to save all error output (stderr)  (default: `slurm-%j.out`) |
-    | `-a, --array=<arg>`        | submit an array job ([examples](slurm_examples.md#array-jobs)) |
-    | `-w <node1>,<node2>,...`   | restrict job to run on specific nodes only |
-    | `-x <node1>,<node2>,...`   | exclude specific nodes from job |
+    | `-n, --ntasks=<N>`         | Number of (MPI) tasks (default: 1) |
+    | `-N, --nodes=<N>`          | Number of nodes; there will be `--ntasks-per-node` processes started on each node |
+    | `--ntasks-per-node=<N>`    | Number of tasks per allocated node to start (default: 1) |
+    | `-c, --cpus-per-task=<N>`  | Number of CPUs per task; needed for multithreaded (e.g. OpenMP) jobs; typically `N` should be equal to `OMP_NUM_THREADS` |
+    | `-p, --partition=<name>`   | Type of nodes where you want to execute your job (refer to [partitions](partitions_and_limits.md)) |
+    | `--mem-per-cpu=<size>`     | Memory need per allocated CPU in MB |
+    | `-t, --time=<HH:MM:SS>`    | Maximum runtime of the job |
+    | `--mail-user=<your email>` | Get updates about the status of the jobs |
+    | `--mail-type=ALL`          | For what type of events you want to get a mail; valid options: `ALL`, `BEGIN`, `END`, `FAIL`, `REQUEUE` |
+    | `-J, --job-name=<name>`    | Name of the job shown in the queue and in mails (cut after 24 chars) |
+    | `--no-requeue`             | Disable requeueing of the job in case of node failure (default: enabled) |
+    | `--exclusive`              | Exclusive usage of compute nodes; you will be charged for all CPUs/cores on the node |
+    | `-A, --account=<project>`  | Charge resources used by this job to the specified project |
+    | `-o, --output=<filename>`  | File to save all normal output (stdout) (default: `slurm-%j.out`) |
+    | `-e, --error=<filename>`   | File to save all error output (stderr)  (default: `slurm-%j.out`) |
+    | `-a, --array=<arg>`        | Submit an array job ([examples](slurm_examples.md#array-jobs)) |
+    | `-w <node1>,<node2>,...`   | Restrict job to run on specific nodes only |
+    | `-x <node1>,<node2>,...`   | Exclude specific nodes from job |
 
 !!! note "Output and Error Files"
 
