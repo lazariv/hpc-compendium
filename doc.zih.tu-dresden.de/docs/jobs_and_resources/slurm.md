@@ -138,17 +138,12 @@ srun: job 13598400 has been allocated resources
 marie@compute$ # Now, you can start interactive work with e.g. 4 cores
 ```
 
-!!! note "Using `ml` and `module` inside your job"
+!!! note "Using `module` commands"
 
-    If you want to use `module` (or short: `ml`) from within your interactive job, you need to start
-    your shell, e.g. `bash` with the parameter `-l`, like this:
-
-    ```console
-    marie@login$ srun --pty --ntasks=1 --cpus-per-task=4 --time=1:00:00 --mem-per-cpu=1700 bash -l
-    ```
-
-    This way, `~/.bashrc` and `/etc/profile` get loaded and the commands `ml` and `module load` are
-    available inside the interactive shell.
+    The [module commands](../software/modules.md) are made available by sourcing the files
+    `/etc/profile` and `~/.bashrc`. This is done automatically by passing the parameter `-l` to your
+    shell, as shown in the example above. If you missed adding `-l` at submitting the interactive
+    session, no worry, you can source this files also later on manually.
 
 !!! note "Partition `interactive`"
 
@@ -399,7 +394,7 @@ constraints, please refer to the [Slurm documentation](https://slurm.schedmd.com
 
 | Feature | Description                                                              |
 |:--------|:-------------------------------------------------------------------------|
-| DA      | subset of Haswell nodes with a high bandwidth to NVMe storage (island 6) |
+| DA      | Subset of Haswell nodes with a high bandwidth to NVMe storage (island 6) |
 
 #### Filesystem Features
 
