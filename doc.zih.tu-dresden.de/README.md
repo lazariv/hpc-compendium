@@ -40,13 +40,7 @@ Now, create a local clone of your fork
 
 #### Install Dependencies
 
-**TODO:** Description
-
-```Shell Session
-~ cd hpc-compendium/doc.zih.tu-dresden.de
-~ pip install -r requirements.txt
-```
-
+See [Installation with Docker](#preview-using-mkdocs-with-dockerfile).
 **TODO:** virtual environment
 **TODO:** What we need for markdownlinter and checks?
 
