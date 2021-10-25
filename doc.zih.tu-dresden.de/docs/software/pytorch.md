@@ -96,3 +96,60 @@ The production and test environments of JupyterHub contain Python kernels, that 
 
 For details on how to run PyTorch with multiple GPUs and/or multiple nodes, see
 [distributed training](distributed_training.md).
+
+## Migrate PyTorch-script from CPU to GPU
+
+It is recommended to use GPUs when using large training data sets. While TensorFlow automatically uses GPUs if they are available, in
+PyTorch you have to move your tensors manually.
+
+First, you need to import `torch.cuda`:
+
+```python3
+import torch.cuda
+```
+
+Then you define a `device`-variable, which is set to 'cuda' automatically when a GPU is available with this code:
+
+```python3
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+```
+
+You then have to move all of your tensors to the selected device. This looks like this:
+
+```python3
+x_train = torch.FloatTensor(x_train).to(device)
+y_train = torch.FloatTensor(y_train).to(device)
+```
+
+Remember that this does not break backward compatibility when you port the script back to a computer without GPU, because without GPU,
+`device` is set to 'cpu'.
+
+### Caveats
+
+#### Moving data back to the CPU-memory
+
+The CPU cannot directly access variables stored on the GPU. If you want to use the variables, e.g. in a `print`-statement or
+when editing with NumPy or anything that is not PyTorch, you have to move them back to the CPU-memory again. This then may look like this:
+
+```python3
+cpu_x_train = x_train.cpu()
+print(cpu_x_train)
+... 
+error_train = np.sqrt(metrics.mean_squared_error(y_train[:,1].cpu(), y_prediction_train[:,1]))
+```
+
+Remember that, without `.detach()` before the CPU, if you change `cpu_x_train`, `x_train` will also be changed.
+If you want to treat them independently, use 
+
+```python3
+cpu_x_train = x_train.detach().cpu()
+```
+
+Now you can change `cpu_x_train` without `x_train` being affected.
+
+#### Speed improvements and batch size
+
+When you have a lot of very small data points, the speed may actually decrease when you try to train them on the GPU.
+This is because moving data from the CPU-memory to the GPU-memory takes time. If this occurs, please try using
+a very large batch size. This way, copying back and forth only takes places a few times and the bottleneck may
+be reduced.
