@@ -12,7 +12,11 @@ The export nodes are reachable under the hostname `taurusexport.hrsk.tu-dresden.
 ## Access From Linux
 
 There are at least three tool to exchange data between your local workstation and ZIH systems. All
-are explained in the following abstract in more detail.
+are explained in the following section in more detail.
+
+!!! important
+    The following explanations require that you have already set up you [SSH configuration
+    ](../access/ssh_login.md#configuring-default-parameters-for-ssh).
 
 ### SCP
 

@@ -99,6 +99,15 @@ Host taurus
   #Enable X11 forwarding for graphical applications and compression. You don't need parameter -X and -C when invoking ssh then.
   ForwardX11 yes
   Compression yes
+Host taurusexport
+  #For copying data without shell access
+  HostName taurusexport.hrsk.tu-dresden.de
+  #Put your ZIH-Login after keyword "User":
+  User marie
+  #Path to private key:
+  IdentityFile ~/.ssh/id_ed25519
+  #Don't try other keys if you have more:
+  IdentitiesOnly yes
 ```
 
 Afterwards, you can connect to the ZIH system using:
@@ -106,8 +115,9 @@ Afterwards, you can connect to the ZIH system using:
 ```console
 marie@local$ ssh taurus
 ```
-!!!info
-    Please note that in above example, login node `taurus.hrsk.tu-dresden.de` is used in configuration file in order to access shell in ZIH systems. SSH configuration file can also be used to perform data transfer from/to ZIH systems. An additional profile with same settings can be created. Simply replace login node in front of `HostName` with export node (eg. `taurusexport.hrsk.tu-dresden.de`) in the SSH configuration profile. Please refer to [Export Nodes: Transfer Data to/from ZIH's Filesystems](../data_transfer/export_nodes.md) for more information on export nodes.
+
+If you want to copy data from/to ZIH systems, please refer to [Export Nodes: Transfer Data to/from
+ZIH's Filesystems](../data_transfer/export_nodes.md) for more information on export nodes.
 
 ### X11-Forwarding
 
