@@ -88,7 +88,7 @@ in it (you can omit lines starting with `#`):
 
 ```bash
 Host taurus
-  #Use either login node for shell access or export nodes for data transfer
+  #For login (shell access)
   HostName taurus.hrsk.tu-dresden.de
   #Put your ZIH-Login after keyword "User":
   User marie
