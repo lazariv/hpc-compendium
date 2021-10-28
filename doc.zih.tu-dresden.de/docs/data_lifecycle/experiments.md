@@ -2,13 +2,12 @@
 
 This page is intended to provide the most important parts of working on a high performance computing (HPC) system.
 When you are new to HPC start with the introductory article about HPC at [https://hpc-wiki.info/hpc/Getting_Started](https://hpc-wiki.info/hpc/Getting_Started).
+
+The ZIH system is a linux system (as most HPC systems), some basic linux knowledge is needed at certain points. 
+Users who are [new to linux can find here](../link/to/page_with_most_important_commands) a collection of the most important linux commands needed on the ZIH system.
+
 In the following it is assumed that you are familiar already with the most basic terminology as 
-[ssh](https://hpc-wiki.info/hpc/SSH)
-[cluster]()
-[login node]()
-[compute node]()
-[local and shared file system](https://hpc-wiki.info/hpc/HPC-Dictionary#File_System)
-[command line (cli) or shell]()
+[ssh](https://hpc-wiki.info/hpc/SSH), [cluster](), [login node](), [compute node](), [local and shared file system](https://hpc-wiki.info/hpc/HPC-Dictionary#File_System), [command line (cli) or shell]()
 
 # Application for login and resources
 
@@ -17,7 +16,7 @@ Members of the TU Dresden only have a ZIH login but not an HPC login.
 The HPC login has the same credentials as the ZIH login. 
 
 Working on the ZIH system is structured by so called HPC projects.
-To an HPC project on the ZIH system includes
+An HPC project on the ZIH system includes
 
 * project directory
 * project group
@@ -38,22 +37,24 @@ Depending on the user's needs and pre-knowledge the different possiblities are m
 * desktop visualization (?): esp. in case of using GUI-based software (e.g. Ansys?)
 * ssh connection: "classical" approach, command line (cli) knowledge is neccesary
 
+For getting in touch with the system and also development purposes the approaches with JuypterHub and desktop virtualization are recommended. 
+
 
 # Structuring HPC projects
 
-Typically, HPC projects consist of the following parts (at least some of them):
+Typically, HPC projects consist of the following core parts:
 
-* Input data, source code and scripts
-* Software  
-* ouptut data and calculation results
-* log files
-* metadata 
-* backup
-* archiving
+* data: input data, source code, scripts, ouptut data, calculation results, logfiles
+* software  
 
-A further aspect is a collaborative working style (research groups, teaching purposes). 
-Thus, creating a unified and consistent experiment environment for multiple users is essential. 
-This is considered for all the following recommendations. 
+One important aspect for HPC projects is a collaborative working style (research groups, student groups for teaching purposes). 
+Thus, granting appropriate file permissions and creating a unified and consistent software environment for multiple users is essential. 
+This aspect is considered for all the following recommendations. 
+
+??? hint "Hint on data life cycle and research data management"
+
+	By setting up a project structure we recommend to have in mind already some basics of research data mangagment. 
+	This makes it easier to publish and archive a project according to the FAIR principles.
 
 # Data management and data transfer
 
@@ -65,34 +66,29 @@ Every area has its own properties referring
 * permission rights
 * accessability from compute nodes
 
-In general, it is recommended to use workspaces for all your data as 
-
-* Input data
-* source code
-* Calculation results
-* Log files
-* Submission scripts (examples / code for survival)
+In general, it is recommended to use workspaces for all your data (as input data, source code etc.).
  
 Please consider the different properties (lifetime, accessability) between the types of workspace (warm archive, scratch, ssd).
-Overall, a good starting point is using a scratch workspace (see an [example here](../workspaces/#allocate-a-workspace).
+Overall, a good starting point is using a scratch workspace (see a [creation example here](../workspaces/#allocate-a-workspace)).
 
-Transferring data to, from and within the ZIH system is realized by the following approaches: 
+Transferring data to, from and within the ZIH system is realized by the following approaches, depending on the data volume: 
 
 * small data volume (only a few megabytes): 
-	+ using scp, wget, cp on a login node
+	+ using `scp`, `wget`, `cp` on a login node
 	+ Windows users can apply programs as [described here](../../data_transfer/export_nodes/#access-from-windows).
 	+ esp. on linux-based systems sshfs can be used to mount user home, project home or workspace within the local folder structure. Data can be transferred directly with drag and drop in your local file exploreer. Moreover, this approach makes it possible to edit files with your common editors and tools on the local machine.
-* medium and high data volume (dozens of megabytes up to gigabytes): using data mover dtcp, dtls, dtmv, dtrm, dtrsync, dttar, and dtwget (see []())
+* medium and high data volume (hundreds of megabytes up to gigabytes and beyond): using data mover `dtcp`, `dtls`, `dtmv`, `dtrm`, `dtrsync`, `dttar`, and `dtwget` (details [can be found here](../data_transfer/datamover.md)).
 
 !!! caution "Permission rights are crucial in a collaborative setting"
 
 	By default workspaces are accessible only for the user who created the workspace.
 	Files created by a user in the project directory have read-only access for other group members by default.
-	Therefore, the correct file permissions must be configured (using chmod and chgrp) for all files in the project home and the workspaces that should be fully accessible to your collaborators (read, write, execute).
+	Therefore, the correct file permissions must be configured (using `chmod` and `chgrp`) for all files in the project home and the workspaces that should be fully accessible (read, write, execute) to your collaborator group.
+	A first overview on users and permissions in linux can be found [here](https://hpc-wiki.info/hpc/Introduction_to_Linux_in_HPC/Users_and_permissions).
 
 !!! hint 
 
-	If you are planning to move terabytes or even more from outside onto the ZIH system please contact HPC support before.
+	If you are planning to move terabytes or even more from outside into the ZIH system please contact HPC support before.
 
 
 # Software environment
@@ -107,6 +103,8 @@ For checking available modules:
 
 If there are not all needed sofware packages available in the module system it is possible to install most packages by the user. 
 Depending on the software there might be different possiblities. 
+
+There might be cases where root privileges are needed for installation. 
 
 ??? hint "Special hints on different software"
 	
