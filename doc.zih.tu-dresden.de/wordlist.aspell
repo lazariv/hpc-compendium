@@ -27,6 +27,7 @@ checkpointing
 Chemnitz
 citable
 CLI
+CMake
 COMSOL
 conda
 config
@@ -163,6 +164,7 @@ matlab
 MEGWARE
 mem
 MiB
+Microarchitecture
 MIMD
 Miniconda
 mkdocs
@@ -217,6 +219,7 @@ openmpi
 OpenMPI
 OpenSSH
 Opteron
+OTF
 overfitting
 pandarallel
 Pandarallel
@@ -225,6 +228,7 @@ parallelization
 parallelize
 parfor
 pdf
+perf
 Perf
 performant
 PESSL
@@ -322,6 +326,7 @@ toolchain
 toolchains
 tracefile
 tracefiles
+tracepoints
 transferability
 Trition
 undistinguishable
