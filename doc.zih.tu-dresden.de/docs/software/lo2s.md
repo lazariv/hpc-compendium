@@ -82,7 +82,7 @@ amount of memory for its operation. Unfortunately, the amount of memory depends 
 The amount mainly scales with the number of processes spawned by the traced application. For each
 processes, there is a fixed-sized buffer. This should be fine for a typical HPC application, but
 can lead to extreme cases there the buffers are orders of magnitude larger than the resulting trace.
-For instance, recording a CMake run, which spawns hundres of processes, each running only for
+For instance, recording a CMake run, which spawns hundreds of processes, each running only for
 a few milliseconds, leaving each buffer almost empty. Still, the buffers needs to be allocated
 and thus require a lot of memory.
 
@@ -110,7 +110,7 @@ above, there are no other processes running.
 When using the `system monitoring mode` without passing a program, `lo2s` will run indefinitely.
 You can stop the measurement by sending `lo2s` a `SIGINT` signal or hit `ctrl+C`. However, if you pass
 a program, `lo2s` will start that program and run the measurement until the started process finishes.
-Of course, the process and any of its subprocesses and threads will be visible in the resulting trace.
+Of course, the process and any of its child processes and threads will be visible in the resulting trace.
 
 ```console
 marie@compute$ lo2s -a -- sleep 10
@@ -119,7 +119,7 @@ marie@compute$ lo2s -a -- sleep 10
 ```
 
 Like in the `process monitoring mode`, `lo2s` can also sample instructions in the system monitoring mode.
-You can enable the instruciton sampling by passing the `--instruction-sampling` parameter to `lo2s`.
+You can enable the instruction sampling by passing the `--instruction-sampling` parameter to `lo2s`.
 
 ```console
 marie@compute$ lo2s -a --instruction-sampling -- make -j
@@ -129,9 +129,9 @@ marie@compute$ lo2s -a --instruction-sampling -- make -j
 
 ## Advanced Topic: Metric Plugins
 
-`Lo2s` is complatible with [Score-P](scorep.md) metric plugins, but only a subset will work.
+`Lo2s` is compatible with [Score-P](scorep.md) metric plugins, but only a subset will work.
 In particular, `lo2s` only supports asynchronous plugins with the per host or once scope.
-You can find a large set of plugins in the [Score-P Organization on Github](https://github.com/score-p).
+You can find a large set of plugins in the [Score-P Organization on GitHub](https://github.com/score-p).
 
 To activate plugins, you can use the same environment variables as with Score-P, or with `LO2S` as
 prefix:
