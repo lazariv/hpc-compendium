@@ -46,11 +46,9 @@ line arguments are inspired by `perf`. The main difference to `perf` is that `lo
 a [Vampir trace](vampir.md), which allows a full-blown performance analysis almost like
 [Score-P](scorep.md).
 
-
 To record the behavior of an application, prefix the application run with `lo2s`. We recommend
 using the double dash `--` to prevent mixing command line arguments between `lo2s` and the user
 application. In the following example, we run `lo2s` on the application `sleep 2`.
-
 
 ```console
 marie@compute$ lo2s --no-kernel -- sleep 2
@@ -67,29 +65,29 @@ indicating for each process, on which CPU it was executed during the runtime.
 
 By design, `lo2s` almost exclusively utilizes Linux Kernel facilities such as perf and tracepoints
 to perform the application measurements. For security reasons, these facilities require special
-permissions, in particular `perf_event_paranoid` and read permissions to the `debugfs` under 
-`/sys/kernel/debug`. 
+permissions, in particular `perf_event_paranoid` and read permissions to the `debugfs` under
+`/sys/kernel/debug`.
 
 Luckily, for the `process monitoring mode` the default settings allow you to run `lo2s` just fine.
 All you need to do is pass the `--no-kernel` parameter like in the example above.
 
-For the `system monitoring mode` you can get the required permission with the SLURM parameter
+For the `system monitoring mode` you can get the required permission with the Slurm parameter
 `--exclusive`. (Note: Regardless of the actual requested processes per node, you will accrue
 cpu-hours as if you had reserved all cores on the node.)
 
 ## Memory Requirements
 
-When requesting memory for your jobs, you need to take into account that `lo2s` needs a substantial 
+When requesting memory for your jobs, you need to take into account that `lo2s` needs a substantial
 amount of memory for its operation. Unfortunately, the amount of memory depends on the application.
 The amount mainly scales with the number of processes spawned by the traced application. For each
-processes, there is a fixed-sized buffer. This should be fine for a typical HPC application, but 
+processes, there is a fixed-sized buffer. This should be fine for a typical HPC application, but
 can lead to extreme cases there the buffers are orders of magnitude larger than the resulting trace.
 For instance, recording a CMake run, which spawns hundres of processes, each running only for
 a few milliseconds, leaving each buffer almost empty. Still, the buffers needs to be allocated
 and thus require a lot of memory.
 
 Given such a case, we recommend to use the `system monitoring mode` instead, as the memory in this
-mode scales with the number of logical CPUs instead of the number of processes. 
+mode scales with the number of logical CPUs instead of the number of processes.
 
 ## Advanced Topic: System Monitoring
 
