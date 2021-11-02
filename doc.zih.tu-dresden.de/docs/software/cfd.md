@@ -42,7 +42,7 @@ marie@login$ # source $FOAM_CSH
     module load OpenFOAM
     source $FOAM_BASH
     cd /scratch/ws/1/marie-example-workspace  # work directory using workspace
-    srun pimpleFoam -parallel > "$OUTFILE" 
+    srun pimpleFoam -parallel > "$OUTFILE"
     ```
 
 ## Ansys CFX
@@ -62,7 +62,7 @@ geometry and mesh generator cfx5pre, and the post-processor cfx5post.
 
     module load ANSYS
     cd /scratch/ws/1/marie-example-workspace                   # work directory using workspace
-    cfx-parallel.sh -double -def StaticMixer.def 
+    cfx-parallel.sh -double -def StaticMixer.def
     ```
 
 ## Ansys Fluent

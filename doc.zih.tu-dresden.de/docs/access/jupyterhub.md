@@ -137,8 +137,8 @@ This message appears instantly if your batch system parameters are not valid.
 Please check those settings against the available hardware.
 Useful pages for valid batch system parameters:
 
-- [Slurm batch system (Taurus)](../jobs_and_resources/system_taurus.md#batch-system)
 - [General information how to use Slurm](../jobs_and_resources/slurm.md)
+- [Partitions and limits](../jobs_and_resources/partitions_and_limits.md)
 
 ### Error Message in JupyterLab
 

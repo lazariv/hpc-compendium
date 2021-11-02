@@ -15,15 +15,19 @@ basedir=`dirname "$basedir"`
 ruleset="i	\<io\>	\.io
 s	\<SLURM\>
 i	file \+system	HDFS
-i	\<taurus\>	taurus\.hrsk	/taurus
+i	\<taurus\>	taurus\.hrsk	/taurus	/TAURUS
 i	\<hrskii\>
-i	hpc \+system
 i	hpc[ -]\+da\>
+i	attachurl
+i	\<todo\>	<!--.*todo.*-->
+i	[[:space:]]$
+i	\(alpha\|ml\|haswell\|romeo\|gpu\|smp\|julia\|hpdlf\|scs5\)-\?\(interactive\)\?[^a-z]*partition
+i	\[\s\?\(documentation\|here\|this \(link\|page\|subsection\)\|slides\?\|manpage\)\s\?\]
 i	work[ -]\+space"
 
 # Whitelisted files will be ignored
 # Whitespace separated list with full path
-whitelist=(doc.zih.tu-dresden.de/docs/contrib/content_rules.md)
+whitelist=(doc.zih.tu-dresden.de/README.md doc.zih.tu-dresden.de/docs/contrib/content_rules.md doc.zih.tu-dresden.de/docs/access/ssh_login.md)
 
 function grepExceptions () {
   if [ $# -gt 0 ]; then
@@ -44,13 +48,15 @@ function usage () {
   echo "  -f     Search in a specific markdown file" 
   echo "  -s     Silent mode"
   echo "  -h     Show help message"
+  echo "  -c     Show git matches in color"
 }
 
 # Options
 all_files=false
 silent=false
 file=""
-while getopts ":ahsf:" option; do
+color=""
+while getopts ":ahsf:c" option; do
  case $option in
    a)
      all_files=true
@@ -61,6 +67,9 @@ while getopts ":ahsf:" option; do
      ;;
    s)
      silent=true
+     ;;
+   c)
+     color=" --color=always "
      ;;
    h)
      usage
@@ -87,7 +96,7 @@ fi
 echo "... $files ..."
 cnt=0
 for f in $files; do
-  if [ "$f" != doc.zih.tu-dresden.de/README.md -a "${f: -3}" == ".md" -a -f "$f" ]; then
+  if [ "${f: -3}" == ".md" -a -f "$f" ]; then
     if (printf '%s\n' "${whitelist[@]}" | grep -xq $f); then
       echo "Skip whitelisted file $f"
       continue
@@ -104,7 +113,7 @@ for f in $files; do
             grepflag=-i
           ;;
         esac
-        if grep -n $grepflag "$pattern" "$f" | grepExceptions "${exceptionPatternsArray[@]}" ; then
+        if grep -n $grepflag $color "$pattern" "$f" | grepExceptions "${exceptionPatternsArray[@]}" ; then
           ((cnt=cnt+1))
         fi
       done <<< $exceptionPatterns

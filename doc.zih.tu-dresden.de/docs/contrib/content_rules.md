@@ -51,6 +51,12 @@ should be highlighted, etc. Code examples, longer than half screen height should
 ## Writing Style
 
 * Capitalize headings, e.g. *Exclusive Reservation of Hardware*
+* Give keywords in link texts, e.g. [Code Blocks](#code-blocks-and-syntax-highlighting) is more
+  descriptive than [this subsection](#code-blocks-and-syntax-highlighting)
+* Use active over passive voice
+    * Write with confidence. This confidence should be reflected in the documentation, so that
+      the readers trust and follow it.
+    * Example: `We recommend something` instead of `Something is recommended.`
 
 ## Spelling and Technical Wording
 
@@ -61,8 +67,17 @@ there is a list of conventions w.r.t. spelling and technical wording.
 * `I/O` not `IO`
 * `Slurm` not `SLURM`
 * `Filesystem` not `file system`
-* `ZIH system` and `ZIH systems` not `Taurus` etc. if possible
+* `ZIH system` and `ZIH systems` not `Taurus`, `HRSKII`, `our HPC systems`, etc.
 * `Workspace` not `work space`
+* avoid term `HPC-DA`
+* Partition names after the keyword *partition*: *partition `ml`* not *ML partition*, *ml
+  partition*, *`ml` partition*, *"ml" partition*, etc.
+
+### Long Options
+
+* Use long over short options, e.g. `srun --nodes=2 --ntasks-per-node=4 ...` is preferred over
+  `srun -N 2 -n 4 ...`
+* Use `module` over the short front-end `ml` in documentation and examples
 
 ## Code Blocks and Command Prompts
 
@@ -87,7 +102,6 @@ We follow this rules regarding prompts:
 | Arbitrary compute node | `marie@compute$` |
 | `haswell` partition    | `marie@haswell$` |
 | `ml` partition         | `marie@ml$`      |
-| `alpha` partition      | `marie@alpha$`   |
 | `alpha` partition      | `marie@alpha$`   |
 | `romeo` partition      | `marie@romeo$`   |
 | `julia` partition      | `marie@julia$`   |
@@ -115,7 +129,7 @@ For consistency, use the following short codes within this project:
 
 With the exception of command templates, use `console` for shell session and console:
 
-```` markdown
+````markdown
 ```console
 marie@login$ ls
 foo
@@ -129,7 +143,7 @@ Command templates use [Placeholders](#mark-placeholders) to mark replaceable cod
 templates should give a general idea of invocation and thus, do not contain any output. Use a
 `bash` code block followed by an invocation example (with `console`):
 
-```` markdown
+````markdown
 ```bash
 marie@local$ ssh -NL <local port>:<compute node>:<remote port> <zih login>@tauruslogin.hrsk.tu-dresden.de
 ```
@@ -141,7 +155,7 @@ marie@local$ ssh -NL 5901:172.24.146.46:5901 marie@tauruslogin.hrsk.tu-dresden.d
 
 Also use `bash` for shell scripts such as job files:
 
-```` markdown
+````markdown
 ```bash
 #!/bin/bash
 #SBATCH --nodes=1
@@ -160,7 +174,7 @@ srun a.out
 
 `python` for Python source code:
 
-```` markdown
+````markdown
 ```python
 from time import gmtime, strftime
 print(strftime("%Y-%m-%d %H:%M:%S", gmtime()))
@@ -169,7 +183,7 @@ print(strftime("%Y-%m-%d %H:%M:%S", gmtime()))
 
 `pycon` for Python console:
 
-```` markdown
+````markdown
 ```pycon
 >>> from time import gmtime, strftime
 >>> print(strftime("%Y-%m-%d %H:%M:%S", gmtime()))
@@ -179,7 +193,7 @@ print(strftime("%Y-%m-%d %H:%M:%S", gmtime()))
 
 Line numbers can be added via
 
-```` markdown
+````markdown
 ```bash linenums="1"
 #!/bin/bash
 
@@ -190,6 +204,10 @@ Line numbers can be added via
 srun a.out
 ```
 ````
+
+_Result_:
+
+![lines](misc/lines.png)
 
 Specific Lines can be highlighted by using
 
@@ -204,6 +222,10 @@ Specific Lines can be highlighted by using
 srun a.out
 ```
 ````
+
+_Result_:
+
+![lines](misc/highlight_lines.png)
 
 ### Data Privacy and Generic User Name
 
