@@ -41,6 +41,9 @@ To start a completely new article, klick on "+ New file" as depcited here:
 Set a file name that corresponds well to your article like "application-xyz.md"
 Once you completed your initial edits, klick on "commit".
 
+![commit new file](misc/cb_commit_file.png)
+
+
 ## Editing existing articles
 
 Navigate the depcited document hierarchie under "doc.zih.tu-dresden.de/docs" until you find the article to be edited.
