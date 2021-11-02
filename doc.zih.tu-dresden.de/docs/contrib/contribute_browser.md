@@ -9,7 +9,7 @@ In the following, it is outlined how to contribute to the
 First of all you need a user account on 
 [gitlab.hrz.tu-chemnitz.de](https://gitlab.hrz.tu-chemnitz.de).
 Secondly, you need access to the project "zih/hpcsupport/hpc-compendium" (ID: 8840).
-Please, contact TODO to be added the list of editors. 
+Please, contact martin.schroschk@tu-dresden.de to be added the list of editors. 
 Choose "ZIH/hpcsupport/hpc-compendium" in your list of projects.
 You will find this document amongst other README files in the list of files at the right hand side.
 All articles are stored in the folder "doc.zih.tu-dresden.de".
@@ -17,7 +17,7 @@ All articles are stored in the folder "doc.zih.tu-dresden.de".
 ## Create your private copy of the repository
 
 Your contribution starts by creating your own independent copy of the reposotory that will hold your edits or addtions. 
-A private copy is created by creating a branch by clicking on "preview->hpc-compendium/ + new branch" as depicted in Figure ...
+A private copy is created by creating a branch by clicking on "preview->hpc-compendium/ + new branch" as depicted in Figure ![create new branch](misc/edit-in-browser-new-branch.png).
 If you are not familiar with the basics of git-based document revision control yet, please have a look at tutorials like these TODO.
 Define a branch name that briefly decribes what you plan to change.
 For example: "edits-in-document-xyz". Click on "Create branch" as depicted in Figure ...
