@@ -64,7 +64,7 @@ Select your source branch (for exmaple "edits-in-document-xyz") and click on "Co
 The next screen will give you an overview of your changes. 
 Once you checked them, click on "Create merge request".
 
-![new merge request](misc/cb_new_merge-request.png)
+![new merge request](misc/cb_new_merge_request.png)
 
 ## Revision of articles 
 
