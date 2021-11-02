@@ -24,7 +24,8 @@ Define a branch name that briefly decribes what you plan to change.
 For example: "edits-in-document-xyz". Click on "Create branch" as depicted in this figure:
 ![set branch name](misc/cb_set_branch_name.png)
 
-As a result, you should now see your branch's name on top of your list of repository files as depcited in Figure ...
+As a result, you should now see your branch's name on top of your list of repository files as depcited here:
+![branch indicator](misc/cb_branch_indicator.png)
 
 ## Adding a new article
 
