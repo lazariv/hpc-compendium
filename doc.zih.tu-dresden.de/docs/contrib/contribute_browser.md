@@ -58,11 +58,13 @@ Feel free to do as many changes and commits in your private copy (branch) of the
 Once you are satisfied with your edits you are ready for publication.
 Therefore, your edits need to undergo an internal review process.
 This process is triggered by doing a "merge-request", which serves the purpose of merging your edits into the public copy of the article repository (after successful review).
-Click on "Merge requests" (in the menue to the left) as depcited in Figure ... 
-Click in the button "New merge request" as depcited in Figure ...
+Click on "Merge requests" (in the menue to the left) as depcited below.
+Then, click on the button "New merge request".
 Select your source branch (for exmaple "edits-in-document-xyz") and click on "Compare branches and continue".
 The next screen will give you an overview of your changes. 
 Once you checked them, click on "Create merge request".
+
+![new merge request](misc/cb_new_merge-request.png)
 
 ## Revision of articles 
 
