@@ -17,7 +17,7 @@ All articles are stored in the folder "doc.zih.tu-dresden.de".
 ## Create your private copy of the repository
 
 Your contribution starts by creating your own independent copy of the reposotory that will hold your edits or addtions. 
-A private copy is created by creating a branch by clicking on "preview->hpc-compendium/ + new branch" as depicted in Figure ![create new branch](misc/edit-in-browser-new-branch.png).
+A private copy is created by creating a branch by clicking on "preview->hpc-compendium/ + new branch" as depicted in Figure ![create new branch](misc/cb_create_new_branch.png).
 If you are not familiar with the basics of git-based document revision control yet, please have a look at tutorials like these TODO.
 Define a branch name that briefly decribes what you plan to change.
 For example: "edits-in-document-xyz". Click on "Create branch" as depicted in Figure ...
