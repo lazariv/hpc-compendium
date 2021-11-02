@@ -30,7 +30,9 @@ As a result, you should now see your branch's name on top of your list of reposi
 ## Adding a new article
 
 Navigate the depcited document hierarchie under "doc.zih.tu-dresden.de/docs" to find a topic that fits best to your article. 
-To start a completely new article, klick on "+ New file" as depcited in Figure ...
+To start a completely new article, klick on "+ New file" as depcited here:
+![create new file](misc/cb_create_new_file.png)
+
 Set a file name that corresponds well to your article like "application-xyz.md"
 Once you completed your initial edits, klick on "commit".
 
