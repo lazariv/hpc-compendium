@@ -1,78 +1,108 @@
-# Contribution Guide for Browser-based Editing  
+# Contribution Guide for Browser-based Editing
 
 In the following, it is outlined how to contribute to the
 [HPC documentation](https://doc.zih.tu-dresden.de/) of
-[TU Dresden/ZIH](https://tu-dresden.de/zih/) by means of GitLab's web interface using a standard web browser only.
+[TU Dresden/ZIH](https://tu-dresden.de/zih/) by means of GitLab's web interface using a standard web
+browser only.
 
 ## Preparation
 
-First of all you need a user account on 
+First of all you need an account on
 [gitlab.hrz.tu-chemnitz.de](https://gitlab.hrz.tu-chemnitz.de).
-Secondly, you need access to the project "zih/hpcsupport/hpc-compendium" (ID: 8840).
-Please, contact martin.schroschk@tu-dresden.de to be added the list of editors. 
-Choose "ZIH/hpcsupport/hpc-compendium" in your list of projects.
-You will find this document amongst other README files in the list of files at the right hand side.
-All articles are stored in the folder "doc.zih.tu-dresden.de".
+Secondly, you need access to the project
+[ZIH/hpcsupport/hpc-compendium](https://gitlab.hrz.tu-chemnitz.de/zih/hpcsupport/hpc-compendium)
+(ID: 8840).
 
-## Create your private copy of the repository
+The project is publicly visible, i.e., it is open to the world and any signed-in user has the
+[Guest role](https://gitlab.hrz.tu-chemnitz.de/help/user/permissions.md) on this repository. Guests
+have only very
+[limited permissions](https://gitlab.hrz.tu-chemnitz.de/help/user/permissions.md#project-members-permissions).
+In particular, as guest you can contribute to the documentation by
+[creating issues](howto_contribute.md#contribute-via-issue), but you cannot edit files and create
+new branches.
 
-Your contribution starts by creating your own independent copy of the reposotory that will hold your edits or addtions. 
-A private copy is created by creating a branch by clicking on "preview->hpc-compendium/ + new branch" as depicted in this figure: 
+To be granted the role **Developer**, please request access by clicking the corresponding button.
+
+![Request access to the repository](misc/request_access.png)
+
+Once you are granted the developer role, choose "ZIH/hpcsupport/hpc-compendium" in your project list.
+
+!!! hint "Git basics"
+
+    If you are not familiar with the basics of git-based document revision control yet, please have
+    a look at [tutorials like these](https://docs.gitlab.com/ee/gitlab-basics/).
+
+## Create a Branch
+
+Your contribution starts by creating your own branch of the repository that will hold your edits and
+additions.  Create your branch  by clicking on "preview->hpc-compendium/ + new branch" as depicted
+in this figure:
 
 ![create new branch](misc/cb_create_new_branch.png)
 
-If you are not familiar with the basics of git-based document revision control yet, please have a look at [tutorials like these](https://docs.gitlab.com/ee/gitlab-basics/).
-Define a branch name that briefly decribes what you plan to change.
-For example: "edits-in-document-xyz". Click on "Create branch" as depicted in this figure:
+By default, the new branch should be created from the `preview` branch, as pre-selected.
+
+Define a branch name that briefly describes what you plan to change, e.g., `edits-in-document-xyz`.
+Then, click on "Create branch" as depicted in this figure:
 
 ![set branch name](misc/cb_set_branch_name.png)
 
-As a result, you should now see your branch's name on top of your list of repository files as depcited here:
+As a result, you should now see your branch's name on top of your list of repository files as
+depicted here:
 
 ![branch indicator](misc/cb_branch_indicator.png)
 
-## Adding a new article
+## Editing Existing Articles
 
-Navigate the depcited document hierarchie under "doc.zih.tu-dresden.de/docs" to find a topic that fits best to your article. 
-To start a completely new article, klick on "+ New file" as depcited here:
+Navigate the depicted document hierarchy under `doc.zih.tu-dresden.de/docs` until you find the
+article to be edited. Click on the articles name opens a textual representation of the article.  In
+the top right corner of it you find the button "Edit" to be clicked in order to make changes.  Once
+you completed your changes click on "Commit changes".  Please add meaningful comment about the
+changes you made under "Commit message".  Feel free to do as many changes and commits in your branch
+of the repository.
+
+## Adding New Article
+
+Navigate the depicted document hierarchy under `doc.zih.tu-dresden.de/docs` to find a topic that
+fits best to your article. To start a completely new article, click on "+ New file" as depicted
+here:
 
 ![create new file](misc/cb_create_new_file.png)
 
-Set a file name that corresponds well to your article like "application-xyz.md"
-Once you completed your initial edits, klick on "commit".
+Set a file name that corresponds well to your article like "application_xyz.md".
+(The file name should follow the pattern `fancy_title_and_more.md`.)
+Once you completed your initial edits, click on "commit".
 
 ![commit new file](misc/cb_commit_file.png)
 
+Finally, the new article needs to be added to the navigation section of the configuration file
+`doc.zih.tu-dresden.de/mkdocs.yaml`.
 
-## Editing existing articles
-
-Navigate the depcited document hierarchie under "doc.zih.tu-dresden.de/docs" until you find the article to be edited.
-Clickick on the articles name opens a textual representation of the article.
-In the top right corner of it you find the button "Edit" to be clicked in order to make changes.
-Once you completed your changes click on "Commit changes".
-You might want to add a comment about the changes you made under "Commit message".
-Feel free to do as many changes and commits in your private copy (branch) of the repository.
-
-## Submitting articles for publication
+## Submitting Articles for Publication
 
 Once you are satisfied with your edits you are ready for publication.
-Therefore, your edits need to undergo an internal review process.
-This process is triggered by doing a "merge-request", which serves the purpose of merging your edits into the public copy of the article repository (after successful review).
-Click on "Merge requests" (in the menue to the left) as depcited below.
-Then, click on the button "New merge request".
-Select your source branch (for exmaple "edits-in-document-xyz") and click on "Compare branches and continue".
-The next screen will give you an overview of your changes. 
-Once you checked them, click on "Create merge request".
+Therefore, your edits need to undergo an internal review process and pass the CI/CD pipeline tests.
+This process is triggered by creating a "merge request", which serves the purpose of merging your edits
+into the `preview` branch of the repository.
+
+* Click on "Merge requests" (in the menu to the left) as depicted below.
+* Then, click on the button "New merge request".
+* Select your source branch (for example `edits-in-document-xyz`) and click on "Compare branches and continue".
+  (The target branch is always `preview`. This is pre-selected - do not change!)
+* The next screen will give you an overview of your changes.
+* Please provide a meaningful description of the contributions.
+* Once you checked them, click on "Create merge request".
 
 ![new merge request](misc/cb_new_merge_request.png)
 
-## Revision of articles 
+## Revision of Articles
 
 As stated earlier, all changes undergo a review process.
-This covers automated checks and the review by a maintainer.
-You can follow this process under merge requests (where you intiated the merge request). 
+This covers automated checks contained in the CI/CD pipeline and the review by a maintainer.
+You can follow this process under
+(Merge requests)[https://gitlab.hrz.tu-chemnitz.de/zih/hpcsupport/hpc-compendium/-/merge_requests]
+(where you initiated your merge request).
 If you are asked to make corrections or changes, follow the directions as indicated.
-Once your merge request has been accepted your request for publication and your corresponding private copy with your changes will dissapear and your changes will appear on the branch "preview". 
-At this point there is nothing else to do for you. 
-Except probably for waiting a little while until your changes become visible on the offical web site.
-
+Once your merge request has been accepted, the merge request will be closed and the branch will be deleted.
+At this point there is nothing else to do for you.
+Except probably for waiting a little while until your changes become visible on the official web site.
