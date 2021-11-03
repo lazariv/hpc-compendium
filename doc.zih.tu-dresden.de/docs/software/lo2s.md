@@ -1,20 +1,20 @@
-# `lo2s` - Lightweight Node-Level Performance Monitoring
+# lo2s - Lightweight Node-Level Performance Monitoring
 
 `lo2s` creates parallel OTF2 traces with a focus on both application and system view.
 The traces can contain any of the following information:
 
- * From running threads
-   * Calling context samples based on instruction overflows
-   * The calling context samples are annotated with the disassembled assembler instruction string
-   * The frame pointer-based call-path for each calling context sample
-   * Per-thread performance counter readings
-   * Which thread was scheduled on which CPU at what time
- * From the system
-   * Metrics from tracepoints (e.g., the selected C-state or P-state)
-   * The node-level system tree (CPUs (HW-threads), cores, packages)
-   * CPU power measurements (x86_energy)
-   * Microarchitecture specific metrics (x86_adapt, per package or core)
-   * Arbitrary metrics through plugins (Score-P compatible)
+* From running threads
+    * Calling context samples based on instruction overflows
+    * The calling context samples are annotated with the disassembled assembler instruction string
+    * The frame pointer-based call-path for each calling context sample
+    * Per-thread performance counter readings
+    * Which thread was scheduled on which CPU at what time
+* From the system
+    * Metrics from tracepoints (e.g., the selected C-state or P-state)
+    * The node-level system tree (CPUs (HW-threads), cores, packages)
+    * CPU power measurements (x86_energy)
+    * Microarchitecture specific metrics (x86_adapt, per package or core)
+    * Arbitrary metrics through plugins (Score-P compatible)
 
 In general, `lo2s` operates either in **process monitoring** or **system monitoring** mode.
 
@@ -119,7 +119,7 @@ marie@compute$ lo2s -a -- sleep 10
 ```
 
 Like in the `process monitoring mode`, `lo2s` can also sample instructions in the system monitoring mode.
-You can enable the instruction sampling by passing the `--instruction-sampling` parameter to `lo2s`.
+You can enable the instruction sampling by passing the parameter `--instruction-sampling` to `lo2s`.
 
 ```console
 marie@compute$ lo2s -a --instruction-sampling -- make -j
