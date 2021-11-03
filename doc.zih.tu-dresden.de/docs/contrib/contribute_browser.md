@@ -69,7 +69,7 @@ here:
 
 ![create new file](misc/cb_create_new_file.png)
 
-Set a file name that corresponds well to your article like "application_xyz.md".
+Set a file name that corresponds well to your article like `application_xyz.md`.
 (The file name should follow the pattern `fancy_title_and_more.md`.)
 Once you completed your initial edits, click on "commit".
 
