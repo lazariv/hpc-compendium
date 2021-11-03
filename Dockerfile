@@ -10,7 +10,7 @@ RUN pip install mkdocs>=1.1.2 mkdocs-material>=7.1.0
 # Linter #
 ##########
 
-RUN apt update && apt install -y nodejs npm aspell
+RUN apt update && apt install -y nodejs npm aspell git
 
 RUN npm install -g markdownlint-cli markdown-link-check
 
