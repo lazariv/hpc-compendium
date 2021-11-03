@@ -35,6 +35,8 @@ Any project have:
 
 ## Third step: Hardware
 
+**some information how to estimate GPUh/CPUh is needed.**
+
 ![picture 4: Hardware >](misc/request_step3_machines.png "Hardware"){loading=lazy width=300 style="float:right"}
 This step inquire the required hardware. You can find the specifications
 [here](../jobs_and_resources/hardware_overview.md).
