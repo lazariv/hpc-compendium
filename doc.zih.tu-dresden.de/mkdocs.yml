@@ -65,6 +65,7 @@ nav:
       - Debugging: software/debuggers.md
       - MPI Error Detection: software/mpi_usage_error_detection.md
       - Score-P: software/scorep.md
+      - lo2s: software/lo2s.md
       - PAPI Library: software/papi.md
       - Pika: software/pika.md
       - Perf Tools: software/perf_tools.md
