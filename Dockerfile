@@ -4,18 +4,16 @@ FROM python:3.8-bullseye
 # Base #
 ########
 
-COPY ./ /src/
-
-RUN pip install -r /src/doc.zih.tu-dresden.de/requirements.txt
+RUN pip install mkdocs>=1.1.2 mkdocs-material>=7.1.0
 
 ##########
 # Linter #
 ##########
 
-RUN apt update && apt install -y nodejs npm aspell
+RUN apt update && apt install -y nodejs npm aspell git
 
 RUN npm install -g markdownlint-cli markdown-link-check
 
-WORKDIR /src/doc.zih.tu-dresden.de
+WORKDIR /docs
 
 CMD ["mkdocs", "build", "--verbose", "--strict"]
