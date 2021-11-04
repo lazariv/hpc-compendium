@@ -1,4 +1,4 @@
-## Project and User Private Modules
+# Project and User Private Modules
 
 Private module files allow you to load your own installed software packages into your environment
 and to handle different versions without getting into conflicts. Private modules can be setup for a
@@ -14,7 +14,7 @@ within your home or project directory to setup your own module files.
 Please see the [Environment Modules open source project's web page](http://modules.sourceforge.net/)
 for further information on writing module files.
 
-### 1. Create Directories
+## 1. Create Directories
 
 ```console
 marie@compute$ cd $HOME
@@ -24,7 +24,7 @@ marie@compute$ cd privatemodules/testsoftware
 
 (create a directory in your home directory)
 
-### 2. Notify lmod
+## 2. Notify lmod
 
 ```console
 marie@compute$ module use $HOME/privatemodules
@@ -32,7 +32,7 @@ marie@compute$ module use $HOME/privatemodules
 
 (add the directory in the list of module directories)
 
-### 3. Create Modulefile
+## 3. Create Modulefile
 
 Create a file with the name `1.0` with a
 test software in the `testsoftware` directory you created earlier
@@ -59,7 +59,7 @@ if [ module-info mode load ] {
 }
 ```
 
-### 4. Check lmod
+## 4. Check lmod
 
 Check the availability of the module with `ml av`, the output should look like this:
 
@@ -68,7 +68,7 @@ Check the availability of the module with `ml av`, the output should look like t
    testsoftware/1.0
 ```
 
-### 5. Load Module
+## 5. Load Module
 
 Load the test module with `module load testsoftware`, the output should look like this:
 
@@ -77,7 +77,7 @@ Load testsoftware version 1.0
 Module testsoftware/1.0 loaded.
 ```
 
-### Project Private Modules
+## Project Private Modules
 
 Private module files allow you to load project- or group-wide installed software into your
 environment and to handle different versions without getting into conflicts.
