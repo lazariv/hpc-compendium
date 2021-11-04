@@ -126,7 +126,7 @@ Remember that this does not break backward compatibility when you port the scrip
 
 ### Caveats
 
-#### Moving data back to the CPU-memory
+#### Moving Data Back to the CPU-Memory
 
 The CPU cannot directly access variables stored on the GPU. If you want to use the variables, e.g. in a `print`-statement or
 when editing with NumPy or anything that is not PyTorch, you have to move them back to the CPU-memory again. This then may look like this:
@@ -134,12 +134,12 @@ when editing with NumPy or anything that is not PyTorch, you have to move them b
 ```python3
 cpu_x_train = x_train.cpu()
 print(cpu_x_train)
-... 
+...
 error_train = np.sqrt(metrics.mean_squared_error(y_train[:,1].cpu(), y_prediction_train[:,1]))
 ```
 
 Remember that, without `.detach()` before the CPU, if you change `cpu_x_train`, `x_train` will also be changed.
-If you want to treat them independently, use 
+If you want to treat them independently, use
 
 ```python3
 cpu_x_train = x_train.detach().cpu()
@@ -147,7 +147,7 @@ cpu_x_train = x_train.detach().cpu()
 
 Now you can change `cpu_x_train` without `x_train` being affected.
 
-#### Speed improvements and batch size
+#### Speed Improvements and Batch Size
 
 When you have a lot of very small data points, the speed may actually decrease when you try to train them on the GPU.
 This is because moving data from the CPU-memory to the GPU-memory takes time. If this occurs, please try using
