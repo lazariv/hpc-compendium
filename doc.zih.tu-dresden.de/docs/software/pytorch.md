@@ -2,10 +2,10 @@
 
 [PyTorch](https://pytorch.org/) is an open-source machine learning framework.
 It is an optimized tensor library for deep learning using GPUs and CPUs.
-PyTorch is a machine learning tool developed by Facebooks AI division to process large-scale
+PyTorch is a machine learning tool developed by Facebook's AI division to process large-scale
 object detection, segmentation, classification, etc.
 PyTorch provides a core data structure, the tensor, a multi-dimensional array that shares many
-similarities with Numpy arrays.
+similarities with NumPy arrays.
 
 Please check the software modules list via
 
@@ -47,7 +47,7 @@ Module GCC/10.2.0, CUDA/11.1.1, OpenMPI/4.0.5, PyTorch/1.9.0 and 54 dependencies
     ```
 
     Using the **--no-deps** option for "pip install" is necessary here as otherwise the PyTorch
-    version might be replaced and you will run into trouble with the cuda drivers.
+    version might be replaced and you will run into trouble with the CUDA drivers.
 
 On the partition `ml`:
 
@@ -65,8 +65,8 @@ marie@login$ module spider pytorch
 we know that we can load PyTorch (including torchvision) with
 
 ```console
-marie@ml$ module load modenv/ml torchvision/0.7.0-fosscuda-2019b-Python-3.7.4-PyTorch-1.6.0
-Module torchvision/0.7.0-fosscuda-2019b-Python-3.7.4-PyTorch-1.6.0 and 55 dependencies loaded.
+marie@ml$ module load modenv/ml torchvision/0.7.0-fossCUDA-2019b-Python-3.7.4-PyTorch-1.6.0
+Module torchvision/0.7.0-fossCUDA-2019b-Python-3.7.4-PyTorch-1.6.0 and 55 dependencies loaded.
 ```
 
 Now, we check that we can access PyTorch:
@@ -110,17 +110,17 @@ For details on how to run PyTorch with multiple GPUs and/or multiple nodes, see
 It is recommended to use GPUs when using large training data sets. While TensorFlow automatically
 uses GPUs if they are available, in PyTorch you have to move your tensors manually.
 
-First, you need to import `torch.cuda`:
+First, you need to import `torch.CUDA`:
 
 ```python3
-import torch.cuda
+import torch.CUDA
 ```
 
-Then you define a `device`-variable, which is set to 'cuda' automatically when a GPU is available
+Then you define a `device`-variable, which is set to 'CUDA' automatically when a GPU is available
 with this code:
 
 ```python3
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+device = torch.device('CUDA' if torch.CUDA.is_available() else 'cpu')
 ```
 
 You then have to move all of your tensors to the selected device. This looks like this:
