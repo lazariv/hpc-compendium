@@ -66,7 +66,6 @@ Usage of software on HPC systems is managed by a **modules system**.
     Module Python/3.8.6-GCCcore-10.2.0 and 11 dependencies unloaded.
     ```
 
-
 ??? hint "Being lazy in typing"
 
     `ml` \
@@ -210,11 +209,16 @@ For writing your own Modulefiles please have a look at the [Guide for writing pr
 
 ### When I log in, the wrong modules are loaded by default
 
-Reset your currently loaded modules with `module purge` (or `module purge --force` if you also want to unload your basic `modenv` module). Then run `module save` to overwrite the list of modules you load by default when logging in.
+Reset your currently loaded modules with `module purge`
+(or `module purge --force` if you also want to unload your basic `modenv` module).
+Then run `module save` to overwrite the
+list of modules you load by default when logging in.
 
 ### I can't load module TensorFlow
 
-Check the dependencies by e.g. calling `module spider TensorFlow/2.4.1` it will list a number of modules that need to be loaded before the TensorFlow module can be loaded.
+Check the dependencies by e.g. calling `module spider TensorFlow/2.4.1`
+it will list a number of modules that need to be loaded
+before the TensorFlow module can be loaded.
 
 ??? example "Loading the dependencies"
 
