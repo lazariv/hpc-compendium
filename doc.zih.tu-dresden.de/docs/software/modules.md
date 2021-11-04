@@ -17,13 +17,32 @@ Usage of software on HPC systems is managed by a **modules system**.
     By using modules, you can smoothly switch between different versions of
     installed software packages and libraries.
 
-## Examples
+## Module Commands
 
-### Finding available software
+Using modules is quite straightforward and the following table lists the basic commands.
 
-    `module avail <modname>`
+| Command                       | Description                                                      |
+|:------------------------------|:-----------------------------------------------------------------|
+| `module help`                 | Show all module options                                          |
+| `module list`                 | List active modules in the user environment                      |
+| `module purge`                | Remove modules from the user environment                         |
+| `module avail [modname]`      | List all available modules                                       |
+| `module spider [modname]`     | Search for modules across all environments                       |
+| `module load <modname>`       | Load module `modname` in the user environment                    |
+| `module unload <modname>`     | Remove module `modname` from the user environment                |
+| `module switch <mod1> <mod2>` | Replace module `mod1` with module `mod2`                         |
 
-!!! example "Example usage"
+Module files are ordered by their topic on ZIH systems. By default, with `module avail` you will
+see all topics and their available module files. If you just wish to see the installed versions of a
+certain module, you can use `module avail softwarename` and it will display the available versions of
+`softwarename` only.
+
+### Examples
+
+???+ example "Finding available software"
+
+    This examples illustrates the usage of the command `module avail` to search for available Matlab
+    installations.
 
     ```console
     marie@compute$ module avail matlab
@@ -33,29 +52,26 @@ Usage of software on HPC systems is managed by a **modules system**.
        MATLAB/2018a    MATLAB/2019b    MATLAB/2021a (D)
 
       Wo:
-       D:  Standard Modul. 
+       D:  Standard Modul.
 
     Verwenden Sie "module spider" um alle verfügbaren Module anzuzeigen.
     Verwenden Sie "module keyword key1 key2 ...", um alle verfügbaren Module
     anzuzeigen, die mindestens eines der Schlüsselworte enthält.
     ```
 
-### Loading software
+???+ example "Loading and removing modules"
 
-    `module load <software/version>`
-
-!!! example "Example usage"
+    A particular module or several modules are loaded into your environment using the `module load`
+    command. The counter part to remove a module or several modules is `module unload`.
 
     ```console
     marie@compute$ module load Python/3.8.6
     Module Python/3.8.6-GCCcore-10.2.0 and 11 dependencies loaded.
     ```
 
-### Unloading all modules
+???+ example "Removing all modules"
 
-    `module purge`
-
-!!! example "Example usage"
+    To remove all loaded modules from your environment with one keystroke, invoke
 
     ```console
     marie@compute$ module purge
@@ -66,11 +82,20 @@ Usage of software on HPC systems is managed by a **modules system**.
     Module Python/3.8.6-GCCcore-10.2.0 and 11 dependencies unloaded.
     ```
 
-??? hint "Being lazy in typing"
+### Front-End ml
 
-    `ml` \
-    `ml +<software/version>` \
-    `ml -<software/version>`
+There is a front end for the module command, which helps you to type less. It is `ml`.
+ Any module command can be given after `ml`:
+
+| ml Command        | module Command                            |
+|:------------------|:------------------------------------------|
+| `ml`              | `module list`                             |
+| `ml foo bar`      | `module load foo bar`                     |
+| `ml -foo -bar baz`| `module unload foo bar; module load baz`  |
+| `ml purge`        | `module purge`                            |
+| `ml show foo`     | `module show foo`                         |
+
+???+ example "Usage of front-end ml"
 
     ```console
     marie@compute$ ml +Python/3.8.6
@@ -86,32 +111,10 @@ Usage of software on HPC systems is managed by a **modules system**.
       Wo:
        S:  Das Modul ist angeheftet. Verwenden Sie "--force", um das Modul zu entladen.
 
- 
-
     marie@compute$ ml -Python/3.8.6 +ANSYS/2020R2
     Module Python/3.8.6-GCCcore-10.2.0 and 11 dependencies unloaded.
     Module ANSYS/2020R2 loaded.
     ```
-
-## List of Module Commands
-
-Using modules is quite straightforward and the following table lists the basic commands.
-
-| Command                       | Description                                                      |
-|:------------------------------|:-----------------------------------------------------------------|
-| `module help`                 | Show all module options                                          |
-| `module list`                 | List active modules in the user environment                      |
-| `module purge`                | Remove modules from the user environment                         |
-| `module avail`                | List all available modules                                       |
-| `module spider`               | Search for modules across all environments, can take a parameter |
-| `module load <modname>`       | Load module `modname` in the user environment                    |
-| `module unload <modname>`     | Remove module `modname` from the user environment                |
-| `module switch <mod1> <mod2>` | Replace module `mod1` with module `mod2`                         |
-
-Module files are ordered by their topic on ZIH systems. By default, with `module avail` you will
-see all topics and their available module files. If you just wish to see the installed versions of a
-certain module, you can use `module avail softwarename` and it will display the available versions of
-`softwarename` only.
 
 ## Module Environments
 
@@ -182,7 +185,7 @@ Since we have a heterogeneous cluster, we do individual builds of some of the so
 architecture present. This ensures that, no matter what partition the software runs on, a build
 optimized for the host architecture is used automatically.
 For that purpose we have created symbolic links on the compute nodes,
-at the system path '/sw/installed'.
+at the system path `/sw/installed`.
 
 However, not every module will be available for each node type or partition. Especially when
 introducing new hardware to the cluster, we do not want to rebuild all of the older module versions
@@ -256,13 +259,13 @@ before the TensorFlow module can be loaded.
           Description
           ===========
           An open-source software library for Machine Intelligence
-      
-      
+
+
           More information
           ================
            - Homepage: https://www.tensorflow.org/
-      
-      
+
+
           Included extensions
           ===================
           absl-py-0.10.0, astunparse-1.6.3, cachetools-4.2.0, dill-0.3.3, gast-0.3.3,
@@ -273,11 +276,11 @@ before the TensorFlow module can be loaded.
           tensorboard-2.4.1, tensorboard-plugin-profile-2.4.0, tensorboard-plugin-
           wit-1.8.0, TensorFlow-2.4.1, tensorflow-estimator-2.4.0, termcolor-1.1.0,
           Werkzeug-1.0.1, wrapt-1.12.1
-      
+
 
     Names marked by a trailing (E) are extensions provided by another module.
 
- 
+
 
     marie@compute$ ml +modenv/hiera  +GCC/10.2.0  +CUDA/11.1.1 +OpenMPI/4.0.5 +TensorFlow/2.4.1
 
