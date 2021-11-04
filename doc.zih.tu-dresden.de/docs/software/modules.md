@@ -197,7 +197,7 @@ TensorFlow/2.4.1: haswell, rome
 TensorFlow/2.4.1: haswell, rome
 ```
 
-The command shows all modules that match on `TensorFlow/2.4.1`, and their respective availability. 
+The command shows all modules that match on `TensorFlow/2.4.1`, and their respective availability.
 Note that this will not work for meta-modules that do not have an installation directory
 (like some tool chain modules).
 
