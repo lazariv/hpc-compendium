@@ -47,7 +47,6 @@ dask
 Dask
 dataframes
 DataFrames
-dataframes
 datamover
 DataParallel
 dataset
@@ -56,7 +55,6 @@ ddl
 DDP
 DDR
 DFG
-dir
 distr
 DistributedDataParallel
 DMTCP
@@ -190,7 +188,6 @@ multicore
 multiphysics
 Multiphysics
 multithreaded
-MultiThreading
 Multithreading
 NAMD
 natively
