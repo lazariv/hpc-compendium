@@ -2,15 +2,15 @@
 
 ## Moving Data to/from ZIH Systems
 
-There are at least three tools to exchange data between your local workstation and ZIH systems:
+There are at least three tools for exchanging data between your local workstation and ZIH systems:
 `scp`, `rsync`, and `sftp`. Please refer to the offline or online man pages of
 [scp](https://www.man7.org/linux/man-pages/man1/scp.1.html),
 [rsync](https://man7.org/linux/man-pages/man1/rsync.1.html), and
 [sftp](https://man7.org/linux/man-pages/man1/sftp.1.html) for detailed information.
 
-No matter what tool you prefer, it is crucial that the **export nodes** are used prefered way to
-copy data to/from ZIH systems. Please follow the linkt to documentation on [export
-nodes](export_nodes.md) for further reference and examples.
+No matter what tool you prefer, it is crucial that the **export nodes** are used as preferred way to
+copy data to/from ZIH systems. Please follow the link to the documentation on
+[export nodes](export_nodes.md) for further reference and examples.
 
 ## Moving Data Inside ZIH Systems: Datamover
 
