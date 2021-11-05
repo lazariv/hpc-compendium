@@ -21,7 +21,7 @@ remove it and accept the new one after comparing its fingerprint with those list
 ## Using Software Modules
 
 Starting with SCS5, we only provide
-[Lmod](../software/runtime_environment.md#lmod-an-alternative-module-implementation) as the
+[Lmod](../software/modules.md#lmod-an-alternative-module-implementation) as the
 environment module tool of choice.
 
 As usual, you can get a list of the available software modules via:
@@ -38,7 +38,7 @@ There is a special module that is always loaded (sticky) called
 |                |                                                 |         |
 |----------------|-------------------------------------------------|---------|
 | modenv/scs5    | SCS5 software                                   | default |
-| modenv/ml      | HPC-DA software (for use on the "ml" partition) |         |
+| modenv/ml      | software for data analytics (partition ml)      |         |
 | modenv/classic | Manually built pre-SCS5 (AE4.0) software        | hidden  |
 
 The old modules (pre-SCS5) are still available after loading the

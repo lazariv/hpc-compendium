@@ -11,7 +11,7 @@
     marie@login$ module load ANSYS/<version>
     ```
 
-    The section [runtime environment](runtime_environment.md) provides a comprehensive overview
+    The section [runtime environment](modules.md) provides a comprehensive overview
     on the module system and relevant commands.
 
 ## Abaqus

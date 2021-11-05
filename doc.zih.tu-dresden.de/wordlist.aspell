@@ -1,4 +1,4 @@
-personal_ws-1.1 en 203 
+personal_ws-1.1 en 203
 Abaqus
 ALLREDUCE
 Altix
@@ -55,7 +55,6 @@ ddl
 DDP
 DDR
 DFG
-dir
 distr
 DistributedDataParallel
 DMTCP
@@ -135,6 +134,7 @@ init
 inode
 IOPS
 IPs
+ISA
 Itanium
 jobqueue
 jpg
@@ -150,8 +150,9 @@ LAPACK
 lapply
 Leichtbau
 LINPACK
-linter
 Linter
+linter
+lmod
 LoadLeveler
 localhost
 lsf
@@ -171,6 +172,8 @@ mkdocs
 MKL
 MNIST
 modenv
+modenvs
+modulefile
 Montecito
 mountpoint
 mpi
@@ -186,7 +189,6 @@ multiphysics
 Multiphysics
 multithreaded
 Multithreading
-MultiThreading
 NAMD
 natively
 nbsp
@@ -215,14 +217,14 @@ OpenBLAS
 OpenCL
 OpenGL
 OpenMP
-openmpi
 OpenMPI
+openmpi
 OpenSSH
 Opteron
 OTF
 overfitting
-pandarallel
 Pandarallel
+pandarallel
 PAPI
 parallelization
 parallelize
@@ -240,8 +242,8 @@ PMI
 png
 PowerAI
 ppc
-pre
 Pre
+pre
 Preload
 preloaded
 preloading
@@ -271,8 +273,8 @@ RSS
 RStudio
 Rsync
 runnable
-runtime
 Runtime
+runtime
 sacct
 salloc
 Sandybridge
@@ -320,8 +322,8 @@ TensorFlow
 TFLOPS
 Theano
 tmp
-todo
 ToDo
+todo
 toolchain
 toolchains
 torchvision
@@ -358,6 +360,6 @@ XLC
 XLF
 Xming
 yaml
-zih
 ZIH
+zih
 ZIH's
