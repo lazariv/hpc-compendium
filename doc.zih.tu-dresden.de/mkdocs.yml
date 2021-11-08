@@ -112,6 +112,7 @@ nav:
     - Phase2 Migration: archive/phase2_migration.md
     - Platform LSF: archive/platform_lsf.md
     - BeeGFS on Demand: archive/beegfs_on_demand.md
+    - Install JupyterHub: archive/install_jupyter.md
     - Switched-Off Systems:
       - Overview: archive/systems_switched_off.md
       - From Deimos to Atlas: archive/migrate_to_atlas.md
