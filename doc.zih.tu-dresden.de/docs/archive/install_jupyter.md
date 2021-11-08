@@ -1,5 +1,9 @@
 # Jupyter Installation
 
+!!! warning
+
+    This page is outdated!
+
 Jupyter notebooks allow to analyze data interactively using your web browser. One advantage of
 Jupyter is, that code, documentation and visualization can be included in a single notebook, so that
 it forms a unit. Jupyter notebooks can be used for many tasks, such as data cleaning and
@@ -41,17 +45,17 @@ one is to download Anaconda in your home directory.
 1. Load Anaconda module (recommended):
 
 ```console
-marie@compute module load modenv/scs5
-marie@compute module load Anaconda3
+marie@compute$ module load modenv/scs5
+marie@compute$ module load Anaconda3
 ```
 
 1. Download latest Anaconda release (see example below) and change the rights to make it an
 executable script and run the installation script:
 
 ```console
-marie@compute wget https://repo.continuum.io/archive/Anaconda3-2019.03-Linux-x86_64.sh
-marie@compute chmod u+x Anaconda3-2019.03-Linux-x86_64.sh
-marie@compute ./Anaconda3-2019.03-Linux-x86_64.sh
+marie@compute$ wget https://repo.continuum.io/archive/Anaconda3-2019.03-Linux-x86_64.sh
+marie@compute$ chmod u+x Anaconda3-2019.03-Linux-x86_64.sh
+marie@compute$ ./Anaconda3-2019.03-Linux-x86_64.sh
 ```
 
 (during installation you have to confirm the license agreement)
@@ -60,7 +64,7 @@ Next step will install the anaconda environment into the home
 directory (`/home/userxx/anaconda3`). Create a new anaconda environment with the name `jnb`.
 
 ```console
-marie@compute conda create --name jnb
+marie@compute$ conda create --name jnb
 ```
 
 ## Set environmental variables
@@ -69,15 +73,15 @@ In the shell, activate previously created python environment (you can
 deactivate it also manually) and install Jupyter packages for this python environment:
 
 ```console
-marie@compute source activate jnb
-marie@compute conda install jupyter
+marie@compute$ source activate jnb
+marie@compute$ conda install jupyter
 ```
 
 If you need to adjust the configuration, you should create the template. Generate configuration
 files for Jupyter notebook server:
 
 ```console
-marie@compute jupyter notebook --generate-config
+marie@compute$ jupyter notebook --generate-config
 ```
 
 Find a path of the configuration file, usually in the home under `.jupyter` directory, e.g.
@@ -87,12 +91,12 @@ Set a password (choose easy one for testing), which is needed later on to log in
 in browser session:
 
 ```console
-marie@compute jupyter notebook password Enter password: Verify password:
+marie@compute$ jupyter notebook password Enter password: Verify password:
 ```
 
 You get a message like that:
 
-```console
+```bash
 [NotebookPasswordApp] Wrote *hashed password* to
 /home/<zih_user>/.jupyter/jupyter_notebook_config.json
 ```
@@ -101,7 +105,7 @@ I order to create a certificate for secure connections, you can create a self-si
 certificate:
 
 ```console
-marie@compute openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mykey.key -out mycert.pem
+marie@compute$ openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mykey.key -out mycert.pem
 ```
 
 Fill in the form with decent values.
@@ -128,7 +132,7 @@ c.NotebookApp.allow_remote_access = True
 
 ## Slurm job file to run the Jupyter server on ZIH system with GPU (1x K80) (also works on K20)
 
-```console
+```bash
 #!/bin/bash -l
 #SBATCH --gres=gpu:1 # request GPU
 #SBATCH --partition=gpu2 # use partition GPU 2
@@ -138,7 +142,7 @@ c.NotebookApp.allow_remote_access = True
 #SBATCH --time=02:30:00
 #SBATCH --mem=4000M
 #SBATCH -J "jupyter-notebook" # job-name
-#SBATCH -A <name_of_your_project>
+#SBATCH -A p_marie
 
 unset XDG_RUNTIME_DIR   # might be required when interactive instead of sbatch to avoid 'Permission denied error'
 srun jupyter notebook
@@ -146,7 +150,7 @@ srun jupyter notebook
 
 Start the script above (e.g. with the name `jnotebook`) with sbatch command:
 
-```console
+```bash
 sbatch jnotebook.slurm
 ```
 
@@ -155,9 +159,7 @@ If you have a question about sbatch script see the article about [Slurm](../jobs
 Check by the command: `tail notebook_output.txt` the status and the **token** of the server. It
 should look like this:
 
-```console
-https://(taurusi2092.taurus.hrsk.tu-dresden.de or 127.0.0.1):9999/
-```
+`https://(taurusi2092.taurus.hrsk.tu-dresden.de or 127.0.0.1):9999/`
 
 You can see the **server node's hostname** by the command: `squeue -u <username>`.
 
@@ -169,7 +171,7 @@ There are two options on how to connect to the server:
 solution above. Open the other terminal and configure ssh
 tunnel: (look up connection values in the output file of Slurm job, e.g.) (recommended):
 
-```console
+```bash
 node=taurusi2092 #see the name of the node with squeue -u <your_login>
 localport=8887 #local port on your computer
 remoteport=9999 #pay attention on the value. It should be the same value as value in the notebook_output.txt
@@ -183,12 +185,12 @@ pgrep -f "ssh -fNL ${localport}" #verify that tunnel is alive
 You can connect directly if you know the IP address (just ping the node's hostname while logged on
 ZIH system).
 
-```console
-#comand on remote terminal 
-taurusi2092$> host taurusi2092 
-# copy IP address from output 
+```bash
+#command on remote terminal
+taurusi2092$ host taurusi2092
+# copy IP address from output
 # paste IP to your browser or call on local terminal e.g.:
-local$> firefox https://<IP>:<PORT>  # https important to use SSL cert
+local$ firefox https://<IP>:<PORT>  # https important to use SSL cert
 ```
 
 To login into the Jupyter notebook site, you have to enter the **token**.
