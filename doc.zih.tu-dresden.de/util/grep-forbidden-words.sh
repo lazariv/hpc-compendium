@@ -39,6 +39,28 @@ function grepExceptions () {
   fi
 }
 
+function checkFile(){
+  f=$1
+  echo "Check wording in file $f"
+  while IFS=$'\t' read -r flags pattern exceptionPatterns; do
+    while IFS=$'\t' read -r -a exceptionPatternsArray; do
+      if [ $silent = false ]; then
+        echo "  Pattern: $pattern"
+      fi
+      grepflag=
+      case "$flags" in
+        "i")
+          grepflag=-i
+        ;;
+      esac
+      if grep -n $grepflag $color "$pattern" "$f" | grepExceptions "${exceptionPatternsArray[@]}" ; then
+        number_of_matches=`grep -n $grepflag $color "$pattern" "$f" | grepExceptions "${exceptionPatternsArray[@]}" | wc -l`
+        ((cnt=cnt+$number_of_matches))
+      fi
+    done <<< $exceptionPatterns
+  done <<< $ruleset
+}
+
 function usage () {
   echo "$0 [options]"
   echo "Search forbidden patterns in markdown files."
@@ -95,32 +117,19 @@ fi
 
 echo "... $files ..."
 cnt=0
-for f in $files; do
-  if [ "${f: -3}" == ".md" -a -f "$f" ]; then
-    if (printf '%s\n' "${whitelist[@]}" | grep -xq $f); then
-      echo "Skip whitelisted file $f"
-      continue
+if [[ ! -z $file ]]; then
+  checkFile $file
+else
+  for f in $files; do
+    if [ "${f: -3}" == ".md" -a -f "$f" ]; then
+      if (printf '%s\n' "${whitelist[@]}" | grep -xq $f); then
+        echo "Skip whitelisted file $f"
+        continue
+      fi
+      checkFile $f
     fi
-    echo "Check wording in file $f"
-    while IFS=$'\t' read -r flags pattern exceptionPatterns; do
-      while IFS=$'\t' read -r -a exceptionPatternsArray; do
-        if [ $silent = false ]; then
-          echo "  Pattern: $pattern"
-        fi
-        grepflag=
-        case "$flags" in
-          "i")
-            grepflag=-i
-          ;;
-        esac
-        if grep -n $grepflag $color "$pattern" "$f" | grepExceptions "${exceptionPatternsArray[@]}" ; then
-	  number_of_matches=`grep -n $grepflag $color "$pattern" "$f" | grepExceptions "${exceptionPatternsArray[@]}" | wc -l`
-          ((cnt=cnt+$number_of_matches))
-        fi
-      done <<< $exceptionPatterns
-    done <<< $ruleset
-  fi
-done
+  done
+fi
 
 echo "" 
 case $cnt in
