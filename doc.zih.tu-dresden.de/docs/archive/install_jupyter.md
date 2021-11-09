@@ -177,7 +177,7 @@ tunnel: (look up connection values in the output file of Slurm job, e.g.) (recom
 node=taurusi2092 #see the name of the node with squeue -u <your_login>
 localport=8887 #local port on your computer
 remoteport=9999 #pay attention on the value. It should be the same value as value in the notebook_output.txt
-ssh -fNL ${localport}:${node}:${remoteport} taurus #configure the ssh tunnel for connection to your remote server
+ssh -fNL ${localport}:${node}:${remoteport} <zih_user>@taurus.hrsk.tu-dresden.de #configure the ssh tunnel for connection to your remote server
 pgrep -f "ssh -fNL ${localport}" #verify that tunnel is alive
 ```
 
