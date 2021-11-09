@@ -16,6 +16,12 @@ is visible to the user. Please check the [Slurm page](../jobs_and_resources/slur
 
 ```console
 marie@login$ srun --partition=haswell --ntasks=1 --nodes=1 --cpus-per-task=4 --mem-per-cpu=2541 --time=01:00:00 --pty bash
+srun: job 12345678 queued and waiting for resources
+```
+Notice, it can take a while depending on the parameters chosen, depending on the queue length, etc. Please wait until your job has been allocated resources. If it takes a long time, consider killing it and starting with other parameters (partition, ntasks, nodes, time, etc.).
+
+```console
+srun: job 12345678 has been allocated resources
 marie@haswell$ module load modenv/scs5
 marie@haswell$ module load R/3.6
 [...]
