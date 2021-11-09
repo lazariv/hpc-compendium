@@ -91,14 +91,16 @@ Set a password (choose easy one for testing), which is needed later on to log in
 in browser session:
 
 ```console
-marie@compute$ jupyter notebook password Enter password: Verify password:
+marie@compute$ jupyter notebook password
+Enter password:
+Verify password:
 ```
 
 You get a message like that:
 
 ```bash
 [NotebookPasswordApp] Wrote *hashed password* to
-/home/<zih_user>/.jupyter/jupyter_notebook_config.json
+/home/marie/.jupyter/jupyter_notebook_config.json
 ```
 
 I order to create a certificate for secure connections, you can create a self-signed
@@ -112,7 +114,7 @@ Fill in the form with decent values.
 
 Possible entries for your Jupyter configuration (`.jupyter/jupyter_notebook*config.py*`).
 
-```console
+```bash
 c.NotebookApp.certfile = u'<path-to-cert>/mycert.pem'
 c.NotebookApp.keyfile = u'<path-to-cert>/mykey.key'
 
@@ -128,7 +130,7 @@ c.NotebookApp.allow_remote_access = True
 
 !!! note
     `<path-to-cert>` - path to key and certificate files, for example:
-    (`/home/<zih_user>/mycert.pem`)
+    (`/home/marie/mycert.pem`)
 
 ## Slurm job file to run the Jupyter server on ZIH system with GPU (1x K80) (also works on K20)
 
@@ -161,7 +163,7 @@ should look like this:
 
 `https://(taurusi2092.taurus.hrsk.tu-dresden.de or 127.0.0.1):9999/`
 
-You can see the **server node's hostname** by the command: `squeue -u <username>`.
+You can see the **server node's hostname** by the command: `squeue --me`.
 
 ### Remote connect to the server
 
@@ -175,7 +177,7 @@ tunnel: (look up connection values in the output file of Slurm job, e.g.) (recom
 node=taurusi2092 #see the name of the node with squeue -u <your_login>
 localport=8887 #local port on your computer
 remoteport=9999 #pay attention on the value. It should be the same value as value in the notebook_output.txt
-ssh -fNL ${localport}:${node}:${remoteport} <zih_user>@taurus.hrsk.tu-dresden.de #configure the ssh tunnel for connection to your remote server
+ssh -fNL ${localport}:${node}:${remoteport} taurus #configure the ssh tunnel for connection to your remote server
 pgrep -f "ssh -fNL ${localport}" #verify that tunnel is alive
 ```
 
@@ -187,10 +189,10 @@ ZIH system).
 
 ```bash
 #command on remote terminal
-taurusi2092$ host taurusi2092
+marie@taurusi2092$ host taurusi2092
 # copy IP address from output
 # paste IP to your browser or call on local terminal e.g.:
-local$ firefox https://<IP>:<PORT>  # https important to use SSL cert
+marie@local$ firefox https://<IP>:<PORT>  # https important to use SSL cert
 ```
 
 To login into the Jupyter notebook site, you have to enter the **token**.
