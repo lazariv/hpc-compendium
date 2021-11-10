@@ -69,7 +69,7 @@ then
 fi
 
 echo "Forbidden words checking..."
-docker run --name=hpc-compendium --rm -w /docs --mount src="$(pwd)",target=/docs,type=bind hpc-compendium ./doc.zih.tu-dresden.de/util/grep-forbidden-words.sh
+docker run --name=hpc-compendium --rm -w /docs --mount src="$(pwd)",target=/docs,type=bind hpc-compendium ./doc.zih.tu-dresden.de/util/grep-forbidden-patterns.sh
 if [ $? -ne 0 ]
 then
   exit_ok=no
