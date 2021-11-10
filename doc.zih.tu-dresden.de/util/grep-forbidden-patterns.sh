@@ -16,10 +16,10 @@ ruleset="The word \"IO\" should not be used, use \"I/O\" instead.
 i	\<io\>	\.io
 \"SLURM\" (only capital letters) should not be used, use \"Slurm\" instead.
 s	\<SLURM\>
-\"File system\" should be written as filesystem, except when used as part of a proper name.
+\"File system\" should be written as \"filesystem\", except when used as part of a proper name.
 i	file \+system	HDFS
 Use \"ZIH systems\" or \"ZIH system\" instead of \"Taurus\". \"taurus\" is only allowed when used in ssh commands and other very specific situations.
-i	\<taurus\>	taurus\.hrsk	/taurus	/TAURUS	ssh
+i	\<taurus\>	taurus\.hrsk	/taurus	/TAURUS	ssh	^[0-9]\+:Host taurus$
 \"HRSKII\" should be avoided, use \"ZIH system\" instead.
 i	\<hrskii\>
 The term \"HPC-DA\" should be avoided. Depending on the situation, use \"data analytics\" or similar.
@@ -34,12 +34,12 @@ When referencing partitions, put keyword \"partition\" in front of partition nam
 i	\(alpha\|ml\|haswell\|romeo\|gpu\|smp\|julia\|hpdlf\|scs5\)-\?\(interactive\)\?[^a-z]*partition
 Give hints in the link text. Words such as \"here\" or \"this link\" are meaningless.
 i	\[\s\?\(documentation\|here\|this \(link\|page\|subsection\)\|slides\?\|manpage\)\s\?\]
-Use \"workspace\" instead of \"work space\".
+Use \"workspace\" instead of \"work space\" or \"work-space\".
 i	work[ -]\+space"
 
 # Whitelisted files will be ignored
 # Whitespace separated list with full path
-whitelist=(doc.zih.tu-dresden.de/README.md doc.zih.tu-dresden.de/docs/contrib/content_rules.md doc.zih.tu-dresden.de/docs/access/ssh_login.md)
+whitelist=(doc.zih.tu-dresden.de/README.md doc.zih.tu-dresden.de/docs/contrib/content_rules.md)
 
 function grepExceptions () {
   if [ $# -gt 0 ]; then
