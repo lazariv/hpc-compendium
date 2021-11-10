@@ -12,17 +12,29 @@ basedir=`dirname "$basedir"`
 #Further fields represent patterns with exceptions.
 #For example, the first rule says:
 # The pattern \<io\> should not be present in any file (case-insensitive match), except when it appears as ".io".
-ruleset="i	\<io\>	\.io
+ruleset="The word \"IO\" should not be used, use \"I/O\" instead.
+i	\<io\>	\.io
+\"SLURM\" (only capital letters) should not be used, use \"Slurm\" instead.
 s	\<SLURM\>
+\"File system\" should be written as filesystem, except when used as part of a proper name.
 i	file \+system	HDFS
-i	\<taurus\>	taurus\.hrsk	/taurus	/TAURUS
+Use \"ZIH systems\" or \"ZIH system\" instead of \"Taurus\". \"taurus\" is only allowed when used in ssh commands and other very specific situations.
+i	\<taurus\>	taurus\.hrsk	/taurus	/TAURUS	ssh
+\"HRSKII\" should be avoided, use \"ZIH system\" instead.
 i	\<hrskii\>
+The term \"HPC-DA\" should be avoided. Depending on the situation, use \"data analytics\" or similar.
 i	hpc[ -]\+da\>
+\"ATTACHURL\" was a keyword in the old wiki, don't use it.
 i	attachurl
+Replace \"todo\" with real content.
 i	\<todo\>	<!--.*todo.*-->
+Avoid spaces at end of lines.
 i	[[:space:]]$
+When referencing partitions, put keyword \"partition\" in front of partition name, e. g. \"partition ml\", not \"ml partition\".
 i	\(alpha\|ml\|haswell\|romeo\|gpu\|smp\|julia\|hpdlf\|scs5\)-\?\(interactive\)\?[^a-z]*partition
+Give hints in the link text. Words such as \"here\" or \"this link\" are meaningless.
 i	\[\s\?\(documentation\|here\|this \(link\|page\|subsection\)\|slides\?\|manpage\)\s\?\]
+Use \"workspace\" instead of \"work space\".
 i	work[ -]\+space"
 
 # Whitelisted files will be ignored
@@ -42,7 +54,8 @@ function grepExceptions () {
 function checkFile(){
   f=$1
   echo "Check wording in file $f"
-  while IFS=$'\t' read -r flags pattern exceptionPatterns; do
+  while read message; do
+    IFS=$'\t' read -r flags pattern exceptionPatterns
     while IFS=$'\t' read -r -a exceptionPatternsArray; do
       if [ $silent = false ]; then
         echo "  Pattern: $pattern"
@@ -56,6 +69,9 @@ function checkFile(){
       if grep -n $grepflag $color "$pattern" "$f" | grepExceptions "${exceptionPatternsArray[@]}" ; then
         number_of_matches=`grep -n $grepflag $color "$pattern" "$f" | grepExceptions "${exceptionPatternsArray[@]}" | wc -l`
         ((cnt=cnt+$number_of_matches))
+        if [ $silent = false ]; then
+          echo "    $message"
+        fi
       fi
     done <<< $exceptionPatterns
   done <<< $ruleset
