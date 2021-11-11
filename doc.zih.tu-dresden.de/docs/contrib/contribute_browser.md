@@ -99,7 +99,7 @@ into the `preview` branch of the repository.
 As stated earlier, all changes undergo a review process.
 This covers automated checks contained in the CI/CD pipeline and the review by a maintainer.
 You can follow this process under
-(Merge requests)[https://gitlab.hrz.tu-chemnitz.de/zih/hpcsupport/hpc-compendium/-/merge_requests]
+[Merge requests](https://gitlab.hrz.tu-chemnitz.de/zih/hpcsupport/hpc-compendium/-/merge_requests)
 (where you initiated your merge request).
 If you are asked to make corrections or changes, follow the directions as indicated.
 Once your merge request has been accepted, the merge request will be closed and the branch will be deleted.
