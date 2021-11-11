@@ -55,11 +55,11 @@ depicted here:
 ## Editing Existing Articles
 
 Navigate the depicted document hierarchy under `doc.zih.tu-dresden.de/docs` until you find the
-article to be edited. Click on the articles name opens a textual representation of the article.  In
-the top right corner of it you find the button "Edit" to be clicked in order to make changes.  Once
-you completed your changes click on "Commit changes".  Please add meaningful comment about the
-changes you made under "Commit message".  Feel free to do as many changes and commits in your branch
-of the repository.
+article to be edited. A click on the article's name opens a textual representation of the article.
+In the top right corner of it, you find the button "Edit" to be clicked in order to make changes.
+Once you completed your changes, click on "Commit changes". Please add meaningful comment about the
+changes you made under "Commit message". Feel free to do as many changes and commits as you wish in
+your branch of the repository.
 
 ## Adding New Article
 
