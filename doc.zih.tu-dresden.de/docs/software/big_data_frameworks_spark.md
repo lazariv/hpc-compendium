@@ -218,8 +218,7 @@ re-login to the ZIH system.
 Q: There are a lot of errors and warnings during the set up of the
 session
 
-A: Please check the work capability on a simple example as shown in 
-this documentation. 
+A: Please check the work capability on a simple example as shown in this documentation.
 
 !!! help
 
