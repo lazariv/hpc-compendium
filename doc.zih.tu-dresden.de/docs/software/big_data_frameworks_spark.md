@@ -119,12 +119,13 @@ short test runs, it is **recommended to launch your jobs in the background using
 that, you can conveniently put the parameters directly into the job file and submit it via
 `sbatch [options] <job file>`.
 
-Please use a [batch job](../jobs_and_resources/slurm.md) with a configuration, similar to the example below:
+Please use a [batch job](../jobs_and_resources/slurm.md) with a configuration, similar to the
+example below:
 
 ??? example "spark.sbatch"
     ```bash
     #!/bin/bash -l
-    #SBATCH --time=01:00:00
+    #SBATCH --time=00:05:00
     #SBATCH --partition=haswell
     #SBATCH --nodes=2
     #SBATCH --exclusive
