@@ -7,17 +7,15 @@ browser only.
 
 ## Preparation
 
-First of all you need an account on
-[gitlab.hrz.tu-chemnitz.de](https://gitlab.hrz.tu-chemnitz.de).
+First of all, you need an account on [gitlab.hrz.tu-chemnitz.de](https://gitlab.hrz.tu-chemnitz.de).
 Secondly, you need access to the project
-[ZIH/hpcsupport/hpc-compendium](https://gitlab.hrz.tu-chemnitz.de/zih/hpcsupport/hpc-compendium)
-(ID: 8840).
+[ZIH/hpcsupport/hpc-compendium](https://gitlab.hrz.tu-chemnitz.de/zih/hpcsupport/hpc-compendium).
 
 The project is publicly visible, i.e., it is open to the world and any signed-in user has the
 [Guest role](https://gitlab.hrz.tu-chemnitz.de/help/user/permissions.md) on this repository. Guests
 have only very
 [limited permissions](https://gitlab.hrz.tu-chemnitz.de/help/user/permissions.md#project-members-permissions).
-In particular, as guest you can contribute to the documentation by
+In particular, as guest, you can contribute to the documentation by
 [creating issues](howto_contribute.md#contribute-via-issue), but you cannot edit files and create
 new branches.
 
@@ -80,7 +78,7 @@ Finally, the new article needs to be added to the navigation section of the conf
 
 ## Submitting Articles for Publication
 
-Once you are satisfied with your edits you are ready for publication.
+Once you are satisfied with your edits, you are ready for publication.
 Therefore, your edits need to undergo an internal review process and pass the CI/CD pipeline tests.
 This process is triggered by creating a "merge request", which serves the purpose of merging your edits
 into the `preview` branch of the repository.
@@ -103,5 +101,5 @@ You can follow this process under
 (where you initiated your merge request).
 If you are asked to make corrections or changes, follow the directions as indicated.
 Once your merge request has been accepted, the merge request will be closed and the branch will be deleted.
-At this point there is nothing else to do for you.
+At this point, there is nothing else to do for you.
 Except probably for waiting a little while until your changes become visible on the official web site.
