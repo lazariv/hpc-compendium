@@ -218,8 +218,8 @@ re-login to the ZIH system.
 Q: There are a lot of errors and warnings during the set up of the
 session
 
-A: Please check the work capability on a simple example. The source of
-warnings could be ssh etc, and it could be not affecting the frameworks
+A: Please check the work capability on a simple example as shown in 
+this documentation. 
 
 !!! help
 
