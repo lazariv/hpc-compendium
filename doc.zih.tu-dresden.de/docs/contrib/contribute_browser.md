@@ -30,7 +30,7 @@ Once you are granted the developer role, choose "ZIH/hpcsupport/hpc-compendium" 
 !!! hint "Git basics"
 
     If you are not familiar with the basics of git-based document revision control yet, please have
-    a look at [tutorials like these](https://docs.gitlab.com/ee/gitlab-basics/).
+    a look at [Gitlab tutorials](https://gitlab.hrz.tu-chemnitz.de/help/gitlab-basics/index.md).
 
 ## Create a Branch
 
