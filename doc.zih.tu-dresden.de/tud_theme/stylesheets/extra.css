@@ -137,23 +137,6 @@ strong {
     width: 125px;
 }
 
-.md-header__button.md-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-@media screen and (min-width: 76.25rem) {
-    .md-header__button.md-icon {
-        display: none;
-    }
-}
-
-@media screen and (min-width: 60rem) {
-    .md-header__button.md-icon {
-        display: none;
-    }
-}
 /* toc */
 /* operation-status */
 .operation-status-logo {
