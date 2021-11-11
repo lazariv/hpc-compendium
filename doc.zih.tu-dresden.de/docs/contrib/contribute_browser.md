@@ -89,8 +89,8 @@ into the `preview` branch of the repository.
 * Then, click on the button "New merge request".
 * Select your source branch (for example `edits-in-document-xyz`) and click on "Compare branches and
   continue". (The target branch is always `preview`. This is pre-selected - do not change!)
-* The next screen will give you an overview of your changes.  Please provide a meaningful
-* description of the contributions.  Once you checked them, click on "Create merge request".
+* The next screen will give you an overview of your changes. Please provide a meaningful
+  description of the contributions. Once you checked them, click on "Create merge request".
 
 ![new merge request](misc/cb_new_merge_request.png)
 
