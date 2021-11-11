@@ -171,19 +171,19 @@ marie@login$ srun --pty --ntasks=1 --cpus-per-task=2 --mem-per-cpu=2500 --time=0
 When a node is allocated, install the required packages:
 
 ```console
-marie@compute$ cd
+marie@compute$ cd $HOME
 marie@compute$ mkdir jupyter-kernel
+marie@compute$ module load Python
 marie@compute$ virtualenv --system-site-packages jupyter-kernel/env  #Create virtual environment
 [...]
 marie@compute$ source jupyter-kernel/env/bin/activate    #Activate virtual environment.
-marie@compute$ pip install ipykernel
+(env) marie@compute$ pip install ipykernel
 [...]
-marie@compute$ python -m ipykernel install --user --name haswell-py3.7-spark --display-name="haswell-py3.7-spark"
+(env) marie@compute$ python -m ipykernel install --user --name haswell-py3.7-spark --display-name="haswell-py3.7-spark"
 Installed kernelspec haswell-py3.7-spark in [...]
 
-marie@compute$ pip install findspark
-
-marie@compute$ deactivate
+(env) marie@compute$ pip install findspark
+(env) marie@compute$ deactivate
 ```
 
 You are now ready to spawn a notebook with Spark.
