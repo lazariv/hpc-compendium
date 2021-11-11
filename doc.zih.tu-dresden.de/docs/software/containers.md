@@ -31,9 +31,9 @@ environment.
     creating a new container requires root privileges.
 
 However, new containers can be created on your local workstation and moved to ZIH systems for
-execution. Follow the instructions for [locally install Singularity](#local-installation) and
-[container creation](#container-creation).  Moreover, existing Docker container can easily be
-converted, which is documented [here](#importing-a-docker-container).
+execution. Follow the instructions for [locally installing Singularity](#local-installation) and
+[container creation](#container-creation). Moreover, existing Docker container can easily be
+converted, see [Import a docker container](#importing-a-docker-container).
 
 If you are already familar with Singularity, you might be more intressted in our [singularity
 recipes and hints](singularity_recipe_hints.md).
