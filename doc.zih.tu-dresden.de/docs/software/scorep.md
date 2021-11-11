@@ -144,7 +144,7 @@ After the application run, you will find an experiment directory in your current
 which contains all recorded data.  In general, you can record a profile and/or a event trace.
 Whether a profile and/or a trace is recorded, is specified by the environment variables
 `SCOREP_ENABLE_PROFILING` and `SCOREP_ENABLE_TRACING` (see
-[documentation](https://perftools.pages.jsc.fz-juelich.de/cicd/scorep/tags/latest/html/measurement.html)).
+[official Score-P documentation](https://perftools.pages.jsc.fz-juelich.de/cicd/scorep/tags/latest/html/measurement.html)).
 If the value of this variables is zero or false, profiling/tracing is disabled. Otherwise Score-P
 will record a profile and/or trace. By default, profiling is enabled and tracing is disabled. For
 more information please see the list of Score-P measurement
