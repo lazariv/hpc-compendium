@@ -13,8 +13,7 @@ Issues concerning this documentation can reported via the GitLab
 Please check for any already existing issue before submitting your issue in order to avoid duplicate
 issues.
 
-Contributions from user-side are highly welcome. Please refer to
-the detailed [documentation](contrib/howto_contribute.md) to get started.
+Contributions from user-side are highly welcome. Please find out more in our [guidelines how to contribute](contrib/howto_contribute.md).
 
 **Reminder:** Non-documentation issues and requests need to be send as ticket to
 [hpcsupport@zih.tu-dresden.de](mailto:hpcsupport@zih.tu-dresden.de).
