@@ -35,8 +35,8 @@ Once you are granted the developer role, choose "ZIH/hpcsupport/hpc-compendium" 
 ## Create a Branch
 
 Your contribution starts by creating your own branch of the repository that will hold your edits and
-additions.  Create your branch  by clicking on "preview->hpc-compendium/ + new branch" as depicted
-in this figure:
+additions. Create your branch by clicking on "+" near "preview->hpc-compendium/" as depicted in
+the figure and click "New branch".
 
 ![create new branch](misc/cb_create_new_branch.png)
 
