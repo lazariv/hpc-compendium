@@ -347,11 +347,11 @@ This way, these variables get into the main shell process and may be used by pro
 
 ### Using `module` information in Scripts
 
-`module` and `ml` offer the `-t` switch for several commands, e.g. `ml -t list`. This way, the output of them is
-nicer to parse for scripts.
+`module` and `ml` offer the `-t` switch for several commands, e.g. `ml -t list`. This way, the
+output of them is nicer to parse for scripts.
 
-For example, `ml -t spider TensorFlow` lists all the TensorFlow versions that are available under the current
-environment:
+For example, `ml -t spider TensorFlow` lists all the TensorFlow versions that are available under
+the current environment:
 
 ```
 TensorFlow/1.8.0-foss-2018a-Python-3.6.4-CUDA-9.2.88
