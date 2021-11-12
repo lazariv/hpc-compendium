@@ -388,7 +388,7 @@ function _ml {
 compdef _ml "ml"
 ```
 
-If you type `ml tensor<TAB>`, you will get all available models to tab through that contain
+If you type `ml tensor<TAB>`, you will get all available modules to tab through that contain
 "tensor" and are available under the current `modenv`:
 
 ```
