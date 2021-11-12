@@ -248,7 +248,7 @@ There are two important branches in this repository:
   - Branch containing recent changes which will be soon merged to main branch (protected
     branch)
   - Served at [https://doc.zih.tu-dresden.de/preview](https://doc.zih.tu-dresden.de/preview) from
-    TUD VPN
+    TUD-ZIH VPN
 - Main: Branch which is deployed at [https://doc.zih.tu-dresden.de](https://doc.zih.tu-dresden.de)
     holding the current documentation (protected branch)
 
