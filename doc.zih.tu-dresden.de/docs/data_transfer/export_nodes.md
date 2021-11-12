@@ -12,7 +12,11 @@ The export nodes are reachable under the hostname `taurusexport.hrsk.tu-dresden.
 ## Access From Linux
 
 There are at least three tool to exchange data between your local workstation and ZIH systems. All
-are explained in the following abstract in more detail.
+are explained in the following section in more detail.
+
+!!! important
+    The following explanations require that you have already set up your [SSH configuration
+    ](../access/ssh_login.md#configuring-default-parameters-for-ssh).
 
 ### SCP
 
@@ -22,20 +26,20 @@ in a directory, the option `-r` has to be specified.
 
 ??? example "Example: Copy a file from your workstation to ZIH systems"
 
-    ```console
-    marie@local$ scp <file> <zih-user>@taurusexport.hrsk.tu-dresden.de:<target-location>
+    ```bash
+    marie@local$ scp <file> taurusexport:<target-location>
 
     # Add -r to copy whole directory
-    marie@local$ scp -r <directory> <zih-user>@taurusexport.hrsk.tu-dresden.de:<target-location>
+    marie@local$ scp -r <directory> taurusexport:<target-location>
     ```
 
 ??? example "Example: Copy a file from ZIH systems to your workstation"
 
     ```console
-    marie@login$ scp <zih-user>@taurusexport.hrsk.tu-dresden.de:<file> <target-location>
+    marie@login$ scp taurusexport:<file> <target-location>
 
     # Add -r to copy whole directory
-    marie@login$ scp -r <zih-user>@taurusexport.hrsk.tu-dresden.de:<directory> <target-location>
+    marie@login$ scp -r taurusexport:<directory> <target-location>
     ```
 
 ### SFTP
@@ -48,7 +52,7 @@ use compression to increase performance.
 
 ```console
 # Enter virtual command line
-marie@local$ sftp <zih-user>@taurusexport.hrsk.tu-dresden.de
+marie@local$ sftp taurusexport
 # Exit virtual command line
 sftp> exit
 # or
@@ -63,7 +67,7 @@ from this virtual command line, then you have to prefix the command with the let
 ??? example "Example: Copy a file from your workstation to ZIH systems"
 
     ```console
-    marie@local$ sftp <zih-user>@taurusexport.hrsk.tu-dresden.de
+    marie@local$ sftp taurusexport
     # Copy file
     sftp> put <file>
     # Copy directory
@@ -73,7 +77,7 @@ from this virtual command line, then you have to prefix the command with the let
 ??? example "Example: Copy a file from ZIH systems to your local workstation"
 
     ```console
-    marie@local$ sftp <zih-user>@taurusexport.hrsk.tu-dresden.de
+    marie@local$ sftp taurusexport
     # Copy file
     sftp> get <file>
     # Copy directory
@@ -95,18 +99,18 @@ the local machine.
 
     ```console
     # Copy file
-    marie@local$ rsync <file> <zih-user>@taurusexport.hrsk.tu-dresden.de:<target-location>
+    marie@local$ rsync <file> taurusexport:<target-location>
     # Copy directory
-    marie@local$ rsync -r <directory> <zih-user>@taurusexport.hrsk.tu-dresden.de:<target-location>
+    marie@local$ rsync -r <directory> taurusexport:<target-location>
     ```
 
 ??? example "Example: Copy a file from ZIH systems to your local workstation"
 
     ```console
     # Copy file
-    marie@local$ rsync <zih-user>@taurusexport.hrsk.tu-dresden.de:<file> <target-location>
+    marie@local$ rsync taurusexport:<file> <target-location>
     # Copy directory
-    marie@local$ rsync -r <zih-user>@taurusexport.hrsk.tu-dresden.de:<directory> <target-location>
+    marie@local$ rsync -r taurusexport:<directory> <target-location>
     ```
 
 ## Access From Windows

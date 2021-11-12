@@ -119,7 +119,7 @@ zih$ module load MATLAB
 ```
 
 (then you will get the most recent Matlab version.
-[Refer to the modules section for details.](../software/runtime_environment.md#modules))
+[Refer to the modules section for details.](../software/modules.md#modules))
 
 ### Interactive
 

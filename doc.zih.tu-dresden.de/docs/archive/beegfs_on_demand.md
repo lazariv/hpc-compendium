@@ -3,7 +3,7 @@
 !!! warning
 
     This documentation page is outdated.
-    The up-to date documentation on BeeGFS can be found [here](../data_lifecycle/beegfs.md).
+    Please see the [new BeeGFS page](../data_lifecycle/beegfs.md).
 
 **Prerequisites:** To work with TensorFlow you obviously need a [login](../application/overview.md) to
 the ZIH systems and basic knowledge about Linux, mounting, and batch system Slurm.

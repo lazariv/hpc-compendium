@@ -104,7 +104,7 @@ can be preloaded in "Preload modules (modules load):" field.
 ### Containers
 
 Singularity containers enable users to have full control of their software environment.
-Detailed information about containers can be found [here](../software/containers.md).
+For more information, see the [Singularity container details](../software/containers.md).
 
 Nvidia
 [NGC](https://developer.nvidia.com/blog/how-to-run-ngc-deep-learning-containers-with-singularity/)

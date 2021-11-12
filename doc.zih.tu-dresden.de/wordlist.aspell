@@ -1,4 +1,4 @@
-personal_ws-1.1 en 203 
+personal_ws-1.1 en 203
 Abaqus
 ALLREDUCE
 Altix
@@ -27,6 +27,7 @@ checkpointing
 Chemnitz
 citable
 CLI
+CMake
 COMSOL
 conda
 config
@@ -54,7 +55,6 @@ ddl
 DDP
 DDR
 DFG
-dir
 distr
 DistributedDataParallel
 DMTCP
@@ -136,6 +136,7 @@ init
 inode
 IOPS
 IPs
+ISA
 Itanium
 jobqueue
 jpg
@@ -151,8 +152,9 @@ LAPACK
 lapply
 Leichtbau
 LINPACK
-linter
 Linter
+linter
+lmod
 LoadLeveler
 localhost
 lsf
@@ -165,12 +167,15 @@ matlab
 MEGWARE
 mem
 MiB
+Microarchitecture
 MIMD
 Miniconda
 mkdocs
 MKL
 MNIST
 modenv
+modenvs
+modulefile
 Montecito
 mountpoint
 mpi
@@ -186,7 +191,6 @@ multiphysics
 Multiphysics
 multithreaded
 Multithreading
-MultiThreading
 NAMD
 natively
 nbsp
@@ -215,18 +219,20 @@ OpenBLAS
 OpenCL
 OpenGL
 OpenMP
-openmpi
 OpenMPI
+openmpi
 OpenSSH
 Opteron
+OTF
 overfitting
-pandarallel
 Pandarallel
+pandarallel
 PAPI
 parallelization
 parallelize
 parfor
 pdf
+perf
 Perf
 performant
 PESSL
@@ -238,8 +244,8 @@ PMI
 png
 PowerAI
 ppc
-pre
 Pre
+pre
 Preload
 preloaded
 preloading
@@ -269,8 +275,8 @@ RSS
 RStudio
 Rsync
 runnable
-runtime
 Runtime
+runtime
 sacct
 salloc
 Sandybridge
@@ -318,12 +324,15 @@ TensorFlow
 TFLOPS
 Theano
 tmp
-todo
 ToDo
+todo
 toolchain
 toolchains
+torchvision
+Torchvision
 tracefile
 tracefiles
+tracepoints
 transferability
 Trition
 undistinguishable
@@ -353,6 +362,6 @@ XLC
 XLF
 Xming
 yaml
-zih
 ZIH
+zih
 ZIH's
