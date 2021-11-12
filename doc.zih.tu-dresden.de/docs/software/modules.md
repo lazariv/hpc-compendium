@@ -368,8 +368,8 @@ TensorFlow/2.4.1-foss-2020b
 TensorFlow/2.4.1
 ```
 
-This can be used for several purposes, e.g. shell-completetion for ZSH. This small example,
-when put into `~/.zshrc`, will offer autocompletetion for `ml`-modules.
+This can be used for several purposes, e.g. shell-completion for ZSH. This small example, when put
+into `~/.zshrc`, will offer auto-completion for the command `ml`.
 
 ```
 function _ml {
