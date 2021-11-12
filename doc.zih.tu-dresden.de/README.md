@@ -137,7 +137,7 @@ echo http://$(docker inspect -f "{{.NetworkSettings.IPAddress}}" $(docker ps -qf
 ```
 
 The running container automatically takes care of file changes and rebuilds the
-documentation.  If you want to check whether the markdown files are formatted
+documentation. If you want to check whether the markdown files are formatted
 properly, use the following command:
 
 ```Bash
