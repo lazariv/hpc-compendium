@@ -22,7 +22,7 @@ kernel. Currently, the following hardware is installed:
 
 Mars and Deimos users: Please read the [migration hints](migrate_to_atlas.md).
 
-All nodes share the `/home` and `/fastfs` file system with our other HPC systems. Each
+All nodes share the `/home` and `/fastfs` filesystem with our other HPC systems. Each
 node has 180 GB local disk space for scratch mounted on `/tmp`. The jobs for the compute nodes are
 scheduled by the [Platform LSF](platform_lsf.md) batch system from the login nodes
 `atlas.hrsk.tu-dresden.de` .
@@ -86,8 +86,8 @@ user's job. Normally a job can be submitted with these data:
 
 #### LSF
 
-The batch system on Atlas is LSF. For general information on LSF, please follow
-[this link](platform_lsf.md).
+The batch system on Atlas is LSF, see also the
+[general information on LSF](platform_lsf.md).
 
 #### Submission of Parallel Jobs
 
