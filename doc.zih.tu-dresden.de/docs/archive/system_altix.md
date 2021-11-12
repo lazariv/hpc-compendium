@@ -22,9 +22,9 @@ The jobs for these partitions (except Neptun) are scheduled by the [Platform LSF
 batch system running on `mars.hrsk.tu-dresden.de`. The actual placement of a submitted job may
 depend on factors like memory size, number of processors, time limit.
 
-### File Systems
+### Filesystems
 
-All partitions share the same CXFS file systems `/work` and `/fastfs`.
+All partitions share the same CXFS filesystems `/work` and `/fastfs`.
 
 ### ccNUMA Architecture
 
@@ -123,8 +123,8 @@ nodes with dedicated resources for the user's job. Normally a job can be submitt
 
 #### LSF
 
-The batch system on Atlas is LSF. For general information on LSF, please follow
-[this link](platform_lsf.md).
+The batch system on Atlas is LSF, see also the
+[general information on LSF](platform_lsf.md).
 
 #### Submission of Parallel Jobs
 
