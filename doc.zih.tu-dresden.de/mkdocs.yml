@@ -27,6 +27,7 @@ nav:
       - Private Modulefiles: software/private_modules.md
       - Custom EasyBuild Modules: software/custom_easy_build_environment.md
       - Python Virtual Environments: software/python_virtual_environments.md
+      - ZSH: software/zsh.md
     - Containers:
       - Singularity: software/containers.md
       - Singularity Recipes and Hints: software/singularity_recipe_hints.md
