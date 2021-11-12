@@ -1,6 +1,6 @@
 # ZSH
 
-The ZSH, short for `z-shell`, is an alternative shell for Linux that offers many convienence features
+The ZSH, short for `z-shell`, is an alternative shell for Linux that offers many convenience features
 for productive use that `bash`, the default shell, does not offer.
 
 This should be a short introduction to `zsh` and offer some examples that are especially useful on Taurus.
