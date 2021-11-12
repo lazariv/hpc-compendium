@@ -107,7 +107,7 @@ Open `http://127.0.0.1:8000` with a web browser to preview the local copy of the
 
 You can also use `docker` to build a container from the `Dockerfile`, if you are familiar with it.
 This may take a while, as mkdocs and other necessary software needs to be downloaded.
-Building a container with the documentation inside could be done with the following steps:
+Building a container could be done with the following steps:
 
 ```Bash
 cd /PATH/TO/hpc-compendium
