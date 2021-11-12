@@ -345,6 +345,61 @@ used. The long string that lmod outputs to stdout is caught with \`\` in the she
 
 This way, these variables get into the main shell process and may be used by programs following the `module load`.
 
+### Using `module` information in Scripts
+
+`module` and `ml` offer the `-t` switch for several commands, e.g. `ml -t list`. This way, the output of them is
+nicer to parse for scripts.
+
+For example, `ml -t spider TensorFlow` lists all the TensorFlow versions that are available under the current
+environment:
+
+```
+TensorFlow/1.8.0-foss-2018a-Python-3.6.4-CUDA-9.2.88
+TensorFlow/1.10.0-fosscuda-2018b-Python-3.6.6
+TensorFlow/1.14.0-PythonAnaconda-3.6
+TensorFlow/1.15.0-fosscuda-2019b-Python-3.7.4
+TensorFlow/2.0.0-foss-2019a-Python-3.7.2
+TensorFlow/2.0.0-fosscuda-2019b-Python-3.7.4
+TensorFlow/2.0.0-PythonAnaconda-3.7
+TensorFlow/2.1.0-fosscuda-2019b-Python-3.7.4
+TensorFlow/2.2.0-fosscuda-2019b-Python-3.7.4
+TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4
+TensorFlow/2.4.1-foss-2020b
+TensorFlow/2.4.1
+```
+
+This can be used for several purposes, e.g. shell-completetion for ZSH. This small example,
+when put into `~/.zshrc`, will offer autocompletetion for `ml`-modules.
+
+```
+function _ml {
+    ML_COMMANDS=(
+        '-t:Show computer parsable output'
+        'unload:Unload a Module'
+        'spider:Search for a module'
+        'avail:Show available modules'
+        'list:List loaded modules'
+    )
+    
+    ML_COMMANDS_STR=$(printf "\n'%s'" "${ML_COMMANDS[@]}")
+    
+    eval "_describe 'command' \"($ML_COMMANDS_STR)\""
+    _values -s ' ' 'flags' $(ml -t avail | sed -e 's#/$##' | tr '\n' ' ')
+}
+
+compdef _ml "ml"
+```
+
+If you type `ml tensor<TAB>`, you will get all available models to tab through that contain
+"tensor" and are available under the current `modenv`:
+
+```
+marie@login$ ml tensor<TAB>
+TensorFlow                                            TensorFlow/1.8.0-foss-2018a-Python-3.6.4-CUDA-9.2.88  TensorFlow/2.1.0-fosscuda-2019b-Python-3.7.4
+TensorFlow/1.10.0-fosscuda-2018b-Python-3.6.6         TensorFlow/2.0.0-foss-2019a-Python-3.7.2              TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4
+TensorFlow/1.15.0-fosscuda-2019b-Python-3.7.4         TensorFlow/2.0.0-fosscuda-2019b-Python-3.7.4          TensorFlow/2.4.1-foss-2020b
+```
+
 ## Troubleshooting
 
 ### When I log in, the wrong modules are loaded by default
