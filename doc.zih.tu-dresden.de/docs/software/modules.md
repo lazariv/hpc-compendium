@@ -381,7 +381,6 @@ function _ml {
         'list:List loaded modules'
     )
     ML_COMMANDS_STR=$(printf "\n'%s'" "${ML_COMMANDS[@]}")
-    
     eval "_describe 'command' \"($ML_COMMANDS_STR)\""
     _values -s ' ' 'flags' $(ml -t avail | sed -e 's#/$##' | tr '\n' ' ')
 }
