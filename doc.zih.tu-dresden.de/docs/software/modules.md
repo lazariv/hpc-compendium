@@ -214,138 +214,138 @@ For writing your own Modulefiles please have a look at the [Guide for writing pr
 
 ??? info
 
-	In the Linux-shell, there is a variable called `PATH`. It contains several paths, like
-	`PATH=/usr/bin/:/bin/`. This is used to find programs. If you enter `ls`, it will first
-	look if the file `/usr/bin/ls` is there, and then, if it is not, look at `/bin/ls`. The
-	first file it finds will be executed.
+    In the Linux-shell, there is a variable called `PATH`. It contains several paths, like
+    `PATH=/usr/bin/:/bin/`. This is used to find programs. If you enter `ls`, it will first
+    look if the file `/usr/bin/ls` is there, and then, if it is not, look at `/bin/ls`. The
+    first file it finds will be executed.
 
-	There are several different variables that do the same thing for different software.
-	For example, in python, the shell variable `PYTHONPATH`. When python `import`s a module,
-	it looks in the `PYTHONPATH` the same way as the shell looks in `PATH`.
+    There are several different variables that do the same thing for different software.
+    For example, in python, the shell variable `PYTHONPATH`. When python `import`s a module,
+    it looks in the `PYTHONPATH` the same way as the shell looks in `PATH`.
 
-	`module load TensorFlow` is a shell function that runs:
+    `module load TensorFlow` is a shell function that runs:
 
-	```
-	module () {
-		eval `$LMOD_CMD sh "$@"`
-	}
-	```
+    ```
+    module () {
+    	eval `$LMOD_CMD sh "$@"`
+    }
+    ```
 
-	Let's dissect this from inside out. It's a shell function that runs `$LMOD_CMD sh "$@"`.
-	`LMOD_CMD` is a variable that contains the path of the LMOD-Script, i.e. `/usr/share/lmod/lmod/libexec/lmod`.
-	So it runs `/usr/share/lmod/lmod/libexec/lmod sh "load Tensorflow"`. This, when executed without the eval,
-	gives us the following stdout:
+    Let's dissect this from inside out. It's a shell function that runs `$LMOD_CMD sh "$@"`.
+    `LMOD_CMD` is a variable that contains the path of the LMOD-Script, i.e. `/usr/share/lmod/lmod/libexec/lmod`.
+    So it runs `/usr/share/lmod/lmod/libexec/lmod sh "load Tensorflow"`. This, when executed without the eval,
+    gives us the following stdout:
 
-	```
-	MODULEPATH=/sw/modules/scs5/classic:/sw/modules/scs5/vis:/sw/modules/scs5/tools:/sw/modules/scs5/toolchain:/sw/modules/scs5/system:/sw/modules/scs5/phys:/sw/modules/scs5/perf:/sw/modules/scs5/numlib:/sw/modules/scs5/mpi:/sw/modules/scs5/math:/sw/modules/scs5/lib:/sw/modules/scs5/lang:/sw/modules/scs5/geo:/sw/modules/scs5/devel:/sw/modules/scs5/debugger:/sw/modules/scs5/data:/sw/modules/scs5/compiler:/sw/modules/scs5/chem:/sw/modules/scs5/cae:/sw/modules/scs5/bio:/sw/modules/scs5/base:/sw/modules/taurus/environment;
-	export MODULEPATH;
-	_ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPTg2NDAwMDAsWyJjX3Nob3J0VGltZSJdPWZhbHNlLGRlcHRoVD17fSxmYW1pbHk9e30sbVQ9e21vZGVudj17WyJmbiJdPSIvc3cvbW9kdWxlcy90YXVydXMvZW52aXJvbm1lbnQvbW9kZW52L3NjczUubHVhIixbImZ1bGxOYW1lIl09Im1vZGVudi9zY3M1IixbImxvYWRPcmRlciJdPTEscHJvcFQ9e2xtb2Q9e1sic3RpY2t5Il09MSx9LH0sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0ibW9kZW52L3NjczUiLH0sfSxtcGF0aEE9eyIvc3cvbW9kdWxlcy9zY3M1L2NsYXNzaWMiLCIvc3cvbW9kdWxlcy9zY3M1L3ZpcyIsIi9zdy9tb2R1bGVzL3NjczUv;
-	export _ModuleTable001_;
-	_ModuleTable002_=dG9vbHMiLCIvc3cvbW9kdWxlcy9zY3M1L3Rvb2xjaGFpbiIsIi9zdy9tb2R1bGVzL3NjczUvc3lzdGVtIiwiL3N3L21vZHVsZXMvc2NzNS9waHlzIiwiL3N3L21vZHVsZXMvc2NzNS9wZXJmIiwiL3N3L21vZHVsZXMvc2NzNS9udW1saWIiLCIvc3cvbW9kdWxlcy9zY3M1L21waSIsIi9zdy9tb2R1bGVzL3NjczUvbWF0aCIsIi9zdy9tb2R1bGVzL3NjczUvbGliIiwiL3N3L21vZHVsZXMvc2NzNS9sYW5nIiwiL3N3L21vZHVsZXMvc2NzNS9nZW8iLCIvc3cvbW9kdWxlcy9zY3M1L2RldmVsIiwiL3N3L21vZHVsZXMvc2NzNS9kZWJ1Z2dlciIsIi9zdy9tb2R1bGVzL3NjczUvZGF0YSIsIi9zdy9tb2R1bGVzL3NjczUvY29tcGlsZXIiLCIvc3cvbW9kdWxlcy9zY3M1L2NoZW0iLCIv;
-	export _ModuleTable002_;
-	_ModuleTable003_=c3cvbW9kdWxlcy9zY3M1L2NhZSIsIi9zdy9tb2R1bGVzL3NjczUvYmlvIiwiL3N3L21vZHVsZXMvc2NzNS9iYXNlIiwiL3N3L21vZHVsZXMvdGF1cnVzL2Vudmlyb25tZW50Iix9LFsic3lzdGVtQmFzZU1QQVRIIl09Ii9zdy9tb2R1bGVzL3RhdXJ1cy9lbnZpcm9ubWVudCIsfQ==;
-	export _ModuleTable003_;
-	_ModuleTable_Sz_=3;
-	export _ModuleTable_Sz_;
-	```
+    ```
+    MODULEPATH=/sw/modules/scs5/classic:/sw/modules/scs5/vis:/sw/modules/scs5/tools:/sw/modules/scs5/toolchain:/sw/modules/scs5/system:/sw/modules/scs5/phys:/sw/modules/scs5/perf:/sw/modules/scs5/numlib:/sw/modules/scs5/mpi:/sw/modules/scs5/math:/sw/modules/scs5/lib:/sw/modules/scs5/lang:/sw/modules/scs5/geo:/sw/modules/scs5/devel:/sw/modules/scs5/debugger:/sw/modules/scs5/data:/sw/modules/scs5/compiler:/sw/modules/scs5/chem:/sw/modules/scs5/cae:/sw/modules/scs5/bio:/sw/modules/scs5/base:/sw/modules/taurus/environment;
+    export MODULEPATH;
+    _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPTg2NDAwMDAsWyJjX3Nob3J0VGltZSJdPWZhbHNlLGRlcHRoVD17fSxmYW1pbHk9e30sbVQ9e21vZGVudj17WyJmbiJdPSIvc3cvbW9kdWxlcy90YXVydXMvZW52aXJvbm1lbnQvbW9kZW52L3NjczUubHVhIixbImZ1bGxOYW1lIl09Im1vZGVudi9zY3M1IixbImxvYWRPcmRlciJdPTEscHJvcFQ9e2xtb2Q9e1sic3RpY2t5Il09MSx9LH0sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0ibW9kZW52L3NjczUiLH0sfSxtcGF0aEE9eyIvc3cvbW9kdWxlcy9zY3M1L2NsYXNzaWMiLCIvc3cvbW9kdWxlcy9zY3M1L3ZpcyIsIi9zdy9tb2R1bGVzL3NjczUv;
+    export _ModuleTable001_;
+    _ModuleTable002_=dG9vbHMiLCIvc3cvbW9kdWxlcy9zY3M1L3Rvb2xjaGFpbiIsIi9zdy9tb2R1bGVzL3NjczUvc3lzdGVtIiwiL3N3L21vZHVsZXMvc2NzNS9waHlzIiwiL3N3L21vZHVsZXMvc2NzNS9wZXJmIiwiL3N3L21vZHVsZXMvc2NzNS9udW1saWIiLCIvc3cvbW9kdWxlcy9zY3M1L21waSIsIi9zdy9tb2R1bGVzL3NjczUvbWF0aCIsIi9zdy9tb2R1bGVzL3NjczUvbGliIiwiL3N3L21vZHVsZXMvc2NzNS9sYW5nIiwiL3N3L21vZHVsZXMvc2NzNS9nZW8iLCIvc3cvbW9kdWxlcy9zY3M1L2RldmVsIiwiL3N3L21vZHVsZXMvc2NzNS9kZWJ1Z2dlciIsIi9zdy9tb2R1bGVzL3NjczUvZGF0YSIsIi9zdy9tb2R1bGVzL3NjczUvY29tcGlsZXIiLCIvc3cvbW9kdWxlcy9zY3M1L2NoZW0iLCIv;
+    export _ModuleTable002_;
+    _ModuleTable003_=c3cvbW9kdWxlcy9zY3M1L2NhZSIsIi9zdy9tb2R1bGVzL3NjczUvYmlvIiwiL3N3L21vZHVsZXMvc2NzNS9iYXNlIiwiL3N3L21vZHVsZXMvdGF1cnVzL2Vudmlyb25tZW50Iix9LFsic3lzdGVtQmFzZU1QQVRIIl09Ii9zdy9tb2R1bGVzL3RhdXJ1cy9lbnZpcm9ubWVudCIsfQ==;
+    export _ModuleTable003_;
+    _ModuleTable_Sz_=3;
+    export _ModuleTable_Sz_;
+    ```
 
-	These are declarations for shell-variables. Some of them in plain text (like `MODULEPATH`, and some in base64, like `_ModuleTable001_`.
+    These are declarations for shell-variables. Some of them in plain text (like `MODULEPATH`, and some in base64, like `_ModuleTable001_`.
 
-	The variable `_ModuleTable_Sz_` contains the index of the highest `_ModuleTable00x`-variable, so that lmod knows how many of them it should
-	look at to figure out the current lmod status.
+    The variable `_ModuleTable_Sz_` contains the index of the highest `_ModuleTable00x`-variable, so that lmod knows how many of them it should
+    look at to figure out the current lmod status.
 
-	When we concatenate all the base64-strings and decode them to ASCII, we get:
+    When we concatenate all the base64-strings and decode them to ASCII, we get:
 
-	```
-	_ModuleTable_={["MTversion"]=3,["c_rebuildTime"]=8640000,["c_shortTime"]=false,depthT={},family={},mT={modenv={["fn"]="/sw/modules/taurus/environment/modenv/scs5.lua",["fullName"]="modenv/scs5",["loadOrder"]=1,propT={lmod={["sticky"]=1,},},["stackDepth"]=0,["status"]="active",["userName"]="modenv/scs5",},},mpathA={"/sw/modules/scs5/classic","/sw/modules/scs5/vis","/sw/modules/scs5/tools","/sw/modules/scs5/toolchain","/sw/modules/scs5/system","/sw/modules/scs5/phys","/sw/modules/scs5/perf","/sw/modules/scs5/numlib","/sw/modules/scs5/mpi","/sw/modules/scs5/math","/sw/modules/scs5/lib","/sw/modules/scs5/lang","/sw/modules/scs5/geo","/sw/modules/scs5/devel","/sw/modules/scs5/debugger","/sw/modules/scs5/data","/sw/modules/scs5/compiler","/sw/modules/scs5/chem","/sw/modules/scs5/cae","/sw/modules/scs5/bio","/sw/modules/scs5/base","/sw/modules/taurus/environment",},["systemBaseMPATH"]="/sw/modules/taurus/environment",}
-	```
+    ```
+    _ModuleTable_={["MTversion"]=3,["c_rebuildTime"]=8640000,["c_shortTime"]=false,depthT={},family={},mT={modenv={["fn"]="/sw/modules/taurus/environment/modenv/scs5.lua",["fullName"]="modenv/scs5",["loadOrder"]=1,propT={lmod={["sticky"]=1,},},["stackDepth"]=0,["status"]="active",["userName"]="modenv/scs5",},},mpathA={"/sw/modules/scs5/classic","/sw/modules/scs5/vis","/sw/modules/scs5/tools","/sw/modules/scs5/toolchain","/sw/modules/scs5/system","/sw/modules/scs5/phys","/sw/modules/scs5/perf","/sw/modules/scs5/numlib","/sw/modules/scs5/mpi","/sw/modules/scs5/math","/sw/modules/scs5/lib","/sw/modules/scs5/lang","/sw/modules/scs5/geo","/sw/modules/scs5/devel","/sw/modules/scs5/debugger","/sw/modules/scs5/data","/sw/modules/scs5/compiler","/sw/modules/scs5/chem","/sw/modules/scs5/cae","/sw/modules/scs5/bio","/sw/modules/scs5/base","/sw/modules/taurus/environment",},["systemBaseMPATH"]="/sw/modules/taurus/environment",}
+    ```
 
-	Which is basically this, but more condensed:
+    Which is basically this, but more condensed:
 
-	```
-	"_ModuleTable_="{
-	   [
-	      "MTversion"
-	   ]=3,
-	   [
-	      "c_rebuildTime"
-	   ]=8640000,
-	   [
-	      "c_shortTime"
-	   ]"=false",
-	   "depthT="{
+    ```
+    "_ModuleTable_="{
+       [
+          "MTversion"
+       ]=3,
+       [
+          "c_rebuildTime"
+       ]=8640000,
+       [
+          "c_shortTime"
+       ]"=false",
+       "depthT="{
 
-	   },
-	   "family="{
+       },
+       "family="{
 
-	   },
-	   "mT="{
-	      "modenv="{
-		 [
-		    "fn"
-		 ]"=""/sw/modules/taurus/environment/modenv/scs5.lua",
-		 [
-		    "fullName"
-		 ]"=""modenv/scs5",
-		 [
-		    "loadOrder"
-		 ]=1,
-		 "propT="{
-		    "lmod="{
-		       [
-			  "sticky"
-		       ]=1
-		    }
-		 },
-		 [
-		    "stackDepth"
-		 ]=0,
-		 [
-		    "status"
-		 ]"=""active",
-		 [
-		    "userName"
-		 ]"=""modenv/scs5"
-	      }
-	   },
-	   "mpathA="{
-	      "/sw/modules/scs5/classic",
-	      "/sw/modules/scs5/vis",
-	      "/sw/modules/scs5/tools",
-	      "/sw/modules/scs5/toolchain",
-	      "/sw/modules/scs5/system",
-	      "/sw/modules/scs5/phys",
-	      "/sw/modules/scs5/perf",
-	      "/sw/modules/scs5/numlib",
-	      "/sw/modules/scs5/mpi",
-	      "/sw/modules/scs5/math",
-	      "/sw/modules/scs5/lib",
-	      "/sw/modules/scs5/lang",
-	      "/sw/modules/scs5/geo",
-	      "/sw/modules/scs5/devel",
-	      "/sw/modules/scs5/debugger",
-	      "/sw/modules/scs5/data",
-	      "/sw/modules/scs5/compiler",
-	      "/sw/modules/scs5/chem",
-	      "/sw/modules/scs5/cae",
-	      "/sw/modules/scs5/bio",
-	      "/sw/modules/scs5/base",
-	      "/sw/modules/taurus/environment"
-	   },
-	   [
-	      "systemBaseMPATH"
-	   ]"=""/sw/modules/taurus/environment"
-	}
-	```
+       },
+       "mT="{
+          "modenv="{
+    	 [
+    	    "fn"
+    	 ]"=""/sw/modules/taurus/environment/modenv/scs5.lua",
+    	 [
+    	    "fullName"
+    	 ]"=""modenv/scs5",
+    	 [
+    	    "loadOrder"
+    	 ]=1,
+    	 "propT="{
+    	    "lmod="{
+    	       [
+    		  "sticky"
+    	       ]=1
+    	    }
+    	 },
+    	 [
+    	    "stackDepth"
+    	 ]=0,
+    	 [
+    	    "status"
+    	 ]"=""active",
+    	 [
+    	    "userName"
+    	 ]"=""modenv/scs5"
+          }
+       },
+       "mpathA="{
+          "/sw/modules/scs5/classic",
+          "/sw/modules/scs5/vis",
+          "/sw/modules/scs5/tools",
+          "/sw/modules/scs5/toolchain",
+          "/sw/modules/scs5/system",
+          "/sw/modules/scs5/phys",
+          "/sw/modules/scs5/perf",
+          "/sw/modules/scs5/numlib",
+          "/sw/modules/scs5/mpi",
+          "/sw/modules/scs5/math",
+          "/sw/modules/scs5/lib",
+          "/sw/modules/scs5/lang",
+          "/sw/modules/scs5/geo",
+          "/sw/modules/scs5/devel",
+          "/sw/modules/scs5/debugger",
+          "/sw/modules/scs5/data",
+          "/sw/modules/scs5/compiler",
+          "/sw/modules/scs5/chem",
+          "/sw/modules/scs5/cae",
+          "/sw/modules/scs5/bio",
+          "/sw/modules/scs5/base",
+          "/sw/modules/taurus/environment"
+       },
+       [
+          "systemBaseMPATH"
+       ]"=""/sw/modules/taurus/environment"
+    }
+    ```
 
-	This contains information about all the currently loaded modules, so that lmod can, when we load or unload a module,
-	do it properly, inlcuding all dependencies and so on. When neccessary, lmod also sets other variables, like `PYTHONPATH`,
-	so that programs know where to look for files.
+    This contains information about all the currently loaded modules, so that lmod can, when we load or unload a module,
+    do it properly, inlcuding all dependencies and so on. When neccessary, lmod also sets other variables, like `PYTHONPATH`,
+    so that programs know where to look for files.
 
-	Because programs can only alter the shell-variables for themselves and their children, but not their parents, a trick is
-	used. The long string that lmod outputs to stdout is caught with \`\` in the shell to an anonymous variable that is then `eval`ed.
+    Because programs can only alter the shell-variables for themselves and their children, but not their parents, a trick is
+    used. The long string that lmod outputs to stdout is caught with \`\` in the shell to an anonymous variable that is then `eval`ed.
 
-	This way, these variables get into the main shell process and may be used by programs following the `module load`.
+    This way, these variables get into the main shell process and may be used by programs following the `module load`.
 
 ### Using `module` information in Scripts
 
