@@ -392,7 +392,7 @@ If you type `ml tensor<TAB>`, you will get all available modules to tab through 
 "tensor" and are available under the current `modenv`:
 
 ```
-marie@login$ ml tensor<TAB>
+marie@login$ module tensor<TAB>
 TensorFlow                                            TensorFlow/1.8.0-foss-2018a-Python-3.6.4-CUDA-9.2.88  TensorFlow/2.1.0-fosscuda-2019b-Python-3.7.4
 TensorFlow/1.10.0-fosscuda-2018b-Python-3.6.6         TensorFlow/2.0.0-foss-2019a-Python-3.7.2              TensorFlow/2.3.1-fosscuda-2019b-Python-3.7.4
 TensorFlow/1.15.0-fosscuda-2019b-Python-3.7.4         TensorFlow/2.0.0-fosscuda-2019b-Python-3.7.4          TensorFlow/2.4.1-foss-2020b
