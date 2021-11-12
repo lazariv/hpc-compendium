@@ -167,7 +167,7 @@ compdef _module "module"
 
 ### Slurm-specific shortcuts
 
-#### Show slurm log path
+#### Show Slurm log path
 
 This allows you to run `slurmlogpath $SLURM_ID` and get the log-path directly in stdout:
 
