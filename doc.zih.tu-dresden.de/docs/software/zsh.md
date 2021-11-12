@@ -46,7 +46,7 @@ plugins+=(
 
 ### Typo-correction
 
-With 
+With
 
 ```bash
 setopt correct_all
@@ -126,7 +126,7 @@ This lists all files, from largest to smallest, in the current directory.
 
 ### Automatically rewrite `..` as `../..`
 
-This will automatically replace `...` with `../..` and `....` with `../../..` and so on (each additional `.` 
+This will automatically replace `...` with `../..` and `....` with `../../..` and so on (each additional `.`
 adding another `/..`) when typing commands:
 
 ``` bash
