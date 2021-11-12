@@ -11,7 +11,7 @@ long describing complex steps, contributing is quite easy - trust us.
 Users can contribute to the documentation via the
 [issue tracking system](https://gitlab.hrz.tu-chemnitz.de/zih/hpcsupport/hpc-compendium/-/issues).
 For that, open an issue to report typos and missing documentation or request for more precise
-wording etc.  ZIH staff will get in touch with you to resolve the issue and improve the
+wording etc. ZIH staff will get in touch with you to resolve the issue and improve the
 documentation.
 
 **Reminder:** Non-documentation issues and requests need to be send as ticket to
