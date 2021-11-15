@@ -139,7 +139,7 @@ branch="origin/${CI_MERGE_REQUEST_TARGET_BRANCH_NAME:-preview}"
 
 if [ $all_files = true ]; then
   echo "Search in all markdown files."
-  files=$(git ls-tree --full-tree -r --name-only HEAD $basedir/docs/ | grep .md)
+  files=$(git ls-tree --full-tree -r --name-only HEAD $basedir/ | grep .md)
 elif [[ ! -z $file ]]; then
   files=$file
 else
