@@ -36,11 +36,11 @@ Thus, Spark can be executed using different CPU architectures, e.g., Haswell and
 
 Let us assume that two nodes should be used for the computation. Use a `srun` command similar to
 the following to start an interactive session using the partition haswell. The following code
-snippet shows a job submission to haswell nodes with an allocation of two nodes with 60 GB main
+snippet shows a job submission to haswell nodes with an allocation of two nodes with 50 GB main
 memory exclusively for one hour:
 
 ```console
-marie@login$ srun --partition=haswell --nodes=2 --mem=60g --exclusive --time=01:00:00 --pty bash -l
+marie@login$ srun --partition=haswell --nodes=2 --mem=50g --exclusive --time=01:00:00 --pty bash -l
 ```
 
 Once you have the shell, load Spark using the command
@@ -129,7 +129,7 @@ example below:
     #SBATCH --partition=haswell
     #SBATCH --nodes=2
     #SBATCH --exclusive
-    #SBATCH --mem=60G
+    #SBATCH --mem=50G
     #SBATCH --job-name="example-spark"
 
     ml Spark/3.0.1-Hadoop-2.7-Java-1.8-Python-3.7.4-GCCcore-8.3.0
