@@ -14,40 +14,40 @@ basedir=`dirname "$basedir"`
 #For example, the first rule says:
 # The pattern \<io\> should not be present in any file (case-insensitive match), except when it appears as ".io".
 ruleset="The word \"IO\" should not be used, use \"I/O\" instead.
-doc.zih.tu-dresden.de/README.md	doc.zih.tu-dresden.de/docs/contrib/content_rules.md
+doc.zih.tu-dresden.de/docs/contrib/content_rules.md
 i	\<io\>	\.io
 \"SLURM\" (only capital letters) should not be used, use \"Slurm\" instead.
-doc.zih.tu-dresden.de/README.md	doc.zih.tu-dresden.de/docs/contrib/content_rules.md
+doc.zih.tu-dresden.de/docs/contrib/content_rules.md
 s	\<SLURM\>
 \"File system\" should be written as \"filesystem\", except when used as part of a proper name.
-doc.zih.tu-dresden.de/README.md	doc.zih.tu-dresden.de/docs/contrib/content_rules.md
+doc.zih.tu-dresden.de/docs/contrib/content_rules.md
 i	file \+system	HDFS
 Use \"ZIH systems\" or \"ZIH system\" instead of \"Taurus\". \"taurus\" is only allowed when used in ssh commands and other very specific situations.
-doc.zih.tu-dresden.de/README.md	doc.zih.tu-dresden.de/docs/contrib/content_rules.md
+doc.zih.tu-dresden.de/docs/contrib/content_rules.md
 i	\<taurus\>	taurus\.hrsk	/taurus	/TAURUS	ssh	^[0-9]\+:Host taurus$
 \"HRSKII\" should be avoided, use \"ZIH system\" instead.
-doc.zih.tu-dresden.de/README.md	doc.zih.tu-dresden.de/docs/contrib/content_rules.md
+doc.zih.tu-dresden.de/docs/contrib/content_rules.md
 i	\<hrskii\>
 The term \"HPC-DA\" should be avoided. Depending on the situation, use \"data analytics\" or similar.
-doc.zih.tu-dresden.de/README.md	doc.zih.tu-dresden.de/docs/contrib/content_rules.md
+doc.zih.tu-dresden.de/docs/contrib/content_rules.md
 i	hpc[ -]\+da\>
 \"ATTACHURL\" was a keyword in the old wiki, don't use it.
-doc.zih.tu-dresden.de/README.md
+
 i	attachurl
 Replace \"todo\" with real content.
-doc.zih.tu-dresden.de/README.md
+
 i	\<todo\>	<!--.*todo.*-->
 Avoid spaces at end of lines.
-doc.zih.tu-dresden.de/README.md
+
 i	[[:space:]]$
 When referencing partitions, put keyword \"partition\" in front of partition name, e. g. \"partition ml\", not \"ml partition\".
-doc.zih.tu-dresden.de/README.md	doc.zih.tu-dresden.de/docs/contrib/content_rules.md
+doc.zih.tu-dresden.de/docs/contrib/content_rules.md
 i	\(alpha\|ml\|haswell\|romeo\|gpu\|smp\|julia\|hpdlf\|scs5\)-\?\(interactive\)\?[^a-z]*partition
 Give hints in the link text. Words such as \"here\" or \"this link\" are meaningless.
-doc.zih.tu-dresden.de/README.md	doc.zih.tu-dresden.de/docs/contrib/content_rules.md
+doc.zih.tu-dresden.de/docs/contrib/content_rules.md
 i	\[\s\?\(documentation\|here\|this \(link\|page\|subsection\)\|slides\?\|manpage\)\s\?\]
 Use \"workspace\" instead of \"work space\" or \"work-space\".
-doc.zih.tu-dresden.de/README.md	doc.zih.tu-dresden.de/docs/contrib/content_rules.md
+doc.zih.tu-dresden.de/docs/contrib/content_rules.md
 i	work[ -]\+space"
 
 function grepExceptions () {
