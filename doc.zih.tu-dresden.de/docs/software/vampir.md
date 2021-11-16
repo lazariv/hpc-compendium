@@ -51,7 +51,7 @@ for a tutorial on using the tool.
 VampirServer provides additional scalable analysis capabilities to the Vampir GUI mentioned above.
 To use VampirServer on the ZIH Systems proceed as follows: start the Vampir GUI as
 described above and use the *Open Remote* dialog with the parameters indicated in the following
-figure to start and connect a VampirServer already instance running on the HPC system. Make sure
+figure to start and connect a VampirServer already instance running on the HPC system Taurus. Make sure
 to fill in your personal ZIH login name.
 
 ![Vampir Open Remote dialog](misc/vampir-open-remote-dialog.png)
