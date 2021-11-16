@@ -36,10 +36,10 @@ in a directory, the option `-r` has to be specified.
 ??? example "Example: Copy a file from ZIH systems to your workstation"
 
     ```console
-    marie@login$ scp taurusexport:<file> <target-location>
+    marie@local$ scp taurusexport:<file> <target-location>
 
     # Add -r to copy whole directory
-    marie@login$ scp -r taurusexport:<directory> <target-location>
+    marie@local$ scp -r taurusexport:<directory> <target-location>
     ```
 
 ### SFTP
