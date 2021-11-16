@@ -9,9 +9,13 @@ that you cannot log in via SSH to the export nodes, but only use `scp`, `rsync` 
 The export nodes are reachable under the hostname `taurusexport.hrsk.tu-dresden.de` (or
 `taurusexport3.hrsk.tu-dresden.de` and `taurusexport4.hrsk.tu-dresden.de`).
 
+Please keep in mind that there are different
+[filesystems](../data_lifecycle/file_systems.md#recommendations-for-filesystem-usage). Choose the
+one that matches your needs.
+
 ## Access From Linux
 
-There are at least three tool to exchange data between your local workstation and ZIH systems. All
+There are at least three tools to exchange data between your local workstation and ZIH systems. All
 are explained in the following section in more detail.
 
 !!! important
