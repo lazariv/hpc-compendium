@@ -24,7 +24,7 @@ nav:
     - Overview: software/overview.md
     - Environment:
       - Modules: software/modules.md
-      - Runtime Environment: software/runtime_environment.md
+      - Private Modulefiles: software/private_modules.md
       - Custom EasyBuild Modules: software/custom_easy_build_environment.md
       - Python Virtual Environments: software/python_virtual_environments.md
     - Containers:
@@ -65,6 +65,7 @@ nav:
       - Debugging: software/debuggers.md
       - MPI Error Detection: software/mpi_usage_error_detection.md
       - Score-P: software/scorep.md
+      - lo2s: software/lo2s.md
       - PAPI Library: software/papi.md
       - Pika: software/pika.md
       - Perf Tools: software/perf_tools.md
@@ -111,6 +112,7 @@ nav:
     - Phase2 Migration: archive/phase2_migration.md
     - Platform LSF: archive/platform_lsf.md
     - BeeGFS on Demand: archive/beegfs_on_demand.md
+    - Install JupyterHub: archive/install_jupyter.md
     - Switched-Off Systems:
       - Overview: archive/systems_switched_off.md
       - From Deimos to Atlas: archive/migrate_to_atlas.md
@@ -128,6 +130,7 @@ nav:
   - Contribute:
     - How-To: contrib/howto_contribute.md
     - Content Rules: contrib/content_rules.md
+    - Browser-based Editing: contrib/contribute_browser.md
     - Work Locally Using Containers: contrib/contribute_container.md
     
 # Project Information

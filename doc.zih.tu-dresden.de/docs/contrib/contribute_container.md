@@ -86,7 +86,25 @@ To avoid a lot of retyping, use the following in your shell:
 alias wiki="docker run --name=hpc-compendium --rm -it -w /docs --mount src=$PWD/doc.zih.tu-dresden.de,target=/docs,type=bind hpc-compendium bash -c"
 ```
 
-You are now ready to use the different checks
+You are now ready to use the different checks, however we suggest to try the pre-commit hook.
+
+#### Pre-commit Git Hook
+
+We recommend to automatically run checks whenever you try to commit a change. In this case, failing
+checks prevent commits (unless you use option `--no-verify`). This can be accomplished by adding a
+pre-commit hook to your local clone of the repository. The following code snippet shows how to do
+that:
+
+```bash
+cp doc.zih.tu-dresden.de/util/pre-commit .git/hooks/
+```
+
+!!! note
+    The pre-commit hook only works, if you can use docker without using `sudo`. If this is not
+    already the case, use the command `adduser $USER docker` to enable docker commands without
+    `sudo` for the current user. Restart the docker daemons afterwards.
+
+Read on if you want to run a specific check.
 
 #### Linter
 

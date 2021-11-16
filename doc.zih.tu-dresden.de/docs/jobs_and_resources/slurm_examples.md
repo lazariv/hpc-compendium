@@ -39,7 +39,7 @@ For MPI-parallel jobs one typically allocates one core per task that has to be s
     There are different MPI libraries on ZIH systems for the different micro archtitectures. Thus,
     you have to compile the binaries specifically for the target architecture and partition. Please
     refer to the sections [building software](../software/building_software.md) and
-    [module environments](../software/runtime_environment.md#module-environments) for detailed
+    [module environments](../software/modules.md#module-environments) for detailed
     information.
 
 !!! example "Job file for MPI application"

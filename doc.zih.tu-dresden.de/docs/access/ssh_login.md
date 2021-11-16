@@ -88,6 +88,7 @@ in it (you can omit lines starting with `#`):
 
 ```bash
 Host taurus
+  #For login (shell access)
   HostName taurus.hrsk.tu-dresden.de
   #Put your ZIH-Login after keyword "User":
   User marie
@@ -98,6 +99,15 @@ Host taurus
   #Enable X11 forwarding for graphical applications and compression. You don't need parameter -X and -C when invoking ssh then.
   ForwardX11 yes
   Compression yes
+Host taurusexport
+  #For copying data without shell access
+  HostName taurusexport.hrsk.tu-dresden.de
+  #Put your ZIH-Login after keyword "User":
+  User marie
+  #Path to private key:
+  IdentityFile ~/.ssh/id_ed25519
+  #Don't try other keys if you have more:
+  IdentitiesOnly yes
 ```
 
 Afterwards, you can connect to the ZIH system using:
@@ -105,6 +115,9 @@ Afterwards, you can connect to the ZIH system using:
 ```console
 marie@local$ ssh taurus
 ```
+
+If you want to copy data from/to ZIH systems, please refer to [Export Nodes: Transfer Data to/from
+ZIH's Filesystems](../data_transfer/export_nodes.md) for more information on export nodes.
 
 ### X11-Forwarding
 

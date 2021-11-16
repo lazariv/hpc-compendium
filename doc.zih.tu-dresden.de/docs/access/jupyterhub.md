@@ -41,7 +41,7 @@ settings. You can:
 
 - modify batch system parameters to your needs ([more about batch system Slurm](../jobs_and_resources/slurm.md))
 - assign your session to a project or reservation
-- load modules from the [module system](../software/runtime_environment.md)
+- load modules from the [module system](../software/modules.md)
 - choose a different standard environment (in preparation for future
   software updates or testing additional features)
 
@@ -189,7 +189,7 @@ Here is a short list of some included software:
 
 \* generic = all partitions except ml
 
-\*\* R is loaded from the [module system](../software/runtime_environment.md)
+\*\* R is loaded from the [module system](../software/modules.md)
 
 ### Creating and Using a Custom Environment
 

@@ -11,7 +11,7 @@ long describing complex steps, contributing is quite easy - trust us.
 Users can contribute to the documentation via the
 [issue tracking system](https://gitlab.hrz.tu-chemnitz.de/zih/hpcsupport/hpc-compendium/-/issues).
 For that, open an issue to report typos and missing documentation or request for more precise
-wording etc.  ZIH staff will get in touch with you to resolve the issue and improve the
+wording etc. ZIH staff will get in touch with you to resolve the issue and improve the
 documentation.
 
 **Reminder:** Non-documentation issues and requests need to be send as ticket to
@@ -107,7 +107,7 @@ Open `http://127.0.0.1:8000` with a web browser to preview the local copy of the
 
 You can also use `docker` to build a container from the `Dockerfile`, if you are familiar with it.
 This may take a while, as mkdocs and other necessary software needs to be downloaded.
-Building a container with the documentation inside could be done with the following steps:
+Building a container could be done with the following steps:
 
 ```Bash
 cd /PATH/TO/hpc-compendium
@@ -137,7 +137,7 @@ echo http://$(docker inspect -f "{{.NetworkSettings.IPAddress}}" $(docker ps -qf
 ```
 
 The running container automatically takes care of file changes and rebuilds the
-documentation.  If you want to check whether the markdown files are formatted
+documentation. If you want to check whether the markdown files are formatted
 properly, use the following command:
 
 ```Bash
@@ -247,7 +247,8 @@ There are two important branches in this repository:
 - Preview:
   - Branch containing recent changes which will be soon merged to main branch (protected
     branch)
-  - Served at [todo url](todo url) from TUD VPN
+  - Served at [https://doc.zih.tu-dresden.de/preview](https://doc.zih.tu-dresden.de/preview) from
+    TUD-ZIH VPN
 - Main: Branch which is deployed at [https://doc.zih.tu-dresden.de](https://doc.zih.tu-dresden.de)
     holding the current documentation (protected branch)
 
@@ -387,280 +388,3 @@ BigDataFrameworksApacheSparkApacheFlinkApacheHadoop.md is not included in nav
 pika.md is not included in nav
 specific_software.md is not included in nav
 ```
-
-### Pre-commit Git Hook
-
-You can automatically run checks whenever you try to commit a change. In this case, failing checks
-prevent commits (unless you use option `--no-verify`). This can be accomplished by adding a
-pre-commit hook to your local clone of the repository. The following code snippet shows how to do
-that:
-
-```bash
-cp doc.zih.tu-dresden.de/util/pre-commit .git/hooks/
-```
-
-!!! note
-    The pre-commit hook only works, if you can use docker without using `sudo`. If this is not
-    already the case, use the command `adduser $USER docker` to enable docker commands without
-    `sudo` for the current user. Restart the docker daemons afterwards.
-
-## Content Rules
-
-**Remark:** Avoid using tabs both in markdown files and in `mkdocs.yaml`. Type spaces instead.
-
-### New Page and Pages Structure
-
-The pages structure is defined in the configuration file [mkdocs.yaml](mkdocs.yml).
-
-```Shell Session
-docs/
-  - Home: index.md
-  - Application for HPC Login: application.md
-  - Request for Resources: req_resources.md
-  - Access to the Cluster: access.md
-  - Available Software and Usage:
-    - Overview: software/overview.md
-  ...
-```
-
-To add a new page to the documentation follow these two steps:
-
-1. Create a new markdown file under `docs/subdir/file_name.md` and put the documentation inside. The
-   sub directory and file name should follow the pattern `fancy_title_and_more.md`.
-1. Add `subdir/file_name.md` to the configuration file `mkdocs.yml` by updating the navigation
-   section.
-
-Make sure that the new page **is not floating**, i.e., it can be reached directly from the documentation
-structure.
-
-### Markdown
-
-1. Please keep things simple, i.e., avoid using fancy markdown dialects.
-    * [Cheat Sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
-    * [Style Guide](https://github.com/google/styleguide/blob/gh-pages/docguide/style.md)
-
-1. Do not add large binary files or high resolution images to the repository. See this valuable
-   document for [image optimization](https://web.dev/fast/#optimize-your-images).
-
-1. [Admonitions](https://squidfunk.github.io/mkdocs-material/reference/admonitions/) may be
-actively used, especially for longer code examples, warnings, tips, important information that
-should be highlighted, etc. Code examples, longer than half screen height should collapsed
-(and indented):
-
-??? example
-    ```Bash
-    [...]
-    # very long example here
-    [...]
-    ```
-
-### Writing Style
-
-**TODO** Guide [Issue #14](#14)
-
-* Capitalize headings, e.g. *Exclusive Reservation of Hardware*
-* Give keywords in link texts, e.g. [Code Blocks](#code-blocks-and-syntax-highlighting) is more
-  descriptive than [this subsection](#code-blocks-and-syntax-highlighting)
-
-### Spelling and Technical Wording
-
-To provide a consistent and high quality documentation, and help users to find the right pages,
-there is a list of conventions w.r.t. spelling and technical wording.
-
-* Language settings: en_us
-* `I/O` not `IO`
-* `Slurm` not `SLURM`
-* `Filesystem` not `file system`
-* `ZIH system` and `ZIH systems` not `Taurus`, `HRSKII`, `our HPC systems`, etc.
-* `Workspace` not `work space`
-* avoid term `HPC-DA`
-* Partition names after the keyword *partition*: *partition `ml`* not *ML partition*, *ml
-  partition*, *`ml` partition*, *"ml" partition*, etc.
-
-### Code Blocks and Command Prompts
-
-Showing commands and sample output is an important part of all technical documentation. To make
-things as clear for readers as possible and provide a consistent documentation, some rules have to
-be followed.
-
-1. Use ticks to mark code blocks and commands, not italic font.
-1. Specify language for code blocks ([see below](#code-blocks-and-syntax-highlighting)).
-1. All code blocks and commands should be runnable from a login node or a node within a specific
-   partition (e.g., `ml`).
-1. It should be clear from the prompt, where the command is run (e.g. local machine, login node or
-   specific partition).
-
-#### Prompts
-
-We follow this rules regarding prompts:
-
-| Host/Partition         | Prompt           |
-|------------------------|------------------|
-| Login nodes            | `marie@login$`   |
-| Arbitrary compute node | `marie@compute$` |
-| `haswell` partition    | `marie@haswell$` |
-| `ml` partition         | `marie@ml$`      |
-| `alpha` partition      | `marie@alpha$`   |
-| `alpha` partition      | `marie@alpha$`   |
-| `romeo` partition      | `marie@romeo$`   |
-| `julia` partition      | `marie@julia$`   |
-| Localhost              | `marie@local$`   |
-
-*Remarks:*
-
-* **Always use a prompt**, even there is no output provided for the shown command.
-* All code blocks should use long parameter names (e.g. Slurm parameters), if available.
-* All code blocks which specify some general command templates, e.g. containing `<` and `>`
-  (see [Placeholders](#mark-placeholders)), should use `bash` for the code block. Additionally,
-  an example invocation, perhaps with output, should be given with the normal `console` code block.
-  See also [Code Block description below](#code-blocks-and-syntax-highlighting).
-* Using some magic, the prompt as well as the output is identified and will not be copied!
-* Stick to the [generic user name](#data-privacy-and-generic-user-name) `marie`.
-
-#### Code Blocks and Syntax Highlighting
-
-This project makes use of the extension
-[pymdownx.highlight](https://squidfunk.github.io/mkdocs-material/reference/code-blocks/) for syntax
-highlighting.  There is a complete list of supported
-[language short codes](https://pygments.org/docs/lexers/).
-
-For consistency, use the following short codes within this project:
-
-With the exception of command templates, use `console` for shell session and console:
-
-```` markdown
-```console
-marie@login$ ls
-foo
-bar
-```
-````
-
-Make sure that shell session and console code blocks are executable on the login nodes of HPC system.
-
-Command templates use [Placeholders](#mark-placeholders) to mark replaceable code parts. Command
-templates should give a general idea of invocation and thus, do not contain any output. Use a
-`bash` code block followed by an invocation example (with `console`):
-
-```` markdown
-```bash
-marie@local$ ssh -NL <local port>:<compute node>:<remote port> <zih login>@tauruslogin.hrsk.tu-dresden.de
-```
-
-```console
-marie@local$ ssh -NL 5901:172.24.146.46:5901 marie@tauruslogin.hrsk.tu-dresden.de
-```
-````
-
-Also use `bash` for shell scripts such as jobfiles:
-
-```` markdown
-```bash
-#!/bin/bash
-#SBATCH --nodes=1
-#SBATCH --time=01:00:00
-#SBATCH --output=slurm-%j.out
-
-module load foss
-
-srun a.out
-```
-````
-
-!!! important
-
-    Use long parameter names where possible to ease understanding.
-
-`python` for Python source code:
-
-```` markdown
-```python
-from time import gmtime, strftime
-print(strftime("%Y-%m-%d %H:%M:%S", gmtime()))
-```
-````
-
-`pycon` for Python console:
-
-```` markdown
-```pycon
->>> from time import gmtime, strftime
->>> print(strftime("%Y-%m-%d %H:%M:%S", gmtime()))
-2021-08-03 07:20:33
-```
-````
-
-Line numbers can be added via
-
-```` markdown
-```bash linenums="1"
-#!/bin/bash
-
-#SBATCH -N 1
-#SBATCH -n 23
-#SBATCH -t 02:10:00
-
-srun a.out
-```
-````
-
-_Result_:
-
-![lines](misc/lines.png)
-
-Specific Lines can be highlighted by using
-
-```` markdown
-```bash hl_lines="2 3"
-#!/bin/bash
-
-#SBATCH -N 1
-#SBATCH -n 23
-#SBATCH -t 02:10:00
-
-srun a.out
-```
-````
-
-_Result_:
-
-![lines](misc/highlight_lines.png)
-
-### Data Privacy and Generic User Name
-
-Where possible, replace login, project name and other private data with clearly arbitrary placeholders.
-E.g., use the generic login `marie` and the corresponding project name `p_marie`.
-
-```console
-marie@login$ ls -l
-drwxr-xr-x   3 marie p_marie      4096 Jan 24  2020 code
-drwxr-xr-x   3 marie p_marie      4096 Feb 12  2020 data
--rw-rw----   1 marie p_marie      4096 Jan 24  2020 readme.md
-```
-
-### Mark Omissions
-
-If showing only a snippet of a long output, omissions are marked with `[...]`.
-
-### Mark Placeholders
-
-Stick to the Unix rules on optional and required arguments, and selection of item sets:
-
-* `<required argument or value>`
-* `[optional argument or value]`
-* `{choice1|choice2|choice3}`
-
-## Graphics and Attachments
-
-All graphics and attachments are saved within `misc` directory of the respective sub directory in
-`docs`.
-
-The syntax to insert a graphic or attachment into a page is
-
-```Bash
-![PuTTY: Switch on X11](misc/putty2.jpg)
-{: align="center"}
-```
-
-The attribute `align` is optional. By default, graphics are left aligned. **Note:** It is crucial to
-have `{: align="center"}` on a new line.
