@@ -33,13 +33,27 @@ in a directory, the option `-r` has to be specified.
     marie@local$ scp -r <directory> taurusexport:<target-location>
     ```
 
-??? example "Example: Copy a file from ZIH systems to your workstation"
+    For example, if you want to copy your data file `mydata.csv` to the directory `input` in your
+    home directory, you would use the following:
 
     ```console
+    marie@local$ scp mydata.csv taurusexport:input/
+    ```
+
+??? example "Example: Copy a file from ZIH systems to your workstation"
+
+    ```bash
     marie@local$ scp taurusexport:<file> <target-location>
 
     # Add -r to copy whole directory
     marie@local$ scp -r taurusexport:<directory> <target-location>
+    ```
+
+    For example, if you have a directory named `output` in your home directory on ZIH systems and
+    you want to copy it to the directory `/tmp` on your workstation, you would use the following:
+
+    ```console
+    marie@local$ scp -r taurusexport:output/ /tmp
     ```
 
 ### SFTP
