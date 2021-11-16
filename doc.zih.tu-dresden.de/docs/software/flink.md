@@ -35,7 +35,7 @@ snippet shows a job submission to haswell nodes with an allocation of two nodes 
 memory exclusively for one hour:
 
 ```console
-marie@login$ srun --partition=haswell --nodes=2 --mem=60g --exclusive --time=01:00:00 --pty bash -l
+marie@login$ srun --partition=haswell --nodes=2 --mem=50g --exclusive --time=01:00:00 --pty bash -l
 ```
 
 Once you have the shell, load Flink using the command
@@ -124,7 +124,7 @@ example below:
     #SBATCH --partition=haswell
     #SBATCH --nodes=2
     #SBATCH --exclusive
-    #SBATCH --mem=60G
+    #SBATCH --mem=50G
     #SBATCH --job-name="example-flink"
 
     ml Flink/1.12.3-Java-1.8.0_161-OpenJDK-Python-3.7.4-GCCcore-8.3.0
