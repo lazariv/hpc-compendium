@@ -21,9 +21,9 @@ font manager.
 
 You need to copy the fonts from ZIH systems to your local system and expand the font path
 
-```bash
-localhost$ scp -r taurus.hrsk.tu-dresden.de:/sw/global/applications/mathematica/10.0/SystemFiles/Fonts/Type1/ ~/.fonts
-localhost$ xset fp+ ~/.fonts/Type1
+```console
+marie@local$ scp -r taurus.hrsk.tu-dresden.de:/sw/global/applications/mathematica/10.0/SystemFiles/Fonts/Type1/ ~/.fonts
+marie@local$ xset fp+ ~/.fonts/Type1
 ```
 
 #### Windows Workstation
@@ -93,28 +93,28 @@ interfaces with the Maple symbolic engine, allowing it to be part of a full comp
 Running MATLAB via the batch system could look like this (for 456 MB RAM per core and 12 cores
 reserved). Please adapt this to your needs!
 
-```bash
+```console
 marie@login$ module load MATLAB
-marie@login$ srun -t 8:00 -c 12 --mem-per-cpu=456 --pty --x11=first bash
+marie@login$ srun --time=8:00 --cpus-per-task=12 --mem-per-cpu=456 --pty --x11=first bash
 marie@compute$ matlab
 ```
 
 With following command you can see a list of installed software - also
 the different versions of matlab.
 
-```bash
+```console
 marie@login$ module avail
 ```
 
 Please choose one of these, then load the chosen software with the command:
 
 ```bash
-marie@login$ module load MATLAB/version
+marie@login$ module load MATLAB/<version>
 ```
 
 Or use:
 
-```bash
+```console
 marie@login$ module load MATLAB
 ```
 
@@ -126,7 +126,7 @@ marie@login$ module load MATLAB
 If X-server is running and you logged in at ZIH systems, you should allocate a CPU for your work
 with command
 
-```bash
+```console
 marie@login$ srun --pty --x11=first bash
 ```
 
@@ -138,8 +138,8 @@ Using Scripts
 
 You have to start matlab-calculation as a Batch-Job via command
 
-```bash
-srun --pty matlab -nodisplay -r basename_of_your_matlab_script
+```console
+marie@login$ srun --pty matlab -nodisplay -r basename_of_your_matlab_script
 # NOTE: you must omit the file extension ".m" here, because -r expects a matlab command or function call, not a file-name.
 ```
 
@@ -181,7 +181,8 @@ marie@login$ srun ./run_compiled_executable.sh $EBROOTMATLAB
 #### With 'local' Configuration
 
 - If you want to run your code in parallel, please request as many cores as you need!
-- Start a batch job with the number `N` of processes, e.g., `srun -c 4 --pty --x11=first bash`
+- Start a batch job with the number `N` of processes, e.g., `srun --cpus-per-task=4 --pty
+  --x11=first bash -l`
 - Run Matlab with the GUI or the CLI or with a script
 - Inside Matlab use `matlabpool open 4` to start parallel processing
 
