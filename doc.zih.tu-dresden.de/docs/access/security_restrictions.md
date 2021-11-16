@@ -15,8 +15,8 @@ The most important items for ZIH systems are:
 * Ideally, there should be no private key on ZIH system except for local use.
 * Keys to other systems must be passphrase-protected!
 * **ssh to ZIH systems** is only possible from inside TU Dresden campus
-  (`login[1,2].zih.tu-dresden.de` will be blacklisted). Users from outside can use VPN (see
-  [here](https://tu-dresden.de/zih/dienste/service-katalog/arbeitsumgebung/zugang_datennetz/vpn)).
+  (`login[1,2].zih.tu-dresden.de` will be blacklisted). Users from outside can use
+  [VPN](https://tu-dresden.de/zih/dienste/service-katalog/arbeitsumgebung/zugang_datennetz/vpn).
 * **ssh from ZIH system** is only possible inside TU Dresden campus.
   (Direct SSH access to other computing centers was the spreading vector of the recent incident.)
 

@@ -1,9 +1,5 @@
 # Big Data Frameworks: Apache Spark
 
-!!! note
-
-    This page is under construction
-
 [Apache Spark](https://spark.apache.org/), [Apache Flink](https://flink.apache.org/)
 and [Apache Hadoop](https://hadoop.apache.org/) are frameworks for processing and integrating
 Big Data. These frameworks are also offered as software [modules](modules.md) in both `ml` and
@@ -13,18 +9,13 @@ Big Data. These frameworks are also offered as software [modules](modules.md) in
 marie@login$ module avail Spark
 ```
 
-The **aim** of this page is to introduce users on how to start working with
-these frameworks on ZIH systems.
-
 **Prerequisites:** To work with the frameworks, you need [access](../access/ssh_login.md) to ZIH
 systems and basic knowledge about data analysis and the batch system
 [Slurm](../jobs_and_resources/slurm.md).
 
-The usage of Big Data frameworks is
-different from other modules due to their master-worker approach. That
-means, before an application can be started, one has to do additional steps.
-In the following, we assume that a Spark application should be
-started.
+The usage of Big Data frameworks is different from other modules due to their master-worker
+approach. That means, before an application can be started, one has to do additional steps.
+In the following, we assume that a Spark application should be started.
 
 The steps are:
 
@@ -34,13 +25,7 @@ The steps are:
 1. Start the Spark application
 
 Apache Spark can be used in [interactive](#interactive-jobs) and [batch](#batch-jobs) jobs as well
-as via [Jupyter notebook](#jupyter-notebook). All three ways are outlined in the following.
-
-!!! note
-
-    It is recommended to use ssh keys to avoid entering the password
-    every time to log in to nodes. For the details, please check the
-    [external documentation](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/s2-ssh-configuration-keypairs).
+as via [Jupyter notebooks](#jupyter-notebook). All three ways are outlined in the following.
 
 ## Interactive Jobs
 
@@ -49,22 +34,13 @@ as via [Jupyter notebook](#jupyter-notebook). All three ways are outlined in the
 The Spark module is available in both `scs5` and `ml` environments.
 Thus, Spark can be executed using different CPU architectures, e.g., Haswell and Power9.
 
-Let us assume that two nodes should be used for the computation. Use a
-`srun` command similar to the following to start an interactive session
-using the partition haswell. The following code snippet shows a job submission
-to haswell nodes with an allocation of two nodes with 60 GB main memory
-exclusively for one hour:
+Let us assume that two nodes should be used for the computation. Use a `srun` command similar to
+the following to start an interactive session using the partition haswell. The following code
+snippet shows a job submission to haswell nodes with an allocation of two nodes with 50 GB main
+memory exclusively for one hour:
 
 ```console
-marie@login$ srun --partition=haswell -N 2 --mem=60g --exclusive --time=01:00:00 --pty bash -l
-```
-
-The command for different resource allocation on the partition `ml` is
-similar, e. g. for a job submission to `ml` nodes with an allocation of one
-node, one task per node, two CPUs per task, one GPU per node, with 10000 MB for one hour:
-
-```console
-marie@login$ srun --partition=ml -N 1 -n 1 -c 2 --gres=gpu:1 --mem-per-cpu=10000 --time=01:00:00 --pty bash
+marie@login$ srun --partition=haswell --nodes=2 --mem=50g --exclusive --time=01:00:00 --pty bash -l
 ```
 
 Once you have the shell, load Spark using the command
@@ -73,25 +49,22 @@ Once you have the shell, load Spark using the command
 marie@compute$ module load Spark
 ```
 
-Before the application can be started, the Spark cluster needs to be set
-up. To do this, configure Spark first using configuration template at
-`$SPARK_HOME/conf`:
+Before the application can be started, the Spark cluster needs to be set up. To do this, configure
+Spark first using configuration template at `$SPARK_HOME/conf`:
 
 ```console
 marie@compute$ source framework-configure.sh spark $SPARK_HOME/conf
 ```
 
-This places the configuration in a directory called
-`cluster-conf-<JOB_ID>` in your `home` directory, where `<JOB_ID>` stands
-for the id of the Slurm job. After that, you can start Spark in the
-usual way:
+This places the configuration in a directory called `cluster-conf-<JOB_ID>` in your `home`
+directory, where `<JOB_ID>` stands for the id of the Slurm job. After that, you can start Spark in
+the usual way:
 
 ```console
 marie@compute$ start-all.sh
 ```
 
-The Spark processes should now be set up and you can start your
-application, e. g.:
+The Spark processes should now be set up and you can start your application, e. g.:
 
 ```console
 marie@compute$ spark-submit --class org.apache.spark.examples.SparkPi $SPARK_HOME/examples/jars/spark-examples_2.12-3.0.1.jar 1000
@@ -104,24 +77,22 @@ marie@compute$ spark-submit --class org.apache.spark.examples.SparkPi $SPARK_HOM
 
 ### Custom Configuration
 
-The script `framework-configure.sh` is used to derive a configuration from
-a template. It takes two parameters:
+The script `framework-configure.sh` is used to derive a configuration from a template. It takes two
+parameters:
 
 - The framework to set up (Spark, Flink, Hadoop)
 - A configuration template
 
-Thus, you can modify the configuration by replacing the default
-configuration template with a customized one. This way, your custom
-configuration template is reusable for different jobs. You can start
-with a copy of the default configuration ahead of your interactive
-session:
+Thus, you can modify the configuration by replacing the default configuration template with a
+customized one. This way, your custom configuration template is reusable for different jobs. You
+can start with a copy of the default configuration ahead of your interactive session:
 
 ```console
 marie@login$ cp -r $SPARK_HOME/conf my-config-template
 ```
 
-After you have changed `my-config-template`, you can use your new template
-in an interactive job with:
+After you have changed `my-config-template`, you can use your new template in an interactive job
+with:
 
 ```console
 marie@compute$ source framework-configure.sh spark my-config-template
@@ -129,8 +100,8 @@ marie@compute$ source framework-configure.sh spark my-config-template
 
 ### Using Hadoop Distributed Filesystem (HDFS)
 
-If you want to use Spark and HDFS together (or in general more than one
-framework), a scheme similar to the following can be used:
+If you want to use Spark and HDFS together (or in general more than one framework), a scheme
+similar to the following can be used:
 
 ```console
 marie@compute$ module load Hadoop
@@ -143,20 +114,49 @@ marie@compute$ start-all.sh
 
 ## Batch Jobs
 
-Using `srun` directly on the shell blocks the shell and launches an
-interactive job. Apart from short test runs, it is **recommended to
-launch your jobs in the background using batch jobs**. For that, you can
-conveniently put the parameters directly into the job file and submit it via
+Using `srun` directly on the shell blocks the shell and launches an interactive job. Apart from
+short test runs, it is **recommended to launch your jobs in the background using batch jobs**. For
+that, you can conveniently put the parameters directly into the job file and submit it via
 `sbatch [options] <job file>`.
 
-Please use a [batch job](../jobs_and_resources/slurm.md) similar to
-[example-spark.sbatch](misc/example-spark.sbatch).
+Please use a [batch job](../jobs_and_resources/slurm.md) with a configuration, similar to the
+example below:
+
+??? example "spark.sbatch"
+    ```bash
+    #!/bin/bash -l
+    #SBATCH --time=00:05:00
+    #SBATCH --partition=haswell
+    #SBATCH --nodes=2
+    #SBATCH --exclusive
+    #SBATCH --mem=50G
+    #SBATCH --job-name="example-spark"
+
+    ml Spark/3.0.1-Hadoop-2.7-Java-1.8-Python-3.7.4-GCCcore-8.3.0
+
+    function myExitHandler () {
+        stop-all.sh
+    }
+
+    #configuration
+    . framework-configure.sh spark $SPARK_HOME/conf
+
+    #register cleanup hook in case something goes wrong
+    trap myExitHandler EXIT
+
+    start-all.sh
+
+    spark-submit --class org.apache.spark.examples.SparkPi $SPARK_HOME/examples/jars/spark-examples_2.12-3.0.1.jar 1000
+
+    stop-all.sh
+
+    exit 0
+    ```
 
 ## Jupyter Notebook
 
-There are two general options on how to work with Jupyter notebooks:
-There is [JupyterHub](../access/jupyterhub.md), where you can simply
-run your Jupyter notebook on HPC nodes (the preferable way).
+You can run Jupyter notebooks with Spark on the ZIH systems in a similar way as described on the
+[JupyterHub](../access/jupyterhub.md) page.
 
 ### Preparation
 
@@ -165,25 +165,25 @@ to [normal Python virtual environments](../software/python_virtual_environments.
 You start with an allocation:
 
 ```console
-marie@login$ srun --pty -n 1 -c 2 --mem-per-cpu=2500 -t 01:00:00 bash -l
+marie@login$ srun --pty --ntasks=1 --cpus-per-task=2 --mem-per-cpu=2500 --time=01:00:00 bash -l
 ```
 
-When a node is allocated, install he required packages:
+When a node is allocated, install the required packages:
 
 ```console
-marie@compute$ cd
+marie@compute$ cd $HOME
 marie@compute$ mkdir jupyter-kernel
+marie@compute$ module load Python
 marie@compute$ virtualenv --system-site-packages jupyter-kernel/env  #Create virtual environment
 [...]
 marie@compute$ source jupyter-kernel/env/bin/activate    #Activate virtual environment.
-marie@compute$ pip install ipykernel
+(env) marie@compute$ pip install ipykernel
 [...]
-marie@compute$ python -m ipykernel install --user --name haswell-py3.7-spark --display-name="haswell-py3.7-spark"
+(env) marie@compute$ python -m ipykernel install --user --name haswell-py3.7-spark --display-name="haswell-py3.7-spark"
 Installed kernelspec haswell-py3.7-spark in [...]
 
-marie@compute$ pip install findspark
-
-marie@compute$ deactivate
+(env) marie@compute$ pip install findspark
+(env) marie@compute$ deactivate
 ```
 
 You are now ready to spawn a notebook with Spark.
@@ -192,23 +192,19 @@ You are now ready to spawn a notebook with Spark.
 
 Assuming that you have prepared everything as described above, you can go to
 [https://taurus.hrsk.tu-dresden.de/jupyter](https://taurus.hrsk.tu-dresden.de/jupyter).
-In the tab "Advanced", go
-to the field "Preload modules" and select one of the Spark modules.
-When your Jupyter instance is started, check whether the kernel that
-you created in the preparation phase (see above) is shown in the top
-right corner of the notebook. If it is not already selected, select the
-kernel `haswell-py3.7-spark`. Then, you can set up Spark. Since the setup
-in the notebook requires more steps than in an interactive session, we
-have created an example notebook that you can use as a starting point
-for convenience: [SparkExample.ipynb](misc/SparkExample.ipynb)
+In the tab "Advanced", go to the field "Preload modules" and select one of the Spark modules. When
+your Jupyter instance is started, check whether the kernel that you created in the preparation
+phase (see above) is shown in the top right corner of the notebook. If it is not already selected,
+select the kernel `haswell-py3.7-spark`. Then, you can set up Spark. Since the setup in the
+notebook requires more steps than in an interactive session, we have created an example notebook
+that you can use as a starting point for convenience: [SparkExample.ipynb](misc/SparkExample.ipynb)
 
 !!! note
 
-    You could work with simple examples in your home directory but according to the
-    [storage concept](../data_lifecycle/overview.md)
-    **please use [workspaces](../data_lifecycle/workspaces.md) for
-    your study and work projects**. For this reason, you have to use
-    advanced options of Jupyterhub and put "/" in "Workspace scope" field.
+    You could work with simple examples in your home directory, but, according to the
+    [storage concept](../data_lifecycle/overview.md), **please use
+    [workspaces](../data_lifecycle/workspaces.md) for your study and work projects**. For this
+    reason, you have to use advanced options of Jupyterhub and put "/" in "Workspace scope" field.
 
 ## FAQ
 
@@ -222,10 +218,9 @@ re-login to the ZIH system.
 Q: There are a lot of errors and warnings during the set up of the
 session
 
-A: Please check the work capability on a simple example. The source of
-warnings could be ssh etc, and it could be not affecting the frameworks
+A: Please check the work capability on a simple example as shown in this documentation.
 
 !!! help
 
-    If you have questions or need advice, please see
-    [https://www.scads.de/transfer-2/beratung-und-support-en/](https://www.scads.de/transfer-2/beratung-und-support-en/) or contact the HPC support.
+    If you have questions or need advice, please use the contact form on
+    [https://scads.ai/contact/](https://scads.ai/contact/) or contact the HPC support.

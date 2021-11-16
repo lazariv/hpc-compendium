@@ -25,8 +25,8 @@ Infiniband access if (and only if) they have set the `--tmp`-option as well:
 >units can be specified using the suffix \[K\|M\|G\|T\]. This option
 >applies to job allocations.
 
-Keep in mind: Since the scratch file system are not available and the
-project file system is read-only mounted at the compute nodes you have
+Keep in mind: Since the scratch filesystem are not available and the
+project filesystem is read-only mounted at the compute nodes you have
 to work in /tmp.
 
 A simple job script should do this:
@@ -34,7 +34,7 @@ A simple job script should do this:
 - create a temporary directory on the compute node in `/tmp` and go
   there
 - start the application (under /sw/ or /projects/)using input data
-  from somewhere in the project file system
+  from somewhere in the project filesystem
 - archive and transfer the results to some global location
 
 ```Bash
