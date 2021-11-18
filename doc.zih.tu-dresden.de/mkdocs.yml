@@ -45,7 +45,7 @@ nav:
       - Data Analytics with R: software/data_analytics_with_r.md
       - Data Analytics with RStudio: software/data_analytics_with_rstudio.md
       - Data Analytics with Python: software/data_analytics_with_python.md
-      - Apache Spark: software/big_data_frameworks_spark.md
+      - Big Data Analytics: software/big_data_frameworks.md
     - Machine Learning:
       - Overview: software/machine_learning.md
       - TensorFlow: software/tensorflow.md
@@ -187,6 +187,8 @@ markdown_extensions:
         permalink: True
     - attr_list
     - footnotes
+    - pymdownx.tabbed:
+        alternate_style: true
 
 extra:
   homepage: https://tu-dresden.de
