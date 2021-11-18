@@ -181,7 +181,7 @@ example below:
         #SBATCH --mem=60000M
         #SBATCH --job-name="example-spark"
 
-        ml Spark/3.0.1-Hadoop-2.7-Java-1.8-Python-3.7.4-GCCcore-8.3.0
+        module load Spark/3.0.1-Hadoop-2.7-Java-1.8-Python-3.7.4-GCCcore-8.3.0
 
         function myExitHandler () {
             stop-all.sh
@@ -211,7 +211,7 @@ example below:
         #SBATCH --mem=60000M
         #SBATCH --job-name="example-flink"
 
-        ml Flink/1.12.3-Java-1.8.0_161-OpenJDK-Python-3.7.4-GCCcore-8.3.0
+        module load Flink/1.12.3-Java-1.8.0_161-OpenJDK-Python-3.7.4-GCCcore-8.3.0
 
         function myExitHandler () {
             stop-cluster.sh
