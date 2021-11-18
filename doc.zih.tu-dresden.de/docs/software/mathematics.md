@@ -21,9 +21,9 @@ font manager.
 
 You need to copy the fonts from ZIH systems to your local system and expand the font path
 
-```bash
-localhost$ scp -r taurus.hrsk.tu-dresden.de:/sw/global/applications/mathematica/10.0/SystemFiles/Fonts/Type1/ ~/.fonts
-localhost$ xset fp+ ~/.fonts/Type1
+```console
+marie@local$ scp -r taurus.hrsk.tu-dresden.de:/sw/global/applications/mathematica/10.0/SystemFiles/Fonts/Type1/ ~/.fonts
+marie@local$ xset fp+ ~/.fonts/Type1
 ```
 
 #### Windows Workstation
@@ -93,29 +93,29 @@ interfaces with the Maple symbolic engine, allowing it to be part of a full comp
 Running MATLAB via the batch system could look like this (for 456 MB RAM per core and 12 cores
 reserved). Please adapt this to your needs!
 
-```bash
-zih$ module load MATLAB
-zih$ srun -t 8:00 -c 12 --mem-per-cpu=456 --pty --x11=first bash
-zih$ matlab
+```console
+marie@login$ module load MATLAB
+marie@login$ srun --time=8:00 --cpus-per-task=12 --mem-per-cpu=456 --pty --x11=first bash
+marie@compute$ matlab
 ```
 
 With following command you can see a list of installed software - also
 the different versions of matlab.
 
-```bash
-zih$ module avail
+```console
+marie@login$ module avail
 ```
 
 Please choose one of these, then load the chosen software with the command:
 
 ```bash
-zih$ module load MATLAB/version
+marie@login$ module load MATLAB/<version>
 ```
 
 Or use:
 
-```bash
-zih$ module load MATLAB
+```console
+marie@login$ module load MATLAB
 ```
 
 (then you will get the most recent Matlab version.
@@ -126,8 +126,8 @@ zih$ module load MATLAB
 If X-server is running and you logged in at ZIH systems, you should allocate a CPU for your work
 with command
 
-```bash
-zih$ srun --pty --x11=first bash
+```console
+marie@login$ srun --pty --x11=first bash
 ```
 
 - now you can call "matlab" (you have 8h time to work with the matlab-GUI)
@@ -138,8 +138,9 @@ Using Scripts
 
 You have to start matlab-calculation as a Batch-Job via command
 
-```bash
-srun --pty matlab -nodisplay -r basename_of_your_matlab_script #NOTE: you must omit the file extension ".m" here, because -r expects a matlab command or function call, not a file-name.
+```console
+marie@login$ srun --pty matlab -nodisplay -r basename_of_your_matlab_script
+# NOTE: you must omit the file extension ".m" here, because -r expects a matlab command or function call, not a file-name.
 ```
 
 !!! info "License occupying"
@@ -160,7 +161,7 @@ You can find detailed documentation on the Matlab compiler at
 Compile your `.m` script into a binary:
 
 ```bash
-mcc -m name_of_your_matlab_script.m -o compiled_executable -R -nodisplay -R -nosplash
+marie@login$ mcc -m name_of_your_matlab_script.m -o compiled_executable -R -nodisplay -R -nosplash
 ```
 
 This will also generate a wrapper script called `run_compiled_executable.sh` which sets the required
@@ -172,41 +173,35 @@ Then run the binary via the wrapper script in a job (just a simple example, you 
 [sbatch script](../jobs_and_resources/slurm.md#job-submission) for that)
 
 ```bash
-zih$ srun ./run_compiled_executable.sh $EBROOTMATLAB
+marie@login$ srun ./run_compiled_executable.sh $EBROOTMATLAB
 ```
 
 ### Parallel MATLAB
 
 #### With 'local' Configuration
 
--   If you want to run your code in parallel, please request as many
-    cores as you need!
--   start a batch job with the number N of processes
--   example for N= 4: `srun -c 4 --pty --x11=first bash`
--   run Matlab with the GUI or the CLI or with a script
--   inside use `matlabpool open 4` to start parallel
-    processing
+- If you want to run your code in parallel, please request as many cores as you need!
+- Start a batch job with the number `N` of processes, e.g., `srun --cpus-per-task=4 --pty
+  --x11=first bash -l`
+- Run Matlab with the GUI or the CLI or with a script
+- Inside Matlab use `matlabpool open 4` to start parallel processing
 
--   example for 1000*1000 matrix multiplication
-
-!!! example
+!!! example "Example for 1000*1000 matrix-matrix multiplication"
 
     ```bash
     R = distributed.rand(1000);
     D = R * R
     ```
 
--   to close parallel task:
-`matlabpool close`
+- Close parallel task using `matlabpool close`
 
 #### With parfor
 
-- start a batch job with the number N of processes (e.g. N=12)
-- inside use `matlabpool open N` or
-  `matlabpool(N)` to start parallel processing. It will use
+- Start a batch job with the number `N` of processes (,e.g., `N=12`)
+- Inside use `matlabpool open N` or `matlabpool(N)` to start parallel processing. It will use
   the 'local' configuration by default.
-- Use `parfor` for a parallel loop, where the **independent** loop
-  iterations are processed by N threads
+- Use `parfor` for a parallel loop, where the **independent** loop iterations are processed by `N`
+  threads
 
 !!! example
 
