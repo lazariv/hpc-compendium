@@ -187,6 +187,8 @@ markdown_extensions:
         permalink: True
     - attr_list
     - footnotes
+    - pymdownx.tabbed:
+        alternate_style: true
 
 extra:
   homepage: https://tu-dresden.de
