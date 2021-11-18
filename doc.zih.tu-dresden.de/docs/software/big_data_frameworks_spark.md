@@ -43,11 +43,11 @@ Thus, Spark can be executed using different CPU architectures, e.g., Haswell and
 
 Let us assume that two nodes should be used for the computation. Use a `srun` command similar to
 the following to start an interactive session using the partition haswell. The following code
-snippet shows a job submission to haswell nodes with an allocation of two nodes with 60 GB main
+snippet shows a job submission to haswell nodes with an allocation of two nodes with 60000 MB main
 memory exclusively for one hour:
 
 ```console
-marie@login$ srun --partition=haswell --nodes=2 --mem=60g --exclusive --time=01:00:00 --pty bash -l
+marie@login$ srun --partition=haswell --nodes=2 --mem=60000M --exclusive --time=01:00:00 --pty bash -l
 ```
 
 Once you have the shell, load desired Big Data framework using the command
@@ -174,11 +174,11 @@ example below:
     === "Spark"
         ```bash
         #!/bin/bash -l
-        #SBATCH --time=00:05:00
+        #SBATCH --time=01:00:00
         #SBATCH --partition=haswell
         #SBATCH --nodes=2
         #SBATCH --exclusive
-        #SBATCH --mem=60G
+        #SBATCH --mem=60000M
         #SBATCH --job-name="example-spark"
 
         ml Spark/3.0.1-Hadoop-2.7-Java-1.8-Python-3.7.4-GCCcore-8.3.0
@@ -204,11 +204,11 @@ example below:
     === "Flink"
         ```bash
         #!/bin/bash -l
-        #SBATCH --time=00:05:00
+        #SBATCH --time=01:00:00
         #SBATCH --partition=haswell
         #SBATCH --nodes=2
         #SBATCH --exclusive
-        #SBATCH --mem=50G
+        #SBATCH --mem=60000M
         #SBATCH --job-name="example-flink"
 
         ml Flink/1.12.3-Java-1.8.0_161-OpenJDK-Python-3.7.4-GCCcore-8.3.0
