@@ -10,7 +10,7 @@ The following tools are available on ZIH systems, among others:
 * [Python](data_analytics_with_python.md)
 * [R](data_analytics_with_r.md)
 * [RStudio](data_analytics_with_rstudio.md)
-* [Big Data framework Spark](big_data_frameworks_spark.md)
+* [Big Data framework Spark](big_data_frameworks.md)
 * [MATLAB and Mathematica](mathematics.md)
 
 Detailed information about frameworks for machine learning, such as [TensorFlow](tensorflow.md)
