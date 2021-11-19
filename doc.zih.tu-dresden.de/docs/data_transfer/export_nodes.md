@@ -9,9 +9,13 @@ that you cannot log in via SSH to the export nodes, but only use `scp`, `rsync` 
 The export nodes are reachable under the hostname `taurusexport.hrsk.tu-dresden.de` (or
 `taurusexport3.hrsk.tu-dresden.de` and `taurusexport4.hrsk.tu-dresden.de`).
 
+Please keep in mind that there are different
+[filesystems](../data_lifecycle/file_systems.md#recommendations-for-filesystem-usage). Choose the
+one that matches your needs.
+
 ## Access From Linux
 
-There are at least three tool to exchange data between your local workstation and ZIH systems. All
+There are at least three tools to exchange data between your local workstation and ZIH systems. They
 are explained in the following section in more detail.
 
 !!! important
@@ -33,13 +37,27 @@ in a directory, the option `-r` has to be specified.
     marie@local$ scp -r <directory> taurusexport:<target-location>
     ```
 
-??? example "Example: Copy a file from ZIH systems to your workstation"
+    For example, if you want to copy your data file `mydata.csv` to the directory `input` in your
+    home directory, you would use the following:
 
     ```console
-    marie@login$ scp taurusexport:<file> <target-location>
+    marie@local$ scp mydata.csv taurusexport:input/
+    ```
+
+??? example "Example: Copy a file from ZIH systems to your workstation"
+
+    ```bash
+    marie@local$ scp taurusexport:<file> <target-location>
 
     # Add -r to copy whole directory
-    marie@login$ scp -r taurusexport:<directory> <target-location>
+    marie@local$ scp -r taurusexport:<directory> <target-location>
+    ```
+
+    For example, if you have a directory named `output` in your home directory on ZIH systems and
+    you want to copy it to the directory `/tmp` on your workstation, you would use the following:
+
+    ```console
+    marie@local$ scp -r taurusexport:output /tmp
     ```
 
 ### SFTP
