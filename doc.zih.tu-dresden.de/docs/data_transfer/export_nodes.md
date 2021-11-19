@@ -15,7 +15,7 @@ one that matches your needs.
 
 ## Access From Linux
 
-There are at least three tools to exchange data between your local workstation and ZIH systems. All
+There are at least three tools to exchange data between your local workstation and ZIH systems. They
 are explained in the following section in more detail.
 
 !!! important
@@ -57,7 +57,7 @@ in a directory, the option `-r` has to be specified.
     you want to copy it to the directory `/tmp` on your workstation, you would use the following:
 
     ```console
-    marie@local$ scp -r taurusexport:output/ /tmp
+    marie@local$ scp -r taurusexport:output /tmp
     ```
 
 ### SFTP
