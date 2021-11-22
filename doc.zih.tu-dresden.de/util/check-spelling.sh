@@ -34,7 +34,7 @@ function getNumberOfAspellOutputLines(){
 function isWordlistSorted(){
   #Unfortunately, sort depends on locale and docker does not provide much.
   #Therefore, it uses bytewise comparison. We avoid problems with the command tr.
-  if ! sed 1d "$wordlistfile" | tr [:upper:] [:lower:] | sort -C; then
+  if sed 1d "$wordlistfile" | tr [:upper:] [:lower:] | sort -C; then
     return 1
   fi
   return 0
