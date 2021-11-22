@@ -43,6 +43,9 @@ i	\<coming soon\>
 Avoid spaces at end of lines.
 
 i	[[:space:]]$
+Internal links should not contain \"/#\".
+
+i	(.*/#.*)	(http
 When referencing partitions, put keyword \"partition\" in front of partition name, e. g. \"partition ml\", not \"ml partition\".
 doc.zih.tu-dresden.de/docs/contrib/content_rules.md
 i	\(alpha\|ml\|haswell\|romeo\|gpu\|smp\|julia\|hpdlf\|scs5\)-\?\(interactive\)\?[^a-z]*partition
