@@ -36,15 +36,16 @@ Any project have:
 ## Third step: Hardware
 
 ![picture 4: Hardware >](misc/request_step3_machines.png "Hardware"){loading=lazy width=300 style="float:right"}
-This step inquire the required hardware. You can find the specifications
-[here](../jobs_and_resources/hardware_overview.md).
+This step inquire the required hardware. The
+[hardware specifications](../jobs_and_resources/hardware_overview.md) might help you to estimate,
+e. g. the compute time.
 
-Please fill in the total computing time you expect in the project runtime.  The compute time is
+Please fill in the total computing time you expect in the project runtime. The compute time is
 given in cores per hour (CPU/h), this refers to the 'virtual' cores for nodes with hyperthreading.
-If they require GPUs, then this is given as GPU units per hour (GPU/h).  Please add 6 CPU hours per
+If they require GPUs, then this is given as GPU units per hour (GPU/h). Please add 6 CPU hours per
 GPU hour in your application.
 
-The project home is a shared storage in your project.  Here you exchange data or install software
+The project home is a shared storage in your project. Here you exchange data or install software
 for your project group in userspace. The directory is not intended for active calculations, for this
 the scratch is available.
 
