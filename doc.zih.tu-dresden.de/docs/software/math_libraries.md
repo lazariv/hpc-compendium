@@ -59,7 +59,7 @@ libraries tuned specifically for AMD EPYC processor family. AOCL offers linear a
  as well as
  [AMD Random Number Generator Library](https://developer.amd.com/amd-cpu-libraries/rng-library/)
  and
- [AMD Secure RNG Libraary](https://developer.amd.com/amd-cpu-libraries/rng-library/#securerng).
+ [AMD Secure RNG Library](https://developer.amd.com/amd-cpu-libraries/rng-library/#securerng).
 
 ## Math Kernel Library (MKL)
 
