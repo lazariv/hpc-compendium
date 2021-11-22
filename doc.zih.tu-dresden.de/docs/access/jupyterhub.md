@@ -21,7 +21,8 @@ cannot give extensive support in every case.
 
 !!! note
     This service is only available for users with an active HPC project.
-    See [here](../access/overview.md) how to apply for an HPC project.
+    See [Application for Login and Resources](../application/overview.md), if you need to apply for
+    an HPC project.
 
 JupyterHub is available at
 [https://taurus.hrsk.tu-dresden.de/jupyter](https://taurus.hrsk.tu-dresden.de/jupyter).
