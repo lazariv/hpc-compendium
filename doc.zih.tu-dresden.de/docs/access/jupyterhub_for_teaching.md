@@ -1,7 +1,7 @@
 # JupyterHub for Teaching
 
-On this page we want to introduce to you some useful features if you
-want to use JupyterHub for teaching.
+On this page, we want to introduce to you some useful features if you want to use JupyterHub for
+teaching.
 
 !!! note
 
@@ -9,23 +9,21 @@ want to use JupyterHub for teaching.
 
 Please be aware of the following notes:
 
-- ZIH systems operate at a lower availability level than your usual Enterprise Cloud VM. There
-  can always be downtimes, e.g. of the filesystems or the batch system.
+- ZIH systems operate at a lower availability level than your usual Enterprise Cloud VM. There can
+  always be downtimes, e.g. of the filesystems or the batch system.
 - Scheduled downtimes are announced by email. Please plan your courses accordingly.
 - Access to HPC resources is handled through projects. See your course as a project. Projects need
   to be registered beforehand (more info on the page [Access](../application/overview.md)).
 - Don't forget to [add your users](../application/project_management.md#manage-project-members-dis-enable)
-  (eg. students or tutors) to your project.
+  (e.g. students or tutors) to your project.
 - It might be a good idea to [request a reservation](../jobs_and_resources/overview.md#exclusive-reservation-of-hardware)
-  of part of the compute resources for your project/course to
-  avoid unnecessary waiting times in the batch system queue.
+  of part of the compute resources for your project/course to avoid unnecessary waiting times in
+  the batch system queue.
 
 ## Clone a Repository With a Link
 
-This feature bases on
-[nbgitpuller](https://github.com/jupyterhub/nbgitpuller).
-Documentation can be found at
-[this page](https://jupyterhub.github.io/nbgitpuller/).
+This feature bases on [nbgitpuller](https://github.com/jupyterhub/nbgitpuller). Further information
+can be found in the [external documentation about nbgitpuller](https://jupyterhub.github.io/nbgitpuller/).
 
 This extension for Jupyter notebooks can clone every public git repository into the users work
 directory. It's offering a quick way to distribute notebooks and other material to your students.
@@ -50,14 +48,14 @@ The following parameters are available:
 |---|---|
 |`repo`    | path to git repository|
 |`branch`  | branch in the repository to pull from default: `master`|
-|`urlpath` | URL to redirect the user to a certain file [more info](https://jupyterhub.github.io/nbgitpuller/topic/url-options.html#urlpath)|
+|`urlpath` | URL to redirect the user to a certain file, [more info about parameter urlpath](https://jupyterhub.github.io/nbgitpuller/topic/url-options.html#urlpath)|
 |`depth`   | clone only a certain amount of latest commits not recommended|
 
 This [link
 generator](https://jupyterhub.github.io/nbgitpuller/link?hub=https://taurus.hrsk.tu-dresden.de/jupyter/)
 might help creating those links
 
-## Spawner Options Passthrough with URL Parameters
+## Spawn Options Pass-through with URL Parameters
 
 The spawn form now offers a quick start mode by passing URL parameters.
 
