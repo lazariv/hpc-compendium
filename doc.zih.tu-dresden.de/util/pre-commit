@@ -75,6 +75,13 @@ then
   exit_ok=no
 fi
 
+echo "Looking for empty files..."
+docker run --name=hpc-compendium --rm -w /docs --mount src="$(pwd)",target=/docs,type=bind hpc-compendium ./doc.zih.tu-dresden.de/util/check-empty-page.sh
+if [ $? -ne 0 ]
+then
+  exit_ok=no
+fi
+
 if [ $exit_ok == yes ]
 then
   exit 0

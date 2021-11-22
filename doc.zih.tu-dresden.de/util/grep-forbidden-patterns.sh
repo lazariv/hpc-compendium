@@ -37,6 +37,9 @@ i	attachurl
 Replace \"todo\" with real content.
 
 i	\<todo\>	<!--.*todo.*-->
+Replace \"Coming soon\" with real content.
+
+i	\<coming soon\>
 Avoid spaces at end of lines.
 
 i	[[:space:]]$
