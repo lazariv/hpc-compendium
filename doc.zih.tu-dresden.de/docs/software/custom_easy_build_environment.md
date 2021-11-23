@@ -6,7 +6,7 @@ you need some other software or a different version of a software.
 For most commonly used software, chances are high that there is already a *recipe* that EasyBuild
 provides, which you can use. But what is EasyBuild?
 
-[EasyBuild](https://easybuilders.github.io/easybuild/) is the software used to build and install
+[EasyBuild](https://easybuild.io/) is the software used to build and install
 software on ZIH systems.
 
 The aim of this page is to introduce users to working with EasyBuild and to utilizing it to create
