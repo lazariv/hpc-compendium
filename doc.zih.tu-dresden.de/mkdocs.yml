@@ -69,7 +69,6 @@ nav:
       - PAPI Library: software/papi.md
       - Pika: software/pika.md
       - Perf Tools: software/perf_tools.md
-      - Score-P: software/scorep.md
       - Vampir: software/vampir.md
   - Data Life Cycle Management:
     - Overview: data_lifecycle/overview.md
