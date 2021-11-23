@@ -26,4 +26,4 @@ Contributions from user-side are highly welcome. Please find out more in our [gu
 
 **2021-10-05** Offline-maintenance (black building test)
 
-**2021-09-29** Introduction to HPC at ZIH ([slides](misc/HPC-Introduction.pdf))
+**2021-09-29** Introduction to HPC at ZIH ([HPC introduction slides](misc/HPC-Introduction.pdf))
