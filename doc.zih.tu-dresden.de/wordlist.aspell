@@ -179,6 +179,7 @@ Miniconda
 mkdocs
 MKL
 MNIST
+MobaXTerm
 modenv
 modenvs
 modulefile
@@ -261,6 +262,7 @@ preprocessing
 PSOCK
 Pthreads
 pty
+PuTTY
 pymdownx
 PythonAnaconda
 pytorch
