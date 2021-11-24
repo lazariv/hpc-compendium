@@ -93,8 +93,6 @@ are in the virtual environment. You can deactivate the conda environment as foll
 (conda-env) marie@compute$ conda deactivate    #Leave the virtual environment
 ```
 
-TODO: Link to this page from other DA/ML topics. insert link in alpha centauri
-
 ??? example
 
     This is an example on partition Alpha. The example creates a virtual environment, and installs

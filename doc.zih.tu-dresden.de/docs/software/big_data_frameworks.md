@@ -38,8 +38,8 @@ The usage of Flink with Jupyter notebooks is currently under examination.
 
 ### Default Configuration
 
-The Spark module is available in both `scs5` and `ml` environments.
-Thus, Spark can be executed using different CPU architectures, e.g., Haswell and Power9.
+The Spark and Flink modules are available in both `scs5` and `ml` environments.
+Thus, Spark and Flink can be executed using different CPU architectures, e.g., Haswell and Power9.
 
 Let us assume that two nodes should be used for the computation. Use a `srun` command similar to
 the following to start an interactive session using the partition haswell. The following code
@@ -61,8 +61,9 @@ Once you have the shell, load desired Big Data framework using the command
     marie@compute$ module load Flink
     ```
 
-Before the application can be started, the Spark cluster needs to be set up. To do this, configure
-Spark first using configuration template at `$SPARK_HOME/conf`:
+Before the application can be started, the cluster with the allocated nodes needs to be set up. To
+do this, configure the cluster first using the configuration template at `$SPARK_HOME/conf` for
+Spark or `$FLINK_ROOT_DIR/conf` for Flink:
 
 === "Spark"
     ```console
@@ -74,7 +75,7 @@ Spark first using configuration template at `$SPARK_HOME/conf`:
     ```
 
 This places the configuration in a directory called `cluster-conf-<JOB_ID>` in your `home`
-directory, where `<JOB_ID>` stands for the id of the Slurm job. After that, you can start Spark in
+directory, where `<JOB_ID>` stands for the id of the Slurm job. After that, you can start in
 the usual way:
 
 === "Spark"
@@ -86,7 +87,7 @@ the usual way:
     marie@compute$ start-cluster.sh
     ```
 
-The Spark processes should now be set up and you can start your application, e. g.:
+The necessary background processes should now be set up and you can start your application, e. g.:
 
 === "Spark"
     ```console

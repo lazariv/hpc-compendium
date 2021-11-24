@@ -65,6 +65,8 @@ DockerHub
 dockerized
 dotfile
 dotfiles
+downtime
+downtimes
 EasyBuild
 ecryptfs
 engl
@@ -142,6 +144,7 @@ Itanium
 jobqueue
 jpg
 jss
+jupyter
 Jupyter
 JupyterHub
 JupyterLab
@@ -194,6 +197,7 @@ multithreaded
 Multithreading
 NAMD
 natively
+nbgitpuller
 nbsp
 NCCL
 Neptun
@@ -260,6 +264,8 @@ pytorch
 PyTorch
 Quantum
 queue
+quickstart
+Quickstart
 randint
 reachability
 README

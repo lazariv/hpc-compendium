@@ -23,7 +23,7 @@ s	\<SLURM\>
 doc.zih.tu-dresden.de/docs/contrib/content_rules.md
 i	file \+system	HDFS
 Use \"ZIH systems\" or \"ZIH system\" instead of \"Taurus\". \"taurus\" is only allowed when used in ssh commands and other very specific situations.
-doc.zih.tu-dresden.de/docs/contrib/content_rules.md
+doc.zih.tu-dresden.de/docs/contrib/content_rules.md	doc.zih.tu-dresden.de/docs/archive/phase2_migration.md
 i	\<taurus\>	taurus\.hrsk	/taurus	/TAURUS	ssh	^[0-9]\+:Host taurus$
 \"HRSKII\" should be avoided, use \"ZIH system\" instead.
 doc.zih.tu-dresden.de/docs/contrib/content_rules.md
@@ -35,20 +35,20 @@ i	hpc[ -]\+da\>
 
 i	attachurl
 Replace \"todo\" with real content.
-
+doc.zih.tu-dresden.de/docs/archive/system_triton.md
 i	\<todo\>	<!--.*todo.*-->
-Replace \"Coming soon\" with real content.
+Replace variations of \"Coming soon\" with real content.
 
-i	\<coming soon\>
+i	\(\<coming soon\>\|This .* under construction\|posted here\)
 Avoid spaces at end of lines.
-
+doc.zih.tu-dresden.de/docs/accessibility.md
 i	[[:space:]]$
 When referencing partitions, put keyword \"partition\" in front of partition name, e. g. \"partition ml\", not \"ml partition\".
 doc.zih.tu-dresden.de/docs/contrib/content_rules.md
 i	\(alpha\|ml\|haswell\|romeo\|gpu\|smp\|julia\|hpdlf\|scs5\)-\?\(interactive\)\?[^a-z]*partition
 Give hints in the link text. Words such as \"here\" or \"this link\" are meaningless.
 doc.zih.tu-dresden.de/docs/contrib/content_rules.md
-i	\[\s\?\(documentation\|here\|this \(link\|page\|subsection\)\|slides\?\|manpage\)\s\?\]
+i	\[\s\?\(documentation\|here\|more info\|this \(link\|page\|subsection\)\|slides\?\|manpage\)\s\?\]
 Use \"workspace\" instead of \"work space\" or \"work-space\".
 doc.zih.tu-dresden.de/docs/contrib/content_rules.md
 i	work[ -]\+space"

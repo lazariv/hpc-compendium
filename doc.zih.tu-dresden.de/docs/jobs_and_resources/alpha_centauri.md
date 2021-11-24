@@ -64,7 +64,8 @@ True
 
 ### Python Virtual Environments
 
-Virtual environments allow users to install additional python packages and create an isolated
+[Virtual environments](../software/python_virtual_environments.md) allow users to install
+additional python packages and create an isolated
 runtime environment. We recommend using `virtualenv` for this purpose.
 
 ```console
