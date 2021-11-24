@@ -61,7 +61,7 @@ using the command `sbatch` instead of `srun`. For the sake of illustration, we u
 interactive job as an example. Depending on the partitions that you want the module to be usable on
 later, you need to select nodes with the same architecture. Thus, use nodes from partition ml for
 building, if you want to use the module on nodes of that partition. In this example, we assume
-that we want to use the module on nodes with x86 architecture und thus, Haswell nodes will be used.
+that we want to use the module on nodes with x86 architecture and thus, we use Haswell nodes.
 
 ```console
 marie@login$ srun --partition=haswell --nodes=1 --cpus-per-task=4 --time=08:00:00 --pty /bin/bash -l
