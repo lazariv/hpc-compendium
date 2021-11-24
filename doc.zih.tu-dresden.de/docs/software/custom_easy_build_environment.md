@@ -26,12 +26,12 @@ information about how to obtain and build the software:
 -   Version
 -   Toolchain (think: Compiler + some more)
 -   Download URL
--   Buildsystem (e.g. `configure && make` or `cmake && make`)
+-   Build system (e.g. `configure && make` or `cmake && make`)
 -   Config parameters
 -   Tests to ensure a successful build
 
 The build system part is implemented in so-called "EasyBlocks" and contains the common workflow.
-Sometimes, those are specialized to encapsulate behaviour specific to multiple/all versions of the
+Sometimes, those are specialized to encapsulate behavior specific to multiple/all versions of the
 software. Everything is written in Python, which gives authors a great deal of flexibility.
 
 ## Set up a custom module environment and build your own modules
