@@ -90,6 +90,7 @@ Galilei
 Gauss
 Gaussian
 GBit
+GDB
 GDDR
 GFLOPS
 gfortran
@@ -170,6 +171,7 @@ MathWorks
 matlab
 MEGWARE
 mem
+Memcheck
 MiB
 Microarchitecture
 MIMD
@@ -346,6 +348,7 @@ undistinguishable
 unencrypted
 uplink
 userspace
+Valgrind
 Vampir
 VampirTrace
 VampirTrace's
