@@ -20,7 +20,7 @@ newer for full support for the NVIDIA Tesla K20x GPUs at ZIH.
 
 #### Using OpenACC with PGI compilers
 
-* For compilation, please add the compiler flag `-acc`, to enable OpenACC interpreting by the
+* For compilation, please add the compiler flag `-acc` to enable OpenACC interpreting by the
   compiler;
 * `-Minfo` tells you what the compiler is actually doing to your code;
 * If you only want to use the created binary at ZIH resources, please also add `-ta=nvidia:keple`;
