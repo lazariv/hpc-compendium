@@ -90,7 +90,7 @@ reason for further investigation, since not all HUs are equally utilized.
 
 To identify imbalances between HUs over time, the visualization modes *Best* and *Lowest* are a
 first indicator how much the HUs differ in terms of resource usage. The timelines *Best* and
-*Lowest* show the recoded performance data of the best/lowest average HU over time.
+*Lowest* show the recorded performance data of the best/lowest average HU over time.
 
 ## Footprint Visualization
 
