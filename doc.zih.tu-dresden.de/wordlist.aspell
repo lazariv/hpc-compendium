@@ -320,6 +320,7 @@ Slurm
 SLURMCluster
 SMP
 SMT
+spython
 squeue
 srun
 ssd
