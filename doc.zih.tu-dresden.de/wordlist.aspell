@@ -140,6 +140,7 @@ img
 Infiniband
 init
 inode
+Instrumenter
 IOPS
 IPs
 ISA
@@ -260,8 +261,10 @@ pre
 Preload
 preloaded
 preloading
+prepend
 preprocessing
 PSOCK
+Pthread
 Pthreads
 pty
 PuTTY
