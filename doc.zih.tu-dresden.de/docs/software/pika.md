@@ -111,7 +111,7 @@ investigating their correlation.
 ## Hints
 
 If users wish to perform their own measurement of performance counters using performance tools other
-than PIKA, it is recommended to disable PIKA monitoring. This can be done using the following slurm
+than PIKA, it is recommended to disable PIKA monitoring. This can be done using the following Slurm
 flags in the job script:
 
 ```Bash
