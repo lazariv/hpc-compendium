@@ -1,4 +1,4 @@
-# Longterm Preservation for Research Data
+# Long-term Preservation for Research Data
 
 ## Why should research data be preserved?
 
@@ -55,7 +55,7 @@ Below are some examples:
     - ISBN
 - possible meta-data for an electronically saved image would be:
     - resolution of the image
-    - information about the colour depth of the picture
+    - information about the color depth of the picture
     - file format (jpg or tiff or ...)
     - file size how was this image created (digital camera, scanner, ...)
     - description of what the image shows
@@ -79,6 +79,6 @@ information about managing research data.
 
 ## I want to store my research data at ZIH. How can I do that?
 
-Longterm preservation of research data is under construction at ZIH and in a testing phase.
+Long-term preservation of research data is under construction at ZIH and in a testing phase.
 Nevertheless you can already use the archiving service. If you would like to become a test
 user, please write an E-Mail to [Dr. Klaus Köhler](mailto:klaus.koehler@tu-dresden.de).

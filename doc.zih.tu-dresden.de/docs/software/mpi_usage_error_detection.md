@@ -40,7 +40,7 @@ Besides loading a MUST module, no further changes are needed during compilation 
 
 ### Running your Application with MUST
 
-In order to run your application with MUST you need to replace the srun command with mustrun:
+In order to run your application with MUST you need to replace the `srun` command with `mustrun`:
 
 ```console
 marie@login$ mustrun -np <number of MPI processes> ./<your binary>
@@ -65,14 +65,14 @@ marie@login$ mustrun -np 4 ./fancy-program
 [MUST] Execution finished, inspect "/home/marie/MUST_Output.html"!
 ```
 
-Besides replacing the srun command you need to be aware that **MUST always allocates an extra
+Besides replacing the `srun` command you need to be aware that **MUST always allocates an extra
 process**, i.e. if you issue a `mustrun -np 4 ./a.out` then MUST will start 5 processes instead.
 This is usually not critical, however in batch jobs **make sure to allocate an extra CPU for this
 task**.
 
 Finally, MUST assumes that your application may crash at any time. To still gather correctness
 results under this assumption is extremely expensive in terms of performance overheads. Thus, if
-your application does not crash, you should add an "--must:nocrash" to the mustrun command to make
+your application does not crash, you should add `--must:nocrash` to the `mustrun` command to make
 MUST aware of this knowledge. Overhead is drastically reduced with this switch.
 
 ### Result Files
