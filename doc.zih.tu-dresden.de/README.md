@@ -41,8 +41,6 @@ Now, create a local clone of your fork
 #### Install Dependencies
 
 See [Installation with Docker](#preview-using-mkdocs-with-dockerfile).
-**TODO:** virtual environment
-**TODO:** What we need for markdownlinter and checks?
 
 <!--- All branches are protected, i.e., only ZIH staff can create branches and push to them --->
 

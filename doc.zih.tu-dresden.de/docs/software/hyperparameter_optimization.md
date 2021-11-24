@@ -270,9 +270,9 @@ This GUI guides through the configuration process and as result a configuration 
 automatically according to the GUI input. If you are more familiar with using OmniOpt later on,
 this configuration file can be modified directly without using the GUI.
 
-A screenshot of the GUI, including a properly configuration for the MNIST fashion example is shown
-below. The GUI, in which the below displayed values are already entered, can be reached
-[here](https://imageseg.scads.ai/omnioptgui/?maxevalserror=5&mem_per_worker=1000&number_of_parameters=3&param_0_values=10%2C50%2C100&param_1_values=8%2C16%2C32&param_2_values=10%2C15%2C30&param_0_name=out-layer1&param_1_name=batchsize&param_2_name=batchsize&account=&projectname=mnist_fashion_optimization_set_1&partition=alpha&searchtype=tpe.suggest&param_0_type=hp.choice&param_1_type=hp.choice&param_2_type=hp.choice&max_evals=1000&objective_program=bash%20%3C%2Fpath%2Fto%2Fwrapper-script%2Frun-mnist-fashion.sh%3E%20--out-layer1%3D%28%24x_0%29%20--batchsize%3D%28%24x_1%29%20--epochs%3D%28%24x_2%29&workdir=%3C%2Fscratch%2Fws%2Fomniopt-workdir%2F%3E).
+A screenshot of
+[the GUI](https://imageseg.scads.ai/omnioptgui/?maxevalserror=5&mem_per_worker=1000&number_of_parameters=3&param_0_values=10%2C50%2C100&param_1_values=8%2C16%2C32&param_2_values=10%2C15%2C30&param_0_name=out-layer1&param_1_name=batchsize&param_2_name=batchsize&account=&projectname=mnist_fashion_optimization_set_1&partition=alpha&searchtype=tpe.suggest&param_0_type=hp.choice&param_1_type=hp.choice&param_2_type=hp.choice&max_evals=1000&objective_program=bash%20%3C%2Fpath%2Fto%2Fwrapper-script%2Frun-mnist-fashion.sh%3E%20--out-layer1%3D%28%24x_0%29%20--batchsize%3D%28%24x_1%29%20--epochs%3D%28%24x_2%29&workdir=%3C%2Fscratch%2Fws%2Fomniopt-workdir%2F%3E),
+including a properly configuration for the MNIST fashion example is shown below.
 
 Please modify the paths for `objective program` and `workdir` according to your needs.
 
