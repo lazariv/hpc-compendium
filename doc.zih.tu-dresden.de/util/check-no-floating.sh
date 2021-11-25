@@ -4,12 +4,12 @@ if [ ${#} -ne 1 ]; then
   echo "Usage: ${0} <path>"
 fi
 
-export DOCUMENT_ROOT=${1}
-export maxDepth=4
-export expectedFooter="$DOCUMENT_ROOT/docs/legal_notice.md $DOCUMENT_ROOT/docs/accessibility.md $DOCUMENT_ROOT/docs/data_protection_declaration.md"
+DOCUMENT_ROOT=${1}
+maxDepth=4
+expectedFooter="$DOCUMENT_ROOT/docs/legal_notice.md $DOCUMENT_ROOT/docs/accessibility.md $DOCUMENT_ROOT/docs/data_protection_declaration.md"
 
-check_md() {
-  awk -F'/' '{print $0,NF}' <<< "${1}" | while IFS=' ' read string depth; do
+MSG=$(find ${DOCUMENT_ROOT}/docs -name "*.md" | awk -F'/' '{print $0,NF}' | while IFS=' ' read string depth
+  do
     #echo "string=${string} depth=${depth}"
 
     # max depth check 
@@ -37,11 +37,7 @@ check_md() {
       echo "${md} is included $numberOfReferences times in nav"
     fi
   done
-}
-
-export -f check_md
-
-MSG=$(find ${DOCUMENT_ROOT}/docs -name "*.md" -exec bash -c 'check_md "${0}"' {} \;)
+)
 if [ ! -z "${MSG}" ]; then
   echo "${MSG}"
   exit -1
