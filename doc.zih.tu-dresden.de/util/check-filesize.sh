@@ -32,8 +32,10 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 large_files_present=false
+branch="origin/${CI_MERGE_REQUEST_TARGET_BRANCH_NAME:-preview}"
+source_hash=`git merge-base HEAD "$branch"`
 
-for f in $(git diff main --name-only); do    
+for f in $(git diff $source_hash --name-only); do    
     fs=$(wc -c $f | awk '{print $1}')
     if [ $fs -gt 1048576 ]; then
 	echo $f 'is over 1M ('$fs' bytes)'
