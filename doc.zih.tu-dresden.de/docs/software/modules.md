@@ -206,7 +206,8 @@ Note that this will not work for meta-modules that do not have an installation d
 
 ## Advanced Usage
 
-For writing your own Modulefiles please have a look at the [Guide for writing project and private Modulefiles](private_modules.md).
+For writing your own module files please have a look at the
+[Guide for writing project and private module files](private_modules.md).
 
 ## Troubleshooting
 

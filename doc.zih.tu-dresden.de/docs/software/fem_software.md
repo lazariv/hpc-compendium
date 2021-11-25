@@ -176,7 +176,7 @@ under:
 
 `<MaxNumberProcessors>2</MaxNumberProcessors>`
 
-that you can simply change to something like 16 oder 24. For now, you should stay within single-node
+that you can simply change to something like 16 or 24. For now, you should stay within single-node
 boundaries, because multi-node calculations require additional parameters. The number you choose
 should match your used `--cpus-per-task` parameter in your job file.
 

@@ -146,7 +146,7 @@ marie@local$ ssh -L 30000:taurusi1253:30055 taurus.hrsk.tu-dresden.de
 ```
 
 Now, the port 30000 on your desktop is connected to the VampirServer port 30055 at the compute node
-taurusi1253 of the ZIH system. Finally, start your local Vampir client and establish a remote
+`taurusi1253` of the ZIH system. Finally, start your local Vampir client and establish a remote
 connection to `localhost`, port 30000 as described in the manual.
 
 ```console
