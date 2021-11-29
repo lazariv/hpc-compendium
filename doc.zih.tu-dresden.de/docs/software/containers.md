@@ -12,10 +12,10 @@ Singularity. Information about the use of Singularity on ZIH systems can be foun
 In some cases using Singularity requires a Linux machine with root privileges (e.g. using the
 partition `ml`), the same architecture and a compatible kernel. For many reasons, users on ZIH
 systems cannot be granted root permissions. A solution is a Virtual Machine (VM) on the partition
-`ml` which allows users to gain root permissions in an isolated environment.  There are two main
+`ml` which allows users to gain root permissions in an isolated environment. There are two main
 options on how to work with Virtual Machines on ZIH systems:
 
-1. [VM tools](virtual_machines_tools.md): Automative algorithms for using virtual machines;
+1. [VM tools](virtual_machines_tools.md): Automated algorithms for using virtual machines;
 1. [Manual method](virtual_machines.md): It requires more operations but gives you more flexibility
    and reliability.
 
@@ -35,7 +35,7 @@ execution. Follow the instructions for [locally installing Singularity](#local-i
 [container creation](#container-creation). Moreover, existing Docker container can easily be
 converted, see [Import a docker container](#importing-a-docker-container).
 
-If you are already familar with Singularity, you might be more intressted in our [singularity
+If you are already familiar with Singularity, you might be more interested in our [singularity
 recipes and hints](singularity_recipe_hints.md).
 
 ### Local Installation

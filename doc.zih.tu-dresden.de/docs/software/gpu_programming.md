@@ -2,8 +2,9 @@
 
 ## Directive Based GPU Programming
 
-Directives are special compiler commands in your C/C++ or Fortran source code. The tell the compiler
-how to parallelize and offload work to a GPU. This section explains how to use this technique.
+Directives are special compiler commands in your C/C++ or Fortran source code. They tell the
+compiler how to parallelize and offload work to a GPU. This section explains how to use this
+technique.
 
 ### OpenACC
 
@@ -19,10 +20,11 @@ newer for full support for the NVIDIA Tesla K20x GPUs at ZIH.
 
 #### Using OpenACC with PGI compilers
 
-* For compilaton please add the compiler flag `-acc`, to enable OpenACC interpreting by the compiler;
-* `-Minfo` will tell you what the compiler is actually doing to your code;
+* For compilation, please add the compiler flag `-acc` to enable OpenACC interpreting by the
+  compiler;
+* `-Minfo` tells you what the compiler is actually doing to your code;
 * If you only want to use the created binary at ZIH resources, please also add `-ta=nvidia:keple`;
-* OpenACC Turorial: intro1.pdf, intro2.pdf.
+* OpenACC Tutorial: intro1.pdf, intro2.pdf.
 
 ### HMPP
 
@@ -38,4 +40,4 @@ use the following slides as an introduction:
 * Introduction to CUDA;
 * Advanced Tuning for NVIDIA Kepler GPUs.
 
-In order to compiler an application with CUDA use the `nvcc` compiler command.
+In order to compile an application with CUDA use the `nvcc` compiler command.

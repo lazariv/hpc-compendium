@@ -90,7 +90,7 @@ reason for further investigation, since not all HUs are equally utilized.
 
 To identify imbalances between HUs over time, the visualization modes *Best* and *Lowest* are a
 first indicator how much the HUs differ in terms of resource usage. The timelines *Best* and
-*Lowest* show the recoded performance data of the best/lowest average HU over time.
+*Lowest* show the recorded performance data of the best/lowest average HU over time.
 
 ## Footprint Visualization
 
@@ -111,7 +111,7 @@ investigating their correlation.
 ## Hints
 
 If users wish to perform their own measurement of performance counters using performance tools other
-than PIKA, it is recommended to disable PIKA monitoring. This can be done using the following slurm
+than PIKA, it is recommended to disable PIKA monitoring. This can be done using the following Slurm
 flags in the job script:
 
 ```Bash

@@ -38,7 +38,7 @@ marie@login$ srun --pty --partition=interactive --mem-per-cpu=2500 --cpus-per-ta
 [...]
 ```
 
-Of course, you can adjust the batch job parameters to your liking. Note that the default timelimit
+Of course, you can adjust the batch job parameters to your liking. Note that the default time limit
 in partition `interactive` is only 30 minutes, so you should specify a longer one with `--time` (or `-t`).
 
 The script will automatically generate a self-signed SSL certificate and place it in your home
