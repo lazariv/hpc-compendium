@@ -26,12 +26,12 @@ information about how to obtain and build the software:
 -   Version
 -   Toolchain (think: Compiler + some more)
 -   Download URL
--   Buildsystem (e.g. `configure && make` or `cmake && make`)
+-   Build system (e.g. `configure && make` or `cmake && make`)
 -   Config parameters
 -   Tests to ensure a successful build
 
 The build system part is implemented in so-called "EasyBlocks" and contains the common workflow.
-Sometimes, those are specialized to encapsulate behaviour specific to multiple/all versions of the
+Sometimes, those are specialized to encapsulate behavior specific to multiple/all versions of the
 software. Everything is written in Python, which gives authors a great deal of flexibility.
 
 ## Set up a custom module environment and build your own modules
@@ -61,7 +61,7 @@ using the command `sbatch` instead of `srun`. For the sake of illustration, we u
 interactive job as an example. Depending on the partitions that you want the module to be usable on
 later, you need to select nodes with the same architecture. Thus, use nodes from partition ml for
 building, if you want to use the module on nodes of that partition. In this example, we assume
-that we want to use the module on nodes with x86 architecture und thus, Haswell nodes will be used.
+that we want to use the module on nodes with x86 architecture and thus, we use Haswell nodes.
 
 ```console
 marie@login$ srun --partition=haswell --nodes=1 --cpus-per-task=4 --time=08:00:00 --pty /bin/bash -l

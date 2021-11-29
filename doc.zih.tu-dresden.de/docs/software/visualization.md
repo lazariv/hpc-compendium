@@ -49,10 +49,10 @@ marie@login$ mpiexec -bind-to -help`
 or from
 [mpich wiki](https://wiki.mpich.org/mpich/index.php/Using_the_Hydra_Process_Manager#Process-core_Binding%7Cwiki.mpich.org).
 
-In the following, we provide two examples on how to use `pvbatch` from within a jobfile and an
+In the following, we provide two examples on how to use `pvbatch` from within a job file and an
 interactive allocation.
 
-??? example "Example jobfile"
+??? example "Example job file"
 
     ```Bash
     #!/bin/bash
@@ -97,7 +97,7 @@ cards (GPUs) specified by the device index. For that, make sure to use the modul
 *-egl*, e.g., `ParaView/5.9.0-RC1-egl-mpi-Python-3.8`, and pass the option
 `--egl-device-index=$CUDA_VISIBLE_DEVICES`.
 
-??? example "Example jobfile"
+??? example "Example job file"
 
     ```Bash
     #!/bin/bash
@@ -171,7 +171,7 @@ are outputed.*
 This contains the node name which your job and server runs on. However, since the node names of the
 cluster are not present in the public domain name system (only cluster-internally), you cannot just
 use this line as-is for connection with your client. **You first have to resolve** the name to an IP
-address on ZIH systems: Suffix the nodename with `-mn` to get the management network (ethernet)
+address on ZIH systems: Suffix the node name with `-mn` to get the management network (ethernet)
 address, and pass it to a lookup-tool like `host` in another SSH session:
 
 ```console

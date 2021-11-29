@@ -9,7 +9,7 @@ connection to enter the campus network. While active, it allows the user to conn
 HPC login nodes.
 
 For more information on our VPN and how to set it up, please visit the corresponding
-[ZIH service catalogue page](https://tu-dresden.de/zih/dienste/service-katalog/arbeitsumgebung/zugang_datennetz/vpn).
+[ZIH service catalog page](https://tu-dresden.de/zih/dienste/service-katalog/arbeitsumgebung/zugang_datennetz/vpn).
 
 ## Connecting from Linux
 
