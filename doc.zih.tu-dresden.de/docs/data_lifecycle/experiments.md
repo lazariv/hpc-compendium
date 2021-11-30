@@ -47,6 +47,8 @@ The `Simple` view offers a limited selection of parameters to choose from. It is
 `Your server is starting up. 
  You will be redirected automatically when it's ready for you.`
 </div>
+
+
 Once it loads, you will see the possibility between opening a `Notebook`, `Console` or `Other`. See [here](https://doc.zih.tu-dresden.de/access/jupyterhub/) for more information. 
  
  Once you are done with your work on the ZIH HPC system for the day, stop the session by logging out through by clicking `File` and then `Log Out`.
@@ -54,7 +56,8 @@ Once it loads, you will see the possibility between opening a `Notebook`, `Conso
 #### Advanced
 If you are more advanced and would like to have more choice in the parameters, see `Advanced` view. Here you can choose the partition you want to work on, preload modules (see section *2. Software: Environment* below), select which workspace (see *Data: Management and Transfer* section below) you will be working in, etc.:
 ![Advanced form](doc.zih.tu-dresden.de/docs/access/misc/advanced_form.png)
- Once you are done with your work for the day, stop the session by logging out through by clicking `File` and then `Log Out`.
+
+Once you are done with your work for the day, stop the session by logging out through by clicking `File` and then `Log Out`.
 
 ## 2. ssh Connection (Command  Line)
 
@@ -280,5 +283,4 @@ There might be cases where root privileges are needed for installation.
 	Please check out the module system, even for specific Python packages, e.g. tqdm, torchvision, tensorboard, etc. to get a better idea of what is available to you.
 	the Python (and other) package ecosystem is very heterogeneous and dynamic, with, often, daily updates. 
 	The central update cycle for software on the ZIH HPC system occurs approximately every six months.
-
 
