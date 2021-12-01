@@ -86,147 +86,154 @@ arrow key.
 
 ![Auto-suggestion](misc/zsh_autosuggestion.png)
 
-## Addons for your `~/.zshrc`
+## 
 
-If you like, add these commands to your `~/.zshrc`-file.
-
-
-
-### Create a new directory and directly `cd` into it
-
-```bash
-mcd () {
-    mkdir -p $1
-    cd $1
-}
-```
-
-You can then
-
-```
-marie@login$ mcd non-existent-directory
-```
-
-and it will create it and `cd` into it
-
-### Find the largest files in the current directory easily
-
-```bash
-function treesizethis {
-    du -k --max-depth=1 | sort -nr | awk '
-         BEGIN {
-        split("KB,MB,GB,TB", Units, ",");
-         }
-         {
-        u = 1;
-        while ($1 >= 1024) {
-           $1 = $1 / 1024;
-           u += 1
+??? example "Addons for your shell"
+    === "`bash`"
+        ```bash
+        # Create a new directory and directly `cd` into it
+        mcd () {
+            mkdir -p $1
+            cd $1
         }
-        $1 = sprintf("%.1f %s", $1, Units[u]);
-        print $0;
-         }
-    '
-}
-```
 
-This lists all files, from largest to smallest, in the current directory.
+        # Find the largest files in the current directory easily
+        function treesizethis {
+            du -k --max-depth=1 | sort -nr | awk '
+             BEGIN {
+            split("KB,MB,GB,TB", Units, ",");
+             }
+             {
+            u = 1;
+            while ($1 >= 1024) {
+               $1 = $1 / 1024;
+               u += 1
+            }
+            $1 = sprintf("%.1f %s", $1, Units[u]);
+            print $0;
+             }
+            '
+        }
 
-### Automatically rewrite `..` as `../..`
+        #This allows you to run `slurmlogpath $SLURM_ID` and get the log-path directly in stdout:
+        function slurmlogpath {
+	    scontrol show job $1 | sed -n -e 's/^\s*StdOut=//p'
+        }
 
-This will automatically replace `...` with `../..` and `....` with `../../..` and so on (each additional `.`
-adding another `/..`) when typing commands:
-
-``` bash
-rationalise-dot() {
-    if [[ $LBUFFER = *.. ]]; then
-        LBUFFER+=/..
-    else
-        LBUFFER+=.
+        # `ftails` follow-tails a slurm-log. Call it without parameters to tail the only running job or
+        # get a list of running jobs or use `ftails $JOBID` to tail a specific job
+        function ftails {
+            JOBID=$1
+            if [[ -z $JOBID ]]; then
+                 JOBS=$(squeue --format="%i \\'%j\\' " --me | grep -v JOBID)
+                 NUMBER_OF_JOBS=$(echo "$JOBS" | wc -l)
+                 JOBID=
+                 if [[ "$NUMBER_OF_JOBS" -eq 1 ]]; then
+                     JOBID=$(echo $JOBS | sed -e "s/'//g" | sed -e 's/ .*//')
+                 else
+                     JOBS=$(echo $JOBS | tr -d '\n')
+                     JOBID=$(eval "whiptail --title 'Choose jobs to tail' --menu 'Choose Job to tail' 25 78 16 $JOBS" 3>&1 1>&2 2>&3)
+                 fi
             fi
-}
-zle -N rationalise-dot
-bindkey . rationalise-dot
-```
+            SLURMLOGPATH=$(slurmlogpath $JOBID)
+            if [[ -e $SLURMLOGPATH ]]; then
+                tail -n100 -f $SLURMLOGPATH
+            else
+                echo "No slurm-log-file found"
+            fi
+        }
 
-### Auto-completion for `module load`
+        #With this, you only need to type `sq` instead of `squeue -u $USER`.
+        alias sq="squeue --me"
+        ```
+    === "`zsh`"
+        ```bash
+        # Create a new directory and directly `cd` into it
+        mcd () {
+            mkdir -p $1
+            cd $1
+        }
 
-This allows auto-completion for `module load`:
+        # Find the largest files in the current directory easily
+        function treesizethis {
+            du -k --max-depth=1 | sort -nr | awk '
+             BEGIN {
+            split("KB,MB,GB,TB", Units, ",");
+             }
+             {
+            u = 1;
+            while ($1 >= 1024) {
+               $1 = $1 / 1024;
+               u += 1
+            }
+            $1 = sprintf("%.1f %s", $1, Units[u]);
+            print $0;
+             }
+            '
+        }
 
-```bash
-function _module {
-    MODULE_COMMANDS=(
-        '-t:Show computer parsable output'
-        'load:Load a module'
-        'unload:Unload a module'
-        'spider:Search for a module'
-        'avail:Show available modules'
-        'list:List loaded modules'
-    )
+        #This allows you to run `slurmlogpath $SLURM_ID` and get the log-path directly in stdout:
+        function slurmlogpath {
+	    scontrol show job $1 | sed -n -e 's/^\s*StdOut=//p'
+        }
 
-    MODULE_COMMANDS_STR=$(printf "\n'%s'" "${MODULE_COMMANDS[@]}")
+        # `ftails` follow-tails a slurm-log. Call it without parameters to tail the only running job or
+        # get a list of running jobs or use `ftails $JOBID` to tail a specific job
+        function ftails {
+            JOBID=$1
+            if [[ -z $JOBID ]]; then
+                 JOBS=$(squeue --format="%i \\'%j\\' " --me | grep -v JOBID)
+                 NUMBER_OF_JOBS=$(echo "$JOBS" | wc -l)
+                 JOBID=
+                 if [[ "$NUMBER_OF_JOBS" -eq 1 ]]; then
+                     JOBID=$(echo $JOBS | sed -e "s/'//g" | sed -e 's/ .*//')
+                 else
+                     JOBS=$(echo $JOBS | tr -d '\n')
+                     JOBID=$(eval "whiptail --title 'Choose jobs to tail' --menu 'Choose Job to tail' 25 78 16 $JOBS" 3>&1 1>&2 2>&3)
+                 fi
+            fi
+            SLURMLOGPATH=$(slurmlogpath $JOBID)
+            if [[ -e $SLURMLOGPATH ]]; then
+                tail -n100 -f $SLURMLOGPATH
+            else
+                echo "No slurm-log-file found"
+            fi
+        }
 
-    eval "_describe 'command' \"($MODULE_COMMANDS_STR)\""
-    _values -s ' ' 'flags' $(ml -t avail | sed -e 's#/$##' | tr '\n' ' ')
-}
+        #With this, you only need to type `sq` instead of `squeue -u $USER`.
+        alias sq="squeue --me"
 
-compdef _module "module"
-```
+        #This will automatically replace `...` with `../..` and `....` with `../../..`
+        # and so on (each additional `.` adding another `/..`) when typing commands:
+        rationalise-dot() {
+            if [[ $LBUFFER = *.. ]]; then
+                LBUFFER+=/..
+            else
+                LBUFFER+=.
+            fi
+        }
+        zle -N rationalise-dot
+        bindkey . rationalise-dot
 
-### Slurm-specific shortcuts
+        # This allows auto-completion for `module load`:
+        function _module {
+            MODULE_COMMANDS=(
+                '-t:Show computer parsable output'
+                'load:Load a module'
+                'unload:Unload a module'
+                'spider:Search for a module'
+                'avail:Show available modules'
+                'list:List loaded modules'
+            )
 
-#### Show Slurm log path
+            MODULE_COMMANDS_STR=$(printf "\n'%s'" "${MODULE_COMMANDS[@]}")
 
-This allows you to run `slurmlogpath $SLURM_ID` and get the log-path directly in stdout:
+            eval "_describe 'command' \"($MODULE_COMMANDS_STR)\""
+            _values -s ' ' 'flags' $(ml -t avail | sed -e 's#/$##' | tr '\n' ' ')
+        }
 
-```bash
-function slurmlogpath {
-    scontrol show job $1 | sed -n -e 's/^\s*StdOut=//p'
-}
-```
-
-#### Follow jobs more easily
-
-This `tail -f`s a job's output easily. If you write `ftails $SLURM_ID` it will show the output of the
-`SLURM_ID`. If you write no `SLURM_ID` and there is only one job running, it will tail that job.
-If there are multiple jobs running, it will show you a list of them and let you choose one to `tail`.
-
-```bash
-function ftails {
-    JOBID=$1
-    if [[ -z $JOBID ]]; then
-        JOBS=$(squeue --format="%i \\'%j\\' " --me | grep -v JOBID)
-        NUMBER_OF_JOBS=$(echo "$JOBS" | wc -l)
-
-        JOBID=
-
-        if [[ "$NUMBER_OF_JOBS" -eq 1 ]]; then
-            JOBID=$(echo $JOBS | sed -e "s/'//g" | sed -e 's/ .*//')
-        else
-            JOBS=$(echo $JOBS | tr -d '\n')
-
-            JOBID=$(eval "whiptail --title 'Choose jobs to tail' --menu 'Choose Job to tail' 25 78 16 $JOBS" 3>&1 1>&2 2>&3)
-        fi
-    fi
-
-    SLURMLOGPATH=$(slurmlogpath $JOBID)
-    if [[ -e $SLURMLOGPATH ]]; then
-        tail -n100 -f $SLURMLOGPATH
-    else
-        echo "No slurm-log-file found"
-    fi
-}
-```
-
-#### Alias for `squeue -u $USER`
-
-This is way faster to type:
-
-```bash
-alias sq="squeue --me"
-```
-
-Now you only need to type `sq` instead of `squeue -u $USER`.
+        compdef _module "module"
+        ```
 
 ## Setting `zsh` as default-shell
 
