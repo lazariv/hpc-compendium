@@ -149,7 +149,7 @@ This allows auto-completion for `module load`:
 function _module {
     MODULE_COMMANDS=(
         '-t:Show computer parsable output'
-        'load:Lload a Module'
+        'load:Load a module'
         'unload:Unload a module'
         'spider:Search for a module'
         'avail:Show available modules'
