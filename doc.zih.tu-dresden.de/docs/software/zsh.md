@@ -96,7 +96,7 @@ mcd () {
 You can then
 
 ```
-marie@login$ mcd non-existant-directory
+marie@login$ mcd non-existent-directory
 ```
 
 and it will create it and `cd` into it
