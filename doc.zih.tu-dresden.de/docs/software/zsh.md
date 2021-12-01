@@ -195,7 +195,7 @@ If there are multiple jobs running, it will show you a list of them and let you 
 function ftails {
     JOBID=$1
     if [[ -z $JOBID ]]; then
-        JOBS=$(squeue --format="%i \\'%j\\' " -u $USER | grep -v JOBID)
+        JOBS=$(squeue --format="%i \\'%j\\' " --me | grep -v JOBID)
         NUMBER_OF_JOBS=$(echo "$JOBS" | wc -l)
 
         JOBID=
