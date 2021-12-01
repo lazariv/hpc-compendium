@@ -1,5 +1,13 @@
 # ZSH
 
+!!! warning
+    Though all efforts have been made to ensure the accuracy and 
+    currency of the content on this website, please be advised that 
+    some content might be out of date and there is no continuous 
+    website support available. In case of any ambiguity or doubts, 
+    users are advised to do their own research on the content's 
+    accuracy and currency.
+
 The ZSH, short for `z-shell`, is an alternative shell for Linux that offers many convenience features
 for productive use that `bash`, the default shell, does not offer.
 
