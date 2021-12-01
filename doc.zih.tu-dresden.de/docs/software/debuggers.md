@@ -73,8 +73,8 @@ modified by DDT available, which has better support for Fortran 90 (e.g.  derive
 ![DDT Main Window](misc/ddt-main-window.png)
 
 - Intuitive graphical user interface and great support for parallel applications
-- We have 1024 licences, so many user can use this tool for parallel debugging
-- Don't expect that debugging an MPI program with 100ths of process will always work without
+- We have 1024 licenses, so many user can use this tool for parallel debugging
+- Don't expect that debugging an MPI program with hundreds of processes will always work without
   problems
   - The more processes and nodes involved, the higher is the probability for timeouts or other
     problems
@@ -159,7 +159,7 @@ marie@login$ srun -n 1 valgrind ./myprog
 
 - Not recommended for MPI parallel programs, since usually the MPI library will throw
   a lot of errors. But you may use Valgrind the following way such that every rank
-  writes its own Valgrind logfile:
+  writes its own Valgrind log file:
 
 ```console
 marie@login$ module load Valgrind

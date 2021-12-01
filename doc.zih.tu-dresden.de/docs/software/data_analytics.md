@@ -10,7 +10,7 @@ The following tools are available on ZIH systems, among others:
 * [Python](data_analytics_with_python.md)
 * [R](data_analytics_with_r.md)
 * [RStudio](data_analytics_with_rstudio.md)
-* [Big Data framework Spark](big_data_frameworks_spark.md)
+* [Big Data framework Spark](big_data_frameworks.md)
 * [MATLAB and Mathematica](mathematics.md)
 
 Detailed information about frameworks for machine learning, such as [TensorFlow](tensorflow.md)
@@ -24,7 +24,8 @@ marie@compute$ module spider <software_name>
 
 Refer to the section covering [modules](modules.md) for further information on the modules system.
 Additional software or special versions of [individual modules](custom_easy_build_environment.md)
-can be installed individually by each user. If possible, the use of virtual environments is
+can be installed individually by each user. If possible, the use of
+[virtual environments](python_virtual_environments.md) is
 recommended (e.g. for Python). Likewise, software can be used within [containers](containers.md).
 
 For the transfer of larger amounts of data into and within the system, the

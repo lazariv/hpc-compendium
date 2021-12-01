@@ -58,10 +58,10 @@ For MPI-parallel jobs one typically allocates one core per task that has to be s
 ### Multiple Programs Running Simultaneously in a Job
 
 In this short example, our goal is to run four instances of a program concurrently in a **single**
-batch script. Of course we could also start a batch script four times with `sbatch` but this is not
-what we want to do here. Please have a look at
-[this subsection](#multiple-programs-running-simultaneously-in-a-job)
-in case you intend to run GPU programs simultaneously in a **single** job.
+batch script. Of course, we could also start a batch script four times with `sbatch` but this is not
+what we want to do here. However, you can also find an example about
+[how to run GPU programs simultaneously in a single job](#running-multiple-gpu-applications-simultaneously-in-a-batch-job)
+below.
 
 !!! example " "
 
@@ -355,4 +355,4 @@ file) that will be executed one after each other with different CPU numbers:
 
 ## Array-Job with Afterok-Dependency and Datamover Usage
 
-This is a *todo*
+This part is under construction.

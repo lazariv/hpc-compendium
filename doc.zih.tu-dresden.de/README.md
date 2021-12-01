@@ -11,7 +11,7 @@ long describing complex steps, contributing is quite easy - trust us.
 Users can contribute to the documentation via the
 [issue tracking system](https://gitlab.hrz.tu-chemnitz.de/zih/hpcsupport/hpc-compendium/-/issues).
 For that, open an issue to report typos and missing documentation or request for more precise
-wording etc.  ZIH staff will get in touch with you to resolve the issue and improve the
+wording etc. ZIH staff will get in touch with you to resolve the issue and improve the
 documentation.
 
 **Reminder:** Non-documentation issues and requests need to be send as ticket to
@@ -41,8 +41,6 @@ Now, create a local clone of your fork
 #### Install Dependencies
 
 See [Installation with Docker](#preview-using-mkdocs-with-dockerfile).
-**TODO:** virtual environment
-**TODO:** What we need for markdownlinter and checks?
 
 <!--- All branches are protected, i.e., only ZIH staff can create branches and push to them --->
 
@@ -107,7 +105,7 @@ Open `http://127.0.0.1:8000` with a web browser to preview the local copy of the
 
 You can also use `docker` to build a container from the `Dockerfile`, if you are familiar with it.
 This may take a while, as mkdocs and other necessary software needs to be downloaded.
-Building a container with the documentation inside could be done with the following steps:
+Building a container could be done with the following steps:
 
 ```Bash
 cd /PATH/TO/hpc-compendium
@@ -137,7 +135,7 @@ echo http://$(docker inspect -f "{{.NetworkSettings.IPAddress}}" $(docker ps -qf
 ```
 
 The running container automatically takes care of file changes and rebuilds the
-documentation.  If you want to check whether the markdown files are formatted
+documentation. If you want to check whether the markdown files are formatted
 properly, use the following command:
 
 ```Bash
@@ -247,7 +245,8 @@ There are two important branches in this repository:
 - Preview:
   - Branch containing recent changes which will be soon merged to main branch (protected
     branch)
-  - Served at [todo url](todo url) from TUD VPN
+  - Served at [https://doc.zih.tu-dresden.de/preview](https://doc.zih.tu-dresden.de/preview) from
+    TUD-ZIH VPN
 - Main: Branch which is deployed at [https://doc.zih.tu-dresden.de](https://doc.zih.tu-dresden.de)
     holding the current documentation (protected branch)
 

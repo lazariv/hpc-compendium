@@ -47,12 +47,12 @@ branch="origin/${CI_MERGE_REQUEST_TARGET_BRANCH_NAME:-preview}"
 
 if [ $all_files = true ]; then
   echo "Search in all bash files."
-  files=`git ls-tree --full-tree -r --name-only HEAD $basedir/docs/ | grep .sh || true`
+  files=`git ls-tree --full-tree -r --name-only HEAD $basedir/docs/ | grep '\.sh$' || true`
 elif [[ ! -z $file ]]; then
   files=$file
 else
   echo "Search in git-changed files."
-  files=`git diff --name-only "$(git merge-base HEAD "$branch")" | grep .sh || true`
+  files=`git diff --name-only "$(git merge-base HEAD "$branch")" | grep '\.sh$' || true`
 fi
 
 

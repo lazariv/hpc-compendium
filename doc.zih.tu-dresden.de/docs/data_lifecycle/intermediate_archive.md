@@ -1,12 +1,12 @@
 # Intermediate Archive
 
 With the "Intermediate Archive", ZIH is closing the gap between a normal disk-based filesystem and
-[Longterm Archive](preservation_research_data.md). The Intermediate Archive is a hierarchical
+[Long-term Archive](preservation_research_data.md). The Intermediate Archive is a hierarchical
 filesystem with disks for buffering and tapes for storing research data.
 
 Its intended use is the storage of research data for a maximal duration of 3 years. For storing the
 data after exceeding this time, the user has to supply essential metadata and migrate the files to
-the [Longterm Archive](preservation_research_data.md). Until then, she/he has to keep track of her/his
+the [Long-term Archive](preservation_research_data.md). Until then, she/he has to keep track of her/his
 files.
 
 Some more information:
