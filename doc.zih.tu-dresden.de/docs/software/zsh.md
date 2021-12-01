@@ -223,7 +223,7 @@ function ftails {
 This is way faster to type:
 
 ```bash
-alias sq="squeue -u $USER"
+alias sq="squeue --me"
 ```
 
 Now you only need to type `sq` instead of `squeue -u $USER`.
