@@ -35,7 +35,7 @@ more details.
 ### Auto-completion
 
 `zsh` offers more auto-completion features than `bash`. You can auto-complete programs, filenames, parameters,
-`man`-pages and a lot more, and you can cycle through the suggestions with `<TAB>`.
+`man`-pages and a lot more, and you can cycle through the suggestions with `TAB`-button.
 
 ![Cycling through auto-completion for parameter names](misc/zsh_autocomplete_parameters.png)
 
