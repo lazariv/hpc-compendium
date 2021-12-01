@@ -150,7 +150,7 @@ function _module {
     MODULE_COMMANDS=(
         '-t:Show computer parsable output'
         'load:Lload a Module'
-        'unload:Unload a Module'
+        'unload:Unload a module'
         'spider:Search for a module'
         'avail:Show available modules'
         'list:List loaded modules'
