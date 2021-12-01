@@ -181,7 +181,7 @@ This allows you to run `slurmlogpath $SLURM_ID` and get the log-path directly in
 
 ```bash
 function slurmlogpath {
-    scontrol show job $1 | grep StdOut | sed -e 's/^\s*StdOut=//'
+    scontrol show job $1 | sed -n -e 's/^\s*StdOut=//p'
 }
 ```
 
