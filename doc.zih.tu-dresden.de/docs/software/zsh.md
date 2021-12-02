@@ -1,17 +1,18 @@
 # ZSH
 
 !!! warning
-    Though all efforts have been made to ensure the accuracy and 
-    currency of the content on this website, please be advised that 
-    some content might be out of date and there is no continuous 
-    website support available. In case of any ambiguity or doubts, 
-    users are advised to do their own research on the content's 
+    Though all efforts have been made to ensure the accuracy and
+    currency of the content on this website, please be advised that
+    some content might be out of date and there is no continuous
+    website support available. In case of any ambiguity or doubts,
+    users are advised to do their own research on the content's
     accuracy and currency.
 
-The [ZSH](https://www.zsh.org), short for `z-shell`, is an alternative shell for Linux that offers many convenience features
-for productive use that `bash`, the default shell, does not offer.
+The [ZSH](https://www.zsh.org), short for `z-shell`, is an alternative shell for Linux that offers
+many convenience features for productive use that `bash`, the default shell, does not offer.
 
-This should be a short introduction to `zsh` and offer some examples that are especially useful on Taurus.
+This should be a short introduction to `zsh` and offer some examples that are especially useful
+on the ZIH-Systems.
 
 ## `oh-my-zsh`
 
@@ -29,8 +30,8 @@ The rest of this document assumes that you have `oh-my-zsh` installed and runnin
 
 ### Themes
 
-There are many different themes for the `zsh`. See the [GitHub-page of `oh-my-zsh`](https://github.com/ohmyzsh/ohmyzsh) for
-more details.
+There are many different themes for the `zsh`. See the
+[GitHub-page of `oh-my-zsh`](https://github.com/ohmyzsh/ohmyzsh) for more details.
 
 ### Auto-completion
 
@@ -64,7 +65,6 @@ ENABLE_CORRECTION="true"
 you get correction suggestions when the shell thinks that it might be want you want, e.g. when a command
 is expected to be handed an existing file.
 
-
 ![Correction suggestion](misc/zsh_typo.png)
 
 ### Automatic `cd`
@@ -77,16 +77,13 @@ setopt AUTO_CD
 
 ![Automatic cd](misc/zsh_autocd.png)
 
-
 ### `fish`-like auto-suggestions
 
 Install [`zsh-autosuggestions`](https://github.com/zsh-users/zsh-autosuggestions) to get `fish`-shell-like
-auto-suggestions  of previous commands that start with the same letters and that you can complete with the right
-arrow key.
+auto-suggestions  of previous commands that start with the same letters and that you can complete with
+the right arrow key.
 
 ![Auto-suggestion](misc/zsh_autosuggestion.png)
-
-## 
 
 ??? example "Addons for your shell"
     === "`bash`"
@@ -117,7 +114,7 @@ arrow key.
 
         #This allows you to run `slurmlogpath $SLURM_ID` and get the log-path directly in stdout:
         function slurmlogpath {
-	    scontrol show job $1 | sed -n -e 's/^\s*StdOut=//p'
+            scontrol show job $1 | sed -n -e 's/^\s*StdOut=//p'
         }
 
         # `ftails` follow-tails a slurm-log. Call it without parameters to tail the only running job or
@@ -174,7 +171,7 @@ arrow key.
 
         #This allows you to run `slurmlogpath $SLURM_ID` and get the log-path directly in stdout:
         function slurmlogpath {
-	    scontrol show job $1 | sed -n -e 's/^\s*StdOut=//p'
+            scontrol show job $1 | sed -n -e 's/^\s*StdOut=//p'
         }
 
         # `ftails` follow-tails a slurm-log. Call it without parameters to tail the only running job or
