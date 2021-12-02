@@ -62,7 +62,8 @@ setopt correct_all
 ENABLE_CORRECTION="true"
 ```
 
-in `~/.zshrc` you get correction suggestions when the shell thinks that it might be what you want, e.g. when a command
+in `~/.zshrc` you get correction suggestions when the shell thinks
+that it might be what you want, e.g. when a command
 is expected to be handed an existing file.
 
 ![Correction suggestion](misc/zsh_typo.png)
