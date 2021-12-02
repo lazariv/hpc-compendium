@@ -12,7 +12,7 @@ The [ZSH](https://www.zsh.org), short for `z-shell`, is an alternative shell for
 many convenience features for productive use that `bash`, the default shell, does not offer.
 
 This should be a short introduction to `zsh` and offer some examples that are especially useful
-on the ZIH-Systems.
+on ZIH systems.
 
 ## `oh-my-zsh`
 
@@ -62,7 +62,7 @@ setopt correct_all
 ENABLE_CORRECTION="true"
 ```
 
-you get correction suggestions when the shell thinks that it might be want you want, e.g. when a command
+you get correction suggestions when the shell thinks that it might be what you want, e.g. when a command
 is expected to be handed an existing file.
 
 ![Correction suggestion](misc/zsh_typo.png)
@@ -80,7 +80,7 @@ setopt AUTO_CD
 ### `fish`-like auto-suggestions
 
 Install [`zsh-autosuggestions`](https://github.com/zsh-users/zsh-autosuggestions) to get `fish`-shell-like
-auto-suggestions  of previous commands that start with the same letters and that you can complete with
+auto-suggestions of previous commands that start with the same letters and that you can complete with
 the right arrow key.
 
 ![Auto-suggestion](misc/zsh_autosuggestion.png)
@@ -234,4 +234,4 @@ the right arrow key.
 
 ## Setting `zsh` as default-shell
 
-Please ask HPC support if you want to set the `zsh` as your default-login-shell.
+Please ask HPC support if you want to set the `zsh` as your default login shell.
