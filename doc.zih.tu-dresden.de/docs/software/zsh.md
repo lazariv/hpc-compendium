@@ -62,14 +62,14 @@ setopt correct_all
 ENABLE_CORRECTION="true"
 ```
 
-you get correction suggestions when the shell thinks that it might be what you want, e.g. when a command
+in `~/.zshrc` you get correction suggestions when the shell thinks that it might be what you want, e.g. when a command
 is expected to be handed an existing file.
 
 ![Correction suggestion](misc/zsh_typo.png)
 
 ### Automatic `cd`
 
-`AUTO_CD` allows you to leave out the `cd` when you provide a folder name.
+Adding `AUTO_CD` to `~/.zshrc` file allows to leave out the `cd` when a folder name is provided.
 
 ```bash
 setopt AUTO_CD
