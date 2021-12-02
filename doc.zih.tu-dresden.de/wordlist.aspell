@@ -1,5 +1,7 @@
 personal_ws-1.1 en 203
 Abaqus
+Addon
+Addons
 ALLREDUCE
 Altix
 Amber
@@ -160,8 +162,8 @@ LAPACK
 lapply
 Leichtbau
 LINPACK
-Linter
 linter
+Linter
 lmod
 LoadLeveler
 localhost
@@ -230,14 +232,14 @@ OpenBLAS
 OpenCL
 OpenGL
 OpenMP
-OpenMPI
 openmpi
+OpenMPI
 OpenSSH
 Opteron
 OTF
 overfitting
-Pandarallel
 pandarallel
+Pandarallel
 PAPI
 parallelization
 parallelize
@@ -256,8 +258,8 @@ PMI
 png
 PowerAI
 ppc
-Pre
 pre
+Pre
 Preload
 preloaded
 preloading
@@ -292,8 +294,8 @@ RSS
 RStudio
 Rsync
 runnable
-Runtime
 runtime
+Runtime
 sacct
 salloc
 Sandybridge
@@ -342,8 +344,8 @@ TensorFlow
 TFLOPS
 Theano
 tmp
-ToDo
 todo
+ToDo
 toolchain
 toolchains
 torchvision
@@ -382,9 +384,7 @@ XLC
 XLF
 Xming
 yaml
-ZIH
 zih
+ZIH
 ZIH's
 ZSH
-Addon
-Addons
