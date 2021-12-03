@@ -1,7 +1,7 @@
 # Building Software
 
 While it is possible to do short compilations on the login nodes, it is generally considered good
-practice to use a job for that, especially when using many parallel make processes. Since 2016, 
+practice to use a job for that, especially when using many parallel make processes. Since 2016,
 the `/projects` filesystem is mounted read-only on all compute
 nodes in order to prevent users from doing large I/O there (which is what the `/scratch` is for).
 In consequence, you cannot compile in `/projects` within a job. If you wish to install
