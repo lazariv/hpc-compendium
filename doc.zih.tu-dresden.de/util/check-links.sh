@@ -8,17 +8,20 @@
 ##
 ## Author: Martin.Schroschk@tu-dresden.de
 
-set -euo pipefail
+set -eo pipefail
+
+scriptpath=${BASH_SOURCE[0]}
+basedir=`dirname "$scriptpath"`
+basedir=`dirname "$basedir"`
 
 usage() {
-  echo "Usage: bash $0"
+  cat <<-EOF
+usage: $0 [file | -a]
+If file is given, checks whether all links in it are reachable.
+If parameter -a (or --all) is given instead of the file, checks all markdown files.
+Otherwise, checks whether any changed file contains broken links.
+EOF
 }
-
-# Any arguments?
-if [ $# -gt 0 ]; then
-  usage
-  exit 1
-fi
 
 mlc=markdown-link-check
 if ! command -v $mlc &> /dev/null; then
@@ -26,39 +29,75 @@ if ! command -v $mlc &> /dev/null; then
   mlc=./node_modules/markdown-link-check/$mlc
   if ! command -v $mlc &> /dev/null; then
     echo "INFO: $mlc not found (local module)"
-    echo "INFO: See CONTRIBUTE.md for information."
-    echo "INFO: Abort."
     exit 1
   fi
 fi
 
 echo "mlc: $mlc"
 
+LINK_CHECK_CONFIG="$basedir/util/link-check-config.json"
+if [ ! -f "$LINK_CHECK_CONFIG" ]; then
+  echo $LINK_CHECK_CONFIG does not exist
+  exit 1
+fi
+
 branch="preview"
 if [ -n "$CI_MERGE_REQUEST_TARGET_BRANCH_NAME" ]; then
     branch="origin/$CI_MERGE_REQUEST_TARGET_BRANCH_NAME"
 fi
 
-any_fails=false
+function checkSingleFile(){
+  theFile="$1"
+  if [ -e "$theFile" ]; then
+    echo "Checking links in $theFile"
+    if ! $mlc -q -c "$LINK_CHECK_CONFIG" -p "$theFile"; then
+      return 1
+    fi
+  fi
+  return 0
+}
 
-files=$(git diff --name-only "$(git merge-base HEAD "$branch")")
+function checkFiles(){
+any_fails=false
 echo "Check files:"
 echo "$files"
 echo ""
 for f in $files; do
-  if [ "${f: -3}" == ".md" ]; then
-    # do not check links for deleted files
-    if [ "$f" != "doc.zih.tu-dresden.de/README.md" ]; then
-      if [ -e $f ]; then
-        echo "Checking links for $f"
-        if ! $mlc -q -p "$f"; then
-          any_fails=true
-        fi
-      fi
-    fi
+  if ! checkSingleFile "$f"; then
+    any_fails=true
   fi
 done
 
 if [ "$any_fails" == true ]; then
     exit 1
+fi
+}
+
+function checkAllFiles(){
+files=$(git ls-tree --full-tree -r --name-only HEAD $basedir/ | grep '.md$' || true)
+checkFiles
+}
+
+function checkChangedFiles(){
+files=$(git diff --name-only "$(git merge-base HEAD "$branch")" | grep '.md$' || true)
+checkFiles
+}
+
+if [ $# -eq 1 ]; then
+  case $1 in
+  help | -help | --help)
+    usage
+    exit
+  ;;
+  -a | --all)
+    checkAllFiles
+  ;;
+  *)
+    checkSingleFile "$1"
+  ;;
+  esac
+elif [ $# -eq 0 ]; then
+  checkChangedFiles
+else
+  usage
 fi

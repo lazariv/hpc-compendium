@@ -1,0 +1,10 @@
+{
+  "ignorePatterns": [
+    {
+      "pattern": "^https://gitlab.hrz.tu-chemnitz.de/zih/hpcsupport/hpc-compendium/-/merge_requests/new$"
+    },
+    {
+      "pattern": "^https://doc.zih.tu-dresden.de/preview$"
+    }
+  ]
+}
