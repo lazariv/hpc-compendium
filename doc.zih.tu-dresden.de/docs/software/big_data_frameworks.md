@@ -1,4 +1,4 @@
-# Big Data Frameworks
+# Big Data Analytics
 
 [Apache Spark](https://spark.apache.org/), [Apache Flink](https://flink.apache.org/)
 and [Apache Hadoop](https://hadoop.apache.org/) are frameworks for processing and integrating
