@@ -63,7 +63,7 @@ echo "Check files:"
 echo "$files"
 echo ""
 for f in $files; do
-  if checkSingleFile "$f"; then
+  if ! checkSingleFile "$f"; then
     any_fails=true
   fi
 done
